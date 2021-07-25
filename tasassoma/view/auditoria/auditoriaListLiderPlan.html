@@ -1,0 +1,2944 @@
+
+<link rel="stylesheet" href="./view/ssoma/ssoma.css">
+<link rel="stylesheet" href="./css/pagination.css">
+<link rel="stylesheet" href="./css/auditorLiderList.css">
+
+
+<div class="row justify-content-center">
+    <style type="text/css">
+
+    ul.ui-autocomplete.ui-menu { width: 400px !important; }
+
+    #sel_procesoPlan{
+        height: 24px;
+        background-color: white;
+        cursor: pointer;
+    }
+
+    #sel_procesoPlan:hover{
+        height: 124px;
+        background-color: white;
+        cursor: pointer;
+    }
+
+
+    .txtAreaLista{
+         border-radius: 4px;
+        -moz-border-radius: 4px;
+        -webkit-border-radius: 4px;
+        -o-border-radius: 4px;
+        background: #F2F2F2;
+        background: linear-gradient(left, #F2F2F2, #F2F2F2);
+        background: -moz-linear-gradient(left, #F2F2F2, #F2F2F2);
+        background: -webkit-linear-gradient(left, #F2F2F2, #F2F2F2);
+        background: -o-linear-gradient(left, #F2F2F2, #F2F2F2);
+        width: 100%;
+        height: 80%;
+        border-color:#F2F2F2;
+        resize: none;
+    }
+
+    @media (max-width: 800px)
+    {
+        .fontZiseDinamico, .fontZiseDinamico2, .fontZiseDinamicoHeaderTabla
+        {
+            font-size: 8px !important;
+            /*color: red !important;*/
+        }
+    }
+
+    @media screen and (min-width: 801px)
+        and (max-width: 1099px)
+    {
+
+        .fontZiseDinamicoHeaderTabla
+        {
+            font-size: 10px !important;
+            /*color: yellow !important;*/
+
+        }
+        .fontZiseDinamico , .fontZiseDinamico2
+        {
+            font-size: 10px !important;
+            /*color: yellow !important;*/
+        }
+
+        .fontZiseDinamicoNota
+        {
+            font-size: 4px !important;
+            /*color: yellow !important;*/
+        }
+    }
+
+    @media screen and (min-width: 1100px)
+        and (max-width: 1399px)
+    {
+        .fontZiseDinamicoHeaderTabla
+        {
+            font-size: 11px !important;
+            /*color: green !important;*/
+
+        }
+        .fontZiseDinamico2
+        {
+            font-size: 8px !important;
+            /*color: green !important;*/
+        }
+        .fontZiseDinamico
+        {
+            font-size: 12px !important;
+            /*color: green !important;*/
+        }
+
+        .fontZiseDinamicoNota
+        {
+            font-size: 8px !important;
+            /*color: green !important;*/
+        }
+    }
+
+    @media (min-width: 1400px)
+    {
+        .fontZiseDinamicoHeaderTabla
+        {
+            font-size: 13px !important;
+            /*color: blue !important;*/
+
+        }
+        .fontZiseDinamico, .fontZiseDinamico2
+        {
+            font-size: 13px !important;
+            /*color: blue !important;*/
+        }
+
+        .fontZiseDinamicoNota
+        {
+            font-size: 13px !important;
+            /*color: blue !important;*/
+        }
+    }
+
+
+
+
+
+
+
+    input[type="time"]::-webkit-calendar-picker-indicator
+    {
+        filter: invert(48%) sepia(13%) saturate(3207%) hue-rotate(130deg) brightness(95%) contrast(80%);
+        cursor:pointer;
+    }
+
+
+
+
+</style>
+
+    <div class="col-12">
+
+        <!-- start filtro -->
+        <div class="row mt-4 align-items-center"  >
+           <table width = "100%" border="0" >
+                 <tr>
+                     <td id='col1' width ="60%">
+                        <table width = "100%" border="0">
+                            <tr>
+                                <td id='col1-1-1' width ="20%"><label for="sel_filter_unidad_organizativa" class="textoLabelFiltrosCA fontZiseDinamico">Unidad de Negocio</label></td>
+                                <td id='col1-1-6' width ="5%">&nbsp;</td>
+                                <td id='col1-1-2' width ="15%"> <label for="sel_filter_sede" class="textoLabelFiltrosCA fontZiseDinamico">Sede</label></td>
+                                <td id='col1-1-6' width ="5%">&nbsp;</td>
+                                <td id='col1-1-3' width ="15%"><label for="txt_date_start_evaluacion" class="textoLabelFiltrosCA fontZiseDinamico">Fecha Desde</label></td>
+                                <td id='col1-1-4' width ="5%">&nbsp;</td>
+                                <td id='col1-1-5' width ="15%"> <label for="txt_date_end_evaluacion" class="textoLabelFiltrosCA fontZiseDinamico">Fecha Hasta</label></td>
+                                <td id='col1-1-6' width ="5%">&nbsp;</td>
+                                <td id='col1-1-7' width ="15%"><label for="sel_filter_estado" class="textoLabelFiltrosCA fontZiseDinamico">Estado </label></td>
+                            </tr>
+                            <tr>
+                                <td id='col1-1-1' width ="20%">
+                                    <select name="sel_filter_unidad_organizativa" class="form-control" id="sel_filter_unidad_organizativa" onChange="vw_auditorias_list_plan.cargarSelectSedesFilter('sel_filter_sedep')"  style="padding: 0px !important;">
+                                    </select>
+                                </td>
+                                <td id='col1-1-6' width ="5%">&nbsp;</td>
+                                <td id='col1-1-2' width ="15%">
+                                    <select name="sel_filter_sedep" class="form-control select-filtroCA Patch_selectCA" id="sel_filter_sedep" style="padding: 0px !important;" required>
+                                        <option value="" selected disabled>Seleccionar</option>
+                                    </select>
+                                </td>
+                                <td id='col1-1-6' width ="5%">&nbsp;</td>
+                                <td id='col1-1-3' width ="15%">
+                                    <input  type="text" id="txt_date_start_evaluacion" name="txt_date_start_evaluacion" class="form-control bg-white" readonly onChange="vw_auditorias_list_plan.validarFechasP(3)">
+                                </td>
+                                <td id='col1-1-4' width ="5%">
+                                    <img src="images/iconos/calendario-3.svg"  style="cursor: pointer;" onclick="$('#txt_date_start_evaluacion').val('');">
+                                </td>
+                                <td id='col1-1-5' width ="15%">
+                                    <input  type="text" id="txt_date_end_evaluacion" name="txt_date_end_evaluacion" class="form-control bg-white" readonly onChange="vw_auditorias_list_plan.validarFechasP(3)">
+                                </td>
+                                <td id='col1-1-6' width ="5%">
+                                    <img src="images/iconos/calendario-3.svg"  style="cursor: pointer;" onclick="$('#txt_date_end_evaluacion').val('');">
+                                </td>
+                                <td id='col1-1-7' width ="15%">
+                                    <select name="sel_filter_estado" class="form-control select-filtroCA Patch_selectCA" id="sel_filter_estado" style="padding: 0px !important;" required>
+                                    </select>
+                                </td>
+                            </tr>
+                        </table>
+
+
+                    </td>
+
+
+                     <td id='col2' width ="2%">&nbsp;</td>
+                     <td id='col10'  width ="8%">
+                        <button type="button"  class="btn btn-system-green"  onClick=" reiniciarValiblesGlobales();   vw_auditorias_list_plan.filtroTablaDivsAuditoriasp();" name="jesus" id="buscarAuditorias" class="btn btn-system-green">Buscar</button>
+                     </td>
+                     <td id='col3' width ="9%">
+                        <!-- *************************************************************************************************** -->
+
+
+                        <!-- *************************************************************************************************** -->
+                     </td>
+                     <td id='col4'  width ="2%">
+                           <!-- <button type="button"  class="btn btn-system-green"  onClick="planPDF()" id="btxc" class="btn btn-system-green">GeneraPDF
+                           </button> -->
+                           &nbsp;
+                    </td>
+
+
+                     <td id='col9'  width ="1%">&nbsp;</td>
+                     <td id='col7'  width ="1%">&nbsp;
+
+                     </td>
+
+                     <td id='col8'  width ="12%">
+                        &nbsp;
+                        <button class="btn btn-system-green" style="cursor:pointer; visibility: hidden;"   onclick="verModalError('Ver Plan de Auditoria','Los datos del Programa estan Incompletos <b>( BASCPCON000320 )</b>')" >Error</button>
+                     </td>
+
+                     <td id='col6'  width ="5%">
+                        <div class="form-group border-right" id="cant_auditorias" style="font-size: 25px;font-weight: bold;">
+                            <img src="images/iconos/copia-1.svg" class="mb-3"  >
+                            <span class="cantidad ml-3" id="cant_auditorias">0</span>
+                        </div>
+                     </td>
+
+                 </tr>
+           </table>
+
+        </div>
+        <!-- end filtro -->
+    </div>
+</div>
+
+
+
+        <!-- start listado -->
+
+        <div class="row justify-content-center mt-5">
+            <div class="col-12">
+                <div class="header-tabla px-2 py-3">
+                    <div class="row m-0 justify-content-between align-items-center text-center">
+                        <div id="c1TabGen" class="col-2 text-left fontZiseDinamico" style="font-size: 15px">ID Auditor&iacute;a</div>
+                        <div id="c2TabGen" class="col-2 text-left fontZiseDinamico" style="font-size: 15px">Unidad Negocio</div>
+                        <div id="c3TabGen" class="col-1 text-left fontZiseDinamico" style="font-size: 15px">Sede</div>
+                        <div id="c4TabGen" class="col-1 text-left fontZiseDinamico" style="font-size: 15px">Norma</div>
+                        <div id="c5TabGen" class="col-1 text-left fontZiseDinamico" style="font-size: 15px">Tipo</div>
+                        <div id="c6TabGen" class="col-1 text-left fontZiseDinamico" style="font-size: 15px">Fecha Inicio</div>
+                        <div id="c7TabGen" class="col-1 text-left fontZiseDinamico" style="font-size: 15px">Fecha Fin</div>
+                        <div id="c8TabGen" class="col-1 text-left fontZiseDinamico" style="font-size: 15px">Estado</div>
+                        <div class="col-2 text-left">
+                            <div class="row m-0 justify-content-between align-items-center">
+                                <div id="c1TabGen"  class="col-3 fontZiseDinamico">Plan</div>
+                                <div id="c2TabGen"  class="col-3 fontZiseDinamico">Ver</div>
+                                <div id="c3TabGen"  class="col-3 pl-1 fontZiseDinamico">Enviar</div>
+                                <div id="c4TabGen"  class="col-3 pl-0 fontZiseDinamico">Suspender</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="body-tabla mt-4" id="bodyTablaSinAuditorias" style="display: block">
+                    <div class="content-registros-no-encontrados">
+                        <div>
+                            <img src="./images/iconos/escritura-1.svg" alt="">
+                            <p class="mt-4">No tienes auditor&iacute;as ingresadas</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="body-tabla-list-plan" id="body-tabla-list-plan" ><!--style="display: block;"-->
+
+                </div>
+                <div id="pagination-container-plan" class="mt-3"></div>
+            </div>
+
+        </div>
+        <!-- end   listado -->
+
+
+        <!-- *INI*******************************************  MODALES LISTADO PLAN AUDITOR   *****************************************-->
+        <div class="modal fade"  id="newPlanAuditoriaModal"  data-backdrop="static" data-keyboard="false" aria-hidden="true"  tabindex="-1" role="dialog" aria-labelledby="modalAddCompanyTitle" >
+            <div class="modal-dialog modal-dialog-centered rounded " role="document" style="max-width: 90%; z-index: 1030; ">
+                <div class="modal-content rounded " style="box-shadow: none;">
+                    <div style="overflow: hidden;height: 750px;overflow-x: hidden; ">
+                    <div class="modal-header fix-header-modal" >
+                        <div class="card-header text-left text-white  card-header-FormAuditor" style="width: 100%">
+                            <div class="row">
+                                <div class="col-4">
+                                    <table width='100' border = '0' style=" margin-top: 7px;">
+                                        <tr>
+                                            <td width='20%'>
+                                                <div  class="float-right" onclick=" $('#newPlanAuditoriaModal').modal('hide').removeClass('fade'); " cursor="pointer" id="btClosenewPlanAuditoriaModal"><span style="font-size: 40px">
+                                                    <img src="images/prev.svg" title="Salir"  style="cursor: pointer;"></span>
+                                                </div>
+                                                <td width='80%'>&nbsp;</td>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div id="txtHeadModalRegisterAuditor" class="col-4 text-center txtHeadModalAuditor" style=" margin-top: 5px;">
+                                    Plan de Auditor&iacute;a 14001TMAT000120
+                                </div>
+                                <div class="col-4  txtHeadModalAuditor">
+
+                                     <table border='0' width="100%" >
+                                         <tr>
+                                             <td width="30%" >
+                                                <button type="button" class="btn-save-auditor2"  id="btnGenerarInforme" onclick="sp3FngeneraInformeAuditoria()" style=" visibility: hidden; background: rgb(52, 85, 156); font-size: 14px; color: #fff;  width:124px;" >
+                                                    <i class="txt-btn-save" style="color: #fff;" id="lbGenerarInforme">Generar Informe</i> </button>
+                                             </td>
+                                             <td  width="10%">&nbsp;&nbsp;</td>
+                                             <td  width="15%">
+                                                <button type="button" class="btn-save-auditor2"  id="btn-guardar-plan" class="btn-guardar-plan">
+                                                    <i class="txt-btn-save" id="lbBtnGuardar">Guardar</i> </button>
+                                             </td>
+                                             <td width="10%">&nbsp;&nbsp;</td>
+                                             <td width="15%">
+                                                <button type="button" class="btn-close-auditor2" id="btn-finalizar-plan" class="btn-finalizar-plan" >
+                                                    <i class="txt-btn-close" id="lbBtCerrar">Finalizar</i> </button>
+                                             </td>
+                                             <td width="5%">&nbsp;&nbsp;</td>
+                                         </tr>
+                                     </table>
+
+
+
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="modal-body dialog-position" id="bodymodalShowAuditor" style=" justify-content:space-around; align-content:center;">
+
+                        <div class="card " style="border: 0px !important; border-radius: 10px; box-shadow: none;">
+                            <div class="card-body2" >
+                                <form class="form floating-label" novalidate="novalidate" style="width:100% !important;">
+
+
+
+                                    <table width="100%" border = '0'>
+                                       <tr>
+                                        <td width="100%">
+                                               <div class="stepwizard " id="manipulation">
+                                                    <div class="d-flex justify-content-center stepwizard-row setup-panel">
+                                                        <div class="col-4 stepwizard-step marginbtnstep2" style=" padding:0px 0px !important;">
+                                                            <a href="#step-1" id="step1"> <button type="button" style="margin-left:9px !important;" class="btn-formAuditor" href="#step-1" id="btn_step1" >
+                                                                <b>Datos Principales</b> </button></a>
+                                                        </div>
+                                                        <div class="col-4 stepwizard-step marginbtnstep2">
+                                                            <a href="#step-2" id="step2" ><button  type="button" style="margin-left:12px !important;"  class="btn-formAuditor" href="#step-2"
+                                                            id="btn_step2" >
+                                                                <b>Programaci&oacute;n</b> </button></a>
+                                                        </div>
+                                                        <div class="col-4 stepwizard-step marginbtnstep2">
+                                                            <a href="#step-3" id="step3"> <button  type="button" class="btn-formAuditor" href="#step-3" id="btn_step3" >
+                                                                <b>Resultados</b> </button></a>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                        </td>
+                                       </tr>
+                                    </table>
+
+                                    <div class="row setup-content" id="step-1" style="display: block;">
+                                       <!-- <div class="card-body2">
+                                            <div class="row " >
+                                                <div>
+                                                    <h6 class="detalle-formauditor p-3">Detalle</h6>
+                                                </div>
+                                                <div class="col-10 p-4">
+                                                    <hr>
+                                                </div>
+                                                <div class="p-4">
+                                                    <img src="./images/iconos/menu.svg" class="menu-1-1">
+                                                </div>
+                                            </div>
+                                        </div>-->
+                                       <table width="100%" border="0" align="center">
+                                            <tr>
+                                            <td width="15%">&nbsp;</td>
+                                            <td width="82%">&nbsp;</td>
+                                            <td width="4%">&nbsp;
+
+                                            </td>
+                                            </tr>
+
+                                            <tr>
+                                            <td width="15%"><h6 style="margin-left:10px !important;" class="detalle-formauditor p-2">Datos Principales</h6></td>
+                                            <td width="65%">&nbsp;</td>
+                                            <td width="20%">
+                                            <div style="margin-right:22px !important;" >
+                                                 <img src="./images/iconos/menu.svg" class="menu-1-1">
+                                            </div>
+                                            </td>
+                                            </tr>
+                                            <tr>
+                                            <td colspan="3">
+
+                                                    <table width="100%" border="0" align="center" >
+                                                      <tr>
+                                                            <td colspan="2">&nbsp;</td>
+                                                      </tr>
+                                                      <tr>
+                                                        <td width="50%" align="left">
+                                                             <div class="form-group  border" style="margin-left:18px !important; padding:10px !important; width:95% !important;
+                                                             height:109px !important;" id = "div_txt_objetivo_plan">
+                                                            <label for="objetivo" class="label label-caja">Objetivo</label>
+                                                            <textarea  class="text-justify textarea-fecha2" id="txt_objetivo_plan"  name = "txt_objetivo_plan"></textarea>
+                                                            </div>
+                                                        </td>
+
+                                                        <td width="50%" align="right">
+                                                           <div class="form-group border" style=" text-align:left !important; padding:10px !important; margin-right:18px !important;
+                                                                width:95% !important;  height:109px !important;"  id = "div_txt_alcance_plan"  >
+                                                                <label for="objetivo" class="label label-caja">Alcance de la Auditor&iacute;a</label>
+                                                                <textarea class="text-justify textarea-fecha2" id="txt_alcance_plan"  name = "txt_alcance_plan"></textarea>
+                                                            </div>
+                                                        </td>
+                                                      </tr>
+                                                    </table>
+
+                                            </td>
+                                            </tr>
+                                            </table>
+
+                                        <!--<div class="card-body2">
+                                            <div class="row col-12 justify-content-around">
+
+                                                <div class="form-group col-5 border" id = "div_txt_objetivo_plan">
+                                                    <label for="objetivo" class="label label-caja">Objetivo</label>
+                                                    <textarea class="text-justify textarea-fecha2" id="txt_objetivo_plan"  name = "txt_objetivo_plan"></textarea>
+                                                </div>
+                                                <div class="form-group col-5 border" id = "div_txt_alcance_plan" >
+                                                    <label for="objetivo" class="label label-caja">Alcance de la Auditor&iacute;a</label>
+                                                    <textarea class="text-justify textarea-fecha2" id="txt_alcance_plan"  name = "txt_alcance_plan"></textarea>
+                                                </div>
+
+                                            </div>
+                                        </div>-->
+                                       <!-- <div class="card-body2">
+                                            <div class="row col-12 ">-->
+
+                                                   <!-- <div class="form-group col-2" >
+                                                        <h6 class="detalle-formauditor">Lugar de Auditoría</h6>
+                                                       <div class="Rectangle-trainnig-2 disabled2">
+                                                    <div class="form-group p-2" >
+                                                                <label for="txt_role_played" class="bmd-label-static titleInput2"><b>Sede Auditor&iacute;a</b> </label>
+                                                        <div class="input-group">
+                                                            <input  type="text" name="txt_sede_plan" id="txt_sede_plan" aria-describedby="sizing-addon2"
+                                                            class="form-control form-control2 bg-white fechasA disabled2" value="Planta Callao Norte" >
+                                                        </div>
+                                                        </div>
+                                                    </div>
+                                                </div>-->
+                                                     <!-- <div class="form-group col-2" >
+                                                        <h6 class="detalle-formauditor">Fecha Planificada</h6>
+                                                       <div class="Rectangle-trainnig-2 verde disabled2">
+                                                    <div class="form-group p-2" >
+                                                                <label for="txt_role_played" class="bmd-label-static titleInput2"><b> Fecha Inicio</b> </label>
+                                                        <div class="input-group">
+                                                            <input  type="text" name="txt_fechaInicio" id="txt_fechaInicio" aria-describedby="sizing-addon2"
+                                                            class="form-control form-control2 bg-white fechasA disabled2"  readonly disabled maxlength="10"  autocomplete="off" >
+                                                            <span class="input-group-addon" id="sizing-addon2"><img src="./images/iconos/calendario-3.svg"></span>
+                                                        </div>
+                                                        </div>
+                                                    </div>
+                                                </div>-->
+                                                <!--<div class="form-group col-2" >
+                                                    <h6 class="detalle-formauditor">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h6>
+                                                       <div class="Rectangle-trainnig-2 verde disabled2">
+                                                    <div class="form-group p-2" >
+                                                                <label for="txt_role_played" class="bmd-label-static titleInput2"><b> Fecha Fin</b> </label>
+                                                        <div class="input-group">
+                                                            <input  type="text" name="txt_fechaFin" id="txt_fechaFin" aria-describedby="sizing-addon2"
+                                                             class="form-control form-control2 bg-white fechasA disabled2" readonly disabled maxlength="10"  autocomplete="off" >
+                                                            <span class="input-group-addon" id="sizing-addon2"><img src="./images/iconos/calendario-3.svg"></span>
+                                                        </div>
+                                                        </div>
+                                                    </div>
+                                                </div>-->
+                                               <!-- <div class="form-group col-2" >
+                                                        <h6 class="detalle-formauditor">Fecha de Ejecuci&oacute;n</h6>
+                                                       <div class="Rectangle-trainnig-2 azul disabled2">
+                                                    <div class="form-group p-2" >
+                                                                <label for="txt_role_played" class="bmd-label-static titleInput2"><b> Fecha Inicio</b> </label>
+                                                        <div class="input-group">
+                                                            <input  type="text" name="txt_fechaInicioEj" id="txt_fechaInicioEj" aria-describedby="sizing-addon2"
+                                                             class="form-control form-control2 bg-white fechasA disabled2" readonly disabled maxlength="10"  autocomplete="off" >
+                                                            <span class="input-group-addon" id="sizing-addon2"><img src="./images/iconos/calendario-3.svg"></span>
+                                                        </div>
+                                                        </div>
+                                                    </div>
+                                                </div>-->
+                                                <!--<div class="form-group col-2" >
+                                                    <h6 class="detalle-formauditor">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h6>
+                                                       <div class="Rectangle-trainnig-2 azul disabled2">
+                                                    <div class="form-group p-2" >
+                                                                <label for="txt_role_played" class="bmd-label-static titleInput2"><b> Fecha Fin</b> </label>
+                                                        <div class="input-group">
+                                                            <input  type="text" name="txt_fechaFinEj" id="txt_fechaFinEj" aria-describedby="sizing-addon2"
+                                                            class="form-control form-control2 bg-white fechasA disabled2" readonly disabled maxlength="10"  autocomplete="off" >
+                                                            <span class="input-group-addon" id="sizing-addon2"><img src="./images/iconos/calendario-3.svg"></span>
+                                                        </div>
+                                                        </div>
+                                                    </div>
+                                                </div>-->
+                                               <!-- <div class="form-group col-2" >
+                                                    <h6 class="detalle-formauditor">Elaboraci&oacute;n de Plan</h6>
+                                                       <div class="Rectangle-trainnig-2 disabled2">
+                                                          <div class="form-group p-2" >
+                                                                <label for="txt_role_played" class="bmd-label-static titleInput2" style="font-size: 12px !important;">
+                                                                  <b> Fec. de Elaboraci&oacute;n</b> </label>
+                                                           <div class="input-group">
+                                                            <input  type="text" name="txt_fechaIniPlan" id="txt_fechaIniPlan" aria-describedby="sizing-addon2"
+                                                            class="form-control form-control2 bg-white fechasA disabled2" readonly disabled maxlength="10" autocomplete="off" >
+                                                            <span class="input-group-addon" id="sizing-addon2"><img src="./images/iconos/calendario-3.svg"></span>
+                                                           </div>
+                                                        </div>
+                                                    </div>
+                                                </div>-->
+
+                                            <!--</div>
+                                        </div>-->
+
+                                        <table align="center" width="100%" border="0">
+                                             <tr>
+                                                 <td width="100%" align="center">
+                                                           <table width="97%" border="0" align="center" >
+                                                                <tr>
+                                                                <td width="16%"> <h6 class="detalle-formauditor">Lugar de Auditoría</h6></td>
+                                                                <td width="1%">&nbsp;</td>
+                                                                <td width="16%"><h6 class="detalle-formauditor ">Fecha Planificada</h6></td>
+                                                                <td width="1%">&nbsp;</td>
+                                                                <td width="16%">&nbsp;</td>
+                                                                <td width="1%">&nbsp;</td>
+                                                                <td width="16%"><h6 class="detalle-formauditor">Fecha de Ejecuci&oacute;n</h6></td>
+                                                                <td width="1%">&nbsp;</td>
+                                                                <td width="16%">&nbsp;</td>
+                                                                <td width="1%">&nbsp;</td>
+                                                                <td width="16%"><h6 class="detalle-formauditor">Elaboraci&oacute;n de Plan</h6></td>
+
+                                                                </tr>
+                                                                <tr>
+                                                                <td width="16%">
+
+                                                                   <div class="Rectangle-trainnig-2 disabled2">
+                                                                        <div class="form-group p-2" >
+                                                                            <label for="txt_role_played" class="bmd-label-static lbaud1">Sede Auditor&iacute;a </label>
+                                                                           <div class="input-group">
+                                                                              <input  type="text" style="height: 17px !important; font-size: 14px !important; color:#000 !important;"  name="txt_sede_plan"
+                                                                               id="txt_sede_plan" aria-describedby="sizing-addon2"
+                                                                              class="form-control  bg-white fechasA disabled2"  readonly disabled maxlength="10"  autocomplete="off" >
+                                                                           </div>
+                                                                        </div>
+                                                                   </div>
+
+                                                                   </td>
+                                                                <td width="1%">&nbsp;</td>
+                                                                <td width="16%">
+
+                                                                     <div class="Rectangle-trainnig-2 verde disabled2">
+                                                                        <div class="form-group p-2" >
+                                                                            <label for="txt_role_played" class="bmd-label-static  lbaud1">Fecha Inicio</label>
+                                                                        <div class="input-group">
+                                                                              <input  type="text"style="height: 17px !important; font-size: 14px !important; color:#000 !important;"  name="txt_fechaInicio"
+                                                                               id="txt_fechaInicio" aria-describedby="sizing-addon2"
+                                                                                class="form-control  bg-white fechasA disabled2"  readonly disabled maxlength="10"  autocomplete="off" >
+                                                                           <span class="input-group-addon" id="sizing-addon2"><img src="./images/iconos/calendario-3.svg"></span>
+                                                                        </div>
+                                                                   </div>
+                                                                   </div>
+
+                                                                </td>
+                                                                <td width="1%">&nbsp;</td>
+                                                                <td width="16%">
+
+                                                                <div class="Rectangle-trainnig-2 verde disabled2">
+                                                                <div class="form-group p-2" >
+                                                                            <label for="txt_role_played" class="bmd-label-static  lbaud1"> Fecha Fin </label>
+                                                                    <div class="input-group">
+                                                                        <input style="height: 17px !important; font-size: 14px !important; color:#000 !important;"  type="text"
+                                                                        name="txt_fechaFin"
+                                                                        id="txt_fechaFin" aria-describedby="sizing-addon2"
+                                                                         class="form-control bg-white fechasA disabled2" readonly disabled maxlength="10"  autocomplete="off" >
+                                                                        <span class="input-group-addon" id="sizing-addon2"><img src="./images/iconos/calendario-3.svg"></span>
+                                                                    </div>
+                                                                    </div>
+                                                                    </div>
+
+                                                                </td>
+                                                                <td width="1%">&nbsp;</td>
+                                                                <td width="16%">
+                                                                    <div class="Rectangle-trainnig-2 azul disabled2">
+                                                                      <div class="form-group p-2" >
+                                                                            <label for="txt_role_played" class="bmd-label-static  lbaud1">Fecha Inicio </label>
+                                                                        <div class="input-group">
+                                                                        <input  type="text" style="height: 17px !important; font-size: 14px !important; color:#000 !important;"
+                                                                        name="txt_fechaInicioEj"
+                                                                         id="txt_fechaInicioEj" aria-describedby="sizing-addon2"
+                                                                        class="form-control  bg-white fechasA disabled2" readonly disabled maxlength="10"  autocomplete="off" >
+                                                                        <span class="input-group-addon" id="sizing-addon2"><img src="./images/iconos/calendario-3.svg"></span>
+                                                                       </div>
+                                                                     </div>
+                                                                     </div>
+                                                                </div>
+                                                                </td>
+                                                                <td width="1%">&nbsp;</td>
+                                                                <td width="16%">
+                                                                    <div class="Rectangle-trainnig-2 azul disabled2">
+                                                                      <div class="form-group p-2" >
+                                                                            <label for="txt_role_played" class="bmd-label-static  lbaud1">Fecha Fin </label>
+                                                                       <div class="input-group">
+                                                                         <input  type="text" style="height: 17px !important; font-size: 14px !important; color:#000 !important;"
+                                                                         name="txt_fechaFinEj"
+                                                                          id="txt_fechaFinEj" aria-describedby="sizing-addon2"
+                                                                          class="form-control  bg-white fechasA disabled2" readonly disabled maxlength="10"  autocomplete="off" >
+                                                                        <span class="input-group-addon" id="sizing-addon2"><img src="./images/iconos/calendario-3.svg"></span>
+                                                                       </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                </td>
+                                                                <td width="1%">&nbsp;</td>
+                                                                <td width="16%">
+
+                                                                    <div class="Rectangle-trainnig-2 disabled2">
+                                                                      <div class="form-group p-2" >
+                                                                            <label for="txt_role_played" class="bmd-label-static  lbaud1" > Fec. de Elaboraci&oacute;n</label>
+                                                                       <div class="input-group">
+                                                                        <input  style="height: 17px !important; font-size: 14px !important; color:#000 !important;" type="text"
+                                                                         name="txt_fechaIniPlan"
+                                                                          id="txt_fechaIniPlan" aria-describedby="sizing-addon2"
+                                                                         class="form-control bg-white fechasA disabled2" readonly disabled maxlength="10" autocomplete="off" >
+                                                                        <span class="input-group-addon" id="sizing-addon2"><img src="./images/iconos/calendario-3.svg"></span>
+                                                                    </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                </td>
+
+                                                                </tr>
+                                                   </table>
+                                                 </td>
+                                             </tr>
+                                             <tr>
+                                               <td colspan="3" align="center" >&nbsp;
+
+                                               </td>
+                                             </tr>
+                                              <tr>
+                                               <td colspan="3" align="center" >&nbsp;
+
+                                               </td>
+                                             </tr>
+                                             <tr>
+                                               <td colspan="3" align="center" >&nbsp;
+
+                                               </td>
+                                             </tr>
+                                             <tr>
+                                             <td colspan="3" align="center" >
+                                             <table width="100%" border="0">
+                                                <tr>
+                                                    <td width="1%">&nbsp;</td>
+                                                    <td width="24%">
+                                                      <table style="margin-left:7px !important;" width="90%" border="0" align="center" bordercolor="#FF0000">
+                                                          <tr>
+                                                            <td width="78%"><h6 style="margin-top:14px !important;" class="detalle-formauditor">Auditor</h6></td>
+                                                            <td width="11%"><img src="./images/iconos/Group758.svg"></td>
+                                                            <td width="11%"  align="right"> <div class="input-group-addon icon" id="nAudx" name="nAudx">03</div></td>
+                                                            <tr>
+                                                            <td colspan="3"><div class="caja-list" id = "listAuditorPrincipal" name = "listAuditorPrincipal"></div></td>
+                                                            </tr>
+                                                        </table>
+                                                        <!-- <div class="row col-12 justify-content-around align-items-right">
+                                                              <div>
+
+
+                                                              </div>
+                                                            <div class="caja-list" id = "listAuditorPrincipal" name = "listAuditorPrincipal">
+                                                                <div class="caja-list-int">
+                                                                    <p>Ejemplo</p>
+                                                                </div>
+                                                                <div class="caja-list-int">
+                                                                    <p>Ejemplo</p>
+                                                                </div>
+                                                                <div class="caja-list-int">
+                                                                    <p>Ejemplo</p>
+                                                                </div>
+                                                                <div class="caja-list-int">
+                                                                    <p>Ejemplo</p>
+                                                                </div>
+                                                                <div class="caja-list-int">
+                                                                    <p>Ejemplo</p>
+                                                                </div>
+                                                                <div class="caja-list-int">
+                                                                    <p>Ejemplo</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>-->
+                                                    </td>
+                                                    <td width="1%">&nbsp;</td>
+                                                    <td width="24%">
+                                                     <table width="90%"  border="0" align="center" bordercolor="#FF0000">
+                                                          <tr>
+                                                            <td width="78%"><h6 style="margin-top:14px !important;" class="detalle-formauditor">Observadores</h6></td>
+                                                            <td width="11%"><img src="./images/iconos/Group758.svg"></td>
+                                                            <td width="11%" align="right"><div class="input-group-addon icon" id="nObsx" name ="nObsx">02</div></div></td>
+                                                            <tr>
+                                                            <td colspan="3"><div class="caja-list" id = "listObservadorPrincipal" name = "listObservadorPrincipal"></div></td>
+                                                            </tr>
+                                                        </table>
+                                                             <!--<div >
+                                                                    <div class="col-8 text-left"><h6 class="detalle-formauditor">Observadores</h6></div>
+                                                                    <div class="col-4 text-right"><img src="./images/iconos/Group758.svg">
+                                                                    <div class="input-group-addon icon" id="nObsx" name ="nObsx">02</div></div>
+                                                                    <div class="caja-list" id = "listObservadorPrincipal" name = "listObservadorPrincipal">
+                                                                        <div class="caja-list-int">
+                                                                            <p>Ejemplo</p>
+                                                                        </div>
+                                                                        <div class="caja-list-int">
+                                                                            <p>Ejemplo</p>
+                                                                        </div>
+                                                                        <div class="caja-list-int">
+                                                                            <p>Ejemplo</p>
+                                                                        </div>
+                                                                        <div class="caja-list-int">
+                                                                            <p>Ejemplo</p>
+                                                                        </div>
+                                                                        <div class="caja-list-int">
+                                                                            <p>Ejemplo</p>
+                                                                        </div>
+                                                                        <div class="caja-list-int">
+                                                                            <p>Ejemplo</p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>-->
+                                                    </td>
+                                                    <td width="50%">
+
+
+
+                                                            <table width="100%" border="0" align="center" >
+                                                            <tr><td colspan="5">&nbsp;</td></tr>
+                                                            <tr><td colspan="5">&nbsp;</td></tr>
+                                                            <tr><td colspan="5">&nbsp;</td></tr>
+                                                              <tr>
+                                                                <td width="5%">&nbsp;</td>
+                                                                <td width="40%" align="center">
+                                                                        <div >
+                                                                         <button type="button" class="btn_confirmar_modal bg-green-lime-modal" id="CambiarFecha"
+                                                                         style="font-size: 14px;">Cambiar fecha de Ejecuci&oacute;n</button>
+                                                                        </div>
+                                                                </td>
+                                                                <td width="10%">&nbsp;</td>
+                                                                <td width="40%" align="center" >
+                                                                         <div >
+                                                                            <button type="button" class="btn_cerrar_modal " id="btn-historial-auditor"
+                                                                            style="background-color: #ffffff; font-size: 14px; margin-left:14px !important;"><b>Ver Historial de ejecuci&oacute;n</b></button>
+                                                                          <input type="hidden" name="idAuditoria" id="idAuditoria">
+                                                                         </div>
+                                                                </td>
+                                                                <td width="5%">&nbsp;</td>
+                                                              </tr>
+                                                              <tr><td colspan="5">&nbsp;</td></tr>
+                                                            </table>
+                                                    </td>
+                                                </tr>
+                                              </table>
+
+                                                <div class="card-body2">
+                                                   <!--<div class="row col-12 justify-content-around align-items-right">
+                                                      <div class="row col-3">
+                                                         <div class="col-8 text-left"><h6 class="detalle-formauditor">Auditor</h6></div>
+                                                         <div class="col-4 text-right"><img src="./images/iconos/Group758.svg"><div class="input-group-addon icon" id="nAudx" name="nAudx">03</div>
+                                                      </div>
+                                                    <div class="caja-list" id = "listAuditorPrincipal" name = "listAuditorPrincipal">
+                                                        <div class="caja-list-int">
+                                                            <p>Ejemplo</p>
+                                                        </div>
+                                                        <div class="caja-list-int">
+                                                            <p>Ejemplo</p>
+                                                        </div>
+                                                        <div class="caja-list-int">
+                                                            <p>Ejemplo</p>
+                                                        </div>
+                                                        <div class="caja-list-int">
+                                                            <p>Ejemplo</p>
+                                                        </div>
+                                                        <div class="caja-list-int">
+                                                            <p>Ejemplo</p>
+                                                        </div>
+                                                        <div class="caja-list-int">
+                                                            <p>Ejemplo</p>
+                                                        </div>
+                                                    </div>-->
+                                                </div>
+                                               <!-- <div class="row col-3">
+                                                    <div class="col-8 text-left"><h6 class="detalle-formauditor">Observadores</h6></div>
+                                                    <div class="col-4 text-right"><img src="./images/iconos/Group758.svg">
+                                                    <div class="input-group-addon icon" id="nObsx" name ="nObsx">02</div></div>
+                                                    <div class="caja-list" id = "listObservadorPrincipal" name = "listObservadorPrincipal">
+                                                        <div class="caja-list-int">
+                                                            <p>Ejemplo</p>
+                                                        </div>
+                                                        <div class="caja-list-int">
+                                                            <p>Ejemplo</p>
+                                                        </div>
+                                                        <div class="caja-list-int">
+                                                            <p>Ejemplo</p>
+                                                        </div>
+                                                        <div class="caja-list-int">
+                                                            <p>Ejemplo</p>
+                                                        </div>
+                                                        <div class="caja-list-int">
+                                                            <p>Ejemplo</p>
+                                                        </div>
+                                                        <div class="caja-list-int">
+                                                            <p>Ejemplo</p>
+                                                        </div>
+                                                    </div>
+                                                </div>-->
+
+                                              <!--  <div class="col-3">
+                                                    <button type="button" class="btn_confirmar_modal bg-green-lime-modal" id="CambiarFecha"
+                                                    style="font-size: 14px;">Cambiar fecha de Ejecuci&oacute;n</button>
+                                                </div>
+                                                <div class="col-3">
+                                                    <button type="button" class="btn_cerrar_modal " id="btn-historial-auditor"
+                                                    style="background-color: #ffffff; font-size: 14px;"><b>Ver Historial de ejecuci&oacute;n</b></button>
+                                                    <input type="hidden" name="idAuditoria" id="idAuditoria">
+                                                </div>-->
+
+                                            </div>
+
+
+                                             </td>
+                                             </tr>
+                                        </table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                         </div>
+                                    </div>
+
+                                </form>
+
+
+                                    <div class="row setup-content" id="step-2" >
+                                        <div class="card-body2" style="margin-top: 7px !important;margin-bottom: 0px !important">
+                                            <div class="row justify-content-start" style=" height: 50px; " id="divNormax" >
+                                                 <div>
+                                                    <h6 style="margin-left:22px !important;" id='llbDetalle' class="detalle-formauditor p-2">Detalle</h6>
+                                                </div>
+                                               <!--  <div class="col-2 p-1" style="border: 1px solid blue;" >
+                                                    <hr>aaaa
+                                                    &nbsp;
+                                                </div> -->
+                                                <!-- modificado por andy 18-05-21 por ajuste resolucion -->
+
+                                                <div class="col-9" >
+                                                    <div class="row col-12" style="border: 1px solid white;">
+
+                                                                  <div class="col-2">
+                                                                     <button type="button" class="btn-prog active2" id="btn-basic" name="btn-basic" >
+                                                                         <b>BASIC</b>
+                                                                     </button>
+                                                                  </div>
+
+                                                <div class="col-2">
+                                                  <button  type="button"  class="btn-formAuditor btn-prog" name="btn-17002" id="btn-17002" >
+                                                        <b>17002</b> </button>
+                                                </div>
+
+                                                <div class="col-5 stepwizard-step marginbtnstep2">
+
+                                                  <div class="Rectangle-trainnig-3">
+                                                        <div class="form-group ">
+                                                            <!--<select name="sel_procesoPlan" class="form-control form-control2 tic" id="sel_procesoPlan" multiple>
+                                                                <option value="0" onclick="alert(this.value)">00</option>
+                                                                <option value="2" onclick="alert(this.value)">02</option>
+                                                                <option value="1" onclick="alert(this.value)">01</option>
+                                                            </select>-->
+                                                            <div class="dropdown" id="dropdown1">
+                                                                <button class="dropdown-toggle dropdown" id="Norma1" type="button" data-toggle="dropdown">Seleccione los Procesos 1
+                                                                    <span class="caret"></span>
+                                                                </button>
+                                                                <ul class="dropdown-menu" role="menu" style="background-color:#ffffff; width:600px;"  aria-labelledby="Norma1" id="lista_procesos_1">
+
+
+
+                                                                </ul>
+                                                            </div>
+
+                                                            <div class="dropdown" id="dropdown2" style="display: none;">
+                                                                <button class="dropdown-toggle dropdown" id="Norma2" type="button" data-toggle="dropdown">Seleccione los Procesos 2
+                                                                    <span class="caret"></span>
+                                                                </button>
+                                                                <ul class="dropdown-menu" role="menu" style="background-color:#ffffff; width:600px;"  aria-labelledby="Nomra2" id="lista_procesos_2">
+
+
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="col-3">
+                                                    <div class="Rectangle-trainnig-3 text-left " style="visibility: hidden;">
+                                                        <input type="text" id="txt-administrador" name="txt-administrador" class="btn-formAuditor date-small2 btn-prog form-control2 text-left" value="Administrador" style="height: 30px !important">
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+
+                                                </div>
+
+                                                 </div>
+
+
+
+                                            <table id='tablaBuscador' class='ocultaDivSp3' width = '97%' border = '0' style = " margin-left: auto; margin-right: auto; ">
+                                                <tr>
+                                                    <td width = '4%' style = " text-align: left; " align='center'>
+                                                       <h6  id='llbDetalle2' class="detalle-formauditor p-0">Detalle</h6>
+                                                    </td>
+
+                                                     <td width = '38%'>
+                                                        &nbsp;
+                                                    </td>
+
+                                                    <td width ="12%">
+                                                        <!-- <label for="sel_filter_unidad_organizativa" class="textoLabelFiltrosCA">Norma</label> -->
+                                                        <!-- ------------------------------------------------------------------------------------- -->
+                                                            <table width = '100%'>
+                                                                <tr>
+                                                                  <td>
+                                                                      <label  class="textoLabelFiltrosCA">Norma</label>
+                                                                  </td>
+                                                                </tr>
+                                                                <tr>
+                                                                      <td>
+                                                                         <select name="sel_filter_normaadx" class="form-control" id="sel_filter_normaadx" onChange="fnSp3FMontaProcesoFiltro(this)"  style=" font-size:14px !important; cursor:pointer; padding: 0px !important;">
+                                                                         </select>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        <!-- ------------------------------------------------------------------------------------- -->
+                                                    </td>
+                                                    <td    width ="3%">&nbsp;</td>
+
+                                                    <td width ="12%">
+                                                          <!-- ------------------------------------------------------------------------------------- -->
+                                                            <table width = '100%'>
+                                                                <tr>
+                                                                  <td>
+                                                                      <label  class="textoLabelFiltrosCA">Proceso</label>
+                                                                  </td>
+                                                                </tr>
+                                                                <tr>
+                                                                      <td>
+                                                                         <select name="sel_filter_proceso" class="form-control" id="sel_filter_proceso" onChange="fnSp3CambiaProcesoFiltro(this)"  style="font-size:14px !important;  padding: 0px !important;">
+                                                                         </select>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        <!-- ------------------------------------------------------------------------------------- -->
+                                                    </td>
+                                                    <td    width ="3%">&nbsp;</td>
+                                                    <td width = '19%'>
+                                                         <!-- ------------------------------------------------------------------------------------- -->
+                                                            <table width = '100%'>
+                                                                <tr>
+                                                                  <td>
+                                                                      <label  class="textoLabelFiltrosCA">Responsable</label>
+                                                                  </td>
+                                                                </tr>
+                                                                <tr>
+                                                                      <td>
+                                                                         <input name="sp3_txt_auditor_filtro" class="form-control" type="text"
+                                                                        id="sp3_txt_auditor_filtro"   style="padding: 0px !important;">
+                                                                        </input>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        <!-- ------------------------------------------------------------------------------------- -->
+
+                                                    </td>
+                                                     <td    width ="3%">&nbsp;</td>
+
+                                                     <td width = '6%' align='right' >
+
+                                                             <button type="button" style=" width:115px !important; height:50px !inportant;"  class="btn btn-system-green"
+                                                             onClick="fnSp3CargaFiltroVerPlan()"  id="sp3BtFiltroProcesos"  class="btn btn-system-green">Buscar</button>
+                                                        </td>
+
+
+
+                                                </tr>
+                                            </table>
+
+
+                                                        <!-- start listado  programacion -->
+                                             <div class="card-body2" >
+                                                <div class="row mt-1">
+
+                                                    <div class=" scroll-blue3 verga" style="width: 100%; cursor: pointer;  z-index: 2;" >
+                                                        <div style="width: 150%;" class="verga">
+
+                                                        <div class="header-tabla px-2 py-3">
+                                                            <div class="row m-0 justify-content-between align-items-center text-center">
+                                                                <div class="col-3 text-left" style="font-size: 15px">Proceso</div>
+                                                                <div class="col-1 text-left" style="font-size: 15px">Cap&iacute;tulos</div>
+                                                                <div class="col-3 text-left" style="font-size: 15px">Requisitos</div>
+                                                                <div class="col-2 text-left" style="font-size: 15px">Auditores</div>
+                                                                <div class="col-1 text-left" style="font-size: 15px">Fecha</div>
+                                                                <div class="col-1 text-left" style="font-size: 15px">Hora Inicio</div>
+                                                                <div class="col-1 text-left" style="font-size: 15px">Hora Fin</div>
+                                                                <input type="hidden" name="boton">
+                                                            </div>
+                                                        </div>
+                                                                    <div class="body-tabla-list verga" id ="divOcultaContListaProgramacion" name ="divOcultaContListaProgramacion"
+                                                                        style=" visibility: hidden; height: 350px !important; /*background-color:#c3c3c3;*/ background-color:red;  width:100%;  opacity: 0.45;  z-index: 10; position: absolute;">
+                                                                    </div>
+
+
+
+                                                                    <div class="body-tabla-list verga" id ="divContListaProgramacion" name ="divContListaProgramacion" style=" height: 350px !important;  ">
+
+
+                                                                    </div>
+
+                                                                    <div class="body-tabla-list verga" id ="divContListaProgramacion2" name ="divContListaProgramacion2" style="display: none; height: 350px !important; ">
+
+
+                                                                    </div>
+
+                                                                    <!-- <p style="margin-bottom: 10px;">Elemento bloque normal con margin-bottom</p>
+                                                                    <p style="float:left;">Elemento bloque flotante sin márgenes</p>
+                                                                    <p>Elemento bloque circundante sin márgenes</p> -->
+
+                                                        </div>
+
+                                                        <div id="pagination-container-plan-programacion" class="mt-3"></div>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                                <!-- end   listado -->
+
+                                        </div>
+
+
+                                    </div> <!-- end   step 2 -->
+
+                                    <div class="row setup-content" id="step-3">
+                                        <div class="card-body2">
+                                            <div class="row " >
+                                                <div>
+                                                    <h6 class="detalle-formauditor p-3">Resultado</h6>
+                                                </div>
+                                                <div class="col-10 p-4">
+                                                    <hr>
+                                                </div>
+                                                <div class="p-4">
+                                                    <img src="./images/iconos/menu.svg" class="menu-1-1">
+                                                </div>
+                                            </div>
+
+                                                                                                    <!-- start listado  programacion -->
+                                             <div class="card-body2" id="listadoResultado"   >
+                                                <div class="row justify-content-center mt-1">
+
+                                                    <div class="col-9" style="  padding: 0px 12px 0px 0px !important;" >
+                                                        <div class="header-tabla px-2 py-3">
+                                                            <div class="row m-0 justify-content-between align-items-start text-left">
+                                                                <div class="col-4 text-left fontZiseDinamicoHeaderTabla" style="font-size: 14px">Proceso</div>
+                                                                <div class="col-4 text-left fontZiseDinamicoHeaderTabla" style="font-size: 14px">Requis&iacute;tos</div>
+                                                                <div class="col-1 px-0 text-left fontZiseDinamicoHeaderTabla" style="font-size: 13px">Hallazgo</div>
+                                                                <div class="col-2 text-left fontZiseDinamicoHeaderTabla" style="font-size: 14px">Tipo</div>
+                                                                <div class="col-1 px-0 text-left fontZiseDinamicoHeaderTabla" style="font-size: 14px">Norma</div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="body-tabla-list verga" id ="divOcultaContListaResultados" name ="divOcultaContListaResultados" style=" visibility: hidden; height: 350px !important; background-color:#c3c3c3;  width:95%;  opacity: 0.1;  z-index: 10; position: absolute;">
+                                                        </div>
+                                                        <div class="body-tabla-list scroll-blue" id ="divContListaResultado" name ="divContListaResultado" style="height: 350px; margin-top: 5px; ">
+
+                                                            asd
+
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-3" style="  padding: 0px 12px 0px 0px !important;" >
+                                                        <div class="header-tabla " style=" padding: 11.5px 8px !important;">
+                                                             <div class="row m-0 justify-content-between align-items-center text-center">
+
+                                                                <table width='100%' border = '0'>
+                                                                    <tr>
+                                                                        <td width='10%'>
+                                                                           &nbsp;
+                                                                        </td>
+                                                                        <td width='80%'>
+                                                                            <div class="text-left fontZiseDinamicoHeaderTabla"  style="font-size: 15px; color:#fff; ">Resumen de auditor&iacute;a</div>
+                                                                        </td>
+                                                                        <td width='10%'>
+
+                                                                            <button onclick="sp3FnVentanaResumen()" title="Ampliar Ventana de Resumen de Auditoría" style = 'height: 30px !important; width: 40px !important; margin-right: 10px !important;'
+                                                                            class="btn-formAuditor btn-default btn-primary-check" >
+                                                                                <img src="./images/iconos/escritura4.svg" class="menu-1-1">
+                                                                            </button>
+                                                                        </td>
+                                                                    </tr>
+                                                               </table>
+
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="body-tabla-list list-border " id = "divContenedorContadorHallazgosInforme" style="display: none; " >
+                                                            <div class="item-tabla list-border-none" style="text-align: center;" >
+                                                                <table border= "0" width="100%" align="center" >
+
+                                                                         <!-- ........................................................................................................ -->
+                                                                         <tr>
+                                                                            <td width="48%" align="center" >
+                                                                                <div  class="btn btn-green-lime lbHallazgo" id="btSel_hall1"  style="width:100%; text-align: center;" >
+                                                                                    <table width='100%' border='0' align="center" ></tr>
+                                                                                        <td width='90%'>
+                                                                                            <select title="No Conformidad Crítica" type="text" name="sel_hall1" id="sel_hall1" class="date-small sel-md unicon lbHallazgo" style=" ">
+                                                                                                <option code="OBS" value="3">NC Crítica</option>
+                                                                                        </select>
+                                                                                        </td>
+                                                                                        <!-- <td ></td> -->
+                                                                                        <td  width='10%' ><div id = 'lb_hall1'>01</div></td>
+                                                                                    </tr></table>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td width="4%" >&nbsp;</td>
+                                                                            <td width="48%" align="center" >
+                                                                                <div  class="btn btn-green-lime lbHallazgo" id="btSel_hall2" style="width:100%; text-align: center;" >
+                                                                                    <table width='100%' border='0' align="center" ></tr>
+                                                                                        <td  width='90%' >
+                                                                                            <select title="No Conformidad Mayor" type="text" name="sel_hall2" id="sel_hall2" class="date-small sel-md unicon lbHallazgo" style=" ">
+                                                                                                <option code="NC" value="4">NC Mayor</option>
+                                                                                        </select>
+                                                                                        </td>
+                                                                                        <!-- <td></td> -->
+                                                                                        <td  width='10%' ><div id = 'lb_hall2'>01</div></td>
+                                                                                    </tr></table>
+                                                                                </div>
+                                                                            </td>
+                                                                         </tr>
+                                                                         <!-- ........................................................................................................ -->
+
+                                                                          <!-- ........................................................................................................ -->
+                                                                          <tr>
+                                                                            <td width="48%" align="center" >
+                                                                                <div  class="btn btn-green-lime lbHallazgo" id="btSel_hall3" style="width:100%; text-align: center;" >
+                                                                                    <table width='100%' border='0' align="center" ></tr>
+                                                                                        <td  width='90%' >
+                                                                                            <select title="No Conformidad Menor" type="text" name="sel_hall3" id="sel_hall3" class="date-small sel-md unicon lbHallazgo" style=" ">
+                                                                                                <option code="NCMAYOR" value="5">NC Menor</option>
+                                                                                        </select>
+                                                                                        </td>
+                                                                                        <!-- <td></td> -->
+                                                                                        <td  width='10%' ><div id = 'lb_hall3'>01</div></td>
+                                                                                    </tr></table>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td width="4%" >&nbsp;</td>
+                                                                            <td width="48%" align="center" >
+                                                                                <div  class="btn btn-green-lime lbHallazgo" id="btSel_hall4" style="width:100%; text-align: center;" >
+                                                                                    <table width='100%' border='0' align="center" ></tr>
+                                                                                        <td  width='90%' >
+                                                                                            <select title="Observación" type="text" name="sel_hall4" id="sel_hall4" class="date-small sel-md unicon lbHallazgo" style=" ">
+                                                                                                <option code="NCMENOR" value="6">OBS</option>
+                                                                                        </select>
+                                                                                        </td>
+                                                                                        <!-- <td></td> -->
+                                                                                        <td  width='10%' ><div id = 'lb_hall4'>01</div></td>
+                                                                                    </tr></table>
+                                                                                </div>
+                                                                            </td>
+                                                                         </tr>
+                                                                         <!-- ........................................................................................................ -->
+                                                                         <!-- ........................................................................................................ -->
+                                                                         <tr>
+                                                                            <td width="48%" align="center" >
+                                                                                <div  class="btn btn-green-lime lbHallazgo" id="btSel_hall5"  style="width:100%; text-align: center;" >
+                                                                                    <table width='100%' border='0' align="center" ></tr>
+                                                                                        <td  width='90%' >
+                                                                                            <select title="Oportunidad Mejora" type="text" name="sel_hall5" id="sel_hall5" class="date-small sel-md unicon lbHallazgo" style=" ">
+                                                                                                <option code="C" value="7">OM</option>
+                                                                                        </select>
+                                                                                        </td>
+                                                                                        <!-- <td></td> -->
+                                                                                        <td  width='10%' ><div id = 'lb_hall5'>01</div></td>
+                                                                                    </tr></table>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td width="4%" >&nbsp;</td>
+                                                                            <td width="48%" align="center" >
+                                                                                <div  class="btn btn-green-lime lbHallazgo" id="btSel_hall6" style="width:100%; text-align: center;" >
+                                                                                    <table width='100%' border='0' align="center" ></tr>
+                                                                                        <td  width='90%' >
+                                                                                            <select title=">Conformidad" type="text" name="sel_hall6" id="sel_hall6" class="date-small sel-md unicon lbHallazgo" style=" ">
+                                                                                                <option code="OM" value="8">C</option>
+                                                                                        </select>
+                                                                                        </td>
+                                                                                        <!-- <td></td> -->
+                                                                                        <td  width='10%' ><div id = 'lb_hall6'>01</div></td>
+                                                                                    </tr></table>
+                                                                                </div>
+                                                                            </td>
+                                                                         </tr>
+                                                                         <!-- ........................................................................................................ -->
+
+
+
+                                                                </table>
+
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="body-tabla-list list-border" id="contieneNotaAud" style="height: 50px !important;margin-top: 5px !important; padding-top: 15px !important; display: none;">
+                                                            <div id="inputNotaAud" >
+                                                                <label for="notaAud" id="labelNotaAud" class="mr-3">Nota: </label>
+                                                                <input type="number" name="notaAud" id="notaAud" onchange="updateNotaAud(this)" class="form-control2" min="0" max="100" step="1" style="width: 15%;" disabled="disabled" >
+                                                                <label for="PorcnotaAud" id="labelPorcNotaAud" class="">%</label>
+                                                                <span id="semaforoInputNotaAud" class="fontZiseDinamicoNota"> --- </span>
+                                                            </div>
+                                                            <div id="semaforoNotaAud" style="display: none;">95 Conforme con la norma</div>
+                                                        </div>
+
+
+                                                        <div class="body-tabla-list list-border" id="contieneResumenAud" style="height: 350px !important;margin-top: 5px !important;">
+
+                                                            <div class="item-tabla list-border-none" style="font-size: 13px; " >
+                                                                <div class="row m-0 justify-content-between align-items-left tbody_trainning" >
+
+                                                                    <div class="col-12 text-center">
+                                                                            <!-- <textarea id="resumen-auditoria" name="resumen-auditoria" placeholder="Escribir..." class="text-center align-middle text-justify align-self-center textarea-result textarea-fecha2" maxlength="200"></textarea> -->
+                                                                            <textarea class="text-justify resumen_auditoria" id="resumen-auditoria" name="resumen-auditoria" placeholder="Escribir..."  style="background-color: rgb(255, 255, 255);"></textarea>
+                                                                    </div>
+
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> <!-- FIN -->
+
+                            </div>
+                        </div>
+                    </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <!-- end modal_1 registro-->
+
+
+
+
+
+
+        <!-- alert confirmar -->
+    <div class="modal fade "  id="modalShowAlertConfirm2" tabindex="-1" role="dialog" aria-labelledby="modalAddCompanyTitle" aria-hidden="true" >
+        <div class="modal-dialog modal-dialog-centered rounded " role="document" style="max-width: 472px; z-index: 1030; ">
+            <div class="modal-content rounded " style="border: 0px !important; background-color:rgba(0,0,0,.0001) !important; box-shadow: none;">
+
+                <div style="overflow: hidden;height: 500px;overflow-x: hidden; ">
+                    <div class="modal-body" id="">
+                        <div class="col-sm-12 col-md-12" style="color:#575757c9;">
+
+                            <div class="card " style=" border-radius: 10px; box-shadow: none;">
+                                <div class="card-header text-center text-white  " style=" border-radius: 10px 10px 0px 0px; background:#05beee; height: 95px;"><img src="images/iconos/informacio1.svg"><span><b><br><br>&nbsp;&nbsp;&nbsp;&nbsp;</b></span></div>
+
+                                <div class="card-body">
+                                    <div class="row p-0 d-flex justify-content-center">
+                                        <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;" >
+                                            <h4> <b>Se guardarán los datos registrados</b></h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="espacio"></div>
+                                <div class="card-body">
+                                    <div class="row p-0 d-flex justify-content-center">
+                                        <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;font-size: 15px;" >
+                                            <h5><b>¿Desea guardar los datos?</b>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="espacio"></div>
+                                <div class="card-body">
+                                    <div class="row p-0 d-flex justify-content-center">
+                                        <div class="col-sm-12 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;font-size: 15px;" >
+                                            <button type="button" id="btnValida" class="btn  btn-raised" style="background-color: #05beee; height: 338px; width: 160.4px; object-fit: contain; border-radius: 4.4px !important;" >Confirmar</button>
+
+                                            <button type="button" class="btn   btn-white btn-raised" style=" background-color: #fff; height: 338px;  width: 160.4px; object-fit: contain; border-radius: 4.4px !important;   border: solid 1.1px #000000 !important;" id="CancelConfirm">Cerrar</button>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+
+
+
+
+                                <div ></div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</h5></div>
+<!-- alert confirmar-->
+        <!-- *INI*******************************************  MODALES LISTADO PLAN AUDITOR   *****************************************-->
+
+        <!-- alert confirmar -->
+    <div class="modal fade "  id="modalShowAlertConfirm" tabindex="-1" data-backdrop="static" data-keyboard="false" role="dialog" aria-labelledby="modalAddCompanyTitle" aria-hidden="true" >
+        <div class="modal-dialog modal-dialog-centered rounded " role="document" style="max-width: 620px; z-index: 1030; ">
+            <div class="modal-content rounded ">
+                <div style="overflow: hidden;height: 570px;overflow-x: hidden; ">
+                    <div class="modal-header fix-header-modal" >
+                        <div class="card-header text-center text-white modal-dialog-centered  card-header-FormAuditor" style="width: 100%">
+                            <div class="row d-flex justify-content-center">
+                                <div class="col justify-content-center">
+                                <b>Cambiar Fecha de Ejecuci&oacute;n</b>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="modal-body dialog-position" id="bodymodalShowAuditor" style=" justify-content:space-around; align-content:center;">
+
+                        <div class="card " style="border: 0px !important; border-radius: 10px; box-shadow: none;">
+
+                            <div class="card-body2">
+
+                                <div class="row justify-content-center align-items-center" >
+                                    <div class="col">
+                                        <h6 class="detalle-formauditor p-1">Nueva Fecha de Ejecuci&oacute;n</h6>
+                                    </div>
+                                </div>
+
+                                <div class="row justify-content-around align-items-center">
+                                    <div class="card-body2">
+                                        <div class="row col-12 ">
+                                            <div class="form-group col" >
+                                               <div class="Rectangle-trainnig-2">
+                                            <div class="form-group p-2" >
+                                                        <label for="txt_role_played" class="bmd-label-static titleInput2"><b>Fecha Inicio<span style="color: red;">*</span></b> </label>
+                                                <div class="input-group">
+                                                    <input  type="text" name="date_plan_historial_init" id="date_plan_historial_init" aria-describedby="sizing-addon2" class="form-control form-control2 bg-white fechasA" maxlength="10" autocomplete="off" >
+                                                    <span class="input-group-addon" id="sizing-addon2"><img src="./images/iconos/calendario-3.svg"></span>
+                                                </div>
+                                                </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col" >
+                                               <div class="Rectangle-trainnig-2">
+                                            <div class="form-group p-2" >
+                                                        <label for="txt_role_played" class="bmd-label-static titleInput2"><b>Fecha Fin<span style="color: red;">*</span></b> </label>
+                                                <div class="input-group">
+                                                    <input  type="text" name="date_plan_historial_end" id="date_plan_historial_end" aria-describedby="sizing-addon2" class="form-control form-control2 bg-white fechasA" maxlength="10" autocomplete="off" >
+                                                    <span class="input-group-addon" id="sizing-addon2"><img src="./images/iconos/calendario-3.svg"></span>
+                                                </div>
+                                                </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- PARRAFO VALIDADOR ROJO -->
+                                        <div class="col justify-content-center text-align">
+                                            <p id="valid-fecha" style="color: red;font-size: 12px;display: none;"></p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                    <div class="row " >
+                                        <div class="col">
+                                            <h6 class="detalle-formauditor p-1">Motivo de Cambio<span style="color: red;">*</span></h6>
+                                        </div>
+                                    </div>
+
+
+                                        <div class="row col-12 ">
+                                            <div class="form-group col" >
+                                                <textarea class="textarea-fecha scroll-blue2" id="txt_motivo_cambioFec" placeholder="Escribir..." maxlength="200"></textarea>
+                                                <div class="align-self-end text-right">
+                                                <span class="align-self-end text-right" id="contador">0</span>/200
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    <div class="card-body2">
+                                    <div class="row justify-content-around align-items-center">
+                                        <div class="col-6">
+                                            <button type="button" class="btn_confirmar_modal bg-green-lime-modal confirm btn-modificar-fecha" id="btn-modificar-fecha"><b>Modificar</b></button>
+                                        </div>
+                                        <div class="col-6">
+                                            <button class="btn_cerrar_modal btn-cerrar-fecha" id="btn-cancelar-fecha"><b>Cancelar</b></button>
+                                        </div>
+                                    </div>
+                                    </div>
+
+                            </div>
+                        </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- alert confirmar-->
+
+<!-- alert confirmar Fecha-->
+    <div class="modal fade "  id="modalShowAlertConfirmFecha" tabindex="-1" role="dialog" aria-labelledby="modalAddCompanyTitle" aria-hidden="true" >
+        <div class="modal-dialog modal-dialog-centered rounded " role="document" style="max-width: 430px; z-index: 1030; ">
+            <div class="modal-content rounded " style="border: 0px !important; background-color:rgba(0,0,0,.0001) !important; box-shadow: none;">
+
+                <div style="overflow: hidden;height: 500px;overflow-x: hidden; ">
+                    <div class="modal-body" id="">
+                        <div class="col-sm-12 col-md-12" style="color:#575757c9;">
+
+                            <div class="card " style=" border-radius: 10px; box-shadow: none;">
+                                <div class="card-header text-center text-white  " style=" border-radius: 10px 10px 0px 0px; background:#05beee; height: 95px;"><img src="images/iconos/informacio1.svg"><span><b><br><br>&nbsp;&nbsp;&nbsp;&nbsp;</b></span></div>
+                                <div class="espacio"></div>
+                                <div class="espacio"></div>
+                                <div class="card-body">
+                                    <div class="row p-0 d-flex justify-content-center">
+                                        <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;" >
+                                            <h4 style="letter-spacing: 0.26px; text-align: center; font-size: 18px; font-weight: bold; color:black"><b>Se Realizar&aacute; el cambio de fechas</b></h4>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card-body">
+                                    <div class="row p-0 d-flex justify-content-center">
+                                        <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;font-size: 15px;" >
+                                            <h5 style="letter-spacing: 0.26px; text-align: center; font-size: 15px !important; font-weight: normal; color:black"><b>¿Desea confirmar la acci&oacute;n?</b>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="card-body">
+                                    <div class="row p-0 d-flex justify-content-center">
+                                        <div class="col-sm-12 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;font-size: 15px;" >
+                                            <div class="card-body2">
+                                            <div class="row justify-content-around align-items-center">
+                                                <div class="col-6" style="padding: 0px 8px !important;">
+                                                    <button type="button" class="btn_confirmar_modal bg-green-lime-modal confirm btn-confirmar-fecha btn-blue" id="btn-confirmar-fecha" onclick="btAceptaConfirmarCambioFecha();"><b>Confirmar</b></button>
+                                                </div>
+                                                <div class="col-6">
+                                                    <button class="btn_cerrar_modal btn-cerrar-fecha" id="btn-cancelar-confirmar-fecha"><b>Cerrar</b></button>
+                                                </div>
+                                            </div>
+                                            </div>
+                                         </div>
+
+                                    </div>
+                                </div>
+
+
+
+
+
+
+                                <div ></div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- alert datos Guardados -->
+<div class="modal fade "  id="modalShowAlertConfirmFechaOk" tabindex="-1" role="dialog" aria-labelledby="modalAddCompanyTitle" aria-hidden="true" >
+    <div class="modal-dialog modal-dialog-centered rounded " role="document" style="max-width: 400px; z-index: 1030; ">
+        <div class="modal-content rounded " style="border: 0px !important; background-color:rgba(0,0,0,.0001) !important; box-shadow: none;">
+
+            <div style="overflow: hidden;height: 500px;overflow-x: hidden; ">
+                <div class="modal-body" id="">
+                    <div class="col-sm-12 col-md-12" style="color:#575757c9;">
+
+                        <div class="card " style=" border-radius: 10px; box-shadow: none;">
+                            <div class="card-header text-center text-white  " style=" border-radius: 10px 10px 0px 0px; background:#D2D97B; height: 95px;"><img src="images/iconos/correct_1.svg"><span><b><br><br>&nbsp;&nbsp;&nbsp;&nbsp;</b></span></div>
+
+                            <div class="card-body">
+                                <div class="row p-0 d-flex justify-content-center">
+                                    <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;" >
+                                        <h4 style="letter-spacing: 0.26px; text-align: center; font-size: 16px !important; font-weight: normal; color:black"> <b>Se realiz&oacute; el cambio de fechas con &eacute;xito</b></h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="espacio"></div>
+                            <div class="card-body">
+                                <div class="row p-0 d-flex justify-content-center">
+                                    <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;font-size: 15px;" >
+                                        <b style="letter-spacing: 0.26px; text-align: center; font-size: 14px !important; font-weight: normal; color:black">Puede revisar el historial de cambios de fechas</b>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="espacio"></div>
+                             <div class="card-body2">
+                                <div class="row justify-content-around align-items-center">
+                                    <div class="col-10">
+                                        <button type="button" class="btn_confirmar_modal bg-green-lime-modal confirm btn-confirmar-fecha-end" id="btn-confirmar-fecha-end"><b>Confirmar</b></button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div ></div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+
+
+    </div>
+</div>
+<!-- alert Datos Guardados-->
+
+        <!-- start modal historial auditoria-->
+        <div id="modalHistorialAuditorLider" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="historialAuditoriaModalLabel" aria-hidden="true" class="modal fade">
+            <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+                <div class="modal-content">
+
+                    <div class="modal-header hearder-modal text-center pt-3" >
+                        <div class="container-fluid">
+                            <div class="row justify-content-center">
+                                <div class="col-1 btn-close-modalCA pl-3">
+                                        <!--button type="button" id="closeVerAuditoriaModal"><span aria-hidden="true" class="btn-close-modalCA">Cerrar&nbsp;&nbsp;&nbsp;&nbsp;&times;</span></button--> <!-- class="close hearder-modal" data-dismiss="modal" aria-label="Close" -->
+                                        <div class="float-right p-2" cursor="pointer" id="btn-close-historial-lider"><span style="font-size: 40px">
+                                            <img src="images/prev.svg"  style="cursor: pointer;"></span></div>
+                                </div>
+
+                                <div class="col-8 text-uppercase" id="divTituloHistorialAuditoria">
+                                    <b>Historial de fecha de ejecuci&oacute;n</b>
+                                </div>
+
+                                <div class="col-2" style="color: #05beee !important">123</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="container-fluid" style="height: 70vh;">
+                            <div class="row mx-2 mt-2 titulo-tabla align-items-center" style="height: 10vh;">
+                                <div class="col-3 text-left">Fecha de Cambio</div>
+                                <div class="col-3 text-left">Fecha Original</div>
+                                <div class="col-3 text-left">Fecha Actual</div>
+                                <div class="col-3 text-left">Motivo</div>
+                            </div>
+
+                            <div id="divDetalleHistorialFecha" class="scroll-blue-hist" style="height: 60vh;">
+                                <!--<div class="row mx-2 mt-2 mb-2 row-table-modal align-items-center" style="height: 10vh;">
+                                      <div class="col-2">26/06/2020</div>
+                                      <div class="col-3">25/06/2020 - 25/06/2020</div>
+                                      <div class="col-3">25/08/2020 - 25/08/2020</div>
+                                      <div class="col-4">Sede se encontrará cerrada por inventario en las fechas planificadas</div>
+                                </div>-->
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- end modal historial auditoria-->
+
+        <!-- alert confirmar plan-->
+    <div class="modal fade "  id="modalShowAlertConfirmPlan" tabindex="-1" role="dialog" aria-labelledby="modalAddCompanyTitle" aria-hidden="true" >
+        <div class="modal-dialog modal-dialog-centered rounded " role="document" style="max-width: 422px; z-index: 1030; ">
+            <div class="modal-content rounded " style="border: 0px !important; background-color:rgba(0,0,0,.0001) !important; box-shadow: none;">
+
+                <div style="overflow: hidden;height: 500px;overflow-x: hidden; ">
+                    <div class="modal-body" id="">
+                        <div class="col-sm-12 col-md-12" style="color:#575757c9;">
+
+                            <div class="card " style=" border-radius: 10px; box-shadow: none;">
+                                <div class="card-header text-center text-white  " style=" border-radius: 10px 10px 0px 0px; background:#05beee; height: 95px;"><img src="images/iconos/informacio1.svg"><span><b><br><br>&nbsp;&nbsp;&nbsp;&nbsp;</b></span></div>
+                                <div class="espacio"></div>
+                                <div class="card-body">
+                                    <div class="row p-0 d-flex justify-content-center">
+                                        <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans; font-size: 18px;" >
+                                            <h4 id = "msgGuardar11x" style="color: #000000 !important; font-size: 18px !important;" >&nbsp; </h4>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card-body">
+                                    <div class="row p-0 d-flex justify-content-center">
+                                        <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans; font-size: 15px !important;" >
+                                            <h5  style="color: #000000 !important; font-size: 15px !important;"  id = "msgGuardar22x">&nbsp;</h5>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <!-- <div class="card-body" style="height: 0px; display:none;">
+                                    <div class="row p-0 d-flex justify-content-center">
+                                        <div class="col-sm-10 align-self-center text-center error1" id="error" style="color: #000000 !important; font-family: ProductSans;font-size: 12px; display: none;" >
+                                        <p>ERROR! No se ha podido conectar. error occurred while establishing a connection to SQL Server."</p>
+                                        </div>
+                                    </div>
+                                </div> -->
+
+                                <!-- <div class="espacio"></div> -->
+                                <div class="card-body">
+                                    <div class="row p-0 d-flex justify-content-center">
+                                        <div class="col-sm-12 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;" >
+                                            <div class="card-body2">
+                                            <div class="row justify-content-around align-items-center">
+                                                <div class="col-6">
+                                                    <button type="button" class="btn_confirmar_modal bg-green-lime-modal confirm btn-confirmar-guardar-plan btn-blue" id="btn-confirmar-guardar-plan"><b>Confirmar</b></button>
+                                                </div>
+                                                <div class="col-6">
+                                                    <button class="btn_cerrar_modal btn-cerrar-fecha" id="btn-cancelar-guardar-plan"><b>Cerrar</b></button>
+                                                </div>
+                                            </div>
+                                            </div>
+                                         </div>
+
+                                    </div>
+                                </div>
+                                <div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div><!-- fin -->
+
+
+
+
+
+
+
+
+
+    <!-- alert datos Guardados -->
+<div class="modal fade "  id="modalShowAlertConfirmPlanOk" tabindex="-1" role="dialog" aria-labelledby="modalAddCompanyTitle" aria-hidden="true" >
+    <div class="modal-dialog modal-dialog-centered rounded " role="document" style="max-width: 380px; z-index: 1030; ">
+        <div class="modal-content rounded " style="border: 0px !important; background-color:rgba(0,0,0,.0001) !important; box-shadow: none;">
+
+            <div style="overflow: hidden;height: 600px;overflow-x: hidden; ">
+                <div class="modal-body" id="">
+                    <div class="col-sm-12 col-md-12" style="color:#575757c9;">
+
+                        <div class="card " style=" border-radius: 10px; box-shadow: none;">
+                            <div class="card-header text-center text-white  " style=" border-radius: 10px 10px 0px 0px; background:#D2D97B; height: 95px;"><img src="images/iconos/correct_1.svg"><span><b><br><br>&nbsp;&nbsp;&nbsp;&nbsp;</b></span></div>
+
+                            <div class="card-body">
+                                <div class="row p-0 d-flex justify-content-center">
+                                    <div  class="col-sm-10 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans; font-size: 18px !important; " >
+                                        <h4 id="msgGuardar1" style=" font-size: 18px !important;"> <b style=" font-size: 18px !important;" >Se guard&oacute; el plan de auditor&iacute;a con &eacute;xito</b></h4>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="espacio"></div>
+                            <div class="card-body">
+                                <div class="row p-0 d-flex justify-content-center">
+                                    <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans; font-size: 15px  !important;" >
+                                        <b id="msgGuardar2" >Puedes revisar a la bandeja de entrada </b>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="espacio"></div>
+                             <div class="card-body2">
+                                <div class="row justify-content-around align-items-center">
+                                    <div class="col-10">
+                                        <button type="button" class="btn_confirmar_modal bg-green-lime-modal confirm btn-confirmar-plan-end" id="btn-confirmar-plan-end"><b>Confirmar</b></button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div ></div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+
+
+    </div>
+</div>
+<!-- alert Datos Guardados-->
+
+        <!-- alert confirmar plan-->
+    <div class="modal fade "  id="modalShowAlertConfirmPlanFin" tabindex="-1" role="dialog" aria-labelledby="modalAddCompanyTitle" aria-hidden="true" >
+        <div class="modal-dialog modal-dialog-centered rounded " role="document" style="max-width: 422px; z-index: 1030; ">
+            <div class="modal-content rounded " style="border: 0px !important; background-color:rgba(0,0,0,.0001) !important; box-shadow: none;">
+
+                <div style="overflow: hidden;height: 500px;overflow-x: hidden; ">
+                    <div class="modal-body" id="">
+                        <div class="col-sm-12 col-md-12" style="color:#575757c9;">
+
+                            <div class="card " style=" border-radius: 10px; box-shadow: none;">
+                                <div class="card-header text-center text-white  " style=" border-radius: 10px 10px 0px 0px; background:#05beee; height: 95px;"><img src="images/iconos/informacio1.svg"><span><b><br><br>&nbsp;&nbsp;&nbsp;&nbsp;</b></span></div>
+
+                                <div class="card-body">
+                                    <div class="row p-0 d-flex justify-content-center">
+                                        <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans; font-size: 18px !important;" >
+                                            <h4 style="font-size: 18px !important;"> <b>Se finalizar&aacute; la elaboraci&oacute;n del plan de auditor&iacute;a</b></h4>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="espacio"></div>
+                                <div class="card-body">
+                                    <div class="row p-0 d-flex justify-content-center">
+                                        <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;font-size: 15px;" >
+                                            <h5 style="font-size: 15px !important;"><b>¿Desea confirmar la acci&oacute;n?</b>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <!-- <div class="card-body">
+                                    <div class="row p-0 d-flex justify-content-center">
+                                        <div class="col-sm-10 align-self-center text-center error2" id="error" style="color: #000000 !important; font-family: ProductSans;font-size: 12px; display: none;" >
+                                        <p>ERROR! No se ha podido conectar. error occurred while establishing a connection to SQL Server."</p>
+                                        </div>
+                                    </div>
+                                </div> -->
+<!--
+                                <div class="espacio"></div> -->
+                                <div class="card-body">
+                                    <div class="row p-0 d-flex justify-content-center">
+                                        <div class="col-sm-12 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;font-size: 15px;" >
+                                            <div class="card-body2">
+                                            <div class="row justify-content-around align-items-center">
+                                                <div class="col-6">
+                                                    <button type="button" class="btn_confirmar_modal bg-green-lime-modal confirm btn-confirmar-guardar-plan btn-blue" id="btn-confirmar-guardar-plan-fin"><b>Confirmar</b></button>
+                                                </div>
+                                                <div class="col-6">
+                                                    <button class="btn_cerrar_modal btn-cerrar-fecha" id="btn-cancelar-guardar-plan-fin"><b>Cerrar</b></button>
+                                                </div>
+                                            </div>
+                                            </div>
+                                         </div>
+
+                                    </div>
+                                </div>
+                                <div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div><!-- fin -->
+
+
+    <!-- alert datos Guardados -->
+<div class="modal fade "  id="modalShowAlertConfirmPlanFinalizarOk" tabindex="-1" role="dialog" aria-labelledby="modalAddCompanyTitle" aria-hidden="true" >
+    <div class="modal-dialog modal-dialog-centered rounded " role="document" style="max-width: 472px; z-index: 1030; ">
+        <div class="modal-content rounded " style="border: 0px !important; background-color:rgba(0,0,0,.0001) !important; box-shadow: none;">
+
+            <div style="overflow: hidden;height: 500px;overflow-x: hidden; ">
+                <div class="modal-body" id="">
+                    <div class="col-sm-12 col-md-12" style="color:#575757c9;">
+
+                        <div class="card " style=" border-radius: 10px; box-shadow: none;">
+                            <div class="card-header text-center text-white  " style=" border-radius: 10px 10px 0px 0px; background:#f2f2f2; height: 95px;"><img src="images/iconos/correct_1.svg"><span><b><br><br>&nbsp;&nbsp;&nbsp;&nbsp;</b></span></div>
+
+                            <div class="card-body">
+                                <div class="row p-0 d-flex justify-content-center">
+                                    <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;" >
+                                        <h4> <b>Se registr&oacute; el plan de auditor&iacute;a con &eacute;xito</b></h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="espacio"></div>
+                            <div class="card-body">
+                                <div class="row p-0 d-flex justify-content-center">
+                                    <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;font-size: 15px;" >
+                                        <b>Puedes regresar a la bandeja de entrada</b>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="espacio"></div>
+                             <div class="card-body2">
+                                <div class="row justify-content-around align-items-center">
+                                    <div class="col-10">
+                                        <button type="button" class="btn_confirmar_modal bg-green-lime-modal confirm btn-confirmar-plan-end" id="btn-confirmar-plan-finalizar"><b>De Acuerdo</b></button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div ></div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+
+
+    </div>
+</div>
+<!-- alert Datos Guardados-->
+
+    <!-- start modal HALLAZGO-->
+        <div id="modalHallazgo" tabindex="-1" role="dialog" aria-labelledby="historialAuditoriaModalLabel" aria-hidden="true" class="modal fade">
+            <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+                <div class="modal-content">
+
+                    <div class="modal-header hearder-modal text-center pt-3" >
+                        <div class="container-fluid">
+                            <div class="row justify-content-center">
+                                <div class="col-1 btn-close-modalCA pl-3">
+                                        <!--button type="button" id="closeVerAuditoriaModal"><span aria-hidden="true" class="btn-close-modalCA">Cerrar&nbsp;&nbsp;&nbsp;&nbsp;&times;</span></button--> <!-- class="close hearder-modal" data-dismiss="modal" aria-label="Close" -->
+                                        <div class="float-right p-2" cursor="pointer" id="btn-close-hallazgo"><span style="font-size: 40px">
+                                            <img src="images/prev.svg"  style="cursor: pointer;"></span></div>
+                                </div>
+
+                                <div class="col-8 " style="font-size: 16px; width: 50%; height: 29px; /*background-color: chartreuse;*/" id="divTituloHistorialAuditoriax" name = "divTituloHistorialAuditoriax">
+
+                                </div>
+
+                                <div class="col-2" style="color: #05beee !important">
+                                    <button type="button" class="btn-guardar-hallazgo" id="btn-guardar-hallazgo" name="btn-guardar-hallazgo" disabled>Guardar Cambios</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="col-12 border-hallazgo" >
+                            <textarea id="textarea-hallazgo" name="textarea-hallazgo" onchange="cargaCambioHallazgo()" class="textarea-hallazgo scroll-blue"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- end modal -->
+
+
+
+
+ <!-- start modal Resumen Ampliado-->  <!--  <div class="col-2" style="color: #05beee !important"> -->
+ <div id="modalHallazgoResumen" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="historialAuditoriaModalLabel" aria-hidden="true" class="modal fade">
+    <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header hearder-modal text-center pt-3" >
+                <div class="container-fluid">
+                    <div class="row justify-content-center">
+                        <table width = "100%" border = '0'>
+                            <tr>
+                                <td width = '10%' align="left">
+                                   <div class="float-left " cursor="pointer" id="btn-close-hallazgo">
+                                       <span style="font-size: 40px">
+                                       <img src="images/prev.svg"  style="cursor: pointer;" onclick="$('#modalHallazgoResumen').modal('hide').removeClass('fade');">
+                                        </span>
+                                   </div>
+                                </td>
+                                <td width = '90%' align="center">
+                                   <div  style="font-size: 16px; margin-top: 8px; margin-left: -10px; text-align: center; width: 50%; height: 29px; color:#fff; font-weight: bold; " id="divTituloHistorialAuditoriaxResumen" name = "divTituloHistorialAuditoriaxResumen">
+                                       Resumen de la Auditoría
+                                    </div>
+                               </td>
+                               <td width = '20%'>
+                                      &nbsp;
+                               </td>
+                           </tr>
+                       </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-body" style="height: 600px !important;">
+                <div class="col-12 border-hallazgo" >
+                    <textarea id="textarea-hallazgoResumen" style="height: 520px !important;" name="textarea-hallazgoResumen" onchange="cargaCambioResumen()" class="textarea-hallazgo scroll-blue "></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- end modal -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- alert confirmar HALLAZGO-->
+    <div class="modal fade "  id="modalShowAlertConfirmHallazgo" tabindex="-1" role="dialog" aria-labelledby="modalAddCompanyTitle" aria-hidden="true" >
+        <div class="modal-dialog modal-dialog-centered rounded " role="document" style="max-width: 472px; z-index: 1030; ">
+            <div class="modal-content rounded " style="border: 0px !important; background-color:rgba(0,0,0,.0001) !important; box-shadow: none;">
+
+                <div style="overflow: hidden;height: 500px;overflow-x: hidden; ">
+                    <div class="modal-body" id="">
+                        <div class="col-sm-12 col-md-12" style="color:#575757c9;">
+
+                            <div class="card " style=" border-radius: 10px; box-shadow: none;">
+                                <div class="card-header text-center text-white  " style=" border-radius: 10px 10px 0px 0px; background:#05beee; height: 95px;"><img src="images/iconos/informacio1.svg"><span><b><br><br>&nbsp;&nbsp;&nbsp;&nbsp;</b></span></div>
+
+                                <div class="card-body">
+                                    <div class="row p-0 d-flex justify-content-center">
+                                        <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;" >
+                                            <h4> <b>Se Guardar&aacute; el hallazgo de plan auditor&iacute;a</b></h4>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="espacio"></div>
+                                <div class="card-body">
+                                    <div class="row p-0 d-flex justify-content-center">
+                                        <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;font-size: 15px;" >
+                                            <h5><b>¿Desea confirmar la acci&oacute;n?</b>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="card-body">
+                                    <div class="row p-0 d-flex justify-content-center">
+                                        <div class="col-sm-10 align-self-center text-center error1" id="error" style="color: #000000 !important; font-family: ProductSans;font-size: 12px; display: none;" >
+                                        <p>ERROR! No se ha podido conectar. error occurred while establishing a connection to SQL Server."</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="espacio"></div>
+                                <div class="card-body">
+                                    <div class="row p-0 d-flex justify-content-center">
+                                        <div class="col-sm-12 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;font-size: 15px;" >
+                                            <div class="card-body2">
+                                            <div class="row justify-content-around align-items-center">
+                                                <div class="col-6">
+                                                    <button type="button" class="btn_confirmar_modal bg-green-lime-modal confirm btn-confirmar-guardar-plan btn-blue" id="btn-confirmar-guardar-hallazgo"><b>Confirmar</b></button>
+                                                </div>
+                                                <div class="col-6">
+                                                    <button class="btn_cerrar_modal btn-cerrar-fecha" id="btn-cancelar-guardar-hallazgo"><b>Cerrar</b></button>
+                                                </div>
+                                            </div>
+                                            </div>
+                                         </div>
+
+                                    </div>
+                                </div>
+                                <div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div><!-- fin -->
+
+
+    <!-- alert datos Guardados HALLAZGO-->
+<div class="modal fade "  id="modalShowAlertConfirmHallazgoOk" tabindex="-1" role="dialog" aria-labelledby="modalAddCompanyTitle" aria-hidden="true" >
+    <div class="modal-dialog modal-dialog-centered rounded " role="document" style="max-width: 472px; z-index: 1030; ">
+        <div class="modal-content rounded " style="border: 0px !important; background-color:rgba(0,0,0,.0001) !important; box-shadow: none;">
+
+            <div style="overflow: hidden;height: 500px;overflow-x: hidden; ">
+                <div class="modal-body" id="">
+                    <div class="col-sm-12 col-md-12" style="color:#575757c9;">
+
+                        <div class="card " style=" border-radius: 10px; box-shadow: none;">
+                            <div class="card-header text-center text-white  " style=" border-radius: 10px 10px 0px 0px; background:#f2f2f2; height: 95px;"><img src="images/iconos/correct_1.svg"><span><b><br><br>&nbsp;&nbsp;&nbsp;&nbsp;</b></span></div>
+
+                            <div class="card-body">
+                                <div class="row p-0 d-flex justify-content-center">
+                                    <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;" >
+                                        <h4> <b>Se guard&oacute; el hallazgo del plan de auditor&iacute;a con &eacute;xito</b></h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="espacio"></div>
+                            <div class="card-body">
+                                <div class="row p-0 d-flex justify-content-center">
+                                    <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;font-size: 15px;" >
+                                        <b>Puedes regresar a la bandeja de entrada</b>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="espacio"></div>
+                             <div class="card-body2">
+                                <div class="row justify-content-around align-items-center">
+                                    <div class="col-10">
+                                        <button type="button" class="btn_confirmar_modal bg-green-lime-modal confirm btn-confirmar-plan-end" id="btn-confirmar-hallazgo-end"><b>Confirmar</b></button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div ></div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+
+
+    </div>
+</div>
+<!-- alert Datos Guardados-->
+
+
+    <!-- start modal enviar-->
+        <div id="modalEnviar" tabindex="-1" role="dialog" aria-labelledby="historialAuditoriaModalLabel" aria-hidden="true" class="modal fade">
+            <div class="modal-dialog modal-xl modal-dialog-centered mwEnviar" role="document" > <!style="max-width: 70% !important;">
+                <div class="modal-content">
+                    <div class="modal-header hearder-modal text-center pt-3" >
+                        <div class="container-fluid">
+                            <div class="row justify-content-center">
+
+                                <div class="col-10 text-uppercase" id="divTituloHistorialAuditoria">
+                                    <b>Enviar Plan de Auditor&iacute;a -<span id="plan-auditoriaModalEnviar">14001TMAT000120</span></b>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+            <div class="modal-body" style="margin: 0 !important;padding: 0 !important">
+                <div class="col-12 border-hallazgo" >
+                    <div class="d-flex align-items-center justify-content-center pt-4 pb-4">
+                    <div class="col-4">
+                        <h5 class="text-left"><strong>Lista de Env&iacute;o <span id="variable">00</span></strong></h4>
+                    </div>
+                    <div class="col-6 pr-0 text-left">
+                        <div class="franja"></div>
+                    </div>
+                    <div class="col-2 text-right">
+                        <input id="idPlan" type="hidden" name="idPlan" value="">
+                        <button class="btn btn-system-verde verde2 text-center"  class="btn-add-traming" id="add-trainning">
+                            <span class="">Agregar</span>
+                        </button>
+                    </div>
+            </div>
+
+            <div class="row justify-content-center mt-2 mb-2"  >
+                <div class="col-12 ">
+                    <div id="tb_trainning" class="header-tabla p-3 " name="tb_trainning">
+                        <div class="row m-0 justify-content-between " >
+                            <div class="col-3 text-left">Nombres</div>
+                            <div class="col-3 text-left">Cargo</div>
+                            <div class="col-3 text-left">Correo</div>
+                            <div class="col-2 text-right">Eliminar</div>
+                        </div>
+                    </div>
+
+                    <div id="tbody_trainning" class="body-tabla-list tbody_trainning scroll-blue" style="height: 210px;margin-bottom: 15px;">
+
+                    </div>
+
+                    <div id="pagination-container" class="mt-3"></div>
+                </div>
+            </div>
+
+            <div class="d-flex mt-4 mb-3 justify-content-center" style="margin-bottom: 10px;">
+                <div class="col-md-4 pl-0">
+                    <button class="btn_confirmar_modal bg-green-lime-modal" id="btn-guardar-plan-enviar">Enviar</button>
+                </div>
+                <div class="col-md-4 pl-0">
+                    <button class="btn_cerrar_modal" id="btn-cancelar-guardar-enviar">Cerrar</button>
+                </div>
+
+            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- end modal -->
+
+                <!-- alert confirmar HALLAZGO-->
+    <div class="modal fade "  id="modalShowAlertConfirmEnviar" tabindex="-1" role="dialog" aria-labelledby="modalAddCompanyTitle" aria-hidden="true" >
+        <div class="modal-dialog modal-dialog-centered rounded " role="document" style="max-width: 412px; z-index: 1030; ">
+            <div class="modal-content rounded " style="border: 0px !important; background-color:rgba(0,0,0,.0001) !important; box-shadow: none;">
+
+                <div style="overflow: hidden;height: 500px;overflow-x: hidden; ">
+                    <div class="modal-body" id="">
+                        <div class="col-sm-12 col-md-12" style="color:#575757c9;">
+
+                            <div class="card border-0" style=" border-radius: 10px; box-shadow: none;">
+                                <div class="card-header text-center text-white  " style=" border-radius: 10px 10px 0px 0px; background:#05beee; height: 95px;"><img src="images/iconos/informacio1.svg"><span><b><br><br>&nbsp;&nbsp;&nbsp;&nbsp;</b></span></div>
+
+                                <div class="card-body">
+                                    <div class="row p-0 d-flex justify-content-center">
+                                        <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;" >
+                                            <h4> <b style="font-size: 18px !important;">Se enviar&aacute; el plan de auditor&iacute;a</b></h4>
+                                            <h4> <b style="font-size: 15px !important;">Esta operaci&oacute;n puede tardar un poco</b></h4>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card-body">
+                                    <div class="row p-0 d-flex justify-content-center">
+                                        <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;font-size: 15px;" >
+                                            <h5 style="font-size: 14px !important; "><b>¿Desea confirmar el env&iacute;o?</b></h5>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="espacio"></div>
+                                <div class="card-body p-1">
+                                    <div class="row p-0 d-flex justify-content-center">
+                                        <div class="col-sm-12 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;font-size: 15px;" >
+                                            <div class="card-body2">
+                                            <div class="row justify-content-around align-items-center">
+                                                <div class="col-6">
+                                                    <button type="button" class="btn_confirmar_modal bg-green-lime-modal confirm btn-confirmar-guardar-plan btn-blue" id="btn-confirmar-guardar-enviar"><b>Confirmar</b></button>
+                                                </div>
+                                                <div class="col-6">
+                                                    <button class="btn_cerrar_modal btn-cerrar-fecha" id="btn-cancelar-confirmar-guardar-enviar"><b>Cerrar</b></button>
+                                                </div>
+                                            </div>
+                                            </div>
+                                         </div>
+
+                                    </div>
+                                </div>
+                                <div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div><!-- fin -->
+
+
+    <!-- alert datos Guardados enviar-->
+<div class="modal fade "  id="modalShowAlertConfirmEnviarOk" tabindex="-1" role="dialog" aria-labelledby="modalAddCompanyTitle" aria-hidden="true" >
+    <div class="modal-dialog modal-dialog-centered rounded " role="document" style="max-width: 412px; z-index: 1030; ">
+        <div class="modal-content rounded " style="border: 0px !important; background-color:rgba(0,0,0,.0001) !important; box-shadow: none;">
+
+            <div style="overflow: hidden;height: 500px;overflow-x: hidden; ">
+                <div class="modal-body" id="">
+                    <div class="col-sm-12 col-md-12" style="color:#575757c9;">
+
+                        <div class="card border-0" style=" border-radius: 10px; box-shadow: none;">
+                            <div class="card-header text-center text-white  " style=" border-radius: 10px 10px 0px 0px; background:#d2d97b; height: 95px;"><img src="images/iconos/correct_1.svg"><span><b><br><br>&nbsp;&nbsp;&nbsp;&nbsp;</b></span></div>
+
+                            <div class="card-body">
+                                <div class="row p-0 d-flex justify-content-center">
+                                    <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;" >
+                                        <h4> <b style="font-size: 18px !important;">Se envi&oacute; el plan de auditor&iacute;a con &eacute;xito</b></h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="espacio"></div>
+                            <div class="card-body">
+                                <div class="row p-0 d-flex justify-content-center">
+                                    <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;font-size: 15px !important;" >
+                                        <b>Puedes regresar a la bandeja de entrada</b>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="espacio"></div>
+                                    <div class="card-body2 p-1">
+                                        <div class="row justify-content-around align-items-center">
+                                            <div class="col-10">
+                                                <button type="button" class="btn_confirmar_modal bg-green-lime-modal confirm btn-confirmar-plan-end" id="btn-confirmar-enviar-end"><b>Confirmar</b></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="espacio"></div>
+                                    <div class="espacio"></div>
+                            <div >
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+
+
+    </div>
+</div>
+<!-- alert Datos Guardados-->
+
+        <!-- alert suspender plan -->
+    <div class="modal fade "  id="modalSuspenderPlan" tabindex="-1" role="dialog" aria-labelledby="modalAddCompanyTitle" aria-hidden="true" >
+        <div class="modal-dialog modal-dialog-centered rounded" role="document" style="max-width: 620px; z-index: 1030; ">
+            <div class="modal-content rounded " >
+                <div style="overflow: hidden;height: 400px;overflow-x: hidden; ">
+                    <div class="modal-header fix-header-modal" >
+                        <div class="card-header text-center text-white modal-dialog-centered  card-header-FormAuditor" id="red-head" style="width: 100%">
+                            <div class="row d-flex justify-content-center text-center" style="width: 100%;">
+                                <div class="col justify-content-center text-center col-10">
+                                <b class="titulo-suspendida">Suspender Auditor&iacute;a - <span id="id_audit_tittle">14001TMAT000120</span></b>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="modal-body dialog-position" id="bodymodalShowAuditor" style=" justify-content:space-around; align-content:center;">
+
+                        <div class="card " style="border: 0px !important; border-radius: 10px; box-shadow: none;">
+
+                            <div class="card-body2">
+
+                                    <div class="row " >
+                                        <div class="col">
+                                            <h6 class="detalle-formauditor p-1">Motivo de Suspensi&oacute;n</h6>
+                                        </div>
+                                    </div>
+
+                                        <div class="row col-12 ">
+                                            <div class="form-group col" >
+                                                <textarea class="textarea-fecha  scroll-blue2" id="txt_susp" name="txt_susp"  maxlength="200"></textarea>
+                                                <div class="align-self-end text-right">
+                                                <span class="align-self-end text-right" id="contador2">0</span>/200
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    <div class="card-body2">
+                                    <div class="row justify-content-around align-items-center text-center">
+                                        <div class="col-6 hide-btn">
+                                            <button type="button" class="btn_confirmar_modal btn-suspender-plan disabled3" id="btn-suspender-plan" disabled><b>Suspender</b></button>
+                                        </div>
+                                        <div class="col-6">
+                                            <button class="btn_cerrar_modal btn-cancelar-susp-fecha" id="btn-cancelar-susp-plan"><b>Cancelar</b></button>
+                                        </div>
+                                    </div>
+                                    </div>
+
+                            </div>
+                        </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- alert suspender plan modal-->
+
+                <!-- alert confirmar suspender plan-->
+    <div class="modal fade "  id="modalConfirmSuspenderPlan" tabindex="-1" role="dialog" aria-labelledby="modalAddCompanyTitle" aria-hidden="true" >
+        <div class="modal-dialog modal-dialog-centered rounded " role="document" style="max-width: 472px; z-index: 1030; ">
+            <div class="modal-content rounded" style="border: 0px !important; background-color:rgba(0,0,0,.0001) !important; box-shadow: none;">
+
+                <div style="overflow: hidden;height: 500px;overflow-x: hidden; ">
+                    <div class="modal-body" id="">
+                        <div class="col-sm-12 col-md-12" style="color:#575757c9;">
+
+                            <div class="card " style=" border-radius: 10px; box-shadow: none;">
+                                <div class="card-header text-center text-white  " style=" border-radius: 10px 10px 0px 0px; background:#05beee; height: 95px;"><img src="images/iconos/informacio1.svg"><span><b><br><br>&nbsp;&nbsp;&nbsp;&nbsp;</b></span></div>
+
+                                <div class="card-body">
+                                    <div class="row text-center p-0 d-flex justify-content-center">
+                                        <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;" >
+                                            <h4> <b>Se realizar&aacute; la suspensi&oacute;n auditor&iacute;a</b></h4>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="espacio"></div>
+                                <div class="card-body">
+                                    <div class="row p-0 d-flex justify-content-center">
+                                        <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;font-size: 15px;" >
+                                            <h5><b>¿Desea confirmar la acci&oacute;n?</b>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="card-body">
+                                    <div class="row p-0 d-flex justify-content-center">
+                                        <div class="col-sm-10 align-self-center text-center error1" id="error" style="color: #000000 !important; font-family: ProductSans;font-size: 12px; display: none;" >
+                                        <p>ERROR! No se ha podido conectar. error occurred while establishing a connection to SQL Server."</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="espacio"></div>
+                                <div class="card-body">
+                                    <div class="row p-0 d-flex justify-content-center">
+                                        <div class="col-sm-12 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;font-size: 15px;" >
+                                            <div class="card-body2">
+                                            <div class="row justify-content-around align-items-center">
+                                                <div class="col-6">
+                                                    <button type="button" class="btn_confirmar_modal bg-green-lime-modal confirm btn-blue" id="btn-confirmar-guardar-susp"><b>Confirmar</b></button>
+                                                </div>
+                                                <div class="col-6">
+                                                    <button class="btn_cerrar_modal btn-cerrar-fecha" id="btn-cancelar-confirm-suspender"><b>Cerrar</b></button>
+                                                </div>
+                                            </div>
+                                            </div>
+                                         </div>
+
+                                    </div>
+                                </div>
+                                <div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div><!-- fin -->
+
+
+    <!-- alert confirmar suspender plan-->
+<div class="modal fade "  id="modalConfirmSuspenderPlanOk" tabindex="-1" role="dialog" aria-labelledby="modalAddCompanyTitle" aria-hidden="true" >
+    <div class="modal-dialog modal-dialog-centered rounded " role="document" style="max-width: 472px; z-index: 1030; ">
+        <div class="modal-content rounded " style="border: 0px !important; background-color:rgba(0,0,0,.0001) !important; box-shadow: none;">
+
+            <div style="overflow: hidden;height: 500px;overflow-x: hidden; ">
+                <div class="modal-body" id="">
+                    <div class="col-sm-12 col-md-12" style="color:#575757c9;">
+
+                        <div class="card " style=" border-radius: 10px; box-shadow: none;">
+                            <div class="card-header text-center text-white  " style=" border-radius: 10px 10px 0px 0px; background:#d2d97b; height: 95px;"><img src="images/iconos/correct_1.svg"><span><b><br><br>&nbsp;&nbsp;&nbsp;&nbsp;</b></span></div>
+
+                            <div class="card-body">
+                                <div class="row p-0 d-flex justify-content-center">
+                                    <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;" >
+                                        <h4> <b>Se realiz&oacute; la suspensi&oacute;n con &eacute;xito</b></h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="espacio"></div>
+                            <div class="card-body">
+                                <div class="row p-0 d-flex justify-content-center">
+                                    <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;font-size: 15px;" >
+                                        <b>Puedes revisar tu bandeja de entrada con los cambios</b>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="espacio"></div>
+                             <div class="card-body2">
+                                <div class="row justify-content-around align-items-center">
+                                    <div class="col-10">
+                                        <button type="button" class="btn_confirmar_modal bg-green-lime-modal confirm btn-confirmar-plan-end" id="btn-confirmar-suspender-ok"><b>De Acuerdo</b></button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div ></div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+
+
+    </div>
+</div>
+<!-- alert Datos Guardados-->
+
+
+
+<div id="scriptDataPicker" name ="scriptDataPicker" >
+
+</div>
+
+
+<!-- --------------------------------------------     MODAL DE MENSAJES DE ERROR   - ----------------------------------- -->
+
+<div class="modal fade"  id="modalMsgError" tabindex="-1" role="dialog" aria-labelledby="ExitoIngresarAuditoriaModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered rounded" role="document" style="max-width: 300px; z-index: 1030; ">
+
+        <div class="modal-content rounded border-0" style=" background-color:rgba(0,0,0,.0001) !important; box-shadow: none;">
+            <div style="overflow: hidden;height: 360px;overflow-x: hidden; ">
+                <div class="modal-body" id="" style="padding: 0px;">
+                    <div class="col-sm-12 col-md-12" style="color:#575757c9; width: 100%; padding: 0px;">
+
+                        <div class="card border-o" style=" padding: 0px; border: 2px solid #ff5a5a; border-radius: 5px;    width: 100%;">    <!-- aaa -->
+                            <div class="card-header text-white" style="background:#ff5a5a; height: 95px;">
+                                    <div class="d-flex justify-content-center">
+                                        <img src="images/iconos/informacion3.svg">
+                                    </div>
+                            </div>
+                                <div class="card-body" style="background: white;">
+                                  <table align="center" width= "100%" border="0" >
+                                      <tr>
+                                          <td width="5%" >&nbsp;</td>
+                                               <td width="80%" >
+                                                <div class="d-flex justify-content-center titulo-exito-ingreso-auditoriaCA" style="font-size: 18px;">
+                                                    <b>ERROR!</b>
+                                                </div>
+
+                                               </td>
+                                          <td width="5%">&nbsp;</td>
+                                      </tr>
+
+                                      <tr>
+                                        <td width="5%" >&nbsp;</td>
+                                             <td width="80%" >
+                                                 <div id="subTituloError" class="d-flex mb-2 justify-content-center titulo-confirmar-ingreso-auditoriaCA" style="font-size: 18px;">
+                                                       <b>auditorías con éxito</b>
+                                                 </div>
+                                             </td>
+                                        <td width="5%">&nbsp;</td>
+                                       </tr>
+
+                                        <tr>
+                                            <td width="5%" >&nbsp;</td>
+                                                <td width="80%" align="center" >
+                                                    <div id="mensajeError" class="d-flex mx-0 px-0 justify-content-center pregunta-exito-ingreso-auditoriaCA">
+                                                        El código de la programación es:aaaaaaaaad dfdsfsdfdsf
+                                                        dsfsdfdsfsdfdsfdfdsfdf
+                                                        dfsdfsdfds
+                                                     </div>
+                                                </td>
+                                            <td width="5%">&nbsp;</td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <td width="5%" >&nbsp;</td>
+                                                <td width="80%" >
+                                                    <div class="d-flex mx-0 px-0 justify-content-center pregunta-exito-ingreso-auditoriaCA">
+                                                        &nbsp;
+                                                     </div>
+                                                </td>
+                                            <td width="5%">&nbsp;</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td width="5%" >&nbsp;</td>
+                                                <td width="80%" >
+                                                    <div  class="d-flex mb-3 mx-0 justify-content-center titulo-exito-ingreso-auditoriaCA" >
+                                                        <button type="button" onClick="$('#modalMsgError').modal('hide');" class="btn_confirmar_modal bg-danger" style="color: #fff" >De Acuerdo</button>
+                                                    </div>
+                                                </td>
+                                            <td width="5%">&nbsp;</td>
+                                        </tr>
+
+
+
+                                  </table>
+                                </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- //--------------------------------------------------     sprint3       -------------------------------------------------- // -->
+
+<!-- INI --------------------------------------------     MODAL DE ADJUNTAR MENSAJES   - ----------------------------------- -->
+
+    <!-- INI --------------------------------------------     MODAL DE ADJUNTAR MENSAJES   - ----------------------------------- -->
+
+        <!-- alert adj plan -->
+        <div class="modal fade "  id="modalAdj" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="modalAddCompanyTitle" aria-hidden="true" >
+            <div class="modal-dialog modal-dialog-centered rounded" role="document" style="max-width: 400px; z-index: 1030; ">
+                <div class="modal-content rounded " >
+                    <div style="overflow: hidden;height: 400px;overflow-x: hidden; ">
+                        <div class="modal-header fix-header-modal" >
+                            <div class="card-header text-center text-white modal-dialog-centered  card-header-FormAuditor" id="red-head" style="width: 100% ">
+                                <div class="row d-flex justify-content-center text-center" style="width: 100%;">
+                                    <div class="col-1 btn-close-modalCA pl-3 my-2">
+                                        <!--button type="button" id="closeVerAuditoriaModal"><span aria-hidden="true" class="btn-close-modalCA">Cerrar&nbsp;&nbsp;&nbsp;&nbsp;&times;</span></button--> <!-- class="close hearder-modal" data-dismiss="modal" aria-label="Close" -->
+                                        <div class="float-right" cursor="pointer" id="btn-close-Adj"><span style="font-size: 40px">
+                                            <img src="images/prev.svg" title="Volver al Informe de Auditoría"  style="cursor: pointer;"></span>
+                                        </div>
+                                </div>
+                                    <div class="col justify-content-center text-center col-10">
+                                    <b class="titulo-suspendida my-2" id="lbTitleModalAdj"><h5>Archivos Adjuntos</h5></b>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="modal-body dialog-position" id="bodymodalShowAuditor" style=" justify-content:space-around; align-content:center;">
+
+                            <div class="card " style="border: 0px !important; border-radius: 10px; box-shadow: none;">
+
+                                <div class="card-body2">
+
+                                    <div class="row justify-content-around align-items-center text-center">
+                                        <div class="col-12 caja-adj scroll-blue" id="divContieneAdjuntos">
+
+
+
+
+
+                                        </div>
+                                    </div>
+    <!-- @anochecasa -->
+                                    <table width="100%" border="0" >
+                                        <tr><td>&nbsp;
+
+                                        </td></tr>
+
+
+                                        <tr><td>
+                                            <div style="text-align: center; top: 6px;"  >
+                                                <input type="file" id="file_trainningSp3" style="display:none; "/>
+                                                <button type="button"  class="btn_confirmar_modal btn-green-adj"  id="btn_file_trainningSp3" name="btn_file_trainningSp3">
+                                                    <img src="./images/iconos/attach_1.svg" > <b>Adjuntar Nuevo Documento</b>
+                                                </button>
+                                            </div>
+                                        </td></tr>
+                                    </table>
+
+     <!-- @anochecasa -->
+
+                                </div>
+                            </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- FINI --------------------------------------------     MODAL DE ADJUNTAR MENSAJES   - ----------------------------------- - -->
+<!-- FINI --------------------------------------------     MODAL DE ADJUNTAR MENSAJES   - ----------------------------------- -->
+
+    <!-- alert suspender plan modal -->
+    <!-- <input type="button" class="btn-primary btn" id="btn-Adj" value="Adjuntar"></input> -->
+
+
+
+<!-- INI --------------------------------------------     MODAL DE MOSTRAR PREVIEW_PDF   - ----------------------------------- -->
+
+<div class="modal fade"  id="Sp3VentanaPdfPreview" data-backdrop="static" data-keyboard="false" aria-hidden="true"  tabindex="-1" role="dialog" aria-labelledby="modalAddCompanyTitle" >
+    <div class="modal-dialog modal-dialog-centered rounded " role="document" style="max-width: 950px; z-index: 1031; ">
+        <div class="modal-content rounded " style="box-shadow: none;">
+           <div style="overflow: hidden; height: 750px; text-align: center; overflow-x: hidden; background-color:#fff;">
+               <div class="modal-header fix-header-modal" >
+                    <div class="card-header text-left text-white  card-header-FormAuditor" style="width: 100%">
+                        <div class="row">
+                            <!-- <div class="col-1" style="background-color:yellow;" >
+                                <div id="txtHeadModalRegisterAuditor" >
+                                Ver
+                                </div>
+                            </div> -->
+                            <div class="col-7" style=" padding: 5px 10px !important; font-size: 18px;
+                                                        font-weight: bold; text-align: center;
+                                                        font-stretch: normal;
+                                                        font-style: normal;
+                                                        line-height: 1.45;
+                                                        letter-spacing: 0.26px;" ><p id='lbTitleVerPdfx'>Ver Informe de Auditor&iacute;a xxxxxxxxxxxxx</p></div>
+
+
+
+
+                            <div class="col-5 align-content-center txtHeadModalAuditor">
+
+                                <table border='0' width="100%" >
+                                    <tr>
+                                        <td width="30%" >
+                                            <button type="button" class="btn-save-auditor2"  id="btnMuestraVentanaAdj" onclick="sp3FnMuestraInformeAuditoriaPdf()"
+                                            style=" visibility: visible; background: rgb(52, 85, 156);  color: #fff;  width:144px;" >
+                                                <i class="txt-btn-save" style="color: #fff; font-size: 12px !important;" id="lbMuestraVentanaAdj">Adjuntar Documento</i> </button>
+                                        </td>
+                                        <td  width="10%">&nbsp;&nbsp;</td>
+                                        <td  width="15%">
+                                            <button type="button" class="btn-save-auditor2"  id="btnEnviarInforme"
+                                            class="btn-guardar-plan" onclick="Sp3fnMostrarVentanaListaEnvioPDF();" >
+                                                <i class="txt-btn-save" id="lbBtnGuardar">Enviar</i>
+                                            </button>
+                                        </td>
+                                        <td width="5%">&nbsp;&nbsp;</td>
+                                        <td width="15%">
+                                            <button type="button" class="btn-close-auditor2" id="btnCierraVentanaPdfPreview" style="background-color: transparent;"
+                                            onclick=" $('#Sp3VentanaPdfPreview').modal('hide').removeClass('fade'); $('#newPlanAuditoriaModal').modal('show').addClass('fade'); "
+                                            class="btn-finalizar-plan" >
+                                                <i class="txt-btn-close" style="background-color: transparent; color:#fff;" id="lbCierraVentanaPdfPreview">
+                                                    Cerrar
+                                               </i>
+                                            </button>
+                                        </td>
+                                        <td width="5%">&nbsp;&nbsp;</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- EL CUERPO DE LA CAPA AQUI MOSTRAREMOS EL PDF -->
+                         <div id="divPreviewPdf" class="divPreviewPdf" >
+
+                             <iframe id="miIframeMuestraPdf" name="outputPDFnormale" frameborder="0"
+
+                                class="preview-pane"
+                                style="width: 100%;
+                                height: 100%;
+                                margin: 0px;
+                                padding: 0px;"
+
+
+                                framemargin="0" >
+                                <!-- src="view/auditoria/planes/PlanAuditoria.pdf" -->
+                            </iframe>
+
+                        </div>
+                    <!-- EL CUERPO DE LA CAPA AQUI MOSTRAREMOS EL PDF -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- FINI --------------------------------------------     MODAL DE MOSTRAR PREVIEW_PDF   - ----------------------------------- -->
+
+<!-- INI --------------------------------------------     MODAL DE MOSTRAR LISTA DE ENVIAR PLAN   - ----------------------------------- -->
+ <div id="modalEnviarInformePdf" tabindex="-1" role="dialog" aria-labelledby="modalEnviarInformePdfLabel" aria-hidden="true" class="modal fade" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-xl modal-dialog-centered mwEnviar" role="document" > <! style="max-width: 740px !important;" >
+        <div class="modal-content">
+            <div class="modal-header hearder-modal text-center pt-3" >
+                <div class="container-fluid">
+                    <div class="row justify-content-center">
+
+                        <div class="col-10 " id="divTituloHistorialAuditoriaInformePdf">
+                            <b>Enviar Informe de Auditor&iacute;a -<span id="plan-auditoriaInformePdf">14001TMAT000120</span></b>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+    <div class="modal-body" style="margin: 0 !important;padding: 0 !important">
+        <div class="col-12 border-hallazgo" >
+            <div class="d-flex align-items-center justify-content-center pt-4 pb-4">
+            <div class="col-4">
+                <h5 class="text-left"><strong>Lista de Env&iacute;o <span id="variableInformePdf">_00_</span></strong></h4>
+            </div>
+            <div class="col-6 pr-0 text-left">
+                <div class="franja"></div>
+            </div>
+            <div class="col-2 text-right">
+                <input id="idPlan" type="hidden" name="idPlan" value="">
+                <button class="btn btn-system-verde verde2 text-center"  class="btn-add-traming" id="add-trainningInformePdf">
+                    <span class="">Agregar</span>
+                </button>
+            </div>
+    </div>
+
+    <div class="row justify-content-center mt-2 mb-2"  >
+        <div class="col-12 ">
+            <div id="tb_trainningInformePdf" class="header-tabla p-3 " name="tb_trainningInformePdf">
+                <div class="row m-0 justify-content-between " >
+                    <div class="col-4 text-left">Nombres</div>
+                    <div class="col-3 text-left">Cargo</div>
+                    <div class="col-3 text-left">Correo</div>
+                    <div class="col-2 pl-5 text-left">Eliminar</div>
+                </div>
+            </div>
+
+            <div id="tbody_trainningInformePdf" class="body-tabla-list tbody_trainning scroll-blue" style="height: 210px;margin-bottom: 15px;">
+
+            </div>
+
+            <div id="pagination-containerInformePdf" class="mt-3"></div>
+        </div>
+    </div>
+
+    <div class="d-flex mt-4 mb-3 justify-content-center" style="margin-bottom: 10px;">
+        <div class="col-md-4 pl-0">
+            <button onmouseup="Sp3fnMostrarVentanaAprobarEnvioInformePDF()" class="btn_confirmar_modal bg-green-lime-modal" id="btn-guardar-plan-enviarInformePdf">Enviar</button>
+        </div>
+        <div class="col-md-4 pl-0">
+            <button class="btn_cerrar_modal"
+               onclick=" $('#modalEnviarInformePdf').modal('hide').removeClass('fade');
+                         $('#Sp3VentanaPdfPreview').modal('show').addClass('fade'); "
+               id="btn-cancelar-guardar-enviarInformePdf">
+                Cerrar
+            </button>
+        </div>
+
+    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- FINI --------------------------------------------     MODAL DE MOSTRAR LISTA DE ENVIAR PLAN   - ----------------------------------- -->
+
+
+<!-- /////jesus -->
+<!-- INICIO -----------------------     MODAL CONFIRMAR ENVIO DE INFORME AUDITORIA ----------------------------------- -->
+<div class="modal fade"  id="modalConfirmarEnviarInformeAuditoria" tabindex="-1" role="dialog" aria-labelledby="confirmarEnviarInformeAuditoriaModal" aria-hidden="true" data-backdrop="static" data-keyboard="false" >
+    <div class="modal-dialog modal-dialog-centered rounded " role="document" style="max-width: 390px; z-index: 1030; ">
+        <div class="modal-content rounded " style="border: 0px !important; background-color:rgba(0,0,0,.0001) !important; box-shadow: none;">
+
+            <div style="overflow: hidden;height: 500px;overflow-x: hidden; ">
+                <div class="modal-body" id="">
+                    <div class="col-sm-12 col-md-12" style="color:#575757c9;">
+
+                        <div class="card border-0" style=" border-radius: 10px; box-shadow: none;">
+                            <div class="card-header text-center text-white  " style=" border-radius: 5px 5px 0px 0px; background:#05beee; height: 95px;"><img src="images/iconos/informacio1.svg"><span><b><br><br>&nbsp;&nbsp;&nbsp;&nbsp;</b></span></div>
+
+                            <div class="card-body">
+                                <div class="row p-0 d-flex justify-content-center">
+                                    <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans; font-size: 18px; font-weight: bold;" >
+                                        <div id = "titleConfirmarInformeAuditoria" > <b>Se enviar&aacute; el Informe y los</b></div>
+                                        <div><p><b>documentos adjuntados</b></p></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card-body py-0">
+                                <div class="row p-0 d-flex justify-content-center">
+                                    <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans; font-size: 18px; font-weight: bold;" >
+                                        <div id = "textConfirmarInformeAuditoria"><b>¿Desea confirmar la acci&oacute;n?</b></div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="espacio"></div>
+                            <div class="card-body">
+                                <div class="row p-0 d-flex justify-content-center">
+                                    <div class="col-sm-12 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;font-size: 15px;" >
+                                        <div class="card-body2">
+                                        <div class="row justify-content-around align-items-center">
+                                            <div class="col-6">
+                                                <button onmouseup="confirmSendInformeAuditoria()" type="button" class="btn_confirmar_modal bg-green-lime-modal confirm btn-confirmar-guardar-plan btn-blue" id="btn_enviar_informe_auditoria"><b>Confirmar</b></button>
+                                            </div>
+                                            <div class="col-6">
+                                                <button onmouseup='$("#modalEnviarInformePdf").modal("show").addClass("fade");$("#modalConfirmarEnviarInformeAuditoria").modal("hide").removeClass("fade");' class="btn_cerrar_modal btn-cerrar-fecha" id="btn_cancelar_informe_auditoria"><b>Cerrar</b></button>
+                                            </div>
+                                        </div>
+                                        </div>
+                                     </div>
+
+                                </div>
+                            </div>
+                            <div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- FIN    -----------------------     MODAL CONFIRMAR ENVIO DE INFORME AUDITORIA ----------------------------------- -->
+
+<!-- INICIO -----------------------  MODAL EXITO ENVIO INFORME AUDITORIA ----------------------------------- -->
+    <!-- alert datos Guardados -->
+<div class="modal fade "  id="modalEnviarInformeAuditoriaOk" tabindex="-1" role="dialog" aria-labelledby="enviarInformeAuditoriaOkModal" aria-hidden="true" data-backdrop="static" data-keyboard="false" >
+    <div class="modal-dialog modal-dialog-centered rounded " role="document" style="max-width: 472px; z-index: 1030; ">
+        <div class="modal-content rounded " style="border: 0px !important; background-color:rgba(0,0,0,.0001) !important; box-shadow: none;">
+
+            <div style="overflow: hidden;height: 500px;overflow-x: hidden; ">
+                <div class="modal-body" id="">
+                    <div class="col-sm-12 col-md-12" style="color:#575757c9;">
+
+                        <div class="card border-0" style=" border-radius: 10px; box-shadow: none;">
+                            <div class="card-header text-center text-white  " style=" border-radius: 5px 5px 0px 0px; background:#d2d97b; height: 95px;"><img src="images/iconos/correct_1.svg"><span><b><br><br>&nbsp;&nbsp;&nbsp;&nbsp;</b></span></div>
+
+                            <div class="card-body">
+                                <div class="row p-0 d-flex justify-content-center">
+                                    <div class="col-sm-10 align-self-center text-center"
+                                    style="color: #000000 !important; font-family: ProductSans; font-size: 18px; font-weight: bold;" >
+                                        <div> Se envi&oacute; el informe con </div>
+                                        <div> &eacute;xito</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="espacio"></div>
+                            <div class="card-body">
+                                <div class="row p-0 d-flex justify-content-center">
+                                    <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;font-size: 15px;" >
+                                        <b>Puede revisar la lista en tu bandeja de entrada</b>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="espacio"></div>
+                             <div class="card-body2">
+                                <div class="row justify-content-around align-items-center">
+                                    <div class="col-10">
+                                        <button type="button" class="btn_confirmar_modal bg-green-lime-modal confirm btn-confirmar-plan-end" id="btn-confirmar-plan-finalizar" onmouseup='$("#modalEnviarInformeAuditoriaOk").modal("hide").removeClass("fade");'><b>De Acuerdo</b></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- FIN    -----------------------  MODAL EXITO ENVIO INFORME AUDITORIA ----------------------------------- -->
+
+<!-- /////jesus -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- //--------------------------------------------------     sprint3       -------------------------------------------------- // -->
+
+
+    <!-- ******************************************  START  JAVASCRIPT  FUNCTION ************************************** -->
+    <script src="./js/paginator/pagination.js"></script>
+    <script src="./js/jsPDF/jspdf_1.5.3.js"></script>
+    <script src="./js/jsPDF/jspdf_autotable.js"></script>
+    <script>
+        //$(".").datetimepicker({format: 'd-m-Y', autoclose: true });
+        $('#sandbox-container input').datepicker({
+            dateFormat: "dd-mm-yy", autoclose: true,locale: 'es',
+            beforeShow: function() {
+                setTimeout(function(){
+                    $('.ui-datepicker').css('z-index', 99999999999999);
+                }, 0);
+            }
+        });
+
+        //$("#txt_date_prog_0").datetimepicker({timepicker:false, format:'d/m/Y',minDate:'18/10/2020'});
+
+
+
+
+
+    </script>
+    <!-- ******************************************  END  JAVASCRIPT  FUNCTION   ************************************** -->
+

@@ -1,0 +1,711 @@
+<!doctype html>
+<html lang="es">      
+
+                <!----------------------- *** Inicio de la Cabecera ***   ----------------------->
+    <head>
+        <meta http-equiv="Expires" content="0">
+        <meta http-equiv="Last-Modified" content="0">
+        <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <link rel="shortcut icon" href="images/iconos/favicon.ico" type="image/x-icon"/> 
+        <meta name="author" content="Visualsat Peru">        
+        <title>SSOMA</title>
+        <!-- css estaticos -->
+        <link href="modules/bootstrap-4.4.1/dist/css/bootstrap.min.css" rel="stylesheet" >
+        <link rel="stylesheet" href="modules/bootstrap-sweetalert-master/dist/sweetalert.css" rel="stylesheet">
+        <link href="css/loadingEffect.css" rel="stylesheet" >
+        <!-- dinamico -->
+        <link href="css/visitasa.css" rel="stylesheet" >
+        <link href="css/crearAuditorias.css" rel="stylesheet" >
+        <link rel="stylesheet" href="view/ssoma/ssoma.css">
+        <link rel="stylesheet" href="css/pagination.css">
+        <link rel="stylesheet" href="css/auditorLiderList.css">
+            <!-- style staticos {-->
+    <!-- Libreria INTERNA Proyecto --><link href="css/loadingEffect.css" rel="stylesheet">
+    
+    <!-- Libreria BOOTSTRAP Terceros Web --><link rel="stylesheet" href="modules/bootstrap-sweetalert-master/dist/sweetalert.css" rel="stylesheet">
+    <!-- Libreria DROPZONE Terceros Web --><link rel="stylesheet" href="modules/dropzone-5.7.0/dist/dropzone.css">               
+    <!-- Libreria FONTAWESOME Terceros Web --><link href="modules/fontawesome/css/fontawesome.css" rel="stylesheet">
+    <!-- Libreria FONTAWESOME Terceros Web --><link href="modules/fontawesome/css/brands.css" rel="stylesheet">
+    <!-- Libreria FONTAWESOME Terceros Web --><link href="modules/fontawesome/css/solid.css" rel="stylesheet">  
+    <!-- Libreria JQUERY Terceros Web --><link href="modules/DataTables/datatables.min.css" rel="stylesheet"> 
+    <!-- Libreria JQUERY Terceros Web --><link href="modules/DataTables/Responsive-2.2.3/css/responsive.bootstrap.min.css" rel="stylesheet">
+    <!-- Libreria JQUERY Terceros Web --><link href="modules/DataTables/Buttons-1.6.1/css/buttons.dataTables.min.css" rel="stylesheet">
+
+    <!-- Libreria JQUERY Terceros Web --><link href="modules/jquery-ui-1.12.1/jquery-ui.min.css" rel="stylesheet">
+    <!-- Libreria JQUERY Terceros Web --><link rel="stylesheet" href="modules/bootstrap-toggle/css/bootstrap4-toggle.min.css" rel="stylesheet">    
+    <!-- Libreria ROBOTO Terceros Web --><link rel="stylesheet" href="modules/mterialiconRoboto.css">
+    <!-- Libreria BOOTSTRAP Terceros Web --><link rel="stylesheet" href="modules/bootstrap-material-design-master/assets/css/docs.css">
+    <!-- Libreria DROPIFY Terceros Web --><link rel="stylesheet" href="modules/dropify/dist/css/dropify.css">
+    <!-- style staticos }-->
+   
+    <!-- @Andy CSS-->
+    <link href="modules/bootstrap-4.4.1/dist/css/bootstrap.min.css" rel="stylesheet" >
+    <Link href="./css/crearAuditorias.css" rel="stylesheet">
+    <Link href="./css/crearProgramas.css" rel="stylesheet">
+    <link href="modules/paginatejs/css/ligne.css" rel="stylesheet">
+    <link href="modules/paginatejs/css/paginate.css" rel="stylesheet">
+    <!-- @Andy CSS-->
+
+
+    <!-- style dinamicos {-->
+    <link href="css/visitasa.css" rel="stylesheet">
+    <link href="css/auditoria.css" rel="stylesheet">
+    <link href="css/auditorList.css" rel="stylesheet">
+    <link href="css/menu.css" rel="stylesheet">
+      <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+      <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+        
+
+        
+               <!-- //------------------bloque codigo-----------------------#@andy---------------------------------------------// -->
+                  <!----------------------- estilos estaticos de este arhivo ----------------------->
+         <style>
+               
+            .padre {
+
+                display: flex !important;
+                justify-content: center !important;
+                align-items: center !important;
+                background:#fff url('images/fondologin.jpg') no-repeat center center  ; min-height:100%;
+                background-attachment: fixed;
+                background-size: cover;
+				        background:#C1C1C1;
+            }
+
+            .olvidaste-tu-contra {
+                width: 168px;
+                height: 17px;
+                font-family: ProductSans;
+                font-size: 14px;
+                font-weight: bold;
+                font-stretch: normal;
+                font-style: normal;
+                line-height: normal;
+                letter-spacing: normal;
+                color: #51b499;
+            }
+            
+            #tx_login_usuario{
+
+                background-color: white;
+                background-image: url('images/iconos/iconUser.svg');
+                background-position:330px;
+                background-repeat: no-repeat;
+                padding-left: 40px;
+                }
+
+                #tx_login_password{
+
+                background-color: white;
+                background-image: url('images/iconos/iconPass.svg');
+                background-position:330px;
+                background-repeat: no-repeat;
+                padding-left: 40px;
+                }
+            
+            #barra_superior{
+                background-color:#34559c;
+                height: 77px;
+            }
+
+            .lbBienvenido {
+                
+                height: 24px;
+                font-size: 24.3px;
+                font-weight: normal;
+                font-stretch: normal;
+                font-style: normal;
+                line-height: 1;
+                letter-spacing: 0.15px;
+                color: #000000;
+                }
+				
+				
+    ul.ui-autocomplete.ui-menu { width: 400px !important; }
+
+    #sel_procesoPlan{
+        height: 24px;
+        background-color: white;
+        cursor: pointer;
+    }
+
+    #sel_procesoPlan:hover{
+        height: 124px;
+        background-color: white;
+        cursor: pointer;
+    }
+
+
+    .txtAreaLista{
+         border-radius: 4px;
+        -moz-border-radius: 4px;
+        -webkit-border-radius: 4px;
+        -o-border-radius: 4px;
+        background: #F2F2F2;
+        background: linear-gradient(left, #F2F2F2, #F2F2F2);
+        background: -moz-linear-gradient(left, #F2F2F2, #F2F2F2);
+        background: -webkit-linear-gradient(left, #F2F2F2, #F2F2F2);
+        background: -o-linear-gradient(left, #F2F2F2, #F2F2F2);
+        width: 100%;
+        height: 80%;
+        border-color:#F2F2F2;
+        resize: none;
+    }
+
+    .btEnviarEval{
+
+      width: 139px;
+      height: 18px;
+      font-family: ProductSans;
+      font-size: 16px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.39;
+      letter-spacing: 0.44px;
+      text-align: center;
+      color: #ffffff;
+    }
+
+   
+
+
+   
+
+  
+           
+         </style>
+
+                  <!----------------------- estilos estaticos de este arhivo ----------------------->
+
+    </head> 
+                <!----------------------- *** Fin de la Cabecera ***   ----------------------->
+
+
+
+
+
+
+
+
+
+
+
+                <!----------------------- *** Inicio de la Cuerpo de la Pagina ***   ----------------------->           
+    
+     <body class="text-center" id="body_index"  >
+         
+         <iframe id="miIframeMuestraPdf1" name="outputPDFnormale1" frameborder="0" type="application/pdf" 
+                                
+                               class="preview-pane" 
+                               style="width: 100%; 
+                               height: 100%; 
+                               margin: 0px; 
+                               padding: 0px;" 
+                               
+                              
+                               framemargin="0" >
+                               <!-- src="view/ssoma/incidente-accidente/reportes/Reporte1.pdf" -->
+                               <!-- view\ssoma\incidente-accidente\reportes -->
+                           </iframe>
+
+
+       </body>
+
+                
+               
+
+
+
+              
+
+
+
+
+
+    <!-- libs estaticos -->
+    <script src="js/jquery-3.4.1.js" ></script>
+    <script src="modules/bootstrap-4.4.1/dist/js/bootstrap.min.js"  ></script>  
+    <script src="https://www.google.com/recaptcha/api.js" async defer ></script>
+    
+    <script src="modules/bootstrap-sweetalert-master/dist/sweetalert.js"></script>
+    <script src="modules/bootstrap-4-floating-labels-material-inputs/materialize-inputs.jquery.js" ></script> 
+    <!-- libs dinamicos -->
+    <script src="js/common.js" ></script>
+
+    <script src="js/apiRoute.js"></script>
+    <script src="js/msal.js" ></script>
+    <script src="js/login.js" ></script>
+    <script src="js/loginlog.js" ></script>
+    <script src="js/jsPDF/jspdf_1.5.3.js"></script>
+    <script src="js/jsPDF/jspdf_autotable.js"></script>
+    
+
+    <script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+function sp4MostrarPreviewAlertaPDF3(vector)
+{
+    
+    
+
+
+
+
+    var doc = new jsPDF();
+    var img_fondo = new Image();
+    img_fondo.src = 'images/Background_PDF_Alerta.png';
+
+    var img_sup = new Image();
+    img_sup.src = 'images/img_superior_pdf.png';
+
+    var img_log = new Image();
+    img_log.src = 'images/Logo_tasa_pdf.png';
+
+    var img_inf = new Image();
+    img_inf.src = 'images/img_inferior_pdf.png';
+
+    var img_header = new Image();
+    img_header.src = 'images/img_header.png';
+
+    var img_logo_header = new Image();
+    img_logo_header.src = 'images/logopdf.png';
+
+    var img_letras = new Image();
+    img_letras.src = 'images/img_letras.png';
+
+
+    doc.addImage(img_fondo, 'PNG', 0, 0, 595, 842)
+ 
+    doc.setDrawColor(0);
+    doc.setFillColor(255,255,255);
+    doc.circle(0, 0, 40, 'F');
+    doc.addImage(img_logo_header, 'PNG', 2, 8, 24,14)
+
+    doc.setFontSize(26);
+    doc.setFontType('bold');
+    
+    doc.setTextColor(0,0,128);
+    doc.text(70, 14, '!Alerta de Seguridad¡');
+
+    doc.setFontSize(22);
+    doc.setFontType('bold');
+    doc.setTextColor(255,0,0); 
+
+    
+    //var dat = 'Contusión en dedo de Mano Izquierda al manipular herramienta';
+    var dat1 = vector[1];
+    //$('#txt_describe_incidenteAlerta').val();//alert(dat1);
+    doc.text(117, 28, dat1 ,{maxWidth:160, align:'center'});//aqui va el detalle de la ---------- alerta
+    
+    doc.setFontSize(18);
+    doc.setFontType('bold'); 
+    doc.setTextColor(0,0,128);
+    doc.text(20, 50, 'PLANTA:');//---------------------------------------------------------------planta
+
+    doc.setFontSize(18);
+    doc.setFontType('normal'); 
+    doc.setTextColor(0,0,128);
+    //var dat = 'Callao';//------------------------------------------------------------------------planta ----pendiente traer desde datos generales
+
+    var dat = vector[2];
+    //$('#sel_filter_sede_p2AL option:selected').text();
+
+    doc.text(50, 50, dat);//aqui va el detalle de la alerta
+
+
+    doc.setFontSize(18);
+    doc.setFontType('bold'); 
+    doc.setTextColor(0,0,128);
+    doc.text(133, 50, 'FECHA:');//----------------------------------------------------------------fecha
+
+    doc.setFontSize(18);
+    doc.setFontType('normal'); 
+    doc.setTextColor(0,0,128);
+    //var dat = '19/01/2021';
+    var dat = vector[3];
+    //$('#sp3_txt_fecha_desde_p1_2').val();
+    doc.text(160, 50, dat);//---------------------------------------------------------------------fecha
+
+
+  
+
+    doc.setFontSize(18);
+    doc.setFontType('bold'); 
+    doc.setTextColor(0,0,128);
+    doc.text(20, 60, 'ZONA:');//---------------------------------------------------------------zona
+
+    doc.setFontSize(17);
+    doc.setFontType('normal'); 
+    doc.setTextColor(0,0,128);
+    //var dat = 'Callao';//------------------------------------------------------------------------zona
+    var dat = vector[4];
+    //$('#sel_fuente_zona2AL option:selected').text();
+    doc.text(41, 60, dat,{maxWidth:85, align:'left'});//aqui va el detalle de la alerta
+
+
+
+    doc.setFontSize(18);
+    doc.setFontType('bold'); 
+    doc.setTextColor(0,0,128);
+    doc.text(133, 60, 'HORA:');//----------------------------------------------------------------hora
+
+    doc.setFontSize(18);
+    doc.setFontType('normal'); 
+    doc.setTextColor(0,0,128);
+    //var dat = '11:25:00';
+    var dat = vector[5];
+    //$('#sp3_txt_tiempo1_2').val();
+    doc.text(160, 60, dat);//---------------------------------------------------------------------hora
+
+    doc.setTextColor(135,206,250); 
+    doc.text(5, 64, '________________________________________________________');
+
+    doc.setFontSize(16);
+    doc.setFontType('normal'); 
+    doc.setTextColor(0,0,128);
+   
+    var dat = vector[6];
+   
+
+    //-------------------------------------------------------------------descripcion
+    doc.text(5, 75, dat,{maxWidth:197, align:'justify'});//aqui va el detalle de la alerta
+
+
+
+    doc.setTextColor(135,206,250); 
+    doc.text(5, 113, '_______________________________________________________________');
+
+    doc.setFontSize(18);
+    doc.setFontType('bold'); 
+    doc.setTextColor(0,0,128);
+    doc.text(5, 126, 'COMPROMISOS:');
+
+    //---------------------------------
+    doc.setFontSize(16);
+    doc.setFontType('normal'); 
+    doc.setTextColor(0,0,128);
+    
+    var dat = vector[7];
+   
+
+   
+    doc.text(5, 137, dat,{maxWidth:197, align:'justify'});//aqui va el detalle de la alerta----------------------COMPROMISOS
+    doc.setTextColor(135,206,250); 
+    doc.text(5, 176, '_______________________________________________________________');
+
+    doc.setFontSize(18);
+    doc.setFontType('bold'); 
+    doc.setTextColor(0,0,128);
+    doc.text(5, 190, 'TIPO:');
+    doc.setTextColor(0,0,128); 
+    doc.text(5, 191, '_____');
+
+    //---------------------------------
+    doc.setFontSize(15);
+    doc.setFontType('normal'); 
+    doc.setTextColor(0,0,128);
+    //var dat = 'ACCIDENTE  INCAPACITANTE';
+    var dat = vector[8];
+    //$('#sel_fuente_tipo_incidente option:selected').text();
+
+   
+    doc.text(5, 205, dat,{maxWidth:50, align:'left'});//aqui va el detalle de la alerta----------------------TIPO DE INCIDENTE
+    doc.setTextColor(135,206,250); 
+
+
+
+    doc.setFontSize(18);
+    doc.setFontType('bold'); 
+    doc.setTextColor(0,0,128);
+    doc.text(5, 230, 'DIAGNÓSTICO:');
+    doc.setTextColor(0,0,128); 
+    doc.text(5, 231, '_____________');
+
+    //---------------------------------
+    doc.setFontSize(15);
+    doc.setFontType('normal'); 
+    doc.setTextColor(0,0,128);
+    //var dat = 'CONTUSIÓN DE DEDO PULGAR DE MANO IZQUIERDA';
+    var dat = vector[9];
+    //$('#txt_diagnostco').val(); 
+
+   
+    doc.text(5, 239, dat,{maxWidth:55, align:'justify'});//aqui va el detalle de la alerta----------------------TIPO DE INCIDENTE
+    doc.setTextColor(135,198,250); 
+   
+
+    // var ext = paObj[istAud].a.yAdjunto1.split(';base64,');
+    // ext = ext[0].split('data:image/');
+    var xtend = vector[11];
+    //ext[1].toUpperCase();
+    // console.log("EXTENSION = ",xtend);
+
+
+
+    var imd_adjunto1 = new Image();
+    //imd_adjunto1.src = './images/alertaImg1.gif';
+    doc.addImage(vector[10], xtend, 64, 181, 65, 96)
+
+
+
+
+    //  var ext = paObj[istAud].a.yAdjunto2.split(';base64,');
+    // ext = ext[0].split('data:image/');
+    var xtend = vector[13];
+    // console.log("EXTENSION2 = ",xtend);
+
+    var imd_adjunto2 = new Image();
+    //imd_adjunto2.src = './images/alertaImg2.gif';
+    doc.addImage(vector[12],xtend, 134, 181, 65, 96)
+
+
+
+
+
+
+
+
+    doc.setFontSize(18);
+    doc.setFontType('bolditalic');
+    doc.setTextColor(107,142,35); 
+    var dat = '!Juntos podemos prevenir los accidentes¡'
+    doc.text(92, 292, dat ,{maxWidth:130, align:'center'});//aqui va el detalle de la ---------- alerta
+
+    doc.setTextColor(135,206,250); 
+    doc.text(5, 280, '__________________________________________________________________');
+//alertaImg1.gif
+
+
+
+
+
+
+    // doc.setFontSize(10)
+    // doc.setFontType('bold')
+    // doc.setTextColor(0,0,0); 
+    // doc.text(9, 34, 'Datos Principales');
+    // doc.setTextColor(200,200,200); 
+    // doc.text(44, 32, '___________________________________________________________________________');
+
+
+
+
+    base64SP3 = doc.output('datauristring');
+    rawdata = doc.output();
+
+    var len = rawdata.length,
+        ab = new ArrayBuffer(len),
+        u8 = new Uint8Array(ab);
+
+        while(len--) u8[len] = rawdata.charCodeAt(len);
+
+    var blob = new Blob([ab], { type : "application/pdf" });
+
+    var iframe = document.getElementById('miIframeMuestraPdf1');
+    iframe.src = URL.createObjectURL(blob);
+    
+
+  
+
+}
+
+    var base64;
+
+
+   
+
+
+
+
+
+
+
+
+
+
+ //voy al servidor y busco el pdf
+        
+
+
+
+     
+
+      base64="";
+
+  var IdIcidenteAlerta = getParameterByName('IdIcidenteAlerta');
+
+  //alert(IdIcidenteAlerta);
+  var url = apiUrlssoma+"/api/Get-Pdf-Correo-Alerta?code=7r3dhyauijtYc90Uxdrob8EJp6We/1WTOpd5ZqvrPnaZL3BknF7C9g==&IdTipoEvento="+IdIcidenteAlerta+"&IdEmpresa=1&IdSede=0&FechaInicio&FechaFin&IdEmbarcacion=0&httpmethod=objectlist";
+
+                console.log("URL_ alerta = ",url )
+                var headers ={
+                    "apikey":constantes.apiKey
+                }
+
+                var settings = {
+                    "url": url,
+                    "method": "GET",
+                    "timeout": 0,
+                    "crossDomain": true,
+                    "dataType": "json",
+                    "headers": headers,
+                };
+                 
+                 var data;
+                $.ajax(settings).done(function (response) 
+                   {
+                    console.log("adjuntos === ",response);
+                    data = response;
+                    var hn = 0;
+                    if(response.PlanAnual.length > 0)
+                    {//----------------------------------------------------------------------------------------------------------------------
+
+                        response.PlanAnual.forEach((Item)=>{
+                                
+                                if(Item.Id >0)
+                                {
+                                    //var blob = Item.Adjunto1;
+
+                                    // //console.log("base64 adjuntos === ",base64);
+                                    // var parte = Item.Adjunto1.split('data:application/pdf;filename=generated.pdf;base64,');
+                                    // console.log("adjuntos === ",parte[1]);
+                                    // base64 = parte[1];
+                                    /*var obj = document.createElement('object'); 
+
+                                   
+
+                                    obj.style.width = '100%';
+                                    obj.style.height = '842pt';
+                                    obj.type = 'application/pdf';
+
+                                    //obj.data = 'data:application/pdf;base64,' + base64;//Item.Adjunto1
+                                    obj.data =  base64;//Item.Adjunto1
+                                    //obj.data = Item.Adjunto1;
+                                    //console.log("obj.data === ",obj.data);
+
+                                    document.body.appendChild(obj);*/
+
+                                    // var iframe = document.getElementById('miIframeMuestraPdf1');
+                                    // iframe.src = URL.createObjectURL(blob);
+
+                                    //------------------------------------------------------------------------------------------------------------
+                                    var datt = new Array(); datt[0] = "PDF Correo"
+                                        var partes = Item.Adjunto1.split('2#');
+                                        //console.log("dat1 = ",partes[0]); 
+                                        datt[1] = partes[0]; 
+
+
+                                         var partes2 = partes[1].split('3#');
+                                        //console.log("dat2 = ",partes2[0]); 
+                                        datt[2] = partes2[0]; 
+
+                                        var partes3 = partes2[1].split('4#');
+                                        //console.log("dat3 = ",partes3[0]); 
+                                        datt[3] = partes3[0];  
+
+                                        var partes4 = partes3[1].split('5#');
+                                        //console.log("dat4 = ",partes4[0]); 
+                                        datt[4] = partes4[0];
+
+                                         var partes5 = partes4[1].split('6#');
+                                        //console.log("dat5 = ",partes5[0]);
+                                         datt[5] = partes5[0];
+
+                                         var partes6 = partes5[1].split('7#'); 
+                                         datt[6] = partes6[0];
+                                        //console.log("dat6 = ",partes6[0]);
+
+                                        var partes7 = partes6[1].split('8#');//ojo cuidado cuando sea un array()
+                                        //console.log("dat7 = ",partes7[0]); 
+                                        datt[7] = partes7[0];
+
+                                         var partes8 = partes7[1].split('9#'); 
+                                        //console.log("dat8 = ",partes8[0]); 
+                                        datt[8] = partes8[0];
+
+                                         var partes9 = partes8[1].split('10#');
+                                        //console.log("dat9 = ",partes9[0]); 
+                                        datt[9] = partes9[0];
+
+                                         var partes10 =   partes9[1].split('#extAdj1 = ');
+                                         var partes10_1 = partes10[1].split('11#');
+                                        //console.log("dat10 = ",partes10[0]);/*el base64*/ 
+                                        datt[10] = partes10[0];
+                                        //console.log("dat11 = ",partes10_1[0]); /*extenssion*/ 
+                                        datt[11] = partes10_1[0];
+
+
+                                        var partes11 =   partes10_1[1].split('#extAdj2 = ');
+                                        //var partes11_1 = partes10[1].split('12#');
+                                        //console.log("dat12 = ",partes11[0]);/*el base64*/  
+                                        datt[12] = partes11[0];
+                                        //console.log("dat13 = ",partes11[1]); /*extenssion*/  
+                                        datt[13] = partes11[1];
+
+
+                                           var t = datt[1].split('1# '); datt[1] = t[1];
+                                           var t = datt[11].split('.'); datt[11] = t[1];
+                                           var t = datt[13].split('.'); datt[13] = t[1];
+                                           //for(var i = 0; i<14; i++)
+                                                 console.log('data',datt);
+
+
+                                        sp4MostrarPreviewAlertaPDF3(datt)
+
+                                        
+                                    //-------------------------------------------------------------------------------------------------------------
+                                }
+                                else
+                                {
+                                   alert('Error al traer desde BD el adjunto');
+                                }
+                                  
+                                                            }); 
+                      }
+                    else
+                    {
+                          alert('Error al traer desde BD el adjunto');
+                    }//----------------------------------------------------------------------------------------------------------------------
+                   
+                    });
+
+
+    
+
+    function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+    results = regex.exec(location.search);
+    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</html>

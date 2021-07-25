@@ -1,0 +1,155 @@
+<link rel="stylesheet" href="./view/ssoma/ssoma.css">
+<div class="row mt-4">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body px-5 py-4">
+                <input type="text" class="form-control title-inspeccion" id="titleForm" placeholder="Escribir título">
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-12 " style="padding-bottom: 140px">
+        <div id="lista-preguntas">
+
+        </div>
+    </div>
+</div>
+
+<div class="footer-preguntas">
+    <div class="container-fluid px-5">
+        <div class="row justify-content-between align-items-center">
+            <div class="col-lg-3">
+                <p class="text-footer-preguntas m-0">Si el formulario está completo <br> finaliza la creación</p>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-4">
+                        <button class="btn btn-cancel btn-block mr-4 mb-0" onclick="cancelForm()">Cancelar</button>
+                    </div>
+                    <div class="col-md-4">
+                        <button class="btn bg-success btn-block mb-0" style="color: #fff" onclick="endQuestion()">
+                            Guardar</button>
+                    </div>
+                    <div class="col-md-4">
+                        <button class="btn btn-save btn-block mb-0" onclick="finalizarQuestion()"><i class="fas fa-check mr-3" aria-hidden="true"></i>
+                            Finalizar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal_confirmacion" id="modal-confirmacion">
+    <div class="modal_confirmacion__content">
+        <div class="modal_confirmacion__head">
+            <img src="./images/newsistema/iconos/informacion3.svg" alt="">
+        </div>
+        <div class="modal_confirmacion__body">
+            <div class="title">
+                Se guardará la inspección <span class="title_formulario_save"></span>
+            </div>
+            <div class="content">
+                ¿Desea confirmar el guardado del formulario?
+            </div>
+            <div class="footer">
+                <div class="d-flex">
+                    <div class="col-md-6 pl-0">
+                        <button class="btn_confirmar_modal" onclick="saveFormulario()">Confirmar</button>
+                    </div>
+                    <div class="col-md-6 pr-0">
+                        <button class="btn_cerrar_modal" onclick="cerrarModal('modal-confirmacion')">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal_confirmacion" id="modal-confirmacion_finalizar">
+    <div class="modal_confirmacion__content">
+        <div class="modal_confirmacion__head">
+            <img src="./images/newsistema/iconos/informacion3.svg" alt="">
+        </div>
+        <div class="modal_confirmacion__body">
+            <div class="title">
+                Se finalizará la inspección <span class="title_formulario_save"></span>
+            </div>
+            <div class="content">
+                ¿Desea confirmar la finalización del formulario?
+            </div>
+            <div class="footer">
+                <div class="d-flex">
+                    <div class="col-md-6 pl-0">
+                        <button class="btn_confirmar_modal" onclick="saveFormulario()">Confirmar</button>
+                    </div>
+                    <div class="col-md-6 pr-0">
+                        <button class="btn_cerrar_modal" onclick="cerrarModal('modal-confirmacion_finalizar')">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal_confirmacion" id="modal-delete-validate">
+    <div class="modal_confirmacion__content">
+        <div class="modal_confirmacion__head bg-danger">
+            <img src="./images/newsistema/iconos/informacion3.svg" alt="">
+        </div>
+        <div class="modal_confirmacion__body">
+            <div class="title py-4">
+                Como minimo debe tener 1 pregunta
+            </div>
+<!--            <div class="content">-->
+<!--                Como minimo debe tener 1 pregunta-->
+<!--            </div>-->
+            <div class="footer">
+                <div class="d-flex justify-content-center">
+<!--                    <div class="col-md-6 pl-0">-->
+<!--                        <button class="btn_confirmar_modal" onclick="saveFormulario()">Confirmar</button>-->
+<!--                    </div>-->
+                    <div class="col-md-6 pr-0">
+                        <button class="btn_cerrar_modal" onclick="cerrarModal('modal-delete-validate')">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal_confirmacion" id="modal-save">
+    <div class="modal_confirmacion__content">
+        <div class="modal_confirmacion__head bg-green-lime-modal">
+            <img src="./images/newsistema/iconos/correct1.svg" alt="">
+        </div>
+        <div class="modal_confirmacion__body">
+            <div class="title">
+                Se guardó la inspección con éxito
+            </div>
+            <div class="content">
+                Puedes revisar y editar este formulario en cualquier momento
+            </div>
+            <div class="footer">
+                <div class="d-flex">
+                    <div class="col-md-12 px-0">
+                        <button class="btn_confirmar_modal bg-green-lime-modal" onclick="handlerUrlhtml('contentGlobal','view/ssoma/configuracion-de-inspecciones/index.html','externalAccessRequestList');">De Acuerdo</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <script src="./view/ssoma/configuracion-de-inspecciones/creacion-inspeccion.js"></script> -->
+<script>
+    $('document').ready(function (){
+        $('.logoCompany').text(' Creación de Inspección')
+        InitCreacionInspeccion()
+    });
+    // $('#regresar').css('display','block')
+    // $('#regresar').click(function (){
+    //     handlerUrlhtml('contentGlobal','view/ssoma/configuracion-de-inspecciones/index.html','externalAccessRequestList');
+    // })
+</script>

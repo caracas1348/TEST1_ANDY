@@ -1,0 +1,830 @@
+<link rel="stylesheet" href="./view/ssoma/ssoma.css">
+<link rel="stylesheet" href="./css/pagination.css">
+<div class="row justify-content-center pt-5">
+    <div class="col-md-12">
+        <div class="row justify-content-between align-items-center">
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-2">
+                        <label for="">Inspección</label>
+                        <select name="" id="selectInspeccionfiltro" class="form-control">
+                            <option value="" selected>Todos</option>
+                        </select>
+                    </div>
+                    <div class="col-2">
+                        <label for="">Inspector</label>
+                        <select name="" id="selecInspectoresFiltro" class="form-control">
+                            <option value="" selected>Todos</option>
+                        </select>
+                    </div>
+                    <div class="col-2">
+                        <label for="">Área</label>
+                        <select name="" id="selectAreafiltro" class="form-control">
+                            <option value="" selected>Todos</option>
+                        </select>
+                    </div>
+                    <div class="col-2">
+                        <label for="">Frecuencia</label>
+                        <select name="" id="selectFrecuenciafiltro" class="form-control">
+                            <option value="" selected>Todos</option>
+                            <option value="1">Diaria</option>
+                            <option value="2">Semanal</option>
+                            <option value="3">Mensual</option>
+                            <option value="4">Trimestral</option>
+                            <option value="5">Semestral</option>
+                            <option value="6">Anual</option>
+                        </select>
+                    </div>
+                    <div class="col-2">
+                        <div class="row justify-content-center">
+                            <button class="btn btn-system-green" onclick="buscarInspeccionAsignacionIndividual()">Buscar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="row align-items-center justify-content-end px-4" >
+                    <img src="./images/newsistema/iconos/registros.svg" alt="">
+                    <span class="cantidad ml-3" id="cantidad">0</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<input type="hidden" id="event-asign" >
+<div class="row justify-content-center mt-5 mb-4">
+    <div class="col-md-12">
+        <div class="header-tabla p-3">
+            <div class="row m-0 justify-content-between align-items-center">
+                <div class="col-md-1" style="font-size: 13px">ID de Programación</div>
+                <div class="col-md-2" style="font-size: 13px">Inspección</div>
+                <div class="col-md-1" style="font-size: 13px">Inspector</div>
+                <div class="col-md-2" style="font-size: 13px">Área de Inspección</div>
+                <div class="col-md-1" style="font-size: 13px">Tipo de Inspección</div>
+                <div class="col-md-1" style="font-size: 13px">Frecuencia</div>
+                <div class="col-md-1" style="font-size: 13px">Estado</div>
+                <div class="col-md-1" style="font-size: 13px">No. de Ejecuciones</div>
+                <div class="col-1 text-center" style="font-size: 13px">Editar</div>
+                <div class="col-1 text-center" style="font-size: 13px">Ver</div>
+            </div>
+        </div>
+        <div class="body-tabla mt-4">
+            <div class="content-registros-no-encontrados">
+                <div>
+                    <img src="./images/newsistema/iconos/calendario-registros-vacios.svg" alt="">
+                    <p class="mt-4">No Tiene Inspecciones Ingresadas</p>
+                </div>
+            </div>
+        </div>
+        <div class="body-tabla-list" id="body-tabla-list">
+
+        </div>
+        <div id="pagination-container" class="mt-3"></div>
+    </div>
+</div>
+
+<div class="modal_confirmacion" id="modal-programar-inspeccion">
+    <div class="modal_confirmacion__content" style="width: 740px">
+        <div class="modal_confirmacion__head">
+            <h4>Programar Inspección</h4>
+        </div>
+        <div class="modal_confirmacion__body px-5 pb-4">
+            <div class="d-flex align-items-center pt-4 pb-4">
+<!--                <div class="col-md-2">-->
+<!--                    <h4 class="text-left"><strong>Datos</strong></h4>-->
+<!--                </div>-->
+                <div class="col-md-11 pr-0">
+                    <div class="franja"></div>
+                </div>
+                <div class="col-md-1">
+                    <img src="./images/newsistema/iconos/menu.svg" alt="" class="img-fluid">
+                </div>
+            </div>
+            <div class="d-flex">
+                <div class="col-md-6">
+                    <div class="mdc-select mdc-select--filled demo-width-class demo-menu w-100 text-left">
+                        <div class="mdc-select__anchor">
+                            <span class="mdc-select__ripple"></span>
+                            <span class="mdc-select__selected-text"></span>
+                            <span class="mdc-select__dropdown-icon">
+                              <svg
+                                      class="mdc-select__dropdown-icon-graphic"
+                                      viewBox="7 10 10 5">
+                                <polygon
+                                        class="mdc-select__dropdown-icon-inactive"
+                                        stroke="none"
+                                        fill-rule="evenodd"
+                                        points="7 10 12 15 17 10">
+                                </polygon>
+                                <polygon
+                                        class="mdc-select__dropdown-icon-active"
+                                        stroke="none"
+                                        fill-rule="evenodd"
+                                        points="7 15 12 10 17 15">
+                                </polygon>
+                              </svg>
+                            </span>
+                            <span class="mdc-floating-label mdc-floating-label--float-above">Nombre de Inspección</span>
+                            <span class="mdc-line-ripple"></span>
+                        </div>
+
+                        <div class="mdc-select__menu demo-width-class mdc-menu mdc-menu-surface w-100">
+                            <ul class="mdc-list" id="listInspecciones">
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex mt-4">
+                <div class="col-md-6">
+                    <label for="" class="text-left w-100">Tipo de Inspección</label>
+                    <div class="d-flex">
+                        <div class="col-md-6 p-0 text-left">
+                            <div class="mdc-form-field">
+                                <div class="mdc-radio">
+                                    <input class="mdc-radio__native-control" type="radio" id="Programada" name="inspeccion" value="1">
+                                    <div class="mdc-radio__background">
+                                        <div class="mdc-radio__outer-circle"></div>
+                                        <div class="mdc-radio__inner-circle"></div>
+                                    </div>
+                                    <div class="mdc-radio__ripple"></div>
+                                </div>
+                                <label for="Programada" class="m-0" style="font-size: 14px">Programada</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6 p-0 text-left">
+                            <div class="mdc-form-field">
+                                <div class="mdc-radio">
+                                    <input class="mdc-radio__native-control" type="radio" id="No-Programada" name="inspeccion" value="2">
+                                    <div class="mdc-radio__background">
+                                        <div class="mdc-radio__outer-circle"></div>
+                                        <div class="mdc-radio__inner-circle"></div>
+                                    </div>
+                                    <div class="mdc-radio__ripple"></div>
+                                </div>
+                                <label for="No-Programada" class="m-0" style="font-size: 14px">No Programada</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label for="" class="text-left w-100">Tipo de asignación</label>
+                    <div class="d-flex">
+                        <div class="col-md-6 p-0 text-left">
+                            <div class="mdc-form-field">
+                                <div class="mdc-radio">
+                                    <input class="mdc-radio__native-control" type="radio" id="Delegable" name="asignacion" value="1">
+                                    <div class="mdc-radio__background">
+                                        <div class="mdc-radio__outer-circle"></div>
+                                        <div class="mdc-radio__inner-circle"></div>
+                                    </div>
+                                    <div class="mdc-radio__ripple"></div>
+                                </div>
+                                <label for="Delegable" class="m-0" style="font-size: 14px">Delegable</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6 p-0 text-left">
+                            <div class="mdc-form-field">
+                                <div class="mdc-radio">
+                                    <input class="mdc-radio__native-control" type="radio" id="No-Delegable" name="asignacion" value="2">
+                                    <div class="mdc-radio__background">
+                                        <div class="mdc-radio__outer-circle"></div>
+                                        <div class="mdc-radio__inner-circle"></div>
+                                    </div>
+                                    <div class="mdc-radio__ripple"></div>
+                                </div>
+                                <label for="No-Delegable" class="m-0" style="font-size: 14px">No Delegable</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex mt-4">
+                <div class="col-md-6">
+                    <div class="mdc-select mdc-select--filled demo-width-class unidad-de-negocio w-100 text-left">
+                        <div class="mdc-select__anchor">
+                            <span class="mdc-select__ripple"></span>
+                            <span class="mdc-select__selected-text"></span>
+                            <span class="mdc-select__dropdown-icon">
+                              <svg
+                                      class="mdc-select__dropdown-icon-graphic"
+                                      viewBox="7 10 10 5">
+                                <polygon
+                                        class="mdc-select__dropdown-icon-inactive"
+                                        stroke="none"
+                                        fill-rule="evenodd"
+                                        points="7 10 12 15 17 10">
+                                </polygon>
+                                <polygon
+                                        class="mdc-select__dropdown-icon-active"
+                                        stroke="none"
+                                        fill-rule="evenodd"
+                                        points="7 15 12 10 17 15">
+                                </polygon>
+                              </svg>
+                            </span>
+                            <span class="mdc-floating-label mdc-floating-label--float-above">Unidad de Negocio</span>
+                            <span class="mdc-line-ripple"></span>
+                        </div>
+
+                        <div class="mdc-select__menu demo-width-class mdc-menu mdc-menu-surface w-100">
+                            <ul class="mdc-list" id="listUnidadNegocio">
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="mdc-select mdc-select--filled demo-width-class sede w-100 text-left">
+                        <div class="mdc-select__anchor">
+                            <span class="mdc-select__ripple"></span>
+                            <span class="mdc-select__selected-text"></span>
+                            <span class="mdc-select__dropdown-icon">
+                              <svg
+                                      class="mdc-select__dropdown-icon-graphic"
+                                      viewBox="7 10 10 5">
+                                <polygon
+                                        class="mdc-select__dropdown-icon-inactive"
+                                        stroke="none"
+                                        fill-rule="evenodd"
+                                        points="7 10 12 15 17 10">
+                                </polygon>
+                                <polygon
+                                        class="mdc-select__dropdown-icon-active"
+                                        stroke="none"
+                                        fill-rule="evenodd"
+                                        points="7 15 12 10 17 15">
+                                </polygon>
+                              </svg>
+                            </span>
+                            <span class="mdc-floating-label mdc-floating-label--float-above">Sede</span>
+                            <span class="mdc-line-ripple"></span>
+                        </div>
+
+                        <div class="mdc-select__menu demo-width-class mdc-menu mdc-menu-surface w-100">
+                            <ul class="mdc-list" id="listSede">
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex mt-4">
+                <div class="col-md-6">
+                    <div class="mdc-select mdc-select--filled demo-width-class areaInspeccion w-100 text-left">
+                        <div class="mdc-select__anchor">
+                            <span class="mdc-select__ripple"></span>
+                            <span class="mdc-select__selected-text"></span>
+                            <span class="mdc-select__dropdown-icon">
+                              <svg
+                                      class="mdc-select__dropdown-icon-graphic"
+                                      viewBox="7 10 10 5">
+                                <polygon
+                                        class="mdc-select__dropdown-icon-inactive"
+                                        stroke="none"
+                                        fill-rule="evenodd"
+                                        points="7 10 12 15 17 10">
+                                </polygon>
+                                <polygon
+                                        class="mdc-select__dropdown-icon-active"
+                                        stroke="none"
+                                        fill-rule="evenodd"
+                                        points="7 15 12 10 17 15">
+                                </polygon>
+                              </svg>
+                            </span>
+                            <span class="mdc-floating-label mdc-floating-label--float-above">Área de la Inspección</span>
+                            <span class="mdc-line-ripple"></span>
+                        </div>
+
+                        <div class="mdc-select__menu demo-width-class mdc-menu mdc-menu-surface w-100">
+                            <ul class="mdc-list" id="listAreaInspeccion">
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex mt-4">
+                <div class="col-md-12">
+                    <label for="" class="w-100 text-left mb-4">Frecuencia de Ejecución </label>
+                    <div class="d-flex">
+                        <div class="mdc-form-field mr-1">
+                            <div class="mdc-radio">
+                                <input class="mdc-radio__native-control" type="radio" id="Diario" name="frecuencia" value="1">
+                                <div class="mdc-radio__background">
+                                    <div class="mdc-radio__outer-circle"></div>
+                                    <div class="mdc-radio__inner-circle"></div>
+                                </div>
+                                <div class="mdc-radio__ripple"></div>
+                            </div>
+                            <label for="Diario" class="m-0" style="font-size: 14px">Diario</label>
+                        </div>
+                        <div class="mdc-form-field mr-1">
+                            <div class="mdc-radio">
+                                <input class="mdc-radio__native-control" type="radio" id="Semanal" name="frecuencia" value="2">
+                                <div class="mdc-radio__background">
+                                    <div class="mdc-radio__outer-circle"></div>
+                                    <div class="mdc-radio__inner-circle"></div>
+                                </div>
+                                <div class="mdc-radio__ripple"></div>
+                            </div>
+                            <label for="Semanal" class="m-0" style="font-size: 14px">Semanal</label>
+                        </div>
+                        <div class="mdc-form-field mr-1">
+                            <div class="mdc-radio">
+                                <input class="mdc-radio__native-control" type="radio" id="Mensual" name="frecuencia" value="3">
+                                <div class="mdc-radio__background">
+                                    <div class="mdc-radio__outer-circle"></div>
+                                    <div class="mdc-radio__inner-circle"></div>
+                                </div>
+                                <div class="mdc-radio__ripple"></div>
+                            </div>
+                            <label for="Mensual" class="m-0" style="font-size: 14px">Mensual</label>
+                        </div>
+                        <div class="mdc-form-field mr-1">
+                            <div class="mdc-radio">
+                                <input class="mdc-radio__native-control" type="radio" id="Trimestral" name="frecuencia" value="4">
+                                <div class="mdc-radio__background">
+                                    <div class="mdc-radio__outer-circle"></div>
+                                    <div class="mdc-radio__inner-circle"></div>
+                                </div>
+                                <div class="mdc-radio__ripple"></div>
+                            </div>
+                            <label for="Trimestral" class="m-0" style="font-size: 14px">Trimestral</label>
+                        </div>
+                        <div class="mdc-form-field mr-1">
+                            <div class="mdc-radio">
+                                <input class="mdc-radio__native-control" type="radio" id="Semestral" name="frecuencia" value="5">
+                                <div class="mdc-radio__background">
+                                    <div class="mdc-radio__outer-circle"></div>
+                                    <div class="mdc-radio__inner-circle"></div>
+                                </div>
+                                <div class="mdc-radio__ripple"></div>
+                            </div>
+                            <label for="Semestral" class="m-0" style="font-size: 14px">Semestral</label>
+                        </div>
+                        <div class="mdc-form-field mr-1">
+                            <div class="mdc-radio">
+                                <input class="mdc-radio__native-control" type="radio" id="Anual" name="frecuencia" value="6">
+                                <div class="mdc-radio__background">
+                                    <div class="mdc-radio__outer-circle"></div>
+                                    <div class="mdc-radio__inner-circle"></div>
+                                </div>
+                                <div class="mdc-radio__ripple"></div>
+                            </div>
+                            <label for="Anual" class="m-0" style="font-size: 14px">Anual</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex mt-4 mb-3 justify-content-center">
+                <div class="col-md-4 pl-0">
+                    <button class="btn_confirmar_modal bg-green-lime-modal" onclick="saveInspeccion()">Guardar</button>
+                </div>
+                <div class="col-md-4 pr-0">
+                    <button class="btn_cerrar_modal" onclick="cerrarModal('modal-programar-inspeccion')">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal_confirmacion" id="modal-confirmacion">
+    <div class="modal_confirmacion__content">
+        <div class="modal_confirmacion__head">
+            <img src="./images/newsistema/iconos/informacion3.svg" alt="">
+        </div>
+        <div class="modal_confirmacion__body">
+            <div class="title">
+                Se guardará al Inspector Asignado
+            </div>
+            <div class="content">
+                ¿Desea confirmar la Asignación?
+            </div>
+            <div class="footer">
+                <div class="d-flex">
+                    <div class="col-md-6 pl-0">
+                        <button class="btn_confirmar_modal" onclick="saveAsignacionInspector()">Confirmar</button>
+                    </div>
+                    <div class="col-md-6 pr-0">
+                        <button class="btn_cerrar_modal" onclick="cerrarModal('modal-confirmacion')">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal_confirmacion" id="modal-save">
+    <div class="modal_confirmacion__content">
+        <div class="modal_confirmacion__head bg-green-lime-modal">
+            <img src="./images/newsistema/iconos/correct1.svg" alt="">
+        </div>
+        <div class="modal_confirmacion__body">
+            <div class="title">
+                Se guardó con éxito la asignación
+            </div>
+            <div class="content">
+                Puede Revisar su bandeja de Inspecciones
+            </div>
+            <div class="footer">
+                <div class="d-flex">
+                    <div class="col-md-12 px-0">
+                        <button class="btn_confirmar_modal bg-green-lime-modal" onclick="CerrarModalSaveInspeccion()">De Acuerdo</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal_confirmacion" id="modal-visualizar">
+    <div class="modal_confirmacion__content" style="width: 503px">
+        <div class="modal_confirmacion__head">
+            <h5>Inspección - <span class="titulo-modal-visualizar">Lista de Verificación COVID 19</span></h5>
+        </div>
+        <div class="modal_confirmacion__body px-5 pb-4 text-left">
+            <div class="d-flex align-items-center pt-4 pb-4">
+                <div class="col-md-3">
+                    <h4 class="text-left"><strong>Detalle</strong></h4>
+                </div>
+                <div class="col-md-8 pr-0">
+                    <div class="franja"></div>
+                </div>
+                <div class="col-md-1">
+                    <img src="./images/newsistema/iconos/menu.svg" alt="" class="img-fluid">
+                </div>
+            </div>
+            <div class="d-flex">
+                <div class="col-md-6">
+                    <label for="">ID de Inspección</label>
+                    <p class="text-consult id_inspeccion" ></p>
+                </div>
+                <div class="col-md-6">
+                    <label for="">Área de la Inspección</label>
+                    <p class="text-consult area_inspeccion"></p>
+                </div>
+            </div>
+            <div class="d-flex mt-4">
+                <div class="col-md-6">
+                    <label for="">Nombre de la inspección</label>
+                    <p class="text-consult" id="nmbre_inspeccion"></p>
+                </div>
+                <div class="col-md-6">
+                    <label for="">Tipo de Asignación</label>
+                    <p class="text-consult" id="tipo_asignacion"></p>
+                </div>
+            </div>
+            <div class="d-flex mt-4">
+                <div class="col-md-6">
+                    <label for="">Tipo de Inspección</label>
+                    <p class="text-consult" id="tipo_inspeccion"></p>
+                </div>
+                <div class="col-md-6">
+                    <label for="">Frecuencia de Ejecución</label>
+                    <p class="text-consult" id="frecuencia_ejecucion"></p>
+                </div>
+            </div>
+            <div class="d-flex mt-4 mb-3 justify-content-center">
+                <div class="col-md-6">
+                    <button class="btn_confirmar_modal bg-green-lime-modal" onclick="modalListaUsuarios()">Asignar</button>
+                </div>
+                <div class="col-md-6">
+                    <button class="btn_cerrar_modal" onclick="cerrarModal('modal-visualizar')">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal_confirmacion" id="modal-visualizar-lista-responsable">
+    <div class="modal_confirmacion__content" style="width: 417px">
+        <div class="modal_confirmacion__head">
+            <h5>Asignación - <span class="titulo-modal-visualizar">Lista de Verificación COVID 19</span></h5>
+        </div>
+        <div class="modal_confirmacion__body px-5 pb-4 text-left">
+            <div class="d-flex align-items-center pt-4 pb-4">
+                <div class="col-md-3">
+                    <h5 class="text-left"><strong>Detalle</strong></h5>
+                </div>
+                <div class="col-md-7 pr-0">
+                    <div class="franja"></div>
+                </div>
+                <div class="col-md-2">
+                    <img src="./images/newsistema/iconos/menu.svg" alt="" class="img-fluid">
+                </div>
+            </div>
+            <div class="d-flex">
+                <div class="col-md-6">
+                    <label for="" style="    font-size: 14px;">ID de Inspección</label>
+                    <p class="text-consult id_inspeccion" ></p>
+                </div>
+                <div class="col-md-6">
+                    <label for="" style="    font-size: 14px;">Área de la Inspección</label>
+                    <p class="text-consult area_inspeccion"></p>
+                </div>
+            </div>
+            <div class="d-flex mt-4 mb-4">
+                <div class="col-md-8 font-weight-bold">
+                    <h6 style="font-size: 15px;">Asignación de responsable</h6>
+                </div>
+                <div class="col-md-4 " >
+                    <h6 class="text-right font-weight-bold" id="cantidadAsignados" style="font-size: 15px;">00</h6>
+                </div>
+            </div>
+            <div class="d-flex mt-4 mb-4">
+                <div class="col-md-12">
+                    <input id="searchInspector" type="text" class="buscador-inspectores w-100" onkeyup="buscarInspector()" placeholder="Buscar Inspector">
+                    <input type="hidden" id="idInspectorBusqueda" >
+                    <input type="hidden" id="EmailBusqueda" >
+                    <input type="hidden" id="idinspeccion">
+                    <div class="contenedor-lista-inspectores" id="contenedor-lista-inspectores">
+
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex mt-4 mb-3 justify-content-center">
+                <div class="col-md-6">
+                    <button class="btn_confirmar_modal bg-green-lime-modal" onclick="activeModalConfirmacion()">Modificar</button>
+                </div>
+                <div class="col-md-6">
+                    <button class="btn_cerrar_modal" onclick="cerrarModal('modal-visualizar-lista-responsable')">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal_confirmacion" id="modal-editar">
+    <div class="modal_confirmacion__content" style="width: 503px">
+        <div class="modal_confirmacion__head">
+            <h5>Inspección - <span class="titulo-modal-visualizar">Lista de Verificación COVID 19</span></h5>
+        </div>
+        <div class="modal_confirmacion__body px-5 pb-4 text-left">
+            <div class="d-flex align-items-center pt-4 pb-4">
+                <div class="col-md-3">
+                    <h4 class="text-left"><strong>Detalle</strong></h4>
+                </div>
+            </div>
+            <div class="d-flex">
+                <div class="col-md-6">
+                    <label for="">ID de Inspección</label>
+                    <p class="text-consult id_inspeccion2" ></p>
+                </div>
+                <div class="col-md-6">
+                    <label for="">Área de la Inspección</label>
+                    <p class="text-consult area_inspeccion2"></p>
+                </div>
+            </div>
+            <div class="d-flex mt-4">
+                <div class="col-md-6">
+                    <label for="">Nombre de la inspección</label>
+                    <p class="text-consult" id="nmbre_inspeccion2"></p>
+                </div>
+                <div class="col-md-6">
+                    <label for="">Tipo de Asignación</label>
+                    <p class="text-consult" id="tipo_asignacion2"></p>
+                </div>
+            </div>
+            <div class="d-flex mt-4">
+                <div class="col-md-6">
+                    <label for="">Tipo de Inspección</label>
+                    <p class="text-consult" id="tipo_inspeccion2"></p>
+                </div>
+                <div class="col-md-6">
+                    <label for="">Frecuencia de Ejecución</label>
+                    <p class="text-consult" id="frecuencia_ejecucion2"></p>
+                </div>
+            </div>
+            <div class="d-flex mt-4">
+                <div class="col-md-12">
+                    <label for="">Inspector</label>
+                    <div class="inspector-item mb-2 w-100 inspector-item__active" ><span id="inspector-name"></span>  <div class="checkicon"><i class="fas fa-check"></i></div> </div>
+                </div>
+            </div>
+            <div class="d-flex mt-4 mb-3 justify-content-center">
+                <div class="col-md-6 pr-0">
+                    <button class="btn_cerrar_modal" onclick="cerrarModal('modal-editar')">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal_confirmacion" id="modal-editar2">
+    <div class="modal_confirmacion__content" style="width: 503px">
+        <div class="modal_confirmacion__head">
+            <h5>Inspección - <span class="titulo-modal-visualizar"></span></h5>
+        </div>
+        <div class="modal_confirmacion__body px-5 pb-4 text-left">
+            <div class="d-flex align-items-center pt-4 pb-4">
+                <div class="col-md-3">
+                    <h4 class="text-left"><strong>Detalle</strong></h4>
+                </div>
+                <div class="col-md-8 pr-0">
+                    <div class="franja"></div>
+                </div>
+                <div class="col-md-1">
+                    <img src="./images/newsistema/iconos/menu.svg" alt="" class="img-fluid">
+                </div>
+            </div>
+            <div class="d-flex">
+                <div class="col-md-6">
+                    <label for="">ID de Inspección</label>
+                    <p class="text-consult id_inspeccion3" ></p>
+                </div>
+                <div class="col-md-6">
+                    <label for="">Área de la Inspección</label>
+                    <p class="text-consult area_inspeccion3"></p>
+                </div>
+            </div>
+            <div class="d-flex mt-4">
+                <div class="col-md-6">
+                    <label for="">Nombre de la inspección</label>
+                    <p class="text-consult" id="nmbre_inspeccion3"></p>
+                </div>
+                <div class="col-md-6">
+                    <label for="">Tipo de Asignación</label>
+                    <p class="text-consult" id="tipo_asignacion3"></p>
+                </div>
+            </div>
+            <div class="d-flex mt-4">
+                <div class="col-md-6">
+                    <label for="">Tipo de Inspección</label>
+                    <p class="text-consult" id="tipo_inspeccion3"></p>
+                </div>
+                <div class="col-md-6">
+                    <label for="">Frecuencia de Ejecución</label>
+                    <p class="text-consult" id="frecuencia_ejecucion3"></p>
+                </div>
+            </div>
+            <div class="d-flex mt-4">
+                <div class="col-md-12">
+                    <label for="">Inspector</label>
+                    <div class="inspector-item mb-2 w-100 inspector-item__active" ><span id="inspector-name3"></span>  <div class="checkicon"><i class="fas fa-check"></i></div> </div>
+                </div>
+            </div>
+            <div class="d-flex mt-4 mb-3 justify-content-center">
+                <div class="col-md-6 pr-0">
+                    <button class="btn_habilitar_modal" onclick="habilitarModal()">Habilitar</button>
+                </div>
+                <div class="col-md-6">
+                    <button class="btn_cerrar_modal" onclick="cerrarModal('modal-editar2')">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal_confirmacion" id="modal-habilitar">
+    <div class="modal_confirmacion__content" style="width: 503px">
+        <div class="modal_confirmacion__head" style="padding-right:1%;padding-left:1%">
+            <h5>Habilitar - <span class="titulo-modal-visualizar"></span></h5>
+        </div>
+        <div class="modal_confirmacion__body px-5 pb-4 text-left">
+            <div class="d-flex align-items-center pt-4 pb-4">
+                <div class="col-md-12">
+                    <h4 class="text-left"><strong>Motivo de Vencimiento</strong></h4>
+                </div>
+            </div>
+            <div class="d-flex">
+                <div class="col-md-12">
+                    <input type="hidden" id="idInspeccion-habilitarModal">
+                    <label class="mdc-text-field mdc-text-field--outlined mdc-text-field--textarea mdc-text-field--with-internal-counter textarea-habilitar w-100">
+                      <span class="mdc-notched-outline">
+                        <span class="mdc-notched-outline__leading"></span>
+                        <span class="mdc-notched-outline__notch">
+                          <span class="mdc-floating-label" id="my-label-id"></span>
+                        </span>
+                        <span class="mdc-notched-outline__trailing"></span>
+                      </span>
+                      <span class="mdc-text-field__resizer">
+                        <textarea class="mdc-text-field__input w-100" id="motivo-habilitar-text" onkeyup="habilitarbtnsave()" aria-labelledby="my-label-id" rows="5" cols="40" maxlength="140" placeholder="Escribir...." style="font-size: 14px;"></textarea>
+                        <div class="mdc-text-field-character-counter" id = 'lbMotivoVenc'>0 / 140</div>
+                      </span>
+                    </label>
+                </div>
+            </div>
+            <div class="d-flex mt-4 mb-3 justify-content-center">
+                <div class="col-md-6 pr-0">
+                    <button class="btn_habilitar_modal btn-disabled" onclick="mostrarModalSaveHabilitar()" disabled id="btnsavehabilitar">Habilitar</button>
+                </div>
+                <div class="col-md-6">
+                    <button class="btn_cerrar_modal" onclick="cerrarModal('modal-habilitar')">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal_confirmacion" id="modal-confirmacion2">
+    <div class="modal_confirmacion__content">
+        <div class="modal_confirmacion__head">
+            <img src="./images/newsistema/iconos/informacion3.svg" alt="">
+        </div>
+        <div class="modal_confirmacion__body">
+            <div class="title">
+                Se habilitará la Inspección Vencida
+            </div>
+            <div class="content">
+                ¿Desea confirmar la acción?
+            </div>
+            <div class="footer">
+                <div class="d-flex">
+                    <div class="col-md-6 pl-0">
+                        <button class="btn_confirmar_modal" onclick="habilitarSave()">Confirmar</button>
+                    </div>
+                    <div class="col-md-6 pr-0">
+                        <button class="btn_cerrar_modal" onclick="cerrarModal('modal-confirmacion2')">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal_confirmacion" id="modal-save2">
+    <div class="modal_confirmacion__content">
+        <div class="modal_confirmacion__head bg-green-lime-modal">
+            <img src="./images/newsistema/iconos/correct1.svg" alt="">
+        </div>
+        <div class="modal_confirmacion__body">
+            <div class="title">
+                Se habilitó la asignación con éxito
+            </div>
+            <div class="content">
+                Puede revisar la bandeja de inspecciones
+            </div>
+            <div class="footer">
+                <div class="d-flex">
+                    <div class="col-md-12 px-0">
+                        <button class="btn_confirmar_modal bg-green-lime-modal" onclick="CerrarModalSaveInspeccionReasignado()">De Acuerdo</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal_confirmacion" id="modal-error">
+    <div class="modal_confirmacion__content">
+        <div class="modal_confirmacion__head bg-green-lime-modal">
+            <img src="./images/newsistema/iconos/correct1.svg" alt="">
+        </div>
+        <div class="modal_confirmacion__body">
+            <div class="title" id="title_modal_error">
+                Se guardó con éxito la asignación
+            </div>
+            <div class="content d-none" id="Content_modal_error">
+                Puede Revisar su bandeja de Inspecciones
+            </div>
+            <div class="footer">
+                <div class="d-flex">
+                    <div class="col-md-12 px-0">
+                        <button class="btn_habilitar_modal bg-green-lime-modal" onclick="cerrarModal('modal-error')">De Acuerdo</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal_confirmacion" id="modal-save_edit">
+    <div class="modal_confirmacion__content">
+        <div class="modal_confirmacion__head bg-green-lime-modal">
+            <img src="./images/newsistema/iconos/correct1.svg" alt="">
+        </div>
+        <div class="modal_confirmacion__body">
+            <div class="title">
+                Se confirmó el cambio de inspector
+            </div>
+            <div class="content">
+                Puede revisar la bandeja de inspección
+            </div>
+            <div class="footer">
+                <div class="d-flex">
+                    <div class="col-md-12 px-0">
+                        <button class="btn_confirmar_modal bg-green-lime-modal" onclick="CerrarModalSaveInspeccionReasignado()">De Acuerdo</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="./js/paginator/pagination.js"></script>
+<script src="./view/ssoma/programar-inspeccion/inspeccion.js"></script>
+<script>
+
+    filtroGetInspectores()
+
+    filtroGetInspectciones()
+
+    select_covv = mdc.select.MDCSelect.attachTo(document.querySelector('.demo-menu'));
+    unidad_de_negocio = mdc.select.MDCSelect.attachTo(document.querySelector('.unidad-de-negocio'));
+    sedeModal = mdc.select.MDCSelect.attachTo(document.querySelector('.sede'));
+    areaInspeccion = mdc.select.MDCSelect.attachTo(document.querySelector('.areaInspeccion'));
+    let area = mdc.textField.MDCTextField.attachTo(document.querySelector('.textarea-habilitar'));
+    //getListForm()
+</script>

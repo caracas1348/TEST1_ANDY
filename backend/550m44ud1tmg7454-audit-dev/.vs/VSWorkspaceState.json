@@ -1,0 +1,11 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Get-Auditor-All",
+    "\\Get-Auditoria-Auditor-All",
+    "\\Get-Auditoria-Auditor-Perfil-All",
+    "\\Post-Auditoria-Auditor-All"
+  ],
+  "SelectedNode": "\\Get-Auditor-All\\sqldb_auditorall_get.csx",
+  "PreviewInSolutionExplorer": false
+}

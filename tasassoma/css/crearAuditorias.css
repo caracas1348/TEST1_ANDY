@@ -1,0 +1,195 @@
+input {
+  outline: 0 !important;
+  border-width: 0 0 2px !important;
+  border-color: #000
+}
+input:focus {
+  border-width: 0 0 2px !important;
+  border-color: green
+}
+
+.btn-new {
+  width: 184px !important;
+  height: 50px !important;
+  border-radius: 4px;
+  background-color: #05beee;
+  font-family: ProductSans;
+  font-size: 15px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.64;
+  letter-spacing: 0.15px;
+  color: #ffffff;
+}
+
+.btn-end {
+  /*width: 106px;*/
+  height: 50px;
+  border-radius: 4px;
+  background-color: #b2b2b2;
+  font-family: ProductSans;
+  font-size: 15px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.64;
+  letter-spacing: 0.15px;
+  color: #ffffff;
+}
+
+.Rectangle-198 {
+  /*width: 1314px;*/
+  height: 413px;
+  border-radius: 4px;
+  border: solid 1px #cbcbcb;
+  background-color: #ffffff;
+}
+
+.escritura-1 {
+  width: 125px;
+  height: 125px;
+  object-fit: contain;
+}
+
+.titulo-tabla{
+  border-radius: 4px;
+  background-color: #34559c;
+  font-family: ProductSans;
+  font-size: 15px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.64;
+  letter-spacing: 0.15px;
+  color: #ffffff;
+}
+
+.No-tienes-auditoras-ingresadas {
+  font-family: ProductSans;
+  font-size: 18px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.37;
+  letter-spacing: 0.15px;
+  color: #8b8b8b;
+}
+
+.usuario-1 {
+  /*width: 18px;*/
+  height: 18px;
+  object-fit: contain;
+}
+
+.hearder-modal{
+  background-color: #05beee !important;
+  height: 55px;
+  font-family: ProductSans;
+  font-size: 18px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.45;
+  letter-spacing: 0.26px;
+  color: #ffffff;
+}
+
+.btn-crear {
+  width: 198.9px;
+  height: 47px;
+  object-fit: contain;
+  border-radius: 4.4px;
+  background-color: #d2d97b;
+  font-family: ProductSans;
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.39;
+  letter-spacing: 0.44px;
+  color: #565933;
+}
+
+.btn-close {
+  width: 198.9px;
+  height: 47px;
+  object-fit: contain;
+  border-radius: 4.4px;
+  border: solid 1.1px #000000;
+  background-color: #ffffff;
+   font-family: ProductSans;
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.39;
+  letter-spacing: 0.44px;
+  color: #565933;
+}
+
+.btn-modificar
+{
+  width: 198px;
+  height: 46px;
+  object-fit: contain;
+  border-radius: 4.4px;
+  background-color: #d2d97b;
+}
+
+.titulo-area-modal {
+  font-family: ProductSans;
+  font-size: 18px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.37;
+  letter-spacing: 0.15px;
+  color: #000000;
+}
+
+.label-modal {
+  font-family: ProductSans;
+  font-size: 15.1px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.14;
+  letter-spacing: 0.11px;
+  color: #737373;
+}
+
+.titulo-items-modal {
+  font-family: ProductSans;
+  font-size: 15.1px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.14;
+  letter-spacing: 0.11px;
+  color: #000000;
+}
+
+.titulos-table-modal {
+  width: 144px;
+  height: 26px;
+  font-family: ProductSans;
+  font-size: 15px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.64;
+  letter-spacing: 0.15px;
+  color: #ffffff;
+}
+
+.row-table-modal {
+  height: 10vh;
+  border-radius: 4px;
+  border: solid 1px #cbcbcb;
+  background-color: #f2f2f2;
+}
+
+.mwEnviar{
+  max-width: 70%;
+}

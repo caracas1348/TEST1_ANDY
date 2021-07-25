@@ -1,0 +1,97 @@
+
+  <div class="row p-0" id="label_group_find" onclick="$('.popover').popover('hide');" >
+      <div class="col-sm-2 pl-4">
+        <label class="col-form-label " name="lab_type_request" id="typerequest_1">
+          <h6><a id="listType1" href="#" class="text-muted text-decoration-none title-1selected  pl-2 " onClick="selectedTextType(1)" >
+            <img src="images/iconos/icoVisita.svg" id="imgvisitante" height="28px" width="28px" >  Visitantes <span id="cant_visitante" class="contNumber">0</span></a></h6></label>        
+      </div>
+      <div class="col-sm-2">
+        <label class="col-form-label " name="lab_type_request" id="typerequest_3">
+          <h6><a id="listType2" href="#" class="text-muted text-decoration-none  " onClick="selectedTextType(3)">
+            <img src="images/iconos/icoProveedor.svg" height="28px" width="28px" > Proveedores <span id="cant_proveedor" class="contNumber">0</span></a></h6></label>        
+      </div>
+      <div class="col-sm-2">
+        <label class="col-form-label " name="lab_type_request" id="typerequest_2">
+          <h6><a id="listType3" href="#" class="text-muted text-decoration-none  pl-2" onClick="selectedTextType(2)">
+            <img src="images/iconos/iconContratista.svg" height="28px" width="28px" > Contratistas <span id="cant_contratista" class="contNumber">0</span></a></h6></label>        
+      </div>
+      <div class="col-sm-2">
+        <label class="col-form-label " name="lab_type_request" id="typerequest_4">
+          <h6><a id="listType4" href="#" class="text-muted text-decoration-none  pl-2" onClick="selectedTextType(4)">
+            <img src="images/iconos/icoTransportista.svg" height="28px" width="28px" > Transportista <span id="cant_transportista" class="contNumber">0</span></a></h6></label>
+      </div>
+      <div class="col-md-2">&nbsp;</div>
+      <!-- <div class="col-md-4 text-right"><img src="images/iconos/user.svg"></div> -->
+  </div>
+  <div class="separatorVert"  ></div>
+<div style="height: 10px;"></div>
+  <div class="container-fluid">  
+    <div class="row p-0 ">
+    <div class="col-lg-9 pt-0">
+      <div class="btn-group-toggle " data-toggle="buttons" id="btn_group_status" onclick="$('.popover').popover('hide');" >
+        <label class="btn  tabInactive" name="label_status_list_1" id="label_status_list_1" onclick="selectedFilterStatus(1)">
+          <input type="radio" name="chb_status_list" id="chb_status_list_1" value="1" > Pendiente Por Datos
+          <span class="badge " style="font-size: 13px;" id="badgelistpenDatos">0</span>
+        </label>
+        <label class="btn tabInactive"  name="label_status_list_2" id="label_status_list_2" onclick="selectedFilterStatus(2)">
+          <input type="radio" name="chb_status_list" id="chb_status_list_2" value="2" > Pendiente Por Aprobación
+          <span class="badge " style="font-size: 13px;" id="badgelistpenApro">0</span>
+        </label>
+        <label class="btn tabInactive "  name="label_status_list_3" id="label_status_list_3" onclick="selectedFilterStatus(3)">
+          <input type="radio" name="chb_status_list" id="chb_status_list_3"  value="3"> Programada
+          <span class="badge " style="font-size: 13px;" id="badgelistpenProg">0</span>
+        </label>
+        <label class="btn tabInactive"  name="label_status_list_4" id="label_status_list_4" onclick="selectedFilterStatus(4)">
+          <input type="radio" name="chb_status_list" id="chb_status_list_4" value="4" > En Proceso
+          <span class="badge " style="font-size: 13px;" id="badgelistpenProc">0</span>
+        </label>
+
+        <label class="btn tabInactive"  name="label_status_list_5" id="label_status_list_5" onclick="selectedFilterStatus(5)">
+          <input type="radio" name="chb_status_list" id="chb_status_list_5" checked value="5"> Rechazado
+          <span class="badge " style="font-size: 13px;" id="badgelistpenRecha">0</span>
+        </label>
+        <label class="btn tabInactive active"  name="label_status_list_6" id="label_status_list_6" onclick="selectedFilterStatus(6)">
+          <input type="radio" name="chb_status_list" id="chb_status_list_6" checked value="99"> Todos
+          <span class="badge " style="font-size: 13px;" id="badgelistpenAll">0</span>
+        </label>
+      </div>
+    </div>
+
+  
+    <div class="col-lg-3 " onclick="$('.popover').popover('hide');">
+        <input type="text" placeholder="Buscar" id="txt_search_visita"  name="txt_search_visita" class=" shadow-sm inputFind">
+    </div>
+    
+  </div>
+  
+  <div class="row" style="overflow: auto; height: 71vh;overflow-x: hidden;" >      
+    <div class="col-md-12 ">
+      <table id="tb_list_visita" name="tb_list_visita" class="table responsive " style="width:100%">
+      </table>
+    </div>
+  </div>
+
+  <div class="modal fade rounded"  id="modalShowRequestDetails" tabindex="-1" role="dialog" aria-labelledby="modalAddCompanyTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered rounded " role="document" style="max-width: 98%; z-index: 1030; ">
+      <div class="modal-content rounded-4" style="background: rgb(253, 253, 253);">        
+        
+        <div class="modal-header" style="padding:5px 24px 0!important">
+          <h5 class="modal-title"></h5>
+          <h5 class="fa fa-times text-danger pt-2"  style="cursor: pointer;" data-dismiss="modal" aria-label="Close" onclick=""></h5>
+        </div>
+        
+        <div id="modal_show_request_details_father" style="" >
+          <div class="modal-body row" id="modal_show_request_details" style="pointer-events:none;">
+          </div>
+        </div>
+
+        <hr>
+        <div class="modal-footer" >
+          <div class="col-md-12 row"  id="modal_show_request_details_footer">
+          </div>
+        </div>
+      
+      </div>
+    </div>
+  </div>
+</div>

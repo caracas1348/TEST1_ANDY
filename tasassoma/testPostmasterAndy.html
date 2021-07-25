@@ -1,0 +1,215 @@
+<html>
+  <head>
+     <title>PRUEBA DE LOS SERVICIOS</title>
+
+
+    
+
+  </head>
+
+
+
+
+  <body>
+            <div style=" text-align: center; background-color: chartreuse; width: 100%;">
+                <table border="1" width = "100%" align="center">
+                    <tr>
+                         <td width = "40%" align="rigth" ><div style="text-align: right; width:100%">SEDES</div></td>
+                         <td width = "30%"><select id="sel_servicio" name="sel_servicio"></select></td>
+                         <td width = "40%" >PRUEBA DE SERVICIO (GET)</td>
+                    </tr>
+                </table>
+            </div>
+                        
+            
+  </body>
+   <!-- style staticos {-->
+    <!-- Libreria INTERNA Proyecto --><link href="css/loadingEffect.css" rel="stylesheet">
+    
+    <!-- Libreria BOOTSTRAP Terceros Web --><link rel="stylesheet" href="modules/bootstrap-sweetalert-master/dist/sweetalert.css" rel="stylesheet">
+    <!-- Libreria DROPZONE Terceros Web --><link rel="stylesheet" href="modules/dropzone-5.7.0/dist/dropzone.css">               
+    <!-- Libreria FONTAWESOME Terceros Web --><link href="modules/fontawesome/css/fontawesome.css" rel="stylesheet">
+    <!-- Libreria FONTAWESOME Terceros Web --><link href="modules/fontawesome/css/brands.css" rel="stylesheet">
+    <!-- Libreria FONTAWESOME Terceros Web --><link href="modules/fontawesome/css/solid.css" rel="stylesheet">  
+    <!-- Libreria JQUERY Terceros Web --><link href="modules/DataTables/datatables.min.css" rel="stylesheet"> 
+    <!-- Libreria JQUERY Terceros Web --><link href="modules/DataTables/Responsive-2.2.3/css/responsive.bootstrap.min.css" rel="stylesheet">
+    <!-- Libreria JQUERY Terceros Web --><link href="modules/DataTables/Buttons-1.6.1/css/buttons.dataTables.min.css" rel="stylesheet">
+
+    <!-- Libreria JQUERY Terceros Web --><link href="modules/jquery-ui-1.12.1/jquery-ui.min.css" rel="stylesheet">
+    <!-- Libreria JQUERY Terceros Web --><link rel="stylesheet" href="modules/bootstrap-toggle/css/bootstrap4-toggle.min.css" rel="stylesheet">    
+    <!-- Libreria ROBOTO Terceros Web --><link rel="stylesheet" href="modules/mterialiconRoboto.css">
+    <!-- Libreria BOOTSTRAP Terceros Web --><link rel="stylesheet" href="modules/bootstrap-material-design-master/assets/css/docs.css">
+    <!-- Libreria DROPIFY Terceros Web --><link rel="stylesheet" href="modules/dropify/dist/css/dropify.css">
+
+<!-- aqui el servicio como lo envian -->
+<!-- "name": "GetSede",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "apiKey",
+						"value": "r$3#23516ewew5",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": apiurlAuditoria+"/api/Get-Sede-All?code=0N470WSSjrIb6hhHAsgBHgS8wplALMbCB6KcP5FmsjFDvjQkcaaWbw==&httpmethod=objectlist",
+					"protocol": "https",
+					"host": [
+						"550m44ud1tmg7454-audit-dev",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"api",
+						"Get-Sede-All"
+					],
+					"query": [
+						{
+							"key": "code",
+							"value": "0N470WSSjrIb6hhHAsgBHgS8wplALMbCB6KcP5FmsjFDvjQkcaaWbw=="
+						},
+						{
+							"key": "httpmethod",
+							"value": "objectlist"
+						}
+					]
+				}
+			},
+			"response": [] -->
+<!-- aqui el servicio como lo envian -->
+
+
+
+  <script>
+    //-----------------------------------------------------------------------------------------------------------------------------------------------------//
+    var servicio = "/api/Get-Sede-All?code=";
+    var apiKeyx = "r$3#23516ewew5";
+    var apiUrlAuditoria=apiurlAuditoria+"";
+    var getSedeAllAuditoria="0N470WSSjrIb6hhHAsgBHgS8wplALMbCB6KcP5FmsjFDvjQkcaaWbw==";
+    var metodoHttp = "objectlist";
+    var metodoAjax =  "GET";
+    
+    // especialidad bien 3 resultados
+    var servicio = "/api/Get-Especialidad-All?code=";
+    var getSedeAllAuditoria="tzTo63fygC1rQtqr0mXxg7a9HQ/WFAPI3XaE/h/OBzhZHgIZTqj93Q==";
+    // auditoria_norma devuelve un objeto vacio
+    //'https://550m44ud1tmg7454-audit-dev.azurewebsites.net/api/Get-Auditoria_Norma-All?code=c7pMem7ZH6HyXlIt2JEYfxaB96dSq9T5O1ZGWH7Ng7W8XPiNWXk1bg=='
+    var servicio = "/api/Get-Auditoria_Norma-All?code=";
+    var getSedeAllAuditoria="c7pMem7ZH6HyXlIt2JEYfxaB96dSq9T5O1ZGWH7Ng7W8XPiNWXk1bg==";
+    //var servicio = "/api/Get-Auditoria_Norma-All?code=";
+    //var getSedeAllAuditoria="c7pMem7ZH6HyXlIt2JEYfxaB96dSq9T5O1ZGWH7Ng7W8XPiNWXk1bg==";
+    // auditoria devuelve un objeto vacio
+    var servicio = "/api/Get-Auditoria-All?code=";
+    var getSedeAllAuditoria="H4VLj4KN6GZdCduqoToDVkDdP56Fz4t10niae2jucl8sXGaKz6bFuQ==";
+    // norma bien 10 resultados colocar en el select code
+    /*var servicio = "/api/Get-Norma-All?code=";
+    var getSedeAllAuditoria="QunwZ0j56jljksBrF3QtFYnaou6l7bF8zolp0ZvfXKQEQ5NwPGhHHQ=="; //&EspecialidadId=3
+    // programaAuditoria bien 1 resultados
+    var servicio = "/api/Get-Programa_Auditoria-All?code=";
+    var getSedeAllAuditoria="X4XURduZbR20wwsOaEVVs4trLnrmd4mfO3KtqksohFm5bQQPqoO10g==";
+    // sedes bien 61 resultados
+    var servicio = "/api/Get-Sede-All?code=";
+    var getSedeAllAuditoria="0N470WSSjrIb6hhHAsgBHgS8wplALMbCB6KcP5FmsjFDvjQkcaaWbw==";
+    // Get-Status_Programa_Auditoria-All bien 1 resultado (raro)
+    var servicio = "/api/Get-Status_Programa_Auditoria-All?code=";
+    var getSedeAllAuditoria="qOqHuW1VD50eWi6m3mZ2MjJPR7kjm7tdEhwdApDA2oEnWcS1hjofcg==";
+    // Unidades Organizativas bien 6 resultados
+    var servicio = "/api/Get-Unidad_Negocio-All?code=";
+    var getSedeAllAuditoria="25Ewv7NJf5i1HTalqXRIrAfk7i1bXkRkB58utsEzQrWtP21B07BHtw==";
+    // tipo-auditoria-all bien 1 resultados (raro)
+    var servicio = "/api/Get-Tipo_Auditoria-All?code=";
+    var getSedeAllAuditoria="xS4gwxC7HETttJm8ZIp9rQi/Qw8zOhYFhJJE05EjsbpbAgACN3bT8w==";//*/
+    
+
+    function pruebaServicio(serviciof, apiKeyxf, apiUrlAuditoriaf, getSedeAllAuditoriaf,metodoHttpf, metodoAjaxf)
+    {
+       
+        //alert(serviciof);
+        var url = apiUrlAuditoriaf+servicio+getSedeAllAuditoriaf+"&httpmethod="+metodoHttpf;                        
+        var headers ={
+            "apikey":apiKeyxf        
+        }
+    
+        $.ajax({                    
+            method: metodoAjaxf,
+            url:  url,
+            headers:headers,
+            crossDomain: true,
+            dataType: "json",
+        }).done(function( data)
+
+        {
+          $("#sel_servicio").append("<option value='0'>Seleccionar</option>");
+          var jsonLocation=[];
+
+          data.map(function(item)
+          {
+              $("#sel_servicio").append(`<option value='${item.Code}'>${item.Description}</option>`);
+           
+            jsonLocation.push(item); 
+      
+          });
+          console.log("json",jsonLocation)  
+
+        //   if(id_garita_golbal!=0)
+        //     $('#sel_servicio').val(id_garita_golbal);
+        }).fail(function( jqXHR, textStatus, errorThrown ) {
+              
+            //showNotification("Por favor Verifique su conexión a internet y vuelva a intentarlo.")
+            //console.log(errorThrown)
+            $("#sel_servicio").hide(); 
+       });;
+
+       //alert("fin");
+    }
+
+
+
+    function postAuditor
+
+
+    //-----------------------------------------------------------------------------------------------------------------------------------------------------//
+ 
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <!-- Lib Staticas -->        
+<script src="js/jquery-3.4.1.js"></script> 
+<script src="js/apiRoute.js"></script>
+
+
+
+
+ <!-- AQUI ESTA EL LLAMADO E IMPLEMENTACION -->
+<script>pruebaServicio(servicio, apiKeyx, apiUrlAuditoria, getSedeAllAuditoria,metodoHttp, metodoAjax)</script>
+</html>

@@ -1,0 +1,215 @@
+<link rel="stylesheet" href="./view/ssoma/ssoma.css">
+<link rel="stylesheet" href="./css/pagination.css">
+<div class="row justify-content-center">
+    <div class="col-12">
+        
+        <!-- start filtro -->
+        <div class="row mt-4 align-items-center">
+            <div class="col-8">
+                
+                <div class="row align-items-center">
+                    <!-- sel unidad de negocio-->
+
+                    <div class="col-2 py-2" >
+
+                            <label for="sel_unidad_organizativa_evaluacion" class="textoLabelFiltrosCA">Unidad Organizativa </label>
+                                <select name="sel_unidad_organizativa_evaluacion" class="form-control select-filtroCA Patch_selectCA" id="sel_unidad_organizativa_evaluacion" onChange="vw_evaluar_auditorias_list.cargarSelectSedesFilter('sel_sede_evaluacion')"  style="padding: 0px !important;">
+                                    <option value="" disabled selected>Seleccione</option>
+                                </select>
+
+                    </div>
+
+                    <!-- date fecha desde-->
+                    <div class="col-2 py-2" >
+   
+                                <label for="tx_date_init_evaluacion" class="textoLabelFiltrosCA">Fecha Desde </label>
+                                <input type="text" class="form-control bg-white" id="tx_date_init" autocomplete="off" placeholder="Desde" readonly onChange="vw_evaluar_auditorias_list.validarFechas()">
+
+                    </div>
+
+                    <!-- date fecha hasta-->
+                    <div class="col-2 py-2" >
+
+                                <label for="tx_date_fin_evaluacion" class="textoLabelFiltrosCA">Fecha Fin </label>
+                                <input type="text" class="form-control bg-white" id="tx_date_end" autocomplete="off" placeholder="Desde" readonly onChange="vw_evaluar_auditorias_list.validarFechas()">
+
+                    </div>
+
+                    <!-- sel sede-->
+                    <div class="col-2 py-2" >
+
+                            <label for="sel_sede_evaluacion" class="textoLabelFiltrosCA">Sede </label>
+                                <select name="sel_sede_evaluacion" class="form-control select-filtroCA Patch_selectCA" id="sel_sede_evaluacion" style="padding: 0px !important;" required>
+                                    <option value="" selected disabled>Seleccionar</option>
+                                </select>
+
+                    </div>
+
+                    <!-- sel status auditoria-->
+                    <div class="col-2 py-2" >
+
+                                <label for="sel_estado_evaluacion" class="textoLabelFiltrosCA">Estado </label>
+                                <select name="sel_estado_evaluacion" class="form-control" id="sel_estado_evaluacion" style="padding: 0px !important;" required>
+                                </select>
+
+                    </div>
+
+                    <!-- btn buscar -->
+                    <div class="col-2 py-2" >
+ 
+                                <button type="button" onClick="vw_evaluar_auditorias_list.tablaDivsAuditorias();" name="jesus" id="buscarAuditoriasEvaluacion" class="btn btn-system-green">Buscar</button> <!-- btn-buscarCA -->
+                            </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="row aling-items-center">
+                    <div class="col-md-4 col-lg-3 d-flex align-items-center border-right justify-content-center">
+                        <img src="images/iconos/copia-1.svg" class="">
+                        <span class="cantidad ml-3" id="cantidad">0</span>
+                    </div>
+                    <div class="col-4" >
+                        <button type="button" id="new_auditoria" name="new_auditoria" onclick="handlerUrlhtml('contentGlobal','view/auditoria/evaluacionProgramaAuditoria.html');"  class="btn btn-system-celeste btn-block p-3"> <!--btn-newCA  float-right -->
+                            <span class="text-btn-newAuditoriaCA"><span class="textSpanMas"></span> Guardar</span>
+                        </button>
+                    </div>
+                    <div class="col-4" > <!-- onclick="vw_evaluar_auditorias_list.finalizeEvaluacion()" -->
+                        <button type="button" class="btn btn-system-green btn-block p-3" onclick="vw_evaluar_auditorias_list.confirmarEvaluacionAuditoria();searchAct=0;$('#modal-confirmacion-evaluacion').addClass('modal_confirmacion__active');">
+                            <span class="text-btn-newAuditoriaCA">Finalizar</span>
+                        </button>
+                    </div>
+                </div>
+            </div>   
+
+        </div>
+        <!-- end filtro -->
+
+        <!-- start listado -->
+
+        <div class="row justify-content-center mt-5">
+            <div class="col-12">
+                <div class="header-tabla py-3 px-2">
+                    <div class="row m-0 justify-content-between align-items-center text-center">
+                        <div class="col-2 text-center" style="font-size: 15px">ID Auditoria</div>
+                        <div class="col-1 text-center" style="font-size: 15px">Unidad Negocio</div>
+                        <div class="col-1 text-center" style="font-size: 15px">Sede</div>
+                        <div class="col-1 text-center" style="font-size: 15px">Norma</div>
+                        <div class="col-1 text-center" style="font-size: 15px">Tipo Auditoría</div>
+                        <div class="col-1 text-center" style="font-size: 15px">Fecha Inicio</div>
+                        <div class="col-1 text-center" style="font-size: 15px">Fecha Fin</div>
+                        <div class="col-1 text-center" style="font-size: 15px">Estado</div>
+                        <div class="col-1 text-center" style="font-size: 15px">Evaluaci&oacute;n</div>
+                        <!--div class="col-1 text-center" style="font-size: 15px">Asignar</div>
+                        <div class="col-1 text-center" style="font-size: 15px">Ver</div-->
+                        <div class="col-2 text-center" style="font-size: 15px">
+                            <div class="row">
+                                <div class="col-6 text-center" style="font-size: 15px">Aprobar</div>
+                                <div class="col-6 text-center" style="font-size: 15px">Observar</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--div class="body-tabla mt-4">
+                    <div class="content-registros-no-encontrados">
+                        <div>
+                            <img src="./images/newsistema/iconos/calendario-registros-vacios.svg" alt="">
+                            <p class="mt-4">No Tiene Cronogramas Creados</p>
+                        </div>
+                    </div>
+                </div-->
+                <div class="body-tabla-list" id="body-tabla-list">
+
+                </div>
+                <div id="pagination-container" class="mt-3"></div>
+            </div>
+        </div>
+
+        <!-- end   listado -->
+
+    </div>
+
+    <!-- START MODAL CONFIRMACION FINALIZAR EVALUACION -->
+    <div class="modal_confirmacion" id="modal-confirmacion-evaluacion">
+        <div class="modal_confirmacion__content">
+            <div class="modal_confirmacion__head">
+                <img src="./images/newsistema/iconos/informacion3.svg" alt="">
+            </div>
+            <div class="modal_confirmacion__body">
+                <div class="title">
+                    Está por finalizar la<br>evaluaci&oacute;n del programa
+                </div>
+                <div class="content">
+                    ¿Desea finalizar la evaluaci&oacute;n del programa <span id="nombre-programa">...</span>?
+                </div>
+                <div class="footer">
+                    <div class="d-flex">
+                        <div class="col-md-6 pl-0">
+                            <button class="btn_confirmar_modal" onclick="vw_evaluar_auditorias_list.finalizeEvaluacion();cerrarModal('modal-confirmacion-evaluacion')" >Confirmar</button>
+                        </div>
+                        <div class="col-md-6 pr-0">
+                            <button class="btn_cerrar_modal" onclick="cerrarModal('modal-confirmacion-evaluacion')">Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+    <!-- END MODAL CONFIRMACION FINALIZAR EVALUACION -->
+
+    <!-- START MODAL EXITO FINALIZAR EVALUACION -->
+    <div class="modal_confirmacion" id="modal-exito-evaluacion">
+        <div class="modal_confirmacion__content">
+            <div class="modal_confirmacion__head bg-green-lime-modal">
+                <img src="./images/iconos/correct-1.svg" alt="">
+            </div>
+            <div class="modal_confirmacion__body">
+                <div class="title">
+                    Se finalizó con éxito la<br> Evaluaci&oacute;n 
+                </div>
+                <div class="content">
+                    Puedes retornar a tu bandeja de <br> auditor&iacute;as
+                </div>
+                <div class="footer">
+                    <div class="d-flex">
+                        <div class="col-md-12 px-0">
+                            <button class="btn_confirmar_modal bg-green-lime-modal" onclick="cerrarModal('modal-exito-evaluacion');vw_evaluar_auditorias_list.direccionarAlListado();">De Acuerdo</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END MODAL EXITO FINALIZAR EVALUACION -->
+
+
+
+    <div class="modal_confirmacion" id="modal-confim" >
+        <div class="modal_confirmacion__content" style="width: 300px;">
+            <div class="modal_confirmacion__head " style="background-color: #34559c;">
+                <img src="./images/iconos/icon_observacion.svg" alt="">
+            </div>
+            <div class="modal_confirmacion__body py-4 px-5" >
+                <div class="title">
+                    <strong>Ingrese la observación de la auditor&iacute;a</strong>
+                </div>
+                <div class="content ">
+                    <textarea class="form-control text-left" name="text_observacion" id="text_observacion" cols="6" style="height:129px ;resize: none;" maxlength="200">
+                    </textarea>
+                </div>
+                <div class="footer">
+                    <div class="d-flex">
+                        <div class="col-md-6 pl-0">
+                            <button class="btn_confirmar_modal " id="btn-save-observar" name="btn-save-observar" style="background-color: #34559c;" onclick="vw_evaluar_auditorias_list.saveObservarAuditoriaEvaluacion();">Guardar</button>
+                        </div>
+                        <div class="col-md-6 pr-0">
+                            <button class="btn_cerrar_modal" onclick="cerrarModal('modal-confim')">Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+<script src="./js/paginator/pagination.js"></script>

@@ -1,0 +1,156 @@
+<div class="container-fluid">  
+ 
+  <div class="d-flex flex-row-reverse">
+    <div class="">
+    </div>      
+  </div>
+ 
+ <div class="row bg-white " style="padding: 25px; border-bottom: 1px solid #ebebeb;">
+    <!-- buscar -->
+      <div class="col-6" style="height: 50px !important">
+      </div>
+      <div class="col-3" style="height: 50px !important">
+      </div>
+      <div class="col-3 text-right pt-2" style="height: 50px !important">
+        <button type="button" class="btn btn-green-lime btn-rounded btn-raised " onclick="vw_requirement_condition.initRequerimentConditionRegister(0);"> REGISTRAR NUEVO </button>
+      </div>
+
+    </div>
+  
+  <div class="row h-100" style="overflow: auto; ">    
+   
+    <div class="col-md-12 " >
+      <table id="tb_requirements_conditions" name="tb_requirements_conditions" class="table responsive" style="width:100%">
+      </table>
+    </div>
+  </div>
+
+  <div class="modal fade "  id="modalShowPersonDetails" tabindex="-1" role="dialog" aria-labelledby="modalShowPersonDetails" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered rounded " role="document" style="max-width: 90%; z-index: 1030;">
+      <div class="modal-content rounded-4">
+        <div class="modal-header" style="padding:5px 24px 0!important">
+          <h5 class="modal-title"></h5>
+          <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close">
+            <span class="text-danger">Cerrar</span>
+          </button>
+        </div>
+        <div style="overflow: auto;height: 500px;overflow-x: hidden; ">
+          <div class="modal-body row" id="modal_show_person_details">
+
+          </div>
+        </div>
+        <div class="modal-footer" >
+          <div class="col-md-12 row"  id="modal_show_request_details_footer">
+          </div>
+        </div>
+      
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade "  id="modalRegisterRequerimentCondition" tabindex="-1" role="dialog" aria-labelledby="modalRegisterRequerimentCondition" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered rounded " role="document" style="max-width: 90%; z-index: 1030;">
+      <div class="modal-content rounded-4">
+        <div class="modal-header" style="padding:5px 24px 0!important">
+          <h5 class="modal-title"></h5>
+          <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close">
+            <span class="text-danger">Cerrar</span>
+          </button>
+        </div>
+        <div style="overflow: auto;height: 500px;overflow-x: hidden; ">
+          <div class="modal-body row" id="modalRegisterRequerimentConditionBody">
+            <div class="container-fluid">
+              <div class="row px-3">  
+                <main role="main" class="col-md-12 ml-sm-auto col-lg-12 ">
+                 <!-- <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">Dashboard</h1>
+                  </div> 
+                -->
+                  <div class="row" >
+                    <div class="col-md-12 " style="padding-right: 5px!important; padding-left: 0px!important">
+                      <div class="card  h-100 " style="box-shadow: none;">
+                        <div class="card-body  ">
+                          <form id="fm_visita" name="fm_visita" class="">
+                          <span class="titleMain">Datos</span>
+                          <div class="row">
+                           
+                          </div>           
+                          <div class="row">
+                            <div class="col">
+                              <div class="form-group">
+                                <label for="sel_area" class="bmd-label-static titleInput">Sede<span class="text-warning">*</span></label>    
+                                <select class="form-control" id="sel_location">
+                                  <option value="">Seleccionar</option>
+                                </select>
+                              </div>
+                            </div>
+
+                            <div class="col">
+                              <div class="form-group">
+                                <label for="sel_area" class="bmd-label-static titleInput">Area<span class="text-warning">*</span></label>    
+                                <select class="form-control" id="sel_area">
+                                  <option value="">Seleccionar</option>
+                                </select>
+                              </div>
+                            </div>
+
+                            <div class="col">
+                              <div class="form-group">
+                                <label for="sel_type" class="bmd-label-static titleInput">Tipo<span class="text-warning">*</span></label>              
+                                <select  class="form-control" name="sel_type" id="sel_type">
+                                  <option value="">Seleccionar</option>
+                                  <option value="1">Requermiento</option>
+                                  <option value="2">Prohibicion</option>
+                                </select>            
+                              </div>
+                            </div>
+
+                          </div>
+
+                          <div class="row">
+                          <div class="col">
+                            <div class="form-group">
+                              <label for="tx_name" class="bmd-label-static titleInput">Nombre<span class="text-warning">*</span></label>              
+                              <input type="email" class="form-control" id="tx_name" >              
+                            </div>
+                          </div>
+                            <div class="col">
+                              <div class="form-group">
+                                <label for="tx_description" class="bmd-label-static titleInput">Descripción</label>              
+                                <input type="text" class="form-control" id="tx_description" >              
+                              </div>
+                            </div>
+                            <div class="col" id="col_documento" style="display: none">
+                              <div class="form-group">
+                                <label for="tx_documento" class="bmd-label-static titleInput">Documento</label>              
+                                <input type="file" class="form-control" id="tx_documento" onkeyup="validaSoloNumeros(this.id)" >              
+                              </div>
+                            </div>
+                            <input type="hidden" id="h_id" value="0">
+                            <input type="hidden" id="base64" value="">
+                          </div>
+
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                <div class="text-center col-md-12 col-lg-12">
+                        <button type="button" class="btn btn-green-lime btn-raised btn-rounded" id="bt_saveRequirementCondition">Registrar</button>
+                        <button type="button" class="btn btn-green-lime btn-raised btn-rounded" id="bt_updateRequirementCondition">Actualizar</button>
+                    </div>
+                  </div>      
+                </main>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer" >
+          <div class="col-md-12 row"  id="modal_register_person_footer">
+          </div>
+        </div>
+      
+      </div>
+    </div>
+  </div>
+</div>

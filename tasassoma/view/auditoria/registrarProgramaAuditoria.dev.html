@@ -1,0 +1,534 @@
+<style type="text/css">
+
+    .labelMsgInfo{
+      width: 339px;
+      height: 52px;
+      font-size: 18px;
+      font-weight: bold;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.45;
+      letter-spacing: 0.26px;
+      text-align: center;
+      color: #3a3a3a;
+    
+    }
+    /*------------------------------------------- estilos para formulario del proyecto---------------------------------------------------*/
+   
+   
+   
+    /* etiqueta de formularios */
+        .lbFormsoma{
+            font-size: 14px;
+            font-weight: bold;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: normal;
+            letter-spacing: normal;
+            color: #000000;
+        }
+        
+        .btBuscar{
+        font-size: 15px;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.64;
+        letter-spacing: 0.15px;
+        color: #565933;
+        background-color:#d2d97b; 
+        width: 115px; 
+        height: 50px; 
+        border: 2px solid #d2d97b;
+        border-radius: 5px; 
+        }
+
+        .btBuscar:hover{
+        font-size: 15px;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.64;
+        letter-spacing: 0.15px;
+        color: #d2d97b;
+        background-color: #565933; 
+        width: 115px; 
+        height: 50px; 
+        border: 2px solid#565933;
+        border-radius: 5px; 
+        }
+
+        .iconBarraLateral {
+            width: 1px;
+            height: 51px;
+            border: solid 1px #bfbfbf;
+            background-color: #737373;
+        }
+
+
+        .btCrearProgramas{
+            width: 184px;
+            height: 50px;
+            border-radius: 4px;
+            border: 2px solid#05beee;
+            background-color: #05beee;
+            font-size: 15px;
+            font-weight: bold;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.64;
+            letter-spacing: 0.15px;
+            color: #ffffff;
+        }
+
+        
+        .btCrearProgramas:hover{
+            width: 184px;
+            height: 50px;
+            border-radius: 4px;
+            border: 2px solid#05beee;
+            background-color: #fff;
+            font-size: 15px;
+            font-weight: bold;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.64;
+            letter-spacing: 0.15px;
+            color: #05beee;
+        }
+
+
+        .lbTableSoma{
+            font-family:'Lucida Sans';
+            font-size: 14px;
+            font-weight:bold;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.64;
+            letter-spacing: 0.15px;
+
+            color: #000000;
+            /*border-radius: 4px;
+            border: solid 1px #cbcbcb;
+            background-color: #f2f2f2;  */
+        }
+
+        .lbTableSoma:hover{
+            font-family:'Lucida Sans';
+            font-size: 14px;
+            font-weight:bold;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.64;
+            letter-spacing: 0.15px;
+            color:#34559c;
+        }
+     /*------------------------------------------- estilos para formulario del proyecto---------------------------------------------------*/
+
+     /* @font-face{
+        font-family: "nombre-de-fuente";
+        src: url("ubicación-del-archivo-de-fuente");
+        font-weight: bold;
+        font-type: italic;
+        } */
+      .infoModal2 {
+            width: 241px;
+            height: 48px;
+            font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-size: 18px;
+            font-weight: bold;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.45;
+            letter-spacing: 0.26px;
+            color: #3a3a3a;
+            }
+            .infoModal3{
+                width: 241px;
+                height: 19px;
+                font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+                font-size: 15px;
+                font-weight: normal;
+                font-stretch: normal;
+                font-style: normal;
+                line-height: normal;
+                letter-spacing: normal;
+                color: #000000;
+            }
+
+
+            .infoModal4{
+
+                width: 186px;
+                height: 34.4px;
+                font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+                font-size: 27.1px;
+                font-weight: normal;
+                font-stretch: normal;
+                font-style: normal;
+                line-height: normal;
+                letter-spacing: normal;
+                color: #000000;
+
+
+            }
+
+</style>
+<!-- ##################################### temporalmente., mejorar esta implementación################################ -->
+
+<link rel="stylesheet" href="./view/ssoma/ssoma.css">
+<link rel="stylesheet" href="./css/pagination.css">
+<div class="row content-center pt-5" ><!-- row justify-content-center pt-5 style="border:red 1px solid;"--->
+    <table width='99%' border='0'>
+        <tr>
+            <td width='60%'>
+                <table  width='100%' border='0'>
+                    <tr>
+                        <td width='2%'>&nbsp;</td>
+                        <td width='20%'><label for=""  class="textoLabelFiltrosCA" >ID Programa</label></td>
+                        <td width='3%'>&nbsp;</td>
+                        <td width='20%'><label for="" class="textoLabelFiltrosCA" >Fecha Desde</label></td>
+                        <td width='3%'>&nbsp;</td>
+                        <td width='20%'><label for="" class="textoLabelFiltrosCA" >Fecha Hasta</label></td>
+                        <td width='3%'>&nbsp;</td>
+                        <td width='20%'><label for="" class="textoLabelFiltrosCA">Estado</label></td>
+                        <td width='11%'>&nbsp;</td>
+                        
+                    </tr>
+                    <tr>
+                        <td width='2%'>&nbsp;</td>
+                        <td width='20%'> <input id="tx_id_program" id="tx_id_program" type="text" class="form-control"></td>
+                        <td width='3%'>&nbsp;</td>
+                        <td width='20%'><input   type="text" id="tx_fecha_ini" name="tx_fecha_ini" class="form-control bg-white"  readonly></td>
+                        <td width='3%'><img src="images/iconos/calendario-3.svg" alt="Borrar Fecha" title="Borrar Fecha" style="cursor: pointer;"clickFechaIni() onclick="$('#tx_fecha_ini').val('');" ></td>
+                        <td width='20%'><input type="text" id="tx_fecha_fin" name="tx_fecha_fin"  class="form-control bg-white" readonly></td>
+                        <td width='3%'><img src="images/iconos/calendario-3.svg" alt="Borrar Fecha" title="Borrar Fecha"  style="cursor: pointer;"clickFechaFin() onclick="$('#tx_fecha_fin').val('');"></td>
+                        <td width='20%'>
+                            <select name="sel_estado" id="sel_estado" class="form-control select-filtroCA Patch_selectCA">
+                                <option value="" disabled selected></option>
+                            </select>
+                        </td>
+                        <td width='11%'></td>
+                        
+                    </tr>
+                </table>
+            </td>
+             <!-- ###################### la otra seccion de la tabla ##############################-->
+            <td width='1%'>&nbsp;</td>
+            <td width='10%'>
+                <button class="btn btn-system-green" id="bt_buscar_prog" name="bt_buscar_prog"  onclick=" searchAct=0;"  >Buscar</button>
+            </td>
+            <td width='10%'></td>
+            <td width='5%'>
+                <div class="px-4 border-right d-flex align-items-center justify-content-center" id="cantidad-programa" style="font-size: 25px;font-weight: bold;">
+                    <img src="./images/newsistema/iconos/registros.svg" alt=""  ><!-- style="cursor: pointer;" onclick="verModalxx();"-->
+                    <span class="cantidad ml-3" id="cantidad">0</span>
+                </div>
+            </td>
+            <td width='6%'></td>
+            <td width='15%'>
+                <button class="btn btn-system-celeste"  onclick=" document.getElementById('sel_sede').value = 0;   searchAct=0;$('#modal-save').addClass('modal_confirmacion__active')" style="padding-left: 0.8rem;padding-right: 0.8rem; font-size: 15px; font-weight: bold; font-stretch: normal;">
+                    <img src="./images/iconos/plus_.svg" alt="">
+                    <span class="ml-3">Crear Programa</span>
+                </button>
+            </td>
+            <td width='3%'></td>
+            <!-- ###################### la otra seccion de la tabla ##############################-->
+        </tr>
+    </table>
+    
+</div>
+
+<div class="row justify-content-center mt-5">
+    <div class="col-md-12">
+        <div class="header-tabla p-3">
+            <div class="row m-0 justify-content-between align-items-center">
+                <div class="col-md-1"  style="font-size: 15px">ID de Programa</div>
+                <div class="col-md-2"  style="font-size: 15px">Especialidad</div>
+                <div class="col-md-1"  style="font-size: 15px">Fecha de Creaci&oacute;n</div>
+                <div class="col-md-1"  style="font-size: 15px">N° de Correcciones</div>
+                <div class="col-md-1"  style="font-size: 15px">Evaluador</div>
+                <div class="col-md-2"  style="font-size: 15px">Fecha de Evaluaci&oacute;n</div>
+                <div class="col-md-1"  style="font-size: 15px">Estado</div>
+                <div class="col-md-2"  style="font-size: 15px">&nbsp;&nbsp;</div>
+                <!-- <div class="col-md-1" style="font-size: 13px">borrar</div> -->
+                <!-- <div class="col-md-1 " style="font-size: 10px"> &nbsp;&nbsp;</div> -->
+            </div>
+        </div>
+        <div class="body-tabla mt-4" id="bodyTablaSinPrograma" style="display: block;">
+            <div class="content-registros-no-encontrados">
+                <div>
+                    <img src="./images/newsistema/iconos/calendario-registros-vacios.svg" alt="">
+                    <p class="mt-4">No Tiene Cronogramas Creados</p>
+                </div>
+            </div>
+        </div>
+        <div class="body-tabla-list" id="body-tabla-list-programa">
+
+        </div>
+            <div id="pagination-container-programa" class="mt-3">
+                
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+<div class="modal_confirmacion" id="modal-save" >
+    <div class="modal_confirmacion__content" style="width: 472px;">
+        <div class="modal_confirmacion__head ">
+            <img style="width: 58px; height: 58px;" src="./images/newsistema/iconos/informacion1.svg" alt="">
+        </div>
+        <div class="modal_confirmacion__body py-4 px-5" >
+            <div class="title">
+                <strong>Seleccione especialidad para la
+                    creación del programa</strong>
+            </div>
+           
+                <table  width="100%"><tr><td  align="center">   
+                    <div class="content" style=" text-align: center; border:#c3c3c3 solid 1px; border-radius: 5px; height:68px; width:299px;  ">
+                        <table width ="100%">
+                            
+                            <tr ><td><div style="color:grey; font-size: 15.1px; padding-top: 8px;"> &nbsp; &nbsp;Especialidad</div></td></td></tr>
+                            <tr><td align="center" >
+                                 <select class="form-controlx" style="border: none !important; width:289px;" name="sel_sede" id="sel_sede" onchange="seleccionEspecialidadChange();">
+                                 </select></td></td>
+                            </tr>
+                        </table>
+                    </div>
+                   </td></tr>
+               </table>
+
+
+            <div class="footer">
+                <div class="d-flex">
+                    <div class="col-md-6 pl-0">
+                        <button class="btn_confirmar_modal" onclick="vw_secury_agent.register();">Confirmar</button>
+                    </div>
+                    <div class="col-md-6 pr-0">
+                        <button class="btn_cerrar_modal" onclick="cerrarModal('modal-save')">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal_confirmacion" id="modal-confirmacion">
+    <div class="modal_confirmacion__content">
+        <div class="modal_confirmacion__head">
+            <img src="./images/newsistema/iconos/informacion3.svg" alt="">
+        </div>
+        <div class="modal_confirmacion__body">
+            <div class="title">
+                Se guardará la inspección programada
+            </div>
+            <div class="content">
+                ¿Desea confirmar el guardado de la inspección?
+            </div>
+            <div class="footer">
+                <div class="d-flex">
+                    <div class="col-md-6 pl-0">
+                        <button class="btn_confirmar_modal" onclick="saveInspeccionConfirmar()">Confirmar</button>
+                    </div>
+                    <div class="col-md-6 pr-0">
+                        <button class="btn_cerrar_modal" onclick="cerrarModal('modal-confirmacion')">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 
+
+
+          <div class="modal fade"  id="modalExitoGuuardaProgramaAuditoria" tabindex="-1" role="dialog" aria-labelledby="ExitoIngresarAuditoriaModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered rounded" role="document" style="max-width: 300px; z-index: 1030; ">
+
+                <div class="modal-content rounded border-0" style=" background-color:rgba(0,0,0,.0001) !important; box-shadow: none;">
+                    <div style="overflow: hidden;height: 400px;overflow-x: hidden; ">
+                        <div class="modal-body" id="" style="padding: 0px;">
+                            <div class="col-sm-12 col-md-12" style="color:#575757c9; width: 100%; padding: 0px;">
+
+                                <div class="card border-0" style="padding-top:0px; box-shadow: none; width: 100%;">
+                                    <div class="card-header text-white" style="background:#d2d97b; height: 95px;">
+                                            <div class="d-flex justify-content-center">
+                                                <img src="images/iconos/correct-1.svg">
+                                            </div>
+                                    </div>
+
+                                    <div class="card-body" style="background: white; text-align: center !important;">
+                                        <div class="d-flex justify-content-center titulo-exito-ingreso-auditoriaCA" style="font-size: 18px;">
+                                            Se cre&oacute; la programaci&oacute;n
+                                        </div>
+                                        <div class="d-flex mb-2 justify-content-center titulo-confirmar-ingreso-auditoriaCA" style="font-size: 18px;">
+                                            de auditor&iacute;as con &eacute;xito
+                                        </div>
+                                        <div class="d-flex mx-0 px-0 justify-content-center pregunta-exito-ingreso-auditoriaCA">
+                                            El c&oacute;digo de la programaci&oacute;n es:
+                                        </div>
+
+                                        <div class="d-flex mx-0 px-0 justify-content-center pregunta-exito-ingreso-auditoriaCA">
+                                           &nbsp;
+                                        </div>
+                                       
+                                        <div id="CodNewProgramasx" class="d-flex mb-3 mx-0 justify-content-center titulo-exito-ingreso-auditoriaCA"  style="font-size: 25px;">
+                                            CALIDAD2020
+                                        </div>
+                                       
+                                        <div class="mt-3 mx-0">
+                                            <div class="d-flex mt-3 mx-0 justify-content-between">
+                                                <div class="">
+                                                    <button type="button" onClick="$('#modalExitoGuuardaProgramaAuditoria').modal('hide');" class="btn-exito-ingreso-auditoriaCA">De Acuerdo</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+       
+
+        <div class="modal fade"  id="modalExitoGuuardaProgramaAuditoria2" tabindex="-1" role="dialog" aria-labelledby="ExitoIngresarAuditoriaModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered rounded" role="document" style="max-width: 300px; z-index: 1030; ">
+
+                <div class="modal-content rounded border-0" style=" background-color:rgba(0,0,0,.0001) !important; box-shadow: none;">
+                    <div style="overflow: hidden;height: 360px;overflow-x: hidden; ">
+                        <div class="modal-body" id="" style="padding: 0px;">
+                            <div class="col-sm-12 col-md-12" style="color:#575757c9; width: 100%; padding: 0px;">
+
+                                <div class="card border-o" style="padding-top:0px; box-shadow: none; width: 100%;">
+                                    <div class="card-header text-white" style="background:#ff5a5a; height: 95px;">
+                                            <div class="d-flex justify-content-center">
+                                                <img src="images/iconos/informacion3.svg">
+                                            </div>
+                                    </div>
+                                        <div class="card-body" style="background: white;">
+                                          <table align="center" width= "100%" border="0" >
+                                              <tr>
+                                                  <td width="5%" >&nbsp;</td>
+                                                       <td width="80%" >
+                                                        <div class="d-flex justify-content-center titulo-exito-ingreso-auditoriaCA" style="font-size: 18px;">
+                                                            <b>ERROR!</b>
+                                                        </div>
+        
+                                                       </td>
+                                                  <td width="5%">&nbsp;</td>
+                                              </tr>
+
+                                              <tr>
+                                                <td width="5%" >&nbsp;</td>
+                                                     <td width="80%" >
+                                                         <div id="subTituloError" class="d-flex mb-2 justify-content-center titulo-confirmar-ingreso-auditoriaCA" style="font-size: 18px;">
+                                                               <b>auditorías con éxito</b>
+                                                         </div>
+                                                     </td>
+                                                <td width="5%">&nbsp;</td>
+                                               </tr>
+
+                                                <tr>
+                                                    <td width="5%" >&nbsp;</td>
+                                                        <td width="80%" align="center" >
+                                                            <div id="mensajeError" class="d-flex mx-0 px-0 justify-content-center pregunta-exito-ingreso-auditoriaCA">
+                                                                El código de la programación es:aaaaaaaaad dfdsfsdfdsf
+                                                                dsfsdfdsfsdfdsfdfdsfdf
+                                                                dfsdfsdfds
+                                                             </div>
+                                                        </td>
+                                                    <td width="5%">&nbsp;</td>
+                                                </tr>
+
+
+                                                <tr>
+                                                    <td width="5%" >&nbsp;</td>
+                                                        <td width="80%" >
+                                                            <div class="d-flex mx-0 px-0 justify-content-center pregunta-exito-ingreso-auditoriaCA">
+                                                                &nbsp;
+                                                             </div>
+                                                        </td>
+                                                    <td width="5%">&nbsp;</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td width="5%" >&nbsp;</td>
+                                                        <td width="80%" >
+                                                            <div  class="d-flex mb-3 mx-0 justify-content-center titulo-exito-ingreso-auditoriaCA" >
+                                                                <button type="button" onClick="$('#modalExitoGuuardaProgramaAuditoria2').modal('hide');" class="btn_confirmar_modal bg-danger" style="color: #fff" >De Acuerdo</button>
+                                                            </div>
+                                                        </td>
+                                                    <td width="5%">&nbsp;</td>
+                                                </tr>
+                                              
+
+
+                                          </table>
+                                        </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+       
+
+
+
+<script src="./js/paginator/pagination.js"></script>
+          
+<!-- ##################################mejorar este codigo e implementacion html, por la version mejoradas de la modales ###########-->
+<!-- <script src="./view/ssoma/programar-inspeccion/index.js"></script> -->
+<script>
+    
+    // $('.logoCompany').text('Programar Inspecciones')
+    // $('#regresar').css('display','block')
+    // $('#regresar').click(function (){
+    //     handlerUrlhtml('contentGlobal','view/ssoma/menu.html','externalAccessRequestList');
+    // })
+    // let select_covv = mdc.select.MDCSelect.attachTo(document.querySelector('.demo-menu'));
+    // let unidad_de_negocio = mdc.select.MDCSelect.attachTo(document.querySelector('.unidad-de-negocio'));
+    // let sedeModal = mdc.select.MDCSelect.attachTo(document.querySelector('.sede'));
+    // let areaInspeccion = mdc.select.MDCSelect.attachTo(document.querySelector('.areaInspeccion'));
+    // mdc.textField.MDCTextField.attachTo(document.querySelector('.area-de-la-inspeccion'));
+    // getListForm();
+
+
+</script>
+
+
+<!-- function showLoading()
+{
+
+    $(window).resize(function(){
+        $('#spinnerLoading').css({
+             position:'absolute',
+             //zIndex:'9999',
+             left: ($(window).width() - $('#spinnerLoading').outerWidth())/2,
+             top: ($(window).height() - $('#spinnerLoading').outerHeight())/2
+        });
+
+  });
+                      
+   $(window).resize();
+                       $(function() {
+      //$( "#divLAstPositions" ).draggable();
+      });
+
+    $("#spinnerLoading").fadeIn()
+}
+function hideLoading()
+{
+    $("#spinnerLoading").fadeOut()
+} -->

@@ -1,0 +1,159 @@
+<div class="container-fluid">
+  <div class="row px-3">	
+    <main role="main" class="col-md-12 ml-sm-auto col-lg-12 ">
+     <!-- <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Dashboard</h1>
+      </div> 
+    -->
+      <div class="row" >
+        <div class="col-md-12 " style="padding-right: 5px!important; padding-left: 0px!important">
+          <div class="card  h-100 " style="box-shadow: none;">
+            <div class="card-body  ">
+              <form id="fm_visita" name="fm_visita" class="">
+          
+	            <div class="row">
+
+	              <div class="col">
+	                <div class="form-group">
+	                  <label for="tx_business_dni" class="bmd-label-static titleInput">DOCUMENTO DE IDENTIDAD<span class="text-warning">*</span></label>              
+	                  <input type="text" class="form-control" id="tx_business_dni" maxlength="10" >              
+	                </div>
+	              </div>
+
+	              <div class="col">
+	                <div class="form-group">
+	                  <label for="tx_business_nombre" class="bmd-label-static titleInput">Nombre<span class="text-warning">*</span></label>              
+	                  <input type="text" class="form-control" id="tx_business_nombre" >              
+	                </div>
+	              </div>
+	            <div class="col">
+	              <div class="form-group">
+	                <label for="tx_business_apelllido" class="bmd-label-static titleInput">Apellido<span class="text-warning">*</span></label>              
+	                <input type="email" class="form-control" id="tx_business_apelllido" >              
+	              </div>
+	            </div>
+	             
+	            
+	            </div>
+	            <div class="row">
+
+	              <div class="col">
+	                <div class="form-group">
+	                  <label for="tx_business_mobile" class="bmd-label-static titleInput">Teléfono</label>              
+	                  <input type="text" class="form-control" id="tx_business_mobile" >              
+	                </div>
+	              </div>
+	            <div class="col">
+	              <div class="form-group">
+	                <label for="tx_business_email" class="bmd-label-static titleInput">Email<span class="text-warning">*</span></label>              
+	                <input type="email" class="form-control" id="tx_business_email">              
+	              </div>
+	            </div>
+
+	            <div class="col"><div class="form-group">
+	              <label for="tx_business_client_flag" class="bmd-label-static titleInput">Usuario<span class="text-warning">*</span></label>              
+	              <input type="text" class="form-control col-sm-12" id="tx_user_responsable" >
+	              
+	            </div>
+	          </div>
+	             
+	            
+	            </div>
+
+	            <div class="row">
+	              <div class="col">
+	              	<div class="form-group">
+	                  <label for="text" class="bmd-label-static titleInput">Cargo<span class="text-warning">*</span></label> 
+	                  <input type="text" class="form-control col-sm-12" id="tx_job"  >
+	                <!-- <small id="dateSystem" class="text-help colorLight"></small> -->
+	                </div>
+	          	  </div>              
+	              <div class="col">
+	              	<div class="form-group">
+	                  <label for="tx_user_pass_1" class="bmd-label-static titleInput">Contraseña<span class="text-warning">*</span></label> 
+	                  <input type="password" class="form-control col-sm-12" id="tx_user_pass_1"  >
+	                <!-- <small id="dateSystem" class="text-help colorLight"></small> -->
+	                </div>
+	          	  </div>
+	              <div class="col">
+	                <div class="form-group">
+	                  <label for="tx_user_pass_2" class="bmd-label-static titleInput">Repetir Contraseña<span class="text-warning">*</span></label> 
+	                  <input type="password" class="form-control col-sm-12" id="tx_user_pass_2"   >            
+	                </div>
+	              </div>
+	            </div>
+	            <div class="row">
+	              <div class="col-md-4 rol_alltasa">
+					  <label for="sel_type" class="bmd-label-static titleInput">Tipo<span class="text-warning">*</span></label> 
+	                  <select class="form-control" id="sel_type"><option value="0">Seleccionar</option><option value="1">Médico</option><option value="2">Externo</option></select>
+	              </div>
+	              <div class="col-md-4 rol_alltasa" id="contenedor_sel_company" style="display:none">
+					  <label for="sel_company" class="bmd-label-static titleInput">Empresa<span class="text-warning">*</span></label> 
+	                  <select class="form-control" id="sel_company"><option value="0">Seleccionar</option></select>
+				  </div>
+				  
+				  <div class="col-md-4 rol_alltasa" id="contenedor_cmp" style="display:none">
+					<label for="tx_cmp" class="bmd-label-static titleInput">CMP<span class="text-warning"></span></label> 
+					<input class="form-control" id="tx_cmp" name="tx_cmp" maxlength="10">
+				  </div>
+
+	              <div class="col-md-4 colaborator">
+					  <label for="sel_status" class="bmd-label-static titleInput">Estado<span class="text-warning">*</span></label> 
+	                  <select class="form-control" id="sel_status"><option value="1">Activo</option><option value="0">Inactivo</option></select>
+	              </div>
+	            </div>
+	            <div class="row">
+				  <div class="col-md-4">
+				  	<div class="form-group">
+				  		<div class="col-12 row">
+				  			<label for="tx_image" class="bmd-label-static titleInput">Imagen</label>
+				  		</div>
+				  		<div class="col-12 row">
+				  			<img id="tx_preview" src="" width="auto" style="max-width: 100%" height="auto" hidden>
+				  		</div>
+						<div class="col-12 row">
+				  			<input type="file" class="form-control col-sm-12" id="tx_image" accept="image/*">
+				  		</div>
+				  		
+				  	</div>
+				  </div>
+	            	<div class="col" hidden>
+	            		<input type="hidden" name="tx_hidden_person_id" id="tx_hidden_person_id">
+	            	</div>
+	            	<div class="col" hidden>
+	            		<input type="hidden" name="tx_hidden_attribute1" id="tx_hidden_attribute1">
+	            	</div>
+				</div>
+				
+				<div class="row mt-5">
+					<div class="col-md-3">
+						<label for="tx_created" class="bmd-label-static titleInput">Creado por</label> 
+						<input class="form-control" id="tx_created" name="tx_created" disabled>
+					</div>
+					<div class="col-md-3" id="contenedor_cmp">
+						<label for="tx_created_date" class="bmd-label-static titleInput">Creado<span class="text-warning"></span></label> 
+						<input class="form-control" id="tx_created_date" name="tx_created_date" disabled>
+					  </div>  
+					<div class="col-md-3">
+						<label for="tx_updated" class="bmd-label-static titleInput">Modificado por</label> 
+						<input class="form-control" id="tx_updated" name="tx_updated" disabled>
+					</div>
+					
+					<div class="col-md-3" id="contenedor_cmp">
+					  <label for="tx_updated_date" class="bmd-label-static titleInput">Última modificación<span class="text-warning"></span></label> 
+					  <input class="form-control" id="tx_updated_date" name="tx_updated_date" disabled>
+					</div>  					
+				  </div>
+              </form>
+            </div>
+          </div>
+        </div>
+		<div class="text-center col-md-12 col-lg-12">
+            <button type="button" class="btn btn-green-lime btn-raised btn-rounded" id="bt_register_external_person">Registrar</button>
+            <button type="button" class="btn btn-green-lime btn-raised btn-rounded" id="bt_update_external_person">Actualizar</button>
+        </div>
+      </div>      
+    </main>
+  </div>
+
+</div>

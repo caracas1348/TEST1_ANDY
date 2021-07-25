@@ -1,0 +1,1296 @@
+<link rel="stylesheet" href="./view/ssoma/ssoma.css">
+<link rel="stylesheet" href="./css/pagination.css">
+
+<style>
+    .logoCompany{
+        color: #707070 !important;
+        /*background-color: white !important;
+        border-radius: 25px !important;*/
+        font-size: 20px !important;
+        padding-top: 1px !important;
+        padding-left: 25px !important;
+        height: 43px !important;
+        width: 480px !important;
+        top: 15px !important;
+        left: 60px !important;
+        font-family: "Frutiger-Normal" !important;
+    }
+
+   .ui-autocomplete {
+    max-height: 100px;
+    overflow-y: auto;
+    /* prevent horizontal scrollbar */
+    overflow-x: hidden;
+  }
+  /* IE 6 doesn't support max-height
+   * we use height instead, but this forces the menu to always be this tall
+   */
+  * html .ui-autocomplete {
+    height: 100px;
+  }
+
+.custom-radio-checkbox__text{
+    /*font-family: "ITCAvantGardeStd-Demi" !important;*/
+    font-weight: normal !important;
+}
+
+
+.text-clear {
+    border-radius: 0.375em 0 0 0.375em !important;
+}
+.button-search {
+    border-radius: 0 !important;
+    width: 10px;
+    padding: .375rem .1rem !important;
+}
+.button-clear {
+    border-radius: 0 0.375em 0.375em 0 !important;
+    width: 10px;
+    padding: .375rem .1rem !important;
+}
+.card-body3 {
+    padding: 0rem 0.75rem;
+}
+.Title-Ssoma {
+    margin-bottom: 0.1rem !important;
+}
+.mdc-select .mdc-select__anchor{
+    height: 45px !important;
+}
+.mdc-select__selected-text{
+    font-size: 13px !important;
+    transform: translateY(-7px) !important;
+}
+
+.mdc-text-field--outlined {
+    height: 45px !important;
+    overflow: visible;
+}
+
+.modal-FormObservacion {
+    align-content: center;
+    width: 1000px;
+    height: 38rem;
+    background-color: rgb(255, 255, 255) !important;
+}
+
+.card-header-FormObservacion {
+    width: 1000px;
+    height: 61px;
+    background-color: #008d36 !important;
+    font-family: "ITCAvantGardeStd-Demi" !important;
+    font-weight: normal !important;
+}
+
+.btn-save-observaacion {
+    width: 82px;
+    height: 34px;
+    border-radius: 4px;
+    background-color: #254373;
+    border: 1.1px solid #254373;
+    font-family: "ITCAvantGardeStdBk" !important;
+    font-weight: normal !important;
+    /* border: 1.1px solid #61b4f9; */
+}
+.scroll-blue{
+    overflow-y: scroll;
+}
+.scroll-blue::-webkit-scrollbar{
+    width: 10px;
+}
+.scroll-blue::-webkit-scrollbar-thumb {
+    background-color: #34559c;
+}
+
+.titleConfirm{
+    font-family: "ITCAvantGardeStdBk" !important;
+}
+
+.preloader {
+  width: 70px;
+  height: 70px;
+  border: 10px solid #eee;
+  border-top: 10px solid #666;
+  border-radius: 50%;
+  animation-name: girar;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+@keyframes girar {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.btn-warning2{
+    background-color: #deee05;
+    width: 82px;
+    height: 34px;
+    border-radius: 4px;
+    border: solid 0.8px #ffffff;
+}
+
+.btn-default{
+    background-color: #fff !important;
+    color: black !important;
+}
+
+.btn-default2{
+    background-color: #61b4f9;
+    width: 82px;
+    height: 34px;
+    border-radius: 4px;
+    border: solid 0.8px #61b4f9;
+    color: white !important;
+     font-family: "ITCAvantGardeStdBk" !important;
+    font-weight: normal !important;
+}
+
+.textWhite{
+    color: white !important;
+}
+
+.textCeleste{
+    color: #61b4f9 !important;
+}
+
+.btn-formAuditor{
+    /*background-color: #254373 !important;*/
+    border: solid 1px #254373 !important;
+    font-family: "ITCAvantGardeStd-Demi" !important;
+    font-weight: normal !important;
+}
+
+.btn-primary-check{
+    background-color: #254373 !important;
+    color: white !important;
+}
+
+.detalle-formauditor{
+    font-family: "ITCAvantGardeStd-Demi" !important;
+    font-weight: normal !important;
+}
+
+.Rol-en-Auditora{
+    font-family: "ITCAvantGardeStd-Demi" !important;
+    font-weight: normal !important;
+}
+
+.mdc-select__selected-text{
+    color: #000 !important;
+}
+
+ul.ui-autocomplete.ui-menu { width: 400px !important; }
+
+</style>
+
+<div id="excel" class="export" style="display: block;">
+    <div class="row">
+        <div class="col-12">
+            <a href="#" id="ListadoExcelOP" style="display:none"></a><! PARA DESCARGAR EL EXCEL DEL LISTADO>
+        </div>
+
+    </div>
+</div>
+
+<input type="hidden" id="ObservacionId">
+<input type="hidden" id="Codigo_Reportante_Selected">
+<input type="hidden" id="Codigo_Reportante_Temp">
+        <!-- start filtro -->
+        <div class="modulosTasa" style="background-color:white;" >
+            <div class="modulosTasaInt">
+                <table width = "100%" border="0">
+                    <tr>
+                        <td colspan="11"  align="center"><br><br></td>
+                    <tr>
+                    <tr>
+                        <td width = "11%" align="center" style="position: relative;">
+                            <div>
+                                <table width ="100%" align="center">
+                                    <tr><td > <label for="" class="lbFormsoma">Tipo</label></td></tr>
+                                    <tr><td align="center" >
+                                        <select name="" id="Selec-TipoObservacion-Filtro" class="form-control">
+                                            <option value="0" selected>Todos</option>
+                                        </select>
+                                    </td></tr>
+                                </table>
+                            </div>
+                        </td>
+                        <td width="1%">&nbsp;</td>
+                        <td width = "10%" align="center" style="position: relative;">
+                            <div>
+                                <table width ="100%" align="center">
+                                    <tr><td > <label for="" class="lbFormsoma">Sede</label></td></tr>
+                                    <tr><td align="center" >
+                                        <select name="Selec-Sede-Filtro"  id="Selec-Sede-Filtro" class="form-control" onchange="evSelectSedeFiltroChange()">
+                                            <option value="0" selected>Todos</option>
+                                        </select>
+                                    </td></tr>
+                                </table>
+                            </div>
+                        </td>
+                        <td width="1%">&nbsp;</td>
+                        <td width = "10%" align="center" style="position: relative;">
+                            <div>
+                                <table width ="100%" align="center">
+                                    <tr><td > <label for="" class="lbFormsoma">Embarcación</label></td></tr>
+                                    <tr><td align="center" >
+                                        <select name="Selec-Embarcacion-Filtro" id="Selec-Embarcacion-Filtro" class="form-control" onchange="evSelectEmbarcacionFiltroChange()">
+                                            <option value="0" selected>Todos</option>
+                                        </select>
+                                    </td></tr>
+                                </table>
+                            </div>
+                        </td>
+                        <td width="1%">&nbsp;</td>
+
+                        <td width = "10%" align="center" style="position: relative;">
+                            <div>
+                                <table width ="100%" align="center">
+                                    <tr><td > <label for="" class="lbFormsoma">Fecha Desde</label></td></tr>
+                                    <tr><td align="center" >
+                                        <input  type="text" id="txt_date_start" name="txt_date_start"  readonly class="form-control bg-white " >
+                                    </td>
+                                    <td id='col1-1-4' width ="5%">
+                                        <img src="images/iconos/calendario-3.svg"  style="cursor: pointer;margin-left: -15px;"  onclick="$('#txt_date_start').val('');">
+                                    </td>
+                                </tr>
+                                </table>
+                            </div>
+                        </td>
+                        <td width="1%">&nbsp;</td>
+                        <td width = "10%" align="center" style="position: relative;">
+                            <div>
+                                <table width ="100%" align="center">
+                                    <tr><td > <label for="" class="lbFormsoma">Fecha Hasta</label></td></tr>
+                                    <tr><td align="center" >
+                                        <input  type="text" id="txt_date_end" name="txt_date_end" readonly class="form-control bg-white ">
+                                    </td>
+                                    <td id='col1-1-4' width ="5%">
+                                        <img src="images/iconos/calendario-3.svg"  style="cursor: pointer;margin-left: -15px;" onclick="$('#txt_date_end').val('');">
+                                    </td></tr>
+                                </table>
+                            </div>
+                        </td>
+                        <!-- <td width="1%">&nbsp;</td>
+                        <td width = "10%" align="center" style="position: relative;">
+                            <div>
+                                <table width ="100%" align="center">
+                                    <tr><td > <label for="" class="lbFormsoma">Estado</label></td></tr>
+                                    <tr><td align="center" >
+                                        <select name="0" id="Selec-Estado-Filtro" class="form-control">
+                                            <option value="" selected>Todos</option>
+                                        </select>
+                                    </td></tr>
+                                </table>
+                            </div>
+                        </td> -->
+                        <td class="HiddenReportante" width="1%">&nbsp;</td>
+                        <td class="HiddenReportante" width = "11%" align="center" style="position: relative;">
+                            <div>
+                                <table width ="100%" align="center">
+                                    <tr><td > <label for="" class="lbFormsoma">Reportante</label></td></tr>
+                                    <tr><td align="center" >
+                                        <select name="" id="Selec-Reportante-Filtro" class="form-control">
+                                            <option value="" selected>Todos</option>
+                                        </select>
+                                    </td></tr>
+                                </table>
+                            </div>
+                        </td>
+                        <td width="1%">&nbsp;</td>
+
+                        <td width = "10%" align="center" style="position: relative;">
+                            <div>
+                                <table width ="100%" align="center">
+                                    <tr><td > <label for="" class="lbFormsoma">Criticidad</label></td></tr>
+                                    <tr><td align="center" >
+                                        <select name="Selec-Criticidad-Filtro" id="Selec-Criticidad-Filtro" class="form-control">
+                                            <option value="0" selected>Todos</option>
+                                        </select>
+                                    </td></tr>
+                                </table>
+                            </div>
+                        </td>
+                        <td width="1%">&nbsp;</td>
+
+                        <td width = "5%" align="center">
+                            <button class="btn btn-system-green" style="padding: 10px;" onclick="fnCargarGrid();fnCargarReportantes();">Buscar</button>
+                        </td>
+                        <td width = "1%" align="center">
+                        </td>
+                        <td width = "2%" align="center">
+                            <img src="images/iconos/nPrograma.svg" onclick="fnDownloadExcelSP2()" height="30px" style="cursor: pointer;">
+                        </td>
+
+
+                        <td width = "2%" align="center">
+
+                            <span id="cantidad" class="h3 mute d-none" style="color:#757575;font-weight: bold; font-family: ITCAvantGardeStd-Demi !important;">0</span><br><small class="text-gray" style="font-size: 12px; color:#757575;font-weight: bold;"></small>
+
+                        </td>
+                        <td width = "1%" align="center">
+                            <div class="iconBarraLateral"></div>
+                        </td>
+                        <td width = "10%" align="center">
+                            <div style="text-align: right; width: 100%; margin-right: 0px;">
+                                <button class="btn btn-system-celeste" style="font-size: 15px; padding: 10px;"  onclick="fnAbrirModalMantenimiento()">
+                                    <img src="./images/iconos/plus_.svg" alt="">
+                                    <span class="ml-1">Crear Observación</span>
+                                </button>
+                            </div>
+                        </td>
+
+                    </tr>
+
+                                </table>
+
+
+            </div>
+        </div>
+
+        <!-- end filtro -->
+
+<div class="row justify-content-center mt-5 mb-4">
+    <div class="col-md-12">
+        <div class="header-tabla p-3" style="font-size: 15px">
+            <div class="row m-0 justify-content-between d-none" id="tbReportante">
+
+                <div class="col-md-4 text-center row">
+                    <div class="col-md-6 fontITCA">ID Observación</div>
+                    <div class="col-md-6 fontITCA">Tipo</div>
+                </div>
+
+                <div class="col-md-2 text-center row">
+                    <div class="col-md-6 fontITCA">Sede</div>
+                    <div class="col-md-6 fontITCA">Embarcación</div>
+                </div>
+
+                <div class="col-md-2 text-center row">
+                    <div class="col-md-8 fontITCA">Área</div>
+                    <div class="col-md-4 fontITCA">Fecha</div>
+                </div>
+
+                <div class="col-md-4 text-center row">
+                    <div class="col-md-4 fontITCA">Estado</div>
+                    <div class="col-md-6 fontITCA">Criticidad</div>
+                    <div class="col-md-2 fontITCA">Ver</div>
+                </div>
+            </div>
+            <div class="row m-0 justify-content-between d-none" id="tbReportanteLider">
+
+                <div class="col-md-3 text-center row">
+                    <div class="col-md-6 fontITCA">ID Observación</div>
+                    <div class="col-md-6 fontITCA">Tipo</div>
+                </div>
+
+                <div class="col-md-2 text-center row">
+                    <div class="col-md-6 fontITCA">Sede</div>
+                    <div class="col-md-6 fontITCA">Embarcación</div>
+                </div>
+
+                <div class="col-md-2 text-center row">
+                    <div class="col-md-8 fontITCA">Área</div>
+                    <div class="col-md-4 fontITCA">Fecha</div>
+                </div>
+
+                <div class="col-md-2 text-center row">
+                    <div class="col-md-5 fontITCA">Estado</div>
+                    <div class="col-md-7 fontITCA">Reportante</div>
+                </div>
+
+                <div class="col-md-1 text-center row">
+                    <div class="col-md-12 fontITCA">Criticidad</div>
+                </div>
+
+                <div class="col-md-2 text-center row">
+                    <div class="col-md-4 fontITCA">Editar</div>
+                    <div class="col-md-4 fontITCA">Ver</div>
+                    <div class="col-md-4 fontITCA">Eliminar</div>
+                </div>
+            </div>
+        </div>
+        <div class="body-tabla-loader text-center py-3" id="body-tabla-loader">
+            <div class="spinner-border text-primary"></div>
+            <p class="text-center">Buscando resultados ....</p>
+        </div>
+        <div class="body-tabla mt-4 d-none" id="body-tabla-Vacio">
+            <div class="content-registros-no-encontrados">
+                <div>
+                    <img src="./images/newsistema/iconos/calendario-registros-vacios.svg" alt="">
+                    <p class="mt-4">No tiene observaciones registradas</p>
+                </div>
+            </div>
+        </div>
+        <div class="body-tabla-list" id="body-tabla-list">
+
+        </div>
+        <div id="pagination-container" class="mt-3"></div>
+    </div>
+</div>
+
+
+
+
+<!-- Inicio: modal-mantenimiento-observacion -->
+<div class="modal fade " id="modal-mantenimiento-observacion" tabindex="-1" role="dialog"  data-backdrop="static" data-keyboard="false" aria-labelledby="modalAddCompanyTitle" aria-hidden="true" >
+    <div class="modal-dialog modal-dialog-centered rounded dialog-positionAU " style="max-width: 1000px !important;" role="document" >
+        <div class="modal-content rounded modal-FormObservacion " >
+            <div class="modal-header fix-header-modal">
+                <div class="card-header text-left text-white card-header-FormObservacion" >
+                    <div class="row">
+                        <div class="col-2">
+                        </div>
+                        <div id="txtHeadModalMantenimiento" class="col-7 text-center txtHeadModalAuditor lbFormsoma pt-1 px-0" style="color: #fff !important;">
+                        </div>
+                        <div class="col-3 txtHeadModalAuditor" style="text-align: right;">
+                            <button type="button" class="btn-save-observaacion" onclick="guardarObservacion();" id="btn_create_auditor" >
+                                <i class="txt-btn-close lbFormsoma textWhite" id="textoBotonGuardar">Finalizar</i> </button>
+                            <button type="button" class="btn-close-auditor" onclick="alertfinalizarObservacion();" id="btn-fin" >
+                                <i class="txt-btn-save lbFormsoma">Cambio de Estado</i> </button>
+                            <button type="button" class="btn-close-auditor" style="background-color: #61b4f9 !important; border-color: #61b4f9 !important;" onclick="fnAbrirModalPdf();" id="btn-pdf" >
+                                <i class="txt-btn-save lbFormsoma text-white">Descargar</i> </button>
+
+                            <button type="button" class="btn-default2" onclick="fnCerrarModalMantenimiento();" id="btn-cancelar2">
+                                <i class="txt-btn-save lbFormsoma textWhite">Cancelar</i> </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="modal-body dialog-position" id="bodymodalShowAuditor" style=" justify-content:space-around; align-content:center;">
+
+                <div class="card " style="border: 0px !important; border-radius: 10px; box-shadow: none;">
+                    <div class="card-body2">
+                        <form id="formAjax" action="" class="form floating-label" novalidate="novalidate">
+
+                            <input type="hidden" name="formObservacionId" id="formObservacionId" >
+                            <input type="hidden" name="formCodigo" id="formCodigo" >
+
+                            <div class="stepwizard " id="manipulation">
+                                <div class="d-flex justify-content-center stepwizard-row setup-panel">
+                                    <div class="col-6">
+                                        <a href="#step-1" id="step1" class="fontITCA">
+                                            <button type="button" class="btn-formAuditor w-100" href="#step-1" id="btn_step1">
+                                            Datos principales</button>
+                                        </a>
+                                    </div>
+                                    <div class="col-6">
+                                        <a href="#step-2" id="step2" class="fontITCA">
+                                            <button type="button" class="btn-formAuditor w-100" href="#step-2" id="btn_step2" >
+                                            Checklist</button>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row setup-content" id="step-1" style="display: block;">
+                                <div class="card-body2">
+                                    <div class="row p-0">
+                                        <div>
+                                            <p class="detalle-formauditor">Detalle</p>
+                                        </div>
+                                        <div class="col-10">
+                                            <hr>
+                                        </div>
+                                        <div class="pt-2 ml-5">
+                                            <img src="./images/iconos/menu.svg" class="menu-1-1">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card-body3">
+                                    <div class="row p-0">
+                                        <div class="col-6 px-0">
+                                            <p class="Rol-en-Auditora Title-Ssoma">Tipo de Observaci&oacute;n Preventiva <span class="obligatorio fontITCA">(*)</span></p>
+                                        </div>
+                                        <!-- <div class="col-6 px-0">
+                                            <p class="Rol-en-Auditora Title-Ssoma">Criticidad <span class="obligatorio">*</span></p>
+                                        </div> -->
+                                    </div>
+                                </div>
+                                <div class="card-body2">
+                                    <div class="row p-0">
+                                        <div class="col-6 px-0">
+
+                                            <p class="col-12 px-0 space_p">
+                                                <label class="custom-radio-checkbox">
+                                                    <!-- Input oculto -->
+                                                    <input class="custom-radio-checkbox__input"  type="radio" name="Tipo_Observacion" value="1" onchange="combo_box_1();">
+                                                    <!-- Imagen en sustitucion -->
+                                                    <span class="custom-radio-checkbox__show custom-radio-checkbox__show--radio"></span>
+                                                    <!-- Texto -->
+                                                    <span class="custom-radio-checkbox__text">Comportamiento Inseguro</span>
+                                                </label>
+                                            </p>
+                                            <p class="col-12 px-0 space_p">
+                                                <label class="custom-radio-checkbox">
+                                                    <!-- Input oculto -->
+                                                    <input class="custom-radio-checkbox__input"  type="radio" name="Tipo_Observacion" value="2" onchange="combo_box_1();">
+                                                    <!-- Imagen en sustitucion -->
+                                                    <span class="custom-radio-checkbox__show custom-radio-checkbox__show--radio"></span>
+                                                    <!-- Texto -->
+                                                    <span class="custom-radio-checkbox__text">Condición Sub-Estándar</span>
+                                                </label>
+                                            </p>
+                                        </div>
+                                        <!-- <div class="col-4 px-0">
+                                           <! CRITICIDAD START>
+                                           <div class="mdc-select mdc-select--filled demo-width-class cbo-criticidad w-100 text-left">
+                                                <div class="mdc-select__anchor">
+                                                    <span class="mdc-select__ripple mdc-select__ripple_Criticidad"></span>
+                                                    <span class="mdc-select__selected-text"></span>
+                                                    <span class="mdc-select__dropdown-icon">
+                                                      <svg
+                                                              class="mdc-select__dropdown-icon-graphic"
+                                                              viewBox="7 10 10 5">
+                                                        <polygon
+                                                                class="mdc-select__dropdown-icon-inactive"
+                                                                stroke="none"
+                                                                fill-rule="evenodd"
+                                                                points="7 10 12 15 17 10">
+                                                        </polygon>
+                                                        <polygon
+                                                                class="mdc-select__dropdown-icon-active"
+                                                                stroke="none"
+                                                                fill-rule="evenodd"
+                                                                points="7 15 12 10 17 15">
+                                                        </polygon>
+                                                      </svg>
+                                                    </span>
+                                                    <span class="mdc-floating-label lbFormsoma mdc-floating-label--float-above">Criticidad</span>
+                                                    <span class="mdc-line-ripple"></span>
+                                                </div>
+
+                                                <div class="mdc-select__menu demo-width-class mdc-menu mdc-menu-surface w-100">
+                                                    <ul class="mdc-list" id="ul-Criticidad">
+
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                           <! CRITICIDAD END>
+                                        </div> -->
+
+                                    </div>
+
+                                </div>
+
+
+
+                                <div class="card-body3">
+                                    <div class="row p-0">
+                                        <div>
+                                            <p class="Rol-en-Auditora Title-Ssoma fontITCA">Datos de la Observaci&oacute;n Preventiva</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                                <div>
+                                    <div class="d-flex mt-3">
+                                        <div class="col-md-3">
+                                            <div class="mdc-text-field mdc-text-field--outlined w-100 field-password fecha-operacion">
+                                                <input class="mdc-text-field__input lbFormsoma" name="txt_fecha_operacion" id="txt_fecha_operacion" type="text">
+                                                <div class="mdc-notched-outline">
+                                                    <div class="mdc-notched-outline__leading"></div>
+                                                    <div class="mdc-notched-outline__notch">
+                                                    <label for="txt_fecha_operacion" class="mdc-floating-label lbFormsoma  f-15px">Fecha de operaci&oacute;n</label>
+                                                    </div>
+                                                    <div class="mdc-notched-outline__trailing"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3" id="lastname-content">
+                                            <div class="mdc-text-field mdc-text-field--outlined w-100 field-password hora-operacion">
+                                                <input class="mdc-text-field__input lbFormsoma" name="tx_name" id="tx_name" type="time">
+                                                <div class="mdc-notched-outline">
+                                                    <div class="mdc-notched-outline__leading"></div>
+                                                    <div class="mdc-notched-outline__notch">
+                                                    <label for="tx_name" class="mdc-floating-label lbFormsoma timepicker f-15px">Hora de operaci&oacute;n</label>
+                                                    </div>
+                                                    <div class="mdc-notched-outline__trailing"></div>
+                                                </div>
+                                            </div>
+
+                                            <!-- <input id="basicExample" type="text" class="time ui-timepicker-input" autocomplete="off"> -->
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="mdc-select mdc-select--filled demo-width-class cbo-sede w-100 text-left">
+                                                <div class="mdc-select__anchor">
+                                                    <span class="mdc-select__ripple"></span>
+                                                    <span class="mdc-select__selected-text"></span>
+                                                    <span class="mdc-select__dropdown-icon">
+                                                      <svg
+                                                              class="mdc-select__dropdown-icon-graphic"
+                                                              viewBox="7 10 10 5">
+                                                        <polygon
+                                                                class="mdc-select__dropdown-icon-inactive"
+                                                                stroke="none"
+                                                                fill-rule="evenodd"
+                                                                points="7 10 12 15 17 10">
+                                                        </polygon>
+                                                        <polygon
+                                                                class="mdc-select__dropdown-icon-active"
+                                                                stroke="none"
+                                                                fill-rule="evenodd"
+                                                                points="7 15 12 10 17 15">
+                                                        </polygon>
+                                                      </svg>
+                                                    </span>
+                                                    <span class="mdc-floating-label lbFormsoma mdc-floating-label--float-above">Sede</span>
+                                                    <span class="mdc-line-ripple"></span>
+                                                </div>
+
+                                                <div class="mdc-select__menu demo-width-class mdc-menu mdc-menu-surface w-100">
+                                                    <ul class="mdc-list" id="ul-Sede">
+
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3" id="lastname-content">
+                                            <div class="mdc-select mdc-select--filled demo-width-class cbo-embarcacion w-100 text-left">
+                                                <div class="mdc-select__anchor">
+                                                    <span class="mdc-select__ripple"></span>
+                                                    <span class="mdc-select__selected-text"></span>
+                                                    <span class="mdc-select__dropdown-icon">
+                                                      <svg
+                                                              class="mdc-select__dropdown-icon-graphic"
+                                                              viewBox="7 10 10 5">
+                                                        <polygon
+                                                                class="mdc-select__dropdown-icon-inactive"
+                                                                stroke="none"
+                                                                fill-rule="evenodd"
+                                                                points="7 10 12 15 17 10">
+                                                        </polygon>
+                                                        <polygon
+                                                                class="mdc-select__dropdown-icon-active"
+                                                                stroke="none"
+                                                                fill-rule="evenodd"
+                                                                points="7 15 12 10 17 15">
+                                                        </polygon>
+                                                      </svg>
+                                                    </span>
+                                                    <span class="mdc-floating-label lbFormsoma mdc-floating-label--float-above">Embarcaci&oacute;n</span>
+                                                    <span class="mdc-line-ripple"></span>
+                                                </div>
+
+                                                <div class="mdc-select__menu demo-width-class mdc-menu mdc-menu-surface w-100">
+                                                    <ul class="mdc-list" id="ul-Embarcacion">
+
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex mt-3">
+                                        <div class="col-md-6">
+                                            <div class="mdc-select mdc-select--filled demo-width-class cbo-area w-100 text-left">
+                                                <div class="mdc-select__anchor">
+                                                    <span class="mdc-select__ripple"></span>
+                                                    <span class="mdc-select__selected-text"></span>
+                                                    <span class="mdc-select__dropdown-icon">
+                                                      <svg
+                                                              class="mdc-select__dropdown-icon-graphic"
+                                                              viewBox="7 10 10 5">
+                                                        <polygon
+                                                                class="mdc-select__dropdown-icon-inactive"
+                                                                stroke="none"
+                                                                fill-rule="evenodd"
+                                                                points="7 10 12 15 17 10">
+                                                        </polygon>
+                                                        <polygon
+                                                                class="mdc-select__dropdown-icon-active"
+                                                                stroke="none"
+                                                                fill-rule="evenodd"
+                                                                points="7 15 12 10 17 15">
+                                                        </polygon>
+                                                      </svg>
+                                                    </span>
+                                                    <span class="mdc-floating-label lbFormsoma mdc-floating-label--float-above">&Aacute;rea Responsable de la Correcci&oacute;n</span>
+                                                    <span class="mdc-line-ripple"></span>
+                                                </div>
+
+                                                <div class="mdc-select__menu demo-width-class mdc-menu mdc-menu-surface w-100">
+                                                    <ul class="mdc-list" id="ul-Area">
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mdc-select mdc-select--filled demo-width-class cbo-zona w-100 text-left">
+                                                <div class="mdc-select__anchor">
+                                                    <span class="mdc-select__ripple"></span>
+                                                    <span class="mdc-select__selected-text"></span>
+                                                    <span class="mdc-select__dropdown-icon">
+                                                      <svg
+                                                              class="mdc-select__dropdown-icon-graphic"
+                                                              viewBox="7 10 10 5">
+                                                        <polygon
+                                                                class="mdc-select__dropdown-icon-inactive"
+                                                                stroke="none"
+                                                                fill-rule="evenodd"
+                                                                points="7 10 12 15 17 10">
+                                                        </polygon>
+                                                        <polygon
+                                                                class="mdc-select__dropdown-icon-active"
+                                                                stroke="none"
+                                                                fill-rule="evenodd"
+                                                                points="7 15 12 10 17 15">
+                                                        </polygon>
+                                                      </svg>
+                                                    </span>
+                                                    <span class="mdc-floating-label lbFormsoma mdc-floating-label--float-above">Zona/Equipo</span>
+                                                    <span class="mdc-line-ripple"></span>
+                                                </div>
+
+                                                <div class="mdc-select__menu demo-width-class mdc-menu mdc-menu-surface w-100">
+                                                    <ul class="mdc-list" id="ul-Zona">
+
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex mt-3">
+                                        <!--<div class="col-md-2" id="codigo-reportante-content">
+                                            <div class="mdc-text-field mdc-text-field--outlined  w-100 field-password codigo-reportante">
+                                                <input class="mdc-text-field__input lbFormsoma numeros_js" name="Codigo_Reportante" id="Codigo_Reportante" type="text" minlength="8" maxlength="11">
+                                                <div class="mdc-notched-outline">
+                                                    <div class="mdc-notched-outline__leading"></div>
+                                                    <div class="mdc-notched-outline__notch">
+                                                    <label for="Codigo_Reportante" class="mdc-floating-label lbFormsoma  f-15px">Código</label>
+                                                    </div>
+                                                    <div class="mdc-notched-outline__trailing"></div>
+                                                </div>
+                                            </div>
+                                        </div>-->
+                                        <div class="col-md-6" id="reportante-content">
+                                            <div class="mdc-text-field mdc-text-field--outlined  w-100 field-password reportante">
+                                                <input class="mdc-text-field__input lbFormsoma autocompletecollaborator" name="Nombres_Reportante" id="Nombres_Reportante" type="text" >
+                                                <input name="Codigo_Reportante" id="Codigo_Reportante" type="hidden" >
+                                                <div class="loader" id="add_firtnameload_1" style="display:none"></div>
+                                                <input type="hidden" class="form-control" id="hid_Name_id_1" value="" >
+                                                <div class="mdc-notched-outline">
+                                                    <div class="mdc-notched-outline__leading"></div>
+                                                    <div class="mdc-notched-outline__notch">
+                                                    <label for="Nombres_Reportante" class="mdc-floating-label lbFormsoma  f-15px">Reportante <span class="obligatorio">*</span></label>
+                                                    </div>
+                                                    <div class="mdc-notched-outline__trailing"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+                                      <!--  <div class="col-md-2" id="codigo-reportado-content">
+                                            <div class="mdc-text-field mdc-text-field--outlined  w-100 field-password codigo-reportado">
+                                                <input class="mdc-text-field__input lbFormsoma" name="Codigo_Reportado" id="Codigo_Reportado" type="text">
+                                                <div class="mdc-notched-outline">
+                                                    <div class="mdc-notched-outline__leading"></div>
+                                                    <div class="mdc-notched-outline__notch">
+                                                    <label for="Codigo_Reportado" class="mdc-floating-label lbFormsoma  f-15px">Código (Opcional)</label>
+                                                    </div>
+                                                    <div class="mdc-notched-outline__trailing"></div>
+                                                </div>
+                                            </div>
+                                        </div>-->
+                                        <div class="col-md-6" id="reportado-content">
+                                            <div class="mdc-text-field mdc-text-field--outlined  w-100 field-password reportado">
+                                                <input name="Codigo_Reportado" id="Codigo_Reportado" type="hidden">
+                                                <input class="mdc-text-field__input lbFormsoma autocompletecollaborator" name="Nombres_Reportado" id="Nombres_Reportado" type="text">
+                                                <div class="loader" id="add_firtnameload_2" style="display:none"></div>
+                                                <input type="hidden" class="form-control" id="hid_Name_id_2" value="" >
+                                                <div class="mdc-notched-outline">
+                                                    <div class="mdc-notched-outline__leading"></div>
+                                                    <div class="mdc-notched-outline__notch">
+                                                    <label for="Nombres_Reportado" class="mdc-floating-label lbFormsoma  f-15px">Reportado (Opcional)</label>
+                                                    </div>
+                                                    <div class="mdc-notched-outline__trailing"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- <div class="d-flex mt-3 justify-content-center">
+                                        <div class="col-md-6">
+                                            <div class="mdc-form-field">
+                                                <div class="mdc-checkbox">
+                                                    <input type="checkbox"
+                                                            class="mdc-checkbox__native-control"
+                                                            id="responsable-de-area" name="responsable-de-area"/>
+                                                    <div class="mdc-checkbox__background">
+                                                        <svg class="mdc-checkbox__checkmark"
+                                                                viewBox="0 0 24 24">
+                                                            <path class="mdc-checkbox__checkmark-path"
+                                                                    fill="none"
+                                                                    d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
+                                                        </svg>
+                                                        <div class="mdc-checkbox__mixedmark"></div>
+                                                    </div>
+                                                    <div class="mdc-checkbox__ripple"></div>
+                                                </div>
+                                                <label for="responsable-de-area" class="m-0">Responsable del Área</label>
+                                            </div>
+                                        </div>
+                                    </div> -->
+                                </div>
+
+
+                            </div>
+                            <div class="row setup-content" id="step-2">
+                                    <div class="card-body2">
+                                        <div class="row p-0">
+                                            <div>
+                                                <p class="detalle-formauditor fontITCA">Detalle</p>
+                                            </div>
+                                            <div class="col-10">
+                                                <hr>
+                                            </div>
+                                            <div class="pt-2 ml-5">
+                                                <img src="./images/iconos/menu.svg" class="menu-1-1">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="width: 100%;"></div>
+
+                                    <div class="card-body3" style="width: 100%;">
+                                        <div class="row p-0">
+                                    <div id="contenido-detalle_1" class="scroll-blue" style="width: 100%; height: 327px;">
+                                        <div id="contenido-detalle_2">
+
+                                        </div>
+                                        <div id="contenido-detalle_3">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Fin: modal-mantenimiento-observacion -->
+
+
+
+
+
+
+
+<!-- Inicio: modal-pdf -->
+<div class="modal fade " id="modal-pdf" tabindex="-1" role="dialog"  data-backdrop="static" data-keyboard="false" aria-labelledby="modalAddCompanyTitle" aria-hidden="true" >
+    <div class="modal-dialog modal-dialog-centered rounded dialog-positionAU " style="width: 800px !important;" role="document" >
+        <div class="modal-content rounded modal-FormObservacion " >
+            <div class="modal-header fix-header-modal">
+                <div class="card-header text-left text-white card-header-FormObservacion" >
+                    <div class="row">
+                        <div class="col-3">
+                        </div>
+                        <div class="col-6 text-center txtHeadModalAuditor fontITCA" style="color: #fff !important;">
+                            Vista previa del documento
+                        </div>
+                        <div class="col-3 txtHeadModalAuditor" style="text-align: right;">
+                            <button type="button" class="btn-close-auditor" onclick="onDescargarPdf();" id="btn-cancelar" style="background-color: #61b4f9 !important;">
+                                <i class="txt-btn-save textWhite lbFormsoma">Descargar</i> </button>
+                            <button type="button" class="btn-save-observaacion" onclick="fnCerrarModalPdf();" id="btn_create_auditor" >
+                                <i class="txt-btn-close lbFormsoma">Cancelar</i> </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="modal-body dialog-position" id="bodymodalShowAuditor" style=" justify-content:space-around; align-content:center;">
+
+                <div class="card " style="border: 0px !important; border-radius: 10px; box-shadow: none;">
+                    <div class="card-body2">
+                        <iframe id="pdfView" type="application/pdf" width="900" height="450"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Fin: modal-pdf -->
+
+
+
+
+
+
+<div class="modal_confirmacion" id="modal-confirmacion-delete">
+    <div class="modal_confirmacion__content">
+        <div class="modal_confirmacion__head bg-danger">
+            <img src="./images/newsistema/iconos/informacion3.svg" alt="">
+        </div>
+        <div class="modal_confirmacion__body">
+            <div class="title mb-4 mt-3 fontITCA" id="mensajeEliminar">
+            </div>
+            <div class="content">
+                ¿Desea confirmar la acción?
+            </div>
+            <div class="footer">
+                <div class="d-flex">
+                    <div class="col-md-6 pl-0">
+                        <button class="btn_confirmar_modal" onclick="deleteObservacionForm()">Confirmar</button>
+                    </div>
+                    <div class="col-md-6 pr-0">
+                        <button class="btn_cerrar_modal" onclick="cerrarModal('modal-confirmacion-delete')">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal_confirmacion" id="modal-confirmacion-delete-mensaje">
+    <div class="modal_confirmacion__content">
+        <div class="modal_confirmacion__head bg-green-lime-modal" style="background-color: #99b839!important;">
+            <img src="./images/newsistema/iconos/correct1.svg" alt="">
+        </div>
+        <div class="modal_confirmacion__body">
+            <div class="title mb-4 mt-3 fontITCA">
+                Se eliminó la observación con éxito
+            </div>
+            <div class="content lbFormsoma">
+                Puede regresar a su bandeja de entrada
+            </div>
+            <div class="footer">
+                <div class="d-flex">
+                    <div class="col-md-12 px-0">
+                        <button class="btn_confirmar_modal bg-green-lime-modal textWhite" style="background-color: #99b839!important;" onclick="cerrarModal('modal-confirmacion-delete-mensaje')">De Acuerdo</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal_confirmacion" id="modal-observacion" >
+    <div class="modal_confirmacion__content " style="width: 375px;">
+        <div class="modal_confirmacion__head d-flex align-items-center">
+            <h6 class="title_modal_header text-left px-3 m-0" style="width: 80%;"></h6>
+            <div style="width: 20% ; cursor:pointer;" onclick="cerrarModal('modal-observacion')">
+                <i class="fas fa-times"></i>
+            </div>
+        </div>
+        <div class="modal_confirmacion__body" style="    height: calc(100vh - 150px); overflow: auto;">
+<!--            <div class="title mb-4 mt-3">-->
+<!--                ¿Estas seguro de eliminar <span class="title_formulario_delete"></span> ?-->
+<!--            </div>-->
+            <div class="content" id="contenido-detalle">
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade "  id="modalShowAlertConfirm" tabindex="-1" role="dialog" aria-labelledby="modalAddCompanyTitle" aria-hidden="true" >
+    <div class="modal-dialog modal-dialog-centered rounded " role="document" style="max-width: 472px; z-index: 1030; ">
+        <div class="modal-content rounded " style="border: 0px !important; background-color:rgba(0,0,0,.0001) !important; box-shadow: none;">
+
+            <div style="overflow: hidden;height: 500px;overflow-x: hidden; ">
+                <div class="modal-body" id="">
+                    <div class="col-sm-12 col-md-12" style="color:#575757c9;">
+                        <div style="width: 100%;text-align: -webkit-center; position: absolute; z-index: 2;">
+                            <div class="preloader" id="preloader" style="display: none;" ></div>
+                            </div>
+                        <div class="card border-0" style=" border-radius: 10px; box-shadow: none;">
+                            <div class="card-header text-center text-white  " style=" border-radius: 10px 10px 0px 0px; background:#61b4f9; height: 95px;"><img src="images/iconos/informacio1.svg"><span><b><br><br>&nbsp;&nbsp;&nbsp;&nbsp;</b></span></div>
+
+                            <div class="card-body">
+                                <div class="row p-0 d-flex justify-content-center">
+                                    <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important; font-family: ITCAvantGardeStd-Demi;" >
+                                        <h4>
+                                            <b id="titleConfirm"></b>
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="espacio"></div>
+                            <div class="card-body">
+                                <div class="row p-0 d-flex justify-content-center">
+                                    <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important; font-family: ITCAvantGardeStdBk !important; font-size: 15px;" >
+                                        ¿Desea confirmar?
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="espacio"></div>
+                            <div class="card-body">
+                                <div class="row p-0 d-flex justify-content-center">
+                                    <div class="col-sm-12 align-self-center text-center" style="color: #000000 !important; font-family: ITCAvantGardeStdBk;font-size: 15px;" >
+                                        <button type="button" id="btnValida" class="btn btn-raised textWhite" onclick="aceptarConfirm();" style="background-color: #61b4f9; height: 338px; width: 160.4px; object-fit: contain; border-radius: 4.4px !important;" >Confirmar</button>
+
+                                        <button type="button" class="btn btn-white btn-raised" style=" background-color: #fff; height: 338px;  width: 160.4px; object-fit: contain; border-radius: 4.4px !important;   border: solid 1.1px #000000 !important;" onclick="cancelObservacionConfirm()">Cerrar</button>
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+
+
+
+
+                            <div ></div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade "  id="modalShowAlertOk" tabindex="-1" role="dialog" aria-labelledby="modalAddCompanyTitle" aria-hidden="true" >
+    <div class="modal-dialog modal-dialog-centered rounded " role="document" style="max-width: 472px; z-index: 1030; ">
+        <div class="modal-content rounded border-0" style="border: 0px !important; background-color:rgba(0,0,0,.0001) !important; box-shadow: none;">
+
+            <div style="overflow: hidden;height: 500px;overflow-x: hidden; ">
+                <div class="modal-body" id="">
+                    <div class="col-sm-12 col-md-12" style="color:#575757c9;">
+
+                        <div class="card border-0" style=" border-radius: 10px; box-shadow: none;">
+                            <div class="card-header text-center text-white  " style="background:#99b839; height: 95px;"><img src="images/iconos/correct_1.svg"><span><b><br><br>&nbsp;&nbsp;&nbsp;&nbsp;</b></span></div>
+
+                            <div class="card-body">
+                                <div class="row p-0 d-flex justify-content-center">
+                                    <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important; font-family: ITCAvantGardeStdBk !important; " >
+                                        <h4>
+                                            <b id="titleMessage"></b>
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="espacio"></div>
+                            <div class="card-body" id="bodyCrear">
+                                <div class="row p-0 d-flex justify-content-center">
+                                    <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important; font-family: ITCAvantGardeStdBk !important; font-size: 15px;" >
+                                        El código de la observación es:
+                                    <div id="codeObservacion"></div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="card-body" id="bodyActualizar">
+                                <div class="row p-0 d-flex justify-content-center">
+                                    <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important; font-family: ITCAvantGardeStdBk !important; font-size: 15px;" >
+                                        <b>Puedes regresar a tu bandeja de entrada</b>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="espacio"></div>
+                            <div class="card-body">
+                                <div class="row p-0 d-flex justify-content-center">
+                                    <div class="col-sm-12 align-self-center text-center" style="color: #000000 !important; font-family: ITCAvantGardeStdBk !important; font-size: 15px;" >
+                                        <button type="button" onclick="$('#modalShowAlertOk').removeClass('fade').modal('hide');fnCargarGrid();" id="btnSalida"  class="btn btn-raised textWhite" style="background-color: #99b839; height: 47px; width: 254px; object-fit: contain; border-radius: 4.4px !important;"  >De Acuerdo</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+<script src="./js/paginator/pagination.js"></script>
+<!-- <script src="./view/ssoma/Seguimiento-Observaciones-Preventivas/index.js"></script> -->
+<!-- <script src="./view/ssoma/configuracion-de-inspecciones/edit-inspeccion.js"></script> -->
+
+
+<script src="./js/pdfmake/pdfmake.min.js"></script>
+<script src="./js/pdfmake/vfs_fonts.js"></script>
+
+
+<script>
+
+
+    //$('.logoCompany').text('Seguimiento de Observaciones Preventivas');
+    //$('#llogo').html('<span class="titleCompany">Salva</span> <span class="subTitleCompany">Seguimiento de Observaciones Preventivas</span>');
+    $('#llogo').html('<img src="./images/barraSalva.svg">');
+    //$('#llogo').html('<span class="titleCompany">Salva</span> Seguimiento de Observaciones Preventivas');
+    $("#headerNew").css("background-color", "#254373")
+    $("#headerInterno").css("background-color", "#254373")
+    $("#headerInterno").css("box-shadow", "0px -8px 12px#254373")
+
+    // PARA COLOCAR LA FECHA DE INICIO EN EL PRIMER DEL MES
+    let CurrentDate = new Date()
+    let month = (CurrentDate.getMonth() > 9) ? (CurrentDate.getMonth()+1) : '0'+(CurrentDate.getMonth()+1)
+
+    CurrentDate = CurrentDate.getDate() + '/'
+        + ( (CurrentDate.getMonth() > 9) ? (CurrentDate.getMonth()+1) : '0'+(CurrentDate.getMonth()+1) )+ '/'
+        + CurrentDate.getFullYear()
+
+    $("#txt_date_end").val(CurrentDate)
+
+    CurrentDate = new Date()
+
+    CurrentDate = '01/'
+        + ( (CurrentDate.getMonth() > 9) ? (CurrentDate.getMonth()+1) : '0'+(CurrentDate.getMonth()+1) )+ '/'
+        + CurrentDate.getFullYear()
+
+    $("#txt_date_start").val(CurrentDate)
+
+
+    fnCargarGrid();
+
+    var fechaMin = new Date();
+    var dias = 1; // Número de días a agregar
+    fechaMin.setDate(fechaMin.getDate() - dias);
+    console.info("fechaMin -> ",fechaMin)
+
+    // para la modal crear observacion
+    $("#txt_fecha_operacion").datetimepicker({
+        timepicker:false,
+        format:'d/m/Y',
+        //minDate: new Date(),
+        minDate: fechaMin,
+        maxDate: new Date()
+
+    });
+
+    $("#txt_date_start").datetimepicker({
+        timepicker:false,
+        format:'d/m/Y',
+    });
+    $("#txt_date_end").datetimepicker({
+        timepicker:false,
+        format:'d/m/Y',
+        onShow:function( ct )
+        {
+            this.setOptions(
+            {
+                minDate: moment($('#txt_date_start').val(),'DD/MM/YYYY').format("YYYY-MM-DD") ? moment($('#txt_date_start').val(),'DD/MM/YYYY').format("YYYY-MM-DD") : false
+            })
+        }
+    });
+
+
+    $(function() {
+        fnCargarFiltros();
+    })
+    $('document').ready(function (){
+
+
+
+        //Cambio de los Step del formulario y color de los botones
+        var navListItems = $('div.setup-panel div a button'), // tab nav items
+            allWells = $('.setup-content'), // content div
+            allNextBtn = $('.nextBtn'), // next button
+            step1 = $('#step-1');
+        allWells.hide(); // hide all contents by defauld
+        step1.show();
+        $('#btn_step1').addClass('btn-primary-check');
+        navListItems.click(function (e) {
+            e.preventDefault();
+            var $target = $($(this).attr('href')),
+                $item = $(this);
+                console.log($item)
+
+            if (!$item.hasClass('disabled')) {
+                navListItems.removeClass('btn-primary-check').addClass('btn-default');
+                $item.addClass('btn-primary-check');
+                allWells.hide();
+                $target.show();
+                // $target.find('input:eq(0)').focus();
+            }
+        });
+        // next button
+        allNextBtn.click(function(){
+            var curStep = $(this).closest(".setup-content"),
+                curStepBtn = curStep.attr("id"),
+                nextStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().next().children("a"),
+                isValid = true;
+            // Validation
+            $(".form-group").removeClass("has-error");
+
+            // move to next step if valid
+            if (isValid)
+                nextStepWizard.removeAttr('disabled').trigger('click');
+        });
+
+        $('div.setup-panel div a.btn-primary').trigger('click');
+        //Cambio de los Step del formulario y color de los botones
+
+  });
+
+    // Cargar Filtros
+    function fnConfigurarCalendar() {
+        moment.locale('es');
+        var fecha = new Date() - 1;
+        var fechaActual = moment(fecha).format('DD/MM/YYYY');
+
+        $('#daterange').daterangepicker({
+                opens: 'left',
+                "autoApply": true,
+                locale: {
+                    format: 'DD/MM/YYYY',
+                    "daysOfWeek": [
+                        "Do",
+                        "Lu",
+                        "Ma",
+                        "Mi",
+                        "Ju",
+                        "Vi",
+                        "Sá"
+                    ],
+                    "monthNames": [
+                        "Enero",
+                        "Febrero",
+                        "Marzo",
+                        "Abril",
+                        "Mayo",
+                        "Junio",
+                        "Julio",
+                        "Agosto",
+                        "Septiembre",
+                        "Octubre",
+                        "Noviembre",
+                        "Diciembre"
+                    ]
+                },
+                maxDate: fechaActual
+        }, function(start, end, label) {
+            if (start === undefined || end === undefined)
+            {
+                fechaInicio = '';
+                fechaFin = '';
+                $('input[name="Rango-Fechas-Filtro"]').val('');
+            }
+            else{
+                fechaInicio = start.format('YYYYMMDD');
+                fechaFin = end.format('YYYYMMDD');
+                $('input[name="Rango-Fechas-Filtro"]').val(start.format('DD/MM/YYYY') + ' - ' + end.format('DD/MM/YYYY'));
+            }
+
+        });
+    }
+    // fnConfigurarCalendar();
+
+    // function limpiarFecha(){
+    //     $('input[name="Rango-Fechas-Filtro"]').val('');
+    //     fnConfigurarCalendar();
+    // }
+</script>

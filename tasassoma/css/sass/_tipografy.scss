@@ -1,0 +1,17 @@
+.tg{
+
+    &--bold{
+        font-weight: bold;
+    }
+
+    &--left{
+        text-align: start !important;
+    }
+}
+
+.text{
+
+    &-gray{
+        color:$gray;
+    }
+}

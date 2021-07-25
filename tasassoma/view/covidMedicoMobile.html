@@ -1,0 +1,118 @@
+
+<div style="height: 56px;"></div>
+<div class="container-fluid bg-light p-0" >
+  
+    <div class="row bg-white p-2" style="border-bottom: 1px solid #ebebeb;" >
+      
+
+      <div class="col-6 text-center" >
+        <input type="text" id="tx_finded" maxlength="30"  name="tx_finded" class=" shadow-sm inputFind" placeholder="Buscar documento" style="width:11.4em;" onkeyup="validaSoloNumeros(this.id)"  >
+      </div>
+      <div class="col-2 text-center pt-2" >
+      </div>
+      <div class="col-1 text-center pt-2" >
+        <button class="btn btn-green-lime btn-rounded btn-raised" onclick="vw_covid_list.getDocument()">Buscar</button>
+      </div>
+
+      
+    </div>
+
+  
+        <div class="row">
+            <div class="col  p-1">
+                <div class="card p-2 rounded" style=" box-shadow: none;">
+
+                    <div class="card-body text-center p-0" id="" style="padding: 0 !important; ">                        
+                     
+                      <div  class="row" >
+                        <input type="hidden" name="hid_is_collaborator" id="hid_is_collaborator">
+                          <input type="hidden" name="hid_id_area" id="hid_id_area">
+                          <input type="hidden" name="hid_id_location" id="hid_id_location">
+                          <input type="hidden" name="hid_id_company" id="hid_id_company">   
+                          <input type="hidden" name="hid_name_company" id="hid_name_company">
+                          <input type="hidden" name="hid_mobile_temp" id="hid_mobile_temp" >
+  
+                        <div class="col-1">  
+                          <img src="images/iconos/organizadorgray.svg" height="20" class="mt-2">
+                        </div>
+  
+                          <div class="col">  
+                                                
+                            <input type="text" class="form-control bg-white" style="background-image: none;" id="tx_nomape" maxlength="50" placeholder="Nombre y Apellido">
+                            
+                          </div>
+                  
+                      </div>
+  
+                      <div  class="row" >
+                        <input type="hidden" name="hid_is_collaborator" id="hid_is_collaborator">
+                          <input type="hidden" name="hid_id_area" id="hid_id_area">
+                          <input type="hidden" name="hid_id_location" id="hid_id_location">
+                          <input type="hidden" name="hid_id_company" id="hid_id_company">   
+                          <input type="hidden" name="hid_name_company" id="hid_name_company">
+                          <input type="hidden" name="hid_mobile_temp" id="hid_mobile_temp" >
+                  
+                      </div>
+                      
+                      <hr>
+                     
+                    <div style="height: 0px;"></div>
+                    <div  class="row" >
+                        
+                      <div class="col-12 pt-2"> 
+                        <div  class="row p-0" >
+                          <div class="col-12 p-0 text-center">
+                            <span>Ingresar Firma</span>
+                            </div>
+                        </div>
+
+                        <div class="row col-12">
+                          <div class="col-12 p-0 text-center">
+                            <div class="checkbox d-flex text-center" style="padding-top: 0.75rem!important;">
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" name="checktypepac" class="custom-control-input" id="checktypepac1" checked  >
+                                    <label class="custom-control-label text-mute" for="checktypepac1">Paciente</label>
+                                  </div>
+                                  <div class="custom-control custom-radio">
+                                    <input type="radio" name="checktypepac" class="custom-control-input" id="checktypepac2"  >
+                                    <label class="custom-control-label" for="checktypepac2">Médico</label>
+                                  </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div id="divCanvas" style="text-align: center;">
+                          <div  class="row" >
+                            <div class="col-12">
+                              <canvas class="" id="canvassign" width="250px" height="150" style="border:1px solid #c5c5c5; border-radius: 10px; " ></canvas>
+                              </div>
+                             
+                        </div>
+                        <div  class="row" >
+                          <div class="col-12 text-center">
+                            <input type="reset" value="Limpiar" class="btn btn-danger btn-rounded btn-raised" />
+                            </div>
+                      </div>
+                      </div>
+                      </div>
+
+                    </div>
+                   <br>
+                   
+                    <div class="row">
+                      
+                      <div class="col text-center">
+                        <button type="button" style="width: 175px;;" class="btn btn-info btn-rounded btn-raised" id="" onclick="sendToServer()">Guardar</button>
+                      </div>
+                       
+                    </div>
+                    </div>
+                    
+                </div>  
+            </div>
+        </div>        
+     
+
+
+
+  </div>

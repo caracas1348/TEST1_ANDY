@@ -1,0 +1,1981 @@
+<link rel="stylesheet" href="./view/ssoma/ssoma.css">
+<link rel="stylesheet" href="./css/pagination.css">
+<style type="text/css">
+  .header-fixed {
+    display: block;
+    position: relative;
+    max-height: 100%;
+    overflow: auto;
+    width: 757px;
+border-radius: 4px;
+  }
+  .header-fixed thead,
+  .header-fixed tbody {
+    display: block;
+  }
+  .header-fixed thead {
+    position: sticky;
+    top: 0;
+    width: 100%;
+   height:  70px !important;
+background-color: #34559c;
+font-size: 15px;
+ width: 757px;
+ align-items: center;
+
+  }
+  .header-fixed thead tr > th {
+
+  	color: #fff;
+  }
+
+  .header-fixed tbody tr > td:nth-child(1),
+  .header-fixed thead tr > th:nth-child(1){
+    /* tamaño de ID, Precio y Stock fijos (4em c/u) */
+    width: 15%;
+  }
+  .header-fixed tbody tr td:nth-child(2),
+  .header-fixed thead tr th:nth-child(2){
+    /* tamaño de ID, Precio y Stock fijos (4em c/u) */
+    width: 25%;
+  }
+  .header-fixed tbody tr > td:nth-child(3),
+  .header-fixed thead tr > th:nth-child(3){
+    /* tamaño de ID, Precio y Stock fijos (4em c/u) */
+    width: 15%;
+  }
+  .header-fixed tbody tr > td:nth-child(4),
+  .header-fixed thead tr > th:nth-child(4){
+    /* tamaño de ID, Precio y Stock fijos (4em c/u) */
+    width: 15%;
+  }
+  .header-fixed tbody tr > td:nth-child(5),
+  .header-fixed thead tr > th:nth-child(5){
+    /* tamaño de ID, Precio y Stock fijos (4em c/u) */
+    width: 15%;
+  }
+  .header-fixed tbody tr > td:nth-child(6),
+  .header-fixed thead tr > th:nth-child(6){
+    /* tamaño de ID, Precio y Stock fijos (4em c/u) */
+    width: 7%;
+  }
+  .header-fixed tbody tr > td:nth-child(7),
+  .header-fixed thead tr > th:nth-child(7){
+    /* tamaño de ID, Precio y Stock fijos (4em c/u) */
+    width: 7%;
+  }
+
+
+
+  .header-fixed_2 {
+    display: block;
+    position: relative;
+    max-height: 100%;
+    overflow: auto;
+    width: 757px;
+border-radius: 4px;
+  }
+  .header-fixed_2 thead,
+  .header-fixed_2 tbody {
+    display: block;
+  }
+  .header-fixed_2 thead {
+    position: sticky;
+    top: 0;
+    width: 100%;
+   height:  70px !important;
+background-color: #34559c;
+font-size: 15px;
+ width: 757px;
+ align-items: center;
+
+  }
+  .header-fixed_2 thead tr > th {
+
+  	color: #fff;
+  }
+
+  .header-fixed_2 tbody tr > td:nth-child(1),
+  .header-fixed_2 thead tr > th:nth-child(1){
+    /* tamaño de ID, Precio y Stock fijos (4em c/u) */
+    width: 30%;
+  }
+  .header-fixed_2 tbody tr td:nth-child(2),
+  .header-fixed_2 thead tr th:nth-child(2){
+    /* tamaño de ID, Precio y Stock fijos (4em c/u) */
+    width: 10%;
+  }
+  .header-fixed_2 tbody tr > td:nth-child(3),
+  .header-fixed_2 thead tr > th:nth-child(3){
+    /* tamaño de ID, Precio y Stock fijos (4em c/u) */
+    width: 10%;
+  }
+  .header-fixed_2 tbody tr > td:nth-child(4),
+  .header-fixed_2 thead tr > th:nth-child(4){
+    /* tamaño de ID, Precio y Stock fijos (4em c/u) */
+    width: 10%;
+  }
+  .header-fixed_2 tbody tr > td:nth-child(5),
+  .header-fixed_2 thead tr > th:nth-child(5){
+    /* tamaño de ID, Precio y Stock fijos (4em c/u) */
+    width: 14%;
+  }
+  .header-fixed_2 tbody tr > td:nth-child(6),
+  .header-fixed_2 thead tr > th:nth-child(6){
+    /* tamaño de ID, Precio y Stock fijos (4em c/u) */
+    width: 6%;
+  }
+  .header-fixed_2 tbody tr > td:nth-child(7),
+  .header-fixed_2 thead tr > th:nth-child(7){
+    /* tamaño de ID, Precio y Stock fijos (4em c/u) */
+    width: 5%;
+  }
+  .header-fixed_2 tbody tr > td:nth-child(8),
+  .header-fixed_2 thead tr > th:nth-child(8){
+    /* tamaño de ID, Precio y Stock fijos (4em c/u) */
+    width: 5%;
+  }
+
+
+    .labelMsgInfo{
+
+
+        width: 339px;
+        height: 52px;
+        font-size: 18px;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.45;
+        letter-spacing: 0.26px;
+        text-align: center;
+        color: #3a3a3a;
+
+    }
+    /*------------------------------------------- estilos para formulario del proyecto---------------------------------------------------*/
+
+    ul.ui-autocomplete.ui-menu { width: 400px !important; }
+
+
+    /* etiqueta de formularios */
+    .lbFormsoma{
+        font-size: 14px;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        color: #000000;
+    }
+
+    .btBuscar{
+        font-size: 15px;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.64;
+        letter-spacing: 0.15px;
+        color: #565933;
+        background-color:#d2d97b;
+        width: 115px;
+        height: 50px;
+        border: 2px solid #d2d97b;
+        border-radius: 5px;
+    }
+
+    .btBuscar:hover{
+        font-size: 15px;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.64;
+        letter-spacing: 0.15px;
+        color: #d2d97b;
+        background-color: #565933;
+        width: 115px;
+        height: 50px;
+        border: 2px solid#565933;
+        border-radius: 5px;
+    }
+
+    .iconBarraLateral {
+        width: 1px;
+        height: 51px;
+        border: solid 1px #bfbfbf;
+        background-color: #737373;
+    }
+
+
+    .btCrearProgramas{
+        width: 184px;
+        height: 50px;
+        border-radius: 4px;
+        border: 2px solid#05beee;
+        background-color: #05beee;
+        font-size: 15px;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.64;
+        letter-spacing: 0.15px;
+        color: #ffffff;
+    }
+
+
+    .btCrearProgramas:hover{
+        width: 184px;
+        height: 50px;
+        border-radius: 4px;
+        border: 2px solid#05beee;
+        background-color: #fff;
+        font-size: 15px;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.64;
+        letter-spacing: 0.15px;
+        color: #05beee;
+    }
+
+
+    .lbTableSoma{
+        font-family:'Lucida Sans';
+        font-size: 14px;
+        font-weight:bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.64;
+        letter-spacing: 0.15px;
+
+        color: #000000;
+        /*border-radius: 4px;
+        border: solid 1px #cbcbcb;
+        background-color: #f2f2f2;  */
+    }
+
+    .lbTableSoma:hover{
+        font-family:'Lucida Sans';
+        font-size: 14px;
+        font-weight:bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.64;
+        letter-spacing: 0.15px;
+        color:#34559c;
+    }
+    /*------------------------------------------- estilos para formulario del proyecto---------------------------------------------------*/
+
+    /* @font-face{
+       font-family: "nombre-de-fuente";
+       src: url("ubicación-del-archivo-de-fuente");
+       font-weight: bold;
+       font-type: italic;
+       } */
+    .infoModal2 {
+        width: 241px;
+        height: 48px;
+        font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        font-size: 18px;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.45;
+        letter-spacing: 0.26px;
+        color: #3a3a3a;
+    }
+    .infoModal3{
+        width: 241px;
+        height: 19px;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        font-size: 15px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        color: #000000;
+    }
+
+
+    .infoModal4{
+
+        width: 186px;
+        height: 34.4px;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        font-size: 27.1px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        color: #000000;
+
+
+    }
+    .preloader {
+
+  width: 90px;
+  height: 90px;
+  border: 10px solid #eee;
+  border-top: 10px solid #666;
+  border-radius: 50%;
+  animation-name: girar;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+@keyframes girar {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+</style>
+
+
+
+
+<!-- aqui quite un codigo -->
+
+
+<!-- Contenedores de Mensaje de Bienvenida }-->
+
+<!--   <div class="modulosTasa" style="background-color:red; top:360px;" >
+  <div class="modulosTasaInt"> -->
+<div class="row justify-content-center">
+    <div class="col-12">
+
+        <!-- start filtro -->
+        <div class="modulosTasa" style="background-color:white;" >
+            <div class="modulosTasaInt">
+                <table width = "90%" border="0">
+                    <tr>
+                        <td colspan="10"  align="center"><br><br></td>
+                    <tr>
+                    <tr>
+
+                        <td width = "16%" align="center" style="position: relative;" >
+
+                            <div >
+                                <table width ="100%" align="center">
+                                    <tr><td ><label for="sel_area" class="lbFormsoma" >Nombre de Auditor</label></td></tr>
+                                    <tr><td align="center" > <input type="text" class="  form-control  " name="tx_name_auditor" id="tx_name_auditor"></td></tr>
+                                </table>
+
+
+                            </div>
+                        </td>
+                    <td width="1%">&nbsp;</td>
+                        <td width = "12%" align="center" style="position: relative;">
+                            <div>
+                                <table width ="100%" align="center">
+                                    <tr><td > <label for="sel_type_rol" class="lbFormsoma">Tipo de Rol</label></td></tr>
+                                    <tr><td align="center" >
+                                        <select name="sel_type_rol" class="form-control select-filtroCA Patch_selectCA" id="sel_type_rol">
+                                            <option value="">Todos</option>
+                                        </select>
+                                    </td></tr>
+                                </table>
+                            </div>
+                        </td>
+                    <td width="1%">&nbsp;</td>
+                        <td width = "12%" align="center">
+                            <div>
+                                <table width ="100%" align="center" style="position: relative;">
+                                    <tr><td><label for="tx_date_init" class="lbFormsoma">Estatus</label></td></tr>
+                                    <tr><td align="center" >
+                                        <select name="sel_Status" class="form-control select-filtroCA Patch_selectCA" id="sel_Status">
+                                            <option value="">Todas</option>
+                                            <option value="1">Activo</option>
+                                            <option value="2">Inactivo</option>
+                                        </select>
+                                        <!-- <select name="sel_EspecialidadId" class="form-control select-filtroCA Patch_selectCA" id="sel_EspecialidadId">
+                                            <option value="">Todas</option>
+                                        </select> -->
+                                    </td></tr>
+                                </table>
+
+
+                            </div>
+                        </td>
+                    <td width="1%">&nbsp;</td>
+                        <td width = "6%" align="center">
+                            <button type="button" id="btnAddBlacklist" title="Buscar Auditores" class="btn btn-system-green" onclick="vw_auditor_list.searchAuditor();"s>
+                                Buscar
+                            </button>
+
+
+                        </td>
+                        <td width = "6%" align="center">
+
+                        </td>
+                        <td width = "2%" align="center">
+                            <img src="images/iconos/nPrograma.svg" height="40px" style="cursor: pointer" title="Descargar Listado en Excel " onclick="vw_auditor_list.downloadExcel();">
+                        </td>
+                        <td width = "2%" align="center">
+                            <span id="cantidad" class="h3 mute" style="color:#757575;font-weight: bold;">0</span><br><small class="text-gray" style="font-size: 12px; color:#757575;font-weight: bold;"></small>
+                        </td>
+                        <td width = "2%" align="center">
+                            <div class="iconBarraLateral"></div>
+                        </td>
+                        <td width = "18%" align="center">
+                            <div style="text-align: right; width: 100%; margin-right: 10px;">
+                                <button class="btn btn-system-celeste" style="margin-top: 20px;" id="btn_register" onclick="vw_auditor_list.newAuditor();">
+                                    <img src="./images/iconos/plus_.svg" alt="">
+                                    <span class="ml-3">Ingresar Auditor</span>
+                                </button>&nbsp;&nbsp;</div>
+                        </td>
+
+                    </tr>
+
+                                </table>
+
+
+            </div>
+        </div>
+
+        <!-- end filtro -->
+        <!-- Listado -->
+        <input type="hidden" id="searchBox">
+
+        <div class="row justify-content-center mt-5 mb-4">
+            <div class="col-md-11">
+                <div class="header-tabla p-4">
+                    <div class="row m-0 justify-content-between">
+                        <div class="col-md-2">Nombre</div>
+                        <div class="col-md-2">Rol</div>
+                        <div class="col-md-2">Capacitaciones</div>
+                        <div class="col-md-2">Auditorias</div>
+                        <div class="col-md-2">Estado</div>
+                        <div class="col-1 text-center">Editar</div>
+                        <div class="col-1 text-center">Ver</div>
+                    </div>
+                </div>
+                <div class="body-tabla mt-4">
+                    <div class="content-registros-no-encontrados">
+                        <div>
+                            <img src="./images/newsistema/iconos/calendario-registros-vacios.svg" alt="">
+                            <p class="mt-4">No tiene Auditores Registrados</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="body-tabla-list" id="body-tabla-list">
+
+                </div>
+                <div id="pagination-container" class="mt-3"></div>
+
+            </div>
+        </div>
+        <!-- start modal_1 registro-->
+
+        <div class="modal fade "  id="modalShowAuditor" tabindex="-1" role="dialog"  data-backdrop="static" data-keyboard="false" aria-labelledby="modalAddCompanyTitle" aria-hidden="true" >
+
+            <div class="modal-dialog modal-dialog-centered rounded dialog-positionAU " role="document" >
+                <div class="modal-content rounded modal-FormAuditor " >
+                    <div class="modal-header fix-header-modal">
+                        <div class="card-header text-left text-white  card-header-FormAuditor" >
+                            <div class="row">
+                                <div class="col-4">
+                                </div>
+                                <div id="txtHeadModalRegisterAuditor" class="col-4 text-center txtHeadModalAuditor">
+                                    Registrar Auditor
+                                </div>
+                                <div class="col-4 align-content-center txtHeadModalAuditor">
+                                    <button type="button" class="btn-save-auditor"  id="btn_create_auditor" >
+                                        <i class="txt-btn-save">Guardar</i> </button>
+                                    <button type="button" class="btn-close-auditor" onclick="vw_auditor_list.cancelformAuditor();" id="btn-cancelar" >
+                                        <i class="txt-btn-close">Cancelar</i> </button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="modal-body dialog-position" id="bodymodalShowAuditor" style=" justify-content:space-around; align-content:center;">
+
+                        <div class="card " style="border: 0px !important; border-radius: 10px; box-shadow: none;">
+                            <div class="card-body2">
+                                <form id="formAjax" action="" class="form floating-label" novalidate="novalidate">
+
+
+                                    <div class="stepwizard " id="manipulation">
+                                        <div class="d-flex justify-content-center stepwizard-row setup-panel">
+                                            <div class="col-2 stepwizard-step marginbtnstep">
+                                                <a href="#step-1" id="step1"> <button type="button" class="btn-formAuditor" href="#step-1" id="btn_step1">
+                                                    <b>Datos Personales</b> </button></a>
+                                            </div>
+                                            <div class="col-2 stepwizard-step marginbtnstep">
+                                                <a href="#step-2" id="step2"><button type="button"  class="btn-formAuditor" href="#step-2" id="btn_step2" >
+                                                    <b>Capacitaciones</b> </button></a>
+                                            </div>
+                                            <!--                                          <div class="col-2 stepwizard-step marginbtnstep" ">
+                                                                                          <a id="step3"> <button type="button" class="btn-formAuditor" href="#step-3" id="btn_step3" >
+                                                                                              <b>Evaluaciones</b> </button></a>
+                                                                                      </div>-->
+                                            <div class="col-2 stepwizard-step marginbtnstep">
+                                                <a href="#step-4" id="step4"> <button type="button" class="btn-formAuditor" href="#step-4" id="btn_step4" >
+                                                    <b>Experiencia</b> </button></a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div style="width: 100%;text-align: -webkit-center; position: absolute; z-index: 2;margin-top: 100px;">
+                                        <div class="preloader" id="preloader" style="display: none;" > </div>
+                                        <div id="preloader_txt" style="display: none; color: black;"> <b>Cargando Datos...</b></div>
+
+                                        </div>
+                                    <div class="row setup-content" id="step-1" style="display: block;">
+                                        <div class="card-body2">
+                                            <div class="row p-0">
+                                                <div>
+                                                    <p class="detalle-formauditor">Detalle</p>
+                                                </div>
+                                                <div class="col-10 p-2">
+                                                    <hr>
+                                                </div>
+                                                <div class="p-2">
+                                                    <img src="./images/iconos/menu.svg" class="menu-1-1">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-body2">
+                                            <div class="row p-0 d-flex justify-content-around">
+                                                <div class="rectangle_name">
+                                                    <div class="form-group p-lg-2">
+                                                        <label for="Name_1" class="bmd-label-static titleInput2"><b>Nombres Completos <span style="color: red;">*</span></b> </label>
+                                                        <input type="hidden" name="idAuditor" id="idAuditor" value="">
+                                                        <input type="hidden" name="hid_Correo_1" id="hid_Correo_1" value="">
+                                                        <input type="hidden" name="Create_By" value="">
+                                                        <input type="text" id="Name_1" name="Name" class="form-control form-control2 autocompletecollaborator" value=""  >
+                                                        <div class="loader" id="add_firtnameload_1" style="display:none"></div>
+                                                        <input type="hidden" class="form-control" id="hid_Name_id_1" value="" name="hid_Name_id_1"> </div>
+                                                </div>
+                                                <div class="Rectangle_formG">
+                                                    <div class="form-group p-lg-2">
+                                                        <label for="Cargo_1" class="bmd-label-static titleInput2"><b>Cargo </b> </label>
+                                                        <input type="text" id="Cargo_1" name="Cargo" class="form-control form-control2 " style="background-color: #fff !important;" readonly value="" autocomplete="off" >
+                                                        <input type="hidden" class="form-control" id="hid_Cargo_1" value="" name="hid_Cargo_1">
+                                                    </div>
+                                                </div>
+                                                <div class="Rectangle_formG">
+                                                    <div class="form-group p-lg-2">
+                                                        <label for="SedeId_" class="bmd-label-static titleInput2"><b>Sede </b> </label>
+                                                        <select name="SedeId_" class="form-control form-control2 " id="SedeId_">
+                                                            <option value="" disabled selected></option>
+
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="Rectangle_formG">
+                                                    <div class="form-group p-lg-2">
+                                                        <label for="EspecialidadId" class="bmd-label-static titleInput2"><b>Especialidad </b> </label>
+                                                        <select name="EspecialidadId" class="form-control form-control2 " id="EspecialidadId">
+                                                            <option value=""></option>
+
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="card-body2">
+                                            <div class="row p-0">
+                                                <div>
+                                                    <p class="Rol-en-Auditora">Rol en Auditor&iacute;a <span style="color: red;">*</span></p>
+                                                </div>
+                                                <div class="col-8 p-2">
+                                                    <hr>
+                                                </div>
+                                                <div class=" col-1 d-flex ml-auto">
+                                                    <img src="./images/iconos/add-user.svg" class="menu-1-1">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-body2">
+                                            <div class="row p-0">
+                                                <p class="space_p">
+                                                    <label class="custom-radio-checkbox">
+                                                        <!-- Input oculto -->
+                                                        <input onclick="vw_auditor_list.validaRol('Auditor Lider')" class="custom-radio-checkbox__input"  type="radio" name="Rol_Code" value="Auditor Lider" >
+                                                        <!-- Imagen en sustitucion -->
+                                                        <span class="custom-radio-checkbox__show custom-radio-checkbox__show--radio"></span>
+                                                        <!-- Texto -->
+                                                        <span class="custom-radio-checkbox__text">Auditor L&iacute;der</span>
+                                                    </label>
+                                                </p>
+                                                <p class="space_p">
+                                                    <label class="custom-radio-checkbox">
+                                                        <!-- Input oculto -->
+                                                        <input onclick="vw_auditor_list.validaRol('Auditor')"  class="custom-radio-checkbox__input"  type="radio" name="Rol_Code" value="Auditor" >
+                                                        <!-- Imagen en sustitucion -->
+                                                        <span class="custom-radio-checkbox__show custom-radio-checkbox__show--radio"></span>
+                                                        <!-- Texto -->
+                                                        <span class="custom-radio-checkbox__text">Auditor</span>
+                                                    </label>
+                                                </p>
+                                                <p class="space_p">
+                                                    <label class="custom-radio-checkbox">
+                                                        <!-- Input oculto -->
+                                                        <input onclick="vw_auditor_list.validaRol('Observador')" class="custom-radio-checkbox__input observador"  type="radio" name="Rol_Code" value="Observador" >
+                                                        <!-- Imagen en sustitucion -->
+                                                        <span class="custom-radio-checkbox__show custom-radio-checkbox__show--radio"></span>
+                                                        <!-- Texto -->
+                                                        <span class="custom-radio-checkbox__text">Observador</span>
+                                                    </label>
+                                                </p>
+
+                                                <div class="col-3">
+
+                                                    <label for="customSwitch1" id="customSwitch1">Activo</label>
+                                                    <input type="hidden" id="val_status" val="1">
+
+                                                    <label class="switchBtn">
+                                                        <input type="checkbox" class="switchBtn" name="switch_estatus" id="switch_estatus" style="display: none;">
+                                                        <div class="slide round"></div>
+                                                    </label>
+                                                </div>
+
+
+                                            </div>
+
+                                        </div>
+                                        <div class="card-body2 textarea_noActivo">
+                                            <div class="row p-0">
+                                                <div class="col-9 p-2">
+                                                    <textarea class="textarea-formAuditor" id="textarea-formAuditor" name="textarea-formAuditor" placeholder="Ingresar un motivo para la inactividad..."></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row setup-content" id="step-2">
+                                        <div class="card-body2">
+                                            <div class="row p-0">
+                                                <div >
+                                                    <p class="detalle-register-trainning">Registrar</p>
+                                                </div>
+                                                <div class="col-9 p-2">
+                                                    <hr>
+                                                </div>
+                                                <div >
+                                                    <button class="btn-add-trinning" type="button" id="add-trainning" >Agregar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-body2">
+                                            <div class="row p-0 d-flex justify-content-around">
+                                                <div class="Rectangle-trainnig-">
+                                                    <div class="form-group p-lg-2">
+                                                        <input type="hidden" id="Capacitaciones">
+                                                        <label for="sel_rule_trainning" class="bmd-label-static titleInput2"><b> Seleccionar Norma</b> </label>
+                                                        <select name="sel_rule_trainning" class="form-control form-control2 " id="sel_rule_trainning">
+                                                            <option value=""></option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="Rectangle-trainnig-">
+                                                    <div class="form-group p-lg-2">
+                                                        <label for="sel_trainnig" class="bmd-label-static titleInput2"><b> Curso </b> </label>
+                                                        <select name="sel_trainnig" class="form-control form-control2 " id="sel_trainnig">
+                                                            <option value=""></option>
+                                                            <!-- <option value="Curso de Interpretación">Curso de Interpretación</option>
+                                                            <option value="Curso de Auditor">Curso de Auditor Interno</option> -->
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="Rectangle-trainnig-">
+                                                    <div class="form-group p-lg-2">
+                                                        <label for="sel_type" class="bmd-label-static titleInput2"><b> Seleccionar Tipo </b> </label>
+                                                        <select name="sel_type" class="form-control form-control2 " id="sel_type">
+                                                            <option value=""></option>
+
+
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="card-body2">
+                                            <div class="row p-0 d-flex justify-content-around">
+                                                <div class="Rectangle-trainnig-">
+                                                    <div class="form-group p-lg-2" >
+                                                        <label for="txt_date_start" class="bmd-label-static titleInput2"><b> Fecha Inicio</b> </label>
+                                                        <div class="input-group">
+                                                            <input type="text" name="txt_date_start" id="txt_date_start" aria-describedby="sizing-addon2" class="form-control form-control2 bg-white patch" maxlength="10" value="" autocomplete="off"  readonly>
+                                                            <span class="input-group-addon" id="sizing-addon2"><img src="./images/iconos/calendario-3.svg"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="Rectangle-trainnig-">
+                                                    <div class="form-group p-lg-2" >
+                                                        <label for="txt_date_end" class="bmd-label-static titleInput2"><b> Fecha Fin </b> </label>
+                                                        <div class="input-group">
+                                                        <input type="text" name="txt_date_end" id="txt_date_end" aria-describedby="sizing-addon2" class="form-control form-control2 bg-white " maxlength="10" value="" autocomplete="off" readonly>
+                                                            <span class="input-group-addon" id="sizing-addon2"><img src="./images/iconos/calendario-3.svg"></span>
+                                                        </div>
+                                                        </div>
+                                                </div>
+                                                <div >
+                                                    <input type="file" id="file_trainning" style="display:none"/>
+                                                    <button type="button"  class="to-attach" id="btn_file_trainning" name="btn_file_trainning">
+                                                        <img src="./images/iconos/attach_1.svg" >  Adjuntar documento
+                                                    <p id="arc_t"></p></button>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="row ">
+                                            <input type="hidden" id="search2Box2">
+                                            <div class="col dialog-position">
+                                                <div class="dialog-position card p-0" style="box-shadow: none;">
+                                                    <div class="dialog-position  p-0 " style="background-color: white !important;" style="width: 740px !important; ">
+                                                        <table id="tb_trainning" name="tb_trainning" class="header-fixed p-0"  border = '0' style="width: 740px !important; ">
+                                                            <thead class="dd-flex justify-content-between tr-register-list-aptitude"  style="width: 740px !important; ">
+
+                                                            <th class="p-2 F-Trainning"  style="width: 99px !important;" >Norma </th>
+                                                            <th class="p-2 F-Trainning"  style="width: 171px !important;" >Curso</th>
+                                                            <th class="p-2 F-Trainning"  style="width: 107px !important;" >F. Desde</th>
+                                                            <th class="p-2 F-Trainning"  style="width: 107px !important;" >F. Hasta</th>
+                                                            <th class="p-2 F-Trainning" style="width: 109px !important;" >Tipo</th>
+                                                            <th class="p-2 F-Trainning" style="width: 73px !important;" >Ver
+                                                                Adjunto</th>
+                                                            <th class="p-2 F-Trainning " style="width: 73px !important;" >Eliminar</th>
+                                                            </thead>
+                                                            <tbody id="tbody_trainning" class="tb_trainning"  style="width: 740px !important; font-size:13.4px !important;  ">
+
+                                                            </tbody>
+                                                        </table>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
+
+                                        </div>
+                                    </div>
+                                    <div class="row setup-content" id="step-3">
+                                        <div class="card-body2">
+                                            <div class="row p-0">
+                                                <div >
+                                                    <p class="detalle-register-trainning">Registrar</p>
+                                                </div>
+                                                <div class="col-9 p-2">
+                                                    <hr>
+                                                </div>
+                                                <div >
+                                                    <button class="btn-add-trinning"  type="button" id="add-eval" type="button" >Agregar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-body2">
+                                            <div class="row p-0 d-flex justify-content-around">
+                                                <div class="Rectangle-trainnig-">
+                                                    <div class="form-group p-lg-2">
+                                                        <label for="sel_audited_unit" class="bmd-label-static titleInput2"><b> Unidad auditada</b> </label>
+                                                        <input type="text" name="sel_audited_unit" id="sel_audited_unit" class="form-control form-control2 " value="" autocomplete="off" >
+                                                    </div>
+                                                </div>
+                                                <div class="Rectangle-trainnig-">
+                                                    <div class="form-group p-lg-2">
+                                                        <label for="sel_rule_audited" class="bmd-label-static titleInput2"><b> Seleccionar Norma</b> </label>
+                                                        <select name="sel_rule_trainning" class="form-control form-control2 " id="sel_rule_audited">
+                                                            <option value=""></option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="Rectangle-trainnig-">
+                                                    <div class="form-group p-lg-2" >
+                                                        <label for="txt_date_eval" class="bmd-label-static titleInput2"><b> Fecha de evaluacion </b> </label>
+                                                        <div class="input-group">
+                                                            <input type="text" name="txt_date_eval" id="txt_date_eval" aria-describedby="sizing-addon2" class="form-control form-control2 " maxlength="10" value="" autocomplete="off" >
+                                                            <span class="input-group-addon" id="sizing-addon2"><img src="./images/iconos/calendario-3.svg"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="card-body2">
+                                            <div class="row p-0 d-flex justify-content-around">
+                                                <div class="Rectangle-trainnig-">
+                                                    <div class="form-group p-lg-2">
+                                                        <label for="txt_role_played" class="bmd-label-static titleInput2"><b> Rol Desempeñado</b> </label>
+                                                        <select name="txt_role_played" class="form-control form-control2 " id="txt_role_played">
+                                                            <option value=""></option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="Rectangle-trainnig-">
+                                                    <div class="form-group p-lg-2">
+                                                        <label for="txt_score_end" class="bmd-label-static titleInput2"><b> Calificacion </b> </label>
+                                                        <input type="text" name="txt_score_end" id="txt_score_end" class="form-control form-control2 " value="" autocomplete="off" >
+                                                    </div>
+                                                </div>
+                                                <div >
+                                                    <input type="file" id="file_eval" style="display:none"/>
+                                                    <button type="button"  class="to-attach" id="btn_file_eval" >
+                                                        <img src="./images/iconos/attach_1.svg" >  Adjuntar documento </button>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="row ">
+                                            <input type="hidden" id="search2Box">
+                                            <div class="col dialog-position">
+                                                <div class="dialog-position card p-0" style="box-shadow: none;">
+                                                    <div class=" dialog-positioncard-body p-0 tb_trainning" >
+                                                        <table id="tb_eval" name="tb_eval" class="header-fixed-2 p-0">
+                                                            <thead class="dd-flex justify-content-between tr-register-list-aptitude"  >
+                                                            <th class="p-3 Norma-2-" ><b>Unidad Auditada</b></th>
+                                                            <th class="p-3 Interpretacin-de-la-Norma-1-" ><b>Norma Auditada</b></th>
+                                                            <th class="p-3 Curso-de-Auditor-Interno-1-" ><b>Fecha de Evaluacion</b></th>
+                                                            <th class="p-3 F-Trainning" ><b>Rol Desempeñado</b></th>
+                                                            <th class="p-3 F-Trainning" ><b>Resultado de Evaluacion</b></th>
+                                                            <th class="p-3 Ver-Adjunto" ><b>Ver
+                                                                Adjunto</b></th>
+                                                            <th class="p-3 Eliminar" ><b>Eliminar</b></th>
+                                                            </thead>
+                                                            <tbody id="tbody_eval" >
+
+                                                            </tbody>
+                                                        </table>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="row setup-content" id="step-4">
+                                        <div class="card-body2">
+                                            <div class="row p-0">
+                                                <div >
+                                                    <p class="detalle-register-trainning">Registrar</p>
+                                                </div>
+                                                <div class="col-9 p-2">
+                                                    <hr>
+                                                </div>
+                                                <div >
+                                                    <button class="btn-add-trinning" type="button" id="add-skill" >Agregar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-body2">
+                                            <div class="row p-0 d-flex justify-content-around">
+                                                <div class="Rectangle-trainnig-">
+                                                    <div class="form-group p-lg-2">
+                                                        <label for="sel_rule_skill" class="bmd-label-static titleInput2"><b> Seleccionar Norma</b> </label>
+                                                        <select name="sel_rule_skill" class="form-control form-control2 " id="sel_rule_skill">
+                                                            <option value=""></option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="Rectangle-trainnig-">
+                                                    <div class="form-group p-lg-2">
+                                                        <label for="sel_role_skill" class="bmd-label-static titleInput2"><b> Rol</b> </label>
+                                                        <select name="sel_role_skill" class="form-control form-control2 " id="sel_role_skill">
+                                                            <option value=""></option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="Rectangle-trainnig-hidden">
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="card-body2">
+                                            <div class="row p-0 d-flex justify-content-around">
+                                                <div class="Rectangle-trainnig-">
+                                                    <div class="form-group p-lg-2" >
+                                                        <label for="txt_role_played" class="bmd-label-static titleInput2"><b> Fecha Inicio</b> </label>
+                                                        <div class="input-group">
+                                                            <input type="text" name="txt_date_start_skill" id="txt_date_start_skill" aria-describedby="sizing-addon2" class="form-control form-control2 bg-white " readonly maxlength="10" value="" autocomplete="off" >
+                                                            <span class="input-group-addon" id="sizing-addon2"><img src="./images/iconos/calendario-3.svg"></span>
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                                <div class="Rectangle-trainnig-">
+                                                    <div class="form-group p-lg-2" >
+                                                        <label for="txt_date_end_skill" class="bmd-label-static titleInput2"><b> Fecha Fin </b> </label>
+                                                        <div class="input-group">
+                                                            <input type="text" name="txt_date_end_skill" id="txt_date_end_skill" aria-describedby="sizing-addon2" class="form-control form-control2 bg-white " readonly maxlength="10" value="" autocomplete="off" >
+                                                            <span class="input-group-addon" id="sizing-addon2"><img src="./images/iconos/calendario-3.svg"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div >
+                                                    <input type="file" id="file_skill" style="display:none"/>
+                                                    <button type="button"  class="to-attach" id="btn_file_skill" >
+                                                        <img src="./images/iconos/attach_1.svg" >  Adjuntar documento
+                                                        <p id="arc_s"></p></button>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="row ">
+                                            <input type="hidden" id="search2Box4">
+                                            <div class="col dialog-position">
+                                                <div class="dialog-position card p-0" style="box-shadow: none;">
+                                                    <div class="dialog-position card-body p-0 "  style="background-color: white !important;" style="width: 740px !important; ">
+                                                        <table id="tb_skill" name="tb_skill" border = '0' class="header-fixed_2 p-0" style="width: 740px !important; ">
+                                                            <thead class="dd-flex justify-content-between tr-register-list-aptitude" style="width: 740px !important; ">
+                                                            <th class="p-2 F-Trainning" style="width: 238px !important;" >Norma </th>
+                                                            <th class="p-2 F-Trainning" style="width: 68px !important;" >Obs</th>
+                                                            <th class="p-2 F-Trainning" style="width: 68px !important;">Auditor </th>
+                                                            <th class="p-2 F-Trainning" style="width: 78px !important;">Lider </th>
+                                                            <th class="p-2 F-Trainning" style="width: 102px !important;">F. Desde</th>
+                                                            <th class="p-2 F-Trainning" style="width: 102px !important;">F. Hasta</th>
+                                                            <th class="p-2 F-Trainning" style="width: 73px !important;">Ver Adjunto</th>
+                                                            <th class="p-2 F-Trainning" style="width: 73px !important;" >Eliminar</th>
+                                                            </thead>
+                                                            <tbody id="tbody_skill" class="tb_trainning" style="width: 740px !important; font-size:13.4px !important;  ">
+
+                                                            </tbody>
+                                                        </table>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- end modal_1 registro-->
+
+
+        <!-- start modal_2 ver-->
+
+        <div class="modal fade "  id="modalShowAuditor2" tabindex="-1" role="dialog" aria-labelledby="modalAddCompanyTitle" aria-hidden="true" >
+            <div class="modal-dialog modal-dialog-centered rounded dialog-positionAU " role="document" >
+                <div class="modal-content rounded modal-FormAuditorVer " >
+                    <div class="modal-header fix-header-modal">
+                        <div class="card-header text-left text-white  card-header-FormAuditor" >
+                            <div class="row">
+                                <div class="col-2">
+                                </div>
+                                <div id="namePerfil" class="col-8 text-center txtHeadModalAuditor">
+                                    Buscando...
+                                </div>
+                                <div class="col-2 d-flex ml-auto">
+                                    <button type="button" class="close btn-close-auditor" id="cerrarModal" data-dismiss="modal" aria-hidden="true">
+                                        <img src="./images/iconos/sign_copy.svg" class="sign-copyVer">
+
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="modal-body dialog-position" id="bodymodalShowAuditor" style=" justify-content:space-around; align-content:center; width:100%; height:40.125rem; overflow-y: scroll;"">
+                    <div class="card " style="border: 0px !important; border-radius: 10px; box-shadow: none; margin-left: 5% !important; ">
+                        <div style="width: 100%;text-align: -webkit-center; position: absolute; z-index: 2;margin-top: 100px;">
+                            <div class="preloader" id="preloader2" style="display: none;" > </div>
+                            <div id="preloader_txt2" style="display: none; color: black;"> <b>Cargando Datos...</b></div>
+
+                            </div>
+                        <div class="card-body2">
+                            <div class="row p-0">
+                                <div class="detalle-formauditor">
+                                    <p >Detalle</p>
+                                </div>
+                                <div class="col-9 p-2">
+                                    <hr>
+                                </div>
+                                <div class="col-1 d-flex ml-auto">
+                                    <img src="./images/iconos/menu.svg" class="menu-1-1">
+                                </div>
+                            </div>
+                            <div class="row p-2 d-flex justify-content-between>">
+                                <div style="width: 33%;">
+                                    <label for="sel_type_rol" class="bmd-label-static titleInput2">Rol </label><br>
+                                    <p id="read_rol"></p>
+                                </div>
+                                <div style="width: 33%;">
+                                    <label for="sel_type_rol" class="bmd-label-static titleInput2">Cargo </label><br>
+                                    <p id="read_cargo"></p>
+                                </div>
+                                <div style="width: 33%;">
+                                    <label for="sel_type_rol" class="bmd-label-static titleInput2">Sede </label><br>
+                                    <p id="read_sede"></p>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="card-body2">
+                            <div class="row p-0">
+                                <div class="capacitaciones-verauditor">
+                                    <p >Capacitaciones</p>
+                                </div>
+                                <div class="col-8 p-2">
+                                    <hr>
+                                </div>
+                                <div class="col-1 d-flex ml-auto">
+                                    <img src="./images/iconos/img_smile.svg" class="menu-1-1">
+                                </div>
+                            </div>
+                            <div id="read_capacitaciones"></div>
+
+                        </div>
+                        <div class="card-body2">
+                            <div class="row p-0">
+                                <div class="experiencia-verauditor">
+                                    <p >Experiencia</p>
+                                </div>
+                                <div style="width: 31.6rem;" class=" p-2">
+                                    <hr>
+                                </div>
+                                <div class="col-1 d-flex ml-auto">
+                                    <img src="./images/iconos/img_double-click.svg" class="menu-1-1">
+                                </div>
+                            </div>
+                            <div id="read_experiencia"  ></div>
+                        </div>
+                    </div>
+                </div> <!--modal-body-->
+            </div>
+        </div>
+    </div>
+    <!-- end modal_2 ver-->
+
+    <!-- alert confirmar -->
+    <div class="modal fade "  id="modalShowAlertConfirm" tabindex="-1" role="dialog" aria-labelledby="modalAddCompanyTitle" aria-hidden="true" >
+        <div class="modal-dialog modal-dialog-centered rounded " role="document" style="max-width: 400px; z-index: 1030; ">
+            <div class="modal-content rounded " style="border: 0px !important; background-color:rgba(0,0,0,.0001) !important; box-shadow: none;">
+
+                <div style="overflow: hidden;height: 500px;overflow-x: hidden; ">
+                    <div class="modal-body" id="">
+                        <div class="col-sm-12 col-md-12" style="color:#575757c9;">
+
+                            <div class="card " style=" border-radius: 10px; box-shadow: none;">
+                                <div class="card-header text-center text-white  " style=" border-radius: 10px 10px 0px 0px; background:#05beee; height: 95px;"><img src="images/iconos/informacio1.svg"><span><b><br><br>&nbsp;&nbsp;&nbsp;&nbsp;</b></span></div>
+
+                                <div class="card-body">
+                                    <div class="row p-0 d-flex justify-content-center">
+                                        <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;" >
+                                            <b style="font-size: 17px !important;">Se guardarán los datos registrados</b>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <div class="espacio"></div> -->
+                                <div class="card-body">
+                                    <div class="row p-0 d-flex justify-content-center">
+                                        <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;font-size: 15px;" >
+                                            <p style="font-size: 14px !important;" >¿Desea guardar los datos?</p>
+                                        </div>
+
+                                    </div>
+                                </div>
+                               <!--  <div class="espacio"></div> -->
+                                <div class="card-body">
+                                    <div class="row p-0 d-flex justify-content-center">
+                                         <div class="col-6" style="padding: 0px 6px !important;">
+                                        <button type="button" class="btn_confirmar_modal confirm btn-blue" onclick="vw_auditor_list.EnviarForm();" id="btGuardarModPlan">Guardar</button>
+                                          </div>
+                                          <div class="col-6">
+                                              <button class="btn_cerrar_modal btn-cerrar-fecha" onclick="vw_auditor_list.cancelconfirmform();" id="btn-cancelar-confirm-suspender"><b>Cerrar</b></button>
+                                          </div>
+
+
+                                    </div>
+                                </div>
+
+
+
+
+
+
+                                <div ></div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- alert confirmar-->
+
+<!-- alert datos Guardados -->
+<div class="modal fade "  id="modalShowAlertOk" tabindex="-1" role="dialog" aria-labelledby="modalshowAlertOk" aria-hidden="true" >
+    <div class="modal-dialog modal-dialog-centered rounded " role="document" style="max-width: 382px; z-index: 1030; ">
+        <div class="modal-content rounded " style="border: 0px !important; background-color:rgba(0,0,0,.0001) !important; box-shadow: none;">
+
+            <div style="overflow: hidden;height: 500px;overflow-x: hidden; ">
+                <div class="modal-body" id="">
+                    <div class="col-sm-12 col-md-12" style="color:#575757c9;">
+
+                        <div class="card " style=" border-radius: 10px; box-shadow: none;">
+                            <div class="card-header text-center text-white  " style=" border-radius: 10px 10px 0px 0px; background:#d2d97b; height: 95px;"><img src="images/iconos/correct_1.svg"><span><b><br><br>&nbsp;&nbsp;&nbsp;&nbsp;</b></span></div>
+
+                            <div class="card-body">
+                                <div class="row p-0 d-flex justify-content-center">
+                                <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;" >
+                                        <h4  style="letter-spacing: 0.26px; text-align: center; font-size: 18px; color:black"><b>Se guardarón los datos con éxito</b></h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div class="espacio"></div> -->
+                            <div class="card-body">
+                                <div class="row p-0 d-flex justify-content-center">
+                                    <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important; font-size: 15px;" >
+                                        <b style="color: #000000 !important; font-size: 15px;">Puedes retornar a tu bandeja y ver el registro agregado</b>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <!-- <div class="espacio"></div> -->
+                            <div class="card-body">
+                                <div class="row p-0 d-flex justify-content-center">
+                                    <div class="col-sm-12 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;font-size: 15px;" >
+
+                                        <!-- <button type="button" id="btnSalida" class="btn  btn-raised" style="background-color: #d2d97b; height: 47px; width: 254px; object-fit: contain; border-radius: 4.4px !important;"  ><b>De Acuerdo</b>
+                                        </button> -->
+
+                                        <button type="button" id="btnSalida" class="btn_confirmar_modal bg-green-lime-modal confirm btn-confirmar-plan-end" id="btn-confirmar-suspender-ok"><b>De Acuerdo</b></button>
+
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+
+
+
+
+                            <div ></div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+
+
+    </div>
+</div>
+<!-- alert Datos Guardados-->
+
+
+<!-- alert Error -->
+<div class="modal fade "  id="modalShowAlertError" tabindex="-1" role="dialog" aria-labelledby="modalAddCompanyTitle" aria-hidden="true" >
+    <div class="modal-dialog modal-dialog-centered rounded " role="document" style="max-width: 472px; z-index: 1030; ">
+        <div class="modal-content rounded " style="border: 0px !important; background-color:rgba(0,0,0,.0001) !important; box-shadow: none;">
+
+            <div style="overflow: hidden;height: 500px;overflow-x: hidden; ">
+                <div class="modal-body" id="">
+                    <div class="col-sm-12 col-md-12" style="color:#575757c9;">
+
+                        <div class="card " style=" border-radius: 10px; box-shadow: none;">
+                            <div class="card-header text-center text-white  " style=" border-radius: 10px 10px 0px 0px; background:#f50202; height: 95px;"><i class="fa fa-times"></i><span><b><br><br>&nbsp;&nbsp;&nbsp;&nbsp;</b></span></div>
+
+                            <div class="card-body">
+                                <div class="row p-0 d-flex justify-content-center">
+                                    <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;" >
+                                        <h4> <b>Se guardarón los datos con éxito</b></h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="espacio"></div>
+                            <div class="card-body">
+                                <div class="row p-0 d-flex justify-content-center">
+                                    <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;font-size: 15px;" >
+                                        <b>¿Desea guardar los datos?</b>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="espacio"></div>
+                            <div class="card-body">
+                                <div class="row p-0 d-flex justify-content-center">
+                                    <div class="col-sm-12 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;font-size: 15px;" >
+                                        <button type="button" id="btnSalida" class="btn  btn-raised" style="background-color: #d2d97b; height: 47px; width: 254px; object-fit: contain; border-radius: 4.4px !important;" onclick="vw_auditor_list.init();" >De Acuerdo</button>
+
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+
+
+
+
+                            <div ></div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+
+
+    </div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+<div class="modal fade"  id="modalMsgError" tabindex="-1" role="dialog" aria-labelledby="ExitoIngresarAuditoriaModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered rounded" role="document" style="max-width: 300px; z-index: 1030; ">
+
+        <div class="modal-content rounded border-0" style=" background-color:rgba(0,0,0,.0001) !important; box-shadow: none;">
+            <div style="overflow: hidden;height: 380px;overflow-x: hidden; ">
+                <div class="modal-body" id="" style="padding: 0px;">
+                    <div class="col-sm-12 col-md-12" style="color:#575757c9; width: 100%; padding: 0px;">
+
+                        <div class="card border-o" style=" padding: 0px; border: 2px solid #ff5a5a; border-radius: 5px;    width: 100%;">
+                            <div class="card-header text-white" style="background:#ff5a5a; height: 95px;">
+                                    <div class="d-flex justify-content-center">
+                                        <img src="images/iconos/informacion3.svg">
+                                    </div>
+                            </div>
+                                <div class="card-body" style="background: white;">
+                                  <table align="center" width= "100%" border="0" >
+                                      <tr>
+                                          <td width="5%" >&nbsp;</td>
+                                               <td width="80%" >
+                                                <div class="d-flex justify-content-center titulo-exito-ingreso-auditoriaCA" style="font-size: 18px;">
+                                                    <b>ERROR!</b>
+                                                </div>
+
+                                               </td>
+                                          <td width="5%">&nbsp;</td>
+                                      </tr>
+
+                                      <tr>
+                                        <td width="5%" >&nbsp;</td>
+                                             <td width="80%" align="center" >
+                                                 <div id="subTituloError" class="d-flex mb-2 justify-content-center titulo-confirmar-ingreso-auditoriaCA" style="font-size: 18px; text-align: center;">
+                                                       <b style="text-align: center;">auditorías con éxito</b>
+                                                 </div>
+                                             </td>
+                                        <td width="5%">&nbsp;</td>
+                                       </tr>
+
+                                        <tr>
+                                            <td width="5%" >&nbsp;</td>
+                                                <td width="80%" align="center" >
+                                                    <div id="mensajeError" class="d-flex mx-0 px-0 justify-content-center pregunta-exito-ingreso-auditoriaCA">
+                                                        El código de la programación es:aaaaaaaaad dfdsfsdfdsf
+                                                        dsfsdfdsfsdfdsfdfdsfdf
+                                                        dfsdfsdfds
+                                                     </div>
+                                                </td>
+                                            <td width="5%">&nbsp;</td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <td width="5%" >&nbsp;</td>
+                                                <td width="80%" >
+                                                    <div class="d-flex mx-0 px-0 justify-content-center pregunta-exito-ingreso-auditoriaCA">
+                                                        &nbsp;
+                                                     </div>
+                                                </td>
+                                            <td width="5%">&nbsp;</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td width="5%" >&nbsp;</td>
+                                                <td width="80%" >
+                                                    <div  class="d-flex mb-3 mx-0 justify-content-center titulo-exito-ingreso-auditoriaCA" >
+                                                        <button type="button" onClick="$('#modalMsgError').modal('hide');" class="btn_confirmar_modal bg-danger" style="color: #fff" >De Acuerdo</button>
+                                                    </div>
+                                                </td>
+                                            <td width="5%">&nbsp;</td>
+                                        </tr>
+
+
+
+                                  </table>
+                                </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+<div id="excel" class="export" style="display: block;">
+    <div class="row">
+        <div class="col-12">
+            <a href="#" id="ListadoDeAuditores" style="display:none"></a><! PARA DESCARGAR EL EXCEL DEL LISTADO>
+        </div>
+
+    </div>
+</div>
+
+<iframe style="display: none;" id="showFile"></iframe>
+<!-- alert Datos Guardados-->
+<script src="./js/paginator/pagination.js"></script>
+
+<script>
+    $('#sandbox-container input').datepicker({
+        dateFormat: "dd/mm/yy", autoclose: true
+    });
+
+    /**
+     * [Buscar listado al precionar enter al estar en el campo nombre del auditor]
+     */
+    $('#tx_name_auditor').keyup(function(e)
+    {
+      if(e.keyCode == 13)
+      {
+        //$('#button1').click();
+        vw_auditor_list.searchAuditor();
+      }
+    });
+
+    $('document').ready(function (){
+        let base64_skill="";
+
+        $('#view_auditor').on('click', '.btn-register',  function () {
+            var navListItems = $('div.setup-panel div a button'); // tab nav items
+            navListItems.removeClass('btn-primary-check');
+            $('#btn_step1').addClass('btn-primary-check');
+
+        })
+
+
+        //Chequea switch_estatus para mostrar el estado del toggle como Activo
+        $("#switch_estatus").prop("checked", true);
+        $('.textarea_noActivo').hide();
+        //Chequea switch_estatus para mostrar el estado del toggle como Activo
+
+        //Cambio de los Step del formulario y color de los botones
+        var navListItems = $('div.setup-panel div a button'), // tab nav items
+            allWells = $('.setup-content'), // content div
+            allNextBtn = $('.nextBtn'), // next button
+            step1 = $('#step-1');
+        allWells.hide(); // hide all contents by defauld
+        step1.show();
+        $('#btn_step1').addClass('btn-primary-check');
+        navListItems.click(function (e) {
+            e.preventDefault();
+            var $target = $($(this).attr('href')),
+                $item = $(this);
+
+            if (!$item.hasClass('disabled')) {
+                navListItems.removeClass('btn-primary-check').addClass('btn-default');
+                $item.addClass('btn-primary-check');
+                allWells.hide();
+                $target.show();
+                // $target.find('input:eq(0)').focus();
+            }
+        });
+        // next button
+        allNextBtn.click(function(){
+            var curStep = $(this).closest(".setup-content"),
+                curStepBtn = curStep.attr("id"),
+                nextStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().next().children("a"),
+                isValid = true;
+            // Validation
+            $(".form-group").removeClass("has-error");
+
+            // move to next step if valid
+            if (isValid)
+                nextStepWizard.removeAttr('disabled').trigger('click');
+        });
+
+        $('div.setup-panel div a.btn-primary').trigger('click');
+        //Cambio de los Step del formulario y color de los botones
+
+        //Agregar Informacion en el step-3 EVALUACIONES
+        $('#add-eval').click(function (){
+            if(   $('#sel_audited_unit').val()=="" || $('#sel_rule_audited').val()=="" || $('#txt_date_eval').val()=="" || $('#txt_role_played').val() =="" || $('#txt_score_end').val()=="")
+            {
+                swal("No puede agregar Campos vacios")
+
+            }else if(document.getElementById("file_eval").files.length == 0){
+                swal("Por favor agregue una constancia de su evaluacion")
+            }else {
+
+
+                $("#tbody_eval").append("<tr class='espacio'>" +
+                    "<input type='hidden' name='sel_audited_unit[]' value='" + $('#sel_audited_unit').val() + "'> " +
+                    "<input type='hidden' name='sel_rule_audited[]' value='" + $('#sel_rule_audited').val() + "'>" +
+                    "<input type='hidden' name='txt_date_eval[]' value='" + $('#txt_date_eval').val() + "'> " +
+                    "<input type='hidden' name='txt_role_played[]' value='" + $('#txt_role_played').val() + "'>" +
+                    "<input type='hidden' name='txt_score_end[]' value='" + $('#txt_score_end').val() + "'>" +
+                    "<input type='hidden' name='file_eval[]' value='" + $('#file_eval').val() + "'>" +
+
+                    "</tr>");
+                $("#tbody_eval").append("<tr class='dd-flex justify-content-between mb-3 row-table' >" +
+
+                    "                            <td  class='p-3 '>" + $('#sel_audited_unit').val() + "</td>" +
+                    "                            <td  class='p-3 '>" + $('#sel_rule_audited').val() + "</td>" +
+                    "                            <td  class='p-3 '>" + $('#txt_date_eval').val() + "</td>" +
+                    "                            <td  class='p-3 '>" + $('#txt_role_played').val() + "</td>" +
+                    "                            <td  class='p-3 '>" + $('#txt_score_end').val() + "</td>" +
+                    "                            <td  class='p-3 '>" +
+                    "                                <button type='button' value='"+$('#file_eval').val()+"'  class='btn-circle border-0 readPDF_eval' style='background-color: #58c25d' id='btn_edit'>" +
+                    "                                    <img src='./images/iconos/ojo_1.svg' class='edit-1'>" +
+                    "                                </button>" +
+                    "                            </td>" +
+                    "                            <td  class='p-3 '>" +
+                    "                                <button type='button' class='btn-circle border-0' style='background-color: #373e68' id='btn_read' >" +
+                    "                                    <img src='./images/iconos/delete.svg' class='ojo-1'>" +
+                    "                                </button>" +
+                    "                            </td>" +
+                    "                        </tr>");
+
+                $('#file_eval').val('');
+                $('#sel_audited_unit').val('');
+                $('#sel_rule_audited').val('');
+                $('#txt_date_eval').val('');
+                $('#txt_role_played').val('');
+                $('#txt_score_end').val('');
+            }
+        })
+        //Agregar Informacion en el step-3 EVALUACIONES
+var alert_vacio = "Este Registro no posee Documentos Adjunto";
+        //Agregar Informacion en el step-2 CAPACITACIONES
+        $('#add-trainning').click(function (){
+            if( $('#sel_rule_trainning').val() =="" || $('#sel_rule_trainning').val() == null || $('#sel_trainnig').val()=="" || $('#sel_type').val() =="" ||  $('#sel_type').val()=="" ||  $('#txt_date_start').val() =="" || $('#txt_date_end').val()==""){
+                swal("No puede agregar Campos vacios")
+            }/* else if(document.getElementById("file_trainning").files.length == 0){
+                swal("Por favor agregue una constancia de su participacion en la capacitacion")
+            } */else {
+
+                var selT = document.getElementById('sel_rule_trainning');
+                var selectedT = selT.options[selT.selectedIndex];
+                var normaid = $('#sel_rule_trainning').val();
+                var TipoCursoId =  $('#sel_trainnig').val();
+                var Tipo = $('#sel_type').val();
+                var Fecha_I = $('#txt_date_start').val();
+                var Fecha_F = $('#txt_date_end').val();
+
+                var Fecha_Inicio = $('#txt_date_start').val().split('/').reverse().join('-');
+                var Fecha_Final = $('#txt_date_end').val().split('/').reverse().join('-');
+                var Created_By = getCookie("vtas_id_hash" + sessionStorage.tabVisitasa);
+                var txt_curso = $("#sel_trainnig option:selected").text();
+                var txt_tipo = $("#sel_type option:selected").text();
+
+                var file_trainning = document.getElementById("file_trainning").files[0];
+                var base64_trainning="";
+
+                if(file_trainning)
+                {
+                    toBase64(file_trainning).then(
+                        data => {
+                            base64_trainning =   getResult(data);
+
+                            capacitacionesOBJ.push({
+                                "Id": 0,
+                                "NormaId": parseInt(normaid),
+                                "TipoCursoId": parseInt(TipoCursoId),
+                                "Tipo": parseInt(Tipo),
+                                "Fecha_Inicio": Fecha_Inicio,
+                                "Fecha_Final": Fecha_Final,
+                                "Adjunto": data,
+                                "Active": 1,
+                                "Created_By": Created_By
+                            });
+
+
+                            $("#tbody_trainning").append("<tr  >" +
+                                "                            <td>" + selectedT.getAttribute('descripcion') + "</td>" +
+                                "                            <td>" + txt_curso + "</td>" +
+                                "                            <td>" + Fecha_I + "</td>" +
+                                "                            <td>" + Fecha_F + "</td>" +
+                                "                            <td>" + txt_tipo + "</td>" +
+                                "                            <td class='p-3'>" +
+                                "                                <button type='button' value='" + base64_trainning + "'  onclick='openNewTab(this.value)' class='btn-circle border-0 readPDF_trainning border-0' style='background-color: #58c25d' id='btn_edit'>" +
+                                "                                    <img src='./images/iconos/ojo_1.svg' class='edit-1'>" +
+                                "                                </button>" +
+                                "                            </td>" +
+                                "                            <td class='p-3'>" +
+                                "                                <button type='button' class='btn-circle border-0 delete border-0' _Id='' style='background-color: #ff4d4d' id='btn_read' >" +
+                                "                                    <img src='./images/iconos/delete.svg' class='ojo-1'>" +
+                                "                                </button>" +
+                                "                            </td>" +
+                                "                        </tr>");
+                        }
+                    );
+                }
+                else{
+
+                        capacitacionesOBJ.push({
+                            "Id": 0,
+                            "NormaId": parseInt(normaid),
+                            "TipoCursoId": parseInt(TipoCursoId),
+                            "Tipo": parseInt(Tipo),
+                            "Fecha_Inicio": Fecha_Inicio,
+                            "Fecha_Final": Fecha_Final,
+                            "Adjunto": '',
+                            "Active": 1,
+                            "Created_By": Created_By
+                        });
+                    $("#tbody_trainning").append("<tr  style = 'border: 1px solid #cbcbcb; border-radius: 0.5em; display:block;' >" +
+                        "                            <td >&nbsp;&nbsp;" + selectedT.getAttribute('descripcion') + "</td>" +
+                        "                            <td >" + $("#sel_trainnig option:selected").text()  + "</td>" +
+                        "                            <td >" + Fecha_I + "</td>" +
+                        "                            <td >" + Fecha_F + "</td>" +
+                        "                            <td >" + $("#sel_type option:selected").text() + "</td>" +
+                        "                            <td class='p-3'>" +
+                        "                                <button type='button' value='' disabled class='btn-circle border-0 readPDF_trainning border-0' style='background-color: #c3c3c3' id='btn_edit'>" +
+                        "                                    <img src='./images/iconos/ojo_1.svg' class='edit-1'>" +
+                        "                                </button>" +
+                        "                            </td>" +
+                        "                            <td class='p-3'>" +
+                        "                                <button type='button' class='btn-circle border-0 delete border-0' _Id='' style='background-color: #ff4d4d' id='btn_read' >" +
+                        "                                    <img src='./images/iconos/delete.svg' class='ojo-1'>" +
+                        "                                </button>" +
+                        "                            </td>" +
+                        "                        </tr>");
+
+
+                }
+
+
+
+
+
+
+                var checkObservador = vw_auditor_list.comprobarObservador($('#sel_trainnig').val(),$('#sel_rule_trainning').val())
+                if (checkObservador==true){
+                    $(".observador").prop("checked", true);
+
+                }
+                $('#arc_t').html('');
+                $('#file_trainning').val('')
+                $('#sel_rule_trainning').val('')
+                $('#sel_trainnig').val('')
+                $('#sel_type').val('')
+                $('#sel_type').val('')
+                $('#txt_date_start').val('')
+                $('#txt_date_end').val('')
+            }
+        })
+        //Agregar Informacion en el step-2 CAPACITACIONES
+        var getResult = function(data) { var result= data.split(','); return result[1]; }
+
+        //Agregar Informacion en el step-4 EXPERIENCIA
+        $('#add-skill').click(function () {
+
+            base64_skill="";
+
+            if ($('#sel_role_skill').val() == "" || $('#sel_rule_skill').val() == "" || $('#sel_rule_skill').val() == null || $('#txt_date_start_skill').val() == "" || $('#txt_date_end_skill').val() == "") {
+                swal("No puede agregar Campos vacios")
+            } /*else {
+                if ($('#txt_date_start_skill').val() > $('#txt_date_end_skill').val()) {
+                    swal("La fecha de inicio no puede ser mayor a la fecha fin")
+                } else if(document.getElementById("file_skill").files.length == 0){
+                    swal("Por favor agregue una constancia de su participacion en la auditoria")
+                } */
+                else {
+                    var selS = document.getElementById('sel_rule_skill');
+                    var selectedS = selS.options[selS.selectedIndex];
+
+                    var selRole = document.getElementById('sel_role_skill');
+                    var selectedRole = selRole.options[selRole.selectedIndex];
+
+                    var x = "";
+                    switch (selectedRole.getAttribute('description')) {
+                        case  "Observador" :
+                            x = "<td  >" + '&nbsp;&nbsp; Si' + "</td>" + "<td  class='p-3 '>&nbsp;&nbsp;" + '-' + "</td>" + "<td  class='p-3 '>&nbsp;&nbsp;" + '-' + "</td>";
+                            break;
+                        case "Auditor Lider" :
+                            x = "<td  >&nbsp;&nbsp;&nbsp;&nbsp;" + '-' + "</td>" + "<td  class='p-3 '>&nbsp;" + '-' + "</td>" + "<td  class='p-3 '>&nbsp;" + 'Si' + "</td>";
+                            break;
+                        case "Auditor" :
+                            x = "<td  >&nbsp;&nbsp;&nbsp;&nbsp;" + '-' + "</td>" + "<td  class='p-3 '>&nbsp;" + 'Si' + "</td>" + "<td  class='p-3 '>" + '-' + "</td>";
+                            break;
+                    }
+
+                    var NormaId = $('#sel_rule_skill').val();
+                    var RolId= $('#sel_role_skill').val();
+                     var Fecha_I2=  $('#txt_date_start_skill').val();
+                     var Fecha_F2=  $('#txt_date_end_skill').val();
+                    var Fecha_Inicio2=  $('#txt_date_start_skill').val().split('/').reverse().join('-');
+                    var Fecha_Final2=  $('#txt_date_end_skill').val().split('/').reverse().join('-');
+                    var Created_By = getCookie("vtas_id_hash" + sessionStorage.tabVisitasa);
+                var index = 0;
+                    var file_skill = document.getElementById("file_skill").files[0];
+                    if(file_skill)
+                    {
+                        toBase64(file_skill?file_skill:'').then(
+                            data => {
+                                base64_skill =   getResult(data);
+                                experienciasOBJ.push({
+                                    "Id": 0,
+                                    "NormaId": NormaId,
+                                    "RolId" : RolId,
+                                    "FechaInicio": Fecha_Inicio2,
+                                    "FechaFin":Fecha_Final2,
+                                    "Adjunto": data?data:'',
+                                    "Active":1,
+                                    "Created_By": Created_By});
+
+
+                                $("#tbody_skill").append("<tr   style = 'border: 1px solid #cbcbcb; border-radius: 0.5em; display:block;' >" +
+                                    "                            <td  >&nbsp;&nbsp;&nbsp;&nbsp;" +selectedS.getAttribute('descripcion') + "</td>" +
+                                    x +
+                                    "                            <td  >" + Fecha_I2 + "</td>" +
+                                    "                            <td  >" + Fecha_F2 + "</td>" +
+                                    "                            <td class='p-3'>" +
+                                    "                                <button type='button'  value='" + base64_skill + "' class='btn-circle border-0 readPDF_skill border-0' onclick='openNewTab(this.value)' style='background-color: #58c25d' id='btn_edit'>" +
+                                    "                                    <img src='./images/iconos/ojo_1.svg' class='edit-1'>" +
+                                    "                                </button>" +
+                                    "                            </td>" +
+                                    "                            <td class='p-3'>" +
+                                    "                                <button type='button' class='btn-circle border-0 delete_skill delete border-0' _Id='' style='background-color: #ff4d4d' id='btn_read' >" +
+                                    "                                    <img src='./images/iconos/delete.svg' class='ojo-1'>" +
+                                    "                                </button>" +
+                                    "                            </td>" +
+                                    "                        </tr>");
+
+                            }
+                        );
+                    }
+                    else{
+
+                            experienciasOBJ.push({
+                                "Id": 0,
+                                "NormaId": NormaId,
+                                "RolId" : RolId,
+                                "FechaInicio": Fecha_Inicio2,
+                                "FechaFin":Fecha_Final2,
+                                "Adjunto":'',
+                                "Active":1,
+                                "Created_By": Created_By});
+                        $("#tbody_skill").append("<tr   style = 'border: 1px solid #cbcbcb; border-radius: 0.5em; display:block;' >" +
+                            "                            <td  >&nbsp;&nbsp;" +selectedS.getAttribute('descripcion') + "</td>" +
+                            x +
+                            "                            <td  >" + Fecha_I2 + "</td>" +
+                            "                            <td  >" + Fecha_F2 + "</td>" +
+                            "                            <td class='p-3'>" +
+                            "                                <button type='button' disabled value='' class='btn-circle border-0 readPDF_skill border-0' style='background-color: #c3c3c3' id='btn_edit'>" +
+                            "                                    <img src='./images/iconos/ojo_1.svg' class='edit-1'>" +
+                            "                                </button>" +
+                            "                            </td>" +
+                            "                            <td class='p-3'>" +
+                            "                                <button type='button' class='btn-circle border-0 delete_skill delete border-0' _Id='' style='background-color: #ff4d4d' id='btn_read' >" +
+                            "                                    <img src='./images/iconos/delete.svg' class='ojo-1'>" +
+                            "                                </button>" +
+                            "                            </td>" +
+                            "                        </tr>");
+
+                    }
+
+
+
+
+                    $('#arc_s').html('');
+
+                    $('#file_skill').val('');
+                    $('#sel_role_skill').val('');
+                    $('#sel_rule_skill').val('');
+                    $('#txt_date_start_skill').val('');
+                    $('#txt_date_end_skill').val('');
+                }
+        })
+        //Agregar Informacion en el step-4 EXPERIENCIA
+
+
+//BOTON GUARDAR DEL FORMULARIO
+        $('#btn_create_auditor').click(function () {
+            console.log($('#hid_Cargo_1').val())
+
+            $("#modalShowAuditor").removeClass("fade").modal("hide");
+            $("#modalShowAlertConfirm").modal("show").addClass("fade");
+
+        });
+        //BOTON GUARDAR DEL FORMULARIO
+
+        //BOTON PARA LA BUSQUEDA DE ARCHIVOS STEP-3 EVALUACION
+        $('#btn_file_eval').click(function(){
+            $('#file_eval').trigger('click');
+
+        });
+        //BOTON PARA LA BUSQUEDA DE ARCHIVOS STEP-3 EVALUACION
+
+        //VALIDAR LA EXTENSION DEL ARCHIVO STEP-3 EVALUACION
+        $('#file_eval').on('change',function () {
+
+            var fileInput = document.getElementById('file_eval');
+            var filePath = fileInput.value;
+            var allowedExtensions = /(.pdf)$/i;
+            if(!allowedExtensions.exec(filePath)){
+                alert('Por favor cargue solo archivos .pdf');
+                fileInput.value = '';
+                return false;
+            }
+        })
+        //VALIDAR LA EXTENSION DEL ARCHIVO STEP-3 EVALUACION
+
+
+        //BOTON PARA LA BUSQUEDA DE ARCHIVOS STEP-2 CAPACITACIONES
+        $('#btn_file_trainning').click(function(){
+            $('#file_trainning').trigger('click');
+
+        });
+        //BOTON PARA LA BUSQUEDA DE ARCHIVOS STEP-2 CAPACITACIONES
+
+        //VALIDAR LA EXTENSION DEL ARCHIVO STEP-2 CAPACITACIONES
+        $('#file_trainning').on('change',function () {
+
+            var fileInput = document.getElementById('file_trainning');
+            var filePath = fileInput.value;
+            var allowedExtensions = /(.pdf)$/i;
+            if(!allowedExtensions.exec(filePath)){
+                alert('Por favor cargue solo archivos .pdf');
+                fileInput.value = '';
+                return false;
+            }
+            var esc= escape(filePath)
+           var name = esc.split("%5C");
+
+            $('#arc_t').html(name[2]);
+        })
+        //VALIDAR LA EXTENSION DEL ARCHIVO STEP-2 CAPACITACIONES
+
+
+        //BOTON PARA LA BUSQUEDA DE ARCHIVOS STEP-4 EXPERIENCIA
+        $('#btn_file_skill').click(function(){
+            $('#file_skill').trigger('click');
+
+        });
+        //BOTON PARA LA BUSQUEDA DE ARCHIVOS STEP-4 EXPERIENCIA
+
+        //VALIDAR LA EXTENSION DEL ARCHIVO STEP-4 EXPERIENCIA
+        $('#file_skill').on('change',function () {
+
+            var fileInput = document.getElementById('file_skill');
+            var filePath = fileInput.value;
+            var allowedExtensions = /(.pdf)$/i;
+            if(!allowedExtensions.exec(filePath)){
+                alert('Por favor cargue solo archivos .pdf');
+                fileInput.value = '';
+                return false;
+            }
+            var esc2= escape(filePath)
+           var name2 = esc2.split("%5C");
+
+            $('#arc_s').html(name2[2]);
+        })
+        //VALIDAR LA EXTENSION DEL ARCHIVO STEP-4 EXPERIENCIA
+
+        //LLAMADO AL SELECT DINAMICO PARA OBTENER LAS NORMAS POR ESPECIALIDAD
+        $('#EspecialidadId').on('change',function () {
+            vw_auditor_list.normasPorEspecialidades($('#EspecialidadId').val())
+
+        })
+        //LLAMADO AL SELECT DINAMICO PARA OBTENER LAS NORMAS POR ESPECIALIDAD
+
+        //MODIFICACION DEL TOGGLE ESTATUS
+        $('.switchBtn').click(function(){
+            if($('#idAuditor').val()=="" || $('#idAuditor').val()== null)
+            {
+                $('#switch_estatus').prop('checked') == true;
+            }else {
+                if ($('#switch_estatus').prop('checked') == true) {
+                    $('#customSwitch1').html('Activo');
+                    $('.textarea_noActivo').hide();
+                    $('#val_status').val(1)
+
+                } else {
+                    $('.textarea_noActivo').show();
+                    $('#customSwitch1').html('Inactivo');
+                    $('#val_status').val(0)
+
+                }
+            }
+        })
+        //MODIFICACION DEL TOGGLE ESTATUS
+
+//CERRAR MSJ DE CONFIRMACION "LOS DATOS GUARDADOS EXITOSAMENTE"
+        $('#btnSalida').click(function () {
+            cont_auditor=cont_auditor+1;
+            $("#cant_auditor").html("<b>"+cont_auditor+"</b>");
+
+            $("#modalShowAlertOk").removeClass("fade").modal("hide");
+
+
+        });
+        //CERRAR MSJ DE CONFIRMACION "LOS DATOS GUARDADOS EXITOSAMENTE"
+
+
+        //MOSTRAR PDF DE EXPERIENCIAS
+
+        $('#tbody_skill').on('click','.delete_skill', function () {
+            //  $(this).closest('tr').remove();
+        })
+
+        const toBase64 = file => new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = () => resolve(reader.result);
+            reader.onerror = error => reject(error);
+        });
+
+        $('#tbody_skill').on('click', '.delete', function() {
+
+            var this_s = this;
+            var id_s=this.getAttribute('_Id');
+           // $(this).parents('tr').remove();
+            swal({
+      title: "Eliminar",
+      text: "¿Desea eliminar la experiencia?",
+      type: "info",
+      showCancelButton: true,
+      confirmButtonClass: "btn-danger btn-sm btn-rounded rounded",
+      cancelButtonClass: "btn-success btn-sm btn-rounded rounded",
+      confirmButtonText: "Si",
+      cancelButtonText: "No",
+      closeOnConfirm: true,
+      showLoaderOnConfirm: false
+    },function(){
+                 if(id_s!=""){
+                 vw_auditor_list.deleteSkill(id_s);
+                 $(this_s).parents('tr').remove();
+                 return
+             }else{
+                $(this_s).parents('tr').remove();
+                 return
+             }
+
+            });
+
+        });
+        $('#tbody_trainning').on('click', '.delete', function() {
+            var this_t = this;
+            var id_t=this.getAttribute('_Id');
+           // $(this).parents('tr').remove();
+            swal({
+      title: "Eliminar",
+      text: "¿Desea eliminar la capacitación?",
+      type: "info",
+      showCancelButton: true,
+      confirmButtonClass: "btn-danger btn-sm btn-rounded rounded",
+      cancelButtonClass: "btn-success btn-sm btn-rounded rounded",
+      confirmButtonText: "Si",
+      cancelButtonText: "No",
+      closeOnConfirm: true,
+      showLoaderOnConfirm: false
+    },function(){
+                 if(id_t!=""){
+                 vw_auditor_list.deleteTrainning(id_t);
+                 $(this_t).parents('tr').remove();
+                 return
+             }else{
+                $(this_t).parents('tr').remove();
+                 return
+             }
+
+            });
+
+        });
+
+
+    })
+    //VALIDADOR DE FECHAS CAPACITACIONES
+    $('#txt_date_end').on('change', function () {
+        var dateStart = $('#txt_date_start').val();
+        var dateEnd = $('#txt_date_end').val();
+        console.log(dateStart,dateEnd)
+        if (process_Date(dateStart) > process_Date(dateEnd)) {
+            swal("La fecha de inicio no puede ser mayor a la fecha fin")
+            $('#txt_date_end').val('')
+        }
+    })
+
+    $('#txt_date_start').on('change', function () {
+        var dateStart = $('#txt_date_start').val();
+        var dateEnd = $('#txt_date_end').val();
+        if (dateEnd!=""){
+            if (process_Date(dateStart) > process_Date(dateEnd)) {
+                swal("La fecha de inicio no puede ser mayor a la fecha fin")
+                $('#txt_date_end').val('')
+            }
+        }
+
+    })
+    //VALIDADOR DE FECHAS CAPACITACIONES
+
+    //VALIDADOR DE FECHAS EXPERIENCIAS
+    $('#txt_date_end_skill').on('change', function () {
+        var dateStartSkill = $('#txt_date_start_skill').val();
+        var dateEndSkillnew = $('#txt_date_end_skill').val();
+
+        if (process_Date(dateStartSkill) > process_Date(dateEndSkillnew)) {
+            swal("La fecha de inicio no puede ser mayor a la fecha fin")
+            $('#txt_date_end_skill').val('')
+        }
+    })
+
+    $('#txt_date_start_skill').on('change', function () {
+        var dateStartSkill = $('#txt_date_start_skill').val();
+        var dateEndSkillnew = $('#txt_date_end_skill').val();
+        if (dateEndSkillnew!="") {
+
+            if (process_Date(dateStartSkill) > process_Date(dateEndSkillnew)) {
+                swal("La fecha de inicio no puede ser mayor a la fecha fin")
+                $('#txt_date_end_skill').val('')
+            }
+        }
+    })
+    //VALIDADOR DE FECHAS EXPERIENCIAS
+    function process_Date(date){
+        var parts = date.split("/");
+        return new Date(parts[2], parts[1] - 1, parts[0]);
+    }
+    function openNewTab(ref){
+    if (ref!="" || ref != null || ref != undefined){
+      //  window.open("data:application/octet-stream;charset=utf-16le;base64," + ref, "_blank","toolbar=1, scrollbars=1, resizable=1, width=" + 1015 + ", height=" + 800);
+
+        let pdfWindow = window.open("")
+        pdfWindow.document.write("<iframe width='100%' height='100%' src='data:application/pdf;base64, " + encodeURI(ref) + "'></iframe>")
+    }else{
+        swal("Error","Este Registro no contiene de archivos","error")
+
+    }
+
+    }
+</script>
+
+

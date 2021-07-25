@@ -1,0 +1,1333 @@
+
+<!-- <div class="container-fluid">-->  
+<div class="row bg-white border-bottom pt-0" id="label_group_find" onclick="$('.popover').popover('hide');"  style="height: 45px;">
+  <div class="col-sm-2 ">
+    <label class="col-form-label " name="lab_type_request-access" id="typerequest_1">
+      <h6><a id="listType1" href="#" class="text-muted text-decoration-none    pl-4" style="text-decoration: none;; cursor:default;" >
+        <img src="images/iconos/icoVisita.svg" id="imgvisitante" height="28px" width="28px" >  Visitantes <span id="cant_visitante" class="contNumber">0</span></a></h6></label>        
+  </div>
+  <div class="col-sm-2">
+    <label class="col-form-label " name="lab_type_request-access" id="typerequest_3">
+      <h6><a id="listType2" href="#" class="text-muted text-decoration-none " onClick=""  style="text-decoration: none;; cursor: default;"     >
+        <img src="images/iconos/icoProveedor.svg" height="28px" width="28px"> Proveedores <span id="cant_proveedor" class="contNumber">0</span></a> </h6></label>        
+  </div>      
+  <div class="col-sm-2">
+    <label class="col-form-label " name="lab_type_request-access" id="typerequest_2">
+      <h6><a id="listType3" href="#" class="text-muted text-decoration-none  pl-0" onClick=""  style="text-decoration: none; cursor: default;">
+        <img src="images/iconos/iconContratista.svg" height="28px" width="28px"> Contratistas <span id="cant_contratista" class="contNumber">0</span></a></h6></label>
+  </div>
+  <div class="col-sm-2">
+    <label class="col-form-label " name="lab_type_request-access" id="typerequest_4">
+      <h6><a id="listType4" href="#" class="text-muted text-decoration-none  pl-0" onClick=""  style="text-decoration: none;; cursor: default;">
+        <img src="images/iconos/icoTransportista.svg" height="28px" width="28px"> Transportista <span id="cant_transportista" class="contNumber">0</span></a></h6></label>
+  </div>
+  <div class="col-sm-2">
+    
+    <label class="col-form-label " name="lab_type_request" id="typerequest_5">
+      <h6><a id="listType3" href="#" class="text-muted text-decoration-none  pl-0" onClick="selectedTextType(5)"  style="text-decoration: none;; cursor: default;">
+        <img src="images/iconos/icoVisita.svg" height="28px" width="28px"> Colaborador<span id="cant_colaborador" class="contNumber">0</span></a></h6></label>       
+  </div>
+  <div></div>
+  <!-- <div class="col-md-1 text-right pr-0" ><button id="buttomCovidList" style="display:none" type="button" class="btn btn-danger btn-rounded btn-raised mt-1 text-capitalize" onclick="handlerUrlhtml('contentGlobal','view/covidListColaborador.html');" >COVID 19</button></div> -->
+  <!-- <div class="col-md-1 text-right pr-0" ><button type="button" class="btn btn-primary btn-rounded btn-raised mt-1 text-capitalize" onclick="handlerUrlhtml('contentGlobal','view/accessEventList.html','accessEventList');" >Ver detalle</button></div> -->
+  <div class="col-md-1"><button type="button" class="btn btn-primary btn-rounded btn-raised mt-1" onclick="" data-toggle="modal" data-target="#modalConsultVehicle" style="display: none;">Vehiculo</button>   </div>
+  
+    <!-- <div class="col-md-4 text-right"><img src="images/iconos/user.svg"></div> -->
+</div>
+<!-- </div>-->
+
+<div class="row bg-white pt-3 mt-2 border-bottom border-top pl-3 pb-3 " style="height: 80px;">
+  
+  <div class="col-md-4 ">
+    <h6 class="titleMain pb-1" style="border-bottom: 0px!important; margin-bottom: 0rem!important;">Registro de Entrada y Salida</h6>
+    <small class="text-help text-muted">Asegurese de realizar una búsqueda</small>      
+  </div>
+  
+  <div class="col-md-3 " style="left:-180px">      
+    <input type="text" placeholder="Buscar Documento o Placa" id="tx_access_dni" name="tx_access_dni" class="shadow-sm inputFind" style="width: 270px;">
+  </div>
+
+  <!-- <div class="col-md-1 " style="left:-110px">      
+     <input type="text" placeholder="Buscar por nombre" id="tx_access_name" name="tx_access_name" class="shadow-sm inputFind" style="width: 220px;"> 
+  </div> -->
+
+  <div class="col-md-5 " >      
+    <div class="row ">
+      
+      <div class="col-md-2 text-center pr-5" style="top:-9px; right: 20px;display:none ">
+        <div class="row justify-content-md-center">
+          <div class="col-md-auto">
+            <div class="row">
+              <img class="p-1" src="images/iconos/hora.svg" height="40">     
+              <h2 class="mb-0 text-primary font-weight-bold" id="span_reloj">....</h2>
+            </div>         
+          </div>
+        </div>
+        <small class="text-help text-secondary pl-5 texthelpmute">Hora</small> 
+      </div>
+      
+      
+
+      <div class="col-md-3 text-center" style="top:-9px;">
+        <div class="row justify-content-md-center border-left">
+          <div class="col-md-auto">
+            <div class="row">
+              <img class="mr-3" src="images/iconos/personinPlant.svg">      
+              <h2  class="mb-0 text-secondary font-weight-bold" id="span_en_planta">0</h2>
+            </div>         
+          </div>
+        </div>
+
+        <small class="text-help text-secondary texthelpmute">Personas en Sede</small> 
+      </div>
+
+      <div class="col-md-3 text-center" style="top:-9px;cursor: pointer;" onclick="$('#ListtVehiclesrecent').modal('show')">
+        <div class="row justify-content-md-center border-left">
+          <div class="col-md-auto">
+            <div class="row">
+              <img class="mr-3" src="images/iconos/vehicleinPlant.svg">      
+              <h2  class="mb-0 text-secondary font-weight-bold" id="veh_en_planta">0</h2>
+            </div>         
+          </div>
+        </div>
+
+        <small class="text-help text-secondary texthelpmute">Vehículos en Sede</small> 
+      </div>
+      
+      <div class="col-md-2 text-center" style="top:-9px;cursor: pointer;" onclick="vw_access_event.ListtimeExceeded()">
+        <div class="row justify-content-md-center border-left">
+          <div class="col-md-auto">
+            <div class="row">
+              <img class="mr-3" src="images/iconos/personExcedido.svg">      
+              <h2  class="mb-0 text-secondary font-weight-bold" id="span_excedido">0</h2>
+            </div>         
+          </div>
+        </div>
+        <!-- <div class="row  border-left "><span class="pl-5"><img class="m-1" src="images/iconos/iconPerson.svg"></span><h4  class="mb-0 text-danger font-weight-bold" id="span_excedido">0</h4></div>-->
+        <small class="text-help text-secondary texthelpmute">Tiempo <br>Excedido</small>
+      </div>
+
+      <div class="col-md-2 text-center" style="top:-9px;cursor: pointer;" onclick="$('#ListtTemporales').modal('show')">
+        <div class="row justify-content-md-center border-left">
+          <div class="col-md-auto">
+            <div class="row">
+              <img class="mr-3" src="images/iconos/personExcedido.svg">      
+              <h2  class="mb-0 text-secondary font-weight-bold" id="span_temporales">0</h2>
+            </div>         
+          </div>
+        </div>
+        <!-- <div class="row  border-left "><span class="pl-5"><img class="m-1" src="images/iconos/iconPerson.svg"></span><h4  class="mb-0 text-danger font-weight-bold" id="span_excedido">0</h4></div>-->
+        <small class="text-help text-secondary texthelpmute">Temporales</small>
+      </div>
+
+      <div class="col-md-2 text-center" style="top:-9px ; cursor: pointer;" onclick="searchAct=0;$('#requestDNI').modal('show');$('.requestDNI').val('')">
+        <div class="row justify-content-md-center border-left">
+          <div class="col-md-auto">
+            <div class="row">
+              <img class="mr-3" src="images/iconos/aforo.svg" height="39">      
+              <!-- <h2  class="mb-0 text-danger font-weight-bold" id="span_excedido">0</h2> -->
+            </div>         
+          </div>
+        </div>
+        <!-- <div class="row  border-left "><span class="pl-5"><img class="m-1" src="images/iconos/iconPerson.svg"></span><h4  class="mb-0 text-danger font-weight-bold" id="span_excedido">0</h4></div>-->
+        <small class="text-help text-secondary texthelpmute">Actualizar <br>Aforo</small>
+      </div>
+
+    </div>
+    </div>
+  </div>
+
+<div class="row pt-2">
+  <div class="col-sm-4" style="padding-right: 5px!important;padding-left: 5px!important; ">
+    <div class="card card-radius rounded-bottom  border-top border-left border-right" style="box-shadow: none;  min-height:60vh; " >
+      <div class="card-header text-white " id="barNotificationAccess" style=" border-radius: 10px 10px 0px 0px;  height: 50px;">
+                      
+        <div class="row">
+          <div class="col-12 text-center">
+            
+            <h6 id="textNotificationAccess" class="text-mute" style="font-size: 1.2em;">Por Favor Realizar Búsqueda</h6>
+            
+          </div>
+         
+        </div>
+  
+      </div>
+      <div class="card-body p-2" id="showAccessDataCard" style="padding-bottom: 0.25rem!important;">        
+        
+       
+          <div class="row">
+            
+            <div class="col-md-12" style="text-align: center!important;">
+              <img id="img_visitante" src="images/iconos/usersecu.svg" alt="" class="rounded-circle img-fluid" style="height: 16vh; width: 16vh;">
+          </div>                        
+            <div class="col-md-12" style="text-align: center!important;margin-top: 10;"><h3 id="span_name_visitante" class="text-light" style="color:rgb(228, 228, 228) !important">Nombre</h3></div>
+            <div class="col-md-12" style="text-align: center!important;"><h6  id="span_number_document" class="text-light" style="color:rgb(228, 228, 228) !important" >Documento de identidad</h6></div>
+            
+            <div class="col-12" style="text-align: center!important;"><hr>
+              <div class="row">
+                <div class="col-6 text-left pl-4">Empresa:</div>
+                <div class="col-6"></div>
+              </div>
+            </div>
+            <div class="col-12" style="text-align: center!important;"><hr>
+              <div class="row">
+                <div class="col-6 text-left pl-4">Último Tamizaje realizado:</div>
+                <div class="col-6"></div>
+              </div>
+            </div>
+            <div class="col-12" style="text-align: center!important;"><hr>
+              <div class="row">
+                <div class="col-6 text-left pl-4">Persona que autoriza:</div>
+                <div class="col-6"></div>
+              </div>
+            </div>
+            <div class="col-12" style="text-align: center!important;"><hr>
+              <div class="row">
+                <div class="col-6 text-left  pl-4">Área:</div>
+                <div class="col-6"></div>
+              </div>
+            </div>
+
+            </div>
+                        <div class="text-center">
+                       </div>
+      </div>
+      <input  type="hidden" id="hid_id_location_access" name="hid_id_location_access">
+    </div>
+  </div>
+
+  <div class="col-md-8" style="padding-right: 5px!important;padding-left: 5px!important;">
+    
+    <div class="card card-radius rounded-bottom border-top border-left border-right" style="box-shadow: none;  min-height:60vh;">
+     
+      <div class="card-body" style="padding-bottom: 0.25rem!important;">   
+       
+         <!--  <div class="col-md-12  p-0 text-right">      
+            <input type="text" placeholder="Buscar" id="tx_list_re" name="tx_list_re" class="shadow-sm inputFind" style="height: 25px !important;">
+          </div> -->
+                     
+        <table id="tb_list_recientes" name="tb_list_recientes" class="table" style="width:100%">
+        </table>          
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade "  id="modalCamera" tabindex="-1" role="dialog" aria-labelledby="modalCamera" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered rounded " role="document" style="max-width: 30%; z-index: 1030; ">
+      <div class="modal-content rounded-4" style="background: rgb(253, 253, 253);">        
+        <div class="modal-header" style="padding:5px 24px 0!important">
+          <h5 class="modal-title">Captura de imagen</h5>
+          <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close">
+            <span class="text-danger">Cerrar</span>
+          </button>
+        </div>
+        <div style="overflow: auto;height: 400px;overflow-x: hidden; ">
+          <div class="modal-body row" id="modal_camera_body">
+
+            <video id="video" playsinline autoplay width="100%" height="auto"></video>
+             <span id="errorMsg"></span>
+             <canvas id="canvas" width="640" height="480" hidden></canvas>
+          </div>
+        </div>
+        <div class="modal-footer" >
+          <div class="col-md-12 row"  id="modal_camera_footer" style="display: flex;flex-direction: column;">
+            <button type="button" class="btn btn-primary btn-rounded btn-raised mt-1" onclick="" id="snap" style="align-self: center;">Tomar foto</button> 
+
+            </div>
+          </div>
+        </div>
+      
+      </div>
+    </div>
+  </div>
+
+
+  <!-- modal ingreso extend -->
+<div class="modal fade"  id="modalToolList" tabindex="-1" role="dialog" aria-labelledby="modalAddCompanyTitle" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered rounded " role="document" style="max-width:500px; z-index: 1030; " >
+    <div class="modal-content rounded " style=" background-color:rgba(0,0,0,.0001);  box-shadow: none;">        
+      <div class="modal-header" style="padding:5px 24px 0!important">
+        <h5 class="modal-title"></h5>
+      </div>
+      
+      <div>
+        <div class="modal-body" id="modal_show_request_details1">  
+          <div class="row">
+            <div class="col-sm-12 col-md-12">
+              <div class="card" style=" border-radius: 10px; box-shadow: none;">
+                <div class="card-header text-white " style=" border-radius: 10px 10px 0px 0px; background: #34559c; height: 48px;">                  
+                  
+                  <div class="row">                        
+                    <div class="col text-center">
+                      <h6 >Registro de Ingreso</h6>                          
+                    </div>
+                  </div>                    
+                </div>
+                      
+                <div class="card-body text-center " style="padding: 0 !important; "> 
+                  
+                  <div class="modal-content rounded-4" style="background: rgb(253, 253, 253);">        
+                    <div style="overflow: auto;height: auto;overflow-x: hidden; ">
+                      
+
+                      <div class="row p-0">
+                         <div class="col-4 text-center pl-5">
+                          <img id="img_visitante_r" src="images/iconos/usersecu.svg" alt="" class="rounded-circle img-fluid" style="height: 10vh; width: 10vh;">
+                         </div>
+                         <div class="col-8 pt-3 text-left">
+                          <div class="col-md-12 text-left"><h6 id="span_name_visitante_r"></h6></div> <div style="height: 5px;"></div>
+                          <div class="col-md-12  text-left"><h6 class="text-muted " id="span_number_document_r"></h6></div> 
+                         </div>
+                      </div>
+                      <hr>
+                      <div class="row pt-2">
+                        <div class="col-4 text-center pl-5 ">
+                          Temperatura
+                        </div>
+                        <div class="col-8 text-right pr-5">
+                          <input style="border:1px solid #999; padding:5px; border-radius:10px; width:80px"  step="0.1"  type="number" min="32" max="43"  maxlength="5" onkeyup="validarMoneda(this.id)" id="temperature" >
+                        </div>
+                     </div>
+                      <div style="height: 15px;"></div>
+                      <div class="modal-body row p-0" id="modal_insert_alhocolemia">
+
+                        <div class="col-12 text-white" style="background: #34559c; height: 40px;">
+                          <div class="row pt-2">
+                            <div class="col">
+                             <h6>Herramientas</h6>
+                            </div>
+                            <div class="col">
+                               <h5 class="fa fa-plus text-white " id="btnAddTool"  style="cursor: pointer;"></h5>&nbsp; Agregar
+                           </div>
+                         </div> 
+                        </div>
+
+                      <div class="row p-3 col-12  text-center" style="left:15px">
+                                
+                        <div class="col-12 text-center">
+                           
+                          <div class="row pl-3 col-12  text-center"></div>
+                            <div class="col-12 text-center">
+                                    <table class="table dataTable no-footer text-center" >
+                                      <thead>
+                                        <tr>
+                                          <th align="center">Detalle</th>
+                                          <th align="center">Serial</th>
+                                          <th align="center">Check</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody id="listTools">
+                                      </tbody>
+                                    </table>
+                                    <input type="hidden" name="" id="h_car">
+                            </div>
+                          </div>
+                        </div>
+                    
+                            <div class="row p-3 col-12  text-center" style="left:30px">
+                                <div class="col-5 toolIn">
+                                  <div class="form-group">
+                                    <input type="text" id="tx_add_tool_name" class="form-control" placeholder="Escribir Herramienta">
+                                  </div>
+                                </div>
+                                <div class="col-5 toolIn">
+                                  <div class="form-group">
+                                    <input type="text" id="tx_add_tool_serial_number" class="form-control" placeholder="Escribir Nº de Serie">
+                                  </div>
+                                </div>
+                                <div class="col-2 toolIn">
+                                  <div class="form-group">
+                                  
+                                  </div>
+                                </div>
+                          </div>
+                                <div class="col-md-12 toolOut" style="display: none;">
+                                  <div class="form-group">
+                                    <textarea class="form-control" id="tx_observation" rows="5" placeholder="Ingresar observación..."></textarea>
+                                  </div>
+                                </div>
+                     
+                      
+                      </div>
+                        <hr>
+
+                        <div class="text-center col-md-12" >
+                          <button type="button" id="btnAutorizar" class="btn btn-danger btn-raised btn-rounded mt-2" style="padding: 0rem 1rem!important; text-transform:lowercase!important;  height: 30px;" onclick="$('#modalToolList').modal('hide')"><span style="text-transform: ;">Cancelar</button>
+                          <button type="button" id="btnAutorizarIn" class="btn btn-green-lime btn-raised btn-rounded mt-2"  style="padding: 0rem 1rem!important; text-transform:lowercase!important;  height: 30px;"  onclick="vw_access_event.processAccess(1)"><span style="text-transform: ;">Registrar Ingreso</button>
+                          <button type="button" id="btnAutorizarOut" class="btn btn-green-lime btn-raised btn-rounded mt-2"  style="padding: 0rem 1rem!important; text-transform:lowercase!important;  height: 30px;"  onclick="vw_access_event.processAccess(0)"><span style="text-transform: uppercase;">R</span>egistrar salida</button> 
+                        </div>
+            
+                        <hr>
+                        <div class="row col-12 p-3 text-center" style="left:15px">
+                          <div class="col-12 text-center">
+                                  <div class="col-12 text-center">
+                                    <div class="col-12">
+                                      <div class="form-group text-center">
+                                        <select class="form-control text-center" id="statusAlcohol">
+                                          <option value="0">Registrar Exámen de Alcoholemia</option>
+                                          <option value="1">SI</option>
+                                        </select>
+                                      </div>
+                                    </div>
+                        
+                                    <div class="col-12 witness" style="display: none;">
+                                      <div class="form-group">
+                                        <label for="tx_ruc" class="bmd-label-static ">Documento del testigo</label>
+                                        <input type="text" id="witnessDocument" class="form-control">
+                                      </div>
+                                    </div>
+                        
+                                    <div class="col-12 witness" style="display: none;">
+                                      <div class="form-group">
+                                        <label for="tx_ruc" class="bmd-label-static ">Nombres y apellidos del testigo</label>
+                                        <input type="text" id="witnessName" class="form-control">
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                      </div>
+                      </div>
+                    </div>
+                    <div class="modal-footer" >
+                      <div class="col-md-12 row"  id="modal_insert_alhocolemia_footer">
+                      </div>
+                    </div>
+                  
+                  </div>
+                </div>
+
+                  <hr>  
+                                   
+                </div>
+
+              </div>
+            </div>        
+          </div>
+        </div>
+        
+        <div class="modal-footer" >
+          <div class="col-md-12 row"  id="modal_show_request_details_footer"></div>
+        </div>  
+    </div>
+  </div>
+</div>
+<!-- modal ingreso extend -->
+
+
+
+  <div class="modal fade "  id="modalInsertAlcoholemia" tabindex="-1" role="dialog" aria-labelledby="modalInsertAlcoholemia" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered rounded " role="document" style="max-width: 20%; z-index: 1030; ">
+      <div class="modal-content rounded-4" style="background: rgb(253, 253, 253);">        
+        <div class="modal-header" style="padding:5px 24px 0!important">
+          <h5 class="modal-title">Prueba de alcoholemia</h5>
+          <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close">
+            <span class="text-danger">Cerrar</span>
+          </button>
+        </div>
+        <div style="overflow: auto;height: 300px;overflow-x: hidden; ">
+          <div class="modal-body row" id="modal_insert_alhocolemia">
+
+            <!--<div class="col-12">
+              <div class="form-group">
+                <label for="tx_ruc" class="bmd-label-static titleInput">Estado</label>
+                <select class="form-control" id="statusAlcohol">
+                  <option value="0">NO</option>
+                  <option value="1">SI</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="col-12 witness" style="display: none;">
+              <div class="form-group">
+                <label for="tx_ruc" class="bmd-label-static titleInput">Documento del testigo</label>
+                <input type="text" id="witnessDocument" class="form-control">
+              </div>
+            </div>
+
+            <div class="col-12 witness" style="display: none;">
+              <div class="form-group">
+                <label for="tx_ruc" class="bmd-label-static titleInput">Nombres y apellidos del testigo</label>
+                <input type="text" id="witnessName" class="form-control">
+              </div>
+            </div>
+            <div class="text-center">
+              <button type="button" id="btnAutorizar" class="btn btn-green-lime btn-raised btn-rounded mt-2"  style="padding: 0rem 1rem!important; text-transform:lowercase!important;  height: 30px;"  onclick="vw_access_request.confirmVisitaAccess(0)"><span style="text-transform: uppercase;">A</span>utorizar ingreso</button>
+            </div>-->
+          </div>
+        </div>
+        <div class="modal-footer" >
+          <div class="col-md-12 row"  id="modal_insert_alhocolemia_footer">
+          </div>
+        </div>
+      
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade "  id="modalShowRequestDetails" tabindex="-1" role="dialog" aria-labelledby="modalAddCompanyTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered rounded " role="document" style="max-width: 97%; z-index: 1030; ">
+      <div class="modal-content rounded-4" style="background: rgb(253, 253, 253);">        
+        <div class="modal-header" style="padding:5px 24px 0!important">
+          <h5 class="modal-title"></h5>
+          <h5 class="fa fa-times text-danger pt-2"  style="cursor: pointer;" data-dismiss="modal" aria-label="Close" onclick=""></h5> 
+        </div>
+        <div style="overflow: auto;height: 600px;overflow-x: hidden; ">
+          <div class="modal-body row" id="modal_show_request_details">
+          </div>
+        </div>
+        <div class="modal-footer" >
+          <div class="col-md-12 row"  id="modal_show_request_details_footerv">
+          </div>
+        </div>
+      
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade "  id="modalConsultVehicle" tabindex="-1" role="dialog" aria-labelledby="modalAddCompanyTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered rounded " role="document" style="max-width: 90%; z-index: 1030; ">
+      <div class="modal-content rounded-4" style="background: rgb(253, 253, 253);">        
+        <div class="modal-header" style="padding:5px 24px 0!important">
+          <h5 class="modal-title"></h5>
+          <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close">
+            <span class="text-danger">Cerrar</span>
+          </button>
+        </div>
+        <div style="overflow: auto;height: 600px;overflow-x: hidden; ">
+
+          <div class="modal-body row" id="modalConsultVehicleBody">
+            <div class="row bg-white pt-3 mt-2 border-bottom border-top pl-3 pb-3 col-md-12">
+              <div class="col-md-3"><h4>Consulta de vehiculos</h4></div>
+              <div class="col-md-3 ">      
+                <input type="text" placeholder="Buscar por DNI" id="tx_dni_vehicle" name="tx_dni_vehicle" class="shadow-sm inputFind">
+              </div>
+            </div>
+            <div class="row bg-white pt-3 mt-2 border-bottom border-top pl-3 pb-3 col-md-12">
+                <div class="col">
+                  <div class="form-group">
+                    <label for="tx_business_name" class="bmd-label-static titleInput">Licencia</label>              
+                    <input type="text" class="form-control" id="tx_driver_license_number" >              
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="form-group">
+                    <label for="tx_business_name" class="bmd-label-static titleInput">Categoria</label>              
+                    <input type="text" class="form-control" id="tx_driver_license_category" >              
+                  </div>
+                </div>
+                  <div class="col">
+                    <div class="form-group">
+                      <label for="tx_ruc" class="bmd-label-static titleInput">Marca</label>
+                      <input type="text" class="form-control" id="tx_brand" >
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-group">
+                    <label for="tx_name" class="bmd-label-static titleInput">Modelo</label>
+                    <input type="text" class="form-control" id="tx_model">
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<input type="hidden" id="dataReqAccessVehicule" name="dataReqAccessVehicule">
+<input type="hidden" id="hid_type_vehicle" name="hid_type_vehicle">
+
+<div class="modal fade "  id="modalShowRequestSelection" tabindex="-1" role="dialog" aria-labelledby="modalAddCompanyTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered rounded " role="document" style="max-width: 90%; z-index: 1030; ">
+    <div class="container">
+      <div class="row justify-content-md-center">
+        <div class="col-md-auto">
+          <div class="modal-content " style="background: transparent; border-radius: 10px;">   <!--col-md-3 -->          
+            <div class="card" style="width: 350px; border-radius: 10px; box-shadow: none;">
+              <div class="card-header text-center text-white" style="border-radius: 10px 10px 0px 0px; background: #aebb41; height: 40px; padding: 0.5rem !important;">
+                <h6 class="pt-1" >Enviar Formulario por correo</h6>
+              </div>
+              <div class="card-body text-center">	
+                <div class="row">
+                  <div class="col"><img id="img_user_black_list_02" class="rounded-circle" src="images/iconos/icon_send_email.svg" height="221"></div>	
+                </div>          
+              </div>
+              <div class="card-footer text-center border-0" style="border-radius: 0px 0px 10px 10px; ">            
+                <button type="button" id="btnNoprogramado" class="btn btn-sm btn-green-lime  btn-raised btn-rounded" data-toggle="modal" data-target="#modalEmailForm" onclick="$('#modalShowRequestSelection').modal('hide')" style="border-radius: 25px;"> &nbsp; &nbsp; Seleccionar &nbsp; &nbsp;</button>            
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-auto">
+          <div class="modal-content " style="background: transparent; border-radius: 10px;">   <!--col-md-3 -->          
+            <div class="card" style="width: 350px; border-radius: 10px; box-shadow: none;">
+              <div class="card-header text-center text-white" style="border-radius: 10px 10px 0px 0px; background: #35569d; height: 40px; padding: 0.5rem !important;">
+                <h6 class="pt-1" style="margin-bottom: 15px!important;">Completar formulario</h6>
+              </div>
+              <div class="card-body text-center">	
+                <div class="row">
+                  <div class="col"><img id="img_user_black_list_02" class="rounded-circle" src="images/iconos/icon_send_form.svg" height="221"></div>	
+                </div>          
+              </div>
+              <div class="card-footer text-center border-0" style="border-radius: 0px 0px 10px 10px;">            
+                <button type="button" id="btnGubernamental" class="btn btn-primary btn-raised btn-rounded btn-sm" style="border-radius: 25px;" data-toggle="modal" data-target="#modalShowRequestNP" onclick="$('#modalShowRequestSelection').modal('hide');vw_access_event.initFormRequest(1)">&nbsp; &nbsp; Seleccionar&nbsp; &nbsp; </button>
+              </div>
+            </div> 
+          </div>
+        </div>
+      </div> 
+    </div>          
+  </div>
+</div>
+
+<!-- div para ingreso de visita en seguridad -->
+<div class="modal fade "  id="modalShowRequestNP" tabindex="-1" role="dialog" aria-labelledby="modalAddCompanyTitle" aria-hidden="true">
+ 
+ 
+  <div class="modal-dialog modal-dialog-centered rounded p-0" role="document" style="max-width: 90%; z-index: 1030; ">
+   
+    <div class="modal-content rounded-4" style=" background-color:rgba(0,0,0,.0001);  box-shadow: none;"> 
+        <div id="relojContadorVisita" class=" row rounded-top text-center" style="display: none;">  
+          <!-- Reloj -->
+        <div class="col-5"></div>
+          <div class="card-header text-white bg-danger col-2 " style=" border-radius: 10px 10px 0px 0px;  height: 85px; ">
+            <div class="row" style="left: 250px;">
+              <div class="col-12 text-center">
+                <h5 class="card-title text-center p-0" style="font-size: 16px;">Tiempo para el acceso</h5>
+            <p class="card-text text-center h2 p-0" id="timeRegresi">00:10:00</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-5"></div>
+        <!-- fin reloj -->
+        </div> 
+
+      <div class="modal-header" style="padding:5px 24px 0!important; background: #fff;">
+        <h5 class="modal-title"></h5>
+       
+        <h5 class="fa fa-times text-danger pt-2"  style="cursor: pointer;" data-dismiss="modal" aria-label="Close" onclick=""></h5> 
+      </div>
+
+      <div style="overflow: auto;height: 600px;overflow-x: hidden; background: #fff; ">
+        
+        <div class="modal-body row" id="modalShowRequestNPBody">
+        </div>
+      </div>
+
+      <div class="modal-footer" >
+        <div class="col-md-12 row"  id="modal_show_request_details_footer">
+        </div>
+      </div>
+    
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="modal fade "  id="modalEmailForm" tabindex="-1" role="dialog" aria-labelledby="modalAddCompanyTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered rounded " role="document" style="max-width: 90%; z-index: 1030; ">
+    <div class="container">
+      <div class="row justify-content-md-center">
+        <div class="col-md-auto">
+          <div class="modal-content " style="background: transparent; border-radius: 10px;">   <!--col-md-3 -->          
+            <div class="card" style="width: 350px; border-radius: 10px; box-shadow: none;">
+              <div class="card-header text-center text-white" style="border-radius: 10px 10px 0px 0px; background: #aebb41; height: 40px; padding: 0.5rem !important;">
+                <h5 >Enviar formulario por correo</h5>
+              </div>
+              <div class="card-body text-center">	
+                <div class="col">
+                  <ul class="list-unstyled">
+                    <li class="media">
+                      <img src="images/iconos/organizador.svg" class="mr-3 mt-4" height="24">
+                      <div class="media-body">
+                        <div class="form-group bmd-form-group is-filled">
+                          <label for="tx_collaborator_email" class="bmd-label-static titleInput">COLABORADOR<span class="text-warning">*</span></label>  
+                          <input type="text" class="form-control" name="tx_collaborator_name" id="tx_collaborator_name">            
+                          <input type="hidden" class="form-control" id="tx_collaborator_email_form"  >  
+                          <span class="bmd-help"></span>
+                        </div>
+                        <div class="form-group bmd-form-group is-filled">
+                          <label for="tx_collaborator_email" class="bmd-label-static titleInput">MENSAJE<span class="text-warning">*</span></label>  
+                          <textarea class="form-control" id="tx_message"></textarea> 
+                          <span class="bmd-help"></span>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>                    
+                </div>
+              </div>
+              <div class="card-footer text-center border-0" style="border-radius: 0px 0px 10px 10px; ">            
+                <button type="button" class="btn btn-sm btn-primary  btn-raised btn-rounded" data-toggle="modal" data-target="#modalEmailForm"  style="border-radius: 25px;" id="sendEmailForm"> &nbsp; &nbsp; Enviar &nbsp; &nbsp;</button>
+                <button type="button" class="btn btn-sm btn-danger  btn-raised btn-rounded" data-toggle="modal" data-target="#modalEmailForm" onclick="$('#modalEmailForm').modal('hide')" style="border-radius: 25px;" id="cancelEmailForm"> &nbsp; &nbsp; Cancelar &nbsp; &nbsp;</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--<div class="modal-content rounded-4 col-md-3" style="background: rgb(253, 253, 253);margin: 0 auto;">        
+      <div style="display: flex;justify-content: center;align-items: center;overflow: auto;height: 300px;overflow-x: hidden; ">
+        <div class="modal-body row" id="">
+            <div class="col">
+              <div class="form-group">
+                <label for="tx_collaborator_email" class="bmd-label-static titleInput">COLABORADOR<span class="text-warning">*</span></label>  
+                <input type="text" class="form-control" name="tx_collaborator_name" id="tx_collaborator_name">            
+                <input type="hidden" class="form-control" id="tx_collaborator_email_form"  >              
+              </div>
+            </div>
+        </div>
+      </div>
+        <div class="modal-footer" style="margin: 0 auto;">
+            <button type="button" class="btn btn-sm btn-primary  btn-raised btn-rounded" data-toggle="modal" data-target="#modalEmailForm"  style="border-radius: 25px;" id="sendEmailForm"> &nbsp; &nbsp; Enviar &nbsp; &nbsp;</button>
+            <button type="button" class="btn btn-sm btn-green-lime  btn-raised btn-rounded" data-toggle="modal" data-target="#modalEmailForm" onclick="$('#modalEmailForm').modal('hide')" style="border-radius: 25px;" id="cancelEmailForm"> &nbsp; &nbsp; Cancelar &nbsp; &nbsp;</button>
+        </div>
+    
+    </div>-->
+  </div>
+</div>
+
+
+<div class="modal fade "  id="modalIngresoExcepcional" tabindex="-1" role="dialog" aria-labelledby="modalAddCompanyTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered rounded " role="document" style="max-width: 90%; z-index: 1030; ">
+    <div class="container">
+      <div class="row justify-content-md-center">
+        <div class="col-md-auto">
+          <div class="modal-content " style="background: transparent; border-radius: 10px;">   <!--col-md-3 -->          
+            <div class="card" style="width: 350px; border-radius: 10px; box-shadow: none;">
+              <div class="card-header text-center text-white bg-danger" style="border-radius: 10px 10px 0px 0px; /*background: #aebb41*/; height: 40px; padding: 0.5rem !important;">
+                <h5>Ingreso Excepcional</h5>
+              </div>
+              <div class="card-body text-center">	
+                <div class="col">
+                  <h6>Solo puede ser autorizado por el Superintendente de Planta o Gerente responsable.</h6>
+                  <div class="h6" id="textRetenerfot"></div>
+                  <ul class="list-unstyled">
+                    <li class="media">
+                      <img src="images/iconos/organizador.svg" class="mr-3 mt-4" height="24">
+                      <div class="media-body">                      
+                        <div class="form-group bmd-form-group is-filled">
+                          <label for="tx_collaborator_email" class="bmd-label-static titleInput">Registrar Nombre<span class="text-warning">*</span></label>  
+                          <input type="text" class="form-control" name="tx_collaborator_name_autoriza" id="tx_collaborator_name_autoriza">   
+                          <input type="hidden" class="form-control" name="tx_collaborator_idhash_autoriza" id="tx_collaborator_idhash_autoriza">         
+                          <input type="hidden" class="form-control" id="tx_collaborator_email_form_autoriza"  >  
+                          <span class="bmd-help"></span>
+                        </div>
+                        <div class="form-group bmd-form-group is-filled">
+                          <label for="tx_collaborator_email" class="bmd-label-static titleInput">Observación<span class="text-warning">*</span></label>  
+                          <textarea class="form-control" id="tx_message_autoriza" maxlength="150"></textarea> 
+                          <span class="bmd-help"></span>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>                    
+                </div>
+              </div>
+              <div class="card-footer text-center border-0" style="border-radius: 0px 0px 10px 10px; ">            
+                <button type="button" class="btn btn-sm btn-primary  btn-raised btn-rounded" data-toggle="modal" data-target="#modalIngresoExcepcional" onclick=""  style="border-radius: 25px;" id="sendIngresoExcepcional"> &nbsp; &nbsp; Enviar &nbsp; &nbsp;</button>
+                <button type="button" class="btn btn-sm btn-danger  btn-raised btn-rounded" data-toggle="modal" data-target="#modalIngresoExcepcional" onclick="$('#modalIngresoExcepcional').modal('hide')" style="border-radius: 25px;" id="cancelIngresoExcepcional"> &nbsp; &nbsp; Cancelar &nbsp; &nbsp;</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--<div class="modal-content rounded-4 col-md-3" style="background: rgb(253, 253, 253);margin: 0 auto;">        
+      <div style="display: flex;justify-content: center;align-items: center;overflow: auto;height: 300px;overflow-x: hidden; ">
+        <div class="modal-body row" id="">
+            <div class="col">
+              <div class="form-group">
+                <label for="tx_collaborator_email" class="bmd-label-static titleInput">COLABORADOR<span class="text-warning">*</span></label>  
+                <input type="text" class="form-control" name="tx_collaborator_name" id="tx_collaborator_name">            
+                <input type="hidden" class="form-control" id="tx_collaborator_email_form"  >              
+              </div>
+            </div>
+        </div>
+      </div>
+        <div class="modal-footer" style="margin: 0 auto;">
+            <button type="button" class="btn btn-sm btn-primary  btn-raised btn-rounded" data-toggle="modal" data-target="#modalEmailForm"  style="border-radius: 25px;" id="sendEmailForm"> &nbsp; &nbsp; Enviar &nbsp; &nbsp;</button>
+            <button type="button" class="btn btn-sm btn-green-lime  btn-raised btn-rounded" data-toggle="modal" data-target="#modalEmailForm" onclick="$('#modalEmailForm').modal('hide')" style="border-radius: 25px;" id="cancelEmailForm"> &nbsp; &nbsp; Cancelar &nbsp; &nbsp;</button>
+        </div>
+    
+    </div>-->
+  </div>
+</div>
+
+
+
+
+
+<div class="modal fade "  id="modalShowAccessVehicle" tabindex="-1" role="dialog" aria-labelledby="modalAddCompanyTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered rounded " role="document" style="max-width: 90%; z-index: 1030; ">
+    <div class="container">
+      <div class="row justify-content-md-center">
+        <div class="col-md-auto">
+          <div class="modal-content " style="background: transparent; border-radius: 10px;">   <!--col-md-3 -->          
+            <div class="card" style="width: 900px; border-radius: 10px; box-shadow: none;">
+              <div class="card-header text-white bg-primary text-center" style="border-radius: 10px 10px 0px 0px; height: 40px; padding: 0.5rem !important;">
+                <h5>Detalles: <span id="span_place_access"></span></h5>
+              </div>
+              <div class="card-body text-center">	
+               
+                <div class="row pb-2  border-bottom text-center">
+                  <div class="col-md-2 ml-2 ">
+                    <div class="media">
+                      <img src="images/iconos/colaborador.svg" class="align-self-center mr-3" alt="...">
+                      <div class="media-body text-left">
+                        <h5 class="mt-0">Marca</h5>
+                        <p class="mb-0"><span id="span_brand_access"></span></p>
+                      </div>
+                    </div>
+                  </div>  
+                  
+                  <div class="col-md-2 border-left ml-2">
+                    <div class="media">
+                      <img src="images/iconos/colaborador.svg" class="align-self-center mr-3" alt="...">
+                      <div class="media-body text-left">
+                        <h5 class="mt-0">Modelo</h5>
+                        <p class="mb-0"><span id="span_model_access"></span></p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-3 border-left ml-2">
+                    <div class="media">
+                      <img src="images/iconos/colaborador.svg" class="align-self-center mr-3" alt="...">
+                      <div class="media-body text-left">
+                        <h5 class="mt-0">Conductor</h5>
+                        <p class="mb-0"><span id="span_driver_access"></span></p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-2 border-left ml-2">
+                    <div class="media">
+                      <img src="images/iconos/colaborador.svg" class="align-self-center mr-3" alt="...">
+                      <div class="media-body text-left">
+                        <h5 class="mt-0">Brevete</h5>
+                        <p class="mb-0"><span id="span_license_number"></span></p>
+                        
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-auto border-left ml-2">
+                    <div class="media">
+                      <img src="images/iconos/colaborador.svg" class="align-self-center mr-3" alt="...">
+                      <div class="media-body text-left">
+                        <h5 class="mt-0">Categoría</h5>
+                        <p class="mb-0"><span id="span_license_category"></span></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>                
+                <div class="row mt-2">
+                  <div class="col text-left"><h4 class="text-primary">Fotos vehículos</h4></div>
+                </div>                
+                <div class="row mb-5 text-center">
+                  <div class="col col-lg-2 border  mr-2" >
+                    <div class="white-box" >
+                      <input type="file" id="input-file-vehicle_1" class="dropify" data-max-file-size="2M" />
+                      <input type="hidden" id="base64-vehicle_1">
+                     </div>                  
+                  </div>
+                  <div class="col col-lg-2 border  mr-2" >
+                    <div class="white-box">
+                      <input type="file" id="input-file-vehicle_2" class="dropify" data-max-file-size="2M" /> 
+                      <input type="hidden" id="base64-vehicle_2">
+                    </div>                  
+                  </div>
+                  <div class="col col-lg-2 border  mr-2" >
+                    <div class="white-box">
+                      <input type="file" id="input-file-vehicle_3" class="dropify" data-max-file-size="2M" />
+                      <input type="hidden" id="base64-vehicle_3">
+                     </div>                    
+                  </div>
+                  <div class="col col-lg-2 border  mr-2" >
+                    <div class="white-box">
+                      <input type="file" id="input-file-vehicle_4" class="dropify" data-max-file-size="2M" /> 
+                      <input type="hidden" id="base64-vehicle_4">
+                    </div>
+                  </div>  
+                  <div class="col col-lg-2 border  mr-2" >
+                    <div class="white-box">
+                      
+                      <input type="file" id="input-file-vehicle_5" class="dropify" data-max-file-size="2M" /> 
+                      <input type="hidden" id="base64-vehicle_5">
+                    </div>
+                  
+                  </div>                  
+                </div>
+
+                <div class="row mt-1">
+                  <div class="col text-left"><h4 class="text-primary">Observaciones</h4></div>
+                </div>                
+                <div class="row mb-1">
+                  <div class="col">
+                    <textarea class="form-control" id="tx_observations"></textarea>
+                  </div>
+                </div>
+
+              </div>
+              <div class="card-footer text-center border-0" style="border-radius: 0px 0px 10px 10px; ">            
+                <button type="button" class="btn btn-sm btn-primary  btn-raised btn-rounded" data-toggle="modal" data-target="#modalShowAccessVehicle" id="bt_confirm_access" style="border-radius: 25px;" onclick="vw_access_event.validateAccessVehicle()"> &nbsp; &nbsp; Registrar Ingreso &nbsp; &nbsp;</button>
+                <button type="button" class="btn btn-sm btn-danger  btn-raised btn-rounded" data-toggle="modal" data-target="#modalShowAccessVehicle" onclick="$('#modalEmailForm').modal('hide')" style="border-radius: 25px;"> &nbsp; &nbsp; Cancelar &nbsp; &nbsp;</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--<div class="modal-content rounded-4 col-md-3" style="background: rgb(253, 253, 253);margin: 0 auto;">        
+      <div style="display: flex;justify-content: center;align-items: center;overflow: auto;height: 300px;overflow-x: hidden; ">
+        <div class="modal-body row" id="">
+            <div class="col">
+              <div class="form-group">
+                <label for="tx_collaborator_email" class="bmd-label-static titleInput">COLABORADOR<span class="text-warning">*</span></label>  
+                <input type="text" class="form-control" name="tx_collaborator_name" id="tx_collaborator_name">            
+                <input type="hidden" class="form-control" id="tx_collaborator_email_form"  >              
+              </div>
+            </div>
+        </div>
+      </div>
+        <div class="modal-footer" style="margin: 0 auto;">
+            <button type="button" class="btn btn-sm btn-primary  btn-raised btn-rounded" data-toggle="modal" data-target="#modalEmailForm"  style="border-radius: 25px;" id="sendEmailForm"> &nbsp; &nbsp; Enviar &nbsp; &nbsp;</button>
+            <button type="button" class="btn btn-sm btn-green-lime  btn-raised btn-rounded" data-toggle="modal" data-target="#modalEmailForm" onclick="$('#modalEmailForm').modal('hide')" style="border-radius: 25px;" id="cancelEmailForm"> &nbsp; &nbsp; Cancelar &nbsp; &nbsp;</button>
+        </div>
+    
+    </div>-->
+  </div>
+</div>
+
+<!-- modal Listado tiempo excedido -->
+<!--table id="tb_list_time_exceededs" name="tb_list_time_exceededs" class="table" style="max-width:100%;"></table-->
+<div class="modal fade col-md-12"  id="ListtimeExceededs" tabindex="-1" role="dialogooo" aria-labelledby="modalAddCompanyTitle" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered rounded " role="document" style="max-width:60%; z-index: 1030; " >
+    <div class="modal-content rounded " style=" background-color:rgba(0,0,0,.0001);  box-shadow: none;">        
+      <div class="modal-header" style="padding:5px 24px 0!important">
+        <h5 class="modal-title"></h5>
+      </div>
+      
+      <div style=" ">
+        <div class="modal-body" id="modal_show_request_details12">  
+          <div class="row">
+            <div class="col-sm-12 col-md-12">
+              <div class="card" style=" border-radius: 10px; box-shadow: none;">
+                <div class="card-header text-white " style=" border-radius: 10px 10px 0px 0px; background: #ff5e5e; height: 55px;">                  
+                  <div class="row">                        
+                    <div class="col">
+                      <h6 style="font-size:20px"><img class="p-1" src="images/iconos/horawhite.svg" height="30" />&nbsp;&nbsp;<b>Tiempo excedido</b></h6>                          
+                    </div>
+                            
+                 
+                  
+                    <div class="col-md-2 text-center">
+                      <a href="javascript:void(0);" class="add_button" style="text-decoration: none;">
+                        <img src="images/iconos/users_writhe.svg" style="margin-top: -10px;">&nbsp;&nbsp;<text style="font-size: 22px;color:#fff;" class="CantExce">0 </text> 
+                      </a>  
+                    </div>
+                  </div>                    
+                </div>
+                      
+                <div style="width: 100%;padding-top: 10px;padding-left: 10px;padding-right: 10px; "> 
+                  <div style="max-height:400px !important; overflow: hidden;overflow-x: hidden;">  
+                    <table id="tb_list_time_exceededs" name="tb_list_time_exceededs" class="table" style="width:100%"></table>          
+                  </div>                      
+               
+                  <hr>  
+                  <div class="row justify-content-md-center  mt-2 P-4">
+                    <div class="col-md-12">
+                      <center><button type="button" class="btn btn-rounded btn-raised" onclick="$('#ListtimeExceededs').modal('hide');$('.CantExce').text('0')" style="width: 150px !important;background: #34559c;color: #fff;"> &nbsp;&nbsp;De acuerdo&nbsp;&nbsp;&nbsp;&nbsp;</button></center>
+                    </div>
+                  </div>  
+                </div>                  
+              </div>      
+            </div>        
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  <!-- modal fin -->
+  <div class="modal fade col-md-12"  id="ListtTemporales" tabindex="-1" role="dialogooo" aria-labelledby="modalAddCompanyTitle" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered rounded " role="document" style="max-width:80%; z-index: 1030; " >
+      <div class="modal-content rounded " style=" background-color:rgba(0,0,0,.0001);  box-shadow: none;">        
+        <div class="modal-header" style="padding:5px 24px 0!important">
+          <h5 class="modal-title"></h5>
+        </div>
+        
+        <div style=" ">
+          <div class="modal-body" id="modal_show_request_details12">  
+            <div class="row">
+              <div class="col-sm-12 col-md-12">
+                <div class="card" style=" border-radius: 10px; box-shadow: none;">
+                  <div class="card-header text-white " style=" border-radius: 10px 10px 0px 0px; background: #ff5e5e; height: 55px;">                  
+                    <div class="row">                        
+                      <div class="col">
+                        <h6 style="font-size:20px"><img class="p-1" src="images/iconos/horawhite.svg" height="30" />&nbsp;&nbsp;<b>Ingresos Temporales</b></h6>                          
+                      </div>
+                              
+                   
+                    
+                      <div class="col-md-2 text-center">
+                        <a href="javascript:void(0);" class="add_button" style="text-decoration: none;">
+                          <img src="images/iconos/users_writhe.svg" style="margin-top: -10px;">&nbsp;&nbsp;<text style="font-size: 22px;color:#fff;" class="CantTemp">0 </text> 
+                        </a>  
+                      </div>
+                    </div>                    
+                  </div>
+                        
+                  <div style="width: 100%;padding-top: 10px;padding-left: 10px;padding-right: 10px; "> 
+                    <div style="max-height:400px !important; overflow: hidden;overflow-x: hidden;">  
+                      <table id="tb_list_Temporales" name="tb_list_Temporales" class="table" style="width:100%"></table>          
+                    </div>                      
+                 
+                    <hr>  
+                    <div class="row justify-content-md-center  mt-2 P-4">
+                      <div class="col-md-12">
+                        <center><button type="button" class="btn btn-rounded btn-raised" onclick="$('#ListtTemporales').modal('hide');$('.CantTemp').text('0')" style="width: 150px !important;background: #34559c;color: #fff;"> &nbsp;&nbsp;De acuerdo&nbsp;&nbsp;&nbsp;&nbsp;</button></center>
+                      </div>
+                    </div>  
+                  </div>                  
+                </div>      
+              </div>        
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade col-md-12"  id="ListtVehiclesrecent" tabindex="-1" role="dialogooo" aria-labelledby="modalAddCompanyTitle" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered rounded " role="document" style="max-width:80%; z-index: 1030; " >
+      <div class="modal-content rounded " style=" background-color:rgba(0,0,0,.0001);  box-shadow: none;">        
+        <div class="modal-header" style="padding:5px 24px 0!important">
+          <h5 class="modal-title"></h5>
+        </div>
+        
+        <div style="">
+          <div class="modal-body" id="modal_show_request_details12">  
+            <div class="row">
+              <div class="col-sm-12 col-md-12">
+                <div class="card" style=" border-radius: 10px; box-shadow: none;">
+                  <div class="card-header text-white " style=" border-radius: 10px 10px 0px 0px; background: #34559c; height: 55px;">                  
+                    <div class="row">                        
+                      <div class="col">
+                        <h6 style="font-size:20px">&nbsp;&nbsp;<b>Vehículos en Sede</b></h6>                          
+                      </div>
+                              
+                   
+                    
+                      <div class="col-md-2 text-center">
+                        <a href="javascript:void(0);" class="add_button" style="text-decoration: none;">
+                          <img src="images/iconos/vehicleinPlantwhitw.svg" style="margin-top: -10px;">&nbsp;&nbsp;<text style="font-size: 22px;color:#fff;" class="Cantveh" >0 </text> 
+                        </a>  
+                      </div>
+                    </div>                    
+                  </div>
+                        
+                  <div style="width: 100%;padding-top: 10px;padding-left: 10px;padding-right: 10px; "> 
+                    <div style="max-height:400px !important; overflow: hidden;overflow-x: hidden;">  
+                      <table id="tb_list_recentveh" name="tb_list_recentveh" class="table" style="width:100%"></table>          
+                    </div>                      
+                 
+                    <hr>  
+                    <div class="row justify-content-md-center  mt-2 P-4">
+                      <div class="col-md-12">
+                        <center><button type="button" class="btn btn-rounded btn-raised" onclick="$('#ListtVehiclesrecent').modal('hide');$('.CantTemp').text('0')" style="width: 150px !important;background: #34559c;color: #fff;"> &nbsp;&nbsp;De acuerdo&nbsp;&nbsp;&nbsp;&nbsp;</button></center>
+                      </div>
+                    </div>  
+                  </div>                  
+                </div>      
+              </div>        
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- modal dinamico solicitud de DNI -->
+<div class="modal fade"  id="requestDNI" tabindex="-1" role="dialog" aria-labelledby="modalAddCompanyTitle" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered rounded " role="document" style="max-width:380px; z-index: 1030; " >
+    <div class="modal-content rounded " style=" background-color:rgba(0,0,0,.0001);  box-shadow: none;">        
+      <div class="modal-header" style="padding:5px 24px 0!important">
+        <h5 class="modal-title"></h5>
+      </div>
+      
+      <div>
+        <div class="modal-body" id="modal_show_request_details1">  
+          <div class="row">
+            <div class="col-sm-12 col-md-12">
+              <div class="card" style=" border-radius: 10px; box-shadow: none;">
+                <div class="card-header text-white " style=" border-radius: 10px 10px 0px 0px; background: #c5cd62; height: 55px;">                  
+                  <div class="row">                        
+                    <div class="col">
+                      <h6 style="font-size: 19px;">&nbsp;&nbsp;&nbsp;Actualizar aforo<span style="font-size: 17px; " class="cantDNI">&nbsp;( 1 )</span></h6>                          
+                    </div>
+                            
+                    <div class="col-md-auto" style="padding-left: 0px!important;">
+                      <div class="form-group bmd-form-group " style="padding-top:0!important;"></div>
+                    </div>
+                   
+                    <div class="col-md-2 text-center">
+                      <a href="javascript:void(0);" class="add_button" title="Agregar campo">
+                        <h5 class="fa fa-plus text-white"  style="cursor: pointer;"></h5> 
+                      </a>  
+                    </div>
+                  </div>                    
+                </div>
+                      
+                <div class="card-body text-center " style="padding: 0 !important; "> 
+                  <div style=" max-height:400px !important; overflow: auto;overflow-x: hidden;">                       
+                    <table name="tb_covid_list" class="table p-4 dataTable no-footer"  role="grid">                            
+                      <thead>
+                        <tr role="row p-5">
+                          <th class="sorting_disabled" rowspan="1" colspan="3" style="width: 100%;color: #8d8d8d;font-weight: bold;padding: 10px;">Escribe el Nro. de documento físico</th>
+                        </tr>
+                      </thead>
+                      <!--vw_access_request.validateFormCompany()-->
+                        <tbody id="tb_tbody_covid_list" >
+                          <tr>
+                            <td>
+                              <div class="field_wrapper">
+                                <div>
+                                  <table width="100%">
+                                    <tr>
+                                      <td class="border-0"><img src="images/iconos/business.svg"  height="24"></td>
+                                      <td class="border-0"><input type="number" class="form-control requestDNI" name="requestDNI[]" placeholder="Nro. de documento"/></td>
+                                      <td class="border-0"></td>
+                                    </tr>
+                                  </table>        
+                                </div>
+                              </div>
+                            </td>  
+                          </tr>
+                        </tbody>
+                        
+                      </div>  
+                    </table>  
+                  </div>
+
+                  <hr>  
+                  <div class="row justify-content-md-center  mt-2 P-4">
+                    <div class="col-md-12">
+                      <button type="button" class="btn btn-info btn-rounded btn-raised "  onclick="vw_access_event.adddnirequest()" style="width: 100px !important;"> &nbsp;&nbsp;Actualizar&nbsp;&nbsp;</button>
+                      <button type="button" class="btn btn-danger btn-rounded btn-raised "  style="width: 100px !important;" onclick="$('#requestDNI').modal('hide');$('.dinact').empty();$('.cantDNI').text(' ( 1 )')"> &nbsp;&nbsp;Salir&nbsp;&nbsp;</button>
+                    </div>
+                  </div>                  
+                </div>
+
+              </div>
+            </div>        
+          </div>
+        </div>
+        
+        <div class="modal-footer" >
+          <div class="col-md-12 row"  id="modal_show_request_details_footer"></div>
+        </div>  
+    </div>
+  </div>
+</div>
+<!-- modal fin solicitud de DNI -->
+
+
+<div class="modal fade "  id="modalShowAccessVehicleCisterna" tabindex="-1" role="dialog" aria-labelledby="modalAddCompanyTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered rounded " role="document" style="max-width: 90%; z-index: 1030; ">
+    <div class="container">
+      <div class="row justify-content-md-center">
+        <div class="col-md-auto">
+          <div class="modal-content " style="background: transparent; border-radius: 10px;">   <!--col-md-3 -->          
+            <div class="card" style="width: 800px; border-radius: 10px; box-shadow: none;">
+              <div class="card-header text-white bg-green-lime" style="border-radius: 10px 10px 0px 0px; height: 40px; padding: 0.5rem !important;">
+                <h5>Camión Cisterna</h5>
+              </div>
+              <div class="card-body text-center">	
+                <!--<div class="row">
+                  <div class="col text-left"><h4 class="text-primary">Placa: <span id=""></span></h4></div>
+                </div>-->
+                <div class="row pb-4 ">
+                  <div class="col-md-2 ml-2 ">
+                    <div class="media">
+                      <img src="images/iconos/colaborador.svg" class="align-self-center mr-3" alt="...">
+                      <div class="media-body text-left">
+                        <h5 class="mt-0">Marca</h5>
+                        <p class="mb-0"><span id="span_brand_access_cis"></span></p>
+                      </div>
+                    </div>
+                  </div>                   
+                  <!--<div class="col-md-2 border-left ml-2">
+                    <div class="media">
+                      <img src="images/iconos/colaborador.svg" class="align-self-center mr-3" alt="...">
+                      <div class="media-body text-left">
+                        <h5 class="mt-0">Modelo</h5>
+                        <p class="mb-0"><span id="span_model_access_cis"></span></p>
+                      </div>
+                    </div>
+                  </div>-->
+
+                  <div class="col-md-3 border-left ml-2">
+                    <div class="media">
+                      <img src="images/iconos/colaborador.svg" class="align-self-center mr-3" alt="...">
+                      <div class="media-body text-left">
+                        <h5 class="mt-0">Persona</h5>
+                        <p class="mb-0"><span id="span_driver_access_cis"></span></p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-2 border-left ml-2">
+                    <div class="media">
+                      <img src="images/iconos/colaborador.svg" class="align-self-center mr-3" alt="...">
+                      <div class="media-body text-left">
+                        <h5 class="mt-0">Brevete</h5>
+                        <p class="mb-0"><span id="span_license_number_cis"></span></p>
+                        
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-auto border-left ml-2">
+                    <div class="media">
+                      <img src="images/iconos/colaborador.svg" class="align-self-center mr-3" alt="...">
+                      <div class="media-body text-left">
+                        <h5 class="mt-0">Categoría</h5>
+                        <p class="mb-0"><span id="span_license_category_cis"></span></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>    
+                
+                <div class="row pb-4">
+                  <div class="col-md-2 ml-2 ">
+                    <div class="media">
+                      <img src="images/iconos/colaborador.svg" class="align-self-center mr-3" alt="...">
+                      <div class="media-body text-left">
+                        <h5 class="mt-0">Placa Camón</h5>
+                        <p class="mb-0"><span id="span_place_access_cis"></span></p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-2 ml-2 ">
+                    <div class="media">
+                      <img src="images/iconos/colaborador.svg" class="align-self-center mr-3" alt="...">
+                      <div class="media-body text-left">
+                        <h5 class="mt-0">Placa plataforma</h5>
+                        <p class="mb-0"><span id="span_place_plataforma_access_cis"></span></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!--<div class="row mt-4">
+                  <div class="col text-left"><h4 class="text-primary">Fotos vehículos</h4></div>
+                </div> -->               
+                <!--<div class="row mb-5">
+                  <div class="col col-lg-2 border  mr-2" >
+                    <div class="white-box">
+                      <input type="file" id="input-file-vehicle_1_cis" class="dropify" data-max-file-size="2M" />
+                      <input type="hidden" id="base64-vehicle_1_cis">
+                     </div>                  
+                  </div>
+                  <div class="col col-lg-2 border  mr-2" >
+                    <div class="white-box">
+                      <input type="file" id="input-file-vehicle_2_cis" class="dropify" data-max-file-size="2M" /> 
+                      <input type="hidden" id="base64-vehicle_2_cis">
+                    </div>                  
+                  </div>
+                  <div class="col col-lg-2 border  mr-2" >
+                    <div class="white-box">
+                      <input type="file" id="input-file-vehicle_3_cis" class="dropify" data-max-file-size="2M" />
+                      <input type="hidden" id="base64-vehicle_3_cis">
+                     </div>                    
+                  </div>
+                  <div class="col col-lg-2 border  mr-2" >
+                    <div class="white-box">
+                      <input type="file" id="input-file-vehicle_4_cis" class="dropify" data-max-file-size="2M" /> 
+                      <input type="hidden" id="base64-vehicle_4_cis">
+                    </div>
+                    
+                  </div>  
+                  <div class="col col-lg-2 border  mr-2" >
+                    <div class="white-box">
+                      
+                      <input type="file" id="input-file-vehicle_5_cis" class="dropify" data-max-file-size="2M" /> 
+                      <input type="hidden" id="base64-vehicle_5_cis">
+                    </div>
+                  
+                  </div>                  
+                </div>-->
+
+                                
+                <div class="row mb-5">
+                               
+                </div>
+                
+
+                <!--<div class="row  border-bottom">
+                  <div class="col-md-4 text-left">DNI:<br> <span id="span_dni_driver_access"></span></div>
+                  <div class="col-md-4 text-left">Chofer:<br> </div>
+                  <div class="col-md-4 text-left">Visita a:<br> <span id="span_to_visita"></span> </div>                  
+                </div>
+                <div class="row">
+                  <div class="col">Fotos</div>                  
+                </div>
+                -->
+              </div>
+              <div class="card-footer text-center border-0" style="border-radius: 0px 0px 10px 10px; ">            
+                <button type="button" class="btn btn-sm btn-primary  btn-raised btn-rounded" data-toggle="modal" data-target="#modalShowAccessVehicleCisterna" id="bt_confirm_access_cis" style="border-radius: 25px;" onclick="vw_access_event.validateAccessVehicle()"> &nbsp; &nbsp; Autorizar &nbsp; &nbsp;</button>
+                <button type="button" class="btn btn-sm btn-danger  btn-raised btn-rounded" data-toggle="modal" data-target="#modalShowAccessVehicleCisterna"  style="border-radius: 25px;"> &nbsp; &nbsp; No Autorizar &nbsp; &nbsp;</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--<div class="modal-content rounded-4 col-md-3" style="background: rgb(253, 253, 253);margin: 0 auto;">        
+      <div style="display: flex;justify-content: center;align-items: center;overflow: auto;height: 300px;overflow-x: hidden; ">
+        <div class="modal-body row" id="">
+            <div class="col">
+              <div class="form-group">
+                <label for="tx_collaborator_email" class="bmd-label-static titleInput">COLABORADOR<span class="text-warning">*</span></label>  
+                <input type="text" class="form-control" name="tx_collaborator_name" id="tx_collaborator_name">            
+                <input type="hidden" class="form-control" id="tx_collaborator_email_form"  >              
+              </div>
+            </div>
+        </div>
+      </div>
+        <div class="modal-footer" style="margin: 0 auto;">
+            <button type="button" class="btn btn-sm btn-primary  btn-raised btn-rounded" data-toggle="modal" data-target="#modalEmailForm"  style="border-radius: 25px;" id="sendEmailForm"> &nbsp; &nbsp; Enviar &nbsp; &nbsp;</button>
+            <button type="button" class="btn btn-sm btn-green-lime  btn-raised btn-rounded" data-toggle="modal" data-target="#modalEmailForm" onclick="$('#modalEmailForm').modal('hide')" style="border-radius: 25px;" id="cancelEmailForm"> &nbsp; &nbsp; Cancelar &nbsp; &nbsp;</button>
+        </div>
+    
+    </div>-->
+
+      </div>
+</div>
+
+
+<script>
+  $(document).ready(function(){
+    var x = 1;
+    var maxField=100; 
+    var addButton=$('.add_button');
+    var wrapper=$('.field_wrapper');
+    var fieldHTML='<div class="dinact"><table width="100%"><tr><td class="border-0"><img src="images/iconos/business.svg" height="24"></td><td class="border-0"><input type="number" class="form-control requestDNI" placeholder="Nro. de documento" name="requestDNI[]"/></td><td class="border-0"><a href="javascript:void(0);" class="remove_button" title="Eliminar registro"><img src="images/iconos/delete_list.svg"  height="17px"></a></td></tr></table></div>'; //New input field html 
+    $(addButton).click(function(){ 
+        if(x < maxField){
+            x++;
+            $(wrapper).append(fieldHTML)
+            $('.cantDNI').text(' ( '+x+' ) ');    
+        }
+    });
+    $(wrapper).on('click','.remove_button',function(e){
+        e.preventDefault();
+  
+        $ (this).closest('div').remove();
+        x--;
+        $('.cantDNI').text(' ( '+x+' ) '); 
+    });
+  });
+</script>
+

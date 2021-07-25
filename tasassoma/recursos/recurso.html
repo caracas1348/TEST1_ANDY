@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- CSS only -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+<button class="btn btn-success" onclick="modal('modal-confirmacion')">recurso 1</button>
+<button class="btn btn-success" onclick="modal('modal-save')">recurso 2</button>
+
+<div class="modal_confirmacion" id="modal-confirmacion">
+    <div class="modal_confirmacion__content">
+        <div class="modal_confirmacion__head">
+            <img src="../images/newsistema/iconos/informacion3.svg" alt="">
+        </div>
+        <div class="modal_confirmacion__body">
+            <div class="title">
+                Se guardará la inspección <span class="title_formulario_save">Sintomatología COVID 19</span>
+            </div>
+            <div class="content">
+                ¿Desea confirmar la finalización del formulario?
+            </div>
+            <div class="footer">
+                <div class="d-flex">
+                    <div class="col-md-6 pl-0">
+                        <button class="btn_confirmar_modal" onclick="saveFormulario()">Confirmar</button>
+                    </div>
+                    <div class="col-md-6 pr-0">
+                        <button class="btn_cerrar_modal" onclick="cerrarModal('modal-confirmacion')">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal_confirmacion" id="modal-save">
+    <div class="modal_confirmacion__content">
+        <div class="modal_confirmacion__head bg-green-lime-modal">
+            <img src="../images/newsistema/iconos/correct1.svg" alt="">
+        </div>
+        <div class="modal_confirmacion__body">
+            <div class="title">
+                Se guardará la inspección <span class="title_formulario_save">Sintomatología COVID 19</span>
+            </div>
+            <div class="content">
+                ¿Desea confirmar la finalización del formulario?
+            </div>
+            <div class="footer">
+                <div class="d-flex">
+                    <div class="col-md-12 px-0">
+                        <button class="btn_confirmar_modal bg-green-lime-modal" onclick="cerrarModal('modal-save')">De Acuerdo</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+    function modal(id){
+        $('#'+id).addClass('modal_confirmacion__active');
+    }
+    function cerrarModal(id){
+        $('#'+id).removeClass('modal_confirmacion__active');
+    }
+</script>
+</html>

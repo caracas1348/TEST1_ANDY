@@ -1,0 +1,151 @@
+<div class="container-fluid bg-light p-0" >
+  
+    <div class="row bg-white " style="padding: 25px; border-bottom: 1px solid #ebebeb;" >
+    <!-- buscar -->
+      <!-- <div class="col-8 p-2" style="height: 50px !important">
+        <div class="btn-group-toggle " data-toggle="buttons" id="btn_group_status_bl" onclick="$('.popover').popover('hide');">
+          <label class="btn  tabInactive" name="label_status_list_1" id="label_status_list_1" onclick="vw_covid_list.selectedFilterStatusBl(1)">
+            <input type="radio" name="chb_status_list" id="chb_status_list_1" value="1"> Pendiente 
+            <span class="badge " style="font-size: 13px;" id="badgelistcovid1">0</span>       
+          </label>
+          <label class="btn tabInactive" name="label_status_list_2" id="label_status_list_2" onclick="vw_covid_list.selectedFilterStatusBl(2)">
+            <input type="radio" name="chb_status_list" id="chb_status_list_2" value="2"> Habilitado 
+            <span class="badge " style="font-size: 13px;" id="badgelistcovid2">0</span>         
+          </label>
+          <label class="btn tabInactive" name="label_status_list_22" id="label_status_list_22" onclick="vw_covid_list.selectedFilterStatusBl(22)">
+            <input type="radio" name="chb_status_list" id="chb_status_list_22" value="22"> Vetado 
+            <span class="badge " style="font-size: 13px;" id="badgelistcovid5">0</span>         
+          </label>
+          <label class="btn tabInactive" name="label_status_list_4" id="label_status_list_4" onclick="">
+            <input type="radio" name="chb_status_list" id="chb_status_list_4" value="4"> Colaboradores 
+            <span class="badge " style="font-size: 13px;" id="badgelistcovid3">0</span>         
+          </label>
+          <label class="btn tabInactive" name="label_status_list_5" id="label_status_list_5" onclick="vw_covid_list.selectedFilterStatusBl(5)">
+            <input type="radio" name="chb_status_list" id="chb_status_list_5" value="5"> Contratistas 
+            <span class="badge " style="font-size: 13px;" id="badgelistcovid4">0</span>        
+          </label>
+          <label class="btn tabInactive active" name="label_status_list_3" id="label_status_list_3" onclick="vw_covid_list.selectedFilterStatusBl(3)">
+            <input type="radio" name="chb_status_list" id="chb_status_list_3" value="3"> Todos 
+            <span class="badge " style="font-size: 13px;" id="badgelistcovidAll">0</span>       
+          </label>      
+        </div>
+      </div> -->
+      <div class="col-1 p-2" style="height: 50px !important">
+        <div class="media-body">
+          <div class="form-group">
+            <label for="sel_area" class="bmd-label-static titleInput">ESTATUS </label>
+            <select name="sel_status" class="form-control" id="sel_status"  required>
+              <option value="0">Todos</option>
+              <option value="1">Pendiente</option>
+              <option value="2">Habilitado</option>
+              <option value="3">Vetado</option>
+            </select>
+          </div>
+        </div>
+    </div>
+    <div class="col-1 p-2" style="height: 50px !important; display: none;">
+      <div class="media-body">
+        <div class="form-group">
+          <label for="sel_type" class="bmd-label-static titleInput">TIPO </label>
+          <select name="sel_type" class="form-control" id="sel_type"   required>
+            <option value="0">Todos</option>
+            <option value="1">Contratista</option>
+            <option value="2">Colaborador</option>
+          </select>
+        </div>
+      </div>
+  </div>
+  <div class="col-1 p-2" style="height: 50px !important">
+    <div class="media-body">
+      <div class="form-group">
+        <label for="sel_company" class="bmd-label-static titleInput">EMPRESA </label>
+        <select name="sel_company" class="form-control" id="sel_company"   required>
+          <option value="0">Todos</option>
+        </select>
+      </div>
+    </div>
+</div>
+<div class="col-1 p-2" style="height: 50px !important">
+  <div class="media-body">
+    <div class="form-group">
+      <label for="sel_sede" class="bmd-label-static titleInput">SEDE </label>
+      <select name="sel_sede" class="form-control" id="sel_sede"   required>
+        <option value="0">Todos</option>
+      </select>
+    </div>
+  </div>
+</div>
+<div class="col-1 p-2" style="height: 50px !important">
+  <div class="media-body">
+    <div class="form-group">
+      <label for="sel_area" class="bmd-label-static titleInput">AREA </label>
+      <select name="sel_area" class="form-control" id="sel_area"  required>
+        <option value="0">Todos</option>
+        <option value="1">Operaciones</option>
+        <option value="3">Pesca</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<div class="col-1 p-2" style="height: 50px !important">
+  <div class="media-body">
+    <div class="form-group">
+      <label for="tx_date_init"  class="bmd-label-static titleInput">Desde </label>
+      <input type="text" autocomplete="off" class="form-control" id="tx_date_init">
+    </div>
+  </div>
+</div>
+
+<div class="col-1 p-2" style="height: 50px !important">
+  <div class="media-body">
+    <div class="form-group">
+      <label for="tx_date_end" class="bmd-label-static titleInput">Hasta </label>
+      <input type="text" class="form-control" id="tx_date_end" autocomplete="off">
+    </div>
+  </div>
+</div>
+
+
+<div class="col-1 pt-3" style="height: 50px !important">
+  <button type="button" class="btn btn-green-lime btn-rounded btn-raised" id="btn_buscar" onclick="showLoading()"> Buscar </button>
+</div>
+
+<div class="col-1 pt-2 text-center text-gray" >
+  <span id="cantTotalCovid19" class="h3 mute">0</span><br><small class="text-gray" style="font-size: 12px;">Registros</small>
+</div>
+
+      <div class="col-2 text-right pt-2" style="height: 50px !important">
+        <input type="text" id="tx_access_dni_list" maxlength="30"  name="tx_access_dni_list" maxlength="15" autocomplete="off" class=" shadow-sm inputFind" placeholder="Buscar" style="width:11em;">
+      </div>
+
+      <div class="col-1 pt-3 text-center pr-5" style="height: 50px !important">
+        <img src="images/iconos/regresh.svg" class="" style="cursor: pointer;" onclick="vw_access_plat.refreshListCovid()"  height="36px" title="Limpiar filtros">
+      </div>
+    
+      
+      <div class="col-2 text-right pt-3" style="height: 50px !important;display:none"  id="butExamIngress">
+        <button type="button" class="btn btn-green-lime btn-rounded btn-raised " id="label_status_list_ingr"  > Ingresos 
+          <span class="badge " style="font-size: 13px;" id="badgelistcovidAlli">0</span></button>
+      </div>
+      
+
+    </div>
+
+    <div style="height: 6px;"></div>
+  <!-- listado -->
+  <div class="row ">
+  
+      <div class="col ">
+        <div class="card p-0" style="box-shadow: none;">
+          <div class="card-body p-0 " >
+        <table id="tb_black_list" name="tb_black_list" class="table p-0" style="width:100%">
+        </table>
+          </div>
+    </div>
+    
+    
+      </div>
+  
+  </div>
+  <!-- background-color:rgba(0,0,0,.0001) -->

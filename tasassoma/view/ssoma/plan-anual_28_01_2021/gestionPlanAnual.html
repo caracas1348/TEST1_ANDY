@@ -1,0 +1,2916 @@
+<link rel="stylesheet" href="./view/ssoma/ssoma.css">
+<link rel="stylesheet" href="./css/pagination.css">
+<link rel="stylesheet" href="./css/auditorLiderList.css">
+
+
+
+
+
+
+
+<div class="row justify-content-center">
+    <style type="text/css">
+
+    ul.ui-autocomplete.ui-menu { width: 400px !important; }
+
+
+    /*
+    
+    */
+
+
+    .semana{
+      color:#000;
+      background-color:#fff;
+      cursor: pointer;
+    }
+
+
+    .semana:hover{
+     color:#fff;
+     background-color:#05BEEE;
+     cursor: pointer;
+    }
+
+
+
+    #sel_procesoPlan{
+        height: 24px;
+        background-color: white;
+        cursor: pointer;
+    }
+
+    #sel_procesoPlan:hover{
+        height: 124px;
+        background-color: white;
+        cursor: pointer;
+    }
+
+
+    .txtAreaLista{
+         border-radius: 4px;
+        -moz-border-radius: 4px;
+        -webkit-border-radius: 4px;
+        -o-border-radius: 4px;
+        background: #F2F2F2;
+        background: linear-gradient(left, #F2F2F2, #F2F2F2);
+        background: -moz-linear-gradient(left, #F2F2F2, #F2F2F2);
+        background: -webkit-linear-gradient(left, #F2F2F2, #F2F2F2);
+        background: -o-linear-gradient(left, #F2F2F2, #F2F2F2);
+        width: 100%;
+        height: 80%;
+        border-color:#F2F2F2;
+        resize: none;
+    }
+
+
+
+
+
+
+    input[type="time"]::-webkit-calendar-picker-indicator
+    {
+        filter: invert(48%) sepia(13%) saturate(3207%) hue-rotate(130deg) brightness(95%) contrast(80%);
+        cursor:pointer;
+    }
+
+
+
+
+</style>
+
+    <div class="col-12">
+
+        <div class="row mt-4 align-items-center"  >
+           <table width = "97%" border="0" style = " margin-left: auto; margin-right: auto; "  >
+                 <tr>
+                     <td id='col1' width ="72%">
+                        <table width = "100%" border="0">
+                            <tr>
+                                <td id='col1-1-1'   width ="12%"><label for="sel_filter_unidad_organizativa" class="textoLabelFiltrosCA">Programa </label></td>
+                                <td id='col1-1-1e'  width ="2%">&nbsp;</td>
+                                <td id='col1-1-2'   width ="12%"><label for="sel_filter_unidad_organizativa" class="textoLabelFiltrosCA">Gerencia</label></td>
+                                <td id='col1-1-2e'  width ="3%">&nbsp;</td>
+                                <td id='col1-1-3'   width ="12%"><label for="sel_filter_unidad_organizativa" class="textoLabelFiltrosCA">Sede</label></td>
+                                <!-- <td id='col1-1-3e'  width ="3%">&nbsp;</td>
+                                <td id='col1-1-4'   width ="12%"> <label for="sel_filter_sede" class="textoLabelFiltrosCA">Sede</label></td> -->
+                                <td id='col1-1-5e'  width ="2%">&nbsp;</td>
+                                <td id='col1-1-6'   width ="12%"> <label for="txt_date_end_evaluacion" class="textoLabelFiltrosCA">Fecha Desde</label></td>
+                                <td id='col1-1-6e'  width ="2%">&nbsp;</td>
+                                <td id='col1-1-7'   width ="12%"><label for="sel_filter_estado" class="textoLabelFiltrosCA">Fecha Hasta </label></td>
+                                <td id='col1-1-4e'  width ="2%">&nbsp;</td>
+                                <td id='col1-1-5'   width ="12%"><label for="txt_date_start_evaluacion" class="textoLabelFiltrosCA">Estado</label></td>
+                            </tr>
+                            <tr>
+                                <td id='col1-1-1' width ="12%">
+                                    <select name="sel_filter_programa_p" class="form-control" id="sel_filter_programa_p" onChange=" "  style="padding: 0px !important;">
+                                    </select>
+                                </td>
+                                <td id='col1-1-6' width ="2%">&nbsp;</td>
+
+
+                                <td id='col1-1-1' width ="12%">
+                                    <select name="sel_filter_gerencia_p" class="form-control" id="sel_filter_gerencia_p" onChange=" "  style="padding: 0px !important;">
+                                    </select>
+                                </td>
+                                <td id='col1-1-6' width ="3%">&nbsp;</td>
+
+                                <td id='col1-1-1' width ="12%">
+                                    <select name="sel_filter_sede_p" class="form-control" id="sel_filter_sede_p" onChange=" "  style="padding: 0px !important;">
+                                    </select>
+                                </td>
+
+                                <!-- <td id='col1-1-6' width ="3%">&nbsp;</td>
+
+                                <td id='col1-1-7' width ="12%">
+                                    <select name="sel_filter_estadoah" class="form-control select-filtroCA Patch_selectCA" id="sel_filter_estadoah" style="padding: 0px !important;" required>
+                                    </select>
+                                </td> -->
+                                <td id='col1-1-6' width ="2%">&nbsp;</td>
+                                <td id='col1-1-3' width ="12%">
+                                    <input  type="text" id="sp3_txt_fecha_desde_p" name="sp3_txt_fecha_desde_p" class="form-control bg-white" readonly onChange="">
+                                </td>
+                                <td id='col1-1-4' width ="2%">
+                                    <img src="images/iconos/calendario-3.svg"  style="cursor: pointer;" onclick="$('#sp3_txt_fecha_desde_p').val('');">
+                                </td>
+
+                                <td id='col1-1-5' width ="12%">
+                                    <input  type="text" id="sp3_txt_fecha_hasta_p" name="sp3_txt_fecha_hasta_p" class="form-control bg-white" readonly onChange="">
+                                </td>
+                                <td id='col1-1-6' width ="2%">
+                                    <img src="images/iconos/calendario-3.svg"  style="cursor: pointer;" onclick="$('#sp3_txt_fecha_hasta_p').val('');">
+                                </td>
+                                <!-- <td id='col1-1-6' width ="3%">&nbsp;aaaaaaaaaaaa</td> -->
+
+                                <td id='col1-1-1' width ="12%">
+                                    <select name="sel_filter_estado_p" class="form-control" id="sel_filter_estado_p" onChange=" "  style="padding: 0px !important;">
+                                    </select>
+                                </td>
+
+
+                            </tr>
+<!-- solo para verc los avances de las ventanas -->
+       
+                 <tr style="visibility: visible;" >
+                  <td><button onclick=" $('#Sp3VentanaPruebas').modal('show').addClass('fade');" >int1</button></td>
+                   <!--<td><button>int2</button></td>
+                  <td><button>int3</button></td>
+                  <td><button>int4</button></td>
+                  <td><button>int5</button></td>
+                  <td><button>int6</button></td>
+                  <td><button>int7</button></td>
+                  <td><button>int8</button></td>
+                  <td><button>int9</button></td>
+                  <td><button>int10</button></td>
+                  <td><button>int11</button></td> -->
+                  
+             </tr>
+     
+<!-- solo para verc los avances de las ventanas -->
+                        </table>
+
+
+                    </td>
+
+
+                     <td id='col2' width ="2%">&nbsp;</td>
+                     <td id='col10'  width ="7%">
+                        <button type="button" style=" width:115px !important;"  class="btn btn-system-green"  onClick="fnSp3CargaFiltroEstadoInicialPlanAnual() "  id="sp3BtFiltroPlanAnual"
+                           class="btn btn-system-green">Buscar</button>
+                     </td>
+
+
+
+                     <td id='col8'  width ="2%">&nbsp;
+                       
+                     </td>
+                     <td id='col4'  width ="1%">
+                        <div id="cant_planes" style="font-size: 25px; font-weight: bold; text-align:left; ">
+                            <img src="images/iconos/copia-1.svg" style="margin-top:25px;"   class="mb-3"  >
+                        </div>
+                     </td>
+
+                     <td id='col9'  width ="1%" align="center" ><span style="top:5px; text-align: center; " class="cantidad ml-3" id="cant_adm_plan_anual">0</span></td>
+
+                     <td id='col7'  width ="1%">&nbsp;</td>
+
+                     <td id='col6'  width ="9%">
+                         <button class="btn btn-system-celeste center"  onclick="accPlanAnual = 0; fnSp3VentanaMostrarPlanAnual();" style="padding-left: 0.8rem;padding-right: 0.8rem; width: 184 !important; font-size: 15px; font-weight: bold; font-stretch: normal;">
+                            <img src="./images/iconos/plus_.svg" alt="" >
+                            <span class="ml-3">Nuevo Plan Anual</span>
+                        </button>
+                     </td>
+
+                 </tr>
+                
+
+           </table>
+
+        </div>
+
+    </div>
+</div>
+
+
+
+<table width = "97%" border="0" style = " margin-left: auto; margin-right: auto; "  >
+    <tr>
+        <td id='col1' width ="100%">
+
+
+            <div class="row justify-content-center mt-5">
+                 <div class="col-md-12">
+                        <div class="header-tabla px-2 py-3">
+                            <table width = "100%" border="0">
+                                <tr >
+                                    <td width = "10%" align="center"><div id="c1TabGeny" class="text-left lbCabezaTabla" style='margin: 0px 0px 0px 8px !important;'  >ID Plan Anual</div></td>
+                                    <td width = "10%" align="center"><div id="c2TabGeny" class="text-left lbCabezaTabla"  >Programa</div></td>
+                                    <td width = "14%" align="center"><div id="c3TabGeny" class="text-left lbCabezaTabla"  >Gerencia</div></td>
+                                    <td width = "10%" align="center"><div id="c4TabGeny" class="text-left lbCabezaTabla"  >Sede</div></td>
+                                    <td width = "8%" align="center"><div id="c5TabGeny" class="text-left lbCabezaTabla"  >Equipo</div></td>
+
+                                    <td width = "8%" align="center"><div id="c6TabGeny" class="text-left lbCabezaTabla"  >Número de Objetivos</div></td>
+                                    <td width = "10%" align="center"><div id="c7TabGeny" class="text-left lbCabezaTabla"  >Fecha de Creación</div></td>
+                                    <td width = "8%" align="center"><div id="c8TabGeny" class="text-left lbCabezaTabla"  >Estado</div></td>
+
+                                    <td width = "3%" align="center"><div id="c12TabGeny" class="text-center lbCabezaTabla"  >Editar</div></td>
+                                    <td width = "3%" align="center"><div id="c13TabGeny" class="text-center lbCabezaTabla"  >Ver</div></td>
+                                    <td width = "1%" align="center"><div id="c13TabGeny" class="text-center lbCabezaTabla"  >&nbsp</div></td>
+
+
+                                </tr>
+                            </table>
+                       </div>
+
+
+
+
+                            <div class="body-tabla mt-4" id="bodyTablaSinAuditorias" style="display: block; font-weight: bold;">
+                                <div class="content-registros-no-encontrados">
+                                    <div>
+                                        <img src="./images/newsistema/iconos/planning2.svg" style="width:128px; height: 128 px;" alt="">
+                                        <p class="mt-4">No Existen Planes</p>
+                                        <img src="./images/iconos/loadingAdj.gif" style="visibility: hidden;" >
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="body-tabla-list-EvalAud" id="body-tabla-list-EvalAud" ></div>
+                            <div id="pagination-container-EvalAud" class="mt-3"></div>
+
+                </td>
+            </tr>
+        </table>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="scriptDataPicker" name ="scriptDataPicker" >
+
+</div>
+
+
+
+
+<div class="modal fade"  id="modalMsgError" tabindex="-1" role="dialog" aria-labelledby="ExitoIngresarAuditoriaModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered rounded" role="document" style="max-width: 300px; z-index: 1030; ">
+
+        <div class="modal-content rounded border-0" style=" background-color:rgba(0,0,0,.0001) !important; box-shadow: none;">
+            <div style="overflow: hidden;height: 360px;overflow-x: hidden; ">
+                <div class="modal-body" id="" style="padding: 0px;">
+                    <div class="col-sm-12 col-md-12" style="color:#575757c9; width: 100%; padding: 0px;">
+
+                        <div class="card border-o" style=" padding: 0px; border: 2px solid #ff5a5a; border-radius: 5px;    width: 100%;">
+                            <div class="card-header text-white" style="background:#ff5a5a; height: 95px;">
+                                    <div class="d-flex justify-content-center">
+                                        <img src="images/iconos/informacion3.svg">
+                                    </div>
+                            </div>
+                                <div class="card-body" style="background: white;">
+                                  <table align="center" width= "100%" border="0" >
+                                      <tr>
+                                          <td width="5%" >&nbsp;</td>
+                                               <td width="80%" >
+                                                <div class="d-flex justify-content-center titulo-exito-ingreso-auditoriaCA" style="font-size: 18px;">
+                                                    <b>ERROR!</b>
+                                                </div>
+
+                                               </td>
+                                          <td width="5%">&nbsp;</td>
+                                      </tr>
+
+                                      <tr>
+                                        <td width="5%" >&nbsp;</td>
+                                             <td width="80%" >
+                                                 <div id="subTituloError" class="d-flex mb-2 justify-content-center titulo-confirmar-ingreso-auditoriaCA" style="font-size: 18px;">
+                                                       <b>auditorías con éxito</b>
+                                                 </div>
+                                             </td>
+                                        <td width="5%">&nbsp;</td>
+                                       </tr>
+
+                                        <tr>
+                                            <td width="5%" >&nbsp;</td>
+                                                <td width="80%" align="center" >
+                                                    <div id="mensajeError" class="d-flex mx-0 px-0 justify-content-center pregunta-exito-ingreso-auditoriaCA">
+                                                        El código de la programación es:aaaaaaaaad dfdsfsdfdsf
+                                                        dsfsdfdsfsdfdsfdfdsfdf
+                                                        dfsdfsdfds
+                                                     </div>
+                                                </td>
+                                            <td width="5%">&nbsp;</td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <td width="5%" >&nbsp;</td>
+                                                <td width="80%" >
+                                                    <div class="d-flex mx-0 px-0 justify-content-center pregunta-exito-ingreso-auditoriaCA">
+                                                        &nbsp;
+                                                     </div>
+                                                </td>
+                                            <td width="5%">&nbsp;</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td width="5%" >&nbsp;</td>
+                                                <td width="80%" >
+                                                    <div  class="d-flex mb-3 mx-0 justify-content-center titulo-exito-ingreso-auditoriaCA" >
+                                                        <button type="button" onClick="$('#modalMsgError').modal('hide');" class="btn_confirmar_modal bg-danger" style="color: #fff" >De Acuerdo</button>
+                                                    </div>
+                                                </td>
+                                            <td width="5%">&nbsp;</td>
+                                        </tr>
+
+
+
+                                  </table>
+                                </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+<!-- INI --------------------------------------------     MODAL DE NUEVO PLAN ANUAL   - ----------------------------------- -->
+
+
+<div class="modal fade "  id="Sp3VentanaHallazgoEditView" tabindex="-1" data-backdrop="static" data-keyboard="false" aria-hidden="true"  tabindex="-1" role="dialog" >
+    <div class="modal-dialog modal-dialog-centered rounded" role="document" style="max-width: 1322px; z-index: 1030; ">
+        <div class="modal-content rounded "  style="background:white; height: 702px !important;" >
+            <div style="overflow: hidden; height: 692px; overflow-x: hidden; ">
+                <div class="modal-header fix-header-modal" >
+                    <div class="card-header text-center text-white modal-dialog-centered  card-header-FormAuditor" id="red-head" style="width: 100%; padding: 0px 0px !important;">
+                        <div class="row d-flex justify-content-center text-center" style="width: 100%;">
+                            <div class="col-1 btn-close-modalCA pl-3 my-2">
+                                <!--button type="button" id="closeVerAuditoriaModal"><span aria-hidden="true" class="btn-close-modalCA">Cerrar&nbsp;&nbsp;&nbsp;&nbsp;&times;</span></button--> <!-- class="close hearder-modal" data-dismiss="modal" aria-label="Close" -->
+                                <!-- <div class="float-right" cursor="pointer" id="btn-close-Adj"><span style="font-size: 40px">
+                                    <img src="images/prev.svg"  style="cursor: pointer;"></span>
+                                </div> -->
+                             </div>
+                            <div class="col justify-content-center text-center col-12" style="margin-top: -28px !important;" >
+                                <table border='0' style="margin-left: auto; margin-right: auto; width: 1250px;">
+                                    <tr>
+                                        <td width='10%'><img src="./images/prev.svg" style="cursor:pointer;" title = 'Salir' onclick="fnSp3CerrarVentanaMostrarPlanAnual();" > </td>
+                                        <td width='1%'></td>
+                                        <td width='72%'><div id='lbTitleVerPlanAnual' style="font-size: 16px !important; height:30px; width:100%; color:#fff; font-weight: bold; text-align: center;">Creación del Plan Anual</div></td>
+                                        <td width='10%'><button class="btn-save-auditor2" style="font-size: 12px !important; margin-left: 36px"> Guardar</button></td>
+                                        <td width='7%'><button class="btn-save-auditor2 " style=" margin-left: 30px !important; font-size: 12px !important; background:gray !important; color:white;"> Finalizar</button></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+
+
+
+
+
+                <div class="modal-body dialog-position" id="bodymodalShowAuditor" style=" justify-content:space-around; align-content:center; padding: 10px 0px 0px !important;">
+
+                    <div class="card " style="border: 0px !important; border-radius: 5px; box-shadow: none;">
+
+                        <div class="card-body2" >
+
+
+                            <div class="row justify-content-around align-items-center text-center">
+            <!-- <div class="col-12 caja-adj scroll-blue" style="height: 600px !important; border-color: red !important;"> -->
+                     <div class="col-12" style="height: 772px !important; border-color:chartreuse !important;">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <div id="divPreviewEval" class="divPreviewEval overflow-auto" style="margin-left: auto; margin-right: auto; margin-top: 2px !important;" >
+
+                          <table border="0" style="margin-left: auto; margin-right: auto; width: 1233px; ">
+                                  <tr>
+                                    <td colspan="3">
+                                          <table width="100%" border="0">
+                                          <tr>
+                                            <td width="14%" style="text-align: left !important;">
+                                                <label   class="lbEvalAud_02">
+                                                    <b style="text-align: left !important;">Datos Generales </b>
+                                                </label>
+                                            </td>
+                                              <td width="85%"><p style="color:#c1c1c1;">
+    _______________________________________________________________________________________________________________________________________
+                                              </p></td>
+                                            <td width="1%" text-align:rigth !important;><img src="./images/iconos/menu.svg"></td>
+                                          </tr>
+                                        </table>
+                                    </td>
+                                  </tr>
+
+                            <tr>
+                                <td colspan="3">
+                                  <table width="100%" border="0">
+                                    
+                                    <tr>
+                                      <td>
+                                    <div class="form-group col-12 border text-left" id="divf1" style="height: 70px;  margin:0px 0px 6px !important; border-color:#DEE2E6 !important; padding: 10px 0px !important;"  id = "div6">
+                                             <label for="objetivo" class="label label-caja"
+                                                style="font-size: 15px !important; font-weight: normal; color:#575757c9;"  >Programa
+                                             </label>
+
+                                            <select class="text-center " style="border-color:transparent !important; height: 18px !important; width: 80% !important;padding: 0px 0px !important; margin:0px 16px 0px !important; font-size: 14px !important; font-weight: bold; color:#534b4b;"
+                                            id="sel_programaNew" onchange="/*fnSp3onchangeColor('divf1')*/"  name = "sel_programaNew">
+
+                                            </select>
+
+                                        </div>
+                                    </td>
+                                      <td>&nbsp;</td>
+                                      <td><div class="form-group col-12 border text-left" id="divfGerenciaNew" style="height: 70px; /background-color:cyan;/  border-color:#DEE2E6 !important; margin:0px 0px 6px !important; padding: 10px 0px !important;"  id = "div">
+                                        <label for="objetivo" class="label label-caja"
+                                         style="font-size: 15px !important; font-weight: normal; color:#575757c9;"  >
+                                           Gerencia
+                                        </label>
+                                        <select class="text-center " style="border-color:transparent !important; height: 18px !important; width: 80% !important;padding: 0px 0px !important; margin:0px 16px 0px !important; font-size: 14px !important; font-weight: bold; color:#534b4b;"
+                                        id="sel_gerenciaNew"  name = "sel_gerenciaNew" onchange="fnSp3VerPlanesGerenciaYear(); ">
+
+                                        </select>
+                                      </div></td>
+                                      <td>&nbsp;</td>
+                                      <td><div class="form-group col-12 border text-left" id="divfSedeNew" style="height: 70px; /background-color:cyan;/  border-color:#DEE2E6 !important; margin:0px 0px 6px !important; padding: 10px 0px !important;"  id = "div2">
+                                        <label for="objetivo" class="label label-caja"
+                                                                                   style="font-size: 15px !important; font-weight: normal; color:#575757c9; "  >Sede </label>
+                                        <select class="text-center "  style="border-color:transparent !important; height: 18px !important; width: 80% !important;padding: 0px 0px !important; margin:0px 16px 0px !important; font-size: 14px !important; font-weight: bold; color:#534b4b;"
+                                          id="sel_sedeNew" name = "sel_sedeNew" onchange="fnSp3VerPlanesGerenciaYear(); fnSp3VerPlanesGerenciaYear(); " >
+                                        </select>
+                                      </div></td>
+                                      <td>&nbsp;</td>
+                                      <td><div class="form-group col-12 border text-left" id="divfEquipoNew" style="height: 70px; /background-color:cyan;/  border-color:#DEE2E6 !important; margin:0px 0px 6px !important; padding: 10px 0px !important;"  id = "div2">
+                                        <label for="objetivo" class="label label-caja"
+                                                                                   style="font-size: 15px !important; font-weight: normal; color:#575757c9;"  >Equipo </label>
+                                        <select class="text-center "  style="border-color:transparent !important; height: 18px !important; width: 80% !important;padding: 0px 0px !important; margin:0px 16px 0px !important; font-size: 14px !important; font-weight: bold; color:#534b4b;"
+                                          id="sel_equipoNew"  name = "sel_equipoNew" onchange="fnSp3onchangeColor('divf3')" >
+                                        </select>
+                                      </div></td>
+                                      <td>&nbsp;</td>
+                                      <td><div class="form-group col-12 border text-left" id="divf3" style="height: 70px; /background-color:cyan;/  border-color:#DEE2E6 !important; margin:0px 0px 6px !important; padding: 10px 0px !important;"  id = "div2">
+                                        <label for="objetivo" class="label label-caja"
+                                                                                   style="font-size: 15px !important; font-weight: normal; color:#575757c9;"  >Año de Ejecución </label>
+                                        <select class="text-center "  style="border-color:transparent !important; height: 18px !important; width: 80% !important;padding: 0px 0px !important; margin:0px 16px 0px !important; font-size: 14px !important; font-weight: bold; color:#534b4b;"
+                                          id="sel_anioeNew"  name = "sel_anioeNew" onchange="fnSp3onchangeColor('divf3')" >
+                                        </select>
+                                      </div></td>
+                                    </tr>
+                                    <tr>
+                                      <tr>
+                                        <td width="20%">&nbsp;</td>
+                                        <td width="2%">&nbsp;</td>
+                                        <td width="20%"><label id='msg_sel_gerencia' style="font-size: 13px; text-align: left; color: #ff5c5c; visibility: hidden; width:220px;">Esta gerencia ya cuenta con plan anual, 
+                                          Cód: PASSTTSAM20003 </label></td>
+                                        <td width="2%">&nbsp;</td>
+                                        <td width="18%"<label id='msg_sel_sede' style="font-size: 13px; text-align: left; color: #ff5c5c; visibility: hidden; width:220px;">Esta sede ya cuenta con plan anual,
+                                          Cód: PASSTTSAM20003 </label></td>
+                                        <td width="2%">&nbsp;</td>
+                                        <td width="14%">&nbsp;</td>
+                                        <td width="2%">&nbsp;</td>
+                                        <td width="16%">&nbsp;</td>
+                                      </tr>
+                                    </tr>
+                                    <tr>
+                                      <td> <label   class="lbEvalAud_02">
+                                                    <b style="text-align: left !important;">Objetivos</b>
+                                                </label></td>
+                                      <td>&nbsp;</td>
+                                      <td>&nbsp;</td>
+                                      <td>&nbsp;</td>
+                                      <td>&nbsp;</td>
+                                      <td>&nbsp;</td>
+
+                                      <td colspan="5"><table width="100%" height="100%" border="0">
+                                                <tr>
+                                                  <td colspan="9">
+                                                    <label style="font-size: 15.1px !important; font-weight: normal;" for="objetivo" class="label label-caja"  ></label>
+                                                  </td>
+                                                </tr>
+
+                                                <tr>
+                                                   <td  widt"20%">&nbsp;</td>
+                                                  <td width="5%" align="rigth">
+
+
+                                                        <img id='rbtn_si' style="cursor: pointer; visibility: hidden;" title="Seleccionar para cargar un Objetivo" onclick="fnSp3onchangeObjetivoSubojetitivo('si')" src="./images/iconos/aprobarvoid.svg" width="24" height="24">
+                                                  </td>
+
+                                                  <td width="3%" align="left">&nbsp;  </td>
+                                                  <td width="12%"><label style="color:black; font-weight: bold;" >Objetivo</label></td>
+                                                  <td width="5%" align="left"></td>
+
+                                                  <td width="5%" align="center">
+
+                                                      <img  id='rbtn_no' style="cursor: pointer;" title="Seleccionar para cargar un Subobjetivo" onclick="fnSp3onchangeObjetivoSubojetitivo('no')" src="./images/iconos/aprobarvoid.svg" width="24" height="24">
+                                                  </td>
+                                                  <td width="3%" align="left">  </td>
+                                        <td width="5%" align="left"><label style="color:black; font-weight: bold;" ></label></td>
+                                                  <td  width= '5%'align="center"><input type='hidden' value = '0' id='idObjetivo'><input type='hidden' value = '0' id='idNumAct'></td>
+                                                  <td  width= '7%' align="center" ">
+
+                                            <button class="btn verde2 " id='btAgrObjetivo' style="font-size: 12px !important; margin-left: 5px; margin-top: -5px;" onclick="fnSp3agregaObjetivoSubojetivo(0, 0,0, 0, 0, 0)">Agregar</button>
+                                                </td>
+                                                </tr>
+                                      </table></td>
+                                    </tr>
+                                      <tr>
+                                        <td colspan="9" style="background-color: white; font-size: 8px;" >
+
+                                        <div class="form-group col-12 border text-left" id="divf6" style="height: 70px;   border-color:#DEE2E6 !important; /background-color:cyan;/ margin:0px 0px 6px !important; padding: 10px 0px !important;"  id = "div5">
+                                        <label for="objetivo" class="label label-caja"
+                                        style="font-size: 15px !important; font-weight: normal; color:#575757c9;"  >Descripción
+                                        </label>
+                                             <!-- <img id='loadResp' style="visibility: hidden;"  class=" float-top text-center" src="images/iconos/loadingAdj.gif"  > -->
+                                        <input  class="text-justify textarea-fecha2 autocompletecollaborator" title='Teclea 3 letras del nombre y luego seleccione' onchange=" " value = ""  style="height: 22px; font-size: 14px !important; font-weight: bold; color:#534b4b;"  id="txt_obj_subobj"  name = "txt_obj_subobj">
+
+                                      </div>
+
+
+                                       </td>
+                                      </tr>
+
+                                  </table>
+
+
+
+
+
+                                </td>
+                            </tr>
+
+                            <tr>
+                              <td colspan="3">
+                                  <div style="font-size: 12px; color:grey; text-align: center;" >
+
+                                  </div>
+                             </td>
+                            </tr>
+                          </table>
+
+        </td>
+    </tr>
+    <tr>
+         <td colspan="3">
+             <!-- aqui vamos a colocar el listado de objetivos y subobjetivos  -->
+
+             <div class="row justify-content-around align-items-center text-center">
+
+
+                <div class="header-tabla px-2 py-3" style="width: 1233px !important;">
+                    <table width = "100%" border="0">
+                        <tr >
+                            <td width = "55%" align="center"><div id="c1TabGenyCol1" class="text-left lbCabezaTabla" style='margin: 0px 0px 0px 8px !important;'  >Objetivos ( 3 )/ Subobjetivos ( 2 ) </div></td>
+                            <td width = "14%" align="center"><div id="c3TabGeny" class="text-left lbCabezaTabla"  >No. de Actividades</div></td>
+
+
+                            <td width = "10%" align="center"><div id="c4TabGeny" class="text-center lbCabezaTabla"  >Actividades</div></td>
+                            <td width = "10%" align="center"><div id="c5TabGeny" class="text-center lbCabezaTabla"  >Editar</div></td>
+                            <td width = "10%" align="center"><div id="c6TabGeny" class="text-center lbCabezaTabla"  >Eliminar</div></td>
+                            <td width = "1%" align="center"><div id="c7TabGeny" class="text-center lbCabezaTabla"  >&nbsp</div></td>
+
+
+                        </tr>
+                    </table>
+               </div>
+
+
+
+
+                <div class="col-12 caja-adj scroll-blue" style="height: 272px !important; border-color:white !important; padding: 0px 6px !important;">
+                   <!-- aqui vamos a publicar las filas  -->
+
+                            <!-- <div class="body-tabla mt-4" id="bodyTablaSinAuditorias2" style="display: block; font-weight: bold;">
+                                <div class="content-registros-no-encontrados">
+                                    <div>
+                                        <img src="./images/newsistema/iconos/planning2.svg" style="width:128px; height: 128 px;" alt="">
+                                        <p class="mt-4">No Existen Planes</p>
+                                        <img src="./images/iconos/loadingAdj.gif" style="visibility: hidden;" >
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="body-tabla-list-EvalAud" id="body-tabla-list-EvalAud1" ></div>
+                            <div id="pagination-container-EvalAud1" class="mt-3"></div> -->
+
+                            <div class="body-tabla-list-EvalAud" id="body-tabla-list-EvalAud1" >
+                                <div>
+                                    <div>
+                                        <img src="./images/newsistema/iconos/planning2.svg" style="width:128px; height: 128 px; margin-top: 42px;" alt="">
+                                        <p class="mt-4">No Existen Objetivos</p>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                    <!-- aqui vamos a publicar las filas  -->
+                </div>
+            </div>
+
+
+        </td>
+    </tr>
+
+
+
+
+    </table>
+
+ </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                </div>
+                            </div>
+
+                            <div class="card-body2">
+
+
+                            </div>
+
+                        </div>
+                    </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- INI --------------------------------------------     MODAL DE NUEVO PLAN ANUAL   - ----------------------------------- -->
+
+
+
+
+<!-- INI --------------------------------------------     MODAL DE NUEVO PLAN ANUAL-ACTIVIDADES*********   - ----------------------------------- -->
+
+
+<div class="modal fade "  id="Sp3VentanActividadPlan" tabindex="-1" data-backdrop="static" data-keyboard="false" aria-hidden="true"  tabindex="-1" role="dialog" >
+    <div class="modal-dialog modal-dialog-centered rounded" role="document" style="max-width: 1322px; z-index: 1030; ">
+        <div class="modal-content rounded "  style="background:white; height: 702px !important;" >
+            <div style="overflow: hidden; height: 692px; overflow-x: hidden; ">
+                <div class="modal-header fix-header-modal" >
+                    <div class="card-header text-center text-white modal-dialog-centered  card-header-FormAuditor" id="red-head" style="width: 100%; padding: 0px 0px !important;">
+                        <div class="row d-flex justify-content-center text-center" style="width: 100%;">
+                            <div class="col-1 btn-close-modalCA pl-3 my-2">
+                                <!--button type="button" id="closeVerAuditoriaModal"><span aria-hidden="true" class="btn-close-modalCA">Cerrar&nbsp;&nbsp;&nbsp;&nbsp;&times;</span></button--> <!-- class="close hearder-modal" data-dismiss="modal" aria-label="Close" -->
+                                <!-- <div class="float-right" cursor="pointer" id="btn-close-Adj"><span style="font-size: 40px">
+                                    <img src="images/prev.svg"  style="cursor: pointer;"></span>
+                                </div> -->
+                             </div>
+                            <div class="col justify-content-center text-center col-12" style="margin-top: -28px !important;" >
+                                <table border='0' style="margin-left: auto; margin-right: auto; width: 1250px;">
+                                    <tr>
+                                        <td width='10%'><img src="./images/prev.svg" style="cursor:pointer;" title = 'Salir' onclick="fnSp3CerrarNuevasActividadesPlan();" > </td>
+                                        <td width='10%'></td>
+                                        <td width='63%'><h5 id='lbTitleActividadPlanAnual' style="font-size: 16px !important; color:#fff; font-weight: bold; text-align: center;">Creación del Plan Anual</h5></td>
+                                        <td width='10%'>
+                                            <!-- <button class="btn-save-auditor2" style="font-size: 12px !important; margin-left: 36px"> Guardar</button></td> -->
+                                        <td width='7%'>
+                                            <!-- <button class="btn-save-auditor2 " style=" margin-left: 30px !important; font-size: 12px !important; background:gray !important; color:white;"> Finalizar</button></td> -->
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+
+
+
+
+
+                <div class="modal-body dialog-position" id="bodymodalShowAuditor" style=" justify-content:space-around; align-content:center; padding: 10px 0px 0px !important;">
+
+                    <div class="card " style="border: 0px !important; border-radius: 5px; box-shadow: none;">
+
+                        <div class="card-body2" >
+
+
+                            <div class="row justify-content-around align-items-center text-center">
+            <!-- <div class="col-12 caja-adj scroll-blue" style="height: 600px !important; border-color: red !important;"> -->
+                     <div class="col-12" style="height: 772px !important; border-color:chartreuse !important;">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <div id="divPreviewEval" class="divPreviewEval overflow-auto" style="margin-left: auto; margin-right: auto; margin-top: 2px !important;" >
+
+                          <table border="0" style="margin-left: auto; margin-right: auto; width: 1233px; ">
+                                  <tr>
+                                    <td colspan="3">
+                                          <table width="100%" border="0">
+                                          <tr>
+                                            <td width="23%" style="text-align: left !important;">
+                                                <label   class="lbEvalAud_02">
+                                                    <b style="text-align: left !important;">Actividad/ Entregable </b>
+                                                </label>
+                                            </td>
+                                              <td width="70%">
+
+<!--                                               
+                                                <div class="form-group col-12 border text-left" id="divf6" style="height: 70px;   border-color:#DEE2E6 !important; /*background-color:cyan;*/ margin:0px 0px 6px !important; padding: 10px 0px !important;"  id = "div5">
+                                                  <label for="objetivo" class="label label-caja" 
+                                                  style="font-size: 14px !important; font-weight: normal; color:#575757c9;"  >Responsable 
+                                                  </label> 
+                                                  <img id='loadResp' style="visibility: hidden;"  class=" float-top text-center" src="images/iconos/loadingAdj.gif"  >
+           <input class="text-justify textarea-fecha2 autocompletecollaborator" title='Teclea 3 letras del nombre y luego seleccione' onchange="fnSp3onchangeColor('divf6')" value = ""  style="height: 22px; font-size: 14px !important; font-weight: bold; color:#534b4b;"  id="ResponsableName"  name = "ResponsableName">
+                                                   <input type="hidden" value="" id="ResponsableCargo">
+                                                   <input type="hidden" value="" id="ResponsableCorreo">
+                                                   <input type="hidden" value="" id="ResponsableUserHash">
+                                                </div> -->
+                                                
+                                                
+                                                
+                             
+                                                
+                                                <p style="color:#c1c1c1;">
+                                              </p></td>
+                                            <td width="7%" text-align:rigth !important;>
+                                                <button class="btn verde2 " style="font-size: 12px !important; margin-left: 5px; margin-top: -5px;" onclick="fnSp3agregaActividadObjetivoPlan(-1, 0, 0)" >Agregar</button>
+                                            </td>
+                                          </tr>
+                                        </table>
+                                    </td>
+                                  </tr>
+                          </table>
+
+        </td>
+    </tr>
+    <tr>
+         <td colspan="3">
+             <!-- aqui vamos a colocar el listado de objetivos y subobjetivos  -->
+
+             <div class="row justify-content-around align-items-center text-center" >
+
+
+                <div class="header-tabla px-2 py-3" style="width: 1233px !important; ">
+                    <table width = "100%" border="0">
+                        <tr >
+                            <td width = "5%" align="center"><div id="c1TabGeny" class="text-left lbCabezaTabla" style='margin: 0px 0px 0px 8px !important;  font-size: 14px !important; font-weight: bold !important;'  >Item </div></td>
+                            <td width = "38%" align="center"><div id="c3TabGeny" class="text-left lbCabezaTabla" style=" font-size: 14px !important; font-weight: bold !important;"  > Actividades (10) </div></td>
+                            <td width = "7%" align="center"><div id="c3TabGeny" class="text-left lbCabezaTabla" style=" font-size: 14px !important; font-weight: bold !important;"  > Peso </div></td>
+                            <td width = "25%" align="center"><div id="c3TabGeny" class="text-left lbCabezaTabla" style=" font-size: 14px !important; font-weight: bold !important;"  > Responsable
+                            </label> <img id='loadRespPa' style="visibility: hidden;"  class=" float-top text-center" src="./images/iconos/loadingAdj.gif"  >
+                            </div></td>
+
+
+                            <td width = "6%" align="center"><div id="c4TabGeny" class="text-center lbCabezaTabla" style=" font-size: 14px !important; font-weight: bold !important;"  >Tareas</div></td>
+                            <td width = "6%" align="center"><div id="c5TabGeny" class="text-center lbCabezaTabla" style=" font-size: 14px !important; font-weight: bold !important;"  >Cronograma</div></td>
+                            <td width = "6%" align="center"><div id="c6TabGeny" class="text-center lbCabezaTabla" style=" font-size: 14px !important; font-weight: bold !important;"  >Editar</div></td>
+                            <td width = "6%" align="center"><div id="c6TabGeny" class="text-center lbCabezaTabla" style=" font-size: 14px !important; font-weight: bold !important;"  >Eliminar</div></td>
+                            <td width = "6%" align="center"><div id="c7TabGeny" class="text-center lbCabezaTabla" style=" font-size: 14px !important; font-weight: bold !important;"  >&nbsp</div></td>
+
+
+                        </tr>
+                    </table>
+               </div>
+
+
+
+
+                <div class="col-12 caja-adj scroll-blue" style="height: 422px !important; border-color:white !important; padding: 0px 6px !important;">
+                   <!-- aqui vamos a publicar las filas  -->
+
+
+
+                            <div class="body-tabla-list-EvalAud" id="body-tabla-list-EvalAud2" >
+                                <div>
+                                    <div>
+                                        <img src="./images/evaluaProgramasOff.svg" style="width:128px; height: 128 px; margin-top: 122px;" alt="">
+                                        <p class="mt-4">No Existen Actividades</p>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                    <!-- aqui vamos a publicar las filas  -->
+                </div>
+            </div>
+
+
+        </td>
+    </tr>
+
+
+
+
+    </table>
+
+ </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                </div>
+                            </div>
+
+                            <div class="card-body2">
+
+
+                            </div>
+
+                        </div>
+                    </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- FIN --------------------------------------------     MODAL DE NUEVO PLAN ANUAL-ACTIVIDADES*********   - ----------------------------------- -->
+
+
+
+
+
+
+
+
+
+
+
+<!-- INI --------------------------------------------     MODAL DE NUEVO PLAN ANUAL-ACTIVIDADE--TAREAS *********   - ----------------------------------- -->
+
+
+<div class="modal fade "  id="Sp3VentanTareaActividadPlan" tabindex="-1" data-backdrop="static" data-keyboard="false" aria-hidden="true"  tabindex="-1" role="dialog" >
+    <div class="modal-dialog modal-dialog-centered rounded" role="document" style="max-width: 1322px; z-index: 1030; ">
+        <div class="modal-content rounded "  style="background:white; height: 702px !important;" >
+            <div style="overflow: hidden; height: 692px; overflow-x: hidden; ">
+                <div class="modal-header fix-header-modal" >
+                    <div class="card-header text-center text-white modal-dialog-centered  card-header-FormAuditor" id="red-head" style="width: 100%; padding: 0px 0px !important;">
+                        <div class="row d-flex justify-content-center text-center" style="width: 100%;">
+                            <div class="col-1 btn-close-modalCA pl-3 my-2">
+                                <!--button type="button" id="closeVerAuditoriaModal"><span aria-hidden="true" class="btn-close-modalCA">Cerrar&nbsp;&nbsp;&nbsp;&nbsp;&times;</span></button--> <!-- class="close hearder-modal" data-dismiss="modal" aria-label="Close" -->
+                                <!-- <div class="float-right" cursor="pointer" id="btn-close-Adj"><span style="font-size: 40px">
+                                    <img src="images/prev.svg"  style="cursor: pointer;"></span>
+                                </div> -->
+                             </div>
+                            <div class="col justify-content-center text-center col-12" style="margin-top: -28px !important;" >
+                                <table border='0' style="margin-left: auto; margin-right: auto; width: 1250px;">
+                                    <tr>
+                                        <td width='10%'><img src="./images/prev.svg" style="cursor:pointer;" title = 'Salir' onclick="fnSp3CerrarNuevasTareasActividadesPlan();" > </td>
+                                        <td width='10%'></td>
+                                        <td width='63%'><h5 id='lbTitleTareaActividadPlanAnual' style="font-size: 16px !important; color:#fff; font-weight: bold; text-align: center;">Creación del Plan Anual</h5></td>
+                                        <td width='10%'>
+                                            <!-- <button class="btn-save-auditor2" style="font-size: 12px !important; margin-left: 36px"> Guardar</button></td> -->
+                                        <td width='7%'>
+                                            <!-- <button class="btn-save-auditor2 " style=" margin-left: 30px !important; font-size: 12px !important; background:gray !important; color:white;"> Finalizar</button></td> -->
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+
+
+
+
+
+                <div class="modal-body dialog-position" id="bodymodalShowAuditor" style=" justify-content:space-around; align-content:center; padding: 10px 0px 0px !important;">
+
+                    <div class="card " style="border: 0px !important; border-radius: 5px; box-shadow: none;">
+
+                        <div class="card-body2" >
+
+
+                            <div class="row justify-content-around align-items-center text-center">
+            <!-- <div class="col-12 caja-adj scroll-blue" style="height: 600px !important; border-color: red !important;"> -->
+                     <div class="col-12" style="height: 772px !important; border-color:chartreuse !important;">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <div id="divPreviewEval" class="divPreviewEval overflow-auto" style="margin-left: auto; margin-right: auto; margin-top: 2px !important;" >
+
+                          <table border="0" style="margin-left: auto; margin-right: auto; width: 1233px; ">
+                                  <tr>
+                                    <td colspan="3">
+                                          <table width="100%" border="0">
+                                          <tr>
+                                            <td width="10%" style="text-align: left !important;">
+                                                <label   class="lbEvalAud_02">
+                                                    <b style="text-align: left !important;">Tareas.</b>
+                                                </label>
+                                            </td>
+
+
+                                            <td width="14%" style="text-align: left !important;">
+                                                <label   class="lbEvalAud_02" style="text-align: left !important; font-size:15px !important;" >
+                                                    <b style="text-align: left !important; font-size:15px !important;">Responsable Asignado</b>
+                                                </label>
+                                            </td>
+
+                                            <td width="20%" style="text-align: left !important;">
+                                              <div class="form-group col-12 border text-left" style="  height: auto !important; width: 99% !important; !important; border-color:#DEE2E6 !important;  margin:8px 0px 0px !important; padding: 0px 0px 0px 0px !important;"  id = "divTarea2">
+                                                  <input class="text-justify textarea-fecha2 autocompletecollaborator" value = 'Andy David Vàsquez' id = 'respTareas'
+                                                  style="height: 20px; width:90%; margin: 8px 0px 8px 8px !important; padding: 0px 0px 0px 0px !important; font-size: 13px !important; font-weight: bold; color: #534b4b; background-color:#fff !important;"  readonly>
+                                            </div>
+                                            <br>
+                                            </td>
+
+                                              <td width="43%"><p style="color:#c1c1c1;">
+                                              </p></td>
+                                            <td width="7%" text-align:rigth !important;>
+                                                <button class="btn verde2 " style="font-size: 12px !important; margin-left: 5px; margin-top: -5px;" onclick="fnSp3agregaTareaActividadObjetivoPlan()">Agregar</button>
+                                            </td>
+                                          </tr>
+                                        </table>
+                                    </td>
+                                  </tr>
+                          </table>
+
+        </td>
+    </tr>
+    <tr>
+         <td colspan="3">
+             <!-- aqui vamos a colocar el listado de objetivos y subobjetivos  -->
+
+             <div class="row justify-content-around align-items-center text-center" >
+
+
+                <div class="header-tabla px-2 py-3" style="width: 1233px !important; ">
+                    <table width = "100%" border="0">
+                        <tr >
+                            <td width = "7%" align="center"><div id="c1TabGeny" class="text-left lbCabezaTabla" style='margin: 0px 0px 0px 8px !important;  font-size: 14px !important; font-weight: bold !important;'  >Item </div></td>
+                            <td width = "46%" align="center"><div id="c3TabGeny" class="text-left lbCabezaTabla" style=" font-size: 14px !important; font-weight: bold !important;"  > Evidencias </div></td>
+                            <td width = "15%" align="center"><div id="c3TabGeny" class="text-left lbCabezaTabla" style=" font-size: 14px !important; font-weight: bold !important;"  > Fecha Programada </div></td>
+                            <td width = "15%" align="center"><div id="c3TabGeny" class="text-left lbCabezaTabla" style=" font-size: 14px !important; font-weight: bold !important;"  > Fecha Ejecutada</div></td>
+
+
+                            <td width = "8%" align="center"><div id="c4TabGeny" class="text-center lbCabezaTabla" style=" font-size: 14px !important; font-weight: bold !important;"  >Estado</div></td>
+                            <td width = "8%" align="center"><div id="c6TabGeny" class="text-center lbCabezaTabla" style=" font-size: 14px !important; font-weight: bold !important;"  >Eliminar</div></td>
+                            <td width = "1%" align="center"><div id="c7TabGeny" class="text-center lbCabezaTabla" style=" font-size: 14px !important; font-weight: bold !important;"  >&nbsp</div></td>
+
+
+                        </tr>
+                    </table>
+               </div>
+
+
+
+
+                <div class="col-12 caja-adj scroll-blue" style="height: 422px !important; border-color:white !important; padding: 0px 6px !important;">
+                   <!-- aqui vamos a publicar las filas  -->
+
+
+
+                            <div class="body-tabla-list-EvalAud" id="body-tabla-list-EvalAud3" >
+                                <div>
+                                    <div>
+                                        <img src="./images/newsistema/iconos/calendar-progeamar-inspeccion.svg" style="width:128px; height: 128 px; margin-top: 122px;" alt="">
+                                        <p class="mt-4">No Existen Tareas</p>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                    <!-- aqui vamos a publicar las filas  -->
+                </div>
+            </div>
+
+
+        </td>
+    </tr>
+
+
+
+
+    </table>
+
+ </div>
+
+
+
+
+
+                                </div>
+
+                            </div>
+
+
+                          <div class="card-body2">
+
+
+
+                          </div>
+
+                          </div>
+                     </div>
+
+             </div>
+         </div>
+     </div>
+  </div>
+</div>
+
+<!-- INI --------------------------------------------     MODAL DE NUEVO PLAN ANUAL-ACTIVIDADE--TAREAS *********   - ----------------------------------- -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- INI --------------------------------------------     MODAL CRONOGRAMA PLAN ANUAL-ACTIVIDADES*********   - ----------------------------------- -->
+
+
+<div class="modal fade "  id="Sp3VentanCronogramaActividadPlan" tabindex="-1" data-backdrop="static" data-keyboard="false" aria-hidden="true"  tabindex="-1" role="dialog" >
+    <div class="modal-dialog modal-dialog-centered rounded" role="document" style="max-width: 1322px; z-index: 1030; ">
+        <div class="modal-content rounded "  style="background:white; height: 702px !important;" >
+            <div style="overflow: hidden; height: 692px; overflow-x: hidden; ">
+                <div class="modal-header fix-header-modal" >
+                    <div class="card-header text-center text-white modal-dialog-centered  card-header-FormAuditor" id="red-head" style="width: 100%; padding: 0px 0px !important;">
+                        <div class="row d-flex justify-content-center text-center" style="width: 100%;">
+                            <div class="col-1 btn-close-modalCA pl-3 my-2">
+                                <!--button type="button" id="closeVerAuditoriaModal"><span aria-hidden="true" class="btn-close-modalCA">Cerrar&nbsp;&nbsp;&nbsp;&nbsp;&times;</span></button--> <!-- class="close hearder-modal" data-dismiss="modal" aria-label="Close" -->
+                                <!-- <div class="float-right" cursor="pointer" id="btn-close-Adj"><span style="font-size: 40px">
+                                    <img src="images/prev.svg"  style="cursor: pointer;"></span>
+                                </div> -->
+                             </div>
+                            <div class="col justify-content-center text-center col-12" style="margin-top: -28px !important;" >
+                                <table border='0' style="margin-left: auto; margin-right: auto; width: 1250px;">
+                                    <tr>
+                                        <td width='10%'><img src="./images/prev.svg" style="cursor:pointer;" title = 'Salir' onclick="fnSp3CerrarNuevasCronogramaPlan();" > </td>
+                                        <td width='83%'><h5 id='lbTitleCronogramaActividadPlanAnual' style="font-size: 16px !important; color:#fff; font-weight: bold; text-align: center;">Creación del Plan Anual</h5></td>
+
+                                        <td width='7%'>
+                                            <!-- <button class="btn-save-auditor2 " style=" margin-left: 30px !important; font-size: 12px !important; background:gray !important; color:white;"> Finalizar</button></td> -->
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+
+
+
+
+
+                <div class="modal-body dialog-position" id="bodymodalShowAuditor" style=" justify-content:space-around; align-content:center; padding: 10px 0px 0px !important;">
+
+                    <div class="card " style="border: 0px !important; border-radius: 5px; box-shadow: none;">
+
+                        <div class="card-body2" >
+
+
+                            <div class="row justify-content-around align-items-center text-center">
+            <!-- <div class="col-12 caja-adj scroll-blue" style="height: 600px !important; border-color: red !important;"> -->
+                     <div class="col-12" style="height: 772px !important; border-color:chartreuse !important;">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <div id="divPreviewEval" class="divPreviewEval overflow-auto" style="margin-left: auto; margin-right: auto; margin-top: 2px !important;" >
+
+                          <table border="0" style="margin-left: auto; margin-right: auto; width: 1233px; ">
+                                  <tr>
+                                    <td colspan="3">
+                                          <table width="100%" border="0">
+                                          <tr>
+                                            <td width="20%" style="text-align: left !important;">
+                                                <label   class="lbEvalAud_02">
+                                                    <b style="text-align: left !important;">Frecuencia de Actividad</b>
+                                                </label>
+                                            </td>
+
+                                              <td width="48%"><p style="color:#c1c1c1;">
+
+                                              </td>
+
+                                              <td width="20%" style="text-align: right !important;">
+                                                  <label   class="lbEvalAud_02">
+                                                      <b style="text-align: left !important;">Año</b>
+                                                  </label>
+                                              </td>
+
+                                              <td width="12%" style="text-align: left !important;">
+
+
+                                                <div class="form-group col-12 border text-left" id="divf1" style="height: 40px; width:78%;  margin:0px 16px 0px !important; border-color:#DEE2E6 !important; padding: 0px 0px !important;"  id = "div6t">
+
+                                                    <select class="text-center " style="border-color:transparent !important; height: 20px !important; width:90px !important;padding: 0px 0px !important; margin:8px 16px 0px !important; font-size: 14px !important; font-weight: bold; color:#534b4b;"
+                                                    id="sel_year_frecuencia">
+                                                      <option selected value='0'> 2021 </option>
+                                                      <option selected value='1'> 2020 </option>
+                                                      <option selected value='2'> 2019 </option>
+
+                                                    </select>
+
+                                               </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                              </td>
+
+                                          </tr>
+                                          <tr>
+                                              <td colspan="4"><label style = "color:#c2c2c2; marggin-top: -5px; font-weight:bold ">
+                                                ______________________________________________________________________________________________________________________________________________________________
+                                                              </label>
+                                              </td>
+                                          </tr>
+                                        </table>
+                                    </td>
+                                  </tr>
+                          </table>
+
+        </td>
+    </tr>
+    <tr>
+         <td colspan="3">
+             <!-- aqui vamos a colocar el listado de objetivos y subobjetivos  -->
+
+
+             <div class="row justify-content-around align-items-center text-center" style="margin-top:10px;"  >
+
+
+                <div class="col-12 caja-adj scroll-blue" style="height: 422px !important; border-color:white !important; padding: 0px 6px !important;">
+                   <!-- aqui vamos a publicar las filas  -->
+
+                   <table border="0" style="margin-left: auto; margin-right: auto; width: 1223px; height:331px;   ">
+                           <tr>
+                              <td width='8%' align='center' >
+
+                                <div class="form-group col-12 border text-center"
+                                     style="background-color:#58C25D;  height: 70px !important; width: 186px !important; !important; border-color:#DEE2E6 !important;  margin:0px 0px 0px !important; padding: 0px 0px !important;"
+                                     id = "divEnero">
+                                        <table border='0' width='100%' style='margin-top:21px !important;'>
+                                            <tr>
+                                                <td width='18%'><img src='./images/iconos/calendar2.svg' style='width:32px; margin-left:15px; height:26px;' ></td>
+                                                <td width='82%' ><label style="color:white; ; font-weight:bold; font-size: 15px; margin-top:6px; margin-left:35px;">Enero</label></td>
+                                            </tr>
+                                        </table>
+                                </div>
+
+                                <div style="background-color:#fff;  height: 10px !important; width: 186px !important;" id = "sem1t">
+                                        <table border='0' width='100%' style='margin-top:8px !important;'>
+                                            <tr>
+                                                <td width='25%'>
+                                                  <div id='mes_1_S1' onclick="sp3FnselecionaSemana(1,1)" class='form-group border text-center semana' style='  font-weight:bold; width:42px; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 0px !important;  '>
+                                                    <label style='margin-top:5px; font-size:12px; '>S1</label>
+                                                  </div>
+                                                </td>
+
+                                                <td width='25%'>
+                                                  <div id='mes_1_S2' onclick="sp3FnselecionaSemana(2,1)" class='form-group border text-center semana' style='  font-weight:bold; width:42px; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 2px !important;  '>
+                                                    <label style='margin-top:5px; font-size:12px; '>S2</label>
+                                                  </div>
+                                                </td>
+
+                                                <td width='25%'>
+                                                  <div id='mes_1_S3' onclick="sp3FnselecionaSemana(3,1)" class='form-group border text-center semana' style='  font-weight:bold; width:42px; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 2px !important;  '>
+                                                    <label style='margin-top:5px; font-size:12px; '>S3</label>
+                                                  </div>
+                                                </td>
+
+                                                <td width='25%'>
+                                                  <div id='mes_1_S4' onclick="sp3FnselecionaSemana(4,1)" class='form-group border text-center semana' style='  font-weight:bold; width:42px; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 3px !important;  '>
+                                                    <label style='margin-top:5px; font-size:12px; '>S4</label>
+                                                  </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                </div>
+
+                                <div id = 'lb_mes_1'>
+                                    <div style="background-color:#fff;  height: 10px !important; width: 186px !important; visibility:hidden;" id = "lb_S1_mes_1">
+                                            <table border='0' width='100%' style='margin-top:20px !important;'>
+                                                <tr>
+                                                    <td width='100%'>
+                                                      <div  class='form-group border text-center ' style=' background-color:#fff; font-weight:bold; width:100%x; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 0px !important;  '>
+                                                        <label id='lb_S1_mes_1_txt'  style='margin-top:5px; font-size:12px; '>S1 : Jue 23 - Mié 30</label>
+                                                      </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                    </div>
+                                     <div style="background-color:#fff;  height: 10px !important; width: 186px !important; visibility:hidden;" id = "lb_S2_mes_1">
+                                            <table border='0' width='100%' style='margin-top:20px !important;'>
+                                                <tr>
+                                                    <td width='100%'>
+                                                      <div  class='form-group border text-center ' style=' background-color:#fff; font-weight:bold; width:100%x; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 0px !important;  '>
+                                                        <label id='lb_S2_mes_1_txt' style='margin-top:5px; font-size:12px; '>S2 : Jue 23 - Mié 30</label>
+                                                      </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                    </div>
+                                     <div style="background-color:#fff;  height: 10px !important; width: 186px !important; visibility:hidden;" id = "lb_S3_mes_1">
+                                            <table border='0' width='100%' style='margin-top:20px !important;'>
+                                                <tr>
+                                                    <td width='100%'>
+                                                      <div  class='form-group border text-center ' style=' background-color:#fff; font-weight:bold; width:100%x; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 0px !important;  '>
+                                                        <label id='lb_S3_mes_1_txt' style='margin-top:5px; font-size:12px; '>S3 : Jue 23 - Mié 30</label>
+                                                      </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                    </div>
+                                     <div style="background-color:#fff;  height: 10px !important; width: 186px !important; visibility:hidden;" id = "lb_S4_mes_1">
+                                            <table border='0' width='100%' style='margin-top:20px !important;'>
+                                                <tr>
+                                                    <td width='100%'>
+                                                      <div  class='form-group border text-center ' style=' background-color:#fff; font-weight:bold; width:100%x; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 0px !important;  '>
+                                                        <label id='lb_S4_mes_1_txt' style='margin-top:5px; font-size:12px; '>S4 : Jue 23 - Mié 30</label>
+                                                      </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                    </div>
+                                </div>
+
+
+                              </td>   <!--  enero  -->
+
+
+
+
+
+
+                              <td width='8%' align='center'>
+                                <div class="form-group col-12 border text-center"
+                                     style="background-color:#58C25D;  height: 70px !important; width: 186px !important; !important; border-color:#DEE2E6 !important;  margin:0px 0px 0px !important; padding: 0px 0px !important;"
+                                     id = "divEnero">
+                                        <table border='0' width='100%' style='margin-top:21px !important;'>
+                                            <tr>
+                                                <td width='18%'><img src='./images/iconos/calendar2.svg' style='width:32px; margin-left:15px; height:26px;' ></td>
+                                                <td width='82%' ><label style="color:white; ; font-weight:bold; font-size: 15px; margin-top:6px; margin-left:35px;">Febrero</label></td>
+                                            </tr>
+                                        </table>
+                                </div>
+
+                                <div style="background-color:#fff;  height: 10px !important; width: 186px !important;" id = "sem1t">
+                                        <table border='0' width='100%' style='margin-top:8px !important;'>
+                                            <tr>
+                                                <td width='25%'>
+                                                  <div id='mes_2_S1' onclick="sp3FnselecionaSemana(1,2)" class='form-group border text-center semana' style='  font-weight:bold; width:42px; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 0px !important;  '>
+                                                    <label style='margin-top:5px; font-size:12px; '>S1</label>
+                                                  </div>
+                                                </td>
+
+                                                <td width='25%'>
+                                                  <div id='mes_2_S2' onclick="sp3FnselecionaSemana(2,2)"  class='form-group border text-center semana' style='  font-weight:bold; width:42px; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 2px !important;  '>
+                                                    <label style='margin-top:5px; font-size:12px; '>S2</label>
+                                                  </div>
+                                                </td>
+
+                                                <td width='25%'>
+                                                  <div id='mes_2_S3' onclick="sp3FnselecionaSemana(3,2)" class='form-group border text-center semana' style='  font-weight:bold; width:42px; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 2px !important;  '>
+                                                    <label style='margin-top:5px; font-size:12px; '>S3</label>
+                                                  </div>
+                                                </td>
+
+                                                <td width='25%'>
+                                                  <div id='mes_2_S4' onclick="sp3FnselecionaSemana(4,2)"  class='form-group border text-center semana' style='  font-weight:bold; width:42px; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 3px !important;  '>
+                                                    <label style='margin-top:5px; font-size:12px; '>S4</label>
+                                                  </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                </div>
+
+                                <div id = 'lb_mes_1'>
+                                    <div style="background-color:#fff;  height: 10px !important; width: 186px !important; visibility:hidden;" id = "lb_S1_mes_2">
+                                            <table border='0' width='100%' style='margin-top:20px !important;'>
+                                                <tr>
+                                                    <td width='100%'>
+                                                      <div  class='form-group border text-center ' style=' background-color:#fff; font-weight:bold; width:100%x; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 0px !important;  '>
+                                                        <label id='lb_S1_mes_2_txt'  style='margin-top:5px; font-size:12px; '>S1 : Jue 23 - Mié 30</label>
+                                                      </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                    </div>
+                                     <div style="background-color:#fff;  height: 10px !important; width: 186px !important; visibility:hidden;" id = "lb_S2_mes_2">
+                                            <table border='0' width='100%' style='margin-top:20px !important;'>
+                                                <tr>
+                                                    <td width='100%'>
+                                                      <div  class='form-group border text-center ' style=' background-color:#fff; font-weight:bold; width:100%x; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 0px !important;  '>
+                                                        <label id='lb_S2_mes_2_txt' style='margin-top:5px; font-size:12px; '>S2 : Jue 23 - Mié 30</label>
+                                                      </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                    </div>
+                                     <div style="background-color:#fff;  height: 10px !important; width: 186px !important; visibility:hidden;" id = "lb_S3_mes_2">
+                                            <table border='0' width='100%' style='margin-top:20px !important;'>
+                                                <tr>
+                                                    <td width='100%'>
+                                                      <div  class='form-group border text-center ' style=' background-color:#fff; font-weight:bold; width:100%x; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 0px !important;  '>
+                                                        <label id='lb_S3_mes_2_txt' style='margin-top:5px; font-size:12px; '>S3 : Jue 23 - Mié 30</label>
+                                                      </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                    </div>
+                                     <div style="background-color:#fff;  height: 10px !important; width: 186px !important; visibility:hidden;" id = "lb_S4_mes_2">
+                                            <table border='0' width='100%' style='margin-top:20px !important;'>
+                                                <tr>
+                                                    <td width='100%'>
+                                                      <div  class='form-group border text-center ' style=' background-color:#fff; font-weight:bold; width:100%x; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 0px !important;  '>
+                                                        <label id='lb_S4_mes_2_txt' style='margin-top:5px; font-size:12px; '>S4 : Jue 23 - Mié 30</label>
+                                                      </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                    </div>
+                                </div>
+
+
+                              </td>   <!--  febrero  -->
+
+                              <td width='8%' align='center' >
+                                <div class="form-group col-12 border text-center"
+                                     style="background-color:#58C25D;  height: 70px !important; width: 186px !important; !important; border-color:#DEE2E6 !important;  margin:0px 0px 0px !important; padding: 0px 0px !important;"
+                                     id = "divEnero">
+                                        <table border='0' width='100%' style='margin-top:21px !important;'>
+                                            <tr>
+                                                <td width='18%'><img src='./images/iconos/calendar2.svg' style='width:32px; margin-left:15px; height:26px;' ></td>
+                                                <td width='82%' ><label style="color:white; ; font-weight:bold; font-size: 15px; margin-top:6px; margin-left:35px;">Marzo</label></td>
+                                            </tr>
+                                        </table>
+                                </div>
+
+                                   <div style="background-color:#fff;  height: 10px !important; width: 186px !important;" id = "sem1t">
+                                        <table border='0' width='100%' style='margin-top:8px !important;'>
+                                            <tr>
+                                                <td width='25%'>
+                                                  <div id='mes_3_S1' onclick="sp3FnselecionaSemana(1,3)" class='form-group border text-center semana' style='  font-weight:bold; width:42px; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 0px !important;  '>
+                                                    <label style='margin-top:5px; font-size:12px; '>S1</label>
+                                                  </div>
+                                                </td>
+
+                                                <td width='25%'>
+                                                  <div id='mes_3_S2' onclick="sp3FnselecionaSemana(2,3)"  class='form-group border text-center semana' style='  font-weight:bold; width:42px; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 2px !important;  '>
+                                                    <label style='margin-top:5px; font-size:12px; '>S2</label>
+                                                  </div>
+                                                </td>
+
+                                                <td width='25%'>
+                                                  <div id='mes_3_S3' onclick= "sp3FnselecionaSemana(3,3)" class='form-group border text-center semana' style='  font-weight:bold; width:42px; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 2px !important;  '>
+                                                    <label style='margin-top:5px; font-size:12px; '>S3</label>
+                                                  </div>
+                                                </td>
+
+                                                <td width='25%'>
+                                                  <div id='mes_3_S4' onclick=" sp3FnselecionaSemana(4,3)"  class='form-group border text-center semana' style='  font-weight:bold; width:42px; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 3px !important;  '>
+                                                    <label style='margin-top:5px; font-size:12px; '>S4</label>
+                                                  </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                </div>
+
+                                <div id = 'lb_mes_1'>
+                                    <div style="background-color:#fff;  height: 10px !important; width: 186px !important; visibility:hidden;" id = "lb_S1_mes_3">
+                                            <table border='0' width='100%' style='margin-top:20px !important;'>
+                                                <tr>
+                                                    <td width='100%'>
+                                                      <div  class='form-group border text-center ' style=' background-color:#fff; font-weight:bold; width:100%x; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 0px !important;  '>
+                                                        <label id='lb_S1_mes_3_txt'  style='margin-top:5px; font-size:12px; '>S1 : Jue 23 - Mié 30</label>
+                                                      </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                    </div>
+                                     <div style="background-color:#fff;  height: 10px !important; width: 186px !important; visibility:hidden;" id = "lb_S2_mes_3">
+                                            <table border='0' width='100%' style='margin-top:20px !important;'>
+                                                <tr>
+                                                    <td width='100%'>
+                                                      <div  class='form-group border text-center ' style=' background-color:#fff; font-weight:bold; width:100%x; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 0px !important;  '>
+                                                        <label id='lb_S2_mes_3_txt' style='margin-top:5px; font-size:12px; '>S2 : Jue 23 - Mié 30</label>
+                                                      </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                    </div>
+                                     <div style="background-color:#fff;  height: 10px !important; width: 186px !important; visibility:hidden;" id = "lb_S3_mes_3">
+                                            <table border='0' width='100%' style='margin-top:20px !important;'>
+                                                <tr>
+                                                    <td width='100%'>
+                                                      <div  class='form-group border text-center ' style=' background-color:#fff; font-weight:bold; width:100%x; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 0px !important;  '>
+                                                        <label id='lb_S3_mes_3_txt' style='margin-top:5px; font-size:12px; '>S3 : Jue 23 - Mié 30</label>
+                                                      </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                    </div>
+                                     <div style="background-color:#fff;  height: 10px !important; width: 186px !important; visibility:hidden;" id = "lb_S4_mes_3">
+                                            <table border='0' width='100%' style='margin-top:20px !important;'>
+                                                <tr>
+                                                    <td width='100%'>
+                                                      <div  class='form-group border text-center ' style=' background-color:#fff; font-weight:bold; width:100%x; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 0px !important;  '>
+                                                        <label id='lb_S4_mes_3_txt' style='margin-top:5px; font-size:12px; '>S4 : Jue 23 - Mié 30</label>
+                                                      </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                    </div>
+                                </div>
+
+                              </td>   <!--  marzo  -->
+
+                              <td width='8%' align='center' >
+                                <div class="form-group col-12 border text-center"
+                                     style="background-color:#58C25D;  height: 70px !important; width: 186px !important; !important; border-color:#DEE2E6 !important;  margin:0px 0px 0px !important; padding: 0px 0px !important;"
+                                     id = "divEnero">
+                                        <table border='0' width='100%' style='margin-top:21px !important;'>
+                                            <tr>
+                                                <td width='18%'><img src='./images/iconos/calendar2.svg' style='width:32px; margin-left:15px; height:26px;' ></td>
+                                                <td width='82%' ><label style="color:white; ; font-weight:bold; font-size: 15px; margin-top:6px; margin-left:35px;">Abril</label></td>
+                                            </tr>
+                                        </table>
+                                </div>
+
+                                <div style="background-color:#fff;  height: 10px !important; width: 186px !important;" id = "sem1t">
+                                        <table border='0' width='100%' style='margin-top:8px !important;'>
+                                            <tr>
+                                                <td width='25%'>
+                                                  <div id='mes_4_S1' onclick="sp3FnselecionaSemana(1,4)" class='form-group border text-center semana' style='  font-weight:bold; width:42px; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 0px !important;  '>
+                                                    <label style='margin-top:5px; font-size:12px; '>S1</label>
+                                                  </div>
+                                                </td>
+
+                                                <td width='25%'>
+                                                  <div id='mes_4_S2' onclick="sp3FnselecionaSemana(2,4)" class='form-group border text-center semana' style='  font-weight:bold; width:42px; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 2px !important;  '>
+                                                    <label style='margin-top:5px; font-size:12px; '>S2</label>
+                                                  </div>
+                                                </td>
+
+                                                <td width='25%'>
+                                                  <div id='mes_4_S3' onclick="sp3FnselecionaSemana(3,4)" class='form-group border text-center semana' style='  font-weight:bold; width:42px; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 2px !important;  '>
+                                                    <label style='margin-top:5px; font-size:12px; '>S3</label>
+                                                  </div>
+                                                </td>
+
+                                                <td width='25%'>
+                                                  <div id='mes_4_S4' onclick="sp3FnselecionaSemana(4,4)" class='form-group border text-center semana' style='  font-weight:bold; width:42px; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 3px !important;  '>
+                                                    <label style='margin-top:5px; font-size:12px; '>S4</label>
+                                                  </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                </div>
+
+                                <div id = 'lb_mes_1'>
+                                    <div style="background-color:#fff;  height: 10px !important; width: 186px !important; visibility:hidden;" id = "lb_S1_mes_4">
+                                            <table border='0' width='100%' style='margin-top:20px !important;'>
+                                                <tr>
+                                                    <td width='100%'>
+                                                      <div  class='form-group border text-center ' style=' background-color:#fff; font-weight:bold; width:100%x; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 0px !important;  '>
+                                                        <label id='lb_S1_mes_4_txt'  style='margin-top:5px; font-size:12px; '>S1 : Jue 23 - Mié 30</label>
+                                                      </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                    </div>
+                                     <div style="background-color:#fff;  height: 10px !important; width: 186px !important; visibility:hidden;" id = "lb_S2_mes_4">
+                                            <table border='0' width='100%' style='margin-top:20px !important;'>
+                                                <tr>
+                                                    <td width='100%'>
+                                                      <div  class='form-group border text-center ' style=' background-color:#fff; font-weight:bold; width:100%x; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 0px !important;  '>
+                                                        <label id='lb_S2_mes_4_txt' style='margin-top:5px; font-size:12px; '>S2 : Jue 23 - Mié 30</label>
+                                                      </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                    </div>
+                                     <div style="background-color:#fff;  height: 10px !important; width: 186px !important; visibility:hidden;" id = "lb_S3_mes_4">
+                                            <table border='0' width='100%' style='margin-top:20px !important;'>
+                                                <tr>
+                                                    <td width='100%'>
+                                                      <div  class='form-group border text-center ' style=' background-color:#fff; font-weight:bold; width:100%x; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 0px !important;  '>
+                                                        <label id='lb_S3_mes_4_txt' style='margin-top:5px; font-size:12px; '>S3 : Jue 23 - Mié 30</label>
+                                                      </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                    </div>
+                                     <div style="background-color:#fff;  height: 10px !important; width: 186px !important; visibility:hidden;" id = "lb_S4_mes_4">
+                                            <table border='0' width='100%' style='margin-top:20px !important;'>
+                                                <tr>
+                                                    <td width='100%'>
+                                                      <div  class='form-group border text-center ' style=' background-color:#fff; font-weight:bold; width:100%x; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 0px !important;  '>
+                                                        <label id='lb_S4_mes_4_txt' style='margin-top:5px; font-size:12px; '>S4 : Jue 23 - Mié 30</label>
+                                                      </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                    </div>
+                                </div>
+
+
+                              </td>   <!--  abril  -->
+
+                              <td width='8%' align='center'>
+                                <div class="form-group col-12 border text-center"
+                                     style="background-color:#58C25D;  height: 70px !important; width: 186px !important; !important; border-color:#DEE2E6 !important;  margin:0px 0px 0px !important; padding: 0px 0px !important;"
+                                     id = "divEnero">
+                                        <table border='0' width='100%' style='margin-top:21px !important;'>
+                                            <tr>
+                                                <td width='18%'><img src='./images/iconos/calendar2.svg' style='width:32px; margin-left:15px; height:26px;' ></td>
+                                                <td width='82%' ><label style="color:white; ; font-weight:bold; font-size: 15px; margin-top:6px; margin-left:35px;">Mayo</label></td>
+                                            </tr>
+                                        </table>
+                                </div>
+
+                                <div style="background-color:#fff;  height: 10px !important; width: 186px !important;" id = "sem1t">
+                                        <table border='0' width='100%' style='margin-top:8px !important;'>
+                                            <tr>
+                                                <td width='25%'>
+                                                  <div id='mes_5_S1' onclick="sp3FnselecionaSemana(1,5)" class='form-group border text-center semana' style='  font-weight:bold; width:42px; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 0px !important;  '>
+                                                    <label style='margin-top:5px; font-size:12px; '>S1</label>
+                                                  </div>
+                                                </td>
+
+                                                <td width='25%'>
+                                                  <div id='mes_5_S2' onclick="sp3FnselecionaSemana(2,5)" class='form-group border text-center semana' style='  font-weight:bold; width:42px; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 2px !important;  '>
+                                                    <label style='margin-top:5px; font-size:12px; '>S2</label>
+                                                  </div>
+                                                </td>
+
+                                                <td width='25%'>
+                                                  <div id='mes_5_S3' onclick="sp3FnselecionaSemana(3,5)" class='form-group border text-center semana' style='  font-weight:bold; width:42px; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 2px !important;  '>
+                                                    <label style='margin-top:5px; font-size:12px; '>S3</label>
+                                                  </div>
+                                                </td>
+
+                                                <td width='25%'>
+                                                  <div id='mes_5_S4' onclick="sp3FnselecionaSemana(4,5)" class='form-group border text-center semana' style='  font-weight:bold; width:42px; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 3px !important;  '>
+                                                    <label style='margin-top:5px; font-size:12px; '>S4</label>
+                                                  </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                </div>
+
+                                <div id = 'lb_mes_1'>
+                                    <div style="background-color:#fff;  height: 10px !important; width: 186px !important; visibility:hidden;" id = "lb_S1_mes_5">
+                                            <table border='0' width='100%' style='margin-top:20px !important;'>
+                                                <tr>
+                                                    <td width='100%'>
+                                                      <div  class='form-group border text-center ' style=' background-color:#fff; font-weight:bold; width:100%x; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 0px !important;  '>
+                                                        <label id='lb_S1_mes_5_txt'  style='margin-top:5px; font-size:12px; '>S1 : Jue 23 - Mié 30</label>
+                                                      </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                    </div>
+                                     <div style="background-color:#fff;  height: 10px !important; width: 186px !important; visibility:hidden;" id = "lb_S2_mes_5">
+                                            <table border='0' width='100%' style='margin-top:20px !important;'>
+                                                <tr>
+                                                    <td width='100%'>
+                                                      <div  class='form-group border text-center ' style=' background-color:#fff; font-weight:bold; width:100%x; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 0px !important;  '>
+                                                        <label id='lb_S2_mes_5_txt' style='margin-top:5px; font-size:12px; '>S2 : Jue 23 - Mié 30</label>
+                                                      </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                    </div>
+                                     <div style="background-color:#fff;  height: 10px !important; width: 186px !important; visibility:hidden;" id = "lb_S3_mes_5">
+                                            <table border='0' width='100%' style='margin-top:20px !important;'>
+                                                <tr>
+                                                    <td width='100%'>
+                                                      <div  class='form-group border text-center ' style=' background-color:#fff; font-weight:bold; width:100%x; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 0px !important;  '>
+                                                        <label id='lb_S3_mes_5_txt' style='margin-top:5px; font-size:12px; '>S3 : Jue 23 - Mié 30</label>
+                                                      </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                    </div>
+                                     <div style="background-color:#fff;  height: 10px !important; width: 186px !important; visibility:hidden;" id = "lb_S4_mes_5">
+                                            <table border='0' width='100%' style='margin-top:20px !important;'>
+                                                <tr>
+                                                    <td width='100%'>
+                                                      <div  class='form-group border text-center ' style=' background-color:#fff; font-weight:bold; width:100%x; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 0px !important;  '>
+                                                        <label id='lb_S4_mes_5_txt' style='margin-top:5px; font-size:12px; '>S4 : Jue 23 - Mié 30</label>
+                                                      </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                    </div>
+                                </div>
+
+
+                              </td>   <!--  mayo  -->
+
+                              <td width='8%' align='center'>
+                                <div class="form-group col-12 border text-center"
+                                     style="background-color:#58C25D;  height: 70px !important; width: 186px !important; !important; border-color:#DEE2E6 !important;  margin:0px 0px 0px !important; padding: 0px 0px !important;"
+                                     id = "divEnero">
+                                        <table border='0' width='100%' style='margin-top:21px !important;'>
+                                            <tr>
+                                                <td width='18%'><img src='./images/iconos/calendar2.svg' style='width:32px; margin-left:15px; height:26px;' ></td>
+                                                <td width='82%' ><label style="color:white; ; font-weight:bold; font-size: 15px; margin-top:6px; margin-left:35px;">Junio</label></td>
+                                            </tr>
+                                        </table>
+                                </div>
+
+                                <div style="background-color:#fff;  height: 10px !important; width: 186px !important;" id = "sem1t">
+                                        <table border='0' width='100%' style='margin-top:8px !important;'>
+                                            <tr>
+                                                <td width='25%'>
+                                                  <div id='mes_6_S1' onclick="sp3FnselecionaSemana(1,6)" class='form-group border text-center semana' style='  font-weight:bold; width:42px; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 0px !important;  '>
+                                                    <label style='margin-top:5px; font-size:12px; '>S1</label>
+                                                  </div>
+                                                </td>
+
+                                                <td width='25%'>
+                                                  <div id='mes_6_S2' onclick="sp3FnselecionaSemana(2,6)" class='form-group border text-center semana' style='  font-weight:bold; width:42px; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 2px !important;  '>
+                                                    <label style='margin-top:5px; font-size:12px; '>S2</label>
+                                                  </div>
+                                                </td>
+
+                                                <td width='25%'>
+                                                  <div id='mes_6_S3' onclick="sp3FnselecionaSemana(3,6)" class='form-group border text-center semana' style='  font-weight:bold; width:42px; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 2px !important;  '>
+                                                    <label style='margin-top:5px; font-size:12px; '>S3</label>
+                                                  </div>
+                                                </td>
+
+                                                <td width='25%'>
+                                                  <div id='mes_6_S4' onclick="sp3FnselecionaSemana(4,6)" class='form-group border text-center semana' style='  font-weight:bold; width:42px; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 3px !important;  '>
+                                                    <label style='margin-top:5px; font-size:12px; '>S4</label>
+                                                  </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                </div>
+
+                                <div id = 'lb_mes_1'>
+                                    <div style="background-color:#fff;  height: 10px !important; width: 186px !important; visibility:hidden;" id = "lb_S1_mes_6">
+                                            <table border='0' width='100%' style='margin-top:20px !important;'>
+                                                <tr>
+                                                    <td width='100%'>
+                                                      <div  class='form-group border text-center ' style=' background-color:#fff; font-weight:bold; width:100%x; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 0px !important;  '>
+                                                        <label id='lb_S1_mes_6_txt'  style='margin-top:5px; font-size:12px; '>S1 : Jue 23 - Mié 30</label>
+                                                      </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                    </div>
+                                     <div style="background-color:#fff;  height: 10px !important; width: 186px !important; visibility:hidden;" id = "lb_S2_mes_6">
+                                            <table border='0' width='100%' style='margin-top:20px !important;'>
+                                                <tr>
+                                                    <td width='100%'>
+                                                      <div  class='form-group border text-center ' style=' background-color:#fff; font-weight:bold; width:100%x; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 0px !important;  '>
+                                                        <label id='lb_S2_mes_6_txt' style='margin-top:5px; font-size:12px; '>S2 : Jue 23 - Mié 30</label>
+                                                      </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                    </div>
+                                     <div style="background-color:#fff;  height: 10px !important; width: 186px !important; visibility:hidden;" id = "lb_S3_mes_6">
+                                            <table border='0' width='100%' style='margin-top:20px !important;'>
+                                                <tr>
+                                                    <td width='100%'>
+                                                      <div  class='form-group border text-center ' style=' background-color:#fff; font-weight:bold; width:100%x; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 0px !important;  '>
+                                                        <label id='lb_S3_mes_6_txt' style='margin-top:5px; font-size:12px; '>S3 : Jue 23 - Mié 30</label>
+                                                      </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                    </div>
+                                     <div style="background-color:#fff;  height: 10px !important; width: 186px !important; visibility:hidden;" id = "lb_S4_mes_6">
+                                            <table border='0' width='100%' style='margin-top:20px !important;'>
+                                                <tr>
+                                                    <td width='100%'>
+                                                      <div  class='form-group border text-center ' style=' background-color:#fff; font-weight:bold; width:100%x; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 0px !important;  '>
+                                                        <label id='lb_S4_mes_6_txt' style='margin-top:5px; font-size:12px; '>S4 : Jue 23 - Mié 30</label>
+                                                      </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                    </div>
+                                </div>
+
+
+                              </td>   <!--  junio  -->
+                           </tr>
+
+
+
+                           <tr >
+                                <td colspan='6' style='height:63px;'>&nbsp; </td>
+                           </tr>
+
+
+                           <tr>
+                              <td width='8%' align='center' >
+
+                                <div class="form-group col-12 border text-center"
+                                     style="background-color:#58C25D;  height: 70px !important; width: 186px !important; !important; border-color:#DEE2E6 !important;  margin:0px 0px 0px !important; padding: 0px 0px !important;"
+                                     id = "divEnero">
+                                        <table border='0' width='100%' style='margin-top:21px !important;'>
+                                            <tr>
+                                                <td width='18%'><img src='./images/iconos/calendar2.svg' style='width:32px; margin-left:15px; height:26px;' ></td>
+                                                <td width='82%' ><label style="color:white; ; font-weight:bold; font-size: 15px; margin-top:6px; margin-left:35px;">Julio</label></td>
+                                            </tr>
+                                        </table>
+                                </div>
+
+                                 <div style="background-color:#fff;  height: 10px !important; width: 186px !important;" id = "sem1t">
+                                        <table border='0' width='100%' style='margin-top:8px !important;'>
+                                            <tr>
+                                                <td width='25%'>
+                                                  <div id='mes_7_S1' onclick="sp3FnselecionaSemana(1,7)" class='form-group border text-center semana' style='  font-weight:bold; width:42px; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 0px !important;  '>
+                                                    <label style='margin-top:5px; font-size:12px; '>S1</label>
+                                                  </div>
+                                                </td>
+
+                                                <td width='25%'>
+                                                  <div id='mes_7_S2' onclick="sp3FnselecionaSemana(2,7)" class='form-group border text-center semana' style='  font-weight:bold; width:42px; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 2px !important;  '>
+                                                    <label style='margin-top:5px; font-size:12px; '>S2</label>
+                                                  </div>
+                                                </td>
+
+                                                <td width='25%'>
+                                                  <div id='mes_7_S3' onclick="sp3FnselecionaSemana(3,7)" class='form-group border text-center semana' style='  font-weight:bold; width:42px; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 2px !important;  '>
+                                                    <label style='margin-top:5px; font-size:12px; '>S3</label>
+                                                  </div>
+                                                </td>
+
+                                                <td width='25%'>
+                                                  <div id='mes_7_S4' onclick="sp3FnselecionaSemana(4,7)" class='form-group border text-center semana' style='  font-weight:bold; width:42px; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 3px !important;  '>
+                                                    <label style='margin-top:5px; font-size:12px; '>S4</label>
+                                                  </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                </div>
+
+                                <div id = 'lb_mes_1'>
+                                    <div style="background-color:#fff;  height: 10px !important; width: 186px !important; visibility:hidden;" id = "lb_S1_mes_7">
+                                            <table border='0' width='100%' style='margin-top:20px !important;'>
+                                                <tr>
+                                                    <td width='100%'>
+                                                      <div  class='form-group border text-center ' style=' background-color:#fff; font-weight:bold; width:100%x; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 0px !important;  '>
+                                                        <label id='lb_S1_mes_7_txt'  style='margin-top:5px; font-size:12px; '>S1 : Jue 23 - Mié 30</label>
+                                                      </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                    </div>
+                                     <div style="background-color:#fff;  height: 10px !important; width: 186px !important; visibility:hidden;" id = "lb_S2_mes_7">
+                                            <table border='0' width='100%' style='margin-top:20px !important;'>
+                                                <tr>
+                                                    <td width='100%'>
+                                                      <div  class='form-group border text-center ' style=' background-color:#fff; font-weight:bold; width:100%x; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 0px !important;  '>
+                                                        <label id='lb_S2_mes_7_txt' style='margin-top:5px; font-size:12px; '>S2 : Jue 23 - Mié 30</label>
+                                                      </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                    </div>
+                                     <div style="background-color:#fff;  height: 10px !important; width: 186px !important; visibility:hidden;" id = "lb_S3_mes_7">
+                                            <table border='0' width='100%' style='margin-top:20px !important;'>
+                                                <tr>
+                                                    <td width='100%'>
+                                                      <div  class='form-group border text-center ' style=' background-color:#fff; font-weight:bold; width:100%x; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 0px !important;  '>
+                                                        <label id='lb_S3_mes_7_txt' style='margin-top:5px; font-size:12px; '>S3 : Jue 23 - Mié 30</label>
+                                                      </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                    </div>
+                                     <div style="background-color:#fff;  height: 10px !important; width: 186px !important; visibility:hidden;" id = "lb_S4_mes_7">
+                                            <table border='0' width='100%' style='margin-top:20px !important;'>
+                                                <tr>
+                                                    <td width='100%'>
+                                                      <div  class='form-group border text-center ' style=' background-color:#fff; font-weight:bold; width:100%x; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 0px !important;  '>
+                                                        <label id='lb_S4_mes_7_txt' style='margin-top:5px; font-size:12px; '>S4 : Jue 23 - Mié 30</label>
+                                                      </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                    </div>
+                                </div>
+
+
+
+                              </td>   <!--  enero  -->
+
+                              <td width='8%' align='center'>
+                                <div class="form-group col-12 border text-center"
+                                     style="background-color:#58C25D;  height: 70px !important; width: 186px !important; !important; border-color:#DEE2E6 !important;  margin:0px 0px 0px !important; padding: 0px 0px !important;"
+                                     id = "divEnero">
+                                        <table border='0' width='100%' style='margin-top:21px !important;'>
+                                            <tr>
+                                                <td width='18%'><img src='./images/iconos/calendar2.svg' style='width:32px; margin-left:15px; height:26px;' ></td>
+                                                <td width='82%' ><label style="color:white; ; font-weight:bold; font-size: 15px; margin-top:6px; margin-left:35px;">Agosto</label></td>
+                                            </tr>
+                                        </table>
+                                </div>
+
+                                 <div style="background-color:#fff;  height: 10px !important; width: 186px !important;" id = "sem1t">
+                                        <table border='0' width='100%' style='margin-top:8px !important;'>
+                                            <tr>
+                                                <td width='25%'>
+                                                  <div id='mes_8_S1' onclick="sp3FnselecionaSemana(1,8)" class='form-group border text-center semana' style='  font-weight:bold; width:42px; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 0px !important;  '>
+                                                    <label style='margin-top:5px; font-size:12px; '>S1</label>
+                                                  </div>
+                                                </td>
+
+                                                <td width='25%'>
+                                                  <div id='mes_8_S2' onclick="sp3FnselecionaSemana(2,8)" class='form-group border text-center semana' style='  font-weight:bold; width:42px; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 2px !important;  '>
+                                                    <label style='margin-top:5px; font-size:12px; '>S2</label>
+                                                  </div>
+                                                </td>
+
+                                                <td width='25%'>
+                                                  <div id='mes_8_S3' onclick="sp3FnselecionaSemana(3,8)" class='form-group border text-center semana' style='  font-weight:bold; width:42px; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 2px !important;  '>
+                                                    <label style='margin-top:5px; font-size:12px; '>S3</label>
+                                                  </div>
+                                                </td>
+
+                                                <td width='25%'>
+                                                  <div id='mes_8_S4' onclick="sp3FnselecionaSemana(4,8)" class='form-group border text-center semana' style='  font-weight:bold; width:42px; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 3px !important;  '>
+                                                    <label style='margin-top:5px; font-size:12px; '>S4</label>
+                                                  </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                </div>
+
+                                <div id = 'lb_mes_1'>
+                                    <div style="background-color:#fff;  height: 10px !important; width: 186px !important; visibility:hidden;" id = "lb_S1_mes_8">
+                                            <table border='0' width='100%' style='margin-top:20px !important;'>
+                                                <tr>
+                                                    <td width='100%'>
+                                                      <div  class='form-group border text-center ' style=' background-color:#fff; font-weight:bold; width:100%x; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 0px !important;  '>
+                                                        <label id='lb_S1_mes_8_txt'  style='margin-top:5px; font-size:12px; '>S1 : Jue 23 - Mié 30</label>
+                                                      </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                    </div>
+                                     <div style="background-color:#fff;  height: 10px !important; width: 186px !important; visibility:hidden;" id = "lb_S2_mes_8">
+                                            <table border='0' width='100%' style='margin-top:20px !important;'>
+                                                <tr>
+                                                    <td width='100%'>
+                                                      <div  class='form-group border text-center ' style=' background-color:#fff; font-weight:bold; width:100%x; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 0px !important;  '>
+                                                        <label id='lb_S2_mes_8_txt' style='margin-top:5px; font-size:12px; '>S2 : Jue 23 - Mié 30</label>
+                                                      </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                    </div>
+                                     <div style="background-color:#fff;  height: 10px !important; width: 186px !important; visibility:hidden;" id = "lb_S3_mes_8">
+                                            <table border='0' width='100%' style='margin-top:20px !important;'>
+                                                <tr>
+                                                    <td width='100%'>
+                                                      <div  class='form-group border text-center ' style=' background-color:#fff; font-weight:bold; width:100%x; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 0px !important;  '>
+                                                        <label id='lb_S3_mes_8_txt' style='margin-top:5px; font-size:12px; '>S3 : Jue 23 - Mié 30</label>
+                                                      </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                    </div>
+                                     <div style="background-color:#fff;  height: 10px !important; width: 186px !important; visibility:hidden;" id = "lb_S4_mes_8">
+                                            <table border='0' width='100%' style='margin-top:20px !important;'>
+                                                <tr>
+                                                    <td width='100%'>
+                                                      <div  class='form-group border text-center ' style=' background-color:#fff; font-weight:bold; width:100%x; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 0px !important;  '>
+                                                        <label id='lb_S4_mes_8_txt' style='margin-top:5px; font-size:12px; '>S4 : Jue 23 - Mié 30</label>
+                                                      </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                    </div>
+                                </div>
+
+
+                              </td>   <!--  febrero  -->
+
+                              <td width='8%' align='center' >
+                                <div class="form-group col-12 border text-center"
+                                     style="background-color:#58C25D;  height: 70px !important; width: 186px !important; !important; border-color:#DEE2E6 !important;  margin:0px 0px 0px !important; padding: 0px 0px !important;"
+                                     id = "divEnero">
+                                        <table border='0' width='100%' style='margin-top:21px !important;'>
+                                            <tr>
+                                                <td width='18%'><img src='./images/iconos/calendar2.svg' style='width:32px; margin-left:15px; height:26px;' ></td>
+                                                <td width='82%' ><label style="color:white; ; font-weight:bold; font-size: 15px; margin-top:6px; margin-left:35px;">Septiembre</label></td>
+                                            </tr>
+                                        </table>
+                                </div>
+
+                                <div style="background-color:#fff;  height: 10px !important; width: 186px !important;" id = "sem1t">
+                                        <table border='0' width='100%' style='margin-top:8px !important;'>
+                                            <tr>
+                                                <td width='25%'>
+                                                  <div id='mes_9_S1' onclick="sp3FnselecionaSemana(1,9)" class='form-group border text-center semana' style='  font-weight:bold; width:42px; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 0px !important;  '>
+                                                    <label style='margin-top:5px; font-size:12px; '>S1</label>
+                                                  </div>
+                                                </td>
+
+                                                <td width='25%'>
+                                                  <div id='mes_9_S2' onclick="sp3FnselecionaSemana(2,9)"  class='form-group border text-center semana' style='  font-weight:bold; width:42px; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 2px !important;  '>
+                                                    <label style='margin-top:5px; font-size:12px; '>S2</label>
+                                                  </div>
+                                                </td>
+
+                                                <td width='25%'>
+                                                  <div id='mes_9_S3' onclick="sp3FnselecionaSemana(3,9)"  class='form-group border text-center semana' style='  font-weight:bold; width:42px; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 2px !important;  '>
+                                                    <label style='margin-top:5px; font-size:12px; '>S3</label>
+                                                  </div>
+                                                </td>
+
+                                                <td width='25%'>
+                                                  <div id='mes_9_S4' onclick="sp3FnselecionaSemana(4,9)"  class='form-group border text-center semana' style='  font-weight:bold; width:42px; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 3px !important;  '>
+                                                    <label style='margin-top:5px; font-size:12px; '>S4</label>
+                                                  </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                </div>
+
+                                <div id = 'lb_mes_1'>
+                                    <div style="background-color:#fff;  height: 10px !important; width: 186px !important; visibility:hidden;" id = "lb_S1_mes_9">
+                                            <table border='0' width='100%' style='margin-top:20px !important;'>
+                                                <tr>
+                                                    <td width='100%'>
+                                                      <div  class='form-group border text-center ' style=' background-color:#fff; font-weight:bold; width:100%x; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 0px !important;  '>
+                                                        <label id='lb_S1_mes_9_txt'  style='margin-top:5px; font-size:12px; '>S1 : Jue 23 - Mié 30</label>
+                                                      </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                    </div>
+                                     <div style="background-color:#fff;  height: 10px !important; width: 186px !important; visibility:hidden;" id = "lb_S2_mes_9">
+                                            <table border='0' width='100%' style='margin-top:20px !important;'>
+                                                <tr>
+                                                    <td width='100%'>
+                                                      <div  class='form-group border text-center ' style=' background-color:#fff; font-weight:bold; width:100%x; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 0px !important;  '>
+                                                        <label id='lb_S2_mes_9_txt' style='margin-top:5px; font-size:12px; '>S2 : Jue 23 - Mié 30</label>
+                                                      </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                    </div>
+                                     <div style="background-color:#fff;  height: 10px !important; width: 186px !important; visibility:hidden;" id = "lb_S3_mes_9">
+                                            <table border='0' width='100%' style='margin-top:20px !important;'>
+                                                <tr>
+                                                    <td width='100%'>
+                                                      <div  class='form-group border text-center ' style=' background-color:#fff; font-weight:bold; width:100%x; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 0px !important;  '>
+                                                        <label id='lb_S3_mes_9_txt' style='margin-top:5px; font-size:12px; '>S3 : Jue 23 - Mié 30</label>
+                                                      </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                    </div>
+                                     <div style="background-color:#fff;  height: 10px !important; width: 186px !important; visibility:hidden;" id = "lb_S4_mes_9">
+                                            <table border='0' width='100%' style='margin-top:20px !important;'>
+                                                <tr>
+                                                    <td width='100%'>
+                                                      <div  class='form-group border text-center ' style=' background-color:#fff; font-weight:bold; width:100%x; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 0px !important;  '>
+                                                        <label id='lb_S4_mes_9_txt' style='margin-top:5px; font-size:12px; '>S4 : Jue 23 - Mié 30</label>
+                                                      </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                    </div>
+                                </div>
+
+
+                              </td>   <!--  marzo  -->
+
+                              <td width='8%' align='center' >
+                                <div class="form-group col-12 border text-center"
+                                     style="background-color:#58C25D;  height: 70px !important; width: 186px !important; !important; border-color:#DEE2E6 !important;  margin:0px 0px 0px !important; padding: 0px 0px !important;"
+                                     id = "divEnero">
+                                        <table border='0' width='100%' style='margin-top:21px !important;'>
+                                            <tr>
+                                                <td width='18%'><img src='./images/iconos/calendar2.svg' style='width:32px; margin-left:15px; height:26px;' ></td>
+                                                <td width='82%' ><label style="color:white; ; font-weight:bold; font-size: 15px; margin-top:6px; margin-left:35px;">Octubre</label></td>
+                                            </tr>
+                                        </table>
+                                </div>
+
+                                 <div style="background-color:#fff;  height: 10px !important; width: 186px !important;" id = "sem1t">
+                                        <table border='0' width='100%' style='margin-top:8px !important;'>
+                                            <tr>
+                                                <td width='25%'>
+                                                  <div id='mes_10_S1' onclick="sp3FnselecionaSemana(1,10)"  class='form-group border text-center semana' style='  font-weight:bold; width:42px; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 0px !important;  '>
+                                                    <label style='margin-top:5px; font-size:12px; '>S1</label>
+                                                  </div>
+                                                </td>
+
+                                                <td width='25%'>
+                                                  <div id='mes_10_S2' onclick="sp3FnselecionaSemana(2,10)"  class='form-group border text-center semana' style='  font-weight:bold; width:42px; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 2px !important;  '>
+                                                    <label style='margin-top:5px; font-size:12px; '>S2</label>
+                                                  </div>
+                                                </td>
+
+                                                <td width='25%'>
+                                                  <div id='mes_10_S3' onclick="sp3FnselecionaSemana(3,10)"  class='form-group border text-center semana' style='  font-weight:bold; width:42px; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 2px !important;  '>
+                                                    <label style='margin-top:5px; font-size:12px; '>S3</label>
+                                                  </div>
+                                                </td>
+
+                                                <td width='25%'>
+                                                  <div id='mes_10_S4' onclick="sp3FnselecionaSemana(4,10)"  class='form-group border text-center semana' style='  font-weight:bold; width:42px; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 3px !important;  '>
+                                                    <label style='margin-top:5px; font-size:12px; '>S4</label>
+                                                  </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                </div>
+
+                                <div id = 'lb_mes_1'>
+                                    <div style="background-color:#fff;  height: 10px !important; width: 186px !important; visibility:hidden;" id = "lb_S1_mes_10">
+                                            <table border='0' width='100%' style='margin-top:20px !important;'>
+                                                <tr>
+                                                    <td width='100%'>
+                                                      <div  class='form-group border text-center ' style=' background-color:#fff; font-weight:bold; width:100%x; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 0px !important;  '>
+                                                        <label id='lb_S1_mes_10_txt'  style='margin-top:5px; font-size:12px; '>S1 : Jue 23 - Mié 30</label>
+                                                      </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                    </div>
+                                     <div style="background-color:#fff;  height: 10px !important; width: 186px !important; visibility:hidden;" id = "lb_S2_mes_10">
+                                            <table border='0' width='100%' style='margin-top:20px !important;'>
+                                                <tr>
+                                                    <td width='100%'>
+                                                      <div  class='form-group border text-center ' style=' background-color:#fff; font-weight:bold; width:100%x; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 0px !important;  '>
+                                                        <label id='lb_S2_mes_10_txt' style='margin-top:5px; font-size:12px; '>S2 : Jue 23 - Mié 30</label>
+                                                      </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                    </div>
+                                     <div style="background-color:#fff;  height: 10px !important; width: 186px !important; visibility:hidden;" id = "lb_S3_mes_10">
+                                            <table border='0' width='100%' style='margin-top:20px !important;'>
+                                                <tr>
+                                                    <td width='100%'>
+                                                      <div  class='form-group border text-center ' style=' background-color:#fff; font-weight:bold; width:100%x; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 0px !important;  '>
+                                                        <label id='lb_S3_mes_10_txt' style='margin-top:5px; font-size:12px; '>S3 : Jue 23 - Mié 30</label>
+                                                      </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                    </div>
+                                     <div style="background-color:#fff;  height: 10px !important; width: 186px !important; visibility:hidden;" id = "lb_S4_mes_10">
+                                            <table border='0' width='100%' style='margin-top:20px !important;'>
+                                                <tr>
+                                                    <td width='100%'>
+                                                      <div  class='form-group border text-center ' style=' background-color:#fff; font-weight:bold; width:100%x; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 0px !important;  '>
+                                                        <label id='lb_S4_mes_10_txt' style='margin-top:5px; font-size:12px; '>S4 : Jue 23 - Mié 30</label>
+                                                      </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                    </div>
+                                </div>
+
+
+                              </td>   <!--  abril  -->
+
+                              <td width='8%' align='center'>
+                                <div class="form-group col-12 border text-center"
+                                     style="background-color:#58C25D;  height: 70px !important; width: 186px !important; !important; border-color:#DEE2E6 !important;  margin:0px 0px 0px !important; padding: 0px 0px !important;"
+                                     id = "divEnero">
+                                        <table border='0' width='100%' style='margin-top:21px !important;'>
+                                            <tr>
+                                                <td width='18%'><img src='./images/iconos/calendar2.svg' style='width:32px; margin-left:15px; height:26px;' ></td>
+                                                <td width='82%' ><label style="color:white; ; font-weight:bold; font-size: 15px; margin-top:6px; margin-left:35px;">Noviembre</label></td>
+                                            </tr>
+                                        </table>
+                                </div>
+
+                                <div style="background-color:#fff;  height: 10px !important; width: 186px !important;" id = "sem1t">
+                                        <table border='0' width='100%' style='margin-top:8px !important;'>
+                                            <tr>
+                                                <td width='25%'>
+                                                  <div id='mes_11_S1' onclick="sp3FnselecionaSemana(1,11)"  class='form-group border text-center semana' style='  font-weight:bold; width:42px; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 0px !important;  '>
+                                                    <label style='margin-top:5px; font-size:12px; '>S1</label>
+                                                  </div>
+                                                </td>
+
+                                                <td width='25%'>
+                                                  <div id='mes_11_S2' onclick="sp3FnselecionaSemana(2,11)" class='form-group border text-center semana' style='  font-weight:bold; width:42px; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 2px !important;  '>
+                                                    <label style='margin-top:5px; font-size:12px; '>S2</label>
+                                                  </div>
+                                                </td>
+
+                                                <td width='25%'>
+                                                  <div id='mes_11_S3' onclick="sp3FnselecionaSemana(3,11)" class='form-group border text-center semana' style='  font-weight:bold; width:42px; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 2px !important;  '>
+                                                    <label style='margin-top:5px; font-size:12px; '>S3</label>
+                                                  </div>
+                                                </td>
+
+                                                <td width='25%'>
+                                                  <div id='mes_11_S4' onclick="sp3FnselecionaSemana(4,11)" class='form-group border text-center semana' style='  font-weight:bold; width:42px; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 3px !important;  '>
+                                                    <label style='margin-top:5px; font-size:12px; '>S4</label>
+                                                  </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                </div>
+
+                                <div id = 'lb_mes_1'>
+                                    <div style="background-color:#fff;  height: 10px !important; width: 186px !important; visibility:hidden;" id = "lb_S1_mes_11">
+                                            <table border='0' width='100%' style='margin-top:20px !important;'>
+                                                <tr>
+                                                    <td width='100%'>
+                                                      <div  class='form-group border text-center ' style=' background-color:#fff; font-weight:bold; width:100%x; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 0px !important;  '>
+                                                        <label id='lb_S11_mes_11_txt'  style='margin-top:5px; font-size:12px; '>S1 : Jue 23 - Mié 30</label>
+                                                      </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                    </div>
+                                     <div style="background-color:#fff;  height: 10px !important; width: 186px !important; visibility:hidden;" id = "lb_S2_mes_11">
+                                            <table border='0' width='100%' style='margin-top:20px !important;'>
+                                                <tr>
+                                                    <td width='100%'>
+                                                      <div  class='form-group border text-center ' style=' background-color:#fff; font-weight:bold; width:100%x; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 0px !important;  '>
+                                                        <label id='lb_S2_mes_11_txt' style='margin-top:5px; font-size:12px; '>S2 : Jue 23 - Mié 30</label>
+                                                      </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                    </div>
+                                     <div style="background-color:#fff;  height: 10px !important; width: 186px !important; visibility:hidden;" id = "lb_S3_mes_11">
+                                            <table border='0' width='100%' style='margin-top:20px !important;'>
+                                                <tr>
+                                                    <td width='100%'>
+                                                      <div  class='form-group border text-center ' style=' background-color:#fff; font-weight:bold; width:100%x; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 0px !important;  '>
+                                                        <label id='lb_S3_mes_11_txt' style='margin-top:5px; font-size:12px; '>S3 : Jue 23 - Mié 30</label>
+                                                      </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                    </div>
+                                     <div style="background-color:#fff;  height: 10px !important; width: 186px !important; visibility:hidden;" id = "lb_S4_mes_11">
+                                            <table border='0' width='100%' style='margin-top:20px !important;'>
+                                                <tr>
+                                                    <td width='100%'>
+                                                      <div  class='form-group border text-center ' style=' background-color:#fff; font-weight:bold; width:100%x; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 0px !important;  '>
+                                                        <label id='lb_S4_mes_11_txt' style='margin-top:5px; font-size:12px; '>S4 : Jue 23 - Mié 30</label>
+                                                      </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                    </div>
+                                </div>
+
+
+                              </td>   <!--  mayo  -->
+
+                              <td width='8%' align='center'>
+                                <div class="form-group col-12 border text-center"
+                                     style="background-color:#58C25D;  height: 70px !important; width: 186px !important; !important; border-color:#DEE2E6 !important;  margin:0px 0px 0px !important; padding: 0px 0px !important;"
+                                     id = "divEnero">
+                                        <table border='0' width='100%' style='margin-top:21px !important;'>
+                                            <tr>
+                                                <td width='18%'><img src='./images/iconos/calendar2.svg' style='width:32px; margin-left:15px; height:26px;' ></td>
+                                                <td width='82%' ><label style="color:white; ; font-weight:bold; font-size: 15px; margin-top:6px; margin-left:35px;">Diciembre</label></td>
+                                            </tr>
+                                        </table>
+                                </div>
+
+                               <div style="background-color:#fff;  height: 10px !important; width: 186px !important;" id = "sem1t">
+                                        <table border='0' width='100%' style='margin-top:8px !important;'>
+                                            <tr>
+                                                <td width='25%'>
+                                                  <div id='mes_12_S1' onclick="sp3FnselecionaSemana(1,12)" class='form-group border text-center semana' style='  font-weight:bold; width:42px; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 0px !important;  '>
+                                                    <label style='margin-top:5px; font-size:12px; '>S1</label>
+                                                  </div>
+                                                </td>
+
+                                                <td width='25%'>
+                                                  <div id='mes_12_S2' onclick="sp3FnselecionaSemana(2,12)" class='form-group border text-center semana' style='  font-weight:bold; width:42px; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 2px !important;  '>
+                                                    <label style='margin-top:5px; font-size:12px; '>S2</label>
+                                                  </div>
+                                                </td>
+
+                                                <td width='25%'>
+                                                  <div id='mes_12_S3' onclick="sp3FnselecionaSemana(3,12)" class='form-group border text-center semana' style='  font-weight:bold; width:42px; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 2px !important;  '>
+                                                    <label style='margin-top:5px; font-size:12px; '>S3</label>
+                                                  </div>
+                                                </td>
+
+                                                <td width='25%'>
+                                                  <div id='mes_12_S4' onclick="sp3FnselecionaSemana(4,12)" class='form-group border text-center semana' style='  font-weight:bold; width:42px; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 3px !important;  '>
+                                                    <label style='margin-top:5px; font-size:12px; '>S4</label>
+                                                  </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                </div>
+
+                                <div id = 'lb_mes_1'>
+                                    <div style="background-color:#fff;  height: 10px !important; width: 186px !important; visibility:hidden;" id = "lb_S1_mes_12">
+                                            <table border='0' width='100%' style='margin-top:20px !important;'>
+                                                <tr>
+                                                    <td width='100%'>
+                                                      <div  class='form-group border text-center ' style=' background-color:#fff; font-weight:bold; width:100%x; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 0px !important;  '>
+                                                        <label id='lb_S12_mes_12_txt'  style='margin-top:5px; font-size:12px; '>S1 : Jue 23 - Mié 30</label>
+                                                      </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                    </div>
+                                     <div style="background-color:#fff;  height: 10px !important; width: 186px !important; visibility:hidden;" id = "lb_S2_mes_12">
+                                            <table border='0' width='100%' style='margin-top:20px !important;'>
+                                                <tr>
+                                                    <td width='100%'>
+                                                      <div  class='form-group border text-center ' style=' background-color:#fff; font-weight:bold; width:100%x; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 0px !important;  '>
+                                                        <label id='lb_S2_mes_12_txt' style='margin-top:5px; font-size:12px; '>S2 : Jue 23 - Mié 30</label>
+                                                      </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                    </div>
+                                     <div style="background-color:#fff;  height: 10px !important; width: 186px !important; visibility:hidden;" id = "lb_S3_mes_12">
+                                            <table border='0' width='100%' style='margin-top:20px !important;'>
+                                                <tr>
+                                                    <td width='100%'>
+                                                      <div  class='form-group border text-center ' style=' background-color:#fff; font-weight:bold; width:100%x; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 0px !important;  '>
+                                                        <label id='lb_S3_mes_12_txt' style='margin-top:5px; font-size:12px; '>S3 : Jue 23 - Mié 30</label>
+                                                      </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                    </div>
+                                     <div style="background-color:#fff;  height: 10px !important; width: 186px !important; visibility:hidden;" id = "lb_S4_mes_12">
+                                            <table border='0' width='100%' style='margin-top:20px !important;'>
+                                                <tr>
+                                                    <td width='100%'>
+                                                      <div  class='form-group border text-center ' style=' background-color:#fff; font-weight:bold; width:100%x; height:25px;  padding: 0px 0px 0px 0px !important;  margin: 0px 0px 0px 0px !important;  '>
+                                                        <label id='lb_S4_mes_12_txt' style='margin-top:5px; font-size:12px; '>S4 : Jue 23 - Mié 30</label>
+                                                      </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                    </div>
+                                </div>
+
+
+                              </td>   <!--  junio  -->
+                           </tr>
+                           <tr >
+                                <td colspan='6' class='text-center' style='height:63px;' align = 'center'>
+
+                                  <table border='0'   width='100%' style='margin-top:50px !important;'>
+                                      <tr>
+                                        <td width='35%'>&nbsp;
+                                             
+                                        </td>
+
+                                          <td width='14%'>
+                                              <button type="button" class="btn_confirmar_modal bg-green-lime-modal" id="CambiarFecha" style="font-size: 14px; visibility: visible;">Guardar Ferecuencia</button>
+                                          </td>
+
+                                          <td width='2%'>&nbsp;
+                                               
+                                          </td>
+
+                                          <td width='14%'>
+                                            <button type="button" class="btn_cerrar_modal " id="btn-historial-auditor" style="background-color: #ffffff; font-size: 14px;"><b>Cancelar</b></button>
+                                          </td>
+
+                                          <td width='35%'>&nbsp;
+                                               
+                                          </td>
+
+
+                                      </tr>
+                                  </table>
+
+                                </td>
+                           </tr>
+
+                  </table>
+                    <!-- aqui vamos a publicar las filas  -->
+                </div>
+            </div>
+        </td>
+    </tr>
+
+
+
+
+    </table>
+
+ </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                </div>
+                            </div>
+
+                            <div class="card-body2">
+
+
+                            </div>
+
+                        </div>
+                    </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- FIN --------------------------------------------     MODAL DE CRONOGRAMA PLAN ANUAL-ACTIVIDADES*********   - ----------------------------------- -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- INI --------------------------------------------     MODAL DE NUEVO PLAN ANUAL-ACTIVIDADE--TAREAS *********   - ----------------------------------- -->
+
+
+<div class="modal fade "  id="Sp3VentanTareaActividadPlan" tabindex="-1" data-backdrop="static" data-keyboard="false" aria-hidden="true"  tabindex="-1" role="dialog" >
+  <div class="modal-dialog modal-dialog-centered rounded" role="document" style="max-width: 1322px; z-index: 1030; ">
+      <div class="modal-content rounded "  style="background:white; height: 702px !important;" >
+          <div style="overflow: hidden; height: 692px; overflow-x: hidden; ">
+              <div class="modal-header fix-header-modal" >
+                  <div class="card-header text-center text-white modal-dialog-centered  card-header-FormAuditor" id="red-head" style="width: 100%; padding: 0px 0px !important;">
+                      <div class="row d-flex justify-content-center text-center" style="width: 100%;">
+                          <div class="col-1 btn-close-modalCA pl-3 my-2">
+                              <!--button type="button" id="closeVerAuditoriaModal"><span aria-hidden="true" class="btn-close-modalCA">Cerrar&nbsp;&nbsp;&nbsp;&nbsp;&times;</span></button--> <!-- class="close hearder-modal" data-dismiss="modal" aria-label="Close" -->
+                              <!-- <div class="float-right" cursor="pointer" id="btn-close-Adj"><span style="font-size: 40px">
+                                  <img src="images/prev.svg"  style="cursor: pointer;"></span>
+                              </div> -->
+                           </div>
+                          <div class="col justify-content-center text-center col-12" style="margin-top: -28px !important;" >
+                              <table border='0' style="margin-left: auto; margin-right: auto; width: 1250px;">
+                                  <tr>
+                                      <td width='10%'><img src="./images/prev.svg" style="cursor:pointer;" title = 'Salir' onclick="fnSp3CerrarNuevasTareasActividadesPlan();" > </td>
+                                      <td width='10%'></td>
+                                      <td width='63%'><h5 id='lbTitleTareaActividadPlanAnual' style="font-size: 16px !important; color:#fff; font-weight: bold; text-align: center;">Creación del Plan Anual</h5></td>
+                                      <td width='10%'>
+                                          <!-- <button class="btn-save-auditor2" style="font-size: 12px !important; margin-left: 36px"> Guardar</button></td> -->
+                                      <td width='7%'>
+                                          <!-- <button class="btn-save-auditor2 " style=" margin-left: 30px !important; font-size: 12px !important; background:gray !important; color:white;"> Finalizar</button></td> -->
+                                  </tr>
+                              </table>
+                          </div>
+                      </div>
+                  </div>
+
+              </div>
+
+
+
+
+
+
+
+
+              <div class="modal-body dialog-position" id="bodymodalShowAuditor" style=" justify-content:space-around; align-content:center; padding: 10px 0px 0px !important;">
+
+                  <div class="card " style="border: 0px !important; border-radius: 5px; box-shadow: none;">
+
+                      <div class="card-body2" >
+
+
+                          <div class="row justify-content-around align-items-center text-center">
+          <!-- <div class="col-12 caja-adj scroll-blue" style="height: 600px !important; border-color: red !important;"> -->
+                   <div class="col-12" style="height: 772px !important; border-color:chartreuse !important;">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              <div id="divPreviewEval" class="divPreviewEval overflow-auto" style="margin-left: auto; margin-right: auto; margin-top: 2px !important;" >
+
+                        <table border="0" style="margin-left: auto; margin-right: auto; width: 1233px; ">
+                                <tr>
+                                  <td colspan="3">
+                                        <table width="100%" border="0">
+                                        <tr>
+                                          <td width="10%" style="text-align: left !important;">
+                                              <label   class="lbEvalAud_02">
+                                                  <b style="text-align: left !important;">Tareas.</b>
+                                              </label>
+                                          </td>
+
+
+                                          <td width="14%" style="text-align: left !important;">
+                                              <label   class="lbEvalAud_02" style="text-align: left !important; font-size:15px !important;" >
+                                                  <b style="text-align: left !important; font-size:15px !important;">Responsable Asignado</b>
+                                              </label>
+                                          </td>
+
+                                          <td width="20%" style="text-align: left !important;">
+                                            <div class="form-group col-12 border text-left" style="  height: auto !important; width: 99% !important; !important; border-color:#DEE2E6 !important;  margin:8px 0px 0px !important; padding: 0px 0px 0px 0px !important;"  id = "divTarea2">
+                                                <input class="text-justify textarea-fecha2 autocompletecollaborator" value = 'Andy David Vàsquez' id = 'respTareas'
+                                                style="height: 20px; width:90%; margin: 8px 0px 8px 8px !important; padding: 0px 0px 0px 0px !important; font-size: 13px !important; font-weight: bold; color: #534b4b; background-color:#fff !important;"  readonly>
+                                          </div>
+                                          <br>
+                                          </td>
+
+                                            <td width="43%"><p style="color:#c1c1c1;">
+                                            </p></td>
+                                          <td width="7%" text-align:rigth !important;>
+                                              <button class="btn verde2 " style="font-size: 12px !important; margin-left: 5px; margin-top: -5px;" onclick="fnSp3agregaTareaActividadObjetivoPlan()">Agregar</button>
+                                          </td>
+                                        </tr>
+                                      </table>
+                                  </td>
+                                </tr>
+                        </table>
+
+      </td>
+  </tr>
+  <tr>
+       <td colspan="3">
+           <!-- aqui vamos a colocar el listado de objetivos y subobjetivos  -->
+
+           <div class="row justify-content-around align-items-center text-center" >
+
+
+              <div class="header-tabla px-2 py-3" style="width: 1233px !important; ">
+                  <table width = "100%" border="0">
+                      <tr >
+                          <td width = "7%" align="center"><div id="c1TabGeny" class="text-left lbCabezaTabla" style='margin: 0px 0px 0px 8px !important;  font-size: 14px !important; font-weight: bold !important;'  >Item </div></td>
+                          <td width = "46%" align="center"><div id="c3TabGeny" class="text-left lbCabezaTabla" style=" font-size: 14px !important; font-weight: bold !important;"  > Evidencias </div></td>
+                          <td width = "15%" align="center"><div id="c3TabGeny" class="text-left lbCabezaTabla" style=" font-size: 14px !important; font-weight: bold !important;"  > Fecha Programada </div></td>
+                          <td width = "15%" align="center"><div id="c3TabGeny" class="text-left lbCabezaTabla" style=" font-size: 14px !important; font-weight: bold !important;"  > Fecha Ejecutada</div></td>
+
+
+                          <td width = "8%" align="center"><div id="c4TabGeny" class="text-center lbCabezaTabla" style=" font-size: 14px !important; font-weight: bold !important;"  >Estado</div></td>
+                          <td width = "8%" align="center"><div id="c6TabGeny" class="text-center lbCabezaTabla" style=" font-size: 14px !important; font-weight: bold !important;"  >Eliminar</div></td>
+                          <td width = "1%" align="center"><div id="c7TabGeny" class="text-center lbCabezaTabla" style=" font-size: 14px !important; font-weight: bold !important;"  >&nbsp</div></td>
+
+
+                      </tr>
+                  </table>
+             </div>
+
+
+
+
+              <div class="col-12 caja-adj scroll-blue" style="height: 422px !important; border-color:white !important; padding: 0px 6px !important;">
+                 <!-- aqui vamos a publicar las filas  -->
+
+
+
+                          <div class="body-tabla-list-EvalAud" id="body-tabla-list-EvalAud3" >
+                              <div>
+                                  <div>
+                                      <img src="./images/newsistema/iconos/calendar-progeamar-inspeccion.svg" style="width:128px; height: 128 px; margin-top: 122px;" alt="">
+                                      <p class="mt-4">No Existen Tareas</p>
+                                  </div>
+                              </div>
+                          </div>
+
+
+                  <!-- aqui vamos a publicar las filas  -->
+              </div>
+          </div>
+
+
+      </td>
+  </tr>
+
+
+
+
+  </table>
+
+</div>
+
+
+
+
+
+                              </div>
+
+                          </div>
+
+
+                        <div class="card-body2">
+
+
+
+                        </div>
+
+                        </div>
+                   </div>
+
+           </div>
+       </div>
+   </div>
+</div>
+</div>
+
+<!-- INI --------------------------------------------     MODAL DE NUEVO PLAN ANUAL-ACTIVIDADE--TAREAS *********   - ----------------------------------- -->
+
+
+
+
+
+
+<!-- INI --------------------------------------------     MODAL DE PRUEBAS A NUEVAS INTERFACES *********   - ----------------------------------- -->
+
+
+<div class="modal fade "  id="Sp3VentanaPruebas" tabindex="-1" data-backdrop="static" data-keyboard="false" aria-hidden="true"  tabindex="-1" role="dialog" >
+    <div class="modal-dialog modal-dialog-centered rounded" role="document" style="max-width: 1822px; z-index: 1680; ">
+        <div class="modal-content rounded "  style="background:white; height: 702px !important;" >
+            <div style="overflow: hidden; height: 692px; overflow-x: hidden; ">
+                <div class="modal-header fix-header-modal" >
+                    <div class="card-header text-center text-white modal-dialog-centered  card-header-FormAuditor" id="red-head" style="width: 100%; padding: 0px 0px !important; background-color:#ff6767 !important;">
+                        <div class="row d-flex justify-content-center text-center" style="width: 100%;">
+                            <div class="col-1 btn-close-modalCA pl-3 my-2">
+                              
+                             </div>
+                            <div class="col justify-content-center text-center col-12" style="margin-top: -28px !important;" >
+                                <table border='0' style="margin-left: auto; margin-right: auto; width: 1750px;">
+                                    <tr>
+                                        <td width='10%'><img src="./images/prev.svg" style="cursor:pointer;" title = 'Salir' onclick=" $('#Sp3VentanaPruebas').modal('hide').removeClass('fade');" > </td>
+                                        <td width='10%'></td>
+                                        <td width='63%'><h5 id='lbTitleTareaActividadPlanAnual' style="font-size: 16px !important; color:#fff; font-weight: bold; text-align: center;">Vista de Pruebas</h5></td>
+                                        <td width='10%'>
+                                            <!-- <button class="btn-save-auditor2" style="font-size: 12px !important; margin-left: 36px"> Guardar</button></td> -->
+                                        <td width='7%'>
+                                            <!-- <button class="btn-save-auditor2 " style=" margin-left: 30px !important; font-size: 12px !important; background:gray !important; color:white;"> Finalizar</button></td> -->
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+
+
+
+
+
+                <div class="modal-body dialog-position" id="bodymodalShowAuditor" style=" justify-content:space-around; align-content:center; padding: 10px 0px 0px !important;">
+
+                    <div class="card " style="border: 0px !important; border-radius: 5px; box-shadow: none;">
+
+                        <div class="card-body2" >
+
+
+                            <div class="row justify-content-around align-items-center text-center">
+            <!-- <div class="col-12 caja-adj scroll-blue" style="height: 600px !important; border-color: red !important;"> -->
+                     <div class="col-12" style="height: 772px !important; border-color:chartreuse !important;">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <div id="divPreviewEval" class="divPreviewEval overflow-auto" style="margin-left: auto; margin-right: auto; margin-top: 2px !important;" >
+
+                  <!-- ******************************************************************************************************************************** -->
+                  
+                  <!-- ********************************************************************************************************************************* -->
+                </div>
+            </div>
+
+
+        </td>
+    </tr>
+
+
+
+
+    </table>
+
+ </div>
+
+
+
+
+
+                                </div>
+
+                            </div>
+
+
+                          <div class="card-body2">
+
+
+
+                          </div>
+
+                          </div>
+                     </div>
+
+             </div>
+         </div>
+     </div>
+  </div>
+</div>
+
+<!-- INI --------------------------------------------     MODAL DE PRUEBAS A NUEVAS INTERFACES *********   - ----------------------------------- -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="./js/paginator/pagination.js"></script>
+<script src="./view/ssoma/plan-anual/gestionPlanAnual.js"></script>
+<script src="./view/ssoma/plan-anual/gestionPlanActividades.js"></script>
+<script src="./view/ssoma/plan-anual/gestionPlanAnualCronogramas.js"></script>
+<script>
+
+  // ---------------------------------    cosas propias de ssoma  -----------------------
+    $('.logoCompany').text('Gestión de Plan Anual')
+    $('#regresar').css('display','block')
+    // $('#regresar').click(function (){
+    //     handlerUrlhtml('contentGlobal','view/ssoma/menu.html','externalAccessRequestList');
+    // })
+   // ---------------------------------    cosas propias de ssoma  -----------------------
+
+
+    //*.......................................... */
+       $("#sp3_txt_fecha_desde_p").datetimepicker({
+        timepicker:false,
+        format:'d/m/Y'});
+    //*.......................................... */
+
+    //*.......................................... */
+    $("#sp3_txt_fecha_hasta_p").datetimepicker({
+        timepicker:false,
+        format:'d/m/Y'});
+    //*.......................................... */
+
+
+
+
+
+  
+
+  _init_fnSp3PlanAnualEstadoInicial();
+
+</script>

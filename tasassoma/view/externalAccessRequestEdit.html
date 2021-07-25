@@ -1,0 +1,136 @@
+<div class="container-fluid" style="background: #ebebeb;">
+  <div class="row ">
+    <main role="main" class="col-md-12 ml-sm-auto col-lg-12">
+     <!-- <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Dashboard</h1>
+      </div> 
+    -->
+    
+      <div class="row ">
+        <div class="col-md-3 " style="padding-right: 5px!important; padding-left: 0px!important">
+          <div class="card border h-100 lateralContent"  id="lateralContent" style="box-shadow: none;">
+            <div class="card-body p-0">
+              <form id="fm_visita" name="fm_visita">
+                 <!-- titulo form -->
+                 <ul class="list-unstyled">
+                  <li class="media mb-2 p-3 titleFormMain" style="">
+                    <img src="images/iconos/detalleformulariowhite.svg" height="24" class="mr-3">
+                    <div class="media-body pt-0 ">
+                      <h6 id="titleVisit">Datos de Visita</h6>
+                    </div>
+                  </li>
+                </ul>
+                <!-- contenido form -->
+
+                
+                <ul class="list-unstyled p-3">
+                    
+                  <li class="media mb-5">
+                    <img src="images/iconos/sede.svg" class="mr-3 mt-4">
+                    <div class="media-body">
+                      <div class="form-group">
+                        <label for="sel_location" class="bmd-label-static titleInput">SEDE</label>
+                        <select name="sel_location" class="form-control bg-white cabecera" id="sel_location" >
+                          <option></option>
+                        </select>
+                        <span class="bmd-help"></span>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="media mb-5">
+                    <img src="images/iconos/area.svg" class="mr-3 mt-4">
+                    <div class="media-body">
+                      <div class="form-group">
+                        <label for="sel-area" class="bmd-label-static titleInput">ÁREA</label>
+                        <select name="sel_area" class="form-control bg-white cabecera" id="sel_area"   required>
+                          <option value="0"></option>
+                        </select>
+                      </div>
+                    </div>
+                  </li>
+                  
+                  <li class="media mb-5">
+                    <img src="images/iconos/organizador.svg" class="mr-3 mt-4" alt="...">
+                    <div class="media-body">
+                      <div class="form-group is-filled">
+                        <label for="txt_collaborator" class="bmd-label-static titleInput">
+                          ORGANIZADOR
+                        </label>
+                        <input type="text" class="form-control bg-white cabecera" id="text_sel_organizer" value="" >
+                        <input type="text" class="form-control" id="sel_organizer" hidden>
+                        <input type="hidden" class="form-control" id="hid_email_organizer" hidden>
+                        
+                      </div>
+                    </div>
+                  </li>
+
+                  <li class="media mb-5">
+                    <img src="images/iconos/iconTypev.svg" class="mr-3 mt-4">
+                    <div class="media-body">
+                      <div class="form-group is-filled">
+                        <label for="txt_collaborator" class="bmd-label-static titleInput">TIPO</label>
+                        <select name="sel_request_type" class="form-control bg-white cabecera" id="sel_request_type" >
+                          <option></option>
+                        </select>
+                      </div>
+                    </div>
+                  </li>
+
+                  <li class="media gp_visita mb-5">
+                    <img src="images/iconos/motivo.svg" class="mr-3 mt-4">
+                    <div class="media-body">
+                      <div class="form-group">
+                        <label for="txt_collaborator" class="bmd-label-static titleInput">MOTIVO</label>
+                        <textarea id="tx_rejection_reason" name="tx_rejection_reason" class="form-control bg-white cabecera" rows="3" ></textarea>
+                      </div>
+                    </div>
+                  </li>
+
+                  <li class="media gp_proveedor mb-5" style="display: none;">
+                    <img src="images/iconos/order.svg" height="24" class="mr-3 mt-4">
+                    <div class="media-body">
+                      <div class="form-group" >
+                        <label for="txt_order_compra_text" class="bmd-label-static titleInput">ORDEN DE COMPRA</label>
+                        <input type="hidden" class="form-control" id="txt_order_compra_id" name="txt_order_compra_id">
+                        <input type="hidden" class="form-control" id="txt_aroc" name="txt_aroc" value="0">
+                        <input type="text" class="form-control" id="txt_order_compra_text" name="txt_order_compra_text" value="">                
+                        <small id="" class="form-text text-muted">
+                          <input type="checkbox" id="chb_OC_Emergencia" name="chb_OC_Emergencia"> No cuenta con OC (Emergencia)
+                        </small>
+                        <span class="bmd-help"></span>
+                      </div>
+                    </div>
+                  </li>
+
+                  <!--<li class="media">
+                    <img src="images/iconos/motivo.svg" height="24" class="mr-3 mt-4">
+                    <div class="media-body">
+                      <div class="form-group ">
+                        <label for="tx_quantity" class="bmd-label-static is-filled titleInput">CANTIDAD</label>
+                        <input type="text" name="tx_quantity" id="tx_quantity" class="form-control cabecera">
+                      </div>
+                    </div>
+                  </li>-->
+
+                </ul> 
+                <div class="text-center col-md-12 col-lg-12">
+                    <button type="button" class="btn btn-green-lime btn-raised btn-rounded" id="bt_register_visita">Enviar Formulario</button>
+                </div>
+                <input type="hidden" value="" id="hid_email_colaborador" name="hid_email_colaborador">
+                <input type="hidden" value="" id="hid_name_colaborador" name="hid_name_colaborador">
+                <input type="hidden" value="" id="hid_anonymous_access_token" name="hid_anonymous_access_token">
+                <input type="hidden" value="" id="hid_name_user" name=" hid_name_user">
+                <input type="hidden" value="" id="hid_type_access_request" name="hid_type_access_request">
+                
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-9" id="body_form_request_register" style="overflow: auto; height: 550px;">
+          
+        </div>
+      </div>
+    </main>
+  </div>
+
+</div>

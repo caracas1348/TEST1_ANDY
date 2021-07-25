@@ -1,0 +1,1228 @@
+<link rel="stylesheet" href="./view/ssoma/ssoma.css">
+<link rel="stylesheet" href="./css/auditorLiderList.css">
+<div class="row justify-content-center">
+    <div class="col-12">
+        
+        <!-- start filtro -->
+        <div class="row mt-4 align-items-center">
+            <div class="col-8">
+                
+                <div class="row align-items-center">
+                    <div class="col-2 py-2">
+                        
+                            <label for="sel_filter_unidad_organizativa" class="">Uni. de Negocio </label>
+                                <select name="sel_filter_unidad_organizativa" class="form-control select-filtroCA Patch_selectCA" id="sel_filter_unidad_organizativa" onChange="selectUnidadOrganizativaFilter()"  style="padding: 0px !important;">
+                                </select>
+                        
+                    </div>
+                    
+                    <div class="col-2 py-2" >
+                        <label for="sel_filter_sede" class="">Sede </label>
+                        <select name="sel_filter_sede" class="form-control select-filtroCA Patch_selectCA" id="sel_filter_sede" style="padding: 0px !important;" required>
+                            <option value="" selected disabled>Seleccionar</option>
+                        </select>
+                    </div>
+
+                    <div class="col-2">
+                        <label for="txt_date_start_evaluacion">Fecha Hasta</label>
+                        <input  type="text" id="txt_date_start_evaluacion" name="txt_date_start_evaluacion" class="form-control bg-white" readonly onChange="vw_auditorias_list.validarFechas(3)">
+                    </div>
+
+                    <!--div class="col-2 py-2" >
+                        <label for="txt_date_start_evaluacion" class=" "> Fecha Inicio </label>
+                        <input type="text" name="txt_date_start_evaluacion" id="txt_date_start_evaluacion" class="form-control form-control2 " maxlength="10" value="" autocomplete="off" onChange="vw_auditorias_list.validarFechas(3)" >
+                    </div-->
+
+                    <div class="col-2">
+                        <label for="txt_date_end_evaluacion">Fecha Desde</label>
+                        <input  type="text" id="txt_date_end_evaluacion" name="txt_date_end_evaluacion" class="form-control bg-white" readonly onChange="vw_auditorias_list.validarFechas(3)">
+                    </div>
+                    
+                    <!--div class="col-2 py-2">
+                        <label for="txt_date_end_evaluacion" class=" "> Fecha Fin </label>
+                        <input type="text" name="txt_date_end_evaluacion" id="txt_date_end_evaluacion" class="form-control form-control2 " maxlength="10" value="" autocomplete="off" onChange="vw_auditorias_list.validarFechas(3)">
+                    </div-->
+                   
+                    <div class="col-2 py-2" >
+                        <label for="sel_filter_estado" class="">Estado </label>
+                        <select name="sel_filter_estado" class="form-control select-filtroCA Patch_selectCA" id="sel_filter_estado" style="padding: 0px !important;" required>
+                        </select>
+                    </div>
+
+                    <div class="col-2 py-2" >
+                                <button type="button" onClick="vw_auditorias_list.filtroTablaDivsAuditorias();" name="jesus" id="buscarAuditorias" class="btn btn-system-green">Buscar</button> <!-- btn-buscarCA -->
+                    </div> <!-- onClick="buscarAuditorias()" -->
+
+                </div>
+            </div>
+
+            <div class="col-3"></div>
+            <div class="col-1">
+                <div class="row aling-items-center">
+                    <div class="col-12 pr-0">
+                        <div class="media-body mt-2">
+                            <div class="form-group" id="cant_auditorias" style="font-size: 25px;font-weight: bold;">
+                                <img src="images/iconos/copia-1.svg" class="mb-3"> 
+                                <span class="cantidad ml-3" id="cantidad">0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- end filtro -->
+
+
+
+
+
+
+
+        
+        <!-- start listado -->
+
+        <div class="row justify-content-center mt-5">
+            <div class="col-12">
+                <div class="header-tabla px-2 py-3">
+                    <div class="row m-0 justify-content-between align-items-center text-center">
+                        <div class="col-1 text-center" style="font-size: 15px">ID Auditoria</div>
+                        <div class="col-1 text-center" style="font-size: 15px">Unidad Negocio</div>
+                        <div class="col-1 text-center" style="font-size: 15px">Sede</div>
+                        <div class="col-1 text-center" style="font-size: 15px">Norma</div>
+                        <div class="col-1 text-center" style="font-size: 15px">Tipo</div>
+                        <div class="col-1 text-center" style="font-size: 15px">Fecha Inicio</div>
+                        <div class="col-1 text-center" style="font-size: 15px">Fecha Fin</div>
+                        <div class="col-1 text-center" style="font-size: 15px">Estado</div>
+                        <div class="col-4 text-center" style="font-size: 15px">
+                            <div class="row">
+                                <div class="col-3 text-center" style="font-size: 15px">Plan</div>
+                                <div class="col-3 text-center" style="font-size: 15px">Ver</div>
+                                <div class="col-3 text-center" style="font-size: 15px">Enviar</div>
+                                <div class="col-3 text-center" style="font-size: 15px">Suspender</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--<div class="body-tabla mt-4" id="bodyTablaSinAuditorias" style="display: block">
+                    <div class="content-registros-no-encontrados">
+                        <div>
+                            <img src="./images/iconos/escritura-1.svg" alt="">
+                            <p class="mt-4">No tienes auditorias ingresadas</p>
+                        </div>
+                    </div>
+                </div>-->
+                <div class="body-tabla-list">
+                    <div class="item-tabla p-2 px-2" style="font-size: 13px">
+                        <div class="row m-0 justify-content-between align-items-center tbody_trainning">
+                            <div class="col-1 text-center">14001TMAT000120</div>
+                            <div class="col-1 text-center">Harina y Aceite</div>
+                            <div class="col-1 text-center">Matarani</div>
+                            <div class="col-1 text-center">14001/BASC</div>
+                            <div class="col-1 text-center">Externa</div>
+                            <div class="col-1 text-center">21/03/2020</div>
+                            <div class="col-1 text-center">27/03/2020</div>
+                            <div class="col-1 text-center">Asignado</div>
+                            <div class="col-4 text-center">
+                                <div class="row">
+                                    <div class="col-3">
+                                        <button type='button' onclick="$('#newPlanAuditoriaModal').modal('show').addClass('fade')" class='btn-circle btn-register border-0' style='background-color: #58c25d'>
+                                            <img src="./images/iconos/escritura4.svg" alt="" class="edit-1" >
+                                        </button>
+                                    </div>
+                                    <div class="col-3 text-center">
+                                        <button type='button' class='btn-circle btn_read border-0 ' style='background-color: #b2b2b2' id='btn_read'>
+                                            <img src='./images/iconos/ojo_1.svg' class='ojo-1'>
+                                        </button>
+                                    </div>
+                                    <div class="col-3 text-center">
+                                        <button type='button' class='btn-circle btn_read border-0 ' style='background-color: #b2b2b2' id='btn_send' >
+                                            <img src='./images/iconos/Pathcan.svg' class='ojo-1'>
+                                        </button>
+                                    </div>
+                                    <div class="col-3 text-center">
+                                        <button type='button' class='btn-circle btn_read border-0 ' style='background-color: #ff6767' id='btn_suspender'  >
+                                            <img src='./images/iconos/on-off-button.svg' class='ojo-1'>
+                                        </button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div id="pagination-container" class="mt-3"></div>
+                    </div>
+
+        </div>
+        <!-- end   listado -->
+
+        <!-- start modal_1 registro-->
+        <div class="modal fade"  id="newPlanAuditoriaModal" aria-hidden="true"  tabindex="-1" role="dialog" aria-labelledby="modalAddCompanyTitle" >
+            <div class="modal-dialog modal-dialog-centered rounded " role="document" style="max-width: 1350px; z-index: 1030; ">
+                <div class="modal-content rounded " style="box-shadow: none;">
+                    <div style="overflow: hidden;height: 750px;overflow-x: hidden; ">
+                    <div class="modal-header fix-header-modal" >
+                        <div class="card-header text-left text-white  card-header-FormAuditor" style="width: 100%">
+                            <div class="row">
+                                <div class="col-4">
+                                </div>
+                                <div id="txtHeadModalRegisterAuditor" class="col-4 text-center txtHeadModalAuditor">
+                                    Plan de Auditor&iacute;a 14001TMAT000120
+                                </div>
+                                <div class="col-1"></div>
+                                <div class="col- align-content-center txtHeadModalAuditor">
+                                    <button type="button" class="btn-save-auditor2"  id="btn_create_auditor" >
+                                        <i class="txt-btn-save">Guardar</i> </button>
+                                    <button type="button" class="btn-close-auditor2" onclick="vw_auditor_list.cancelformAuditor();" id="btn-cancelar" >
+                                        <i class="txt-btn-close">Finalizar</i> </button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="modal-body dialog-position" id="bodymodalShowAuditor" style=" justify-content:space-around; align-content:center;">
+
+                        <div class="card " style="border: 0px !important; border-radius: 10px; box-shadow: none;">
+                            <div class="card-body2">
+                                <form class="form floating-label" novalidate="novalidate">
+
+
+                                    <div class="stepwizard " id="manipulation">
+                                        <div class="d-flex justify-content-center stepwizard-row setup-panel">
+                                            <div class="col-4 stepwizard-step marginbtnstep2">
+                                                <a href="#step-1" id="step1"> <button type="button" class="btn-formAuditor" href="#step-1" id="btn_step1" >
+                                                    <b>Datos Personales</b> </button></a>
+                                            </div>
+                                            <div class="col-4 stepwizard-step marginbtnstep2">
+                                                <a href="#step-2" id="step2" ><button  type="button"  class="btn-formAuditor" href="#step-2" id="btn_step2" >
+                                                    <b>Programnaci&oacute;</b> </button></a>
+                                            </div>
+                                            <!--                                          <div class="col-2 stepwizard-step marginbtnstep" ">
+                                                                                          <a id="step3"> <button type="button" class="btn-formAuditor" href="#step-3" id="btn_step3" >
+                                                                                              <b>Evaluaciones</b> </button></a>
+                                                                                      </div>-->
+                                            <div class="col-4 stepwizard-step marginbtnstep2">
+                                                <a href="#step-4" id="step4"> <button  type="button" class="btn-formAuditor" href="#step-4" id="btn_step4" >
+                                                    <b>Resultados</b> </button></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row setup-content" id="step-1" style="display: block;">
+                                        <div class="card-body2">
+                                            <div class="row " >
+                                                <div>
+                                                    <h6 class="detalle-formauditor p-3">Detalle</h6>
+                                                </div>
+                                                <div class="col-10 p-4">
+                                                    <hr>
+                                                </div>
+                                                <div class="p-4">
+                                                    <img src="./images/iconos/menu.svg" class="menu-1-1">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="card-body2">
+                                            <div class="row col-12 justify-content-around">
+
+                                                <div class="form-group col-5 border" >
+                                                    <label for="objetivo" class="label">Objetivo</label>
+                                                    <p>holaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiooooooooooooooooooooooooooooooouuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuLas ideas que comunica un texto están contenidas en lo que se suele denominar «macroproposiciones», unidades estructurales de nivel superior o global, que otorgan coherencia al texto constituyendo su hilo central, el esqueleto estructural que cohesiona elementos lingüísticos formales de alto Las ideas que comunica un texto están contenidas en lo que se suele denominar «macroproposiciones», unidades estructurales de nivel superior o global, que otorgan coherencia al texto constituyendo su hilo central, el esqueleto estructural que cohesiona elementos lingüísticos formales de altoLas ideas que comunica un texto están contenidas en lo que se suele denominar «macroproposiciones», unidades estructurales de nivel superior o global, que otorgan coherencia al texto constituyendo su hilo central, el esqueleto estructural </p>
+                                                </div>
+                                                <div class="form-group col-5 p-4 border">
+                                                    <label for="alcance" class="label">Alcance de la Auditor&iacute;a</label>
+                                                    <p class="text-scroll">Las ideas que comunica un texto están contenidas en lo que se suele denominar «macroproposiciones», unidades estructurales de nivel superior o global, que otorgan coherencia al texto constituyendo su hilo central, el esqueleto estructural que cohesiona elementos lingüísticos formales de alto Las ideas que comunica un texto están contenidas en lo que se suele denominar «macroproposiciones», unidades estructurales de nivel superior o global, que otorgan coherencia al texto constituyendo su hilo central, el esqueleto estructural que cohesiona elementos lingüísticos formales de altoLas ideas que comunica un texto están contenidas en lo que se suele denominar «macroproposiciones», unidades estructurales de nivel superior o global, que otorgan coherencia al texto constituyendo su hilo central, el esqueleto estructural que cohesiona elementos lingüísticos formales de altoLas ideas que comunica un texto están contenidas en lo que se suele denominar «macroproposiciones», unidades estructurales de nivel superior o global, que otorgan coherencia al texto constituyendo su hilo central, el esqueleto estructural que cohesiona elementos lingüísticos formales de altoLas ideas que comunica un texto están contenidas en lo que se suele denominar «macroproposiciones», unidades estructurales de nivel superior o global, que otorgan coherencia al texto constituyendo su hilo central, el esqueleto estructural que cohesiona elementos lingüísticos formales de altoLas ideas que comunica un texto están contenidas en lo que se suele denominar «macroproposiciones», unidades estructurales de nivel superior o global, que otorgan coherencia al texto constituyendo su hilo central, el esqueleto estructural que cohesiona elementos lingüísticos formales de altoLas ideas que comunica un texto están contenidas en lo que se suele denominar «macroproposiciones», unidades estructurales de nivel superior o global, que otorgan coherencia al texto constituyendo su hilo central, el esqueleto estructural que cohesiona elementos lingüísticos formales de altoLas ideas que comunica un texto están contenidas en lo que se suele denominar «macroproposiciones», unidades estructurales de nivel superior o global, que otorgan coherencia al texto constituyendo su hilo central, el esqueleto estructural que cohesiona elementos lingüísticos formales de altoLas ideas que comunica un texto están contenidas en lo que se suele denominar «macroproposiciones», unidades estructurales de nivel superior o global, que otorgan coherencia al texto constituyendo su hilo central, el esqueleto estructural que cohesiona elementos lingüísticos formales de altoLas ideas que comunica un texto están contenidas en lo que se suele denominar «macroproposiciones», unidades estructurales de nivel superior o global, que otorgan coherencia al texto constituyendo su hilo central, el esqueleto estructural que cohesiona elementos lingüísticos formales de altoLas ideas que comunica un texto están contenidas en lo que se suele denominar «macroproposiciones», unidades estructurales de nivel superior o global, que otorgan coherencia al texto constituyendo su hilo central, el esqueleto estructural que cohesiona elementos lingüísticos formales de altoLas ideas que comunica un texto están contenidas en lo que se suele denominar «macroproposiciones», unidades estructurales de nivel superior o global, que otorgan coherencia al texto constituyendo su hilo central, el esqueleto estructural que cohesiona elementos lingüísticos formales de alto</p>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="card-body2">
+                                            <div class="row col-12 ">
+
+                                                    <div class="form-group col-2" >
+                                                        <h6 class="detalle-formauditor">Lugar de Auditoría</h6>
+                                                       <div class="Rectangle-trainnig-2">
+                                                    <div class="form-group p-2" >
+                                                                <label for="txt_role_played" class="bmd-label-static titleInput2"><b>Sede Auditor&iacute;a</b> </label>
+                                                        <div class="input-group">
+                                                            <input  type="text" name="txt_date_start_skill" id="txt_date_start_skill" aria-describedby="sizing-addon2" class="form-control form-control2 bg-white fechasA" readonly disabled maxlength="10" value="20/20/2020" autocomplete="off" >
+                                                            <span class="input-group-addon" id="sizing-addon2"><img src="./images/iconos/calendario-3.svg"></span>
+                                                        </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                      <div class="form-group col-2" >
+                                                        <h6 class="detalle-formauditor">Fecha Planificada</h6>
+                                                       <div class="Rectangle-trainnig-2 verde">
+                                                    <div class="form-group p-2" >
+                                                                <label for="txt_role_played" class="bmd-label-static titleInput2"><b> Fecha Inicio</b> </label>
+                                                        <div class="input-group">
+                                                            <input  type="text" name="txt_date_start_skill" id="txt_date_start_skill" aria-describedby="sizing-addon2" class="form-control form-control2 bg-white fechasA" readonly disabled maxlength="10" value="20/20/2020" autocomplete="off" >
+                                                            <span class="input-group-addon" id="sizing-addon2"><img src="./images/iconos/calendario-3.svg"></span>
+                                                        </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-2" >
+                                                    <h6 class="detalle-formauditor">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h6>
+                                                       <div class="Rectangle-trainnig-2 verde">
+                                                    <div class="form-group p-2" >
+                                                                <label for="txt_role_played" class="bmd-label-static titleInput2"><b> Fecha Fin</b> </label>
+                                                        <div class="input-group">
+                                                            <input  type="text" name="txt_date_start_skill" id="txt_date_start_skill" aria-describedby="sizing-addon2" class="form-control form-control2 bg-white fechasA" readonly disabled maxlength="10" value="20/20/2020" autocomplete="off" >
+                                                            <span class="input-group-addon" id="sizing-addon2"><img src="./images/iconos/calendario-3.svg"></span>
+                                                        </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-2" >
+                                                        <h6 class="detalle-formauditor">Fecha de Ejecuci&oacute;n</h6>
+                                                       <div class="Rectangle-trainnig-2 azul">
+                                                    <div class="form-group p-2" >
+                                                                <label for="txt_role_played" class="bmd-label-static titleInput2"><b> Fecha Inicio</b> </label>
+                                                        <div class="input-group">
+                                                            <input  type="text" name="txt_date_start_skill" id="txt_date_start_skill" aria-describedby="sizing-addon2" class="form-control form-control2 bg-white fechasA" readonly disabled maxlength="10" value="20/20/2020" autocomplete="off" >
+                                                            <span class="input-group-addon" id="sizing-addon2"><img src="./images/iconos/calendario-3.svg"></span>
+                                                        </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-2" >
+                                                    <h6 class="detalle-formauditor">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h6>
+                                                       <div class="Rectangle-trainnig-2 azul">
+                                                    <div class="form-group p-2" >
+                                                                <label for="txt_role_played" class="bmd-label-static titleInput2"><b> Fecha Fin</b> </label>
+                                                        <div class="input-group">
+                                                            <input  type="text" name="txt_date_start_skill" id="txt_date_start_skill" aria-describedby="sizing-addon2" class="form-control form-control2 bg-white fechasA" readonly disabled maxlength="10" value="20/20/2020" autocomplete="off" >
+                                                            <span class="input-group-addon" id="sizing-addon2"><img src="./images/iconos/calendario-3.svg"></span>
+                                                        </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-2" >
+                                                    <h6 class="detalle-formauditor">Elaboraci&oacute;n de Plan</h6>
+                                                       <div class="Rectangle-trainnig-2">
+                                                    <div class="form-group p-2" >
+                                                                <label for="txt_role_played" class="bmd-label-static titleInput2"><b> Fec. de Elaboraci&oacute;n</b> </label>
+                                                        <div class="input-group">
+                                                            <input  type="text" name="txt_date_start_skill" id="txt_date_start_skill" aria-describedby="sizing-addon2" class="form-control form-control2 bg-white fechasA" readonly disabled maxlength="10" value="20/20/2020" autocomplete="off" >
+                                                            <span class="input-group-addon" id="sizing-addon2"><img src="./images/iconos/calendario-3.svg"></span>
+                                                        </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                    
+                                            </div>
+                                        </div>
+
+                                        <div class="card-body2">
+                                            <div class="row col-12 justify-content-around align-items-center">
+                                                <div class="row col-3">
+                                                    <h6 class="detalle-formauditor">Auditor  <span style="float: right;text-align: right;position: absolute;" class="input-group-addon" id="sizing-addon2"><img src="./images/iconos/Group758.svg" style="float: right;text-align: right;position: absolute;"></span></h6>
+                                                    <div class="caja-list">
+                                                        <div class="caja-list-int">
+                                                            <p>Ejemplo</p>
+                                                        </div>
+                                                        <div class="caja-list-int">
+                                                            <p>Ejemplo</p>
+                                                        </div>
+                                                        <div class="caja-list-int">
+                                                            <p>Ejemplo</p>
+                                                        </div>
+                                                        <div class="caja-list-int">
+                                                            <p>Ejemplo</p>
+                                                        </div>
+                                                        <div class="caja-list-int">
+                                                            <p>Ejemplo</p>
+                                                        </div>
+                                                        <div class="caja-list-int">
+                                                            <p>Ejemplo</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row col-3">
+                                                    <h6 class="detalle-formauditor">Observadores  <span style="float: right;text-align: right;" class="input-group-addon" id="sizing-addon2"><img src="./images/iconos/ojo7.svg"></span></h6>
+                                                    <div class="caja-list">
+                                                        <div class="caja-list-int">
+                                                            <p>Ejemplo</p>
+                                                        </div>
+                                                        <div class="caja-list-int">
+                                                            <p>Ejemplo</p>
+                                                        </div>
+                                                        <div class="caja-list-int">
+                                                            <p>Ejemplo</p>
+                                                        </div>
+                                                        <div class="caja-list-int">
+                                                            <p>Ejemplo</p>
+                                                        </div>
+                                                        <div class="caja-list-int">
+                                                            <p>Ejemplo</p>
+                                                        </div>
+                                                        <div class="caja-list-int">
+                                                            <p>Ejemplo</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-3">
+                                                    <button type="button" class="btn_confirmar_modal bg-green-lime-modal" id="CambiarFecha"><b>Cambiar fecha de Ejecuci&oacute;n</b></button>
+                                                </div>
+                                                <div class="col-3">
+                                                    <button class="btn_cerrar_modal" style="background-color: #ffffff;"><b>Ver Historial de Programaci&oacute;n</b></button>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                    
+                                    <div class="row setup-content" id="step-2">
+                                        <div class="card-body2">
+                                            <div class="row p-0">
+                                                <div >
+                                                    <p class="detalle-register-trainning">Registrar</p>
+                                                </div>
+                                                <div class="col-9 p-2">
+                                                    <hr>
+                                                </div>
+                                                <div >
+                                                    <button class="btn-add-trinning" type="button" id="add-trainning" >Agregar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-body2">
+                                            <div class="row p-0 d-flex justify-content-around">
+                                                <div class="Rectangle-trainnig-">
+                                                    <div class="form-group p-lg-2">
+                                                        <input type="hidden" id="Capacitaciones">
+                                                        <label for="sel_rule_trainning" class="bmd-label-static titleInput2"><b> Seleccionar Norma</b> </label>
+                                                        <select name="sel_rule_trainning" class="form-control form-control2 " id="sel_rule_trainning">
+                                                            <option value=""></option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="Rectangle-trainnig-">
+                                                    <div class="form-group p-lg-2">
+                                                        <label for="sel_trainnig" class="bmd-label-static titleInput2"><b> Curso </b> </label>
+                                                        <select name="sel_trainnig" class="form-control form-control2 " id="sel_trainnig">
+                                                            <option value=""></option>
+                                                            <!-- <option value="Curso de Interpretación">Curso de Interpretación</option>
+                                                            <option value="Curso de Auditor">Curso de Auditor Interno</option> -->
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="Rectangle-trainnig-">
+                                                    <div class="form-group p-lg-2">
+                                                        <label for="sel_type" class="bmd-label-static titleInput2"><b> Seleccionar Tipo </b> </label>
+                                                        <select name="sel_type" class="form-control form-control2 " id="sel_type">
+                                                            <option value=""></option>
+
+
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="card-body2">
+                                            <div class="row p-0 d-flex justify-content-around">
+                                                <div class="Rectangle-trainnig-">
+                                                    <div class="form-group p-lg-2" >
+                                                        <label for="txt_date_start" class="bmd-label-static titleInput2"><b> Fecha Inicio</b> </label>
+                                                        <div class="input-group">
+                                                            <input type="text" name="txt_date_start" id="txt_date_start" aria-describedby="sizing-addon2" class="form-control form-control2 bg-white patch" maxlength="10" value="" autocomplete="off"  readonly>
+                                                            <span class="input-group-addon" id="sizing-addon2"><img src="./images/iconos/calendario-3.svg"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="Rectangle-trainnig-">
+                                                    <div class="form-group p-lg-2" >
+                                                        <label for="txt_date_end" class="bmd-label-static titleInput2"><b> Fecha Fin </b> </label>
+                                                        <div class="input-group">
+                                                        <input type="text" name="txt_date_end" id="txt_date_end" aria-describedby="sizing-addon2" class="form-control form-control2 bg-white " maxlength="10" value="" autocomplete="off" readonly>
+                                                            <span class="input-group-addon" id="sizing-addon2"><img src="./images/iconos/calendario-3.svg"></span>
+                                                        </div>
+                                                        </div>
+                                                </div>
+                                                <div >
+                                                    <input type="file" id="file_trainning" style="display:none"/>
+                                                    <button type="button"  class="to-attach" id="btn_file_trainning" name="btn_file_trainning">
+                                                        <img src="./images/iconos/attach_1.svg" >  Adjuntar documento </button>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="row ">
+                                            <input type="hidden" id="search2Box2">
+                                            <div class="col dialog-position">
+                                                <div class="dialog-position card p-0" style="box-shadow: none;">
+                                                    <div class="dialog-position card-body p-0 tb_trainning" >
+                                                        <table id="tb_trainning" name="tb_trainning" class=" table auditor p-0" style="overflow:hidden; width: 757px; border-radius: 4px;">
+                                                            <thead class="dd-flex justify-content-between tr-register-list-aptitude"  style="background-color: #34559c;   font-size: 15px; width: 757px; height: 57px; align-items: center;">
+                                                            <th class="p-3 F-Trainning" style="width: 6.125rem;">Norma (2)</th>
+                                                            <th class="p-3 F-Trainning" style="width: 11.563rem;">Curso</th>
+                                                            <th class="p-3 F-Trainning" style="width: 4.75rem;">F. Desde</th>
+                                                            <th class="p-3 F-Trainning" style="width: 4.75rem;">F. Hasta</th>
+                                                            <th class="p-3 F-Trainning" style="width: 4.75rem">Tipo</th>
+                                                            <th class="p-3 Ver-Adjunto F-Trainning" style="width: 4.188rem;">Ver
+                                                                Adjunto</th>
+                                                            <th class="p-3 F-Trainning Eliminar" style="width: 3.75rem;">Eliminar</th>
+                                                            </thead>
+                                                            <tbody id="tbody_trainning" >
+
+                                                            </tbody>
+                                                        </table>
+                                                        <!--                  <div class="d-flex justify-content-end">
+                                                                              <input type="text" style="width: 49px; border-radius: 4px;" id="paginate" autocomplete="off" >
+                                                                          </div>
+                                                                          style=" border-radius: 10px 10px 0px 0px; background: #05beee; height: 40px;"
+                                                      -->
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
+
+                                        </div>
+                                    </div>
+                                    <div class="row setup-content" id="step-3">
+                                        <div class="card-body2">
+                                            <div class="row p-0">
+                                                <div >
+                                                    <p class="detalle-register-trainning">Registrar</p>
+                                                </div>
+                                                <div class="col-9 p-2">
+                                                    <hr>
+                                                </div>
+                                                <div >
+                                                    <button class="btn-add-trinning"  type="button" id="add-eval" type="button" >Agregar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-body2">
+                                            <div class="row p-0 d-flex justify-content-around">
+                                                <div class="Rectangle-trainnig-">
+                                                    <div class="form-group p-lg-2">
+                                                        <label for="sel_audited_unit" class="bmd-label-static titleInput2"><b> Unidad auditada</b> </label>
+                                                        <input type="text" name="sel_audited_unit" id="sel_audited_unit" class="form-control form-control2 " value="" autocomplete="off" >
+                                                    </div>
+                                                </div>
+                                                <div class="Rectangle-trainnig-">
+                                                    <div class="form-group p-lg-2">
+                                                        <label for="sel_rule_audited" class="bmd-label-static titleInput2"><b> Seleccionar Norma</b> </label>
+                                                        <select name="sel_rule_trainning" class="form-control form-control2 " id="sel_rule_audited">
+                                                            <option value=""></option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="Rectangle-trainnig-">
+                                                    <div class="form-group p-lg-2" >
+                                                        <label for="txt_date_eval" class="bmd-label-static titleInput2"><b> Fecha de evaluacion </b> </label>
+                                                        <div class="input-group">
+                                                            <input type="text" name="txt_date_eval" id="txt_date_eval" aria-describedby="sizing-addon2" class="form-control form-control2 " maxlength="10" value="" autocomplete="off" >
+                                                            <span class="input-group-addon" id="sizing-addon2"><img src="./images/iconos/calendario-3.svg"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="card-body2">
+                                            <div class="row p-0 d-flex justify-content-around">
+                                                <div class="Rectangle-trainnig-">
+                                                    <div class="form-group p-lg-2">
+                                                        <label for="txt_role_played" class="bmd-label-static titleInput2"><b> Rol Desempeñado</b> </label>
+                                                        <select name="txt_role_played" class="form-control form-control2 " id="txt_role_played">
+                                                            <option value=""></option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="Rectangle-trainnig-">
+                                                    <div class="form-group p-lg-2">
+                                                        <label for="txt_score_end" class="bmd-label-static titleInput2"><b> Calificacion </b> </label>
+                                                        <input type="text" name="txt_score_end" id="txt_score_end" class="form-control form-control2 " value="" autocomplete="off" >
+                                                    </div>
+                                                </div>
+                                                <div >
+                                                    <input type="file" id="file_eval" style="display:none"/>
+                                                    <button type="button"  class="to-attach" id="btn_file_eval" >
+                                                        <img src="./images/iconos/attach_1.svg" >  Adjuntar documento </button>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="row ">
+                                            <input type="hidden" id="search2Box">
+                                            <div class="col dialog-position">
+                                                <div class="dialog-position card p-0" style="box-shadow: none;">
+                                                    <div class=" dialog-positioncard-body p-0 tb_trainning" >
+                                                        <table id="tb_eval" name="tb_eval" class="table auditor p-0" style="width:100%; width: 757px; border-radius: 4px;">
+                                                            <thead class="dd-flex justify-content-between tr-register-list-aptitude"  style="background-color: #34559c;  width: 757px; height: 57px; align-items: center;">
+                                                            <th class="p-3 Norma-2-" ><b>Unidad Auditada</b></th>
+                                                            <th class="p-3 Interpretacin-de-la-Norma-1-" ><b>Norma Auditada</b></th>
+                                                            <th class="p-3 Curso-de-Auditor-Interno-1-" ><b>Fecha de Evaluacion</b></th>
+                                                            <th class="p-3 F-Trainning" ><b>Rol Desempeñado</b></th>
+                                                            <th class="p-3 F-Trainning" ><b>Resultado de Evaluacion</b></th>
+                                                            <th class="p-3 Ver-Adjunto" ><b>Ver
+                                                                Adjunto</b></th>
+                                                            <th class="p-3 Eliminar" ><b>Eliminar</b></th>
+                                                            </thead>
+                                                            <tbody id="tbody_eval" >
+
+                                                            </tbody>
+                                                        </table>
+                                                        <!--                  <div class="d-flex justify-content-end">
+                                                                              <input type="text" style="width: 49px; border-radius: 4px;" id="paginate" autocomplete="off" >
+                                                                          </div>
+                                                                          style=" border-radius: 10px 10px 0px 0px; background: #05beee; height: 40px;"
+                                                      -->
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                    <div class="row setup-content" id="step-4">
+                                        <div class="card-body2">
+                                            <div class="row p-0">
+                                                <div >
+                                                    <p class="detalle-register-trainning">Registrar</p>
+                                                </div>
+                                                <div class="col-9 p-2">
+                                                    <hr>
+                                                </div>
+                                                <div >
+                                                    <button class="btn-add-trinning" type="button" id="add-skill" >Agregar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-body2">
+                                            <div class="row p-0 d-flex justify-content-around">
+                                                <div class="Rectangle-trainnig-">
+                                                    <div class="form-group p-lg-2">
+                                                        <label for="sel_rule_skill" class="bmd-label-static titleInput2"><b> Seleccionar Norma</b> </label>
+                                                        <select name="sel_rule_skill" class="form-control form-control2 " id="sel_rule_skill">
+                                                            <option value=""></option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="Rectangle-trainnig-">
+                                                    <div class="form-group p-lg-2">
+                                                        <label for="sel_role_skill" class="bmd-label-static titleInput2"><b> Rol</b> </label>
+                                                        <select name="sel_role_skill" class="form-control form-control2 " id="sel_role_skill">
+                                                            <option value=""></option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="Rectangle-trainnig-hidden">
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="card-body2">
+                                            <div class="row p-0 d-flex justify-content-around">
+                                                <div class="Rectangle-trainnig-">
+                                                    <div class="form-group p-lg-2" >
+                                                        <label for="txt_role_played" class="bmd-label-static titleInput2"><b> Fecha Inicio</b> </label>
+                                                        <div class="input-group">
+                                                            <input type="text" name="txt_date_start_skill" id="txt_date_start_skill" aria-describedby="sizing-addon2" class="form-control form-control2 bg-white " readonly maxlength="10" value="" autocomplete="off" >
+                                                            <span class="input-group-addon" id="sizing-addon2"><img src="./images/iconos/calendario-3.svg"></span>
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                                <div class="Rectangle-trainnig-">
+                                                    <div class="form-group p-lg-2" >
+                                                        <label for="txt_date_end_skill" class="bmd-label-static titleInput2"><b> Fecha Fin </b> </label>
+                                                        <div class="input-group">
+                                                            <input type="text" name="txt_date_end_skill" id="txt_date_end_skill" aria-describedby="sizing-addon2" class="form-control form-control2 bg-white " readonly maxlength="10" value="" autocomplete="off" >
+                                                            <span class="input-group-addon" id="sizing-addon2"><img src="./images/iconos/calendario-3.svg"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div >
+                                                    <input type="file" id="file_skill" style="display:none"/>
+                                                    <button type="button"  class="to-attach" id="btn_file_skill" >
+                                                        <img src="./images/iconos/attach_1.svg" >  Adjuntar documento </button>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="row ">
+                                            <input type="hidden" id="search2Box4">
+                                            <div class="col dialog-position">
+                                                <div class="dialog-position card p-0" style="box-shadow: none;">
+                                                    <div class="dialog-position card-body p-0 tb_trainning" >
+                                                        <table id="tb_skill" name="tb_skill" class="table auditor p-0" style="width: 757px; width: 757px;  overflow:hidden; border-radius: 4px;">
+                                                            <thead class="dd-flex justify-content-between tr-register-list-aptitude"  style="background-color: #34559c;  width: 757px; height: 57px; align-items: center;">
+                                                            <th class="p-3 F-Trainning" style="width: 7.29vw;" ><b>Norma (1) </b></th>
+                                                            <th class="p-3 F-Trainning" ><b>Observador (1)</b></th>
+                                                            <th class="p-3 F-Trainning" ><b>Auditor (1)</b></th>
+                                                            <th class="p-3 F-Trainning" ><b>Lider (0)</b></th>
+                                                            <th class="p-3 F-Trainning" style="width: 5.73vw;"><b>F. Desde</b></th>
+                                                            <th class="p-3 F-Trainning" style="width: 5.73vw;"><b>F. Hasta</b></th>
+                                                            <th class="p-3 Ver-Adjunto" ><b>Ver
+                                                                Adjunto</b></th>
+                                                            <th class="p-3 Eliminar" ><b>Eliminar</b></th>
+                                                            </thead>
+                                                            <tbody id="tbody_skill" >
+
+                                                            </tbody>
+                                                        </table>
+                                                        <!--                  <div class="d-flex justify-content-end">
+                                                                              <input type="text" style="width: 49px; border-radius: 4px;" id="paginate" autocomplete="off" >
+                                                                          </div>
+                                                                          style=" border-radius: 10px 10px 0px 0px; background: #05beee; height: 40px;"
+                                                      -->
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+
+
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- end modal_1 registro-->
+
+        <!-- alert confirmar -->
+    <div class="modal fade "  id="modalShowAlertConfirm2" tabindex="-1" role="dialog" aria-labelledby="modalAddCompanyTitle" aria-hidden="true" >
+        <div class="modal-dialog modal-dialog-centered rounded " role="document" style="max-width: 472px; z-index: 1030; ">
+            <div class="modal-content rounded " style="border: 0px !important; background-color:rgba(0,0,0,.0001) !important; box-shadow: none;">
+
+                <div style="overflow: hidden;height: 500px;overflow-x: hidden; ">
+                    <div class="modal-body" id="">
+                        <div class="col-sm-12 col-md-12" style="color:#575757c9;">
+
+                            <div class="card " style=" border-radius: 10px; box-shadow: none;">
+                                <div class="card-header text-center text-white  " style=" border-radius: 10px 10px 0px 0px; background:#05beee; height: 95px;"><img src="images/iconos/informacio1.svg"><span><b><br><br>&nbsp;&nbsp;&nbsp;&nbsp;</b></span></div>
+
+                                <div class="card-body">
+                                    <div class="row p-0 d-flex justify-content-center">
+                                        <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;" >
+                                            <h4> <b>Se guardarán los datos registrados</b></h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="espacio"></div>
+                                <div class="card-body">
+                                    <div class="row p-0 d-flex justify-content-center">
+                                        <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;font-size: 15px;" >
+                                            <h5><b>¿Desea guardar los datos?</b>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="espacio"></div>
+                                <div class="card-body">
+                                    <div class="row p-0 d-flex justify-content-center">
+                                        <div class="col-sm-12 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;font-size: 15px;" >
+                                            <button type="button" id="btnValida" class="btn  btn-raised" style="background-color: #05beee; height: 338px; width: 160.4px; object-fit: contain; border-radius: 4.4px !important;" >Confirmar</button>
+
+                                            <button type="button" class="btn   btn-white btn-raised" style=" background-color: #fff; height: 338px;  width: 160.4px; object-fit: contain; border-radius: 4.4px !important;   border: solid 1.1px #000000 !important;" id="CancelConfirm">Cerrar</button>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+
+
+
+
+                                <div ></div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- alert confirmar-->
+
+
+
+
+
+<iframe style="display: none;" id="showFile"></iframe>
+<!-- alert Datos Guardados-->
+<script src="./js/paginator/pagination.js"></script>
+
+<script>
+
+    
+
+    $('#fechasA').datepicker({
+        dateFormat: "dd/mm/yy", autoclose: true
+    });
+
+
+    $('document').ready(function (){
+
+        $('#CambiarFecha').click(function () {
+            $("#newPlanAuditoriaModal").removeClass("fade").modal("hide");
+            $("#modalShowAlertConfirm2").modal("show").addClass("fade");
+        });
+
+        $('#CancelConfirm').click(function () {
+            $('#modalShowAlertConfirm2').modal('hide').addClass("fade");
+            $("#newPlanAuditoriaModal").modal("show").addClass("fade");
+        });
+
+        //Chequea switch_estatus para mostrar el estado del toggle como Activo
+        $("#switch_estatus").prop("checked", true);
+        $('.textarea_noActivo').hide();
+        //Chequea switch_estatus para mostrar el estado del toggle como Activo
+
+        //Cambio de los Step del formulario y color de los botones
+        var navListItems = $('div.setup-panel div a button'), // tab nav items
+            allWells = $('.setup-content'), // content div
+            allNextBtn = $('.nextBtn'), // next button
+            step1 = $('#step-1');
+        allWells.hide(); // hide all contents by defauld
+        step1.show();
+
+        $('#btn_step1').addClass('btn-primary-check');
+
+        navListItems.click(function (e) {
+            e.preventDefault();
+            var $target = $($(this).attr('href')),
+                $item = $(this);
+
+            if (!$item.hasClass('disabled')) {
+                navListItems.removeClass('btn-primary-check').addClass('btn-default');
+                $item.addClass('btn-primary-check');
+                allWells.hide();
+                $target.show();
+                // $target.find('input:eq(0)').focus();
+            }
+        });
+        // next button
+        allNextBtn.click(function(){
+            var curStep = $(this).closest(".setup-content"),
+                curStepBtn = curStep.attr("id"),
+                nextStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().next().children("a"),
+                isValid = true;
+            // Validation
+            $(".form-group").removeClass("has-error");
+
+            // move to next step if valid
+            if (isValid)
+                nextStepWizard.removeAttr('disabled').trigger('click');
+        });
+
+        $('div.setup-panel div a.btn-primary').trigger('click');
+        //Cambio de los Step del formulario y color de los botones
+
+        //Agregar Informacion en el step-3 EVALUACIONES
+        $('#add-eval').click(function (){
+            if(   $('#sel_audited_unit').val()=="" || $('#sel_rule_audited').val()=="" || $('#txt_date_eval').val()=="" || $('#txt_role_played').val() =="" || $('#txt_score_end').val()=="")
+            {
+                swal("No puede agregar Campos vacios")
+
+            }else if(document.getElementById("file_eval").files.length == 0){
+                swal("Por favor agregue una constancia de su evaluacion")
+            }else {
+
+
+                $("#tbody_eval").append("<tr class='espacio'>" +
+                    "<input type='hidden' name='sel_audited_unit[]' value='" + $('#sel_audited_unit').val() + "'> " +
+                    "<input type='hidden' name='sel_rule_audited[]' value='" + $('#sel_rule_audited').val() + "'>" +
+                    "<input type='hidden' name='txt_date_eval[]' value='" + $('#txt_date_eval').val() + "'> " +
+                    "<input type='hidden' name='txt_role_played[]' value='" + $('#txt_role_played').val() + "'>" +
+                    "<input type='hidden' name='txt_score_end[]' value='" + $('#txt_score_end').val() + "'>" +
+                    "<input type='hidden' name='file_eval[]' value='" + $('#file_eval').val() + "'>" +
+
+                    "</tr>");
+                $("#tbody_eval").append("<tr class='dd-flex justify-content-between mb-3 row-table' >" +
+
+                    "                            <td  class='p-3 '>" + $('#sel_audited_unit').val() + "</td>" +
+                    "                            <td  class='p-3 '>" + $('#sel_rule_audited').val() + "</td>" +
+                    "                            <td  class='p-3 '>" + $('#txt_date_eval').val() + "</td>" +
+                    "                            <td  class='p-3 '>" + $('#txt_role_played').val() + "</td>" +
+                    "                            <td  class='p-3 '>" + $('#txt_score_end').val() + "</td>" +
+                    "                            <td  class='p-3 '>" +
+                    "                                <button type='button' value='"+$('#file_eval').val()+"'  class='btn-circle readPDF_eval' style='background-color: #58c25d' id='btn_edit'>" +
+                    "                                    <img src='./images/iconos/ojo_1.svg' class='edit-1'>" +
+                    "                                </button>" +
+                    "                            </td>" +
+                    "                            <td  class='p-3 '>" +
+                    "                                <button type='button' class='btn-circle' style='background-color: #373e68' id='btn_read' >" +
+                    "                                    <img src='./images/iconos/delete.svg' class='ojo-1'>" +
+                    "                                </button>" +
+                    "                            </td>" +
+                    "                        </tr>");
+
+                $('#sel_audited_unit').val('');
+                $('#sel_rule_audited').val('');
+                $('#txt_date_eval').val('');
+                $('#txt_role_played').val('');
+                $('#txt_score_end').val('');
+            }
+        })
+        //Agregar Informacion en el step-3 EVALUACIONES
+
+        //Agregar Informacion en el step-2 CAPACITACIONES
+        $('#add-trainning').click(function (){
+            if( $('#sel_rule_trainning').val() =="" || $('#sel_trainnig').val()=="" || $('#sel_type').val() =="" ||  $('#sel_type').val()=="" ||  $('#txt_date_start').val() =="" || $('#txt_date_end').val()==""){
+                swal("No puede agregar Campos vacios")
+            }/* else if(document.getElementById("file_trainning").files.length == 0){
+                swal("Por favor agregue una constancia de su participacion en la capacitacion")
+            } */else {
+                var selT = document.getElementById('sel_rule_trainning');
+                var selectedT = selT.options[selT.selectedIndex];
+                var normaid = $('#sel_rule_trainning').val();
+                var TipoCursoId =  $('#sel_trainnig').val();
+                var Tipo = $('#sel_type').val();
+                var Fecha_Inicio = $('#txt_date_start').val().split('/').reverse().join('-');
+                var Fecha_Final = $('#txt_date_end').val().split('/').reverse().join('-');
+                var Created_By = getCookie("vtas_id_hash" + sessionStorage.tabVisitasa);
+
+                var file_trainning = document.getElementById("file_trainning").files[0];
+                var base64_trainning="";
+                if(file_trainning)
+                {
+                    toBase64(file_trainning).then(
+                        data => {
+                            base64_trainning = data;
+                        }
+                    );
+                }
+                if(file_trainning)
+                {
+                    toBase64(file_trainning).then(
+                        data => {
+                            capacitacionesOBJ.push({
+                                "NormaId": parseInt(normaid),
+                                "TipoCursoId": parseInt(TipoCursoId),
+                                "Tipo": parseInt(Tipo),
+                                "Fecha_Inicio": Fecha_Inicio,
+                                "Fecha_Final": Fecha_Final,
+                                "Adjunto": data,
+                                "Active": 1,
+                                "Created_By": Created_By
+                            })
+                        }
+                    );
+                }
+                else{
+
+                        capacitacionesOBJ.push({
+                            "NormaId": parseInt(normaid),
+                            "TipoCursoId": parseInt(TipoCursoId),
+                            "Tipo": parseInt(Tipo),
+                            "Fecha_Inicio": Fecha_Inicio,
+                            "Fecha_Final": Fecha_Final,
+                            "Adjunto": '',
+                            "Active": 1,
+                            "Created_By": Created_By
+                        })
+
+
+                }
+
+
+
+
+                $("#tbody_trainning").append("<tr  >" +
+                    "                            <td>" + selectedT.getAttribute('descripcion') + "</td>" +
+                    "                            <td>" + $("#sel_trainnig option:selected").text()  + "</td>" +
+                    "                            <td>" + $('#txt_date_start').val() + "</td>" +
+                    "                            <td>" + $('#txt_date_end').val() + "</td>" +
+                    "                            <td>" + $("#sel_type option:selected").text() + "</td>" +
+                    "                            <td>" +
+                    "                                <button type='button' value='" + base64_trainning + "'  onclick='openNewTab(this.value)' class='btn-circle readPDF_trainning' style='background-color: #58c25d' id='btn_edit'>" +
+                    "                                    <img src='./images/iconos/ojo_1.svg' class='edit-1'>" +
+                    "                                </button>" +
+                    "                            </td>" +
+                    "                            <td>" +
+                    "                                <button type='button' class='btn-circle delete' _Id='' style='background-color: #ff4d4d' id='btn_read' >" +
+                    "                                    <img src='./images/iconos/delete.svg' class='ojo-1'>" +
+                    "                                </button>" +
+                    "                            </td>" +
+                    "                        </tr>");
+
+                var checkObservador = vw_auditor_list.comprobarObservador($('#sel_trainnig').val(),$('#sel_rule_trainning').val())
+                if (checkObservador==true){
+                    $(".observador").prop("checked", true);
+
+                }
+
+                $('#sel_rule_trainning').val('')
+                $('#sel_trainnig').val('')
+                $('#sel_type').val('')
+                $('#sel_type').val('')
+                $('#txt_date_start').val('')
+                $('#txt_date_end').val('')
+            }
+        })
+        //Agregar Informacion en el step-2 CAPACITACIONES
+
+        //Agregar Informacion en el step-4 EXPERIENCIA
+        $('#add-skill').click(function () {
+            base64_skill="";
+
+            if ($('#sel_role_skill').val() == "" || $('#sel_rule_skill').val() == "" || $('#txt_date_start_skill').val() == "" || $('#txt_date_end_skill').val() == "") {
+                swal("No puede agregar Campos vacios")
+            } /*else {
+                if ($('#txt_date_start_skill').val() > $('#txt_date_end_skill').val()) {
+                    swal("La fecha de inicio no puede ser mayor a la fecha fin")
+                } else if(document.getElementById("file_skill").files.length == 0){
+                    swal("Por favor agregue una constancia de su participacion en la auditoria")
+                } */
+                else {
+                    var selS = document.getElementById('sel_rule_skill');
+                    var selectedS = selS.options[selS.selectedIndex];
+
+                    var selRole = document.getElementById('sel_role_skill');
+                    var selectedRole = selRole.options[selRole.selectedIndex];
+
+                    var x = "";
+                    switch (selectedRole.getAttribute('description')) {
+                        case  "Observador" :
+                            x = "<td  >" + 'Si' + "</td>" + "<td  class='p-3 '>" + '-' + "</td>" + "<td  class='p-3 '>" + '-' + "</td>";
+                            break;
+                        case "Auditor Lider" :
+                            x = "<td  >" + '-' + "</td>" + "<td  class='p-3 '>" + '-' + "</td>" + "<td  class='p-3 '>" + 'Si' + "</td>";
+                            break;
+                        case "Auditor" :
+                            x = "<td  >" + '-' + "</td>" + "<td  class='p-3 '>" + 'Si' + "</td>" + "<td  class='p-3 '>" + '-' + "</td>";
+                            break;
+                    }
+
+                    var file_skill = document.getElementById("file_skill").files[0];
+                    if(file_skill)
+                    {
+                       toBase64(file_skill).then(
+                            data => {
+                                base64_skill =  data
+                            }
+                        );
+                    }
+                    var NormaId = $('#sel_rule_skill').val();
+                    var RolId= $('#sel_role_skill').val();
+                    var Fecha_Inicio2=  $('#txt_date_start_skill').val().split('/').reverse().join('-');
+                    var Fecha_Final2=  $('#txt_date_end_skill').val().split('/').reverse().join('-');
+                    var Created_By = getCookie("vtas_id_hash" + sessionStorage.tabVisitasa);
+
+                    var file_skill = document.getElementById("file_skill").files[0];
+                    console.log(base64_skill)
+                    if(file_skill)
+                    {
+                        toBase64(file_skill?file_skill:'').then(
+                            data => {
+                                experienciasOBJ.push({
+                                    "NormaId": NormaId,
+                                    "RolId" : RolId,
+                                    "FechaInicio": Fecha_Inicio2,
+                                    "FechaFin":Fecha_Final2,
+                                    "Adjunto": data?data:'',
+                                    "Active":1,
+                                    "Created_By": Created_By})
+                            }
+                        );
+                    }
+                    else{
+
+                            experienciasOBJ.push({
+                                "NormaId": NormaId,
+                                "RolId" : RolId,
+                                "FechaInicio": Fecha_Inicio2,
+                                "FechaFin":Fecha_Final2,
+                                "Adjunto":'',
+                                "Active":1,
+                                "Created_By": Created_By})
+
+                    }
+
+
+                    $("#tbody_skill").append("<tr  >" +
+                        "<input type='hidden' name='id_skill[]' value=''> " +
+                        "<input type='hidden' name='sel_rule_skill[]' value='" + $('#sel_rule_skill').val() + "'> " +
+                        "<input type='hidden' name='sel_role_skill[]' value='" + $('#sel_role_skill').val() + "'> " +
+                        "<input type='hidden' name='txt_date_start_skill[]' value='" + $('#txt_date_start_skill').val() + "'> " +
+                        "<input type='hidden' name='txt_date_end_skill[]' value='" + $('#txt_date_end_skill').val() + "'> " +
+                        "<input type='hidden' name='file_skill[]' value='" + base64_skill + "'> " +
+                        "                            <td  >" +selectedS.getAttribute('descripcion') + "</td>" +
+                        x +
+                        "                            <td  >" + $('#txt_date_start_skill').val() + "</td>" +
+                        "                            <td  >" + $('#txt_date_end_skill').val() + "</td>" +
+                        "                            <td  >" +
+                        "                                <button type='button'  value='" + base64_skill + "' class='btn-circle readPDF_skill' onclick='openNewTab(this.value)' style='background-color: #58c25d' id='btn_edit'>" +
+                        "                                    <img src='./images/iconos/ojo_1.svg' class='edit-1'>" +
+                        "                                </button>" +
+                        "                            </td>" +
+                        "                            <td  >" +
+                        "                                <button type='button' class='btn-circle delete_skill delete' _Id='' style='background-color: #ff4d4d' id='btn_read' >" +
+                        "                                    <img src='./images/iconos/delete.svg' class='ojo-1'>" +
+                        "                                </button>" +
+                        "                            </td>" +
+                        "                        </tr>");
+
+                    $('#sel_role_skill').val('');
+                    $('#sel_rule_skill').val('');
+                    $('#txt_date_start_skill').val('');
+                    $('#txt_date_end_skill').val('');
+                }
+        })
+        //Agregar Informacion en el step-4 EXPERIENCIA
+
+        //BOTON GUARDAR DEL FORMULARIO
+
+
+
+
+        //BOTON PARA LA BUSQUEDA DE ARCHIVOS STEP-4 EXPERIENCIA
+
+
+        //VALIDAR LA EXTENSION DEL ARCHIVO STEP-4 EXPERIENCIA
+
+        //LLAMADO AL SELECT DINAMICO PARA OBTENER LAS NORMAS POR ESPECIALIDAD
+        $('#EspecialidadId').on('change',function () {
+            vw_auditor_list.normasPorEspecialidades($('#EspecialidadId').val())
+
+        })
+        //LLAMADO AL SELECT DINAMICO PARA OBTENER LAS NORMAS POR ESPECIALIDAD
+
+        //MODIFICACION DEL TOGGLE ESTATUS
+        $('.switchBtn').click(function(){
+            if($('#idAuditor').val()=="")
+            {
+                $('#switch_estatus').prop('checked') == true
+            }else {
+                if ($('#switch_estatus').prop('checked') == true) {
+                    $('#customSwitch1').html('Activo');
+                    $('.textarea_noActivo').hide();
+                } else {
+                    $('.textarea_noActivo').show();
+                    $('#customSwitch1').html('Inactivo');
+                }
+            }
+        })
+        //MODIFICACION DEL TOGGLE ESTATUS
+
+//CERRAR MSJ DE CONFIRMACION "LOS DATOS GUARDADOS EXITOSAMENTE"
+        $('#btnSalida').click(function () {
+            cont_auditor=cont_auditor+1;
+            $("#cant_auditor").html("<b>"+cont_auditor+"</b>");
+
+            $("#modalShowAlertOk").removeClass("fade").modal("hide");
+
+
+        });
+        //CERRAR MSJ DE CONFIRMACION "LOS DATOS GUARDADOS EXITOSAMENTE"
+
+
+        //MOSTRAR PDF DE EXPERIENCIAS
+
+        $('#tbody_skill').on('click','.delete_skill', function () {
+            //  $(this).closest('tr').remove();
+        })
+
+        const toBase64 = file => new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = () => resolve(reader.result);
+            reader.onerror = error => reject(error);
+        });
+
+        $('#tbody_skill').on('click', '.delete', function() {
+            console.log(this);
+            if(this.getAttribute('_Id')!=""){
+                vw_auditor_list.deleteSkill(this.getAttribute('_Id'));
+            }
+            $(this).parents('tr').remove();
+        });
+        $('#tbody_trainning').on('click', '.delete', function() {
+
+            if(this.getAttribute('_Id')!=""){
+                vw_auditor_list.deleteTrainning(this.getAttribute('_Id'));
+            }
+            $(this).parents('tr').remove();
+
+        });
+
+
+    })
+    //VALIDADOR DE FECHAS CAPACITACIONES
+    $('#txt_date_end').on('change', function () {
+        var dateStart = $('#txt_date_start').val();
+        var dateEnd = $('#txt_date_end').val();
+        console.log(dateStart,dateEnd)
+        if (process_Date(dateStart) > process_Date(dateEnd)) {
+            swal("La fecha de inicio no puede ser mayor a la fecha fin")
+            $('#txt_date_end').val('')
+        }
+    })
+
+    $('#txt_date_start').on('change', function () {
+        var dateStart = $('#txt_date_start').val();
+        var dateEnd = $('#txt_date_end').val();
+        if (dateEnd!=""){
+            if (process_Date(dateStart) > process_Date(dateEnd)) {
+                swal("La fecha de inicio no puede ser mayor a la fecha fin")
+                $('#txt_date_end').val('')
+            }
+        }
+
+    })
+    //VALIDADOR DE FECHAS CAPACITACIONES
+
+    //VALIDADOR DE FECHAS EXPERIENCIAS
+    $('#txt_date_end_skill').on('change', function () {
+        var dateStartSkill = $('#txt_date_start_skill').val();
+        var dateEndSkillnew = $('#txt_date_end_skill').val();
+
+        if (process_Date(dateStartSkill) > process_Date(dateEndSkillnew)) {
+            swal("La fecha de inicio no puede ser mayor a la fecha fin")
+            $('#txt_date_end_skill').val('')
+        }
+    })
+
+    $('#txt_date_start_skill').on('change', function () {
+        var dateStartSkill = $('#txt_date_start_skill').val();
+        var dateEndSkillnew = $('#txt_date_end_skill').val();
+        if (dateEndSkillnew!="") {
+
+            if (process_Date(dateStartSkill) > process_Date(dateEndSkillnew)) {
+                swal("La fecha de inicio no puede ser mayor a la fecha fin")
+                $('#txt_date_end_skill').val('')
+            }
+        }
+    })
+    //VALIDADOR DE FECHAS EXPERIENCIAS
+    function process_Date(date){
+        var parts = date.split("/");
+        return new Date(parts[2], parts[1] - 1, parts[0]);
+    }
+    function openNewTab(ref){
+    if (ref!="" || ref != null || ref != undefined){
+      //  window.open("data:application/octet-stream;charset=utf-16le;base64," + ref, "_blank","toolbar=1, scrollbars=1, resizable=1, width=" + 1015 + ", height=" + 800);
+
+        let pdfWindow = window.open("")
+        pdfWindow.document.write("<iframe width='100%' height='100%' src='data:application/pdf;base64, " + encodeURI(ref) + "'></iframe>")
+    }else{
+        swal("Error","Este Registro no contiene de archivos","error")
+
+    }
+
+    }
+</script>
+
+
+

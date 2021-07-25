@@ -1,0 +1,880 @@
+<link rel="stylesheet" href="./view/ssoma/ssoma.css">
+<link rel="stylesheet" href="./css/pagination.css">
+<link rel="stylesheet" href="./css/auditorLiderList.css">
+
+<style type="text/css">
+	ul.ui-autocomplete.ui-menu { width: 400px !important; }
+
+
+    /*
+    
+    */
+
+
+    .semana{
+      color:#000;
+      background-color:#fff;
+      cursor: pointer;
+    }
+
+
+    .semana:hover{
+     color:#fff;
+     background-color:#05BEEE;
+     cursor: pointer;
+    }
+
+
+
+    #sel_procesoPlan{
+        height: 24px;
+        background-color: white;
+        cursor: pointer;
+    }
+
+    #sel_procesoPlan:hover{
+        height: 124px;
+        background-color: white;
+        cursor: pointer;
+    }
+
+
+    .txtAreaLista{
+         border-radius: 4px;
+        -moz-border-radius: 4px;
+        -webkit-border-radius: 4px;
+        -o-border-radius: 4px;
+        background: #F2F2F2;
+        background: linear-gradient(left, #F2F2F2, #F2F2F2);
+        background: -moz-linear-gradient(left, #F2F2F2, #F2F2F2);
+        background: -webkit-linear-gradient(left, #F2F2F2, #F2F2F2);
+        background: -o-linear-gradient(left, #F2F2F2, #F2F2F2);
+        width: 100%;
+        height: 80%;
+        border-color:#F2F2F2;
+        resize: none;
+    }
+
+
+
+
+
+
+    input[type="time"]::-webkit-calendar-picker-indicator
+    {
+        filter: invert(48%) sepia(13%) saturate(3207%) hue-rotate(130deg) brightness(95%) contrast(80%);
+        cursor:pointer;
+    }
+    
+
+    
+	.btn_si_adv{
+	    width: 10px;
+	    border-radius: 4.4px;
+	    background-color:#05beee;
+	    padding: 15px 10px;
+	    color: #fff;
+	    border: none;
+	    font-size: 15px;
+	    cursor: pointer;
+	}
+
+	    
+	.btn_no_adv{
+	    width: 10px;
+	    border-radius: 4.4px;
+	    background-color:#fff;
+	    border-style: solid;
+	    border-color: #000 !important;
+	    padding: 15px 10px;
+	    color: #000;
+	    border: none;
+	    font-size: 15px;
+	    cursor: pointer;
+	}
+
+	.subTitleModal {
+	    font-size: 1rem;
+	    font-weight: bold;
+	    padding-left: 1rem;
+	}
+	.btn-save-auditor2{
+		background-color: #58c25d !important;
+		color: #fff !important;
+		font-size: 0.8rem !important;
+		width: 10rem !important;
+		margin-left: 4px !important;
+	}
+	.headerTablaModalPlanAnual{
+		font-weight: normal !important;
+		font-size: 1rem !important; 
+		height: 3.5rem !important; 
+		padding-top: 0rem !important; 
+		background-color: #34559c !important; 
+		border-radius: 4px !important; 
+		color: #fff !important;
+	}
+
+	.textoListadosPlanAnual{ 
+		color: #5c5c5c !important;
+		margin: 10px 0px 0px 13px !important;
+	}
+	.textoVerDetalleObjetivos{
+		text-decoration: underline !important;
+	}
+
+	.altoListado{
+        height: 6.013rem;
+		font-size: 0.938rem; 
+		padding: 4px !important;
+	}
+	.listadoVacio{
+		background-color: #ececec !important;
+	}
+	.bgBlue{
+		background-color: #34559c !important;
+		color: #34559c !important;
+		border-radius: 4px 4px 0px 0px !important;
+	}
+
+	 .bgBlue2{
+        background-color: #05BEEE !important;
+        color: #05BEEE  !important;
+        border-radius: 4px 4px 0px 0px !important;
+      }
+      
+	.bgGreen{
+		background-color: #58c25d !important;
+		color: #58c25d !important;
+		border-radius: 0px 0px 4px 4px !important;
+	}
+	.bgRed{
+		background-color: #ff6767 !important;
+		color: #ff6767 !important;
+		border-radius: 0px 0px 4px 4px !important;
+	}
+	.bgYellow{
+		background-color: #ffb525 !important;
+		color: #ffb525 !important;
+		border-radius: 0px 0px 4px 4px !important;
+	}
+	.bgWhite{
+		background-color: #fff !important;
+		color: #fff !important;
+		border-radius: 0px 0px 4px 4px !important;
+	}
+	.fontGris{
+		color: #5c5c5c !important;
+	}
+	.fontWhite{
+		color: #fff !important;
+	}
+
+
+</style>
+
+<div class="mt-5">
+	<button type="button" class="btn btn-warning" onmouseup="$('#modalVerPlanAnualSP3').modal('show').addClass('fade');">ver Modal</button>
+</div>
+
+<div class="modal fade "  id="modalVerPlanAnualSP3" tabindex="-1" data-backdrop="static" data-keyboard="false" aria-hidden="true"  tabindex="-1" role="dialog" > 
+    <div class="modal-dialog modal-dialog-centered rounded" role="document" style="max-width: 80%; z-index: 1030; ">
+    	<div class="modal-content rounded border-0"  style="background:white; height: 800px !important;" >
+            <div style="overflow: hidden; height: 750px; overflow-x: hidden; ">
+                    
+                <! START MODAL-HEADER >
+                <div class="modal-header fix-header-modal" >
+                    <div class="card-header text-center text-white modal-dialog-centered  card-header-FormAuditor" id="red-head" style="width: 100%; padding: 0px 0px !important;">
+                    	<div class="row align-items-center" style="width: 100%;">
+							<div class="col-1">
+								<img src="./images/prev.svg" style="cursor:pointer; display: none" title="Salir" onclick=" $('#modalVerPlanAnualSP3').modal('hide').removeClass('fade');">
+							</div>
+							<div class="col-10">
+								<span id="titleModalVerPlanAnualSP3"><h5 class="m-0">Ver PASST21001</h5></span>
+							</div>
+							<div class="col-1">
+								<img src="./images/iconos/delete.svg" style="cursor:pointer;" title = 'Salir' onclick="$('#modalVerPlanAnualSP3').modal('hide').removeClass('fade');" >
+							</div>
+                        </div>
+                    </div>
+                </div>
+                <! END MODAL-HEADER >
+
+                <! START MODAL-BODY >
+                <div class="modal-body dialog-position" id="bodymodalShowAuditor" style=" justify-content:space-around; align-content:center; padding: 10px 0px 0px !important;">
+                    <div class="card " style="border: 0px !important; border-radius: 5px; box-shadow: none;">
+                    	<div class="card-body2" >
+							
+							<div class="row justify-content-around align-items-center">
+
+								<div class="col-12">
+									<table border="0" width="100%">
+										<tr>
+											<td width="3rem">
+												<span id="subTitleModalVerPlanAnualSP3" class="subTitleModal">Objetivos ( 8 )/ Actividades (40)</span>
+											</td>
+											<td width="20%">
+												<span class="subTitleModal">Seleccionar Mes</span>
+											</td>
+											<td width="10%">
+												<select id="selectMesPlanAnual" name="selectMesPlanAnual" class="form-control" >
+													<option value="0"></option>
+													<option value="1">Enero</option>
+													<option value="2">Febrero</option>
+													<option value="3">Marzo</option>
+													<option value="11">Noviembre</option>
+													<option value="12">Diciembre</option>
+												</select>
+											</td>
+											<td width="15%">
+												 &nbsp;&nbsp;<button type="button" id="btnExportarPlanAnual" class="btn btn-save-auditor2">Exportar Plan Anual</button>
+											</td>
+										</tr>
+									</table>
+								</div>
+
+                                <div class="col-12 caja-adj scroll-blue" style="height: 700px !important; border-color: white !important;">
+									
+									<div class="row justify-content-around align-items-center text-center">
+										
+										<div class="col-6">
+											
+											<div class="body-tabla-list-EvalAud" id="body-list-actividades" >
+												<table border="1" width="100%" >
+                                        			<thead>
+                                        				<tr>
+                                        					<th width="5%"  class="text-center headerTablaModalPlanAnual">&nbsp;Peso</th>
+                                        					<th width="95%" colspan="2" class="text-center headerTablaModalPlanAnual">&nbsp;Actividad/Entregable</th>
+                                        				</tr>
+                                        			</thead>
+                                        			<tbody id="listadoActividades">
+                                        				<tr>
+                                        					<td colspan="2">
+
+										                        <! START LISTADO DE ACTIVIDADES
+
+										                        <div class="body-tabla-list-EvalAud" id="body-tabla-list-EvalAud1">      
+	                                        						<div id = 'iddd'  class="item-tabla p-2" style="z-index: 1; padding: 0px !important; margin: 10px 0px 0px !important;">
+											                            <div class="row m-0 justify-content-between align-items-center tbody_trainning">
+											                                <div class="col-12 text-center altoListado listadoVacio">
+											                                    <div class="row">
+
+											                                    	<table width = "100%" border="0" style="border-color: white;font-size: 0.98rem;">
+	                                        											<tr >
+	                                        											 	<td width = "100%" colspan="3" align="center"><div id="c1TabGeny" class="text-left textoListadosPlanAnual" > Objetivo 1: Programa de Inspecciones SSOMA </div></td>
+	                                        											</tr>
+	                                        										</table>
+											                                    </div>
+											                                </div>
+											                            </div>
+											                        </div>
+												                </div>
+
+										                        <div class="body-tabla-list-EvalAud" id="body-tabla-list-EvalAud1">      
+	                                        						<div id = 'iddd'  class="item-tabla p-2" style="z-index: 1; padding: 0px !important; margin: 10px 0px 0px !important;">
+											                            <div class="row m-0 justify-content-between align-items-center tbody_trainning">
+											                                <div class="col-12 text-center altoListado">
+											                                    <div class="row">
+
+											                                    	<table width = "100%" border="0" style="border-color: red;font-size: 0.95rem;">
+	                                        											<tr >
+	                                        											 	<td width = "10%" align="center"><div id="c1TabGeny" class="text-left textoListadosPlanAnual" > 2% </div></td>
+	                                        											 	<td width = "70%" align="center"><div id="c1TabGeny" class="text-left textoListadosPlanAnual" > Actividad 1</div></td>
+	                                        											 	<td width = "20%" align="center"><div id="c1TabGeny" class="text-left textoListadosPlanAnual textoVerDetalleObjetivos"> Ver Detalle</div></td>
+	                                        											</tr>
+	                                        										</table>
+											                                    </div>
+											                                </div>
+											                            </div>
+											                        </div>
+												                </div>
+										                        <! END LISTADO DE ACTIVIDADES
+                                        					</td>
+                                        				</tr>
+                                        			</tbody>
+                                        		</table>
+
+											</div>
+											
+										</div>
+										<div class="col-6">
+											<div class=" scroll-blue3 verga" style="width: 100% !important;">
+                                                <div style="width: 2500px;" class="verga">
+	                                                <div class=" px-2">
+	                                                    <div class="row m-0 justify-content-between align-items-center text-center">
+	                                                    	
+	                                                    	<div class="col-8">
+	                                                    		
+	                                                    		<table border="1" id="listadoMeses" width="100%">
+	                                                    			<thead>
+	                                                    				<tr>
+	                                                    					<th width="7%" class="text-center headerTablaModalPlanAnual">Enero</th>
+	                                                    					<th width="1%" style="background-color: #fff !important;">&nbsp;</th>
+	                                                    					<th width="7%" class="text-center headerTablaModalPlanAnual">Febrero</th>
+	                                                    					<th width="1%" style="background-color: #fff !important;">&nbsp;</th>
+	                                                    					<th width="7%" class="text-center headerTablaModalPlanAnual">Marzo</th>
+	                                                    					<th width="1%" style="background-color: #fff !important;">&nbsp;</th>
+	                                                    					<th width="7%" class="text-center headerTablaModalPlanAnual">Abril</th>
+	                                                    					<th width="1%" style="background-color: #fff !important;">&nbsp;</th>
+	                                                    					<th width="7%" class="text-center headerTablaModalPlanAnual">Mayo</th>
+	                                                    					<th width="1%" style="background-color: #fff !important;">&nbsp;</th>
+	                                                    					<th width="7%" class="text-center headerTablaModalPlanAnual">Junio</th>
+	                                                    					<th width="1%" style="background-color: #fff !important;">&nbsp;</th>
+	                                                    					<th width="7%" class="text-center headerTablaModalPlanAnual">Julio</th>
+	                                                    					<th width="1%" style="background-color: #fff !important;">&nbsp;</th>
+	                                                    					<th width="7%" class="text-center headerTablaModalPlanAnual">Agosto</th>
+	                                                    					<th width="1%" style="background-color: #fff !important;">&nbsp;</th>
+	                                                    					<th width="7%" class="text-center headerTablaModalPlanAnual">Septiembre</th>
+	                                                    					<th width="1%" style="background-color: #fff !important;">&nbsp;</th>
+	                                                    					<th width="7%" class="text-center headerTablaModalPlanAnual">Octubre</th>
+	                                                    					<th width="1%" style="background-color: #fff !important;">&nbsp;</th>
+	                                                    					<th width="7%" class="text-center headerTablaModalPlanAnual">Noviembre</th>
+	                                                    					<th width="1%" style="background-color: #fff !important;">&nbsp;</th>
+	                                                    					<th width="7%" class="text-center headerTablaModalPlanAnual">Diciembre</th>
+
+	                                                    				</tr>
+	                                                    			</thead>
+	                                                    			<tbody>
+				                                        				<tr>
+				                                        					<td colspan="23">
+				                                        						<! START LISTADO DE MESES
+				                                        						<div class="body-tabla-list-EvalAud" id="body-tabla-list-EvalAud1">      
+					                                        						<div id = 'iddd'  class="item-tabla p-2" style="z-index: 1; padding: 0px !important; margin: 10px 0px 0px !important;">
+															                            <div class="row m-0 justify-content-between align-items-center tbody_trainning">
+															                                <div class="col-12 text-center altoListado listadoVacio">
+															                                    <div class="row">
+															                                    	<table width = "100%" border="0" style="border-color: red;font-size: 0.95rem;">
+					                                        											<tr >
+					                                        												<td width="100%" colspan="23"></td>
+					                                        											</tr>
+					                                        										</table>
+															                                    </div>
+															                                </div>
+															                            </div>
+															                        </div>
+															                    </div>
+
+															                    <div class="body-tabla-list-EvalAud" id="body-tabla-list-EvalAud1">      
+					                                        						<div id = 'iddd'  class="item-tabla p-2" style="z-index: 1; padding: 0px !important; margin: 0px 3px 0px 3px !important; border: 0px !important;">
+															                            <div class="row m-0 justify-content-between align-items-center tbody_trainning">
+															                                <div class="col-12 text-center altoListado">
+															                                    <div class="row">
+															                                    	<table width = "100%" border="0" style="border-color: red; margin: 3px 0px 0px 0px !important;">
+					                                        											<tr>
+					                                        												<td width="7%">
+						                                        												<table width="100%" border="0" style="border-color: green">
+						                                        													<tbody>
+						                                        														<tr>
+						                                        															<td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+						                                        															<!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+						                                        															<td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+						                                        															<!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+						                                        															<td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+						                                        															<!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+						                                        															<td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+						                                        														</tr>
+						                                        														<tr>
+						                                        															<td width="20%" class="text-white tdVerPlan bgWhite">sad</td>
+						                                        															<!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+						                                        															<td width="20%" class="text-white tdVerPlan bgGreen">asd</td>
+						                                        															<!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+						                                        															<td width="20%" class="text-white tdVerPlan bgYellow">asd</td>
+						                                        															<!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+						                                        															<td width="20%" class="text-white tdVerPlan bgRed">dsa</td>
+						                                        														</tr>
+						                                        													</tbody>
+						                                        												</table>
+					                                        												</td>
+					                                        												<td width="1%"></td>
+					                                        												<td width="7%">
+					                                        													<table width="100%" border="0" style="border-color: green">
+						                                        													<tbody>
+						                                        														<tr>
+						                                        															<td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+						                                        															<!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+						                                        															<td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+						                                        															<!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+						                                        															<td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+						                                        															<!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+						                                        															<td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+						                                        														</tr>
+						                                        														<tr>
+						                                        															<td width="20%" class="text-white tdVerPlan bgGreen">sad</td>
+						                                        															<!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+						                                        															<td width="20%" class="text-white tdVerPlan bgGreen">asd</td>
+						                                        															<!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+						                                        															<td width="20%" class="text-white tdVerPlan bgYellow">asd</td>
+						                                        															<!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+						                                        															<td width="20%" class="text-white tdVerPlan bgRed">dsa</td>
+						                                        														</tr>
+						                                        													</tbody>
+						                                        												</table>
+					                                        												</td>
+					                                        												<td width="1%"></td>
+					                                        												<td width="7%">
+					                                        													<table width="100%" border="0" style="border-color: green">
+						                                        													<tbody>
+						                                        														<tr>
+						                                        															<td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+						                                        															<!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+						                                        															<td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+						                                        															<!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+						                                        															<td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+						                                        															<!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+						                                        															<td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+						                                        														</tr>
+						                                        														<tr>
+						                                        															<td width="20%" class="text-white tdVerPlan bgGreen">sad</td>
+						                                        															<!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+						                                        															<td width="20%" class="text-white tdVerPlan bgGreen">asd</td>
+						                                        															<!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+						                                        															<td width="20%" class="text-white tdVerPlan bgYellow">asd</td>
+						                                        															<!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+						                                        															<td width="20%" class="text-white tdVerPlan bgRed">dsa</td>
+						                                        														</tr>
+						                                        													</tbody>
+						                                        												</table>
+					                                        												</td>
+					                                        												<td width="1%"></td>
+					                                        												<td width="7%">
+					                                        													<table width="100%" border="0" style="border-color: green">
+						                                        													<tbody>
+						                                        														<tr>
+						                                        															<td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+						                                        															<!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+						                                        															<td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+						                                        															<!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+						                                        															<td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+						                                        															<!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+						                                        															<td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+						                                        														</tr>
+						                                        														<tr>
+						                                        															<td width="20%" class="text-white tdVerPlan bgGreen">sad</td>
+						                                        															<!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+						                                        															<td width="20%" class="text-white tdVerPlan bgGreen">asd</td>
+						                                        															<!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+						                                        															<td width="20%" class="text-white tdVerPlan bgYellow">asd</td>
+						                                        															<!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+						                                        															<td width="20%" class="text-white tdVerPlan bgRed">dsa</td>
+						                                        														</tr>
+						                                        													</tbody>
+						                                        												</table>
+					                                        												</td>
+					                                        												<td width="1%"></td>
+					                                        												<td width="7%">
+					                                        													<table width="100%" border="0" style="border-color: green">
+						                                        													<tbody>
+						                                        														<tr>
+						                                        															<td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+						                                        															<!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+						                                        															<td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+						                                        															<!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+						                                        															<td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+						                                        															<!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+						                                        															<td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+						                                        														</tr>
+						                                        														<tr>
+						                                        															<td width="20%" class="text-white tdVerPlan bgGreen">sad</td>
+						                                        															<!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+						                                        															<td width="20%" class="text-white tdVerPlan bgGreen">asd</td>
+						                                        															<!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+						                                        															<td width="20%" class="text-white tdVerPlan bgYellow">asd</td>
+						                                        															<!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+						                                        															<td width="20%" class="text-white tdVerPlan bgRed">dsa</td>
+						                                        														</tr>
+						                                        													</tbody>
+						                                        												</table>
+					                                        												</td>
+					                                        												<td width="1%"></td>
+					                                        												<td width="7%">
+					                                        													<table width="100%" border="0" style="border-color: green">
+						                                        													<tbody>
+						                                        														<tr>
+						                                        															<td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+						                                        															<!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+						                                        															<td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+						                                        															<!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+						                                        															<td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+						                                        															<!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+						                                        															<td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+						                                        														</tr>
+						                                        														<tr>
+						                                        															<td width="20%" class="text-white tdVerPlan bgGreen">sad</td>
+						                                        															<!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+						                                        															<td width="20%" class="text-white tdVerPlan bgGreen">asd</td>
+						                                        															<!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+						                                        															<td width="20%" class="text-white tdVerPlan bgYellow">asd</td>
+						                                        															<!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+						                                        															<td width="20%" class="text-white tdVerPlan bgRed">dsa</td>
+						                                        														</tr>
+						                                        													</tbody>
+						                                        												</table>
+					                                        												</td>
+					                                        												<td width="1%"></td>
+					                                        												<td width="7%">
+					                                        													<table width="100%" border="0" style="border-color: green">
+						                                        													<tbody>
+						                                        														<tr>
+						                                        															<td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+						                                        															<!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+						                                        															<td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+						                                        															<!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+						                                        															<td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+						                                        															<!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+						                                        															<td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+						                                        														</tr>
+						                                        														<tr>
+						                                        															<td width="20%" class="text-white tdVerPlan bgGreen">sad</td>
+						                                        															<!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+						                                        															<td width="20%" class="text-white tdVerPlan bgGreen">asd</td>
+						                                        															<!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+						                                        															<td width="20%" class="text-white tdVerPlan bgYellow">asd</td>
+						                                        															<!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+						                                        															<td width="20%" class="text-white tdVerPlan bgRed">dsa</td>
+						                                        														</tr>
+						                                        													</tbody>
+						                                        												</table>
+					                                        												</td>
+					                                        												<td width="1%"></td>
+					                                        												<td width="7%">
+					                                        													<table width="100%" border="0" style="border-color: green">
+						                                        													<tbody>
+						                                        														<tr>
+						                                        															<td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+						                                        															<!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+						                                        															<td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+						                                        															<!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+						                                        															<td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+						                                        															<!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+						                                        															<td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+						                                        														</tr>
+						                                        														<tr>
+						                                        															<td width="20%" class="text-white tdVerPlan bgGreen">sad</td>
+						                                        															<!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+						                                        															<td width="20%" class="text-white tdVerPlan bgGreen">asd</td>
+						                                        															<!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+						                                        															<td width="20%" class="text-white tdVerPlan bgYellow">asd</td>
+						                                        															<!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+						                                        															<td width="20%" class="text-white tdVerPlan bgRed">dsa</td>
+						                                        														</tr>
+						                                        													</tbody>
+						                                        												</table>
+					                                        												</td>
+					                                        												<td width="1%"></td>
+					                                        												<td width="7%">
+					                                        													<table width="100%" border="0" style="border-color: green">
+						                                        													<tbody>
+						                                        														<tr>
+						                                        															<td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+						                                        															<!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+						                                        															<td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+						                                        															<!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+						                                        															<td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+						                                        															<!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+						                                        															<td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+						                                        														</tr>
+						                                        														<tr>
+						                                        															<td width="20%" class="text-white tdVerPlan bgGreen">sad</td>
+						                                        															<!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+						                                        															<td width="20%" class="text-white tdVerPlan bgGreen">asd</td>
+						                                        															<!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+						                                        															<td width="20%" class="text-white tdVerPlan bgYellow">asd</td>
+						                                        															<!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+						                                        															<td width="20%" class="text-white tdVerPlan bgRed">dsa</td>
+						                                        														</tr>
+						                                        													</tbody>
+						                                        												</table>
+					                                        												</td>
+					                                        												<td width="1%"></td>
+					                                        												<td width="7%">
+					                                        													<table width="100%" border="0" style="border-color: green">
+						                                        													<tbody>
+						                                        														<tr>
+						                                        															<td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+						                                        															<!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+						                                        															<td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+						                                        															<!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+						                                        															<td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+						                                        															<!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+						                                        															<td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+						                                        														</tr>
+						                                        														<tr>
+						                                        															<td width="20%" class="text-white tdVerPlan bgGreen">sad</td>
+						                                        															<!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+						                                        															<td width="20%" class="text-white tdVerPlan bgGreen">asd</td>
+						                                        															<!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+						                                        															<td width="20%" class="text-white tdVerPlan bgYellow">asd</td>
+						                                        															<!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+						                                        															<td width="20%" class="text-white tdVerPlan bgRed">dsa</td>
+						                                        														</tr>
+						                                        													</tbody>
+						                                        												</table>
+					                                        												</td>
+					                                        												<td width="1%"></td>
+					                                        												<td width="7%">
+					                                        													<table width="100%" border="0" style="border-color: green">
+						                                        													<tbody>
+						                                        														<tr>
+						                                        															<td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+						                                        															<!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+						                                        															<td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+						                                        															<!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+						                                        															<td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+						                                        															<!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+						                                        															<td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+						                                        														</tr>
+						                                        														<tr>
+						                                        															<td width="20%" class="text-white tdVerPlan bgGreen">sad</td>
+						                                        															<!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+						                                        															<td width="20%" class="text-white tdVerPlan bgGreen">asd</td>
+						                                        															<!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+						                                        															<td width="20%" class="text-white tdVerPlan bgYellow">asd</td>
+						                                        															<!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+						                                        															<td width="20%" class="text-white tdVerPlan bgRed">dsa</td>
+						                                        														</tr>
+						                                        													</tbody>
+						                                        												</table>
+					                                        												</td>
+					                                        												<td width="1%"></td>
+					                                        												<td width="7%">
+					                                        													<table width="100%" border="0" style="border-color: green">
+						                                        													<tbody>
+						                                        														<tr>
+						                                        															<td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+						                                        															<!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+						                                        															<td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+						                                        															<!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+						                                        															<td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+						                                        															<!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+						                                        															<td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+						                                        														</tr>
+						                                        														<tr>
+						                                        															<td width="20%" class="text-white tdVerPlan bgGreen">sad</td>
+						                                        															<!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+						                                        															<td width="20%" class="text-white tdVerPlan bgGreen">asd</td>
+						                                        															<!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+						                                        															<td width="20%" class="text-white tdVerPlan bgYellow">asd</td>
+						                                        															<!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+						                                        															<td width="20%" class="text-white tdVerPlan bgRed">dsa</td>
+						                                        														</tr>
+						                                        													</tbody>
+						                                        												</table>
+					                                        												</td>
+
+					                                        											</tr>
+					                                        											
+					                                        										</table>
+															                                    </div>
+															                                </div>
+															                            </div>
+															                        </div>
+															                    </div>
+				                                        						
+														                        <! END LISTADO DE MESES
+				                                        					</td>
+				                                        				</tr>
+				                                        			</tbody>
+	                                                    		</table>
+
+	                                                    	</div>
+
+	                                                    	<div class="col-4">
+	                                                    		
+	                                                    		<table border="1" id="listadoComplemento" width="100%">
+	                                                    			<thead>
+	                                                    				<tr>
+	                                                    					<th width="15%" class="text-center headerTablaModalPlanAnual">Responsable</th>
+	                                                    					<th width="2%" class="bgWhite">&nbsp;</th>
+	                                                    					<th width="15%" class="text-center headerTablaModalPlanAnual">Avance de <br>Etapa</th>
+	                                                    					<th width="2%" class="bgWhite">&nbsp;</th>
+	                                                    					<th width="15%" class="text-center headerTablaModalPlanAnual">Avance del<br> Proyecto</th>
+	                                                    					<th width="2%" class="bgWhite">&nbsp;</th>
+	                                                    					<th width="15%" class="text-center headerTablaModalPlanAnual">Cumplimiento</th>
+	                                                    					<th width="2%" class="bgWhite">&nbsp;</th>
+	                                                    					<th width="15%" class="text-center headerTablaModalPlanAnual" style="font-size: 0.7rem !important;">Cumplimiento al: <br>03/10/2020</th>
+	                                                    					<th width="2%" class="bgWhite">&nbsp;</th>
+	                                                    					<th width="15%" class="text-center headerTablaModalPlanAnual" style="font-size: 0.7rem !important;">Cumplimiento del <br>Proyecto</th>
+
+	                                                    				</tr>
+	                                                    			</thead>
+	                                                    			<tbody>
+				                                        				<tr>
+				                                        					<td colspan="11">
+				                                        						<! START LISTADO DE COMPLEMENTOS
+				                                        						<div class="body-tabla-list-EvalAud" id="body-tabla-list-EvalAud1">      
+					                                        						<div id = 'iddd'  class="item-tabla p-2" style="z-index: 1; padding: 0px !important; margin: 0px 3px 0px 3px !important;">
+															                            <div class="row m-0 justify-content-between align-items-center tbody_trainning">
+															                                <div class="col-12 text-center altoListado listadoVacio">
+															                                    <div class="row">
+															                                    	<table width = "100%" border="0" style="border-color: red;font-size: 0.95rem;">
+					                                        											<tr >
+					                                        												<td width="100%" colspan="11"></td>
+					                                        											</tr>
+					                                        										</table>
+															                                    </div>
+															                                </div>
+															                            </div>
+															                        </div>
+															                    </div>
+
+				                                        						<div class="body-tabla-list-EvalAud" id="body-tabla-list-EvalAud1">      
+					                                        						<div id = 'iddd'  class="p-2" style="z-index: 1; padding: 0px !important; margin: 10px 0px 0px !important;">
+															                            <div class="row m-0 justify-content-between align-items-center tbody_trainning">
+															                                <div class="col-12 text-center altoListado">
+															                                    <div class="row">
+															                                    	<table width = "100%" border="0" style="border-color: red;font-size: 0.95rem;">
+					                                        											<tr >
+					                                        												<td width="15%">
+					                                        													<div id="c1TabGeny" class="text-left textoListadosPlanAnual" > Jesus Millan </div>
+					                                        												</td>
+					                                        												<td width="2%" class="bgWhite"></td>
+					                                        												<td width="15%">
+					                                        													<div id="c1TabGeny" class="text-center textoListadosPlanAnual" > <span class="pr-4">6</span> <span>12</span> 
+					                                        													</div>
+					                                        												</td>
+					                                        												<td width="2%" class="bgWhite"></td>
+					                                        												<td width="15%">
+					                                        													<div id="c1TabGeny" class="text-center textoListadosPlanAnual" > <span class="pr-4">50</span> <span>50</span> 
+					                                        													</div>
+					                                        												</td>
+					                                        												<td width="2%" class="bgWhite"></td>
+					                                        												<td width="15%">
+					                                        													<div id="c1TabGeny" class="text-center textoListadosPlanAnual" > <span>6</span>
+					                                        													</div>
+					                                        												</td>
+					                                        												<td width="2%" class="bgWhite"></td>
+					                                        												<td width="15%">
+					                                        													<div id="c1TabGeny" class="text-left textoListadosPlanAnual bgYellow" style="margin: 0px !important;"> 
+					                                        														<table width="100%" border="0" style="border-color: green">
+							                                        													<tbody>
+							                                        														<tr>
+							                                        															<td rowspan="2" width="24%" class="bgYellow fontGris text-center">70 %</td>
+							                                        														</tr>
+							                                        													</tbody>
+							                                        												</table>
+
+					                                        													</div>
+					                                        												</td>
+					                                        												<td width="2%" class="bgWhite"></td>
+					                                        												<td width="15%">
+					                                        													<div id="c1TabGeny" class="text-left textoListadosPlanAnual bgGreen" style="margin: 0px !important;"> 
+					                                        														<table width="100%" border="0" style="border-color: green">
+							                                        													<tbody>
+							                                        														<tr>
+							                                        															<td rowspan="2" width="24%" class="bgGreen fontWhite text-center">70 %</td>
+							                                        														</tr>
+							                                        													</tbody>
+							                                        												</table>
+					                                        													</div>
+					                                        												</td>
+					                                        											</tr>
+					                                        										</table>
+															                                    </div>
+															                                </div>
+															                            </div>
+															                        </div>
+															                    </div>
+														                        <! END LISTADO DE COMPLEMENTOS
+				                                        					</td>
+				                                        				</tr>
+				                                        			</tbody>
+	                                                    		</table>
+
+	                                                    	</div>
+
+	                                                    </div>
+	                                                </div>
+	                                            </div>
+	                                        </div>
+										</div>
+
+									</div>
+                                  
+                                    
+                                </div>
+                            </div>
+
+ 							
+
+                    	</div>
+                    </div>
+                </div>
+                <! START MODAL-BODY >
+
+
+            </div>
+    	</div>
+    </div>
+</div>

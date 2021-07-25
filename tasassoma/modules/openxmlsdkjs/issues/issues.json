@@ -1,0 +1,18 @@
+[
+  {
+    "Id": 1,
+    "Title": "Library can't handle trash items"
+  },
+  {
+    "Id": 2,
+    "Title": "Missing .js / .min.js"
+  },
+  {
+    "Id": 3,
+    "Title": "Error in the endsWith Function"
+  },
+  {
+    "Id": 4,
+    "Title": "Bug in openXml.OpenXmlPackage.prototype.addRelationship"
+  }
+]

@@ -1,0 +1,1560 @@
+<link rel="stylesheet" href="./view/ssoma/ssoma.css">
+<link rel="stylesheet" href="./css/pagination.css">
+<link rel="stylesheet" href="./css/auditorLiderList.css">
+<link rel="stylesheet" href="./css/sass/customize.css?v=3">
+
+<!-- START FILTROS  -->
+<div class="row justify-content-center">
+
+    <style type="text/css">
+
+        ul.ui-autocomplete.ui-menu { width: 400px !important; }
+
+        #sel_procesoPlan{
+            height: 24px;
+            background-color: white;
+            cursor: pointer;
+        }
+
+        #sel_procesoPlan:hover{
+            height: 124px;
+            background-color: white;
+            cursor: pointer;
+        }
+
+
+        .txtAreaLista{
+             border-radius: 4px;
+            -moz-border-radius: 4px;
+            -webkit-border-radius: 4px;
+            -o-border-radius: 4px;
+            background: #F2F2F2;
+            background: linear-gradient(left, #F2F2F2, #F2F2F2);
+            background: -moz-linear-gradient(left, #F2F2F2, #F2F2F2);
+            background: -webkit-linear-gradient(left, #F2F2F2, #F2F2F2);
+            background: -o-linear-gradient(left, #F2F2F2, #F2F2F2);
+            width: 100%;
+            height: 80%;
+            border-color:#F2F2F2;
+            resize: none;
+        }
+
+
+        input[type="time"]::-webkit-calendar-picker-indicator
+        {
+            filter: invert(48%) sepia(13%) saturate(3207%) hue-rotate(130deg) brightness(95%) contrast(80%);
+            cursor:pointer;
+        }
+
+        .fontrem{
+            font-size: 0.8rem !important;
+        }
+
+        @media (max-width: 800px)
+        {
+            .fontZiseDinamico
+            {
+                font-size: 8px !important;
+                /*color: red !important;*/
+            }
+        }
+
+        @media screen and (min-width: 801px)
+            and (max-width: 1099px)
+        {
+            .fontZiseDinamico
+            {
+                font-size: 10px !important;
+                /*color: yellow !important;*/
+            }
+        }
+
+        @media screen and (min-width: 1100px)
+            and (max-width: 1399px)
+        {
+            .fontZiseDinamico
+            {
+                font-size: 12px !important;
+                /*color: green !important;*/
+            }
+        }
+
+        @media (min-width: 1400px)
+        {
+            .fontZiseDinamico
+            {
+                font-size: 13px !important;
+                /*color: blue !important;*/
+            }
+        }
+
+
+    </style>
+
+    <div class="col-12">
+
+        <div class="row mt-4 align-items-center"  >
+           <table width = "97%" border="0" style = " margin-left: auto; margin-right: auto; "  >
+                 <tr>
+                     <td id='col1' width ="60%">
+                        <table width = "100%" border="0">
+                            <tr>
+                                <td id='col1-1-1'   width ="12%"><label for="sel_filter_fuenteHA" class="textoLabelFiltrosCA">Fuente </label></td>
+                                <td id='col1-1-1e'  width ="2%">&nbsp;</td>
+                                <td id='col1-1-2'   width ="12%"><label for="sel_filter_tipo_hallazgosHA" class="textoLabelFiltrosCA">Tipo Hallazgo</label></td>
+                                <td id='col1-1-2e'  width ="3%">&nbsp;</td>
+                                <td id='col1-1-3'   width ="12%"><label for="sel_filter_normaHA" class="textoLabelFiltrosCA">Norma</label></td>
+                                <td id='col1-1-3e'  width ="3%">&nbsp;</td>
+                                <!--td id='col1-1-4'   width ="12%"> <label for="sel_filter_sede" class="textoLabelFiltrosCA">Sede</label></td>
+                                <td id='col1-1-4e'  width ="3%">&nbsp;</td-->
+                                <td id='col1-1-5'   width ="12%"><label for="sel_filter_estadoACRHA" class="textoLabelFiltrosCA">Estado ACR</label></td>
+                                <td id='col1-1-5e'  width ="3%">&nbsp;</td>
+                                <td id='col1-1-6'   width ="12%"> <label for="txt_fecha_desdeHA" class="textoLabelFiltrosCA">Fecha Desde</label></td>
+                                <td id='col1-1-6e'  width ="2%">&nbsp;</td>
+                                <td id='col1-1-7'   width ="12%"><label for="txt_fecha_hastaHA" class="textoLabelFiltrosCA">Fecha Hasta </label></td>
+                            </tr>
+                            <tr>
+                                <td id='col1-1-1' width ="12%">
+                                    <select name="sel_filter_fuenteHA" class="form-control" id="sel_filter_fuenteHA" onChange=" "  style="padding: 0px !important;">
+                                    </select>
+                                </td>
+                                <td id='col1-1-6' width ="2%">&nbsp;</td>
+
+
+                                <td id='col1-1-1' width ="12%">
+                                    <select name="sel_filter_tipo_hallazgosHA" class="form-control" id="sel_filter_tipo_hallazgosHA" onChange=" "  style="padding: 0px !important;">
+                                    </select>
+                                </td>
+                                <td id='col1-1-6' width ="3%">&nbsp;</td>
+
+                                <td id='col1-1-1' width ="12%">
+                                    <select name="sel_filter_normaHA" class="form-control" id="sel_filter_normaHA" onChange=" "  style="padding: 0px !important;">
+                                    </select>
+                                </td>
+                                <td id='col1-1-6' width ="3%">&nbsp;</td>
+
+                                <!--td id='col1-1-1' width ="12%">
+                                    <select name="sel_filter_seddeah" class="form-control" id="sel_filter_seddeah" onChange=" "  style="padding: 0px !important;">
+                                    </select>
+                                </td>
+                                <td id='col1-1-6' width ="3%">&nbsp;</td-->
+
+                                <td id='col1-1-7' width ="12%">
+                                    <select name="sel_filter_estadoACRHA" class="form-control select-filtroCA Patch_selectCA" id="sel_filter_estadoACRHA" style="padding: 0px !important;" required>
+                                    </select>
+                                </td>
+                                <td id='col1-1-6' width ="3%">&nbsp;</td>
+                                <td id='col1-1-3' width ="12%">
+                                    <input  type="text" id="txt_fecha_desdeHA" name="txt_fecha_desdeHA" class="form-control bg-white" readonly onChange="">
+                                </td>
+                                <td id='col1-1-4' width ="3%">
+                                    <img src="images/iconos/calendario-3.svg"  style="cursor: pointer;" onclick="$('#txt_fecha_desdeHA').val('');">
+                                </td>
+
+                                <td id='col1-1-5' width ="12%">
+                                    <input  type="text" id="txt_fecha_hastaHA" name="txt_fecha_hastaHA" class="form-control bg-white" readonly onChange="">
+                                </td>
+                                <td id='col1-1-6' width ="2%">
+                                    <img src="images/iconos/calendario-3.svg"  style="cursor: pointer;" onclick="$('#txt_fecha_hastaHA').val('');">
+                                </td>
+
+                            </tr>
+                        </table>
+
+                    </td>
+
+                     <td id='col2' width ="10%">&nbsp;</td>
+                     <td id='col10'  width ="7%">
+                        <button type="button" style=" width:115px !important;"  class="btn btn-system-green"  onClick="fnSp4BuscarHallazgosAsignados()"  id="buscarHallazgosAsignados"
+                           class="btn btn-system-green">Buscar</button>
+                     </td>
+
+                     <td id='col8'  width ="20%">
+                       &nbsp;
+                     </td>
+                     <td id='col4'  width ="1%">
+                        <div id="cant_auditorias" style="font-size: 25px; font-weight: bold; text-align:left; ">
+                            <img src="images/iconos/copia-1.svg" style="margin-top:25px;"   class="mb-3"  >
+                        </div>
+                     </td>
+
+                     <td id='col9'  width ="1%" align="center" ><span style="top:5px; text-align: center; " class="cantidad ml-3" id="cant_hallazgos_asignados">0</span></td>
+
+                     <td id='col7'  width ="1%">&nbsp;</td>
+
+                     <!--td id='col6'  width ="9%">
+                         <button class="btn btn-system-celeste center"  onclick="fnSp3VentanaMostrarHallazgo();" style="padding-left: 0.8rem;padding-right: 0.8rem; width: 184 !important; font-size: 15px; font-weight: bold; font-stretch: normal;">
+                            <img src="./images/iconos/plus_.svg" alt="" >
+                            <span class="ml-3">Nuevo Hallazgo</span>
+                        </button>
+                     </td-->
+
+                 </tr>
+           </table>
+
+        </div>
+
+    </div>
+</div>
+<!-- END FILTROS  -->
+
+
+<!-- START LISTADO DE HALLAZGOS  -->
+<table width="97%" border="0" style = " margin-left: auto; margin-right: auto; "  >
+    <tr>
+    	<td id='col1' width ="100%">
+
+    		<div class="row justify-content-center mt-5">
+                <div class="col-md-12">
+                    <div class="header-tabla px-4 py-3">
+                        <table width = "100%" border="0">
+                            <tr >
+                            	<td width = "10%" align="center"><div id="c1TabGeny" class="text-left lbCabezaTabla"  >ID Hallazgo</div></td>
+                                <td width = "10%" align="center"><div id="c2TabGeny" class="text-left lbCabezaTabla"  >Fuente</div></td>
+                                <td width = "10%" align="center"><div id="c3TabGeny" class="text-left lbCabezaTabla"  >Tipo Hallazgo</div></td>
+                                <td width = "10%" align="center"><div id="c4TabGeny" class="text-left lbCabezaTabla"  >Norma</div></td>
+                                <td width = "15%" align="center"><div id="c5TabGeny" class="text-left lbCabezaTabla"  >Reportante</div></td>
+
+                                <td width = "8%" align="center"><div id="c6TabGeny" class="text-left lbCabezaTabla"  >Fecha de <br>Asignaci&oacute;n</div></td>
+                                <td width = "8%" align="center"><div id="c7TabGeny" class="text-left lbCabezaTabla"  >Fecha de Inicio <br>An&aacute;lisis</div></td>
+                                <td width = "8%" align="center"><div id="c7TabGeny" class="text-left lbCabezaTabla"  >Fecha Fin de <br>An&aacute;lisis</div></td>
+                                <td width = "8%" align="center"><div id="c8TabGeny" class="text-left lbCabezaTabla"  >Estado</div></td>
+                                <td width = "8%" align="center"><div id="c9TabGeny" class="text-left lbCabezaTabla"  >Estado ACR</div></td>
+                                <td width = "5%" align="center"><div id="c10TabGeny" class="text-center lbCabezaTabla"  >ACR</div></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="body-tabla mt-4" id="bodyTablaSinHallazgosAsignados" style="display: block; font-weight: bold;">
+                <div class="content-registros-no-encontrados">
+                    <div>
+                        <img src="./images/programaAuditoriaOff.svg" alt="">
+                        <p class="mt-4">No Existen Hallazgos Asignados</p>
+                        <img src="./images/iconos/loadingAdj.gif" style="visibility: hidden;" >
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="body-tabla-list-EvalAud" id="bodyTablaHallazgosAsignados" ></div>
+            <div id="pagination-container-HallazgosAsignados" class="mt-3 pr-4"></div>
+
+    	</td>
+    </tr>
+</table>
+<!-- END LISTADO DE HALLAZGOS  -->
+
+
+<!-- START MODAL CREAR ACR  -->
+<div class="modal fade" id="modalVerACR" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="modalAddCompanyTitle" aria-hidden="true" >
+    <div class="modal-dialog modal-dialog-centered rounded" role="document" style="max-width: 95%; z-index: 130; ">
+        <div class="modal-content rounded " >
+            <div style="overflow: hidden;height: 600px;overflow-x: hidden; ">
+
+                <div class="modal-header fix-header-modal" >
+                    <div class="card-header text-center text-white modal-dialog-centered  card-header-FormAuditor" id="red-head" style="width: 100%; padding: 0px 0px !important;">
+                        <div class="row d-flex justify-content-center text-center" style="width: 100%;">
+                            <div class="col-1 btn-close-modalCA pl-3 my-2">
+                                <!--button type="button" id="closeVerAuditoriaModal"><span aria-hidden="true" class="btn-close-modalCA">Cerrar&nbsp;&nbsp;&nbsp;&nbsp;&times;</span></button--> <!-- class="close hearder-modal" data-dismiss="modal" aria-label="Close" -->
+                                <!-- <div class="float-right" cursor="pointer" id="btn-close-Adj"><span style="font-size: 40px">
+                                    <img src="images/prev.svg"  style="cursor: pointer;"></span>
+                                </div> -->
+                             </div>
+                             <div class="col justify-content-center text-center col-12" style="margin-top: -28px !important;">
+                                <table border='0' width='100%'>
+                                    <tr>
+                                        <td width='10%'>
+                                            <div  class="float-left pl-4" onclick="$('#modalVerACR').modal('hide').removeClass('fade'); /*initHallazgosAsignados()*/" cursor="pointer" id="btnCloseNewModalACR"><span style="font-size: 40px"><img src="images/prev.svg" title="Salir"  style="cursor: pointer;"></span>
+                                            </div>
+                                        </td>
+                                        <td width='10%'></td>
+                                        <td width='60%'>
+                                            <h5 style="font-size: 16px !important; color:#fff; font-weight: bold; text-align: center;">
+                                                <span id="titleModalVerACR">ACR - HAI0001</span>
+                                            </h5>
+                                        </td>
+                                        <td width='13%' align="right">
+                                            <button id="btnGuardarACR" name="btnGuardarACR" onmouseup="fnSp4ConsultarSaveACR(1)" class="btn-save-auditor2" style="font-size: 12px !important;"> Guardar</button></td>
+                                        <td width='7%' align="right">
+                                            <button id="btnFinalizarACR" name="btnFinalizarACR" onmouseup="fnSp4FinalizarACR()" class="btn-save-auditor2 mr-2" style=" margin-left: 10px !important; font-size: 12px !important; background:gray !important; color:white;"> Finalizar</button>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-body dialog-position" id="bodyModalVerACR" style=" justify-content:space-around; align-content:center; padding: 10px 0px 0px !important;">
+                    <div class="card " style="border: 0px !important; border-radius: 5px; box-shadow: none;">
+                        <div class="card-body2">
+                            <div class="stepwizard " id="manipulation">
+                                <div class="d-flex justify-content-center stepwizard-row setup-panel">
+                                    <div class="col-3 stepwizard-step marginbtnstep2">
+                                        <a href="#step-11HA" id="step11"> <button type="button" class="btn-formAuditor" href="#step-11HA" id="btn_step11" >
+                                            <b>Datos Generales</b> </button></a>
+                                    </div>
+                                    <div class="col-3 stepwizard-step marginbtnstep2">
+                                        <a href="#step-21HA" id="step21" ><button type="button"  class="btn-formAuditor" href="#step-21HA" id="btn_step21" >
+                                            <b>Definici&oacute;n del Problema</b> </button></a>
+                                    </div>
+                                    <div class="col-3 stepwizard-step marginbtnstep2">
+                                        <a href="#step-31HA" id="step31"> <button type="button" onmouseup="fnPintarAnalisisProblema()" class="btn-formAuditor" href="#step-31HA" id="btn_step31" >
+                                            <b>An&aacute;lisis del Problema</b> </button></a>
+
+                                    </div>
+
+                                    <div class="col-3 stepwizard-step marginbtnstep2">
+                                        <input type="hidden" id="ver" value="">
+                                        <a href="#step-41HA" id="step41"> <button type="button" class="btn-formAuditor" href="#step-41HA" id="btn_step41" onmouseup="fnSp4PintarPlanAccion($('#ver').val())" >
+                                            <b>Plan de Acci&oacute;n</b> </button></a>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--  ---------------------------------------------- START PESTAÑA 1 DATOS GENERALES  ----------------------------------- -->
+                            <div class="row setup-content" id="step-11HA" style="display: block;">
+                                <div class="row justify-content-around align-items-center text-center">
+                                    <div class="col-12 caja-adj scroll-blue main-data-modal">
+                                        <div class="group-title">
+                                            <div class="group-title--line"></div>
+                                            <div class="group-title--data">
+                                                <h5 class="bg-white pr-2 tg--bold">Hallazgo</h5>
+                                                <img class="group-title--img pl-2 bg-white" src="images/iconos/menu.svg" alt="">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12 row clear--row clear--col mt-3">
+                                            <!-- primer contenedor -->
+                                            <div class="col-12 col-sm-12 col-md-9 col-lg-9">
+
+                                            </div>
+                                             <!-- segundo contenedor, buscador -->
+                                            <div class="col-12 col-sm-12 col-md-3 col-lg-3">
+                                                <div class="group-title--row">
+                                                    <h5 class="clear--text-margin tg--bold">Integrantes de Análisis</h5>
+                                                    <img src="images/iconos/rating_1.svg" alt="">
+                                                    <h5 class="clear--text-margin">
+                                                        <span class="tg--bold" id="totalIntegrantesAnalisisHA">05</span>
+                                                    </h5>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12 row clear--row clear--col mt-3">
+                                            <!-- primer contenedor -->
+                                            <div class="col-12 col-sm-12 col-md-9 col-lg-9">
+                                                <form action="#" class="row clear--row justify-content-between">
+                                                    <div class="group-form group-form--gray col-12">
+                                                        <label for="temaHAb">Tema</label>
+                                                        <textarea name="temaHAb" id="temaHAb" class="input--gray d-none" >
+                                                            asdadasd
+                                                        </textarea>
+                                                        <p id="temaHA">TEMA U HALLAZGO</p>
+                                                    </div>
+                                                    <div class="group-form group-form--gray col-12 col-sm-12 col-md-3">
+                                                        <label for="normaIncumpleHA">Norma que incumple</label>
+                                                        <p id="normaIncumpleHA" name="normaIncumpleHA">IFFO</p>
+                                                    </div>
+                                                    <div class="group-form group-form--gray col-12 col-sm-12 col-md-3">
+                                                        <label for="requisitoIncumpleHA">Requisito</label>
+                                                        <p id="requisitoIncumpleHA" name="requisitoIncumpleHA">Requisito 1</p>
+                                                    </div>
+                                                    <div class="group-form group-form--gray col-12 col-sm-12 col-md-3">
+                                                        <label for="fechaInicioAnalisisHA">Fecha de inicio Análisis</label>
+                                                        <p id="fechaInicioAnalisisHA" name="fechaInicioAnalisisHA">21/02/2021</p>
+                                                    </div>
+                                                    <div class="group-form group-form--gray col-12 col-sm-12 col-md-3">
+                                                        <label for="fechaFinAnalisisHA">Fecha Fin de Análisis</label>
+                                                        <p id="fechaFinAnalisisHA" name="fechaFinAnalisisHA">21/02/2021</p>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <!-- segundo contenedor, buscador -->
+                                            <div class="col-12 col-sm-12 col-md-3 col-lg-3">
+                                                <!--div class="group-title--row">
+                                                    <h5 class="clear--text-margin tg--bold">Integrantes de Análisis</h5>
+                                                    <img src="images/iconos/rating_1.svg" alt="">
+                                                    <h5 class="clear--text-margin">05</h5>
+                                                </div-->
+                                                <form action="#" class="form-icon mt-0">
+                                                    <div class="spinner-border spinner-border-sm" role="status" id="spinnerLoadColaborador" style="display:none;">
+                                                        <span class="sr-only">Loading...</span>
+                                                    </div>
+                                                    <img src="images/iconos/magnifying-glass6.svg" alt="">
+                                                    <input type="text" id="buscardorIntegrantes1" name="buscardorIntegrantes1" class="form-icon__input col" placeholder="Buscar...">
+                                                </form>
+                                                <div class="box-info__select">
+                                                    <ul class="box-info__select__list listadoIntegrantesAnalisis">
+                                                        <a href="#">
+                                                            <li>
+                                                                Erick Arrasco
+                                                            </li>
+                                                        </a>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="group-title mt-2">
+                                            <div class="group-title--line"></div>
+                                            <div class="group-title--data">
+                                                <h5 class="bg-white pr-2 tg--bold">Cero P&eacute;rdidas</h5>
+                                                <img class="menu-1-1" src="./images/iconos/user1b.svg" alt="">
+                                                <!img src="./images/iconos/menu.svg" class="menu-1-1">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12 row clear--row clear--col mt-3">
+                                            <div class="col-12 col-sm-12 col-md-8 col-lg-8">
+                                                <div id="radiosCeroPerdidas" class="row clear--row">
+                                                    <div class="group-form group-form--check col-12 col-sm-6 col-md-2 col-lg-2">
+                                                        <!--input type="checkbox" class="" id="check-0-defectos"><label for="check-0-defectos">Cero Defectos</label-->
+                                                        <input type="radio" id="cp1" onclick="fnSp4DesHabOtraPerdida(1)" name="ceroPerdidas" value="1"><label for="cp1">&nbsp;Cero Defectos</label>
+                                                    </div>
+                                                    <div class="group-form group-form--check col-12 col-sm-6 col-md-2 col-lg-2">
+                                                        <!--input type="checkbox" class="" id="check-0-Accidentes"><label for="check-0-Accidentes">Cero Accidentes</label-->
+                                                        <input type="radio" id="cp2" onclick="fnSp4DesHabOtraPerdida(2)" name="ceroPerdidas" value="2"><label for="cp2">&nbsp;Cero Accidentes</label>
+                                                    </div>
+                                                    <div class="group-form group-form--check col-12 col-sm-6 col-md-2 col-lg-2">
+                                                        <!--input type="checkbox" class="" id="check-0-Averias"><label for="check-0-Averias">Cero Averias</label-->
+                                                        <input type="radio" id="cp3" onclick="fnSp4DesHabOtraPerdida(3)" name="ceroPerdidas" value="3"><label for="cp3">&nbsp;Cero Averias</label>
+                                                    </div>
+                                                    <div class="group-form group-form--check col-12 col-sm-6 col-md-2 col-lg-2">
+                                                        <!--input type="checkbox" class="" id="check-0-perdida"><label for="check-0-perdida">Cero P&eacute;rdida</label-->
+                                                        <input type="radio" id="cp4" onclick="fnSp4HabOtraPerdida(4)" name="ceroPerdidas" value="4"><label for="cp4">&nbsp;Otra Perdida</label>
+                                                    </div>
+                                                    <div class="group-form group-form--border col-12 col-sm-6 col-md-4 col-lg-4">
+                                                        <!--input type="text" placeholder="Escribir ¿Cual?" id="write-who"-->
+                                                        <label><input disabled="disabled" type="text" class="btn-formAuditor date-small2 btn-prog form-control2 text-left" id="otraPerdidaHA" onkeyup="fnSp4SaveOtraPerdida()" placeholder="Escribir ¿cuál?"></label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row clear--row justify-content-between mt-3">
+                                                    <!--div class="group-form group-form--gray col-12 col-sm-12 col-md-5">
+                                                        <label for="">Nombre de la persona que reporta</label>
+                                                        <p class="mt-2 mb-0">Erick Arrasco</p>
+                                                    </div>
+                                                    <div class="group-form group-form--gray col-12 col-sm-12 col-md-3">
+                                                        <label for="">Fuente de Hallazgo</label>
+                                                        <p class="mt-2 mb-0">Auditoria interna</p>
+                                                    </div>
+                                                    <div class="group-form group-form--gray group-form--select col-12 col-sm-12 col-md-2">
+                                                        <label for="selectAreasHA">&Aacute;rea</label>
+                                                        <select name="selectAreasHA" id="selectAreasHA" onchange="fnSp4ChangeAreaHA()">
+                                                            <option value="1">1</option>
+                                                            <option value="1">1</option>
+                                                            <option value="1">1</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="group-form group-form--select col-12 col-sm-12 col-md-1"></div-->
+                                                </div>
+                                            </div>
+
+                                            <div class="col-12 col-sm-12 col-md-4 col-lg-4 d-column">
+                                                <!--div class="row clear--row justify-content-between">
+                                                    <div class="group-form group-form--gray group-form--green col-12 col-sm-12 col-md-6">
+                                                        <label for="">Fecha</label>
+                                                        <p>25/02/2021</p>
+                                                    </div>
+                                                    <div class="group-form group-form--gray group-form--green col-12 col-sm-12 col-md-5">
+                                                        <label for="">Hora</label>
+                                                        <p>10:00</p>
+                                                    </div>
+                                                </div-->
+                                            </div>
+
+                                        </div>
+
+                                        <div class="col-12 row clear--row clear--col mt-3">
+
+                                            <div class="col-12 col-sm-12 col-md-9 col-lg-9">
+                                                <div class="row clear--row justify-content-between mt-3">
+                                                    <div class="group-form group-form--gray col-12 col-sm-12 col-md-5" style="height: 100px !important;">
+                                                        <label for="">Nombre de persona que reporta</label>
+                                                        <p class="mt-2 mb-0" id="reportanteHA" name="reportanteHA" >Erick Arrasco</p>
+                                                    </div>
+                                                    <div class="group-form group-form--gray col-12 col-sm-12 col-md-3" style="height: 100px !important;">
+                                                        <label for="">Fuente de Hallazgo</label>
+                                                        <p class="mt-2 mb-0" id="fuenteHA" name="fuenteHA">Auditoria interna</p>
+                                                    </div>
+                                                    <div class="group-form group-form--gray group-form--select col-12 col-sm-12 col-md-3" style="height: 100px !important;">
+                                                        <label for="selectAreasHA">&Aacute;rea </label>
+                                                        <select name="selectAreasHA" id="selectAreasHA" onchange="fnSp4ChangeAreaHA()">
+                                                            <option value="1">1</option>
+                                                            <option value="1">1</option>
+                                                            <option value="1">1</option>
+                                                        </select>
+                                                    </div>
+                                                    <!--div class="group-form group-form--select col-12 col-sm-12 col-md-1"></div-->
+                                                </div>
+                                            </div>
+
+                                            <div class="col-12 col-sm-12 col-md-3 col-lg-3 d-column pt-3">
+                                                <div class="row clear--row justify-content-between">
+                                                    <div class="group-form group-form--gray group-form--green col-12 col-sm-12 col-md-6" style="height: 100px !important;">
+                                                        <label for="">Fecha</label>
+                                                        <p id="fechaEjecucionHA" name="fechaEjecucionHA">25/02/2021</p>
+                                                    </div>
+
+                                                    <div class="group-form group-form--gray group-form--green col-12 col-sm-12 col-md-5" style="height: 100px !important;">
+                                                        <label for="">Hora</label>
+                                                        <p id="horaEjecucionHA" name="horaEjecucionHA">10:00</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  ---------------------------------------------- END PESTAÑA 1 DATOS GENERALES  ----------------------------------- -->
+
+                            <!--  ---------------------------------------------- START PESTAÑA 2 DEFINICION DEL PROBLEMA----------------------------- -->
+                            <div class="row setup-content" id="step-21HA" style="display: block;">
+                                <div class="row justify-content-around align-items-center text-center">
+                                    <div class="col-12 caja-adj scroll-blue main-data-modal">
+                                        <div class="group-title">
+                                            <div class="group-title--line"></div>
+                                            <div class="group-title--data">
+                                                <h5 class="bg-white pr-2 tg--bold">4W + H1 Definición del Problema</h5>
+                                                <img class="group-title--img pl-2 bg-white" src="images/iconos/menu.svg" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="group-form group-form--gray col-12 mt-4">
+                                            <label for="">Tema</label>
+                                            <p id="temaHA2">TEMA U HALLAZGO</p>
+                                        </div>
+                                        <div class="px-0 group-form col-12 group-form--bottom-border mt-3">
+                                            <div class="pl-0 col-12 col-sm-12 col-md-4 col-lg-4 tg--left">
+                                                <h5 class="tg--bold">¿Qu&eacute;?</h5>
+                                                <p class="text-gray mb-1">¿Qu&eacute; Hace Evidente El Problema?</p>
+                                                <p class="text-gray mb-1">¿En Qu&eacute; Se Manifiesta El Inconveniente?</p>
+                                            </div>
+                                            <div class="pr-0 col-12 col-sm-12 col-md-8 col-lg-8">
+                                                <textarea id="queHA" name="queHA" onkeyup="fnSp4SaveDefinicionProblema('queHA')" class="input-textarea" placeholder=""></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="px-0 group-form col-12 group-form--bottom-border mt-3">
+                                            <div class="pl-0 col-12 col-sm-12 col-md-4 col-lg-4 tg--left">
+                                                <h5 class="tg--bold">¿Donde?</h5>
+                                                <p class="text-gray mb-1">¿En Qu&eacute; Lugar, Sitio Parte Es En El Qu&eacute; Ocurre El Problema?</p>
+                                            </div>
+                                            <div class="pr-0 col-12 col-sm-12 col-md-8 col-lg-8">
+                                                <textarea id="dondeHA" name="dondeHA" onkeyup="fnSp4SaveDefinicionProblema('dondeHA')" class="input-textarea" placeholder=""></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="px-0 group-form col-12 group-form--bottom-border mt-3">
+                                            <div class="pl-0 col-12 col-sm-12 col-md-4 col-lg-4 tg--left">
+                                                <h5 class="tg--bold">¿Cu&aacute;ndo?</h5>
+                                                <p class="text-gray mb-1">¿Cu&aacute;ndo Ocurrirá El Problema?</p>
+                                                <p class="text-gray mb-1">¿Bajo Que Circunstancias Ocurre El Problema?</p>
+                                            </div>
+                                            <div class="pr-0 col-12 col-sm-12 col-md-8 col-lg-8">
+                                                <textarea id="cuandoHA" name="cuandoHA" onkeyup="fnSp4SaveDefinicionProblema('cuandoHA')" class="input-textarea" placeholder=""></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="px-0 group-form col-12 group-form--bottom-border mt-3">
+                                            <div class="pl-0 col-12 col-sm-12 col-md-4 col-lg-4 tg--left">
+                                                <h5 class="tg--bold">¿C&oacute;mo?</h5>
+                                                <p class="text-gray mb-1">¿C&oacute;mo Es La Forma En La Que Se Presenta El Problema?</p>
+                                                <p class="text-gray mb-1">¿C&oacute;mo Se Difiere De La Situación Normal O De Patrón?</p>
+                                            </div>
+                                            <div class="pr-0 col-12 col-sm-12 col-md-8 col-lg-8">
+                                                <textarea id="comoHA" name="comoHA" onkeyup="fnSp4SaveDefinicionProblema('comoHA')" class="input-textarea" placeholder=""></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="px-0 group-form col-12 group-form--bottom-border mt-3">
+                                            <div class="pl-0 col-12 col-sm-12 col-md-4 col-lg-4 tg--left">
+                                                <h5 class="tg--bold">¿Cuál?</h5>
+                                                <p class="text-gray mb-1">¿Cuál Es La Frecuencia Del Problema?</p>
+                                            </div>
+                                            <div class="pr-0 col-12 col-sm-12 col-md-8 col-lg-8">
+                                                <textarea id="cualHA" name="cualHA" onkeyup="fnSp4SaveDefinicionProblema('cualHA')" class="input-textarea"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="group-form group-form--gray group-form--select col-12 mt-4">
+                                            <label for="" class="mb-0">Descripción Del Problema:  (Recopilaci&oacute;n de todas las respuestas previas)</label>
+                                            <p class="text-gray mb-2"></p>
+                                            <textarea id="problemaHA" style="resize: none; border-width: 0px;" name="problemaHA" onkeyup="fnSp4SaveDefinicionProblema('problemaHA')" rows="4" class="input-textarea"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  ---------------------------------------------- END PESTAÑA 2 DEFINICION DEL PROBLEMA----------------------------- -->
+
+                            <!--  ---------------------------------------------- START PESTAÑA 3 ANALISIS DEL PROBLEMA ----------------------------- -->
+                            <div class="row setup-content" id="step-31HA" style="display: block;">
+                                <div class="row justify-content-around align-items-center text-center">
+
+                                    <div class="col-12 caja-adj scroll-blue main-data-modal">
+                                        <div class="group-title">
+                                            <div class="group-title--line"></div>
+                                            <div class="group-title--data">
+                                                <h5 class="bg-white pr-2 tg--bold">5 ¿Por qu&eacute;?</h5>
+                                                <a href="#" onmouseup="fnSp4VerOcultarDefinicion()" id="verOcultarDefinicionHA" class="link-green">Ver Definici&oacute;n Del Problema</a>
+                                            </div>
+                                            <!-- collapse para ver definicion del problema -->
+                                            <div id="definicionProblemaHA"></div>
+
+                                            <!-- tabla para ver los 5 porque -->
+                                            <table id="tabla5PorQue" name="tabla5PorQue" width="100%" border="0" class="mt-4">
+                                                <thead style="background-color: white !important;">
+                                                    <tr>
+                                                        <td width="20%" align="center">
+                                                            <div class="grid-drop__head mr-1">
+                                                                <h5>1. ¿Por qué? </h5>
+                                                            </div>
+                                                        </td>
+                                                        <td width="20%" align="center">
+                                                            <div class="grid-drop__head mx-1">
+                                                                <h5>2. ¿Por qué? </h5>
+                                                            </div>
+                                                        </td>
+                                                        <td width="20%" align="center">
+                                                            <div class="grid-drop__head mx-1">
+                                                                <h5>3. ¿Por qué? </h5>
+                                                            </div>
+                                                        </td>
+                                                        <td width="20%" align="center">
+                                                            <div class="grid-drop__head mx-1">
+                                                                <h5>4. ¿Por qué? </h5>
+                                                            </div>
+                                                        </td>
+                                                        <td width="20%" align="center">
+                                                            <div class="grid-drop__head ml-1">
+                                                                <h5>5. ¿Por qué? </h5>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="body5PorQue">
+                                                    <tr class="mt-2" id="tr_0">
+                                                        <td width="20%" id="td_0_0"></td>
+                                                        <td width="20%" id="td_0_1"></td>
+                                                        <td width="20%" id="td_0_2"></td>
+                                                        <td width="20%" id="td_0_3"></td>
+                                                        <td width="20%" id="td_0_4"></td>
+                                                    </tr>
+                                                    <tr class="mt-2" id="tr_1">
+                                                        <td width="20%" id="td_1_0"></td>
+                                                        <td width="20%" id="td_1_1"></td>
+                                                        <td width="20%" id="td_1_2"></td>
+                                                        <td width="20%" id="td_1_3"></td>
+                                                        <td width="20%" id="td_1_4"></td>
+                                                    </tr>
+                                                    <tr class="mt-2" id="tr_2">
+                                                        <td width="20%" id="td_2_0"></td>
+                                                        <td width="20%" id="td_2_1"></td>
+                                                        <td width="20%" id="td_2_2"></td>
+                                                        <td width="20%" id="td_2_3"></td>
+                                                        <td width="20%" id="td_2_4"></td>
+                                                    </tr>
+                                                    <tr class="mt-2" id="tr_3">
+                                                        <td width="20%" id="td_3_0"></td>
+                                                        <td width="20%" id="td_3_1"></td>
+                                                        <td width="20%" id="td_3_2"></td>
+                                                        <td width="20%" id="td_3_3"></td>
+                                                        <td width="20%" id="td_3_4"></td>
+                                                    </tr>
+                                                    <tr class="mt-2" id="tr_4">
+                                                        <td width="20%" id="td_4_0"></td>
+                                                        <td width="20%" id="td_4_1"></td>
+                                                        <td width="20%" id="td_4_2"></td>
+                                                        <td width="20%" id="td_4_3"></td>
+                                                        <td width="20%" id="td_4_4"></td>
+                                                    <!--tr class="mt-2" id="tr1">
+                                                        <td width="20%"   id="td1_1">1</td>
+                                                        <td width="20%"   id="td1_2">2</td>
+                                                        <td width="20%"   id="td1_3">3</td>
+                                                        <td width="20%"   id="td1_4">4</td>
+                                                        <td width="20%"   id="td1_5">5</td>
+                                                    </tr>
+                                                    <tr class="mt-2" id="tr2">
+                                                        <td width="20%"    id="td2_2">2</td>
+                                                        <td width="20%"    id="td2_2">2</td>
+                                                        <td width="20%"    id="td2_3">3</td>
+                                                        <td width="20%"    id="td2_4">4</td>
+                                                        <td width="20%"    id="td2_5">5</td>
+                                                    </tr-->
+
+                                                    <!--tr class="mt-2" id="pq_0">
+                                                        <td width="20%" id="pq_0_1">
+                                                            <div class="grid-drop__body mr-1">
+                                                                <button class="grid-drop__btn" id="newPorQueHA" onmouseup="fnSp4AgregarProque()">+ Agregar Nuevo</button>
+
+                                                                <div class="grid-drop__drap">
+                                                                    <div class="grid-drop__note">
+                                                                        <button class="grid-drop__tap">
+                                                                        </button>
+                                                                        <div class="question d-column-l">
+                                                                            <label class="text-gray" for="">Escribir Pregunta</label>
+                                                                            <textarea name="" id="" class="question-input" placeholder="..."></textarea>
+                                                                        </div>
+                                                                        <div class="question d-column-l bt-lightgray">
+                                                                            <label for="" class="text-gray">Escribir Respuesta</label>
+                                                                            <textarea name="" id="" class="question-input" placeholder="..."></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        </td>
+
+                                                    </tr-->
+                                                    <!--tr class="mt-2" id="porque_2">
+                                                        <td width="20%">
+                                                            <div class="grid-drop__body mr-1">
+                                                                <button class="grid-drop__btn"></button>
+
+                                                                <div class="grid-drop__drap">
+                                                                    <div class="grid-drop__note">
+                                                                        <button class="grid-drop__tap">
+                                                                        </button>
+                                                                        <div class="question d-column-l">
+                                                                            <label class="text-gray" for="">Escribir Pregunta</label>
+                                                                            <textarea name="" id="" class="question-input" placeholder="..."></textarea>
+                                                                        </div>
+                                                                        <div class="question d-column-l bt-lightgray">
+                                                                            <label for="" class="text-gray">Escribir Respuesta</label>
+                                                                            <textarea name="" id="" class="question-input" placeholder="..."></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        </td>
+                                                    </tr-->
+                                                </tbody>
+                                            </table>
+
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <!--  ---------------------------------------------- END PESTAÑA 3 ANALISIS DEL PROBLEMA ----------------------------- -->
+
+                            <!--  ---------------------------------------------- START PESTAÑA 4 PLAN DE ACCION ----------------------------- -->
+                            <div class="row setup-content" id="step-41HA" style="display: block;">
+                                <div class="row justify-content-around align-items-center text-center">
+                                    <div class="col-12 caja-adj scroll-blue main-data-modal">
+                                        <div class="group-title">
+                                            <div class="group-title--line"></div>
+                                            <div class="group-title--data">
+                                                <h5 class="bg-white pr-2 tg--bold">5 medidas para Cero Fallas</h5>
+                                                <img class="group-title--img pl-2 bg-white" src="images/iconos/menu.svg" alt="">
+                                            </div>
+                                        </div>
+
+                                        <!-- seccion principal -->
+                                        <div class="tablet-option">
+                                            <div class="tablet-option__header row clear--row">
+                                                <div class="col-5 col-sm-5 col-md-5 col-lg-5 tg--left">
+                                                    <p class="fontZiseDinamico">Causas</p>
+                                                </div>
+                                                <div class="col-7 col-sm-7 col-md-7 col-lg-7 tablet-option__contain">
+                                                    <div class="tablet-option__box">
+                                                        <p class="fontZiseDinamico">Establecer condiciones b&aacute;sicas</p>
+                                                    </div>
+                                                    <div class="tablet-option__box">
+                                                        <p class="fontZiseDinamico">Restauraci&oacute;n de deterioro</p>
+                                                    </div>
+                                                    <div class="tablet-option__box">
+                                                        <p class="fontZiseDinamico">Operaci&oacute;n correcta</p>
+                                                    </div>
+                                                    <div class="tablet-option__box">
+                                                        <p class="fontZiseDinamico">Mejora puntos de dise&ntilde;o</p>
+                                                    </div>
+                                                    <div class="tablet-option__box">
+                                                        <p class="fontZiseDinamico">Entrenamiento</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div id="listadoCausasHA">
+
+                                            </div>
+
+                                            <!--div class="tablet-option__body row clear--row">
+                                                <div class="col-5 col-sm-5 col-md-5 col-lg-5 left-part">
+                                                    <h5 class="number">1</h5>
+                                                    <textarea class="tablet-option__textarea col"></textarea>
+                                                </div>
+                                                <div class="col-7 col-sm-7 col-md-7 col-lg-7 tablet-option__contain">
+                                                    <div class="tablet-option__box">
+                                                        <input type="checkbox" >
+                                                    </div>
+                                                    <div class="tablet-option__box">
+                                                        <input type="checkbox" >
+                                                    </div>
+                                                    <div class="tablet-option__box">
+                                                        <input type="checkbox" >
+                                                    </div>
+                                                    <div class="tablet-option__box">
+                                                        <input type="checkbox" >
+                                                    </div>
+                                                    <div class="tablet-option__box">
+                                                        <input type="checkbox" >
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="tablet-option__body row clear--row">
+                                                <div class="col-5 col-sm-5 col-md-5 col-lg-5 left-part">
+                                                    <h5 class="number">2</h5>
+                                                    <textarea class="tablet-option__textarea col"></textarea>
+                                                </div>
+                                                <div class="col-7 col-sm-7 col-md-7 col-lg-7 tablet-option__contain">
+                                                    <div class="tablet-option__box">
+                                                        <input type="checkbox" >
+                                                    </div>
+                                                    <div class="tablet-option__box">
+                                                        <input type="checkbox" >
+                                                    </div>
+                                                    <div class="tablet-option__box">
+                                                        <input type="checkbox" >
+                                                    </div>
+                                                    <div class="tablet-option__box">
+                                                        <input type="checkbox" >
+                                                    </div>
+                                                    <div class="tablet-option__box">
+                                                        <input type="checkbox" >
+                                                    </div>
+                                                </div>
+                                            </div-->
+
+
+                                        </div>
+                                        <!-- seccion principal -->
+
+                                        <!-- seccion segundaria -->
+                                        <div class="group-title mt-5">
+                                            <div class="group-title--line"></div>
+                                            <div class="group-title--data">
+                                                <h5 class="bg-white pr-2 tg--bold">Plan de Acción</h5>
+                                                <img class="group-title--img pl-2 bg-white" src="images/iconos/menu.svg" alt="">
+                                            </div>
+                                        </div>
+
+                                        <div class="row clear--row">
+                                            <div class="col-10 col-sm-10 col-md-10 col-lg-10 clear--col">
+                                                <div class="group-form group-form--gray group-form--select w-100">
+                                                    <label for="selectCausasHA">Seleccionar Número de causa</label>
+                                                    <select name="selectCausasHA" id="selectCausasHA" class="form-control form-control2">
+                                                        <option value="1">Causa Número 1</option>
+                                                        <option value="2">Causa Número 2</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-2 col-sm-2 col-md-2 col-lg-2 d-column" style="padding: 11px; align-items: end;">
+                                                <button class="btn-save-auditor2" id="AgregarCausasHA" onmouseup="fnSp4AgregarPlanAccion(0)" style="font-size: 12px !important;"> + Agregar</button>
+                                            </div>
+                                        </div>
+
+                                        <div class="tablet-option">
+                                            <div class="tablet-option__header row clear--row">
+                                                <div class="col-4 col-sm-4 col-md-4 col-lg-4 left-part">
+                                                    <p class="number fontZiseDinamico">Item</p>
+                                                    <p class="number-2 fontZiseDinamico">Número de Causa</p>
+                                                    <p class="col tg--left fontZiseDinamico">Acción</p>
+                                                </div>
+                                                <div class="col-8 col-sm-8 col-md-8 col-lg-8 tablet-option__contain">
+                                                    <div class="tablet-option__box">
+                                                        <p class="fontZiseDinamico">Plazo Acción</p>
+                                                    </div>
+                                                    <div class="tablet-option__box">
+                                                        <p class="fontZiseDinamico">Tipo de Acción</p>
+                                                    </div>
+                                                    <div class="tablet-option__box">
+                                                        <p class="fontZiseDinamico">Responsable</p>
+                                                    </div>
+                                                    <div class="tablet-option__box">
+                                                        <p class="fontZiseDinamico">Fecha</p>
+                                                    </div>
+                                                    <div class="tablet-option__box">
+                                                        <p class="fontZiseDinamico">Estado Acción</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div id="tablaPlanAccionHA">
+
+                                            </div>
+
+                                            <!--div class="tablet-option__body row clear--row">
+                                                <div class="col-12 col-sm-12 col-md-4 col-lg-4 left-part">
+                                                    <h5 class="number-2">01</h5>
+                                                    <h5 class="number-2">1</h5>
+                                                    <textarea class="tablet-option__textarea col"></textarea>
+                                                </div>
+                                                <div class="col-12 col-sm-12 col-md-8 col-lg-8 tablet-option__contain">
+                                                    <div class="tablet-option__box">
+                                                        <div class="group-form group-form--gray group-form--select w-100">
+                                                            <label for="">Seleccionar</label>
+                                                            <select name="n" id="">
+                                                                <option value="1"></option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="tablet-option__box">
+                                                        <div class="group-form group-form--gray group-form--select w-100">
+                                                            <label for="">Seleccionar</label>
+                                                            <select name="n" id="">
+                                                                <option value="1"></option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="tablet-option__box">
+                                                        <div class="group-form group-form--gray group-form--select w-100">
+                                                            <label for="">Buscar</label>
+                                                            <input type="text" class="input-white">
+                                                        </div>
+                                                    </div>
+                                                    <div class="tablet-option__box">
+                                                        <div class="group-form group-form--gray group-form--select w-100">
+                                                            <label for="">Seleccionar</label>
+                                                            <input type="date">
+                                                        </div>
+                                                    </div>
+                                                    <div class="tablet-option__box">
+                                                        <div class="group-form group-form--gray group-form--select w-100">
+                                                            <label for="">Seleccionar</label>
+                                                            <select name="n" id="">
+                                                                <option value="1"></option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div-->
+
+                                        </div>
+
+
+                                        <!-- seccion segundaria -->
+
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  ---------------------------------------------- END PESTAÑA 4 PLAN DE ACCION ----------------------------- -->
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END MODAL CREAR ACR  -->
+
+<!-- START MODAL ALERT SAVE ACR------------------------** -->
+<div class="modal fade "  id="modalAlertSaveACR" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="modalAddCompanyTitle" aria-hidden="true" >
+    <div class="modal-dialog modal-dialog-centered rounded " role="document" style="max-width: 392px; z-index: 1030; ">
+        <div class="modal-content rounded " style="border: 0px !important; background-color:rgba(0,0,0,.0001) !important; box-shadow: none;">
+
+            <div style="overflow: hidden;height: 500px;overflow-x: hidden; ">
+                <div class="modal-body" id="">
+                    <div class="col-sm-12 col-md-12" style="color:#575757c9;">
+
+                        <div class="card border-0" style=" border-radius: 10px; box-shadow: none;">
+                            <div class="card-header text-center text-white  " style=" border-radius: 10px 10px 0px 0px; background:#05beee; height: 95px;"><img src="images/iconos/informacio1.svg"><span><b><br><br>&nbsp;&nbsp;&nbsp;&nbsp;</b></span></div>
+                                <br>
+                            <div class="card-body" style=" padding: 10px !important; ">
+                                <div class="row p-0 d-flex justify-content-center">
+
+                                    <div class="col-sm-10 align-self-center text-center"   >
+                                        <h4><b style=" color: #000000 !important;  font-size: 17px !important; " >Se guardar&aacute; el ACR</b></h4>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="espacio"></div>
+                            <div class="card-body">
+                                <div class="row p-0 d-flex justify-content-center">
+                                    <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;font-size: 15px;" >
+                                        <h4><b style=" color: #000000 !important;  font-size: 16px !important; " >¿Desea confirmar la acci&oacute;n?</b></h4>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="card-body" style=" padding: 10px !important; ">
+                                <div class="row p-0 d-flex justify-content-center">
+                                    <div class="col-sm-12 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;font-size: 15px;" >
+                                        <div class="card-body2">
+                                        <div class="row justify-content-around align-items-center">
+                                            <div class="col-6">
+                                                <button type="button" class="btn_confirmar_modal bg-green-lime-modal confirm btn-confirmar-fecha btn-blue" id="btn-confirmar-ACR" onmouseup="fnSp4GuardarACR(1)"><b>Guardar</b></button>
+                                            </div>
+                                            <div class="col-6">
+                                                <button class="btn_cerrar_modal btn-cerrar-fecha" id="btn-cancelar-ACR" onclick="$('#modalAlertSaveACR').modal('hide').removeClass('fade'); $('#modalVerACR').modal('show').addClass('fade')"><b>Cerrar</b></button>
+                                            </div>
+                                        </div>
+                                        </div>
+                                     </div>
+
+                                </div>
+                            </div>
+
+                            <div ></div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END MODAL ALERT SAVE ACR ------------------------** -->
+
+<!-- START MODAL ALERT OK------------------------** -->
+<div class="modal fade"  id="modalShowAlertConfirmarACRSp4" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="modalAddCompanyTitle" aria-hidden="true" >
+    <div class="modal-dialog modal-dialog-centered rounded " role="document" style="max-width: 392px; z-index: 1030; ">
+        <div class="modal-content rounded " style="border: 0px !important; background-color:rgba(0,0,0,.0001) !important; box-shadow: none;">
+
+            <div style="overflow: hidden;height: 500px;overflow-x: hidden; ">
+                <div class="modal-body" >
+                    <div class="col-sm-12 col-md-12" style="color:#575757c9;">
+
+                        <div class="card border-0" style=" border-radius: 10px; box-shadow: none;">
+                            <div class="card-header text-center text-white  " style=" border-radius: 10px 10px 0px 0px; background:#D2D97B; height: 95px;"><img src="images/iconos/correct_1.svg"><span><b><br><br>&nbsp;&nbsp;&nbsp;&nbsp;</b></span></div>
+
+                            <div class="card-body">
+                                <div class="row p-0 d-flex justify-content-center">
+                                    <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;" >
+                                        <h4> <b style=" color: #000000 !important;  font-size: 17px !important; ">Se realiz&oacute; la acci&oacute;n con <br>&eacute;xito</b></h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="espacio"></div>
+                            <div class="card-body">
+                                <div class="row p-0 d-flex justify-content-center">
+                                    <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;font-size: 15px;" >
+                                        <b style=" color: #000000 !important;  font-size: 15px !important; ">¿Desea continuar el llenado?</b>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="espacio"></div>
+                             <div class="card-body2">
+                                <div class="row justify-content-around align-items-center">
+                                    <div class="col-5 ml-3" style="padding:10px 0px !important;" >
+                                        <button type="button" onmouseup="$('#modalShowAlertConfirmarACRSp4').modal('hide').removeClass('fade');fnSp4ContinuarACR()" class="btn_confirmar_modal bg-green-lime-modal confirm btn-confirmar-fecha-end" id="btn-confirmar-ACR-end"><b>Continuar</b></button>
+                                    </div>
+                                    <div class="col-6">
+                                        <button class="btn_cerrar_modal btn-cerrar-fecha" id="btn-cancelar-ACR-end" onclick="$('#modalShowAlertConfirmarACRSp4').modal('hide').removeClass('fade');"><b>Cerrar</b></button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div ></div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+
+
+    </div>
+</div>
+<!-- END MODAL ALERT OK------------------------** -->
+
+<!-- START MODAL PERSONAS A ENVIAR EVALUACION DE ACR------------------------** -->
+<div class="modal fade" id="modalEnviarSp4ACR"  data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="modalEnviarSp4ACRLabel" aria-hidden="true" >
+    <div class="modal-dialog modal-xl modal-dialog-centered mwEnviar" role="document" > <! style="max-width: 740px !important;" >
+        <div class="modal-content rounded">
+            <div class="modal-header hearder-modal text-center pt-3" >
+                <div class="container-fluid">
+                    <div class="row justify-content-center">
+
+                        <div class="col-10 text-uppercase" id="divTituloHistorialAuditoria">
+                            <b>Enviar ACR - <span id="tituloModalEnviarSp4ACR"> ACR - HAI0001</span></b>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body" style="margin: 0 !important;padding: 0 !important">
+                <div class="col-12 border-hallazgo" >
+                    <div class="d-flex align-items-center justify-content-center pt-4 pb-4">
+                        <div class="col-4">
+                            <h5 class="text-left"><strong>Lista de Env&iacute;o <span id="rowCountHA">00</span></strong></h5>
+                            <input type='hidden' id='CountHA' name='CountHA' value="0">
+                        </div>
+                        <div class="col-6 pr-0 text-left">
+                            <div class="franja"></div>
+                        </div>
+                        <div class="col-2 text-right">
+                            <input id="idACRHA" type="hidden" name="idACRHA" value="">
+                            <button class="btn btn-system-verde verde2 text-center"  class="btn-add-traming" id="add-PersonaACRHA" onmouseup="fnSp4AgregarRowListaEnvioACR()">
+                                <span class="">Agregar</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="row justify-content-center mt-2 mb-2"  >
+                        <div class="col-12 ">
+                            <div id="tb_trainningHASp4" class="header-tabla p-3 " name="tb_trainningHASp4">
+                                <div class="row m-0 justify-content-between " >
+                                    <div class="col-3 text-left">Nombres</div>
+                                    <div class="col-3 text-left">Cargo</div>
+                                    <div class="col-4 text-left">Correo</div>
+                                    <div class="col-2 text-left">Eliminar</div>
+                                </div>
+                            </div>
+
+                            <div id="listadoPersonasEnviarACRSp4" class="body-tabla-list tbody_trainning scroll-blue" style="height: 210px;margin-bottom: 15px;">
+
+                            </div>
+
+                            <div id="pagination-containerSp4HA" class="mt-3"></div>
+                        </div>
+
+                    </div>
+
+                    <div class="d-flex mt-4 mb-3 justify-content-center" style="margin-bottom: 10px;">
+                        <div class="col-md-4 pl-0">
+                            <button class="btn_confirmar_modal bg-green-lime-modal" id="btnEnviarACR" onmouseup="fnSp4ConfirmarEnviarACR()">Enviar</button>
+                        </div>
+                        <div class="col-md-4 pl-0">
+                            <button class="btn_cerrar_modal" id="btnCerrrarEnviarACRSp4HA" onmouseup="$('#modalEnviarSp4ACR').modal('hide').removeClass('fade');
+        $('#modalVerACR').modal('show').addClass('fade')">Cerrar</button>
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END MODAL PERSONAS A ENVIAR EVALUACION DE ACR------------------------** -->
+
+<!-- START MODAL CONFIRMAR ENVIAR ACR ACR------------------------** -->
+<div class="modal fade"  id="modalConfirmarEnviarSp4ACR" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="modalAddCompanyTitle" aria-hidden="true" >
+    <div class="modal-dialog modal-dialog-centered rounded " role="document" style="max-width: 392px; z-index: 1030; ">
+        <div class="modal-content rounded " style="border: 0px !important; background-color:rgba(0,0,0,.0001) !important; box-shadow: none;">
+
+            <div style="overflow: hidden;height: 500px;overflow-x: hidden; ">
+                <div class="modal-body" id="">
+                    <div class="col-sm-12 col-md-12" style="color:#575757c9;">
+
+                        <div class="card border-0" style=" border-radius: 10px; box-shadow: none;">
+                            <div class="card-header text-center text-white  " style=" border-radius: 10px 10px 0px 0px; background:#05beee; height: 95px;"><img src="images/iconos/informacio1.svg"><span><b><br><br>&nbsp;&nbsp;&nbsp;&nbsp;</b></span></div>
+                                <br>
+                            <div class="card-body mt-2" style=" padding: 10px !important; ">
+                                <div class="row p-0 d-flex justify-content-center">
+
+                                    <div class="col-sm-10 align-self-center text-center"   >
+                                        <h4><b style=" color: #000000 !important;  font-size: 17px !important; " >Se Finalizar&aacute; y Enviar&aacute; ACR</b></h4>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="espacio"></div>
+                            <div class="card-body my-4">
+                                <div class="row p-0 d-flex justify-content-center">
+                                    <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;font-size: 15px;" >
+                                        <h4><b style=" color: #000000 !important;  font-size: 16px !important; " >¿Desea Confirmar Modificaci&oacute;n?</b></h4>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="card-body" style=" padding: 10px !important; ">
+                                <div class="row p-0 d-flex justify-content-center">
+                                    <div class="col-sm-12 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;font-size: 15px;" >
+                                        <div class="card-body2">
+                                        <div class="row justify-content-around align-items-center">
+                                            <div class="col-6">
+                                                <button type="button" class="btn_confirmar_modal bg-green-lime-modal confirm btn-confirmar-fecha btn-blue" id="btnConfirmarEnvioACR" onmouseup="fnSp4GuardarACR()"><b>Confirmar</b></button>
+                                            </div>
+                                            <div class="col-6">
+                                                <button class="btn_cerrar_modal btn-cerrar-fecha" id="btn-cancelar-ACR" onmouseup="$('#modalConfirmarEnviarSp4ACR').modal('hide').removeClass('fade'); $('#modalEnviarSp4ACR').modal('show').addClass('fade')" ><b>Cerrar</b></button>
+                                            </div>
+                                        </div>
+                                        </div>
+                                     </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END MODAL CONFIRMAR ENVIAR ACR ------------------------** -->
+
+<!-- START MODAL ALERT OK------------------------** -->
+<div class="modal fade"  id="modalExitoFinalizarACRSp4" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="ExitoFinalizarACRSp4Modal" aria-hidden="true" >
+    <div class="modal-dialog modal-dialog-centered rounded " role="document" style="max-width: 392px; z-index: 1030; ">
+        <div class="modal-content rounded " style="border: 0px !important; background-color:rgba(0,0,0,.0001) !important; box-shadow: none;">
+
+            <div style="overflow: hidden;height: 500px;overflow-x: hidden; ">
+                <div class="modal-body" >
+                    <div class="col-sm-12 col-md-12" style="color:#575757c9;">
+
+                        <div class="card border-0" style=" border-radius: 10px; box-shadow: none;">
+                            <div class="card-header text-center text-white  " style=" border-radius: 10px 10px 0px 0px; background:#D2D97B; height: 95px;"><img src="images/iconos/correct_1.svg"><span><b><br><br>&nbsp;&nbsp;&nbsp;&nbsp;</b></span></div>
+
+                            <div class="card-body my-4">
+                                <div class="row p-0 d-flex justify-content-center">
+                                    <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;" >
+                                        <h4> <b style=" color: #000000 !important;  font-size: 17px !important; ">Se Finaliz&oacute; El ACR con &Eacute;xito</b></h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="espacio"></div>
+                            <div class="card-body">
+                                <div class="row p-0 d-flex justify-content-center">
+                                    <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;font-size: 15px;" >
+                                        <b style=" color: #000000 !important;  font-size: 15px !important; ">Puedes Regresar A Tu Bandeja de <br> Entrada</b>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                             <div class="card-body2">
+                                <div class="row justify-content-around align-items-center">
+                                    <div class="col-5 ml-3" style="padding:10px 0px !important;" >
+                                        <button type="button" onmouseup="$('#modalExitoFinalizarACRSp4').modal('hide').removeClass('fade')" class="btn_confirmar_modal bg-green-lime-modal confirm btn-confirmar-fecha-end" id="btnExitoFinalizadoACR"><b>De Acuerdo</b></button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+
+
+    </div>
+</div>
+<!-- END MODAL ALERT OK------------------------** -->
+
+<!-- START MODAL NO PUEDE ELIMINAR TARJETA 5 PORQUE------------------------** -->
+<div class="modal fade"  id="modalSp4NoPuedeEliminar5PorQue" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="modalAddCompanyTitle" aria-hidden="true" >
+    <div class="modal-dialog modal-dialog-centered rounded " role="document" style="max-width: 392px; z-index: 1030; ">
+        <div class="modal-content rounded " style="border: 0px !important; background-color:rgba(0,0,0,.0001) !important; box-shadow: none;">
+
+            <div style="overflow: hidden;height: 500px;overflow-x: hidden; ">
+                <div class="modal-body" id="">
+                    <div class="col-sm-12 col-md-12" style="color:#575757c9;">
+
+                        <div class="card border-0" style=" border-radius: 10px; box-shadow: none;">
+                            <div class="card-header text-center text-white  " style=" border-radius: 10px 10px 0px 0px; background:#05beee; height: 95px;"><img src="images/iconos/informacio1.svg"><span><b><br><br>&nbsp;&nbsp;&nbsp;&nbsp;</b></span></div>
+                                <br>
+                            <div class="card-body mt-2" style=" padding: 10px !important; ">
+                                <div class="row p-0 d-flex justify-content-center">
+
+                                    <div class="col-sm-10 align-self-center text-center"   >
+                                        <h4><b style=" color: #000000 !important;  font-size: 17px !important; " >No Puede eliminar porque <br>tiene | dependientes</b></h4>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="espacio"></div>
+                            <div class="card-body my-4">
+                                <div class="row p-0 d-flex justify-content-center">
+                                    <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;font-size: 15px;" >
+                                        <h4><b style=" color: #000000 !important;  font-size: 16px !important; " >Revise y elimine las dependencias<br>de esta tarjeta, para poder eliminarla</b></h4>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="card-body" style=" padding: 10px !important; ">
+                                <div class="row p-0 d-flex justify-content-center">
+                                    <div class="col-sm-12 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;font-size: 15px;" >
+                                        <div class="card-body2">
+                                        <div class="row justify-content-around align-items-center">
+                                            <div class="col-3"></div>
+                                            <div class="col-6">
+                                                <button type="button" class="btn_confirmar_modal bg-green-lime-modal confirm btn-confirmar-fecha btn-blue" id="btnNoPuedeEliminarPorque" onmouseup="$('#modalSp4NoPuedeEliminar5PorQue').modal('hide').removeClass('fade');$('#modalVerACR').modal('show').addClass('fade');"><b>De Acuerdo</b></button>
+                                            </div>
+                                            <div class="col-3"></div>
+                                            <!--div class="col-6">
+                                                <button class="btn_cerrar_modal btn-cerrar-fecha" id="btn-cancelar-ACR" onmouseup=" $('#modalEnviarSp4ACR').modal('show').addClass('fade')" ><b>Cerrar</b></button>
+                                            </div-->
+                                        </div>
+                                        </div>
+                                     </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END MODAL NO PUEDE ELIMINAR TARJETA 5 PORQUE ------------------------** -->
+
+<!-- START MODAL CONFIRMAR ELIMINAR TARJETA 5 PORQUE------------------------** -->
+<div class="modal fade"  id="modalSp4ConfirmarEliminar5PorQue" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="modalAddCompanyTitle" aria-hidden="true" >
+    <div class="modal-dialog modal-dialog-centered rounded " role="document" style="max-width: 392px; z-index: 1030; ">
+        <div class="modal-content rounded " style="border: 0px !important; background-color:rgba(0,0,0,.0001) !important; box-shadow: none;">
+
+            <div style="overflow: hidden;height: 500px;overflow-x: hidden; ">
+                <div class="modal-body" id="">
+                    <div class="col-sm-12 col-md-12" style="color:#575757c9;">
+
+                        <div class="card border-0" style=" border-radius: 10px; box-shadow: none;">
+                            <div class="card-header text-center text-white  " style=" border-radius: 10px 10px 0px 0px; background:#05beee; height: 95px;"><img src="images/iconos/informacio1.svg"><span><b><br><br>&nbsp;&nbsp;&nbsp;&nbsp;</b></span></div>
+                                <br>
+                            <div class="card-body mt-2" style=" padding: 10px !important; ">
+                                <div class="row p-0 d-flex justify-content-center">
+
+                                    <div class="col-sm-10 align-self-center text-center"   >
+                                        <h4><b style=" color: #000000 !important;  font-size: 17px !important; " >Esta por eliminar la tarjeta.</b></h4>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="espacio"></div>
+                            <div class="card-body my-4">
+                                <div class="row p-0 d-flex justify-content-center">
+                                    <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;font-size: 15px;" >
+                                        <h4><b style=" color: #000000 !important;  font-size: 16px !important; " >¿Desea confirmar la acci&oacute;n?</b></h4>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="card-body" style=" padding: 10px !important; ">
+                                <div class="row p-0 d-flex justify-content-center">
+                                    <div class="col-sm-12 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;font-size: 15px;" >
+                                        <div class="card-body2">
+                                        <div class="row justify-content-around align-items-center">
+
+                                            <div class="col-6">
+                                                <button type="button" class="btn_confirmar_modal bg-green-lime-modal confirm btn-confirmar-fecha btn-blue" id="btnNoPuedeEliminarPorque" onmouseup="$('#modalSp4ConfirmarEliminar5PorQue').modal('hide').removeClass('fade');fnSp4GuardarEliminarTarjeta()"><b>Confirmar</b></button>
+                                            </div>
+                                            <div class="col-6">
+                                                <button class="btn_cerrar_modal btn-cerrar-fecha" id="btn-cancelar-ACR" onmouseup=" $('#modalVerACR').modal('show').addClass('fade');$('#modalSp4ConfirmarEliminar5PorQue').modal('hide').removeClass('fade'); " ><b>Cerrar</b></button>
+                                            </div>
+                                        </div>
+                                        </div>
+                                     </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END MODAL CONFIRMAR ELIMINAR TARJETA 5 PORQUE ------------------------** -->
+
+<!-- START MODAL EXITO AL ELIMINAR TARJETA 5 PORQUE------------------------** -->
+<div class="modal fade"  id="modalExitoEliminar5PorQue" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="ExitoFinalizarACRSp4Modal" aria-hidden="true" >
+    <div class="modal-dialog modal-dialog-centered rounded " role="document" style="max-width: 392px; z-index: 1030; ">
+        <div class="modal-content rounded " style="border: 0px !important; background-color:rgba(0,0,0,.0001) !important; box-shadow: none;">
+
+            <div style="overflow: hidden;height: 500px;overflow-x: hidden; ">
+                <div class="modal-body" >
+                    <div class="col-sm-12 col-md-12" style="color:#575757c9;">
+
+                        <div class="card border-0" style=" border-radius: 10px; box-shadow: none;">
+                            <div class="card-header text-center text-white  " style=" border-radius: 10px 10px 0px 0px; background:#D2D97B; height: 95px;"><img src="images/iconos/correct_1.svg"><span><b><br><br>&nbsp;&nbsp;&nbsp;&nbsp;</b></span></div>
+
+                            <div class="card-body my-4">
+                                <div class="row p-0 d-flex justify-content-center">
+                                    <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;" >
+                                        <h4> <b style=" color: #000000 !important;  font-size: 17px !important; ">Se Elimin&oacute; la Tarjeta con &Eacute;xito</b></h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="espacio"></div>
+                            <div class="card-body">
+                                <div class="row p-0 d-flex justify-content-center">
+                                    <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;font-size: 15px;" >
+                                        <b style=" color: #000000 !important;  font-size: 15px !important; ">Puede Revisar el Cambio Realizado</b>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                             <div class="card-body2">
+                                <div class="row justify-content-around align-items-center">
+                                    <div class="col-5 ml-3" style="padding:10px 0px !important;" >
+                                        <button type="button" onmouseup="$('#modalExitoEliminar5PorQue').modal('hide').removeClass('fade');$('#modalVerACR').modal('show').addClass('fade');" class="btn_confirmar_modal bg-green-lime-modal confirm btn-confirmar-fecha-end" id="btnExitoEliminar5PorQue"><b>De Acuerdo</b></button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+
+
+    </div>
+</div>
+<!-- END MODAL EXITO AL ELIMINAR TARJETA 5 PORQUE------------------------** -->
+
+<!-- START MODAL MENSAJE DE ERROR------------------------** -->
+<div class="modal fade"  id="modalSp4MsgErrorHA"  data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="ExitoIngresarAuditoriaModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered rounded" role="document" style="max-width: 400px; z-index: 1030; ">
+
+        <div class="modal-content rounded border-0" style=" background-color:rgba(0,0,0,.0001) !important; box-shadow: none;">
+            <div style="overflow: hidden;height: 500px;overflow-x: hidden; ">
+                <div class="modal-body" id="" style="padding: 0px;">
+                    <div class="col-sm-12 col-md-12" style="color:#575757c9; width: 100%; padding: 0px;">
+
+                        <div class="card border-0" style=" padding: 0px; border: 2px solid #ff5a5a; border-radius: 5px;    width: 100%;">
+                            <div class="card-header text-white" style="background:#ff5a5a; height: 95px;">
+                                    <div class="d-flex justify-content-center">
+                                        <img src="images/iconos/informacion3.svg">
+                                    </div>
+                            </div>
+
+                            <div class="card-body" style="background: white;">
+                                <table align="center" width= "100%" border="0" >
+
+                                    <tr>
+                                        <td width="5%" >&nbsp;</td>
+                                        <td width="80%" >
+                                            <div class="d-flex justify-content-center" style="font-size: 18px;">
+                                                <b>ERROR!</b>
+                                            </div>
+
+                                        </td>
+                                        <td width="5%">&nbsp;</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td width="5%" >&nbsp;</td>
+                                        <td width="80%" >
+                                            <div id="subTituloErrorSp4HA" class="mt-4 d-flex my-2 justify-content-center" style="font-size: 18px;">
+                                                <b>auditorías con éxito</b>
+                                            </div>
+                                        </td>
+                                        <td width="5%">&nbsp;</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td width="5%" >&nbsp;</td>
+                                        <td width="80%" align="center" >
+                                            <div id="mensajeErrorSp4HA" class="d-flex mx-0 my-3 px-0 justify-content-center">
+                                                El código de la programación es:aaaaaaaaad dfdsfsdfdsf
+                                                dsfsdfdsfsdfdsfdfdsfdf
+                                                dfsdfsdfds
+                                             </div>
+                                        </td>
+                                        <td width="5%">&nbsp;</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td width="5%" >&nbsp;</td>
+                                        <td width="80%" >
+                                            <div class="d-flex mx-0 px-0 justify-content-center pregunta-exito-ingreso-auditoriaCA">
+                                                &nbsp;
+                                             </div>
+                                        </td>
+                                        <td width="5%">&nbsp;</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td width="5%" >&nbsp;</td>
+                                        <td width="80%" >
+                                            <div  class="d-flex mx-5 mt-3 mx-0 justify-content-center" >
+                                                <button type="button" onClick="$('#modalSp4MsgErrorHA').modal('hide');" class="btn_confirmar_modal bg-danger" style="color: #fff" >De Acuerdo</button>
+                                            </div>
+                                        </td>
+                                        <td width="5%">&nbsp;</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END MODAL MENSAJE DE ERROR------------------------** -->
+
+
+<script src="./js/paginator/pagination.js"></script>
+
+<script type="text/javascript" charset="utf-8" async defer>
+	$('document').ready(function ()
+	{
+        //Cambio de los Step del formulario y color de los botones
+	    var navListItems = $('div.setup-panel div a button'), // tab nav items
+	        allWells = $('.setup-content'), // content div
+	        allNextBtn = $('.nextBtn'), // next button
+	        step1 = $('#step-11HA');
+	        allWells.hide(); // hide all contents by defauld
+	        step1.show();
+	    $('#btn_step11').addClass('btn-primary-check');
+	    navListItems.click(function (e) {
+	        e.preventDefault();
+	        var $target = $($(this).attr('href')),
+	            $item = $(this);
+
+	        if (!$item.hasClass('disabled'))
+	        {
+	            navListItems.removeClass('btn-primary-check').addClass('btn-default');
+	            $item.addClass('btn-primary-check');
+	            allWells.hide();
+	            $target.show();
+	                // $target.find('input:eq(0)').focus();
+	        }
+	    });
+	    // next button
+	    allNextBtn.click(function()
+	    {
+	        var curStep = $(this).closest(".setup-content"),
+	        	curStepBtn = curStep.attr("id"),
+	            nextStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().next().children("a"),
+	            isValid = true;
+	        // Validation
+	        $(".form-group").removeClass("has-error");
+
+	        // move to next step if valid
+	        if (isValid)
+	            nextStepWizard.removeAttr('disabled').trigger('click');
+	    });
+
+	    $('div.setup-panel div a.btn-primary').trigger('click');
+    	//Cambio de los Step del formulario y color de los botones*/
+	});
+</script>

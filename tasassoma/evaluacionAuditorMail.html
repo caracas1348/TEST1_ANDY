@@ -1,0 +1,1197 @@
+<!doctype html>
+<html lang="es">      
+
+                <!----------------------- *** Inicio de la Cabecera ***   ----------------------->
+    <head>
+        <meta http-equiv="Expires" content="0">
+        <meta http-equiv="Last-Modified" content="0">
+        <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <link rel="shortcut icon" href="images/iconos/favicon.ico" type="image/x-icon"/> 
+        <meta name="author" content="Visualsat Peru">        
+        <title>SSOMA</title>
+        <!-- css estaticos -->
+        <link href="modules/bootstrap-4.4.1/dist/css/bootstrap.min.css" rel="stylesheet" >
+        <link rel="stylesheet" href="modules/bootstrap-sweetalert-master/dist/sweetalert.css" rel="stylesheet">
+        <link href="css/loadingEffect.css" rel="stylesheet" >
+        <!-- dinamico -->
+        <link href="css/visitasa.css" rel="stylesheet" >
+        <link href="css/crearAuditorias.css" rel="stylesheet" >
+        <link rel="stylesheet" href="view/ssoma/ssoma.css">
+        <link rel="stylesheet" href="css/pagination.css">
+        <link rel="stylesheet" href="css/auditorLiderList.css">
+            <!-- style staticos {-->
+    <!-- Libreria INTERNA Proyecto --><link href="css/loadingEffect.css" rel="stylesheet">
+    
+    <!-- Libreria BOOTSTRAP Terceros Web --><link rel="stylesheet" href="modules/bootstrap-sweetalert-master/dist/sweetalert.css" rel="stylesheet">
+    <!-- Libreria DROPZONE Terceros Web --><link rel="stylesheet" href="modules/dropzone-5.7.0/dist/dropzone.css">               
+    <!-- Libreria FONTAWESOME Terceros Web --><link href="modules/fontawesome/css/fontawesome.css" rel="stylesheet">
+    <!-- Libreria FONTAWESOME Terceros Web --><link href="modules/fontawesome/css/brands.css" rel="stylesheet">
+    <!-- Libreria FONTAWESOME Terceros Web --><link href="modules/fontawesome/css/solid.css" rel="stylesheet">  
+    <!-- Libreria JQUERY Terceros Web --><link href="modules/DataTables/datatables.min.css" rel="stylesheet"> 
+    <!-- Libreria JQUERY Terceros Web --><link href="modules/DataTables/Responsive-2.2.3/css/responsive.bootstrap.min.css" rel="stylesheet">
+    <!-- Libreria JQUERY Terceros Web --><link href="modules/DataTables/Buttons-1.6.1/css/buttons.dataTables.min.css" rel="stylesheet">
+
+    <!-- Libreria JQUERY Terceros Web --><link href="modules/jquery-ui-1.12.1/jquery-ui.min.css" rel="stylesheet">
+    <!-- Libreria JQUERY Terceros Web --><link rel="stylesheet" href="modules/bootstrap-toggle/css/bootstrap4-toggle.min.css" rel="stylesheet">    
+    <!-- Libreria ROBOTO Terceros Web --><link rel="stylesheet" href="modules/mterialiconRoboto.css">
+    <!-- Libreria BOOTSTRAP Terceros Web --><link rel="stylesheet" href="modules/bootstrap-material-design-master/assets/css/docs.css">
+    <!-- Libreria DROPIFY Terceros Web --><link rel="stylesheet" href="modules/dropify/dist/css/dropify.css">
+    <!-- style staticos }-->
+   
+    <!-- @Andy CSS-->
+    <link href="modules/bootstrap-4.4.1/dist/css/bootstrap.min.css" rel="stylesheet" >
+    <Link href="./css/crearAuditorias.css" rel="stylesheet">
+    <Link href="./css/crearProgramas.css" rel="stylesheet">
+    <link href="modules/paginatejs/css/ligne.css" rel="stylesheet">
+    <link href="modules/paginatejs/css/paginate.css" rel="stylesheet">
+    <!-- @Andy CSS-->
+
+
+    <!-- style dinamicos {-->
+    <link href="css/visitasa.css" rel="stylesheet">
+    <link href="css/auditoria.css" rel="stylesheet">
+    <link href="css/auditorList.css" rel="stylesheet">
+    <link href="css/menu.css" rel="stylesheet">
+      <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+      <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+        
+
+        
+               <!-- //------------------bloque codigo-----------------------#@andy---------------------------------------------// -->
+                  <!----------------------- estilos estaticos de este arhivo ----------------------->
+         <style>
+               
+            .padre {
+
+                display: flex !important;
+                justify-content: center !important;
+                align-items: center !important;
+                background:#fff url('images/fondologin.jpg') no-repeat center center  ; min-height:100%;
+                background-attachment: fixed;
+                background-size: cover;
+				        background:#C1C1C1;
+            }
+
+            .olvidaste-tu-contra {
+                width: 168px;
+                height: 17px;
+                font-family: ProductSans;
+                font-size: 14px;
+                font-weight: bold;
+                font-stretch: normal;
+                font-style: normal;
+                line-height: normal;
+                letter-spacing: normal;
+                color: #51b499;
+            }
+            
+            #tx_login_usuario{
+
+                background-color: white;
+                background-image: url('images/iconos/iconUser.svg');
+                background-position:330px;
+                background-repeat: no-repeat;
+                padding-left: 40px;
+                }
+
+                #tx_login_password{
+
+                background-color: white;
+                background-image: url('images/iconos/iconPass.svg');
+                background-position:330px;
+                background-repeat: no-repeat;
+                padding-left: 40px;
+                }
+            
+            #barra_superior{
+                background-color:#34559c;
+                height: 77px;
+            }
+
+            .lbBienvenido {
+                
+                height: 24px;
+                font-size: 24.3px;
+                font-weight: normal;
+                font-stretch: normal;
+                font-style: normal;
+                line-height: 1;
+                letter-spacing: 0.15px;
+                color: #000000;
+                }
+				
+				
+    ul.ui-autocomplete.ui-menu { width: 400px !important; }
+
+    #sel_procesoPlan{
+        height: 24px;
+        background-color: white;
+        cursor: pointer;
+    }
+
+    #sel_procesoPlan:hover{
+        height: 124px;
+        background-color: white;
+        cursor: pointer;
+    }
+
+
+    .txtAreaLista{
+         border-radius: 4px;
+        -moz-border-radius: 4px;
+        -webkit-border-radius: 4px;
+        -o-border-radius: 4px;
+        background: #F2F2F2;
+        background: linear-gradient(left, #F2F2F2, #F2F2F2);
+        background: -moz-linear-gradient(left, #F2F2F2, #F2F2F2);
+        background: -webkit-linear-gradient(left, #F2F2F2, #F2F2F2);
+        background: -o-linear-gradient(left, #F2F2F2, #F2F2F2);
+        width: 100%;
+        height: 80%;
+        border-color:#F2F2F2;
+        resize: none;
+    }
+
+    .btEnviarEval{
+
+      width: 139px;
+      height: 18px;
+      font-family: ProductSans;
+      font-size: 16px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.39;
+      letter-spacing: 0.44px;
+      text-align: center;
+      color: #ffffff;
+    }
+
+   
+
+
+   
+
+    input[type="time"]::-webkit-calendar-picker-indicator 
+    {
+        filter: invert(48%) sepia(13%) saturate(3207%) hue-rotate(130deg) brightness(95%) contrast(80%);
+        cursor:pointer;
+    }
+           
+         </style>
+
+                  <!----------------------- estilos estaticos de este arhivo ----------------------->
+
+    </head> 
+                <!----------------------- *** Fin de la Cabecera ***   ----------------------->
+
+
+
+
+
+
+
+
+
+
+
+                <!----------------------- *** Inicio de la Cuerpo de la Pagina ***   ----------------------->           
+    
+     <body class="text-center" id="body_index"  >
+
+                <!----------------------------- barra superior ----------------------------------------------> 
+                        <!-- <div id = "barra_superior"  class="row justify-content-center" >
+                            <img  class=" float-top" src="images/iconos/iconTasa.svg"  >
+                        </div> -->
+                <!------------------------------ barra superior ---------------------------------------------->
+
+
+
+
+                
+                <!----------------------- *** Inicio Capa Padre ***   ----------------------->
+                   <div class="padre"> 
+                        
+                        <div id="divPreviewEval" style="width: 740px; padding: 30px 30px !important;" class="divPreviewEval alert overflow-auto text-left" >
+                            
+                          <div style="text-align: center;">Generando Evaluación  ..   <img  class=" float-top text-center" src="images/iconos/loadingAdj.gif"  ></div>
+
+                        </div>
+                   </div>
+
+               <!----------------------- *** Fin Capa Padre ***   ----------------------->
+
+
+
+
+               <div class="modal fade"  id="modalMsgError" tabindex="-1" role="dialog" aria-labelledby="ExitoIngresarAuditoriaModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered rounded" role="document" style="max-width: 300px; z-index: 1030; ">
+            
+                    <div class="modal-content rounded border-0" style=" background-color:rgba(0,0,0,.0001) !important; box-shadow: none;">
+                        <div style="overflow: hidden;height: 360px;overflow-x: hidden; ">
+                            <div class="modal-body" id="" style="padding: 0px;">
+                                <div class="col-sm-12 col-md-12" style="color:#575757c9; width: 100%; padding: 0px;">
+            
+                                    <div class="card border-o" style=" padding: 0px; border: 2px solid #ff5a5a; border-radius: 5px;    width: 100%;">
+                                        <div class="card-header text-white" style="background:#ff5a5a; height: 95px;">
+                                                <div class="d-flex justify-content-center">
+                                                    <img src="images/iconos/informacion3.svg">
+                                                </div>
+                                        </div>
+                                            <div class="card-body" style="background: white;">
+                                              <table align="center" width= "100%" border="0" >
+                                                  <tr>
+                                                      <td width="5%" >&nbsp;</td>
+                                                           <td width="80%" >
+                                                            <div class="d-flex justify-content-center titulo-exito-ingreso-auditoriaCA" style="font-size: 18px;">
+                                                                <b></b>
+                                                            </div>
+            
+                                                           </td>
+                                                      <td width="5%">&nbsp;</td>
+                                                  </tr>
+            
+                                                  <tr>
+                                                    <td width="5%" >&nbsp;</td>
+                                                         <td width="80%" >
+                                                             <div id="subTituloError" class="d-flex mb-2 justify-content-center titulo-confirmar-ingreso-auditoriaCA" style="font-size: 18px;">
+                                                                   <b>auditorías con éxito</b>
+                                                             </div>
+                                                         </td>
+                                                    <td width="5%">&nbsp;</td>
+                                                   </tr>
+            
+                                                    <tr>
+                                                        <td width="5%" >&nbsp;</td>
+                                                            <td width="80%" align="center" >
+                                                                <div id="mensajeError" class="d-flex mx-0 px-0 justify-content-center pregunta-exito-ingreso-auditoriaCA">
+                                                                    El código de la programación es:aaaaaaaaad dfdsfsdfdsf
+                                                                    dsfsdfdsfsdfdsfdfdsfdf
+                                                                    dfsdfsdfds
+                                                                 </div>
+                                                            </td>
+                                                        <td width="5%">&nbsp;</td>
+                                                    </tr>
+            
+            
+                                                    <tr>
+                                                        <td width="5%" >&nbsp;</td>
+                                                            <td width="80%" >
+                                                                <div class="d-flex mx-0 px-0 justify-content-center pregunta-exito-ingreso-auditoriaCA">
+                                                                    &nbsp;
+                                                                 </div>
+                                                            </td>
+                                                        <td width="5%">&nbsp;</td>
+                                                    </tr>
+            
+                                                    <tr>
+                                                        <td width="5%" >&nbsp;</td>
+                                                            <td width="80%" >
+                                                                <div  class="d-flex mb-3 mx-0 justify-content-center titulo-exito-ingreso-auditoriaCA" >
+                                                                    <button type="button" onClick="$('#modalMsgError').modal('hide');   document.getElementById('txt_comentario').focus();" class="btn_confirmar_modal bg-danger" style="color: #fff" >De Acuerdo</button>
+                                                                </div>
+                                                            </td>
+                                                        <td width="5%">&nbsp;</td>
+                                                    </tr>
+                                                  
+            
+            
+                                              </table>
+                                            </div>
+            
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+            </div>
+
+    </body>
+<!----------------------- *** Fin de la Cuerpo de la Pagina ***   -----------------------> 
+<!--  -------------------------------------------------------------------------------------------------------------------------------  -->
+
+
+<div class="modal fade "  id="modalConfirmReenviarCorreo" tabindex="-1" role="dialog" aria-labelledby="modalAddCompanyTitle" aria-hidden="true" >
+  <div class="modal-dialog modal-dialog-centered rounded " role="document" style="max-width: 412px; z-index: 1030; ">
+      <div class="modal-content rounded " style="border: 0px !important; background-color:rgba(0,0,0,.0001) !important; box-shadow: none;">
+
+          <div style="overflow: hidden;height: 500px;overflow-x: hidden; ">
+              <div class="modal-body" id="">
+                  <div class="col-sm-12 col-md-12" style="color:#575757c9;">
+
+                      <div class="card " style=" border-radius: 10px; box-shadow: none;">
+                          <div class="card-header text-center text-white  " style=" border-radius: 10px 10px 0px 0px; background:#05beee; height: 95px;"><img src="images/iconos/informacio1.svg"><span><b><br><br>&nbsp;&nbsp;&nbsp;&nbsp;</b></span></div>
+
+                          <div class="card-body">
+                              <div class="row p-0 d-flex justify-content-center">
+                                  <div class="col-sm-10 align-self-center text-center; "> 
+                                          <h4 style="letter-spacing: 0.26px; text-align: center; font-size: 18px; font-weight: bold; color:black">
+                                              <b>Se renviará la evaluación vencida de:</b>
+                                          </h4>
+                                  </div>
+                                  <div class="col-sm-10 align-self-center text-center;"> 
+                                      <h4 id = 'lbSendMail' style="letter-spacing: 0.26px; text-align: center; font-size: 18px; font-weight: bold; color:black">
+                                          <b>Mauricio Carhuapoma Torres</b>
+                                      </h4>
+                                 </div>
+                              </div>
+                          </div>
+                          <!-- <div class="espacio"></div> -->
+                          <div class="card-body">
+                              <div class="row p-0 d-flex justify-content-center">
+                                  <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;font-size: 15px;" >
+                                      <h5 style="font-size: 14px;"><b>¿Desea confirmar la acción?</b></h5>
+                                  </div>
+
+                              </div>
+                          </div>
+                          <div class="espacio"></div>
+                          <div class="card-body">
+                              <div class="row p-0 d-flex justify-content-center">
+                                  <div class="col-sm-12 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;font-size: 15px;" >
+                                      <button  style="background-color: #05beee; width: 122px; height: 47px; color:#FFF;  margin: 0 10px 0 0; padding: 7px 12.2px 10px 5px;"
+                                      type="button" id="btnValidaReeCorr" class="btn  btn-raised"  onclick="fnSp3ConfirmReenviarEvaluacion();">
+                                        <b>Confirmar</b>
+                                      </button>
+
+                                      <button type="button" class="btn   btn-white btn-raised" 
+                                         style=" background-color: #fff; width: 122px; height: 47px; color:black;  margin: 0 10px 0 0; padding: 7px 12.2px 10px 5px;" 
+                                         id="CancelConfirmReeCorr" onclick=" $('#modalConfirmReenviarCorreo').modal('hide').removeClass('fade');" ><b>Cerrar</b>
+                                      </button>
+
+                                  </div>
+
+                              </div>
+                          </div>
+
+
+
+
+
+
+                          <div ></div>
+                      </div>
+                  </div>
+              </div>
+
+
+
+          </div>
+      </div>
+  </div>
+</div>
+    <div class="modal fade "  id="modalConfirmEnviarEvaluacion" tabindex="-1" role="dialog" aria-labelledby="modalAddCompanyTitle" aria-hidden="true" >
+        <div class="modal-dialog modal-dialog-centered rounded " role="document" style="max-width: 412px; z-index: 1030; ">
+            <div class="modal-content rounded " style="border: 0px !important; background-color:rgba(0,0,0,.0001) !important; box-shadow: none;">
+
+                <div style="overflow: hidden;height: 500px;overflow-x: hidden; ">
+                    <div class="modal-body" id="">
+                        <div class="col-sm-12 col-md-12" style="color:#575757c9;">
+
+                            <div class="card " style=" border-radius: 10px; box-shadow: none;">
+                                <div class="card-header text-center text-white  " style=" border-radius: 10px 10px 0px 0px; background:#05beee; height: 95px;"><img src="images/iconos/informacio1.svg"><span><b><br><br>&nbsp;&nbsp;&nbsp;&nbsp;</b></span></div>
+
+                                <div class="card-body">
+                                    <div class="row p-0 d-flex justify-content-center">
+                                        <div class="col-sm-10 align-self-center text-center; "> 
+                                                <h4 style="letter-spacing: 0.26px; text-align: center; font-size: 18px; font-weight: bold; color:black">
+                                                    <b>Se guardarán las Calificaciones:</b>
+                                                </h4>
+                                        </div>
+                                        <div class="col-sm-10 align-self-center text-center;"> 
+                                            <h4 id = 'lbSendMail' style="letter-spacing: 0.26px; text-align: center; font-size: 18px; font-weight: bold; color:black">
+                                                <b>Otorgadas al Auditor</b>
+                                            </h4>
+                                       </div>
+                                    </div>
+                                </div>
+                                <!-- <div class="espacio"></div> -->
+                                <div class="card-body">
+                                    <div class="row p-0 d-flex justify-content-center">
+                                        <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;font-size: 15px;" >
+                                            <h5 style="font-size: 14px;"><b>¿Desea confirmar la acción?</b></h5>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="espacio"></div>
+                                <div class="card-body">
+                                    <div class="row p-0 d-flex justify-content-center">
+                                        <div class="col-sm-12 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;font-size: 15px;" >
+                                            <button  style="background-color: #05beee; width: 122px; height: 47px; color:#FFF;  margin: 0 10px 0 0; padding: 7px 12.2px 10px 5px;"
+                                            type="button" id="btnValidaMandaEval" class="btn  btn-raised"  onclick="ingresaBD();">
+                                              <b>Confirmar</b>
+                                            </button>
+
+                                            <button type="button" class="btn   btn-white btn-raised" 
+                                               style=" background-color: #fff; width: 122px; height: 47px; color:black;  margin: 0 10px 0 0; padding: 7px 12.2px 10px 5px;" 
+                                               id="CancelConfirmReeCorr" onclick=" $('#modalConfirmEnviarEvaluacion').modal('hide').removeClass('fade');" ><b>Cerrar</b>
+                                            </button>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+
+
+
+
+                                <div ></div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--  ..............................................................................................................................     -->
+<div class="modal fade "  id="modalShowAlertConfirmEnviarCalificacionOk" tabindex="-1" data-backdrop="static" data-keyboard="false" aria-hidden="true"  tabindex="-1" role="dialog" aria-labelledby="modalAddCompanyTitle" aria-hidden="true" >
+  <div class="modal-dialog modal-dialog-centered rounded " role="document" style="max-width: 422px; z-index: 1030; ">
+      <div class="modal-content rounded " style="border: 0px !important; background-color:rgba(0,0,0,.0001) !important; box-shadow: none;">
+
+          <div style="overflow: hidden;height: 500px;overflow-x: hidden; ">
+              <div class="modal-body" id="">
+                  <div class="col-sm-12 col-md-12" style="color:#575757c9;">
+
+                      <div class="card " style=" border-radius: 10px; box-shadow: none;">
+                          <div class="card-header text-center text-white  " style=" border-radius: 10px 10px 0px 0px; background:#D2D97B; height: 95px;"><img src="images/iconos/correct_1.svg"><span><b><br><br>&nbsp;&nbsp;&nbsp;&nbsp;</b></span></div>
+
+                          <div class="card-body">
+                              <div class="row p-0 d-flex justify-content-center">
+                                  <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;" >
+                                      <h4 style="letter-spacing: 0.26px; text-align: center; font-size: 18px; font-weight: bold; color:black"> 
+                                          <b>Se registr&oacute; con &eacute;xito la evaluaci&oacute;n</b>
+                                      </h4>
+                                      
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="espacio"></div>
+                          <div class="card-body">
+                              <div class="row p-0 d-flex justify-content-center">
+                                  <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;font-size: 15px;" >
+                                      <b>Gracias por su Colaboraci&oacute;n</b>
+                                  </div>
+
+                              </div>
+                          </div>
+                          <div class="espacio"></div>
+                           <div class="card-body2">
+                              <div class="row justify-content-around align-items-center">
+                                  <div class="col-10">
+                                      <button type="button" class="btn_confirmar_modal bg-green-lime-modal confirm btn-confirmar-fecha-end" 
+                                      id="btn-confirmar-fecha-end" onclick=" $('#modalShowAlertConfirmEnviarCalificacionOk').modal('hide').removeClass('fade'); location.reload();"><b>De Acuerdo</b></button>
+                                  </div>
+                              </div>
+                          </div>
+
+                          <div ></div>
+                      </div>
+                  </div>
+              </div>
+
+
+
+          </div>
+      </div>
+
+
+  </div>
+</div>
+
+
+
+
+
+
+
+    <!-- libs estaticos -->
+    <script src="js/jquery-3.4.1.js" ></script>
+    <script src="modules/bootstrap-4.4.1/dist/js/bootstrap.min.js"  ></script>  
+    <script src="https://www.google.com/recaptcha/api.js" async defer ></script>
+    
+    <script src="modules/bootstrap-sweetalert-master/dist/sweetalert.js"></script>
+    <script src="modules/bootstrap-4-floating-labels-material-inputs/materialize-inputs.jquery.js" ></script> 
+    <!-- libs dinamicos -->
+    <script src="js/common.js" ></script>
+
+    <script src="js/apiRoute.js"></script>
+    <script src="js/msal.js" ></script>
+    <script src="js/login.js" ></script>
+    <script src="js/loginlog.js" ></script>
+    
+
+    <script>
+  function datos()
+     {this.Notas = [];}
+
+
+   var DATOS = [];
+   var ddatos =  new datos();
+   var jj = 0; //variables globales
+   var NOTA_MINIMA = 30;
+   var ESCALA = []; //EJEMPLO  ESCALA[NOTA] = ID
+   var PREGUNTAS = [];  // PREGUNTAS[i] = ID
+   var nota = 0;
+
+   var f3 = '';
+   //variables globales para guardar
+   var ListaEvaluacionId = '';
+   var PreguntaId = [];
+   var EscalaNotasId = [];
+   var Comentario = '';
+
+
+
+
+        
+		$(document).ready(function()
+		{
+          
+      var hoy = new Date();
+      var dd = hoy.getDate();
+      var mm = hoy.getMonth()+1;
+      var yyyy = hoy.getFullYear();
+
+      f3 = dd+'/'+mm+'/'+yyyy;
+
+
+      
+      
+
+
+
+
+     // http://localhost/tasassomaSP2/tasassoma/evaluacionAuditorMail.html?ListadoEvaluacionId=361&HashEvaluacionTokens=1234567890 
+
+       //alert(window.location.href); 
+        var stringg = window.location.href;//es el oficial 
+        //var ListadoEvaluacionId = 361
+        //var HashEvaluacionTokens = '22742239111127291431317364150136617313291244876462342542231582452351071283878110194';
+
+        var ListadoEvaluacionId = getParameterByName('ListadoEvaluacionId');
+        var HashEvaluacionTokens = getParameterByName('HashEvaluacionTokens');
+
+		    var ba  = "";
+        var rol = "";
+        var f1 = "";
+			  var f2 = "";   
+      var url = apiurlAuditoria+"/api/Get-Evaluacion_Auditores-All?code=EUnorEI6paUzxOdpVKKAGDjhb4p4wEZ3R6NTWKDoOdVrk0Y0S/ZOkg==&httpmethod=formEvaluation&EvaluacionAuditoresId="+ListadoEvaluacionId+"&HashEvaluacionTokens="+HashEvaluacionTokens;
+    
+     // var url = apiurlAuditoria+"/api/Get-Evaluacion_Auditores-All?code=EUnorEI6paUzxOdpVKKAGDjhb4p4wEZ3R6NTWKDoOdVrk0Y0S/ZOkg==&httpmethod=objectlist&RolId=&StatusEvaluacionId=&FechaInicio=&FechaFin=&Auditor="
+			//console.log("URL",url )
+		
+				  var headers ={"apikey":constantes.apiKey}
+			
+					var settings = 
+					{
+						"url": url,
+						"method": "GET",
+						"timeout": 0,
+						"crossDomain": true,
+						"dataType": "json",
+						"headers": headers,
+					 };
+			
+				$.ajax(settings).done(function (response){
+                console.log("*****",response);
+                if(response.EvaluacionAuditoresId == 0)
+                {
+                  //alert(response.HashEvaluacionTokens)
+                  $('#divPreviewEval').html(" ");
+                  $('#divPreviewEval').html("<div style = 'color:black; text-align:center;'><b>"+response.HashEvaluacionTokens+"</b></div");
+                    //verModalError1("!Error al cargar la evaluacion","el Tokens de seguridad, no coincide, consulte a soporte técnico", )
+                }
+                else
+                {//todo bien puede cseguir
+                    console.log(response);
+                    //console.log("/////////////", response.EvaluacionAuditores.Id)
+                    ListaEvaluacionId = response.EvaluacionAuditores.Id;//BD 1  
+                    var preguntas = response.GrupoPreguntas;
+                    var escala = response.escalaNotasAll;
+                    var item = response.EvaluacionAuditores;
+                        item.GrupoPreguntas = preguntas;
+
+                    var t = 0;
+                    fnSp3VentanaEvaluacion(item, escala)
+
+                    
+                  
+
+
+                }
+					})
+				
+				
+				
+				
+		})
+		
+		
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+/**
+ * @param String name
+   @return String
+ */
+ function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+    results = regex.exec(location.search);
+    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+
+
+
+
+
+function fnSp3VentanaEvaluacion(DATA, escala)
+{//------------------------------------- ini   fnSp3VentanaEvaluacion() -------------------------------------
+   //console.log("(",t,")",DATA);
+
+          // console.log(escala[0].Description + " "+escala[0].Valor+ "/");
+          // console.log(escala[1].Description + " "+escala[1].Valor+ "/");
+          // console.log(escala[2].Description + " "+escala[2].Valor+ "/");
+          // console.log(escala[3].Description + " "+escala[3].Valor+ "/");
+          // console.log(escala[4].Description + " "+escala[4].Valor+ "/");
+
+   //alert(escala.length);
+  
+   var sel_html = ` `;
+   sel_html = sel_html +` <option value="0"  title = "Seleccione"        > [ N ]</option> `;
+   for (i = 0; i < escala.length; i++) 
+   {
+    sel_html = sel_html +` <option value="${escala[i].Valor}"  title = "${escala[i].Id}-${escala[i].Description}"        > ${escala[i].Valor}</option> `;
+    ESCALA[escala[i].Valor] = escala[i].Id;
+   }
+
+
+
+
+
+
+   istAud = 365;
+   
+   console.log("==*== this.dataAuditor[",istAud,"] = ",  DATA)
+
+   
+   $('#lbTitleVerPdfx').html("Evaluación ("+  DATA.Code_Evaluacion +") del Desempeño del Auditor Interno");
+
+   $('#divPreviewEval').html(" ");
+   var htmlE;
+   
+   var planta = DATA.Sede;
+   var datE = DATA.Evaluador+'  '+DATA.Cargo;
+   var audiName = DATA.Nombre;
+   var fe = DATA.FechaEvaluacion;//FechaEvaluacion
+   var fa = DATA.FechaAuditoria;
+   var ta = DATA.TipoAuditoria;
+   var commt = DATA.Comentario;
+   var totalNota = 0;
+   htmlE = `<table  border="0" style = " margin-left: auto; margin-right: auto; width:621px !important;">
+                                <tr style=' margin-left: auto; margin-right: auto;' align = 'center'>
+                                   <td colspan="3" ><img class='logoTasaEvaluacion' src="images/iconos/iconEvalxion.svg"  ></td>
+                                </tr>
+                                <tr>
+                                  <td colspan="3">
+                                    <table width="100%" border="0">
+                                    <tr>
+                                        <td width="99%">
+                                          <label for="objetivo" style="color: black;" class="lbEvalAud_02">
+                                            <b>Datos</b></label>
+                                        </td>
+                                        <td width="1%"><img src="./images/iconos/menu.svg"></td>
+                                    </tr>
+                                  </table></td>
+                                  </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                  <td colspan="3">
+
+                                    <table width="100%" border="0">
+                                    <tr>
+                                        <td>
+                                            <label  class=" lbEvalAud_01">
+                                            <b>Opciones de Respuesta: ${escala[0].Description} ${escala[0].Valor}/ ${escala[1].Description} ${escala[1].Valor}/ ${escala[2].Description} ${escala[2].Valor}/ ${escala[3].Description} ${escala[3].Valor}/ ${escala[4].Description} ${escala[4].Valor}</b>
+                                            </label>
+                                        </td>
+                                    
+                                    </tr>
+                                  </table>
+                                 
+                                  
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td colspan="3">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                  <td colspan="3">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                  <td width="48%">
+                                    <div class="form-group col-12 border text-left" style="height: 68px; /*background-color:cyan;*/ margin:0px 0px 6px !important; padding: 10px 0px !important;"  id = "div_txt_objetivo_plan">
+                                        <label for="objetivo" class="label label-caja"  >Planta</label>
+                                        <input class="text-justify textarea-fecha2" value = "${planta}" style="height: 22px; font-size: 13.1; font-weight: bold;"  id="txt_planta"  name = "txt_planta">
+                                    </div>
+                                  </td>
+                                  <td width="4%"></td>
+                                  <td width="48%">
+                                      <div class="form-group col-12 border text-left" style="height: 68px; /*background-color:cyan;*/ margin:0px 0px 6px !important; padding: 10px 0px !important;"  id = "div_txt_objetivo_plan">
+                                        <label for="objetivo" class="label label-caja"  >Nombre y Cargo del Evaluador</label>
+                                        <input class="text-justify textarea-fecha2" value = "${datE}" style="height: 22px; font-size: 13.1; font-weight: bold;"  id="txt_dato_eval"  name = "txt_dato_eval">
+                                    </div>
+                                 </td>
+                                </tr>
+                                <tr>
+                                  <td>
+                                    <div style='height: 10px; background-color:#fff;' >&nbsp;</div>
+                                    <div class="form-group col-12 border text-left" style="height: 68px; /*background-color:cyan;*/ margin:0px 0px 6px !important; padding: 10px 0px !important;"  id = "div_txt_objetivo_plan">
+                                        <label for="objetivo" class="label label-caja"  >Nombre del Auditor</label>
+                                        <input class="text-justify textarea-fecha2" value = "${audiName}" style="height: 22px; font-size: 13.1; font-weight: bold;"  id="txt_name_auditor"  name = "txt_name_auditor">
+                                    </div>
+                                  </td>
+                                  <td>&nbsp;</td>
+                                  <td>
+                                    <div style='height: 10px; background-color:#fff;' >&nbsp;</div>
+                                      <div class="form-group col-12 border text-left" style="height: 68px; /*background-color:cyan;*/ margin:0px 0px 6px !important; padding: 10px 0px !important;"  id = "div_txt_objetivo_plan">
+                                        <label for="objetivo" class="label label-caja"  >Fecha de Evaluación</label>
+                                        <input class="text-justify textarea-fecha2" value = "${f3}" style="height: 22px; font-size: 13.1; font-weight: bold;"  id="txt_fecha_eval"  name = "txt_fecha_eval">
+                                    </div>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>
+                                    <div style='height: 10px; background-color:#fff;' >&nbsp;</div>
+                                      <div class="form-group col-12 border text-left" style="height: 68px; /*background-color:cyan;*/ margin:0px 0px 6px !important; padding: 10px 0px !important;"  id = "div_txt_objetivo_plan">
+                                        <label for="objetivo" class="label label-caja"  >Fecha Auditoría</label>
+                                        <input class="text-justify textarea-fecha2"  value = "${fa}" style="height: 22px; font-size: 14.1; font-weight: bold;"  id="txt_fecha_aud"  name = "txt_fecha_aud">
+                                    </div>
+                                  </td>
+                                  <td>&nbsp;</td>
+                                  <td>
+                                    <div style='height: 10px; background-color:#fff;' >&nbsp;</div>
+                                       <div class="form-group col-12 border text-left" style="height: 68px; /*background-color:cyan;*/ margin:0px 0px 6px !important; padding: 10px 0px !important;"  id = "div_txt_objetivo_plan">
+                                        <label for="objetivo" class="label label-caja"  >Tipo de Auditoría</label>
+                                        <input class="text-justify textarea-fecha2" value = "${ta}" style="height: 22px; font-size: 14.1; font-weight: bold;"  id="txt_tipo_aud"  name = "txt_objetivo_plan">
+                                    </div>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td colspan="3">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                  <td colspan="3">
+                                    <div  class = "lbEvalAud_03" >
+                                          Le corresponde a cada pregunta. Solo es necesario realizar una evaluación por auditor/ Planta auditada
+                                      </div>
+                                 </td>
+                                </tr>
+                              </table> 
+                                  
+                              <br />
+                              <br />
+                              
+   
+
+   `;
+
+
+
+                            //ahora vamos a recorrecorer las preguntas por tipo
+                           
+                             DATA.GrupoPreguntas.map(function(item)
+                             {
+                              //  console.log("##############################################################################")
+                              //  console.log("--------------",item.Id)
+                              //  console.log("--------------",item.Description)
+                              //  console.log("--------------",item.Icono)
+                              //  console.log("##############################################################################")   
+                               htmlE =  htmlE + `
+                               <table width="100%" border="0" style = " margin-left: auto; margin-right: auto; width:620px !important;" >
+                                     <tr>
+                                          <td colspan="3" width="100%" >
+                                                 <table width="100%" border="0" align='center'>
+                                                  <td width="99%"><label style = 'font-size: 18px !important;'><b>${item.Description}</b></label></td>
+                                                  <td width="1%" style="text-align: center;"><img src="./images/iconos/${item.Icono}"></td>
+                                                 </table>
+                                          </td>
+                                    
+                                     </tr>
+                                     <tr>
+                                         <td colspan="3" >&nbsp;</td>
+                                     </tr>   `;
+                                        var iitem = item;
+                                        var p = iitem.preguntasEvaluacion.length;
+                                        
+                                            iitem.preguntasEvaluacion.map(function(item)
+                                            {
+                                              // console.log("==============================================================================")
+                                              // console.log("--------------",item.Id)
+                                              // console.log("--------------",item.Description)
+                                              // console.log("--------------",item.Item)
+                                              // console.log("--------------",item.Nota)
+                                              // console.log("--------------",item.DescriptionNota)
+                                              // console.log("===============================================================================")     
+                                              PREGUNTAS[jj] = item.Id;//
+                                              totalNota = totalNota + item.Nota;
+                                              htmlE =  htmlE + `
+                                                   
+                                                    <tr>
+                                                    <td width="4%" ><label style="color:#34559c; font-size: 18px;"><b>${item.Item}.</b></label></td>
+                                                    <td width="95%" >${item.Description}</td>
+                                                    <td width="1%">
+                                                            <div class="form-group col-12 border text-center" style="height: 36px; width: 54px; margin:0px 0px 0px !important; padding: 0px 0px !important;" id="divNota${jj}">
+                                                                <select onchange="sumarNota(${jj}); fnSp3onchangeColor2('divNota${jj}');"  id="nota${jj}" style="font-size:13px; border: white;  " >
+                                                                ${sel_html}
+                                                                </select>
+                                                            </div>
+                                                    
+                                                    </td>
+                                                    </tr>
+
+                                                    
+                                                    <tr>
+                                                        <td colspan="3" >&nbsp;</td>
+                                                    </tr>
+                                                `;
+                                               jj++;
+                                           });
+
+                                 htmlE =  htmlE + ` </table>  <br /><br />`;
+
+                            });
+        htmlE =  htmlE + ` 
+        <table width="100%" border="0" style = " margin-left: auto; margin-right: auto; width:620px !important;">
+        <tr>
+          
+          <td width="100%"><label style = 'font-size: 18px !important;'><b>Comentarios o sugerencias adicionales</b></label></td>
+          <td width="4%" style="text-align: center;"><img src="./images/iconos/conversat1.svg" alt="" /></td>
+        </tr>
+        <tr>
+          <td colspan="2" >&nbsp;</td>
+        </tr>
+        <tr>
+         
+          <td colspan="2">
+
+              <div class="form-group col-12 border text-left" style="height: 208px;  background-color:#fff; margin:0px 0px 6px !important; padding: 10px 0px !important;"  id = "div_txt_obsEval">
+                  <label for="objetivo" class="label label-caja"  ></label>
+                  <textarea class="text-justify textarea-fecha2" style="height: 120px;"   id="txt_comentario"  name = "txt_comentario"> </textarea>
+              </div>
+
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" >&nbsp;</td>
+        </tr>
+        <tr>
+          
+          <td colspan="3" >
+              <div class="btn-save-auditor2"  id="btnGenerarInforme" style="  padding: 6px 6px;  background:#58c25d; font-size: 15px; color: #fff;  width:100%;" >
+                  
+                  <table width="100%" border="0" style=" top: -5px;">
+                      <tr>
+                      <td width="5%"><label style='color: #fff;'>Total</label></td>
+                      <td width="92%">&nbsp;</td>
+                      <td width="3%"><label style='color: #fff;' id = 'totalNota'>${totalNota}</label></td>
+                      </tr>
+                  </table>
+              </div>
+         </td>
+        </tr>  
+
+        <tr>
+          
+          <td colspan="3" >
+            <table width="100%" border="0" style=" top: -5px;">
+                      <tr>
+                        <td width="1%">&nbsp;</td>
+                        <td width="100%">
+                            <label style='color: #fff;'>&nbsp;</label>
+                        </td>
+                        <td width="1%">&nbsp;</td>
+                      </tr>
+
+                      <tr>
+                        <td width="1%">&nbsp;</td>
+                        <td width="100%">
+                          <div style="font-size: 13px; color:grey; text-align: justify;" >
+                            Si la calificación obtenida por el auditor interno es menor a 30 se dejará una observación la cual será considerada para la próxima selección del equipo auditor
+                          </div>
+                        </td>
+                        <td width="1%">&nbsp;</td>
+                      </tr>
+
+                      <tr>
+                        <td width="1%">&nbsp;</td>
+                        <td width="100%">
+                            <label style='color: #fff;'>Total</label>
+                        </td>
+                        <td width="1%">&nbsp;</td>
+                      </tr>
+
+                      <tr>
+                        <td width="1%">&nbsp;</td>
+                        <td width="98%" align='center'>
+                          <button class="btn-save-auditor2" title='Enviar Evaluación' onclick='fnGuardarEnviarCalificacion()'  id="btnGenerarInforme" 
+                              style="padding: 13px 6px;   text-align:center; cursor:pointer; background:#05beee; font-size: 16px; color: #fff;  width: 174px; height: 47px;" >
+                              Enviar Evaluación
+                          </button>
+                        </td>
+                        <td width="1%">&nbsp;</td>
+                      </tr>
+
+
+                  </table>
+         </td>
+         
+        </tr>      
+      </table>
+      <br />
+      <br />
+        `;
+
+        totalNota = 0;
+   $('#divPreviewEval').html(htmlE);
+}//------------------------------------- ini   fnSp3VentanaEvaluacion() -------------------------------------
+
+
+function fnSp3onchangeColor2(IdDivf)
+{
+    document.getElementById(IdDivf).style.setProperty('border-color', '#c1c1c1', 'important');
+}
+
+function sumarNota(n)
+{
+ nota = 0;
+for (i = 0; i < jj; i++)      
+   {
+    //sel_html = sel_html +` <option value="${escala[i].Valor}"  title = "${escala[i].Description}"        > ${escala[i].Valor}</option> `;
+    nota = nota + parseInt($("#nota"+i).val());
+   }
+   $("#totalNota").html(" ");
+   if(nota <10)$("#totalNota").html("0"+nota);
+   else $("#totalNota").html(nota);
+
+console.log('la nota es = '+nota)   
+
+
+
+  return nota;
+}
+
+
+
+
+function validaCamposVacios(n)
+{
+var hayVacio = 0;
+for (i = 0; i < jj; i++) 
+   {
+    
+    var valor = parseInt($("#nota"+i).val());
+       if(valor == 0)
+       {
+        hayVacio =1;
+        document.getElementById('divNota'+i).style.setProperty( 'border-color', 'red', 'important' );
+       }else{document.getElementById('divNota'+i).style.setProperty( 'border-color', '#c1c1c1', 'important' );}
+        
+   }
+  
+  return hayVacio;
+}
+
+function ventanaConfirmaGuardar()
+{
+      $("#modalConfirmEnviarEvaluacion").modal("show").addClass("fade");
+      $("#btnValidaReeCorr").html("<b>Confirmar</b>")
+      $("#btnValidaReeCorr").attr("disabled",false);
+
+     
+}
+
+
+function fnGuardarEnviarCalificacion()
+{
+      //$("#modalConfirmEnviarEvaluacion").modal("show").addClass("fade");
+     
+
+  var notax = sumarNota(1)
+  var minima = NOTA_MINIMA-1;
+
+  if(validaCamposVacios(2) == 0)
+    {//procedemos a guardar
+      if((notax <= minima) && ($('#txt_comentario').val() ==" "))
+    {
+        //alert("cerooooooooo***************oooooooooooooo="+notax)
+        verModalError1("Por favor coloque una Obervación","Calificación por debajo de ("+NOTA_MINIMA+")", )
+        
+        document.getElementById('div_txt_obsEval').style.setProperty( 'border-color', 'red', 'important' );
+    }
+    else
+      {//-------------------------------------------------------------------------------------------------------------------------
+        document.getElementById('div_txt_obsEval').style.setProperty( 'border-color', '#c1c1c1', 'important' );
+        //ahora si vamos a proceder a guardar en la BD.
+
+        ventanaConfirmaGuardar();
+
+
+      }//---------------------------------------------------------------------------------------------------------------------------
+    }
+    else
+    {
+      verModalError1("Por favor Revise","Hay calificaciones no completadas", )
+    }
+
+
+   
+
+}
+
+
+function ingresaBD()
+{
+
+       $("#btnValidaMandaEval").html("<b>Enviando ....</b>")
+       $("#btnValidaMandaEval").attr("disabled",true);
+       cargarPreguntaId();      
+            
+                          var url = apiurlAuditoria+"/api/Post-Evaluacion_Auditores-All?code=Tvmg0dzxRDFkxaNgZ/xqwow9fxFXepWtBgkfIEEpeSYirRox6gBX/g==&httpmethod=postEvaluation";
+                          var headers ={
+                            "apikey":constantes.apiKey,
+                            "Content-Type": "application/json",
+                          }
+
+                          $.ajax({
+                              method: 'POST',
+                              url:  url,
+                              headers:headers,
+                              data:JSON.stringify(ddatos),
+                              crossDomain: true,
+                              dataType: "json",
+                          }).done(function (data) {
+
+                              console.log(data);
+
+                              if(data[0].Id > 0)
+                              {
+                                   //todo bien mostrar nodal ok
+                                   $('#modalConfirmEnviarEvaluacion').modal('hide').removeClass('fade');
+                                   $("#modalShowAlertConfirmEnviarCalificacionOk").modal("show").addClass("fade");
+                              }
+                              else
+                              {
+                                
+                                $('#modalConfirmEnviarEvaluacion').modal('hide').removeClass('fade');
+                                verModalError1('Al Guardar la Evaluación', 'Refresque la página, e intente nuevamente');
+                              }
+
+                          })
+                          .fail(function( jqXHR, textStatus, errorThrown ) {
+
+                              verModalError1('Al Guardar la Evaluación', 'Refresque la página, e intente nuevamente');
+                          })  
+                          .always(function( jqXHR, textStatus, errorThrown ) {
+                              
+                          });
+
+
+}
+
+
+
+
+
+
+function cargarPreguntaId()
+{
+
+   //ESCALA
+   console.log("ESCALA = ",ESCALA);//ESCALA[escala[i].Valor] = escala[i].Id;
+      for (i = 0; i < jj; i++) 
+      {
+        
+            //console.log("______________________________(",i,")___________________________________");
+            //console.log("EscalaNotasId = ",ESCALA[$('#nota'+i).val()]);
+
+            ddatos.Notas[i]= {
+                    "ListaEvaluacionId": ListaEvaluacionId,
+                    "PreguntaId": PREGUNTAS[i],
+                    "EscalaNotasId": ESCALA[$('#nota'+i).val()],
+                    "Comentario": $('#txt_comentario').val(),
+                    "Nota":nota
+                  }
+
+            //console.log("________________________________________________________________________");
+        
+
+
+      }
+
+
+      console.log("______________________________(",i,")___________________________________");
+      console.log("datos = ",ddatos);
+}
+
+   
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+function verModalError1(subTitulo, msg)
+ {
+   
+   //alert("error");
+   $('#subTituloError').html(" ")
+   $('#subTituloError').html('<b>'+subTitulo+'</b>'); //cerrarModal
+   
+   $('#mensajeError').html(" ")
+   $('#mensajeError').html('<p>'+msg+'</p>'); //cerrarModal
+ 
+    $('#modalMsgError').css('z-index','9999999');
+   $('#modalMsgError').modal('show').addClass('fade');
+   
+ 
+ 
+ 
+ }
+
+
+
+ function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+    results = regex.exec(location.search);
+    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+</script>
+
+</html>

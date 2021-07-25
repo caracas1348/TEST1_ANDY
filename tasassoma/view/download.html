@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta http-equiv="Expires" content="0">
+    <meta http-equiv="Last-Modified" content="0">
+    <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <link rel="shortcut icon" href="../images/iconos/favicon.ico" type="image/x-icon"/> 
+    <meta name="author" content="Visualsat Peru">
+	<title>Descargar Archivos</title>
+	<link rel="stylesheet" href="">
+	<style type="text/css">
+		.preloader {
+			width: 90px;
+			height: 90px;
+			border: 10px solid #eee;
+			border-top: 10px solid #666;
+			border-radius: 50%;
+			animation-name: girar;
+			animation-duration: 2s;
+			animation-iteration-count: infinite;
+		}
+		@keyframes girar {
+			from {
+				transform: rotate(0deg);
+			}
+			to {
+				transform: rotate(360deg);
+			}
+		}
+		
+	</style>
+</head>
+<body>
+    <div id="DescargarArchivo"style=" display: none;"></div>
+    <div style="width: 100%;text-align: -webkit-center; position: absolute; z-index: 2;margin-top: 10%;">
+        <div class="preloader" id="preloader" style="display: block;" > </div>
+    </div>
+    <div style="width: 100%;text-align: -webkit-center; position: absolute; z-index: 3;margin-top: 20%;">
+        <div id="preloader_txt" style="color: black;"> <b>Cargando...</b></div>
+    </div>
+</body>
+	<!-- libs estaticos -->
+    <script src="../js/jquery-3.4.1.js" ></script>
+    <script src="../js/apiRoute.js"></script>
+    <script src="../js/common.js"></script>
+    <! IMPORTAR ARCHIVOS JS PARA GENERAR EL PDF >
+    <script src="./ssoma/Seguimiento-Observaciones-Preventivas/index.js"></script>
+    <script src="../js/pdfmake/pdfmake.min.js"></script>
+	<script src="../js/pdfmake/vfs_fonts.js"></script>
+	<!-- @Paulo Lib-->
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+	<script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment-with-locales.min.js"></script>
+
+	<!-- @Paulo Lib-->
+</html>
+
+<script>
+
+	$('document').ready(function ()
+	{
+		let params    = new URLSearchParams(location.search);
+		var Id        = params.get('Id');
+		var Documento = params.get('Documento');
+		var Proceso   = params.get('Proceso');
+        
+        var url = '';
+        if (Proceso == 'CrearSeguimientoObservacion')
+        {
+		    url = apiUrlssoma+"/api/Get-Pdf?code=6fl/xOaf/XHiAmZlAUMgxikyQs/P1fsF2Js/5eGWuQgbMD0Zc3Cm0Q==&httpmethod=object&Id="+Id;
+        }
+		var headers ={
+            "apikey":constantes.apiKey,
+            "Content-Type": "application/json",
+		}
+
+		$.ajax({
+            method: 'GET',
+            url:  url,
+            headers:headers,
+            crossDomain: true,
+            dataType: "json",
+		}).done(function (data) {
+			if(data.Id > 0)
+			{
+				console.warn("data",data)
+				if(data.Informe != "" && data.Informe != null)
+				{	
+					console.warn("data.Informe.length",data.Informe.length)
+					console.warn("entro - 0")
+					if(data.Informe.length > 250 )
+					{
+						console.warn("entro - 1")
+						var x = 'data:application/pdf;base64,';
+						var y = data.Informe;
+						
+						$("#DescargarArchivo").html('<a download="Observacion_Preventiva.pdf" class="adjunto" href="'+x+y+'"><button class="btn btn-success btn-show-alert">Descargar</button></a>')
+
+						$('.btn-show-alert').trigger('click');
+			            $('.preloader').css('display','none');
+			            $('#preloader_txt').css('display','none');
+			        }
+			        else{
+						console.warn("pdf dañado debemos crearlo...")				
+			        	generarPDF(data.Id)
+			        }
+			    }
+				else
+				{
+					console.warn("No tiene pdf debemos crearlo...")				
+			        generarPDF(data.Id)
+				}
+			}
+			else
+			{
+				alert("No existe archivo")
+				$('.btn-show-alert').trigger('click');
+	            $('.preloader').css('display','none');
+	            $('#preloader_txt').css('display','none');
+			}
+
+
+
+		})
+		.fail(function( jqXHR, textStatus, errorThrown ) {
+			console.error("fail")
+		})  
+		.always(function( jqXHR, textStatus, errorThrown ) {
+            
+        });
+        
+
+
+
+	});
+
+	var generarPDF = function(Id)
+	{
+		var type    ="";
+		var typeAnt ="";
+
+	    let url = apiUrlssoma+`/api/Get-Checklist?code=qqYOIX7GbuDzLSAfq6qK/TuO0E5JtCRsWamufCMiM92J5bjoGFPwqQ==&httpmethod=objectlist`
+	    
+	    let headers = 
+	    {
+	        "apikey":constantes.apiKey,
+	    }
+
+
+	    $.ajax({
+	        method: "get",
+	        url: url,
+	        headers: headers,
+	        crossDomain: true,
+	        dataType: "json",
+	    }).done(function (response){
+
+			Checklist_op = response.Checklist;
+			Grupo_op     = response.Grupo;
+			Subgrupo_op  = response.Subgrupo;
+
+	    	console.warn(".donde")
+
+			url = apiUrlssoma+"/api/Get-Seguimiento-Observacion?code=/bZQ2JICH4yRjEcKhyhZDqIiRhYabDPTMb4wRcZxem5ojqEl8SxGaw==&httpmethod=object&Id="+Id;
+	        
+	        console.warn("URLSSOMA get ",url)
+            
+            $.ajax({
+                method: "GET",
+                url:  url,
+                headers:headers,
+                crossDomain: true,
+                dataType: "json",
+            })
+            .done(function( response)
+            {
+                //observacionSelected = response;
+                console.warn("response",response)
+	    		console.warn(".donde2")
+                
+                observacionSelected = response;
+				// pdfMake.createPdf(fnGenerarPdf()).getBase64(function (result) {
+				// 	console.warn("result",result)
+				// })
+				pdfMake.createPdf(fnGenerarPdf()).download("Observacion_Preventiva");
+			    
+            })
+            .always(function( jqXHR, textStatus, errorThrown ) 
+            {
+            	$('.btn-show-alert').trigger('click');
+	            $('.preloader').css('display','none');
+	            $('#preloader_txt').css('display','none');
+			});//*/
+		})
+	}
+
+</script>

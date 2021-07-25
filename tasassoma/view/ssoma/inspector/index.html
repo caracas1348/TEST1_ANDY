@@ -1,0 +1,1036 @@
+<link rel="stylesheet" href="./view/ssoma/ssoma.css">
+<link rel="stylesheet" href="./css/pagination.css">
+<style>
+    .mdc-select .mdc-select__anchor{
+        height: 45px !important;
+    }
+    .mdc-select__selected-text{
+        font-size: 13px !important;
+        transform: translateY(-7px) !important;
+    }
+
+    .mdc-text-field--outlined {
+        height: 45px !important;
+        overflow: visible;
+    }
+    .red{
+        color: #ff6767;
+    }
+</style>
+<div class="row justify-content-center pt-5">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-2 position-relative">
+                        <label for="" style="font-size: 13px;">Nombre y Apellido</label>
+                        <input type="text" class="form-control" id="buscarInspector" >
+                    </div>
+                    <div class="col-2">
+                        <label for="" style="font-size: 13px;">Rol</label>
+                        <select name="" id="selectRolfiltro" class="form-control">
+                            <option value="" selected>Todos</option>
+                            <option value="39">Responsable de Programaci&oacute;n</option>
+                            <option value="43">Responsable de Inspecci&oacute;n </option>
+                            <option value="44">Inspector</option>
+                            <option value="61">Reportante</option>
+                        </select>
+                    </div>
+                    <div class="col-2">
+                        <label for="" style="font-size: 13px">Unidad de Negocio</label>
+                        <select name="" id="selectUnidadNegocioFiltro" class="form-control" onchange="eventFiltroUN()">
+                            <option value=""  selected>Todos</option>
+                        </select>
+                    </div>
+                    <div class="col-2">
+                        <label for="" style="font-size: 13px;">Sede</label>
+                        <select name="" id="selecSedeFiltro" class="form-control">
+                            <option value=""  selected>Todos</option>
+                        </select>
+                    </div>
+                    <div class="col-2">
+                        <label for="" style="font-size: 13px;">Área</label>
+                        <select name="" id="selectAreafiltro" class="form-control">
+                            <option value=""  selected>Todos</option>
+                        </select>
+                    </div>
+                    <div class="col-2">
+                        <div class="row justify-content-end">
+                            <button class="btn btn-system-green" onclick="filtrarInstores()">Buscar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="row align-items-center justify-content-end" >
+                    <div class="px-4 border-right">
+                        <img src="./images/newsistema/iconos/registros.svg" alt="">
+                        <span class="cantidad ml-3" id="cantidad">0</span>
+                    </div>
+                    <div class="px-4">
+                        <button class="btn btn-system-celeste" style="font-size: 13px;"  onclick="AgregarInspector()">
+                            <img src="./images/newsistema/iconos/calendario.svg" alt="">
+                            <span class="ml-2">Agregar Inspector</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row justify-content-center mt-5">
+    <div class="col-md-12">
+        <div class="header-tabla py-3 px-2">
+            <div class="row m-0 justify-content-between align-items-center">
+                <div class="col-md-2" style="font-size: 13px">Nombre y Apellido</div>
+                <div class="col-md-2" style="font-size: 13px">Rol</div>
+                <div class="col-md-2" style="font-size: 13px">Unidad de Negocio</div>
+                <div class="col-md-2" style="font-size: 13px">Sede</div>
+                <div class="col-md-2" style="font-size: 13px">Área</div>
+                
+                <div class="col-1 text-center" style="font-size: 13px">Editar</div>
+                <div class="col-1 text-center" style="font-size: 13px">Ver</div>
+            </div>
+        </div>
+        <div class="body-tabla-loader text-center py-3" id="body-tabla-loader">
+            <div class="spinner-border text-primary"></div>
+            <p class="text-center">Buscando resultados ....</p>
+        </div>
+        <div class="body-tabla d-none mt-4">
+            <div class="content-registros-no-encontrados">
+                <div>
+                    <img src="./images/newsistema/iconos/calendario-registros-vacios.svg" alt="">
+                    <p class="mt-4">No Tiene Inspectores</p>
+                </div>
+            </div>
+        </div>
+        <div class="body-tabla-list" id="body-tabla-list">
+
+        </div>
+        <div id="pagination-container" class="mt-3"></div>
+    </div>
+</div>
+
+<div class="modal_confirmacion" id="modal-agregar-inspector">
+    <div class="modal_confirmacion__content" style="width: 740px">
+        <div class="modal_confirmacion__head">
+            <h4>Agregar Inspector</h4>
+        </div>
+        <div class="modal_confirmacion__body px-5 pb-4">
+            <div class="d-flex align-items-center pt-4 pb-4">
+                <div class="col-md-2">
+                    <h4 class="text-left"><strong>Datos</strong></h4>
+                </div>
+                <div class="col-md-9 pr-0">
+                    <div class="franja"></div>
+                </div>
+                <div class="col-md-1">
+                    <img src="./images/newsistema/iconos/menu.svg" alt="" class="img-fluid">
+                </div>
+            </div>
+            <input type="hidden" id="idhidden" >
+            <div class="d-flex">
+                <div class="col-md-6">
+                    <div class="mdc-select mdc-select--filled demo-width-class register-type w-100 text-left">
+                        <div class="mdc-select__anchor">
+                            <span class="mdc-select__ripple"></span>
+                            <span class="mdc-select__selected-text"></span>
+                            <span class="mdc-select__dropdown-icon">
+                              <svg
+                                      class="mdc-select__dropdown-icon-graphic"
+                                      viewBox="7 10 10 5">
+                                <polygon
+                                        class="mdc-select__dropdown-icon-inactive"
+                                        stroke="none"
+                                        fill-rule="evenodd"
+                                        points="7 10 12 15 17 10">
+                                </polygon>
+                                <polygon
+                                        class="mdc-select__dropdown-icon-active"
+                                        stroke="none"
+                                        fill-rule="evenodd"
+                                        points="7 15 12 10 17 15">
+                                </polygon>
+                              </svg>
+                            </span>
+                            <span class="mdc-floating-label mdc-floating-label--float-above">Tipo de Registro <span style="color: #ff6767;">*</span></span>
+                            <span class="mdc-line-ripple"></span>
+                        </div>
+
+                        <div class="mdc-select__menu demo-width-class mdc-menu mdc-menu-surface w-100">
+                            <ul class="mdc-list" id="listInspecciones">
+                                <li class="mdc-list-item mdc-list-item--selected" data-value="" aria-selected="true">
+                                    <span class="mdc-list-item__ripple"></span>
+                                </li>
+                                <li class="mdc-list-item" data-value="1" >
+                                    <span class="mdc-list-item__ripple"></span>
+                                    <span class="mdc-list-item__text">Colaborador</span>
+                                </li>
+                                <li class="mdc-list-item" data-value="2" >
+                                    <span class="mdc-list-item__ripple"></span>
+                                    <span class="mdc-list-item__text">Externo</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex mt-3" >
+                <div class="col-md-12 mb-12" id="search-content">
+                    <div class="mdc-text-field mdc-text-field--outlined  w-100 field-password search-inspector">
+                        <input class="mdc-text-field__input" name="search_name" id="search_name" type="text">
+                        <div class="mdc-notched-outline">
+                            <div class="mdc-notched-outline__leading"></div>
+                            <div class="mdc-notched-outline__notch">
+                            <label for="tx_name" class="mdc-floating-label  f-15px">Buscar</label>
+                            </div>
+                            <div class="mdc-notched-outline__trailing"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex mt-3">
+                <div class="col-md-6 mb-6" >
+                    <div class="mdc-text-field mdc-text-field--outlined  w-100 field-password dni-inspector">
+                        <input class="mdc-text-field__input numeros_js" style="font:13px sans-serif; " name="tx_dni" id="tx_dni" type="text" minlength="8" maxlength="11">
+                        <div class="mdc-notched-outline">
+                            <div class="mdc-notched-outline__leading"></div>
+                            <div class="mdc-notched-outline__notch">
+                            <label for="tx_name" class="mdc-floating-label  f-15px" >Documento de Identidad <span style="color: #ff6767;">*</span></label>
+                            </div>
+                            <div class="mdc-notched-outline__trailing"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-6" >
+                    <div class="mdc-text-field mdc-text-field--outlined  w-100 field-password job-inspector">
+                        <input class="mdc-text-field__input" name="tx_job" id="tx_job" style="font:13px sans-serif; " type="text" >
+                        <div class="mdc-notched-outline">
+                            <div class="mdc-notched-outline__leading"></div>
+                            <div class="mdc-notched-outline__notch">
+                            <label for="tx_name" class="mdc-floating-label  f-15px" style="font:13px sans-serif; ">Cargo <span style="color: #ff6767;">*</span></label>
+                            </div>
+                            <div class="mdc-notched-outline__trailing"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex mt-3">
+                <div class="col-md-6 mb-6">
+                    <div class="mdc-text-field mdc-text-field--outlined  w-100 field-password name-inspector">
+                        <input class="mdc-text-field__input" style="font:13px sans-serif; " name="tx_name" id="tx_name" type="text">
+                        <div class="mdc-notched-outline">
+                            <div class="mdc-notched-outline__leading"></div>
+                            <div class="mdc-notched-outline__notch">
+                            <label for="tx_name" class="mdc-floating-label  f-15px">Nombres <span style="color: #ff6767;">*</span></label>
+                            </div>
+                            <div class="mdc-notched-outline__trailing"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-6" id="lastname-content">
+                    <div class="mdc-text-field mdc-text-field--outlined  w-100 field-password lastname-inspector">
+                        <input class="mdc-text-field__input" style="font:13px sans-serif; "  name="tx_name" id="tx_name" type="text">
+                        <div class="mdc-notched-outline">
+                            <div class="mdc-notched-outline__leading"></div>
+                            <div class="mdc-notched-outline__notch">
+                            <label for="tx_name" class="mdc-floating-label  f-15px">Apellidos <span style="color: #ff6767;">*</span></label>
+                            </div>
+                            <div class="mdc-notched-outline__trailing"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex mt-3">
+                <div class="col-md-6 mb-6" id="user-content">
+                    <div class="mdc-text-field mdc-text-field--outlined  w-100 field-password user-inspector">
+                        <input class="mdc-text-field__input" style="font:13px sans-serif; " name="tx_name" id="tx_user" type="text">
+                        <div class="mdc-notched-outline">
+                            <div class="mdc-notched-outline__leading"></div>
+                            <div class="mdc-notched-outline__notch">
+                            <label for="tx_name" class="mdc-floating-label  f-15px">Usuario <span style="color: #ff6767;">*</span></label>
+                            </div>
+                            <div class="mdc-notched-outline__trailing"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-6" id="pass-content">
+                    <div class="mdc-text-field mdc-text-field--outlined  w-100 field-password pass-inspector">
+                        <input class="mdc-text-field__input" style="font:13px sans-serif; " name="tx_name" id="tx_pass" type="password">
+                        <div class="mdc-notched-outline">
+                            <div class="mdc-notched-outline__leading"></div>
+                            <div class="mdc-notched-outline__notch">
+                            <label for="tx_name" class="mdc-floating-label  f-15px">Contraseña <span style="color: #ff6767;">*</span></label>
+                            </div>
+                            <div class="mdc-notched-outline__trailing"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex mt-3" style="display: none !important">
+                <div class="col-md-12 mb-12">
+                    <div class="mdc-text-field mdc-text-field--outlined  w-100 field-password hash-inspector">
+                        <input class="mdc-text-field__input" name="tx_name" id="tx_name" type="text">
+                        <div class="mdc-notched-outline">
+                            <div class="mdc-notched-outline__leading"></div>
+                            <div class="mdc-notched-outline__notch">
+                            <label for="tx_name" class="mdc-floating-label  f-15px">idHash</label>
+                            </div>
+                            <div class="mdc-notched-outline__trailing"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex mt-3">
+                <div class="col-md-6">
+                    <div class="mdc-select mdc-select--filled demo-width-class unidad-inspector w-100 text-left">
+                        <div class="mdc-select__anchor">
+                            <span class="mdc-select__ripple">
+                                 <table border='0' width='100%'><tr > <td width="10%">&nbsp;<td><td width="35%" style = 'color: grey; font:12px Sans-serif;  background-color: white;'>Unidad de Negocio <td>
+                                    <td width="10%" style = 'color: red; font:11px  Sans-serif; '>&nbsp;&nbsp;*<td><td width="45%">&nbsp;<td></tr>
+                                 </table>
+                            </span>
+
+                            
+
+                            <span class="mdc-select__selected-text"></span>
+                            <span class="mdc-select__dropdown-icon">
+                              <svg
+                                      class="mdc-select__dropdown-icon-graphic"
+                                      viewBox="7 10 10 5">
+                                <polygon
+                                        class="mdc-select__dropdown-icon-inactive"
+                                        stroke="none"
+                                        fill-rule="evenodd"
+                                        points="7 10 12 15 17 10">
+                                </polygon>
+                                <polygon
+                                        class="mdc-select__dropdown-icon-active"
+                                        stroke="none"
+                                        fill-rule="evenodd"
+                                        points="7 15 12 10 17 15">
+                                </polygon>
+                              </svg>
+                            </span>
+                            <span class="mdc-floating-label mdc-floating-label--float-above"><span style="color: #ff6767;"></span></span>
+                            <span class="mdc-line-ripple"></span>
+                        </div>
+
+                        <div class="mdc-select__menu demo-width-class mdc-menu mdc-menu-surface w-100">
+                            <ul class="mdc-list" id="listUnidadNegocio">
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="mdc-select mdc-select--filled demo-width-class sede-inspector w-100 text-left" >
+                        
+                        <div class="mdc-select__anchor" id='anclaSede'>
+                            <span class="mdc-select__ripple">
+
+                            <table border='0' width='100%'><tr > <td width="10%">&nbsp;<td><td width="10%" style = 'color: grey; font:12px Sans-serif;  background-color: white;'>Sede <td>
+                                    <td width="10%" style = 'color: red; font:11px  Sans-serif; '>&nbsp;&nbsp;*<td><td width="70%">&nbsp;<td></tr>
+                            </table>
+
+
+                               
+                            </span>
+                            <span class="mdc-select__selected-text"></span>
+                            <span class="mdc-select__dropdown-icon">
+                              <svg
+                                      class="mdc-select__dropdown-icon-graphic"
+                                      viewBox="7 10 10 5">
+                                <polygon
+                                        class="mdc-select__dropdown-icon-inactive"
+                                        stroke="none"
+                                        fill-rule="evenodd"
+                                        points="7 10 12 15 17 10">
+                                </polygon>
+                                <polygon
+                                        class="mdc-select__dropdown-icon-active"
+                                        stroke="none"
+                                        fill-rule="evenodd"
+                                        points="7 15 12 10 17 15">
+                                </polygon>
+                              </svg>
+                            </span>
+                              
+                             <span class="mdc-floating-label mdc-floating-label--float-above" id="lbSede" > <span style="color: #ff6767;"></span></span>
+                            <!-- <span class="mdc-floating-label mdc-floating-label--float-above" id="lbSede" >Sede <span style="color: #ff6767;">*</span></span> -->
+
+                           
+
+                            <span class="mdc-line-ripple"></span>
+                        </div>
+
+                        <div class="mdc-select__menu demo-width-class mdc-menu mdc-menu-surface w-100">
+                            <ul class="mdc-list" id="listSede">
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex mt-3">
+                <div class="col-md-6">
+                    <div class="mdc-select mdc-select--filled demo-width-class area-inspector w-100 text-left">
+                        <div class="mdc-select__anchor" id='anclaArea'>
+                            <span class="mdc-select__ripple">
+                                  <table border='0' width='100%'><tr > <td width="10%">&nbsp;<td><td width="10%" style = 'color: grey; font:12px Sans-serif;  background-color: white;'>Área <td>
+                                    <td width="10%" style = 'color: red; font:11px  Sans-serif; '>&nbsp;&nbsp;*<td><td width="70%">&nbsp;<td></tr>
+                                  </table>
+                            </span>
+                            <span class="mdc-select__selected-text"></span>
+                            <span class="mdc-select__dropdown-icon"> 
+                              <svg
+                                      class="mdc-select__dropdown-icon-graphic"
+                                      viewBox="7 10 10 5">
+                                <polygon
+                                        class="mdc-select__dropdown-icon-inactive"
+                                        stroke="none"
+                                        fill-rule="evenodd"
+                                        points="7 10 12 15 17 10">
+                                </polygon>
+                                <polygon
+                                        class="mdc-select__dropdown-icon-active"
+                                        stroke="none"
+                                        fill-rule="evenodd"
+                                        points="7 15 12 10 17 15">
+                                </polygon>
+                              </svg>
+                            </span>
+                            <span class="mdc-floating-label mdc-floating-label--float-above" id="lbArea" > <span style="color: #ff6767;"></span></span>
+                            <span class="mdc-line-ripple"></span>
+                        </div>
+
+                        <div class="mdc-select__menu demo-width-class mdc-menu mdc-menu-surface w-100">
+                            <ul class="mdc-list" id="listAreaInspeccion">
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="mdc-select mdc-select--filled demo-width-class rol-inspector w-100 text-left">
+                        <div class="mdc-select__anchor">
+                            <span class="mdc-select__ripple">
+                                 <table border='0' width='100%'><tr > <td width="10%">&nbsp;<td><td width="10%" style = 'color: grey; font:12px Sans-serif;  background-color: white;'>Rol <td>
+                                    <td width="10%" style = 'color: red; font:11px  Sans-serif; '>&nbsp;&nbsp;*<td><td width="70%">&nbsp;<td></tr>
+                                  </table>
+                            </span>
+                            <span class="mdc-select__selected-text"></span>
+                            <span class="mdc-select__dropdown-icon">
+                              <svg
+                                      class="mdc-select__dropdown-icon-graphic"
+                                      viewBox="7 10 10 5">
+                                <polygon
+                                        class="mdc-select__dropdown-icon-inactive"
+                                        stroke="none"
+                                        fill-rule="evenodd"
+                                        points="7 10 12 15 17 10">
+                                </polygon>
+                                <polygon
+                                        class="mdc-select__dropdown-icon-active"
+                                        stroke="none"
+                                        fill-rule="evenodd"
+                                        points="7 15 12 10 17 15">
+                                </polygon>
+                              </svg>
+                            </span>
+                            <span class="mdc-floating-label mdc-floating-label--float-above"> <span style="color: #ff6767;"></span></span>
+                            <span class="mdc-line-ripple"></span>
+                        </div>
+
+                        <div class="mdc-select__menu demo-width-class mdc-menu mdc-menu-surface w-100">
+                            <ul class="mdc-list" id="listRoles">
+                                <li class="mdc-list-item mdc-list-item--selected" data-value="" aria-selected="true">
+                                    <span class="mdc-list-item__ripple"></span>
+                                </li>
+                                <li class="mdc-list-item" data-value="39" >
+                                    <span class="mdc-list-item__ripple"></span>
+                                    <span class="mdc-list-item__text">Responsable de Programación</span>
+                                </li>
+                                <li class="mdc-list-item" data-value="43" >
+                                    <span class="mdc-list-item__ripple"></span>
+                                    <span class="mdc-list-item__text">Responsable de Inspección</span>
+                                </li>
+                                <li class="mdc-list-item" data-value="44" >
+                                    <span class="mdc-list-item__ripple"></span>
+                                    <span class="mdc-list-item__text">Inspector</span>
+                                </li>
+                                <li class="mdc-list-item" data-value="61" >
+                                    <span class="mdc-list-item__ripple"></span>
+                                    <span class="mdc-list-item__text">Reportante</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex mt-3">
+                <div class="col-md-6">
+                    <div class="mdc-text-field mdc-text-field--outlined  w-100 field-password correo-inspector">
+                        <input class="mdc-text-field__input" style="font:13px sans-serif; " name="tx_correo" id="tx_correo" type="text">
+                        <div class="mdc-notched-outline">
+                            <div class="mdc-notched-outline__leading"></div>
+                            <div class="mdc-notched-outline__notch">
+                            <label for="tx_correo" class="mdc-floating-label  f-15px">Correo <span style="color: #ff6767;">*</span></label>
+                            </div>
+                            <div class="mdc-notched-outline__trailing"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex mt-3 justify-content-center">
+                <div class="col-md-6">
+                    <div class="mdc-form-field">
+                        <div class="mdc-checkbox">
+                            <input type="checkbox"
+                                   class="mdc-checkbox__native-control"
+                                   id="responsable-de-area" name="responsable-de-area"/>
+                            <div class="mdc-checkbox__background">
+                                <svg class="mdc-checkbox__checkmark"
+                                     viewBox="0 0 24 24">
+                                    <path class="mdc-checkbox__checkmark-path"
+                                          fill="none"
+                                          d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
+                                </svg>
+                                <div class="mdc-checkbox__mixedmark"></div>
+                            </div>
+                            <div class="mdc-checkbox__ripple"></div>
+                        </div>
+                        <label for="responsable-de-area" class="m-0">Responsable del Área</label>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="d-flex mt-3 mb-3 justify-content-center">
+                <div class="col-md-4 pl-0">
+                    <button class="btn_confirmar_modal bg-green-lime-modal" onclick="saveInspector()">Guardar</button>
+                </div>
+                <div class="col-md-4 pr-0">
+                    <button class="btn_cerrar_modal" onclick="cerrarAgregarInspector();">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal_confirmacion" id="modal-confirmacion-inspector">
+    <div class="modal_confirmacion__content">
+        <div class="modal_confirmacion__head">
+            <img src="./images/newsistema/iconos/informacion3.svg" alt="">
+        </div>
+        <div class="modal_confirmacion__body">
+            <div class="title">
+                Se guardará el inspector
+            </div>
+            <div class="content">
+                ¿Desea confirmar el guardado del inspector?
+            </div>
+            <div class="footer">
+                <div class="d-flex">
+                    <div class="col-md-6 pl-0">
+                        <button class="btn_confirmar_modal" onclick="saveInspectorConfirmar()">Confirmar</button>
+                    </div>
+                    <div class="col-md-6 pr-0">
+                        <button class="btn_cerrar_modal" onclick="cerrarModal('modal-confirmacion-inspector')">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal_confirmacion" id="modal-save-inspector">
+    <div class="modal_confirmacion__content">
+        <div class="modal_confirmacion__head bg-green-lime-modal">
+            <img src="./images/newsistema/iconos/correct1.svg" alt="">
+        </div>
+        <div class="modal_confirmacion__body">
+            <div class="title">
+                Se registró el inspector
+                con éxito
+            </div>
+            <div class="content">
+
+            </div>
+            <div class="footer">
+                <div class="d-flex">
+                    <div class="col-md-12 px-0">
+                        <button class="btn_confirmar_modal bg-green-lime-modal" onclick="CerrarModalSaveInspector()">De Acuerdo</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal_confirmacion" id="modal-visualizar">
+    <div class="modal_confirmacion__content" style="width: 503px">
+        <div class="modal_confirmacion__head">
+            <h5 style="font-size: 18px;">Inspector <span class="titulo-modal-visualizar"></span></h5>
+        </div>
+        <div class="modal_confirmacion__body px-5 pb-4 text-left">
+            <div class="d-flex align-items-center pt-4 pb-4">
+                <div class="col-md-3">
+                    <h6 class="text-left" style="font-size: 18px"><strong>Detalle</strong></h6>
+                </div>
+                <div class="col-md-8 pl-0">
+                    <div class="franja"></div>
+                </div>
+                <div class="col-md-1">
+                    <img src="./images/newsistema/iconos/menu.svg" alt="" class="img-fluid">
+                </div>
+            </div>
+            <div class="d-flex">
+                <div class="col-md-6">
+                    <label for="" class="" style="color: #737373;font-weight: 500; ">Nombre</label>
+                    <p class="text-consult" id="nombreInspector" style="font-size: 15px;font-weight: 500;"></p>
+                </div>
+                <div class="col-md-6">
+                    <label for="" class="" style="color: #737373;">Rol</label>
+                    <p class="text-consult" id="rolInspector" style="font-size: 15px;font-weight: 500;"></p>
+                </div>
+            </div>
+            <div class="d-flex mt-4">
+                <div class="col-md-6">
+                    <label for="" class="" style="color: #737373;font-weight: 500;">Area</label>
+                    <p class="text-consult" id="areaInspector" style="font-size: 15px;font-weight: 500;"></p>
+                </div>
+                <div class="col-md-6">
+                    <label for="" class="" style="color: #737373;font-weight: 500;">Sede</label>
+                    <p class="text-consult" id="sedeInspector" style="font-size: 15px;font-weight: 500;"></p>
+                </div>
+            </div>
+            <div class="d-flex mt-4">
+                <div class="col-md-6">
+                    <label for="" class="" style="color: #737373;font-weight: 500;">Unidad de Negocio</label>
+                    <p class="text-consult" id="UnidadNegocioInspector" style="font-size: 15px;font-weight: 500;"></p>
+                </div>
+            </div>
+            <div class="d-flex mt-4 mb-3 justify-content-center">
+                <div class="col-md-6">
+                    <button class="btn_cerrar_modal" onclick="cerrarModal('modal-visualizar')">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal_confirmacion" id="modal-agregar-inspector">
+    <div class="modal_confirmacion__content" style="width: 740px">
+        <div class="modal_confirmacion__head">
+            <h4></h4>
+        </div>
+        <div class="modal_confirmacion__body px-5 pb-4">
+            <div class="d-flex align-items-center pt-4 pb-4">
+                <div class="col-md-2">
+                    <h4 class="text-left"><strong>Datos</strong></h4>
+                </div>
+                <div class="col-md-9 pr-0">
+                    <div class="franja"></div>
+                </div>
+                <div class="col-md-1">
+                    <img src="./images/newsistema/iconos/menu.svg" alt="" class="img-fluid">
+                </div>
+            </div>
+            <div class="d-flex">
+                <div class="col-md-6">
+                    <div class="mdc-select mdc-select--filled demo-width-class register-type w-100 text-left">
+                        <div class="mdc-select__anchor">
+                            <span class="mdc-select__ripple"></span>
+                            <span class="mdc-select__selected-text"></span>
+                            <span class="mdc-select__dropdown-icon">
+                              <svg
+                                      class="mdc-select__dropdown-icon-graphic"
+                                      viewBox="7 10 10 5">
+                                <polygon
+                                        class="mdc-select__dropdown-icon-inactive"
+                                        stroke="none"
+                                        fill-rule="evenodd"
+                                        points="7 10 12 15 17 10">
+                                </polygon>
+                                <polygon
+                                        class="mdc-select__dropdown-icon-active"
+                                        stroke="none"
+                                        fill-rule="evenodd"
+                                        points="7 15 12 10 17 15">
+                                </polygon>
+                              </svg>
+                            </span>
+                            <span class="mdc-floating-label mdc-floating-label--float-above">Tipo de registro</span>
+                            <span class="mdc-line-ripple"></span>
+                        </div>
+
+                        <div class="mdc-select__menu demo-width-class mdc-menu mdc-menu-surface w-100">
+                            <ul class="mdc-list" id="listInspecciones">
+                                <li class="mdc-list-item mdc-list-item--selected" data-value="" aria-selected="true">
+                                    <span class="mdc-list-item__ripple"></span>
+                                </li>
+                                <li class="mdc-list-item" data-value="1" >
+                                    <span class="mdc-list-item__ripple"></span>
+                                    <span class="mdc-list-item__text">Interno</span>
+                                </li>
+                                <li class="mdc-list-item" data-value="2" >
+                                    <span class="mdc-list-item__ripple"></span>
+                                    <span class="mdc-list-item__text">Externo</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex mt-3" >
+                <div class="col-md-12 mb-12" id="search-content">
+                    <div class="mdc-text-field mdc-text-field--outlined  w-100 field-password search-inspector">
+                        <input class="mdc-text-field__input" name="search_name" id="search_name" type="text">
+                        <div class="mdc-notched-outline">
+                            <div class="mdc-notched-outline__leading"></div>
+                            <div class="mdc-notched-outline__notch">
+                                <label for="tx_name" class="mdc-floating-label  f-15px">Buscar</label>
+                            </div>
+                            <div class="mdc-notched-outline__trailing"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex mt-3">
+                <div class="col-md-6 mb-6" id="dni-content">
+                    <div class="mdc-text-field mdc-text-field--outlined  w-100 field-password dni-inspector">
+                        <input class="mdc-text-field__input" name="tx_dni" id="tx_dni" type="text">
+                        <div class="mdc-notched-outline">
+                            <div class="mdc-notched-outline__leading"></div>
+                            <div class="mdc-notched-outline__notch">
+                                <label for="tx_name" class="mdc-floating-label  f-15px">Dni</label>
+                            </div>
+                            <div class="mdc-notched-outline__trailing"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex mt-3">
+                <div class="col-md-6 mb-6">
+                    <div class="mdc-text-field mdc-text-field--outlined  w-100 field-password name-inspector">
+                        <input class="mdc-text-field__input" name="tx_name" id="tx_name" type="text">
+                        <div class="mdc-notched-outline">
+                            <div class="mdc-notched-outline__leading"></div>
+                            <div class="mdc-notched-outline__notch">
+                                <label for="tx_name" class="mdc-floating-label  f-15px">Nombres</label>
+                            </div>
+                            <div class="mdc-notched-outline__trailing"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-6" id="lastname-content">
+                    <div class="mdc-text-field mdc-text-field--outlined  w-100 field-password lastname-inspector">
+                        <input class="mdc-text-field__input" name="tx_name" id="tx_name" type="text">
+                        <div class="mdc-notched-outline">
+                            <div class="mdc-notched-outline__leading"></div>
+                            <div class="mdc-notched-outline__notch">
+                                <label for="tx_name" class="mdc-floating-label  f-15px">Apellidos</label>
+                            </div>
+                            <div class="mdc-notched-outline__trailing"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex mt-3">
+                <div class="col-md-6 mb-6" id="user-content">
+                    <div class="mdc-text-field mdc-text-field--outlined  w-100 field-password user-inspector">
+                        <input class="mdc-text-field__input" name="tx_name" id="tx_user" type="text">
+                        <div class="mdc-notched-outline">
+                            <div class="mdc-notched-outline__leading"></div>
+                            <div class="mdc-notched-outline__notch">
+                                <label for="tx_name" class="mdc-floating-label  f-15px">Usuario</label>
+                            </div>
+                            <div class="mdc-notched-outline__trailing"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-6" id="pass-content">
+                    <div class="mdc-text-field mdc-text-field--outlined  w-100 field-password pass-inspector">
+                        <input class="mdc-text-field__input" name="tx_name" id="tx_pass" type="text">
+                        <div class="mdc-notched-outline">
+                            <div class="mdc-notched-outline__leading"></div>
+                            <div class="mdc-notched-outline__notch">
+                                <label for="tx_name" class="mdc-floating-label  f-15px">Contraseña</label>
+                            </div>
+                            <div class="mdc-notched-outline__trailing"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex mt-3" style="display: none !important">
+                <div class="col-md-12 mb-12">
+                    <div class="mdc-text-field mdc-text-field--outlined  w-100 field-password hash-inspector">
+                        <input class="mdc-text-field__input" name="tx_name" id="tx_name" type="text">
+                        <div class="mdc-notched-outline">
+                            <div class="mdc-notched-outline__leading"></div>
+                            <div class="mdc-notched-outline__notch">
+                                <label for="tx_name" class="mdc-floating-label  f-15px">idHash</label>
+                            </div>
+                            <div class="mdc-notched-outline__trailing"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex mt-3">
+                <div class="col-md-6">
+                    <div class="mdc-select mdc-select--filled demo-width-class unidad-inspector w-100 text-left">
+                        <div class="mdc-select__anchor">
+                            <span class="mdc-select__ripple"></span>
+                            <span class="mdc-select__selected-text"></span>
+                            <span class="mdc-select__dropdown-icon">
+                              <svg
+                                      class="mdc-select__dropdown-icon-graphic"
+                                      viewBox="7 10 10 5">
+                                <polygon
+                                        class="mdc-select__dropdown-icon-inactive"
+                                        stroke="none"
+                                        fill-rule="evenodd"
+                                        points="7 10 12 15 17 10">
+                                </polygon>
+                                <polygon
+                                        class="mdc-select__dropdown-icon-active"
+                                        stroke="none"
+                                        fill-rule="evenodd"
+                                        points="7 15 12 10 17 15">
+                                </polygon>
+                              </svg>
+                            </span>
+                            <span class="mdc-floating-label mdc-floating-label--float-above">Unidad de Negocio</span>
+                            <span class="mdc-line-ripple"></span>
+                        </div>
+
+                        <div class="mdc-select__menu demo-width-class mdc-menu mdc-menu-surface w-100">
+                            <ul class="mdc-list" id="listUnidadNegocio">
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="mdc-select mdc-select--filled demo-width-class sede-inspector w-100 text-left">
+                        <div class="mdc-select__anchor">
+                            <span class="mdc-select__ripple"></span>
+                            <span class="mdc-select__selected-text"></span>
+                            <span class="mdc-select__dropdown-icon">
+                              <svg
+                                      class="mdc-select__dropdown-icon-graphic"
+                                      viewBox="7 10 10 5">
+                                <polygon
+                                        class="mdc-select__dropdown-icon-inactive"
+                                        stroke="none"
+                                        fill-rule="evenodd"
+                                        points="7 10 12 15 17 10">
+                                </polygon>
+                                <polygon
+                                        class="mdc-select__dropdown-icon-active"
+                                        stroke="none"
+                                        fill-rule="evenodd"
+                                        points="7 15 12 10 17 15">
+                                </polygon>
+                              </svg>
+                            </span>
+                            <span class="mdc-floating-label mdc-floating-label--float-above">Sede</span>
+                            <span class="mdc-line-ripple"></span>
+                        </div>
+
+                        <div class="mdc-select__menu demo-width-class mdc-menu mdc-menu-surface w-100">
+                            <ul class="mdc-list" id="listSede">
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex mt-3">
+                <div class="col-md-6">
+                    <div class="mdc-select mdc-select--filled demo-width-class area-inspector w-100 text-left">
+                        <div class="mdc-select__anchor">
+                            <span class="mdc-select__ripple"></span>
+                            <span class="mdc-select__selected-text"></span>
+                            <span class="mdc-select__dropdown-icon">
+                              <svg
+                                      class="mdc-select__dropdown-icon-graphic"
+                                      viewBox="7 10 10 5">
+                                <polygon
+                                        class="mdc-select__dropdown-icon-inactive"
+                                        stroke="none"
+                                        fill-rule="evenodd"
+                                        points="7 10 12 15 17 10">
+                                </polygon>
+                                <polygon
+                                        class="mdc-select__dropdown-icon-active"
+                                        stroke="none"
+                                        fill-rule="evenodd"
+                                        points="7 15 12 10 17 15">
+                                </polygon>
+                              </svg>
+                            </span>
+                            <span class="mdc-floating-label mdc-floating-label--float-above">Área</span>
+                            <span class="mdc-line-ripple"></span>
+                        </div>
+
+                        <div class="mdc-select__menu demo-width-class mdc-menu mdc-menu-surface w-100">
+                            <ul class="mdc-list" id="listAreaInspeccion">
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="mdc-select mdc-select--filled demo-width-class rol-inspector w-100 text-left">
+                        <div class="mdc-select__anchor">
+                            <span class="mdc-select__ripple"></span>
+                            <span class="mdc-select__selected-text"></span>
+                            <span class="mdc-select__dropdown-icon">
+                              <svg
+                                      class="mdc-select__dropdown-icon-graphic"
+                                      viewBox="7 10 10 5">
+                                <polygon
+                                        class="mdc-select__dropdown-icon-inactive"
+                                        stroke="none"
+                                        fill-rule="evenodd"
+                                        points="7 10 12 15 17 10">
+                                </polygon>
+                                <polygon
+                                        class="mdc-select__dropdown-icon-active"
+                                        stroke="none"
+                                        fill-rule="evenodd"
+                                        points="7 15 12 10 17 15">
+                                </polygon>
+                              </svg>
+                            </span>
+                            <span class="mdc-floating-label mdc-floating-label--float-above">Rol</span>
+                            <span class="mdc-line-ripple"></span>
+                        </div>
+
+                        <div class="mdc-select__menu demo-width-class mdc-menu mdc-menu-surface w-100">
+                            <ul class="mdc-list" id="listRoles">
+                                <li class="mdc-list-item mdc-list-item--selected" data-value="" aria-selected="true">
+                                    <span class="mdc-list-item__ripple"></span>
+                                </li>
+                                <li class="mdc-list-item" data-value="39" >
+                                    <span class="mdc-list-item__ripple"></span>
+                                    <span class="mdc-list-item__text">Responsable programación</span>
+                                </li>
+                                <li class="mdc-list-item" data-value="43" >
+                                    <span class="mdc-list-item__ripple"></span>
+                                    <span class="mdc-list-item__text">Responsable Inspección</span>
+                                </li>
+                                <li class="mdc-list-item" data-value="44" >
+                                    <span class="mdc-list-item__ripple"></span>
+                                    <span class="mdc-list-item__text">Inspector</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex mt-3 justify-content-center">
+                <div class="col-md-6">
+                    <div class="mdc-form-field">
+                        <div class="mdc-checkbox">
+                            <input type="checkbox"
+                                   class="mdc-checkbox__native-control"
+                                   id="responsable-de-area" name="responsable-de-area"/>
+                            <div class="mdc-checkbox__background">
+                                <svg class="mdc-checkbox__checkmark"
+                                     viewBox="0 0 24 24">
+                                    <path class="mdc-checkbox__checkmark-path"
+                                          fill="none"
+                                          d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
+                                </svg>
+                                <div class="mdc-checkbox__mixedmark"></div>
+                            </div>
+                            <div class="mdc-checkbox__ripple"></div>
+                        </div>
+                        <label for="responsable-de-area" class="m-0">Responsable del Área</label>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="d-flex mt-3 mb-3 justify-content-center">
+                <div class="col-md-4 pl-0">
+                    <button class="btn_confirmar_modal bg-green-lime-modal" onclick="saveInspector()">Guardar</button>
+                </div>
+                <div class="col-md-4 pr-0">
+                    <button class="btn_cerrar_modal" onclick="cerrarAgregarInspector();">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal_confirmacion" id="modal-confirmacion__error">
+    <div class="modal_confirmacion__content">
+        <div class="modal_confirmacion__head bg-danger">
+            <img src="./images/newsistema/iconos/correct1.svg" alt="">
+        </div>
+        <div class="modal_confirmacion__body">
+            <div class="title py-4" id="errMessage">
+                
+            </div>
+    <!--            <div class="content">-->
+    <!--                El código de la inspección es:-->
+    <!--                <h2 ><strong id="codigo">PCON001</strong></h2>-->
+    <!--            </div>-->
+            <div class="footer">
+                <div class="d-flex">
+                    <div class="col-md-12 px-0">
+                        <button class="btn_confirmar_modal bg-danger" style="color: #fff" onclick="cerrarModal('modal-confirmacion__error')">De Acuerdo</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="./js/paginator/pagination.js"></script>
+<!--<script src="./view/ssoma/inspector/index.js"></script>-->
+
+<script>
+
+    $('.logoCompany').text('Inspectores')
+    $('#regresar').css('display','block')
+    $('#regresar').click(function (){
+        handlerUrlhtml('contentGlobal','view/ssoma/menu.html','externalAccessRequestList');
+    })
+    initInspector();
+    listInspectores();
+    getlistUnidadNegocio();
+    getTokenClient();
+    
+    filtroGetUnidadNegocio()
+    //mdc.textField.MDCTextField.attachTo(document.querySelector('.area-de-la-inspeccion'));
+    //getListForm()
+    $('.numeros_js').keypress(function (e) {
+        key = e.keyCode || e.which;
+        tecla = String.fromCharCode(key).toLowerCase();
+        letras = " 0123456789";
+        especiales = [8, 37, 39, 46];
+
+        tecla_especial = false
+        for(var i in especiales) {
+            if(key == especiales[i]) {
+                tecla_especial = true;
+                break;
+            }
+        }
+
+        if(letras.indexOf(tecla) == -1 && !tecla_especial)
+            return false;
+    })
+</script>

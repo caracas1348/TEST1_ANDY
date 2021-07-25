@@ -1,0 +1,127 @@
+<div class="container-fluid bg-light p-0" style="width: 90%; position: static; margin-left: 5%; margin-right: 5%;">
+
+    <div class="row bg-white " style="padding: 25px; border-bottom: 1px solid #ebebeb;" >
+
+        <div class="col-sm-2">
+            <div class="form-group">
+                <label for="tx_id_program" class="bmd-label-static titleInput"><b>ID de programa</b> </label>
+                <input type="text" id="tx_id_program" class="form-control" autocomplete="off" >
+             </div>
+        </div>
+              <div class="col-sm-2">
+            <div class="media-body">
+                <div class="form-group">
+
+                    <label for="tx_date_init" class="bmd-label-static titleInput">Fecha Desde</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="tx_date_init" aria-label="Recipient's username" aria-describedby="basic-addon2" >
+                        <div class="input-group-append" >
+                            <img src="./images/iconos/calendario.svg" style="margin-left: -100%; width: 14px; height:14px;" class="calendario-2">
+                        </div>
+                </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="media-body">
+                <div class="form-group">
+
+                    <label for="tx_date_end" class="bmd-label-static titleInput">Fecha Hasta</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="tx_date_end" aria-label="Fecha Hasta" aria-describedby="basic-addon2" >
+                        <div class="input-group-append" >
+                            <img src="./images/iconos/calendario.svg" style="margin-left: -100%; width: 14px; height:14px;" class="calendario-2">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-2" >
+            <div class="media-body">
+                <div class="form-group">
+                    <label for="sel_status" class="bmd-label-static titleInput">Estado </label>
+                    <div class="input-group">
+                    <select name="sel_status" class="form-control" id="sel_status">
+                        <option value="" disabled selected></option>
+                        <option value="1">Option 1</option>
+                        <option value="2">Option 2</option>
+                        <option value="3">Option 3</option>
+                    </select>
+                    <div class="input-group-append">
+                        <img src="./images/iconos/Path.svg" style="margin-left: -100%;" class="calendario-2">
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div >
+            &nbsp;
+            &nbsp;
+            <button type="button" style="width:115px; height:50px;border-radius: 4px; background-color: #d2d97b; align-content: baseline;" id="btn_buscar" >
+                <i style=" position:static ; width: 51px; height: 26px; font-family: ProductSans; font-size: 15px; font-weight: bold; font-stretch: normal; font-style: normal; line-height: 1.64; letter-spacing: 0.15px; color: #565933;"> Buscar</i></button>
+        </div>
+<div class="col-2">
+
+</div>
+        <div class="col-1 pt-2 text-center text-gray" >
+            <img src="./images/iconos/copia.svg" class="copia-1">
+
+            <span id="cantTotalCovid19" class="h3 mute">&nbsp;0</span>
+        </div>
+        <div class="vertical-line" style="width: 1px;height: 51px; border: solid 1px #bfbfbf; background-color: #737373;"></div>
+        &nbsp;
+    <!--    <div class="col-sm-2text-center pt-2" style="height: 50px !important">
+            <input type="text" id="tx_access_dni_list" maxlength="30"  name="tx_access_dni_list" sty autocomplete="off" class=" shadow-sm inputFind" placeholder="Buscar" style="width:10em;">
+        </div>
+-->
+        <div style="position: static;">
+            <button type="button" style=" width: 184px; height: 50px; border-radius: 4px;background-color: #05beee; color: #fff;" id="btn_buscar" onclick="vw_collaborator_approver.tableListTamizaje()">
+                <img src="./images/iconos/plus_.svg" class="Frame-1">  Crear Programa </button>
+        </div>
+    </div>
+
+        <div style="height: 6px;"></div>
+        <!-- listado -->
+        <div class="row ">
+
+            <div class="col ">
+                <div class="card p-0" style="box-shadow: none;">
+                    <div class="card-body p-0 " >
+                        <table id="tb_black_list" name="tb_black_list" class="table p-0" style="width:100%">
+                            <thead style="background-color: #34559c;  border-radius: 4px;   width: 1314px;   height: 57px; align-items: center;">
+                            <th>ID de Programa</th>
+                            <th>Especialidad</th>
+                            <th>Fecha de Creacion</th>
+                            <th>No. de Correcciones</th>
+                            <th>Evaluador</th>
+                            <th>Fecha de Evaluacion</th>
+                            <th>Estado</th>
+                            </thead>
+                            <tbody class="dat">
+                            <tr></tr>
+                            <tr></tr>
+                            <tr></tr>
+                            <tr></tr>
+                            <tr></tr>
+                            <tr></tr>
+                            <tr></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+    <!-- bar aprobar y cupos -->
+
+
+        </div>
+
+
+</script>

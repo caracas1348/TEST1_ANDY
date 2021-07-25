@@ -1,0 +1,157 @@
+
+<div style="height: 56px;"></div>
+<div class="container-fluid bg-light p-0" >
+  
+    <div class="row bg-white p-2" style="border-bottom: 1px solid #ebebeb;" >
+      
+
+      <div class="col-6 text-center" >
+        <input type="text" id="tx_finded" maxlength="30"  name="tx_finded" class=" shadow-sm inputFind" placeholder="Buscar documento" style="width:11.4em;" onkeyup="validaSoloNumeros(this.id)"  >
+      </div>
+      <div class="col-2 text-center pt-2" >
+      </div>
+      <div class="col-1 text-center pt-2" >
+        <button class="btn btn-green-lime btn-rounded btn-raised" onclick="vw_covid_list.getDocument()">Buscar</button>
+      </div>
+
+      
+    </div>
+
+  
+        <div class="row">
+            <div class="col  p-0">
+                <div class="card p-3 rounded" style=" box-shadow: none;">
+                    <div class="card-header text-dark rounded p-0  " style=" height: 95px;">
+                      
+                      <div class="row p-0">
+                        
+                        <div class="col-12 text-center " id="headerFormCovid" style="border-radius: 5px;">
+                          <h5 class="pt-3 text-white " id="status">Control de Ingreso</h5>
+                        </div>
+                        <div class="col-12 text-center" style="">
+                          <small class="text-dark" id="statusdetails" style="font-size: 12px;"></small>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card-body text-center p-0" id="modalRegisterCovidTestBody" style="padding: 0 !important; ">                        
+                     
+                      <div  class="row" >
+                        <input type="hidden" name="hid_is_collaborator" id="hid_is_collaborator">
+                          <input type="hidden" name="hid_id_area" id="hid_id_area">
+                          <input type="hidden" name="hid_id_location" id="hid_id_location">
+                          <input type="hidden" name="hid_id_company" id="hid_id_company">   
+                          <input type="hidden" name="hid_name_company" id="hid_name_company">
+                          <input type="hidden" name="hid_mobile_temp" id="hid_mobile_temp" >
+  
+                        <div class="col-1">  
+                          <img src="images/iconos/organizadorgray.svg" height="20" class="mt-4">
+                        </div>
+  
+                          <div class="col">  
+                                                
+                            <input type="text" class="form-control bg-white" style="background-image: none;" id="tx_nomape" maxlength="50">
+                            <small id="" class="form-text text-muted text-left" style="font-size: 1.1em;">Nombre y apellido</small>
+                          </div>
+                  
+                      </div>
+  
+                      <div  class="row" >
+                        <input type="hidden" name="hid_is_collaborator" id="hid_is_collaborator">
+                          <input type="hidden" name="hid_id_area" id="hid_id_area">
+                          <input type="hidden" name="hid_id_location" id="hid_id_location">
+                          <input type="hidden" name="hid_id_company" id="hid_id_company">   
+                          <input type="hidden" name="hid_name_company" id="hid_name_company">
+                          <input type="hidden" name="hid_mobile_temp" id="hid_mobile_temp" >
+                          <input type="hidden" name="hid_is_collaborator_aforo" id="hid_is_collaborator_aforo" >
+  
+                        <div class="col-1"></div>
+  
+                          <div class="col">                   
+                            <input type="text" readonly class="form-control bg-white" style="background-image: none;"  id="tx_docum" maxlength="50" onkeyup="validaSoloNumeros(this.id)">
+                            <small id="" class="form-text text-muted text-left" style="font-size: 1.1em;" >Documento</small>
+                          </div>
+  
+                          <div class=" col">  
+                                <input type="text" class="form-control bg-white" style="background-image: none;" id="tx_ocupacion" maxlength="50">
+                                <small id="" class="form-text text-muted text-left" style="font-size: 1.1em;">Ocupación</small>
+                          </div>
+                          
+                          <div class=" col" id="fechaReeustExamCol" style="display: none;"> 
+                              <input type="text" class="form-control bg-white" style="background-image: none;" id="tx_date_tamizaje" name="tx_date_tamizaje" maxlength="50">
+                              <small id="" class="form-text text-muted text-left" style="font-size: 1.1em;">Fecha de Solicitud</small>
+                          </div>                  
+                      </div>
+                      
+                      <div style="height: 5px;"></div>
+                      <hr>
+                      <div style="height: 10px;"></div>
+                      <div  class="row" >
+                        
+                        <div class="col-1">  
+                          <img src="images/iconos/sedegray.svg" height="20" class="mt-2">
+                      </div>
+                       
+                        <div class="col text-left">
+                            <label class="text-left" id="company"></label>   
+                            <small id="" class="form-text text-muted text-left" style="font-size: 1.1em;">Empresa</small>
+                        </div> 
+                                      
+                    </div>
+                    <div style="height:20px;"></div>
+                    <div  class="row" >
+                        
+                      <div class="col-1">  
+                        
+                    </div>
+                      <div class="col text-left">  
+                          <label class="text-left" id="local"></label>
+                          <small id="" class="form-text text-muted text-left" style="font-size: 1.1em;">Planta</small>
+                      </div>
+                      <div class="col text-left">  
+                          <label class="text-left" id="area"></label>                               
+                          <small id="" class="form-text text-muted text-left" style="font-size: 1.1em;">Área</small>
+                      </div>
+                     
+                                    
+                  </div>
+
+                    <hr>
+                    <div style="height: 10px;"></div>
+                    <div  class="row" style="margin-bottom: 0.125rem!important;display: ;" id="temperatureUSer" >
+                      
+                      <div class="col-1">  
+                        <img src="images/iconos/iconTemp.svg" height="20" class="mt-4">
+                      </div>
+
+                      <div class="col text-left" style="display: none;" id="tx_tempINdiv">  
+                                              
+                        <input type="text" class="form-control" id="tx_tempIN" maxlength="4" onkeyup="validarMoneda(this.id)" >
+                        <small id="" class="form-text text-dark  text-left" style="font-size: 1.1em;">Temperatura de Entrada</small>
+                      </div>
+
+                      <div class="col text-left"  id="tx_temoOUTdiv">                   
+                        <input type="text" class="form-control" id="tx_temoOUT" maxlength="4" onkeyup="validarMoneda(this.id)">
+                        <small id="" class="form-text text-dark  text-left" style="font-size: 1.1em;">Temperatura de Salida</small>
+                      </div> 
+
+                    </div>
+                   
+                    <div class="row">
+                      
+                      <div class="col text-center">
+                        <button type="button" style="width: 175px;display: none;" class="btn btn-info btn-rounded btn-raised" id="butEditBlack" onclick="vw_covid_list.thumbsUpregister();">Actualizar Temperaturas</button>
+                        <button type="button" style="width: 165px;" class="btn btn-green-lime btn-rounded btn-raised" id="btnValidateIn" style="display: none;" onclick="vw_covid_list.confirmSaveCheckInCovid19(1);">Validar ingreso</button>
+                        <button type="button" style="width: 165px;" class="btn btn-danger btn-rounded btn-raised" id="btnValidateOut" style="display: none;" onclick="vw_covid_list.confirmSaveCheckInCovid19(0);">Validar Salida</button>
+                      </div>
+                       
+                    </div>
+                    </div>
+                    
+                </div>  
+            </div>
+        </div>        
+     
+
+
+
+  </div>

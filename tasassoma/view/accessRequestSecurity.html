@@ -1,0 +1,291 @@
+<div class="container-fluid">
+  <div class="row p-1">
+    <main role="main" class="col-md-12 ml-sm-auto col-lg-12 ">
+     <!-- <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Dashboard</h1>
+      </div> 
+    -->
+      <div class="row p-0" style="background: rgb(250, 250, 250);">
+        <div class="col-md-3 " style="padding-right: 5px!important; padding-left: 0px!important">
+          <div class="card h-100" style="box-shadow: none;">
+            <div class="card-body  p-0">
+              <form id="fm_visita" name="fm_visita" class="">
+
+                 <!-- titulo form -->
+                 <ul class="list-unstyled">
+                  <li class="media mb-2 p-3 titleFormMain" style="">
+                    <img src="images/iconos/detalleformulariowhite.svg" height="24" class="mr-3">
+                    <div class="media-body pt-0 ">
+                      <h6 id="titleVisit">Completa datos de Visita</h6>
+                    </div>
+                  </li>
+                </ul>
+                <!-- contenido form -->
+
+                <ul class="list-unstyled">
+                  <li class="media mb-5">
+                    <img src="images/iconos/sede.svg" height="24" class="mr-3 mt-4">
+                    <div class="media-body">
+                      <div class="form-group">
+                        <label for="sel_location" class="bmd-label-static titleInput">SEDE <span class="text-warning">*</span></label>
+                        <select name="sel_location" class="form-control" id="sel_location" onchange="validateFieldMinForm()">Seleccione</select>
+                        <span class="bmd-help"></span>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="media mb-5">
+                    <img src="images/iconos/area.svg" height="28" class="mr-3 mt-4">
+                    <div class="media-body">
+                      <div class="form-group">
+                        <label for="sel_area" class="bmd-label-static titleInput">ÁREA <span class="text-warning">*</span></label>
+                        <select name="sel_area" class="form-control" id="sel_area" onchange="validateFieldMinForm()"  required>
+                          <option value="0">Seleccione</option>
+                        </select>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="media mb-5">
+                    <img src="images/iconos/organizador.svg" height="24" class="mr-3 mt-4" alt="...">
+                    <div class="media-body">
+                      <div class="form-group">
+                        <label for="txt_collaborator" class="bmd-label-static  titleInput" id="lab_colaborador">
+                          ORGANIZADOR <span class="text-warning">*</span>
+                          <div class="spinner-border spinner-border-sm" role="status" id="spinnerLoadColaborador" style="display:none;">
+                            <span class="sr-only">Loading...</span>
+                          </div> 
+                        </label>
+                        <input type="hidden" class="form-control" id="txt_collaborator_id" name="txt_collaborator_id">
+                        <input type="text" class="form-control" id="txt_collaborator" name="txt_collaborator" maxlength="60"  onkeyup="validateFieldMinForm()">                  
+                      </div>
+                    </div>
+                  </li>
+                  <li class="media gp_no_programada mb-5">
+                    <img src="images/iconos/iconTypev.svg" class="mr-3 mt-4">
+                    <div class="media-body">
+                      <div class="form-group is-filled">
+                        <label for="sel_request_type" class="bmd-label-static titleInput">TIPO</label>
+                        <select name="sel_request_type" class="form-control bg-white cabecera" id="sel_request_type" >
+                          <option></option>
+                        </select>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="media gp_proveedor mb-5" style="display: none;">
+                    <img src="images/iconos/order.svg" height="24" class="mr-3 mt-4">
+                    <div class="media-body">
+                      <div class="form-group" >
+                        <label for="txt_order_compra_text" class="bmd-label-static titleInput">ORDEN DE COMPRA</label>
+                        <input type="hidden" class="form-control" id="txt_order_compra_id" name="txt_order_compra_id" value="25">
+                        <input type="text" class="form-control" id="txt_order_compra_text" name="txt_order_compra_text">                
+                        <small id="" class="form-text text-muted">
+                          <input type="checkbox" id="chb_OC_Emergencia" name="chb_OC_Emergencia"> No cuenta con OC (Emergencia)
+                        </small>
+                        <span class="bmd-help"></span>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="media gp_visita mb-5">
+                    <img src="images/iconos/motivo.svg" height="24" class="mr-3 mt-4">
+                    <div class="media-body">
+                      <div class="form-group ">
+                        <label for="tx_rejection_reason" class="bmd-label-static is-filled titleInput">MOTIVO <span class="text-warning">*</span></label>
+                        <textarea id="tx_rejection_reason" name="tx_rejection_reason" onkeyup="validateFieldMinForm()" class="form-control" rows="2"  maxlength="140"></textarea>                  
+                      </div>
+                    </div>
+                  </li>
+                  <!--<li class="media">
+                    <img src="images/iconos/motivo.svg" height="24" class="mr-3 mt-4">
+                    <div class="media-body">
+                      <div class="form-group ">
+                        <label for="tx_quantity" class="bmd-label-static is-filled titleInput">CANTIDAD <span class="text-warning">*</span></label>
+                        <input type="text" name="tx_quantity" id="tx_quantity" value="0" class="form-control">
+                      </div>
+                    </div>
+                  </li>-->
+                </ul>
+                <div class="text-center col-md-12 col-lg-12">
+                  <button type="button" class="btn btn-black-50 btn-rounded btn-raised text-muted"  id="bt_register_visita_disabled">Enviar Formulario</button>
+                  <button type="button" class="btn btn-green-lime btn-rounded btn-raised" style="display:none" id="bt_register_visita">Enviar Formulario</button>
+                </div>
+                <input type="hidden" value="" id="hid_email_colaborador" name="hid_email_colaborador">
+                <input type="hidden" value="" id="hid_name_colaborador" name="hid_name_colaborador">
+                <input type="hidden" value="" id="hid_anonymous_access_token" name="hid_anonymous_access_token">
+                <input type="hidden" value="" id=" hid_name_user" name=" hid_name_user">
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-9" style="padding-right: 5px!important; padding-left: 0px!important;" id="body_form_request_register">          
+        </div>
+      </div>      
+    </main>
+  </div>
+  <!-- Modal -->
+  <div class="modal fade" id="modalAddCompany" tabindex="-1" role="dialog" aria-labelledby="modalAddCompanyTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered  modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header" style="padding:5px 24px 0!important">
+          <h5 class="modal-title"></h5>
+          <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close">
+            <span class="text-danger">Cerrar</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>            
+            <span class="titleMain">Datos de Empresa</span> 
+              <div class="row">
+                  <div class="col">
+                    <div class="form-group">
+                      <label for="tx_ruc" class="bmd-label-static titleInput">RUC<span class="text-warning">*</span></label>
+                      <input type="text" class="form-control" id="tx_ruc" maxlength="11">
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-group">
+                    <label for="tx_name" class="bmd-label-static titleInput">Nombre<span class="text-warning">*</span></label>
+                    <input type="text" class="form-control" id="tx_name" onkeyup="autoCompleteDate(this.id,'tx_business_name')" >
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="form-group">
+                    <label for="tx_business_name" class="bmd-label-static titleInput">Nombre Comercial<span class="text-warning">*</span></label>              
+                    <input type="text" class="form-control" id="tx_business_name" >              
+                  </div>
+                </div>
+            </div>
+           
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label for="tx_business_sector" class="bmd-label-static titleInput">Sector</label>              
+                  <input type="text" class="form-control" id="tx_business_sector" >              
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <label for="tx_business_pais" class="bmd-label-static titleInput">País</label>              
+                  <input type="text" class="form-control" id="tx_business_pais" value="Perú">              
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <label for="tx_business_ciudad" class="bmd-label-static titleInput">Ciudad</label>              
+                  <input type="text" class="form-control" id="tx_business_ciudad">              
+                </div>
+              </div>
+            </div>
+            
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label for="tx_business_street" class="bmd-label-static titleInput">Dirección</label>              
+                  <input type="text" class="form-control" id="tx_business_street">              
+                </div>
+              </div>
+              <div class="col"><div class="form-group">
+                <label for="tx_business_site_web" class="bmd-label-static titleInput">Sitio WEB</label>              
+                <input type="text" class="form-control" id="tx_business_site_web" >              
+              </div></div>
+              <div class="col">
+                <div class="form-group">
+                  <label for="sel_external_company_type" class="bmd-label-static titleInput">Tipo<span class="text-warning">*</span></label>              
+                  <select name="sel_external_company_type" class="form-control" id="sel_external_company_type" required>
+                    <option value="0"></option>
+                    <option value="1">Proveedor</option>
+                    <option value="2">Transportista</option>
+                    <option value="3">Contratista</option>
+                  </select>
+                </div>
+
+              </div>
+              
+              
+            </div>
+
+            <div class="row">
+             
+            </div>
+            <span class="titleMain">Datos de Usuario</span>
+            
+            <div class="row">
+
+              <div class="col">
+                <div class="form-group">
+                  <label for="tx_business_dni" class="bmd-label-static titleInput">TIPO DE DOCUMENTO<span class="text-warning">*</span></label>              
+                  <select class="form-control" id="sel_identity_document_type" name="sel_identity_document_type">
+                    <option value="DNI">DNI</option>
+                    <option value="CE">CE</option>
+                    <option value="PASAPORTE">PASAPORTE</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col">
+                <div class="form-group">
+                  <label for="tx_business_dni" class="bmd-label-static titleInput">DOCUMENTO DE IDENTIDAD<span class="text-warning">*</span></label>              
+                  <input type="text" class="form-control" id="tx_business_dni" maxlength="10" onblur="autoCompleteDate(this.id,'tx_user_pass_1'); autoCompleteDate(this.id,'tx_user_pass_2');">              
+                </div>                
+              </div>
+            <div class="col">
+              <div class="form-group">
+                <label for="tx_business_nombre" class="bmd-label-static titleInput">Nombre<span class="text-warning">*</span></label>              
+                <input type="text" class="form-control" id="tx_business_nombre" >              
+              </div>
+            </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label for="tx_business_apelllido" class="bmd-label-static titleInput">Apellido<span class="text-warning">*</span></label>              
+                  <input type="email" class="form-control" id="tx_business_apelllido" >              
+                </div>
+              </div>
+            <div class="col">
+              <div class="form-group">
+                <label for="tx_business_mobile" class="bmd-label-static titleInput">Teléfono</label>              
+                <input type="text" class="form-control" id="tx_business_mobile" >              
+              </div>              
+            </div>
+
+            <div class="col">
+              <div class="form-group">
+                <label for="tx_business_email" class="bmd-label-static titleInput">Email<span class="text-warning">*</span></label>              
+                <input type="email" class="form-control" id="tx_business_email" onblur="autoCompleteDate(this.id,'tx_user_responsable')" >              
+              </div>
+              
+          </div>
+            </div>
+            <div class="row" style="display: none;">
+              <div class="col">
+                <div class="form-group">
+                  <label for="tx_business_client_flag" class="bmd-label-static titleInput">Usuario<span class="text-warning">*</span></label>              
+                  <input type="text" class="form-control col-sm-12" id="tx_user_responsable" >
+                  <small class="text-help text-danger " id="help_user_responsable"></small>
+                </div>
+                </div>
+              <div class="col">
+                <div class="form-group">
+                  <label for="tx_user_pass_1" class="bmd-label-static titleInput">Contraseña<span class="text-warning">*</span></label> 
+                  <input type="password" class="form-control col-sm-12" id="tx_user_pass_1"  >
+                  <!-- <small id="dateSystem" class="text-help colorLight"></small> -->
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <label for="tx_user_pass_2" class="bmd-label-static titleInput">Repetir Contraseña<span class="text-warning">*</span></label> 
+                  <input type="password" class="form-control col-sm-12" id="tx_user_pass_2"   >            
+                </div>
+              </div>
+            </div>
+            
+            <div class="modal-footer">
+              <button type="button" class="btn btn-raised btn-secondary btn-rounded" id="bt_cancel_register_externalcompany" data-dismiss="modal" style="margin: 5px!important">Cancelar</button>
+              <button type="button" class="btn btn-raised btn-green-lime  btn-rounded" onclick="vw_access_request.validateFormCompany()" style="margin: 5px!important;">Registrar</button>
+            </div>
+          </form>
+        </div>
+      
+      </div>
+    </div>
+  </div>
+</div>

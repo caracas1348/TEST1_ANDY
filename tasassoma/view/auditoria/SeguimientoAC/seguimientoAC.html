@@ -1,0 +1,1415 @@
+<link rel="stylesheet" href="./view/ssoma/ssoma.css">
+<link rel="stylesheet" href="./css/pagination.css">
+<link rel="stylesheet" href="./css/auditorLiderList.css">
+<link rel="stylesheet" href="./css/sass/customize.css?v=3">
+
+<!-- START FILTROS  -->
+<div class="row justify-content-center">
+
+    <style type="text/css">
+
+        ul.ui-autocomplete.ui-menu { width: 400px !important; }
+
+        #sel_procesoPlan{
+            height: 24px;
+            background-color: white;
+            cursor: pointer;
+        }
+
+        #sel_procesoPlan:hover{
+            height: 124px;
+            background-color: white;
+            cursor: pointer;
+        }
+
+
+        .txtAreaLista{
+             border-radius: 4px;
+            -moz-border-radius: 4px;
+            -webkit-border-radius: 4px;
+            -o-border-radius: 4px;
+            background: #F2F2F2;
+            background: linear-gradient(left, #F2F2F2, #F2F2F2);
+            background: -moz-linear-gradient(left, #F2F2F2, #F2F2F2);
+            background: -webkit-linear-gradient(left, #F2F2F2, #F2F2F2);
+            background: -o-linear-gradient(left, #F2F2F2, #F2F2F2);
+            width: 100%;
+            height: 80%;
+            border-color:#F2F2F2;
+            resize: none;
+        }
+
+
+        input[type="time"]::-webkit-calendar-picker-indicator
+        {
+            filter: invert(48%) sepia(13%) saturate(3207%) hue-rotate(130deg) brightness(95%) contrast(80%);
+            cursor:pointer;
+        }
+
+        .fontrem{
+            font-size: 0.8rem !important;
+        }
+
+    </style>
+
+    <div class="col-12">
+
+    	<div class="row mt-4 align-items-center"  >
+           	<table width = "97%" border="0" style = " margin-left: auto; margin-right: auto; "  >
+                <tr>
+                	<td id='col1' width ="65%">
+                        <table width = "100%" border="0">
+                            <tr>
+                                <td id='col1-1-1'   width ="12%"><label for="sel_filter_tipo_hallazgosSE" class="textoLabelFiltrosCA">Tipo Hallazgo</label></td>
+                                <td id='col1-1-1e'  width ="3%">&nbsp;</td>
+                                <td id='col1-1-2'   width ="12%"><label for="sel_filter_normaSE" class="textoLabelFiltrosCA">Norma</label></td>
+                                <td id='col1-1-2e'  width ="3%">&nbsp;</td>
+                                <td id='col1-1-3'   width ="12%"> <label for="txt_fecha_desdeSE" class="textoLabelFiltrosCA">Fecha Desde</label></td>
+                                <td id='col1-1-3e'  width ="3%">&nbsp;</td>
+                                <td id='col1-1-4'   width ="12%"><label for="txt_fecha_hastaSE" class="textoLabelFiltrosCA">Fecha Hasta </label></td>
+                                <td id='col1-1-4e'  width ="3%">&nbsp;</td>
+                                <td id='col1-1-5'   width ="12%"><label for="sel_filter_estadoPAC" class="textoLabelFiltrosCA">Estado PAC</label></td>
+                                <td id='col1-1-5e'  width ="3%">&nbsp;</td>
+                                <td id='col1-1-6'   width ="12%"> <label for="sel_filter_sedeSE" class="textoLabelFiltrosCA">Sede</label></td>
+                                <td id='col1-1-6e'  width ="3%">&nbsp;</td>
+                            </tr>
+                            <tr>
+                            	<td id='col1-1-1' width ="12%">
+                                    <select name="sel_filter_tipo_hallazgosSE" class="form-control" id="sel_filter_tipo_hallazgosSE" onChange=" "  style="padding: 0px !important;">
+                                    </select>
+                                </td>
+                                <td id='col1-1-1e' width ="3%">&nbsp;</td>
+                                <td id='col1-1-2' width ="12%">
+                                    <select name="sel_filter_normaSE" class="form-control" id="sel_filter_normaSE" onChange=" "  style="padding: 0px !important;">
+                                    </select>
+                                </td>
+                                <td id='col1-1-1e' width ="3%">&nbsp;</td>
+                                <td id='col1-1-3' width ="12%">
+                                    <input  type="text" id="txt_fecha_desdeSE" name="txt_fecha_desdeSE" class="form-control bg-white" readonly onChange="">
+                                </td>
+                                <td id='col1-1-3e' width ="3%">
+                                    <img src="images/iconos/calendario-3.svg"  style="cursor: pointer;" onclick="$('#txt_fecha_desdeSE').val('');">
+                                </td>
+
+                                <td id='col1-1-4' width ="12%">
+                                    <input  type="text" id="txt_fecha_hastaSE" name="txt_fecha_hastaSE" class="form-control bg-white" readonly onChange="">
+                                </td>
+                                <td id='col1-1-4e' width ="2%">
+                                    <img src="images/iconos/calendario-3.svg"  style="cursor: pointer;" onclick="$('#txt_fecha_hastaSE').val('');">
+                                </td>
+                                <td id='col1-1-5' width ="12%">
+                                    <select name="sel_filter_estadoPAC" class="form-control select-filtroCA Patch_selectCA" id="sel_filter_estadoPAC" style="padding: 0px !important;" required>
+                                    </select>
+                                </td>
+                                <td id='col1-1-5e' width ="3%">&nbsp;</td>
+                                <td id='col1-1-6' width ="12%">
+                                    <select name="sel_filter_sedeSE" class="form-control select-filtroCA Patch_selectCA" id="sel_filter_sedeSE" style="padding: 0px !important;" required>
+                                    </select>
+                                </td>
+                                <td id='col1-1-6e' width ="3%">&nbsp;</td>
+                            </tr>
+                        </table>
+                    </td>
+
+                    <td id='col2' width ="5%">&nbsp;</td>
+	                <td id='col3' width ="10%">
+	                    <button type="button" style=" width:115px !important;"  class="btn btn-system-green"  onmouseup="fnCargarSeguimientosSP5()" id="btnBuscarSeguimientos" name="btnBuscarSeguimientos"
+	                       class="btn btn-system-green">Buscar</button>
+	                </td>
+
+	                <td id='col4'  width ="15%">
+                       &nbsp;
+                     </td>
+                     <td id='col5'  width ="3%">
+                        <div id="cant_seguimiento" style="font-size: 25px; font-weight: bold; text-align:left; ">
+                            <img src="images/iconos/copia-1.svg" style="margin-top:25px;"   class="mb-3"  >
+                        </div>
+                     </td>
+                     <td id='col6'  width ="1%" align="center" ><span style="top:5px; text-align: center; " class="cantidad ml-3" id="cantSeguimientos">0</span></td>
+                     <td id='col7'  width ="1%">&nbsp;</td>
+
+
+                </tr>
+
+            </table>
+        </div>
+
+    </div>
+</div>
+<!-- END FILTROS  -->
+
+<!-- START LISTADO DE SEGUIMIENTOS  -->
+<table width="97%" border="0" style = " margin-left: auto; margin-right: auto; "  >
+    <tr>
+    	<td id='col1' width ="100%">
+
+    		<div class="row justify-content-center mt-5">
+                <div class="col-md-12 px-2">
+                    <div class="header-tabla px-4 py-3">
+                        <table width = "100%" border="0">
+                            <tr >
+                            	<td width = "15%" align="center"><div id="c1TabGeny" class="text-left lbCabezaTabla"  >ID Hallazgo</div></td>
+                                <td width = "15%" align="center"><div id="c3TabGeny" class="text-left lbCabezaTabla"  >Tipo Hallazgo</div></td>
+                                <td width = "15%" align="center"><div id="c4TabGeny" class="text-left lbCabezaTabla"  >Norma</div></td>
+                                <td width = "15%" align="center"><div id="c6TabGeny" class="text-left lbCabezaTabla"  >Sede</div></td>
+                                <td width = "15%" align="center"><div id="c7TabGeny" class="text-left lbCabezaTabla"  >Fecha Pr&oacute;xima de Vencimientos</div></td>
+                                <td width = "10%" align="center"><div id="c8TabGeny" class="text-left lbCabezaTabla"  >Estado PAC</div></td>
+
+                                <td width = "10%" align="center"><div id="c9TabGeny" class="text-left lbCabezaTabla px-3"  >Porcentaje de Avance</div></td>
+                                <td width = "5%" align="center"><div id="c10TabGeny" class="text-center lbCabezaTabla"  >Ver</div></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="body-tabla mt-4" id="bodyTablaSinSeguimientos" style="display: block; font-weight: bold;">
+                <div class="content-registros-no-encontrados">
+                    <div>
+                        <img src="./images/programaAuditoriaOff.svg" alt="">
+                        <p class="mt-4">No Existen Seguimientos</p>
+                        <img src="./images/iconos/loadingAdj.gif" style="visibility: hidden;" >
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="body-tabla-list-EvalAud" id="bodyTablaSeguimientos" ></div>
+            <div id="pagination-container-Seguimientos" class="mt-3 pr-4"></div>
+
+    	</td>
+    </tr>
+</table>
+<!-- END LISTADO DE SEGUIMIENTOS  -->
+
+<! -------------- START VER PAC ----------------->
+
+<div class="modal fade"  id="modalVerPACSp5" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="modalAddCompanyTitle" aria-hidden="true" >
+    <div class="modal-dialog modal-dialog-centered rounded" role="document" style="max-width: 80%; z-index: 1030; ">
+        <div class="modal-content rounded " >
+            <div style="overflow: hidden;height: 620px;overflow-x: hidden; ">
+                <div class="modal-header fix-header-modal" >
+                    <div class="card-header text-center text-white modal-dialog-centered  card-header-FormAuditor" id="red-head" style="width: 100%; padding: 0px 0px !important;">
+                        <div class="row d-flex justify-content-center text-center" style="width: 100%;">
+                            <div class="col-1 btn-close-modalCA pl-3 my-2">
+                                <!--button type="button" id="closeVerAuditoriaModal"><span aria-hidden="true" class="btn-close-modalCA">Cerrar&nbsp;&nbsp;&nbsp;&nbsp;&times;</span></button--> <!-- class="close hearder-modal" data-dismiss="modal" aria-label="Close"-->
+                                <!-- <div class="float-right" cursor="pointer" id="btn-close-Adj"><span style="font-size: 40px">
+                                    <img src="images/prev.svg"  style="cursor: pointer;"></span>
+                                </div> -->
+                             </div>
+                            <div class="col justify-content-center text-center col-10 my-2">
+                                <h5 style="font-size: 16px !important; color:#fff; font-weight: bold; text-align: center;" id="titleModalVerPACSp5">
+                                    PAC - HAI0001
+                                </h5>
+                            </div>
+                            <div class="col justify-content-center text-center col-1 my-2" >
+                                <!--button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true" style="color: #ffffff;"> &times;</span>
+                                </button-->
+                                <img src="./images/iconos/delete.svg" data-dismiss="modal" style="cursor:pointer;" title = 'Salir' onclick=" $('#modalVerPACSp5aa').modal('hide').removeClass('fade');" > </td>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-body dialog-position" id="bodyModalVerPACSp5" style=" justify-content:space-around; align-content:center; padding: 10px 0px 0px !important;">
+                    <div class="card " style="border: 0px !important; border-radius: 5px; box-shadow: none;">
+
+                        <div class="card-body">
+                            <!--  ----------------------------------------------    pestaña 1   ----------------------------------- -->
+                            <div class="row">
+                                    <div class="w-100">
+                                        <div class="col-12 caja-adj main-data-modal">
+                                            <div class="group-title">
+                                                <div class="group-title--line"></div>
+                                                <div class="group-title--data">
+                                                    <h5 class="bg-white pr-2 tg--bold">Plan de Acci&oacute;n</h5>
+                                                    <img class="group-title--img pl-2 bg-white" src="images/iconos/menu.svg" alt="">
+                                                </div>
+                                            </div>
+
+                                            <!-- otras secciones -->
+                                            <div class="col-12 clear--col d-flex mt-3">
+                                                <div class="col clear--col">
+                                                    <div class="group-form group-form--gray w-100">
+                                                        <label>ID Hallazgo</label>
+                                                        <p class="mb-0" id="idHallazgoPAC">Plan 1</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="group-form group-form--gray w-100">
+                                                        <label>Tipo Hallazgo</label>
+                                                        <p class="mb-0" id="tipoHallazgoPAC">MC Mayor</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col clear--col">
+                                                    <div class="group-form group-form--gray w-100">
+                                                        <label>Norma</label>
+                                                        <p class="mb-0" id="normaPAC">IFFO</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="group-form group-form--gray w-100">
+                                                        <label>Sede</label>
+                                                        <p class="mb-0" id="sedePAC">Callao</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col clear--col">
+                                                    <div class="group-form group-form--gray w-100">
+                                                        <label>Porcentaje</label>
+                                                        <p class="mb-0" id="porcentajePAC">50%</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="tablet-option">
+                                                <div class="tablet-option__header row clear--row">
+                                                    <div class="col-4 clear--col d-flex">
+                                                        <div class="text-left w-1" style="font-size:15px;">
+                                                            <p>Item</p>
+                                                        </div>
+                                                        <div class="text-left w-4 pl-3" style="font-size:15px;">
+                                                            <p>Causa</p>
+                                                        </div>
+                                                        <div class="text-left w-5" style="font-size:15px;">
+                                                            <p>Acci&oacute;n</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-8 clear--col d-flex">
+                                                        <div class="tablet-option__box text-left justify-content-start">
+                                                            <p>Plazo Acci&oacute;n</p>
+                                                        </div>
+                                                        <div class="tablet-option__box text-left justify-content-start">
+                                                            <p>Tipo de Acci&oacute;n</p>
+                                                        </div>
+                                                        <div class="tablet-option__box text-left justify-content-start p-0">
+                                                            <p>Responsable</p>
+                                                        </div>
+                                                        <div class="tablet-option__box text-left justify-content-start p-0">
+                                                            <p>Fecha</p>
+                                                        </div>
+                                                        <div class="tablet-option__box text-left justify-content-start p-0">
+                                                            <p>Estado Acci&oacute;n</p>
+                                                        </div>
+                                                        <div class="tablet-option__box text-left justify-content-start">
+                                                            <p>Evidencia</p>
+                                                        </div>
+                                                        <div class="tablet-option__box text-left justify-content-start">
+                                                            <p>Cambio Fecha</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div id="listadoAccionesSp3" class="w-100 scroll-blue scroll-auto" style="height: 250px !important;">
+                                                    <div class="tablet-option__body row clear--row">
+                                                        <div class="col-4 d-flex clear--col">
+                                                            <h5 class="number w-1 mb-0">01</h5>
+                                                            <p class="w-4 pl-3 pr-1 mb-0" style="font-size:11px;">No se tiene mapeado como equipos criticos ante eventos ambientales</p>
+                                                            <p class="w-5 pl-1 mb-0" style="font-size:11px;">No se tiene mapeado como equipos criticos ante eventos ambientales</p>
+                                                        </div>
+                                                        <div class="col-8 tablet-option__contain clear--col">
+                                                            <div class="content-left tablet-option__flex-column" style="padding-left: 12px;">
+                                                                <p class="text-gray">Corto</p>
+                                                            </div>
+                                                            <div class="content-left tablet-option__flex-column">
+                                                                <p class="text-gray">Correctiva</p>
+                                                            </div>
+                                                            <div class="content-left tablet-option__flex-column pl-2">
+                                                                <p class="text-gray">Erick Arrasco</p>
+                                                            </div>
+                                                            <div class="content-left tablet-option__flex-column pl-2">
+                                                                <p class="text-gray">28/02/2021</p>
+                                                            </div>
+                                                            <div class="content-left tablet-option__flex-column pl-2">
+                                                                <p class="text-warning">En Evaluación</p>
+                                                            </div>
+                                                            <div class="content-left tablet-option__flex-column align-items-center">
+                                                                <button class="btn btn-circle tablet-buttom-evidencia d-flex justify-content-center align-item-center">
+                                                                    <img onclick="bt4Evidencia()" class="icon w-7" src="images/programaAuditoriaOn.svg" alt="">
+                                                                </button>
+                                                            </div>
+                                                            <div class="content-left tablet-option__flex-column align-items-center">
+                                                                <button onclick="bt5()" class="btn btn-circle tablet-buttom-cambiarFecha d-flex justify-content-center align-item-center">
+                                                                    <img class="icon w-7" src="images/programaAuditoriaOn.svg" alt="">
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="tablet-option__body row clear--row">
+                                                        <div class="col-4 d-flex clear--col">
+                                                            <h5 class="number w-1 mb-0">01</h5>
+                                                            <p class="w-4 pl-3 pr-1 mb-0" style="font-size:11px;">No se tiene mapeado como equipos criticos ante eventos ambientales</p>
+                                                            <p class="w-5 pl-1 mb-0" style="font-size:11px;">No se tiene mapeado como equipos criticos ante eventos ambientales</p>
+                                                        </div>
+                                                        <div class="col-8 tablet-option__contain clear--col">
+                                                            <div class="content-left tablet-option__flex-column" style="padding-left: 12px;">
+                                                                <p class="text-gray">Corto</p>
+                                                            </div>
+                                                            <div class="content-left tablet-option__flex-column">
+                                                                <p class="text-gray">Correctiva</p>
+                                                            </div>
+                                                            <div class="content-left tablet-option__flex-column pl-2">
+                                                                <p class="text-gray">Erick Arrasco</p>
+                                                            </div>
+                                                            <div class="content-left tablet-option__flex-column pl-2">
+                                                                <p class="text-gray">28/02/2021</p>
+                                                            </div>
+                                                            <div class="content-left tablet-option__flex-column pl-2">
+                                                                <p class="text-warning">En Evaluación</p>
+                                                            </div>
+                                                            <div class="content-left tablet-option__flex-column align-items-center">
+                                                                <button class="btn btn-circle tablet-buttom-evidencia d-flex justify-content-center align-item-center">
+                                                                    <img onclick="bt4Evidencia()" class="icon w-7" src="images/programaAuditoriaOn.svg" alt="">
+                                                                </button>
+                                                            </div>
+                                                            <div class="content-left tablet-option__flex-column align-items-center">
+                                                                <button onclick="bt5()" class="btn btn-circle tablet-buttom-cambiarFecha d-flex justify-content-center align-item-center">
+                                                                    <img class="icon w-7" src="images/programaAuditoriaOn.svg" alt="">
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="tablet-option__body row clear--row">
+                                                        <div class="col-4 d-flex clear--col">
+                                                            <h5 class="number w-1 mb-0">01</h5>
+                                                            <p class="w-4 pl-3 pr-1 mb-0" style="font-size:11px;">No se tiene mapeado como equipos criticos ante eventos ambientales</p>
+                                                            <p class="w-5 pl-1 mb-0" style="font-size:11px;">No se tiene mapeado como equipos criticos ante eventos ambientales</p>
+                                                        </div>
+                                                        <div class="col-8 tablet-option__contain clear--col">
+                                                            <div class="content-left tablet-option__flex-column" style="padding-left: 12px;">
+                                                                <p class="text-gray">Corto</p>
+                                                            </div>
+                                                            <div class="content-left tablet-option__flex-column">
+                                                                <p class="text-gray">Correctiva</p>
+                                                            </div>
+                                                            <div class="content-left tablet-option__flex-column pl-2">
+                                                                <p class="text-gray">Erick Arrasco</p>
+                                                            </div>
+                                                            <div class="content-left tablet-option__flex-column pl-2">
+                                                                <p class="text-gray">28/02/2021</p>
+                                                            </div>
+                                                            <div class="content-left tablet-option__flex-column pl-2">
+                                                                <p class="text-warning">En Evaluación</p>
+                                                            </div>
+                                                            <div class="content-left tablet-option__flex-column align-items-center">
+                                                                <button class="btn btn-circle tablet-buttom-evidencia d-flex justify-content-center align-item-center">
+                                                                    <img onclick="bt4Evidencia()" class="icon w-7" src="images/programaAuditoriaOn.svg" alt="">
+                                                                </button>
+                                                            </div>
+                                                            <div class="content-left tablet-option__flex-column align-items-center">
+                                                                <button onclick="bt5()" class="btn btn-circle tablet-buttom-cambiarFecha d-flex justify-content-center align-item-center">
+                                                                    <img class="icon w-7" src="images/programaAuditoriaOn.svg" alt="">
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                  </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<! --------------  END  VER PAC ----------------->
+
+<! --------------  START  VER DETALLE ACCION CORRECTIVA ----------------->
+<div class="modal fade "  id="modalDetalleAccionSp5" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="modalAddCompanyTitle" aria-hidden="true" >
+    <div class="modal-dialog modal-dialog-centered rounded" role="document" style="max-width: 80%; z-index: 1030; ">
+        <div class="modal-content rounded " >
+            <div style="overflow: hidden;height: 750px;overflow-x: hidden; ">
+                <div class="modal-header fix-header-modal" >
+                    <div class="card-header text-center text-white modal-dialog-centered  card-header-FormAuditor" id="red-head" style="width: 100%; padding: 0px 0px !important;">
+                        <div class="row d-flex justify-content-center text-center" style="width: 100%;">
+                            <div class="col-1 btn-close-modalCA pl-3 my-2">
+                                <!--button type="button" id="closeVerAuditoriaModal"><span aria-hidden="true" class="btn-close-modalCA">Cerrar&nbsp;&nbsp;&nbsp;&nbsp;&times;</span></button--> <!-- class="close hearder-modal" data-dismiss="modal" aria-label="Close" -->
+                                <!-- <div class="float-right" cursor="pointer" id="btn-close-Adj"><span style="font-size: 40px">
+                                    <img src="images/prev.svg"  style="cursor: pointer;"></span>
+                                </div> -->
+                             </div>
+                            <div class="col justify-content-center text-center col-12" style="margin-top: -28px !important;">
+                                <a href="javascript:void(0)" class="btn-backpage" onmouseup="returnModalVerPAC();">
+                                    <img src="images/prev.svg" alt="" class="img-backpage">
+                                </a>
+                                <h5 id="titleModalDetalleAccionSp5" style="font-size: 16px !important; color:#fff; font-weight: bold; text-align: center;">PAC - HAI0001</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-body dialog-position" id="bodyModalDetalleAccionSp5" style=" justify-content:space-around; align-content:center; padding: 0px 0px !important;">
+                    <div class="card " style="border: 0px !important; border-radius: 5px; box-shadow: none;">
+
+                        <div class="card-body">
+                            <!--  ----------------------------------------------    pestaña 1   ----------------------------------- -->
+                            <div class="row">
+                                    <div class="w-100">
+                                        <div class="col-12 caja-adj main-data-modal">
+                                            <div class="group-title">
+                                                <div class="group-title--line"></div>
+                                                <div class="group-title--data">
+                                                    <h5 class="bg-white pr-2 tg--bold">Detalle</h5>
+                                                    <img class="group-title--img pl-2 bg-white" src="images/iconos/menu.svg" alt="">
+                                                </div>
+                                            </div>
+
+                                            <!-- otras secciones -->
+                                            <div class="col-12 clear--col d-flex mt-3" style="flex-wrap:wrap;">
+                                                <div class="col-6 clear--col" style="padding-right: 5px !important;">
+                                                    <div class="group-form group-form--gray w-100">
+                                                        <label>Hallazgo</label>
+                                                        <p class="mb-0 w-100 scroll-blue scroll-auto" id="descriptionHallazgo" style="max-height: 60px;">Riesgo...</p>
+                                                        <!--textarea class="mb-0 w-100 scroll-blue scroll-auto border-0" id="descriptionHallazgo" rows="4" style="resize: none;background-color: #efefef; margin-bottom: 0px; height: 70px;width: 100%;"></textarea-->
+                                                    </div>
+                                                </div>
+                                                <div class="col-6 clear--col" style="padding-left: 5px !important;">
+                                                    <div class="group-form group-form--gray w-100">
+                                                        <label>Problema</label>
+                                                        <p class="mb-0 w-100 scroll-blue scroll-auto" id="descriptionProblema" style="max-height: 60px;" >Porque hay un mal enfoque en la cuestión</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 clear--col">
+                                                    <div class="group-form group-form--gray w-100">
+                                                        <label>Acci&oacute;n</label>
+                                                        <p class="mb-0 w-100 scroll-blue scroll-auto" id="descriptionAccion" style="max-height: 60px;">Generar un checklist de las actividades a realizar</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-12 clear--col d-flex mt-3" style="flex-wrap:wrap;">
+
+                                                <div class="group-title--data">
+
+                                                    <div class="text-left my-2">
+                                                        <b>Responsable Asignado:</b> <span id="ResponsableAccionesSp5">Jesus Millan</span>
+                                                    </div>
+
+
+                                                    <div class=" my-2">
+                                                        <input type="file" id="agregarEvidencia" onChange="seleccionarEvidenciaArchivo()" style="display:none"/>
+                                                        <button type="button" id="btnAgregarEvidencia" class="btn" onClick="adjuntarEvidenciaArchivo()" style="background-color: #bed138">Agregar Evidencia</button>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="tablet-option">
+
+                                               <!--  <div class="text-left w-100 my-2">
+                                                    <b>Responsable Asignado:</b> <span id="ResponsableAccionesSp5">Jesus Millan</span>
+                                                </div> -->
+                                                <div class="tablet-option__header row clear--row" style="margin-top: 0px; height: 47px !important;">
+                                                    <div class="col-4 clear--col d-flex">
+                                                        <div class="text-left w-1" style="font-size:15px;">
+                                                            <p>Item</p>
+                                                        </div>
+                                                        <div class="text-left col pl-3" style="font-size:15px;">
+                                                            <p>Descripci&oacute;n de la evidencia</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-8 clear--col d-flex">
+                                                        <div class="tablet-option__box text-left justify-content-start" style="font-size:15px;">
+                                                            <p>Fecha Programada</p>
+                                                        </div>
+                                                        <div class="tablet-option__box text-left justify-content-start" style="font-size:15px;">
+                                                            <p>Fecha de Atenci&oacute;n</p>
+                                                        </div>
+                                                        <div class="tablet-option__box text-left justify-content-start" style="font-size:15px;">
+                                                            <p>Evaluaci&oacute;n Local</p>
+                                                        </div>
+                                                        <div class="tablet-option__box text-left justify-content-start" style="font-size:15px;">
+                                                            <p>Evaluaci&oacute;n Corporativa</p>
+                                                        </div>
+                                                        <div class="tablet-option__box" style="font-size:15px !important;">
+                                                            <p>Ver</p>
+                                                        </div>
+                                                        <div class="tablet-option__box" style="font-size:15px !important;">
+                                                            <p>Editar</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div id="listadoEvidenciasAccionCorrectiva" class="w-100 scroll-blue scroll-auto" style="height: 230px !important;">
+                                                    <div class="tablet-option__body row clear--row">
+                                                        <div class="col-4 d-flex">
+                                                            <h5 class="number w-1 mb-0">1</h5>
+                                                            <div class="col group-form--border d-column justify-content-center">
+                                                                <input type="text" class="w-100" placeholder="Evidencia 1">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-8 tablet-option__contain clear--col">
+                                                            <div class="tablet-option__box justify-content-start ml-1 pl-2">
+                                                                <p class="text-gray">28/02/2021</p>
+                                                            </div>
+                                                            <div class="tablet-option__box justify-content-start" style="padding-left: 12px;">
+                                                                <p class="text-gray">28/02/2021</p>
+                                                            </div>
+                                                            <div class="tablet-option__box justify-content-start pl-2 ml-1" style="padding-left: 15px;">
+                                                                <p class="text-warning">Atendido</p>
+                                                            </div>
+                                                            <div class="tablet-option__box justify-content-start" style="padding-left: 15px;">
+                                                                <p class="text-warning">Atendido</p>
+                                                            </div>
+                                                            <div class="tablet-option__box align-items-center pl-4">
+                                                                <a href="javascript:void(0)" class="tablet-option__btn-view tablet-option__btn-view--active" onclick="bt4ReprogramacionFecha()">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 20 20">
+                                                                        <g clip-path="url(#clip0)">
+                                                                            <path fill="#fff" d="M10.006 17.537c-2.43 0-4.662-.874-6.634-2.598C1.768 13.536.74 11.897.27 11.044c-.362-.656-.359-1.438.009-2.091.478-.851 1.52-2.489 3.126-3.891 1.977-1.726 4.198-2.6 6.602-2.6 2.405 0 4.625.875 6.6 2.602 1.603 1.403 2.642 3.04 3.118 3.892.365.651.368 1.431.009 2.085-.218.396-.581 1.009-1.081 1.687-.256.347-.745.421-1.093.165-.347-.256-.42-.745-.165-1.092.45-.609.775-1.158.97-1.512.098-.179.097-.392-.003-.57-.958-1.713-3.69-5.695-8.355-5.695-4.665 0-7.405 3.982-8.366 5.694-.1.178-.102.392-.003.572.943 1.71 3.646 5.685 8.369 5.685 1.739 0 3.372-.544 4.854-1.616.35-.252.838-.174 1.09.175.253.35.175.838-.175 1.091-1.753 1.269-3.695 1.912-5.77 1.912zM14.609 10c0-2.54-2.068-4.608-4.609-4.608S5.392 7.458 5.392 9.999c0 2.542 2.067 4.609 4.608 4.609 2.541 0 4.609-2.067 4.609-4.609zm-1.563 0c0 1.68-1.366 3.047-3.046 3.047-1.68 0-3.046-1.367-3.046-3.047 0-1.68 1.366-3.046 3.046-3.046 1.68 0 3.046 1.367 3.046 3.046zm-2.17.212c-.599-.04-1.076-.54-1.09-1.14v-.015c-.004-.342-.382-.54-.664-.349-.444.303-.724.828-.68 1.416.06.76.674 1.375 1.435 1.434.587.045 1.113-.235 1.415-.68.192-.281-.007-.66-.348-.663l-.068-.003z"/>
+                                                                        </g>
+                                                                        <defs>
+                                                                            <clipPath id="clip0">
+                                                                                <path fill="#fff" d="M0 0H20V20H0z"/>
+                                                                            </clipPath>
+                                                                        </defs>
+                                                                    </svg>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="tablet-option__body row clear--row">
+                                                        <div class="col-4 d-flex">
+                                                            <h5 class="number w-1 mb-0">1</h5>
+                                                            <div class="col group-form--border d-column justify-content-center">
+                                                                <input type="text" class="w-100" placeholder="Evidencia 1">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-8 tablet-option__contain clear--col">
+                                                            <div class="tablet-option__box justify-content-start ml-1 pl-2">
+                                                                <p class="text-gray">28/02/2021</p>
+                                                            </div>
+                                                            <div class="tablet-option__box justify-content-start" style="padding-left: 12px;">
+                                                                <p class="text-gray">28/02/2021</p>
+                                                            </div>
+                                                            <div class="tablet-option__box justify-content-start pl-2 ml-1" style="padding-left: 15px;">
+                                                                <p class="text-warning">Atendido</p>
+                                                            </div>
+                                                            <div class="tablet-option__box justify-content-start" style="padding-left: 15px;">
+                                                                <p class="text-warning">Atendido</p>
+                                                            </div>
+                                                            <div class="tablet-option__box align-items-center pl-4">
+                                                                <a href="javascript:void(0)" class="tablet-option__btn-view tablet-option__btn-view--active" onclick="bt4ReprogramacionFecha()">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 20 20">
+                                                                        <g clip-path="url(#clip0)">
+                                                                            <path fill="#fff" d="M10.006 17.537c-2.43 0-4.662-.874-6.634-2.598C1.768 13.536.74 11.897.27 11.044c-.362-.656-.359-1.438.009-2.091.478-.851 1.52-2.489 3.126-3.891 1.977-1.726 4.198-2.6 6.602-2.6 2.405 0 4.625.875 6.6 2.602 1.603 1.403 2.642 3.04 3.118 3.892.365.651.368 1.431.009 2.085-.218.396-.581 1.009-1.081 1.687-.256.347-.745.421-1.093.165-.347-.256-.42-.745-.165-1.092.45-.609.775-1.158.97-1.512.098-.179.097-.392-.003-.57-.958-1.713-3.69-5.695-8.355-5.695-4.665 0-7.405 3.982-8.366 5.694-.1.178-.102.392-.003.572.943 1.71 3.646 5.685 8.369 5.685 1.739 0 3.372-.544 4.854-1.616.35-.252.838-.174 1.09.175.253.35.175.838-.175 1.091-1.753 1.269-3.695 1.912-5.77 1.912zM14.609 10c0-2.54-2.068-4.608-4.609-4.608S5.392 7.458 5.392 9.999c0 2.542 2.067 4.609 4.608 4.609 2.541 0 4.609-2.067 4.609-4.609zm-1.563 0c0 1.68-1.366 3.047-3.046 3.047-1.68 0-3.046-1.367-3.046-3.047 0-1.68 1.366-3.046 3.046-3.046 1.68 0 3.046 1.367 3.046 3.046zm-2.17.212c-.599-.04-1.076-.54-1.09-1.14v-.015c-.004-.342-.382-.54-.664-.349-.444.303-.724.828-.68 1.416.06.76.674 1.375 1.435 1.434.587.045 1.113-.235 1.415-.68.192-.281-.007-.66-.348-.663l-.068-.003z"/>
+                                                                        </g>
+                                                                        <defs>
+                                                                            <clipPath id="clip0">
+                                                                                <path fill="#fff" d="M0 0H20V20H0z"/>
+                                                                            </clipPath>
+                                                                        </defs>
+                                                                    </svg>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="tablet-option__body row clear--row">
+                                                        <div class="col-4 d-flex">
+                                                            <h5 class="number w-1 mb-0">1</h5>
+                                                            <div class="col group-form--border d-column justify-content-center">
+                                                                <input type="text" class="w-100" placeholder="Evidencia 1">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-8 tablet-option__contain clear--col">
+                                                            <div class="tablet-option__box justify-content-start ml-1 pl-2">
+                                                                <p class="text-gray">28/02/2021</p>
+                                                            </div>
+                                                            <div class="tablet-option__box justify-content-start" style="padding-left: 12px;">
+                                                                <p class="text-gray">28/02/2021</p>
+                                                            </div>
+                                                            <div class="tablet-option__box justify-content-start pl-2 ml-1" style="padding-left: 15px;">
+                                                                <p class="text-warning">Atendido</p>
+                                                            </div>
+                                                            <div class="tablet-option__box justify-content-start" style="padding-left: 15px;">
+                                                                <p class="text-warning">Atendido</p>
+                                                            </div>
+                                                            <div class="tablet-option__box align-items-center pl-4">
+                                                                <a href="javascript:void(0)" class="tablet-option__btn-view tablet-option__btn-view--active" onclick="bt4ReprogramacionFecha()">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 20 20">
+                                                                        <g clip-path="url(#clip0)">
+                                                                            <path fill="#fff" d="M10.006 17.537c-2.43 0-4.662-.874-6.634-2.598C1.768 13.536.74 11.897.27 11.044c-.362-.656-.359-1.438.009-2.091.478-.851 1.52-2.489 3.126-3.891 1.977-1.726 4.198-2.6 6.602-2.6 2.405 0 4.625.875 6.6 2.602 1.603 1.403 2.642 3.04 3.118 3.892.365.651.368 1.431.009 2.085-.218.396-.581 1.009-1.081 1.687-.256.347-.745.421-1.093.165-.347-.256-.42-.745-.165-1.092.45-.609.775-1.158.97-1.512.098-.179.097-.392-.003-.57-.958-1.713-3.69-5.695-8.355-5.695-4.665 0-7.405 3.982-8.366 5.694-.1.178-.102.392-.003.572.943 1.71 3.646 5.685 8.369 5.685 1.739 0 3.372-.544 4.854-1.616.35-.252.838-.174 1.09.175.253.35.175.838-.175 1.091-1.753 1.269-3.695 1.912-5.77 1.912zM14.609 10c0-2.54-2.068-4.608-4.609-4.608S5.392 7.458 5.392 9.999c0 2.542 2.067 4.609 4.608 4.609 2.541 0 4.609-2.067 4.609-4.609zm-1.563 0c0 1.68-1.366 3.047-3.046 3.047-1.68 0-3.046-1.367-3.046-3.047 0-1.68 1.366-3.046 3.046-3.046 1.68 0 3.046 1.367 3.046 3.046zm-2.17.212c-.599-.04-1.076-.54-1.09-1.14v-.015c-.004-.342-.382-.54-.664-.349-.444.303-.724.828-.68 1.416.06.76.674 1.375 1.435 1.434.587.045 1.113-.235 1.415-.68.192-.281-.007-.66-.348-.663l-.068-.003z"/>
+                                                                        </g>
+                                                                        <defs>
+                                                                            <clipPath id="clip0">
+                                                                                <path fill="#fff" d="M0 0H20V20H0z"/>
+                                                                            </clipPath>
+                                                                        </defs>
+                                                                    </svg>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                  </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<! --------------   END   VER DETALLE ACCION CORRECTIVA ----------------->
+
+
+<! --------------  START  VER EVALUAR EVIDENCIA ----------------->
+<div class="modal fade "  id="modalEvaluarEvidenciaSp5" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="modalAddCompanyTitle" aria-hidden="true" >
+    <div class="modal-dialog modal-dialog-centered rounded" role="document" style="max-width: 60%; z-index: 1030; ">
+        <div class="modal-content rounded " >
+            <div style="overflow: hidden;height: 600px;overflow-x: hidden; ">
+                <div class="modal-header fix-header-modal" >
+                    <div class="card-header text-center text-white modal-dialog-centered  card-header-FormAuditor" id="red-head" style="width: 100%; padding: 0px 0px !important;">
+                        <div class="row d-flex justify-content-center text-center" style="width: 100%;">
+                            <div class="col-1 btn-close-modalCA pl-3 my-2">
+                                <!--button type="button" id="closeVerAuditoriaModal"><span aria-hidden="true" class="btn-close-modalCA">Cerrar&nbsp;&nbsp;&nbsp;&nbsp;&times;</span></button--> <!-- class="close hearder-modal" data-dismiss="modal" aria-label="Close" -->
+                                <!-- <div class="float-right" cursor="pointer" id="btn-close-Adj"><span style="font-size: 40px">
+                                    <img src="images/prev.svg"  style="cursor: pointer;"></span>
+                                </div> -->
+                             </div>
+                            <div class="col justify-content-center text-center col-12" style="margin-top: -28px !important;">
+                                <a href="javascript:void(0)" class="btn-backpage" onmouseup="$('#modalDetalleAccionSp5').modal('show').addClass('fade');">
+                                    <img src="images/prev.svg" alt="" class="img-backpage" data-dismiss="modal">
+                                </a>
+                                <h5 id="titleModalEvaluarEvidenciaSp5" style="font-size: 16px !important; color:#fff; font-weight: bold; text-align: center;">Acción 1 - Evidencia 1</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-body dialog-position" id="bodyModalEvaluarEvidenciaSp5" style=" justify-content:space-around; align-content:center; padding: 10px 0px 0px !important;">
+                    <div class="card " style="border: 0px !important; border-radius: 5px; box-shadow: none;">
+
+                        <div class="card-body">
+                            <!--  ----------------------------------------------    pestaña 1   ----------------------------------- -->
+                            <div class="row">
+                                    <div class="w-100">
+                                        <div class="col-12 caja-adj main-data-modal">
+                                            <div class="group-title">
+                                                <div class="group-title--data">
+                                                    <h5 class="bg-white pr-2 tg--bold">Documentos</h5>
+                                                </div>
+                                            </div>
+
+                                            <!-- otras secciones -->
+
+                                            <div class="tablet-option">
+                                                <div class="tablet-option__header row clear--row">
+                                                    <div class="col-8 clear--col d-flex">
+                                                        <p style="font-size:12px;">Nombre del documento</p>
+                                                    </div>
+                                                    <div class="col clear--col">
+                                                        <p>Aprobar</p>
+                                                    </div>
+                                                    <div class="col clear--col">
+                                                        <p>Observar</p>
+                                                    </div>
+                                                </div>
+
+                                                <div class="tablet-option__body row clear--row">
+                                                    <div class="col-8 clear--col d-flex">
+                                                        <p id="nombreEvidencia" style="font-size:12px;margin-bottom: 2px;">Documento 1.PDF <a href="#">Descargar Documento</a></p>
+                                                    </div>
+                                                    <div class="col-2 clear--col">
+                                                        <div class="form-input-check">
+                                                            <input style="margin-left: 20px;" onmouseup="fnLimpiarBloquearTextAreaSp5('aprobar')" type="radio" id="aprobarEvidenciaSp5" name="aprobarEvidenciaSp5">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-2 clear--col">
+                                                        <div class="form-input-check">
+                                                            <input style="margin-left: 20px;" onmouseup="fnLimpiarBloquearTextAreaSp5('observar')" type="radio" id="observarEvidenciaSp5" name="observarEvidenciaSp5">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="tablet-option__body">
+                                                    <! div usado para descargar el adjunto no borrar>
+                                                    <div id="descargarAdjuntoEvidenciaSP5" style="display: none"></div>
+
+                                                    <p class="text-gray">Detalle de la Observaci&oacute;n</p>
+                                                    <textarea id="observacionEvidenciaSp5" onkeyup="fnContarCaracteresTextAreaSp5(this)" class="text-gray mb-0 w-100 scroll-blue scroll-auto border-0" rows="6" style="resize: none;background-color: #efefef; margin-bottom: 0px; height: 70px;width: 100%;"></textarea>
+                                                    <!--textarea class="mb-0 w-100 scroll-blue scroll-auto border-0" id="descriptionHallazgo" rows="4" style="resize: none;background-color: #efefef; margin-bottom: 0px; height: 70px;width: 100%;"></textarea-->
+                                                    <!--p class="text-gray">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, vel? Amet neque vero distinctio numquam saepe, consectetur debitis, id natus nostrum sit magni? Quibusdam rem sunt consequuntur. Laudantium, modi voluptate!</p-->
+                                                </div>
+                                                <div class="d-flex w-100 justify-content-end mt-1">
+                                                    <p class="text-black"><span id="totalCaracteresObservacionEvidenciaSp5">0</span>/500</p>
+                                                </div>
+
+                                                <div class="d-flex justify-content-center w-100 mt-3">
+                                                    <button id="btnGuardarEvaluacionSp5" name="btnGuardarEvaluacionSp5" class="btn btn-evidencia-1 btn-system-green" onmouseup="fnEvaluarEvidenciaSp5()">Guardar y enviar</button>
+                                                    <button class="btn btn-evidencia-1 btn-system-green ml-2" onmouseup="$('#modalDetalleAccionSp5').modal('show').addClass('fade');" data-dismiss="modal" style="background-color: #fff !important; color: #000 !important;border: solid 1px !important;">Cancelar</button>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                  </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<! --------------   END   VER EVALUAR EVIDENCIA ----------------->
+
+
+<! --------------  START MODAL CONFIRMAR EVALUAR EVIDENCIA SP5------------------------>
+<div class="modal fade"  id="modalConfirmarEvaluarEvidenciaSp5" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="modalAddCompanyTitle" aria-hidden="true" >
+    <div class="modal-dialog modal-dialog-centered rounded " role="document" style="max-width: 392px; z-index: 1030; ">
+        <div class="modal-content rounded " style="border: 0px !important; background-color:rgba(0,0,0,.0001) !important; box-shadow: none;">
+
+            <div style="overflow: hidden;height: 500px;overflow-x: hidden; ">
+                <div class="modal-body" id="">
+                    <div class="col-sm-12 col-md-12" style="color:#575757c9;">
+
+                        <div class="card border-0" style=" border-radius: 10px; box-shadow: none;">
+                            <div class="card-header text-center text-white  " style=" border-radius: 10px 10px 0px 0px; background:#05beee; height: 95px;"><img src="images/iconos/informacio1.svg"><span><b><br><br>&nbsp;&nbsp;&nbsp;&nbsp;</b></span></div>
+                                <br>
+                            <div class="card-body mt-2" style=" padding: 10px !important; ">
+                                <div class="row p-0 d-flex justify-content-center">
+
+                                    <div class="col-sm-10 align-self-center text-center"   >
+                                        <h4><b style=" color: #000000 !important;  font-size: 17px !important; " >Vas a evaluar la evidencia.</b></h4>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="espacio"></div>
+                            <div class="card-body my-4">
+                                <div class="row p-0 d-flex justify-content-center">
+                                    <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;font-size: 15px;" >
+                                        <h4><b style=" color: #000000 !important;  font-size: 16px !important; " >¿Desea confirmar la acci&oacute;n?</b></h4>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="card-body" style=" padding: 10px !important; ">
+                                <div class="row p-0 d-flex justify-content-center">
+                                    <div class="col-sm-12 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;font-size: 15px;" >
+                                        <div class="card-body2">
+                                        <div class="row justify-content-around align-items-center">
+
+                                            <div class="col-6">
+                                                <button type="button" class="btn_confirmar_modal bg-green-lime-modal confirm btn-confirmar-fecha btn-blue" id="btnConfirmarEvaluarEvidenciaSp5" onmouseup="fnEnviarEvaluacionEvidenciaSp5()"><b>Confirmar</b></button>
+                                            </div>
+                                            <div class="col-6">
+                                                <button class="btn_cerrar_modal btn-cerrar-fecha" id="btnCancelarEvaluarEvidenciaSp5" onmouseup=" $('#modalEvaluarEvidenciaSp5').modal('show').addClass('fade');$('#modalConfirmarEvaluarEvidenciaSp5').modal('hide').removeClass('fade'); " ><b>Cerrar</b></button>
+                                            </div>
+                                        </div>
+                                        </div>
+                                     </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<! --------------   END MODAL CONFIRMAR EVALUAR EVIDENCIA SP5 ------------------------** -->
+
+
+<! --------------  START MODAL EXITO EVALUAR EVIDENCIA ------------------------** >
+<div class="modal fade"  id="modalExitoEvaluarEvidenciaSp5" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="ExitoFinalizarACRSp4Modal" aria-hidden="true" >
+    <div class="modal-dialog modal-dialog-centered rounded " role="document" style="max-width: 392px; z-index: 1030; ">
+        <div class="modal-content rounded " style="border: 0px !important; background-color:rgba(0,0,0,.0001) !important; box-shadow: none;">
+
+            <div style="overflow: hidden;height: 500px;overflow-x: hidden; ">
+                <div class="modal-body" >
+                    <div class="col-sm-12 col-md-12" style="color:#575757c9;">
+
+                        <div class="card border-0" style=" border-radius: 10px; box-shadow: none;">
+                            <div class="card-header text-center text-white  " style=" border-radius: 10px 10px 0px 0px; background:#D2D97B; height: 95px;"><img src="images/iconos/correct_1.svg"><span><b><br><br>&nbsp;&nbsp;&nbsp;&nbsp;</b></span></div>
+
+                            <div class="card-body my-4">
+                                <div class="row p-0 d-flex justify-content-center">
+                                    <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important;" >
+                                        <h4> <b style=" color: #000000 !important;  font-size: 17px !important; ">Se evalu&oacute; la evidencia con &eacute;xito.</b></h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="espacio"></div>
+                            <div class="card-body">
+                                <div class="row p-0 d-flex justify-content-center">
+                                    <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important;font-size: 15px;" >
+                                        <b style=" color: #000000 !important;  font-size: 15px !important; ">Puede Revisar el Cambio Realizado</b>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                             <div class="card-body2">
+                                <div class="row justify-content-around align-items-center">
+                                    <div class="col-5 ml-3" style="padding:10px 0px !important;" >
+                                        <button type="button" onmouseup="$('#modalExitoEvaluarEvidenciaSp5').modal('hide').removeClass('fade');" class="btn_confirmar_modal bg-green-lime-modal confirm btn-confirmar-fecha-end" id="btnExitoEvaluarEvidenciaSp5"><b>De Acuerdo</b></button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+
+
+    </div>
+</div>
+<! --------------   END MODAL EXITO EVALUAR EVIDENCIA ------------------------ >
+
+
+<! --------------  START MODAL REPROGRAMACION ------------------------ >
+<div class="modal fade" id="modalReprogramacionEvidenciaSp5" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="modalAddCompanyTitle" aria-hidden="true" >
+    <div class="modal-dialog modal-dialog-centered rounded" role="document" style="max-width: 95%; z-index: 1030; ">
+        <div class="modal-content rounded " >
+            <div style="overflow: hidden;height: 700px;overflow-x: hidden; ">
+                <div class="modal-header fix-header-modal" >
+                    <div class="card-header text-center text-white modal-dialog-centered  card-header-FormAuditor" id="red-head" style="width: 100%; padding: 0px 0px !important;">
+                        <div class="row d-flex justify-content-center text-center" style="width: 100%;">
+                            <div class="col-1 btn-close-modalCA pl-3 my-2">
+                             </div>
+                            <div class="col justify-content-center text-center col-12" style="margin-top: -28px !important;">
+                                <a href="javascript:void(0)" class="btn-backpage" onmouseup="$('#modalReprogramacionEvidenciaSp5').modal('hide').removeClass('fade'); $('#modalVerPACSp5').modal('show').addClass('fade');">
+                                    <img src="images/prev.svg" alt="" class="img-backpage">
+                                </a>
+                                <h5 id="titleModalReprogramacionEvidenciaSp5" name="titleModalReprogramacionEvidenciaSp5" style="font-size: 16px !important; color:#fff; font-weight: bold; text-align: center;">PAC - HAI0001</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-body dialog-position" id="bodyModalReprogramacionEvidenciaSp5" style=" justify-content:space-around; align-content:center; padding: 10px 0px 0px !important;">
+                    <div class="card " style="border: 0px !important; border-radius: 5px; box-shadow: none;">
+
+                        <div class="card-body">
+                            <!--  ----------------------------------------------    pestaña 1   ----------------------------------- -->
+                            <div class="row">
+                                    <div class="w-100">
+                                        <div class="col-12 caja-adj main-data-modal scroll-blue" style="height: 550px !important;">
+                                            <div class="group-title">
+                                                <div class="group-title--line"></div>
+                                                <div class="group-title--data">
+                                                    <h5 class="bg-white pr-2 tg--bold">Detalle de Reprogramación</h5>
+                                                    <img class="group-title--img pl-2 bg-white" src="images/iconos/menu.svg" alt="">
+                                                </div>
+                                            </div>
+
+                                            <!-- otras secciones -->
+                                            <div class="col-12 clear--col d-flex mt-3" style="flex-wrap:wrap;">
+                                                <div class="col-6 clear--col" style="padding-right: 5px !important;">
+                                                    <div class="group-form group-form--gray w-100">
+                                                        <label>Causa</label>
+                                                        <p id="causaReprogramacionSp5" class="mb-0 w-100 scroll-blue scroll-auto" style="max-height: 60px;">No se tiene mapeado como equipos criticos ante eventos ambientales</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6 clear--col" style="padding-left: 5px !important;">
+                                                    <div class="group-form group-form--gray w-100">
+                                                        <label>Acción</label>
+                                                        <p id="accionReprogramacionSp5" class="mb-0 w-100 scroll-blue scroll-auto" style="max-height: 60px;">Generar un checklist de verificación de equipos y materiales de frecuencia mensual.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-12 clear--col mt-2">
+                                                <div class="title--button">
+                                                    <h5 class="bg-white pr-2 tg--bold">No. de Reprogramaciones ( <span id="numeroReprogramacionesSp5">12</span> )</h5>
+                                                    <div class="group-btn">
+                                                        <a id="btnAdjuntarReprogramacionSp5" class="btn btn-celeste" href="#" onmouseup="fnAdjuntarReprogramacionSp5()" >Adjuntar Documento</a>
+                                                        <input class="btn btn-celeste" style="display: none" type="file" id="adjuntoReprogramaciosSp5" name="adjuntoReprogramaciosSp5" value="" placeholder="" accept=".pdf" onchange="fnGuardarAdjuntoReprogramacionSp5()">
+                                                        <a onmouseup="fnAgregarReprogramacionSp5()" class="btn btn-green ml-1" href="#">Agregar</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-12 clear--col mt-2 d-flex">
+                                                <div class="col-6 clear--col">
+                                                    <div class="group-form group-form--gray group-form--select w-100">
+                                                        <label>Motivo <span class="obligatorio">*</span></label>
+                                                        <textarea name="motivoReprogramacionSp5" id="motivoReprogramacionSp5" style="height: 40px; resize: none;" rows="4" class="input--gray scroll-blue"></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="col-3 clear--col" style="padding-left: 5px !important;">
+                                                    <div class="group-form group-form--gray w-100" style="height: 80px !important;">
+                                                        <label>Fecha Original</label>
+                                                        <p id="fechaOriginalSp5" class="mb-0">28/02/2021</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-3 clear--col" style="padding-left: 5px !important;">
+                                                    <div class="group-form group-form--gray group-form--select w-100">
+                                                            <label>Nueva Fecha <span class="obligatorio">*</span></label>
+                                                        <div class="input-group" >
+                                                            <!input type="date" class="date-input">
+                                                            <input  type="text" id="txtNuevaFechaReprogramacionSp5" name="txtNuevaFechaReprogramacionSp5" class="form-control bg-white" readonly onChange="" style="border: 0px solid #f5f5f5 !important;">
+                                                            <span class="input-group-addon" id="sizing-addon2"><img src="./images/iconos/calendario-3.svg" onclick="$('#txtNuevaFechaReprogramacionSp5').val('')"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="tablet-option">
+                                                <div class="tablet-option__header row clear--row mt-1">
+                                                    <div class="col-9 clear--col d-flex">
+                                                        <div class="text-left w-1" style="font-size:12px;">
+                                                            <p>Fecha de <br>Cambio</p>
+                                                        </div>
+                                                        <div class="text-left w-1 ml-3" style="font-size:12px;">
+                                                            <p>Fecha <br>Original</p>
+                                                        </div>
+                                                        <div class="text-left w-1 ml-3" style="font-size:12px;">
+                                                            <p>Fecha <br>Actual</p>
+                                                        </div>
+                                                        <div class="text-left col pl-3" style="font-size:12px;">
+                                                            <p>Motivo</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-3 clear--col d-flex">
+                                                        <div class="tablet-option__box text-left justify-content-center">
+                                                            <p style="font-size:13px !important;">Ver Documento</p>
+                                                        </div>
+                                                        <div class="tablet-option__box text-left justify-content-center" style="font-size:13px;">
+                                                            <p style="font-size:13px !important;">Eliminar</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div id="listadoReprogramacionesSp5" class="w-100 scroll-blue scroll-auto" style="height: 178px !important;">
+                                                    <div class="tablet-option__body row clear--row">
+                                                        <div class="col-9 clear--col d-flex">
+                                                            <div class="d-flex justify-content-start align-items-center w-1" style="font-size:12px;">
+                                                                <p>19/01/2021</p>
+                                                            </div>
+                                                            <div class="d-flex justify-content-start align-items-center w-1 ml-3" style="font-size:12px; ">
+                                                                <p>28/02/2021</p>
+                                                            </div>
+                                                            <div class="d-flex justify-content-start align-items-center w-1 ml-3" style="font-size:12px; ">
+                                                                <p>28/03/2021</p>
+                                                            </div>
+                                                            <div class="d-flex justify-content-start align-items-center col pl-3 ml-1" style="font-size:12px;">
+                                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem vel iure sint magnam. Adipisci ut, quidem excepturi quisquam, asperiores neque rerum dolorum nostrum minus est non modi omnis optio distinctio.</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-3 clear--col d-flex">
+                                                            <div class="tablet-option__box ">
+                                                                <a href="#" class="tablet-option__btn-view">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 20 20">
+                                                                        <g clip-path="url(#clip0)">
+                                                                            <path fill="#fff" d="M10.006 17.537c-2.43 0-4.662-.874-6.634-2.598C1.768 13.536.74 11.897.27 11.044c-.362-.656-.359-1.438.009-2.091.478-.851 1.52-2.489 3.126-3.891 1.977-1.726 4.198-2.6 6.602-2.6 2.405 0 4.625.875 6.6 2.602 1.603 1.403 2.642 3.04 3.118 3.892.365.651.368 1.431.009 2.085-.218.396-.581 1.009-1.081 1.687-.256.347-.745.421-1.093.165-.347-.256-.42-.745-.165-1.092.45-.609.775-1.158.97-1.512.098-.179.097-.392-.003-.57-.958-1.713-3.69-5.695-8.355-5.695-4.665 0-7.405 3.982-8.366 5.694-.1.178-.102.392-.003.572.943 1.71 3.646 5.685 8.369 5.685 1.739 0 3.372-.544 4.854-1.616.35-.252.838-.174 1.09.175.253.35.175.838-.175 1.091-1.753 1.269-3.695 1.912-5.77 1.912zM14.609 10c0-2.54-2.068-4.608-4.609-4.608S5.392 7.458 5.392 9.999c0 2.542 2.067 4.609 4.608 4.609 2.541 0 4.609-2.067 4.609-4.609zm-1.563 0c0 1.68-1.366 3.047-3.046 3.047-1.68 0-3.046-1.367-3.046-3.047 0-1.68 1.366-3.046 3.046-3.046 1.68 0 3.046 1.367 3.046 3.046zm-2.17.212c-.599-.04-1.076-.54-1.09-1.14v-.015c-.004-.342-.382-.54-.664-.349-.444.303-.724.828-.68 1.416.06.76.674 1.375 1.435 1.434.587.045 1.113-.235 1.415-.68.192-.281-.007-.66-.348-.663l-.068-.003z"/>
+                                                                        </g>
+                                                                        <defs>
+                                                                            <clipPath id="clip0">
+                                                                                <path fill="#fff" d="M0 0H20V20H0z"/>
+                                                                            </clipPath>
+                                                                        </defs>
+                                                                    </svg>
+                                                                </a>
+                                                            </div>
+                                                            <div class="tablet-option__box">
+                                                                <a href="#" class="tablet-option__btn-delete ml-3">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="none" viewBox="0 0 27 27">
+                                                                        <path fill="#FFF" d="M13.836 15.84c-.128-.128-.334-.128-.461 0l-5.072 5.07-2.305-2.305 5.071-5.071c.128-.128.128-.334 0-.461L5.998 8l2.305-2.305 5.072 5.071c.127.128.333.128.46 0l5.072-5.071L21.213 8l-5.072 5.072c-.127.127-.127.333 0 .46l5.072 5.072-2.306 2.306-5.071-5.072z"/>
+                                                                    </svg>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="tablet-option__body row clear--row">
+                                                        <div class="col-9 clear--col d-flex">
+                                                            <div class="d-flex justify-content-start align-items-center w-2" style="font-size:12px;width: 87px;">
+                                                                <p>19/01/2021</p>
+                                                            </div>
+                                                            <div class="d-flex justify-content-start align-items-center w-2 ml-3" style="font-size:12px;width: 74px;">
+                                                                <p>28/02/2021</p>
+                                                            </div>
+                                                            <div class="d-flex justify-content-start align-items-center w-2 ml-3" style="font-size:12px;">
+                                                                <p>28/03/2021</p>
+                                                            </div>
+                                                            <div class="d-flex justify-content-start align-items-center col pl-3 ml-1" style="font-size:12px;">
+                                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem vel iure sint magnam. Adipisci ut.</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-3 clear--col d-flex">
+                                                            <div class="tablet-option__box ">
+                                                                <a href="#" class="tablet-option__btn-view tablet-option__btn-view--active">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 20 20">
+                                                                        <g clip-path="url(#clip0)">
+                                                                            <path fill="#fff" d="M10.006 17.537c-2.43 0-4.662-.874-6.634-2.598C1.768 13.536.74 11.897.27 11.044c-.362-.656-.359-1.438.009-2.091.478-.851 1.52-2.489 3.126-3.891 1.977-1.726 4.198-2.6 6.602-2.6 2.405 0 4.625.875 6.6 2.602 1.603 1.403 2.642 3.04 3.118 3.892.365.651.368 1.431.009 2.085-.218.396-.581 1.009-1.081 1.687-.256.347-.745.421-1.093.165-.347-.256-.42-.745-.165-1.092.45-.609.775-1.158.97-1.512.098-.179.097-.392-.003-.57-.958-1.713-3.69-5.695-8.355-5.695-4.665 0-7.405 3.982-8.366 5.694-.1.178-.102.392-.003.572.943 1.71 3.646 5.685 8.369 5.685 1.739 0 3.372-.544 4.854-1.616.35-.252.838-.174 1.09.175.253.35.175.838-.175 1.091-1.753 1.269-3.695 1.912-5.77 1.912zM14.609 10c0-2.54-2.068-4.608-4.609-4.608S5.392 7.458 5.392 9.999c0 2.542 2.067 4.609 4.608 4.609 2.541 0 4.609-2.067 4.609-4.609zm-1.563 0c0 1.68-1.366 3.047-3.046 3.047-1.68 0-3.046-1.367-3.046-3.047 0-1.68 1.366-3.046 3.046-3.046 1.68 0 3.046 1.367 3.046 3.046zm-2.17.212c-.599-.04-1.076-.54-1.09-1.14v-.015c-.004-.342-.382-.54-.664-.349-.444.303-.724.828-.68 1.416.06.76.674 1.375 1.435 1.434.587.045 1.113-.235 1.415-.68.192-.281-.007-.66-.348-.663l-.068-.003z"/>
+                                                                        </g>
+                                                                        <defs>
+                                                                            <clipPath id="clip0">
+                                                                                <path fill="#fff" d="M0 0H20V20H0z"/>
+                                                                            </clipPath>
+                                                                        </defs>
+                                                                    </svg>
+                                                                </a>
+                                                            </div>
+                                                            <div class="tablet-option__box">
+                                                                <a href="#" class="tablet-option__btn-delete ml-3">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="none" viewBox="0 0 27 27">
+                                                                        <path fill="#FFF" d="M13.836 15.84c-.128-.128-.334-.128-.461 0l-5.072 5.07-2.305-2.305 5.071-5.071c.128-.128.128-.334 0-.461L5.998 8l2.305-2.305 5.072 5.071c.127.128.333.128.46 0l5.072-5.071L21.213 8l-5.072 5.072c-.127.127-.127.333 0 .46l5.072 5.072-2.306 2.306-5.071-5.072z"/>
+                                                                    </svg>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                  </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<! --------------   END  MODAL REPROGRAMACION ------------------------ >
+
+<! --------------  START MODAL CONFIRMAR REPROGRAMACION ACCION CORRECTIVA SP5------------------------>
+<div class="modal fade"  id="modalConfirmarReprogramacionSp5" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="modalAddCompanyTitle" aria-hidden="true" >
+    <div class="modal-dialog modal-dialog-centered rounded " role="document" style="max-width: 392px; z-index: 1030; ">
+        <div class="modal-content rounded " style="border: 0px !important; background-color:rgba(0,0,0,.0001) !important; box-shadow: none;">
+
+            <div style="overflow: hidden;height: 500px;overflow-x: hidden; ">
+                <div class="modal-body" id="">
+                    <div class="col-sm-12 col-md-12" style="color:#575757c9;">
+
+                        <div class="card border-0" style=" border-radius: 10px; box-shadow: none;">
+                            <div class="card-header text-center text-white  " style=" border-radius: 10px 10px 0px 0px; background:#05beee; height: 95px;"><img src="images/iconos/informacio1.svg"><span><b><br><br>&nbsp;&nbsp;&nbsp;&nbsp;</b></span></div>
+                                <br>
+                            <div class="card-body mt-2" style=" padding: 10px !important; ">
+                                <div class="row p-0 d-flex justify-content-center">
+
+                                    <div class="col-sm-10 align-self-center text-center"   >
+                                        <h4><b style=" color: #000000 !important;  font-size: 17px !important; " >Vas a reprogramar la acci&oacute;n correctiva.</b></h4>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="espacio"></div>
+                            <div class="card-body my-4">
+                                <div class="row p-0 d-flex justify-content-center">
+                                    <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;font-size: 15px;" >
+                                        <h4><b style=" color: #000000 !important;  font-size: 16px !important; " >¿Desea confirmar la acci&oacute;n?</b></h4>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="card-body" style=" padding: 10px !important; ">
+                                <div class="row p-0 d-flex justify-content-center">
+                                    <div class="col-sm-12 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;font-size: 15px;" >
+                                        <div class="card-body2">
+                                        <div class="row justify-content-around align-items-center">
+
+                                            <div class="col-6">
+                                                <button type="button" class="btn_confirmar_modal bg-green-lime-modal confirm btn-confirmar-fecha btn-blue" id="btnConfirmarReprogramacionSp5" onmouseup="fnEnviarReprogramacionSp5()"><b>Confirmar</b></button>
+                                            </div>
+                                            <div class="col-6">
+                                                <button class="btn_cerrar_modal btn-cerrar-fecha" id="btnCancelarReprogramacionSp5" onmouseup=" $('#modalReprogramacionEvidenciaSp5').modal('show').addClass('fade');$('#modalConfirmarReprogramacionSp5').modal('hide').removeClass('fade'); " ><b>Cerrar</b></button>
+                                            </div>
+                                        </div>
+                                        </div>
+                                     </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<! --------------   END MODAL CONFIRMAR REPROGRAMACION ACCION CORRECTIVA SP5 ------------------------** -->
+
+<! --------------  START MODAL EXITO REPROGRAMACION ACCION CORRECTIVA SP5 ------------------------** >
+<div class="modal fade"  id="modalExitoReprogramacionSp5" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="ExitoFinalizarACRSp4Modal" aria-hidden="true" >
+    <div class="modal-dialog modal-dialog-centered rounded " role="document" style="max-width: 392px; z-index: 1030; ">
+        <div class="modal-content rounded " style="border: 0px !important; background-color:rgba(0,0,0,.0001) !important; box-shadow: none;">
+
+            <div style="overflow: hidden;height: 500px;overflow-x: hidden; ">
+                <div class="modal-body" >
+                    <div class="col-sm-12 col-md-12" style="color:#575757c9;">
+
+                        <div class="card border-0" style=" border-radius: 10px; box-shadow: none;">
+                            <div class="card-header text-center text-white  " style=" border-radius: 10px 10px 0px 0px; background:#D2D97B; height: 95px;"><img src="images/iconos/correct_1.svg"><span><b><br><br>&nbsp;&nbsp;&nbsp;&nbsp;</b></span></div>
+
+                            <div class="card-body my-4">
+                                <div class="row p-0 d-flex justify-content-center">
+                                    <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important;" >
+                                        <h4> <b style=" color: #000000 !important;  font-size: 17px !important; ">Se ha reprogramado la acci&oacute;n correctiva con &eacute;xito.</b></h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="espacio"></div>
+                            <div class="card-body">
+                                <div class="row p-0 d-flex justify-content-center">
+                                    <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important;font-size: 15px;" >
+                                        <b style=" color: #000000 !important;  font-size: 15px !important; ">Puede Revisar el Cambio Realizado</b>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                             <div class="card-body2">
+                                <div class="row justify-content-around align-items-center">
+                                    <div class="col-5 ml-3" style="padding:10px 0px !important;" >
+                                        <button type="button" onmouseup="$('#modalExitoReprogramacionSp5').modal('hide').removeClass('fade');" class="btn_confirmar_modal bg-green-lime-modal confirm btn-confirmar-fecha-end" id="btnExitoReprogramacionSp5"><b>De Acuerdo</b></button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+
+
+    </div>
+</div>
+<! --------------   END MODAL EXITO REPROGRAMACION ACCION CORRECTIVA SP5 ------------------------ >
+
+
+<! --------------  START MODAL CONFIRMAR ELIMINAR REPROGRAMACION ACCION CORRECTIVA SP5------------------------>
+<div class="modal fade"  id="modalConfirmarEliminarReprogramacionSp5" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="modalAddCompanyTitle" aria-hidden="true" >
+    <div class="modal-dialog modal-dialog-centered rounded " role="document" style="max-width: 392px; z-index: 1030; ">
+        <div class="modal-content rounded " style="border: 0px !important; background-color:rgba(0,0,0,.0001) !important; box-shadow: none;">
+
+            <div style="overflow: hidden;height: 500px;overflow-x: hidden; ">
+                <div class="modal-body" id="">
+                    <div class="col-sm-12 col-md-12" style="color:#575757c9;">
+
+                        <div class="card border-0" style=" border-radius: 10px; box-shadow: none;">
+                            <div class="card-header text-center text-white  " style=" border-radius: 10px 10px 0px 0px; background:#05beee; height: 95px;"><img src="images/iconos/informacio1.svg"><span><b><br><br>&nbsp;&nbsp;&nbsp;&nbsp;</b></span></div>
+                                <br>
+                            <div class="card-body mt-2" style=" padding: 10px !important; ">
+                                <div class="row p-0 d-flex justify-content-center">
+
+                                    <div class="col-sm-10 align-self-center text-center"   >
+                                        <h4><b style=" color: #000000 !important;  font-size: 17px !important; " >Vas a reprogramar la acci&oacute;n correctiva.</b></h4>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="espacio"></div>
+                            <div class="card-body my-4">
+                                <div class="row p-0 d-flex justify-content-center">
+                                    <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;font-size: 15px;" >
+                                        <h4><b style=" color: #000000 !important;  font-size: 16px !important; " >¿Desea confirmar la acci&oacute;n?</b></h4>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="card-body" style=" padding: 10px !important; ">
+                                <div class="row p-0 d-flex justify-content-center">
+                                    <div class="col-sm-12 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;font-size: 15px;" >
+                                        <div class="card-body2">
+                                        <div class="row justify-content-around align-items-center">
+
+                                            <div class="col-6">
+                                                <button type="button" class="btn_confirmar_modal bg-green-lime-modal confirm btn-confirmar-fecha btn-blue" id="btnConfirmarEliminarReprogramacionSp5" onmouseup="fnEnviarEliminarReprogramacionSp5()"><b>Confirmar</b></button>
+                                            </div>
+                                            <div class="col-6">
+                                                <button class="btn_cerrar_modal btn-cerrar-fecha" id="btnCancelarEliminarReprogramacionSp5" onmouseup=" $('#modalReprogramacionEvidenciaSp5').modal('show').addClass('fade');$('#modalConfirmarEliminarReprogramacionSp5').modal('hide').removeClass('fade'); " ><b>Cerrar</b></button>
+                                            </div>
+                                        </div>
+                                        </div>
+                                     </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<! --------------   END MODAL CONFIRMAR ELIMINAR REPROGRAMACION ACCION CORRECTIVA SP5 ------------------------** -->
+
+<! --------------  START MODAL EXITO REPROGRAMACION ACCION CORRECTIVA SP5 ------------------------** >
+<div class="modal fade"  id="modalExitoEliminarReprogramacionSp5" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="ExitoFinalizarACRSp4Modal" aria-hidden="true" >
+    <div class="modal-dialog modal-dialog-centered rounded " role="document" style="max-width: 392px; z-index: 1030; ">
+        <div class="modal-content rounded " style="border: 0px !important; background-color:rgba(0,0,0,.0001) !important; box-shadow: none;">
+
+            <div style="overflow: hidden;height: 500px;overflow-x: hidden; ">
+                <div class="modal-body" >
+                    <div class="col-sm-12 col-md-12" style="color:#575757c9;">
+
+                        <div class="card border-0" style=" border-radius: 10px; box-shadow: none;">
+                            <div class="card-header text-center text-white  " style=" border-radius: 10px 10px 0px 0px; background:#D2D97B; height: 95px;"><img src="images/iconos/correct_1.svg"><span><b><br><br>&nbsp;&nbsp;&nbsp;&nbsp;</b></span></div>
+
+                            <div class="card-body my-4">
+                                <div class="row p-0 d-flex justify-content-center">
+                                    <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important;" >
+                                        <h4> <b style=" color: #000000 !important;  font-size: 17px !important; ">Se ha eliminado la reprogramaci&oacute;n con &eacute;xito.</b></h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="espacio"></div>
+                            <div class="card-body">
+                                <div class="row p-0 d-flex justify-content-center">
+                                    <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important;font-size: 15px;" >
+                                        <b style=" color: #000000 !important;  font-size: 15px !important; ">Puede Revisar el Cambio Realizado</b>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                             <div class="card-body2">
+                                <div class="row justify-content-around align-items-center">
+                                    <div class="col-5 ml-3" style="padding:10px 0px !important;" >
+                                        <button type="button" onmouseup="$('#modalExitoEliminarReprogramacionSp5').modal('hide').removeClass('fade');" class="btn_confirmar_modal bg-green-lime-modal confirm btn-confirmar-fecha-end" id="btnExitoEliminarReprogramacionSp5"><b>De Acuerdo</b></button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+
+
+    </div>
+</div>
+<! --------------   END MODAL EXITO REPROGRAMACION ACCION CORRECTIVA SP5 ------------------------ >
+
+
+<! --------------  START  MODAL ERROR ----------------->
+<div class="modal fade"  id="modalMsgErrorSESp5"  data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="ExitoIngresarAuditoriaModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered rounded" role="document" style="max-width: 400px; z-index: 1030; ">
+
+        <div class="modal-content rounded border-0" style=" background-color:rgba(0,0,0,.0001) !important; box-shadow: none;">
+            <div style="overflow: hidden;height: 500px;overflow-x: hidden; ">
+                <div class="modal-body" id="" style="padding: 0px;">
+                    <div class="col-sm-12 col-md-12" style="color:#575757c9; width: 100%; padding: 0px;">
+
+                        <div class="card border-0" style=" padding: 0px; border: 2px solid #ff5a5a; border-radius: 5px;    width: 100%;">
+                            <div class="card-header text-white" style="background:#ff5a5a; height: 95px;">
+                                    <div class="d-flex justify-content-center">
+                                        <img src="images/iconos/informacion3.svg">
+                                    </div>
+                            </div>
+
+                            <div class="card-body" style="background: white;">
+                                <table align="center" width= "100%" border="0" >
+
+                                    <tr>
+                                        <td width="5%" >&nbsp;</td>
+                                        <td width="80%" >
+                                            <div class="d-flex justify-content-center" style="font-size: 18px;">
+                                                <b>ERROR!</b>
+                                            </div>
+
+                                        </td>
+                                        <td width="5%">&nbsp;</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td width="5%" >&nbsp;</td>
+                                        <td width="80%" >
+                                            <div id="subTituloErrorSESp5" class="mt-4 d-flex my-2 justify-content-center" style="font-size: 18px;">
+                                                <b>auditorías con éxito</b>
+                                            </div>
+                                        </td>
+                                        <td width="5%">&nbsp;</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td width="5%" >&nbsp;</td>
+                                        <td width="80%" align="center" >
+                                            <div id="mensajeErrorSESp5" class="d-flex mx-0 my-3 px-0 justify-content-center">
+                                                El código de la programación es:aaaaaaaaad dfdsfsdfdsf
+                                                dsfsdfdsfsdfdsfdfdsfdf
+                                                dfsdfsdfds
+                                             </div>
+                                        </td>
+                                        <td width="5%">&nbsp;</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td width="5%" >&nbsp;</td>
+                                        <td width="80%" >
+                                            <div class="d-flex mx-0 px-0 justify-content-center pregunta-exito-ingreso-auditoriaCA">
+                                                &nbsp;
+                                             </div>
+                                        </td>
+                                        <td width="5%">&nbsp;</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td width="5%" >&nbsp;</td>
+                                        <td width="80%" >
+                                            <div  class="d-flex mx-5 mt-3 mx-0 justify-content-center" >
+                                                <button type="button" onClick="$('#modalMsgErrorSESp5').modal('hide');" class="btn_confirmar_modal bg-danger" style="color: #fff" >De Acuerdo</button>
+                                            </div>
+                                        </td>
+                                        <td width="5%">&nbsp;</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<! --------------   END   MODAL ERROR ----------------->
+
+
+
+<script src="./js/paginator/pagination.js"></script>
+<script src="./js/auditoria/seguimientoAC/classSeguimientoAC.js"></script>
+<script src="./js/auditoria/seguimientoAC/seguimientoAC.js"></script>
+
+<script type="text/javascript" charset="utf-8" async defer>
+$('document').ready(function ()
+{
+	console.warn("Pagina Lista")
+    initSeguimientosSP5()
+});
+</script>

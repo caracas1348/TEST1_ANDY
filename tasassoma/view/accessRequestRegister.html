@@ -1,0 +1,310 @@
+<div class="container-fluid h-100" style="background: #ebebeb;">
+  <div class="row ">
+    <main role="main" class="col-md-12 ml-sm-auto col-lg-12 ">
+     <!-- <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Dashboard</h1>
+      </div> 
+    -->
+      <div class="row" style="">
+        <div class="col-md-3 " style="padding-right: 5px!important; padding-left: 0px!important">
+          <div class="card  h-100" style="box-shadow: none;">
+            <div class="card-body  p-0">
+              
+              <form id="fm_visita" name="fm_visita" class="">
+                <!-- titulo form -->
+                <ul class="list-unstyled">
+                  <li class="media mb-2 p-3 titleFormMain" style="">
+                    <img src="images/iconos/detalleformulariowhite.svg" height="24" class="mr-3">
+                    <div class="media-body pt-0 ">
+                      <h6 id="titleVisit">Completa datos de Visita</h6>
+                    </div>
+                  </li>
+                </ul>
+                <!-- contenido form -->
+                <ul class="list-unstyled p-3">
+                     
+                  <li class="media mb-5">
+                    <img src="images/iconos/sede.svg" height="24" class="mr-3 mt-4">
+                    <div class="media-body">
+                      <div class="form-group">
+                        <label for="sel_location" class="bmd-label-static titleInput">SEDE <span class="text-warning">*</span></label>
+                        <select name="sel_location" class="form-control" id="sel_location" onchange="validateFieldMinForm()">Seleccione</select>
+                        <span class="bmd-help"></span>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="media mb-5">
+                    <img src="images/iconos/area.svg" height="28" class="mr-3 mt-4">
+                    <div class="media-body">
+                      <div class="form-group">
+                        <label for="sel_area" class="bmd-label-static titleInput">ÁREA <span class="text-warning">*</span></label>
+                        <select name="sel_area" class="form-control" id="sel_area" onchange="validateFieldMinForm()"  required>
+                          <option value="0">Seleccione</option>
+                        </select>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="media mb-5">
+                    <img src="images/iconos/organizador.svg" height="24" class="mr-3 mt-4" alt="...">
+                    <div class="media-body">
+                      <div class="form-group">
+                        <label for="txt_collaborator" class="bmd-label-static  titleInput">
+                          ORGANIZADOR <span class="text-warning">*</span>
+                          <div class="spinner-border spinner-border-sm" role="status" id="spinnerLoadColaborador" style="display:none;">
+                            <span class="sr-only">Loading...</span>
+                          </div> 
+                        </label>
+                        <input type="hidden" class="form-control" id="txt_collaborator_id" name="txt_collaborator_id">
+                        <input type="text" class="form-control" id="txt_collaborator" name="txt_collaborator" maxlength="60"  onkeyup="validateFieldMinForm()">
+                        <div id="loadCollaborator" class="loader" style="top:40px; display: none ;"></div>                  
+                      </div>
+                    </div>
+                  </li>
+                  <li class="media mb-5 gp_proveedor" style="display: none;">
+                    <img src="images/iconos/order.svg" height="24" class="mr-3 mt-4">
+                    <div class="media-body">
+                      <div class="form-group" >
+                        <label for="txt_order_compra_text" class="bmd-label-static titleInput">ORDEN DE COMPRA</label>
+                        <input type="hidden" class="form-control" id="txt_order_compra_id" name="txt_order_compra_id" value="25">
+                        <input type="text" class="form-control" id="txt_order_compra_text" name="txt_order_compra_text">                
+                        <small id="" class="form-text text-muted">
+                          <input type="checkbox" id="chb_OC_Emergencia" name="chb_OC_Emergencia"> No cuenta con OC (Emergencia)
+                        </small>
+                        <span class="bmd-help"></span>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="media mb-5 gp_visita">
+                    <img src="images/iconos/motivo.svg" height="24" class="mr-3 mt-4">
+                    <div class="media-body">
+                      <div class="form-group ">
+                        <label for="tx_rejection_reason" class="bmd-label-static is-filled titleInput">MOTIVO <span class="text-warning">*</span></label>
+                        <textarea id="tx_rejection_reason" name="tx_rejection_reason" class="form-control" rows="2"  maxlength="140" onkeyup="validateFieldMinForm()"></textarea>                  
+                      </div>
+                    </div>
+                  </li>
+                  <!--<li class="media gp_particular" style="display: none;">
+                    <div class="mr-3 mt-4"></div>
+                    <div class="media-body">
+                      <div class="form-group" >             
+                        <small id="" class="form-text text-muted">
+                          <input type="checkbox" id="chb_Visita_Particular" name="chb_Visita_Particular"> Seleccione este campo si los ingresos que coordinará no están vinculados a una Empresa registrada en TASA
+                        </small>
+                        <span class="bmd-help"></span>
+                      </div>
+                    </div>
+                  </li>-->
+                  <!--<li class="media">
+                    <img src="images/iconos/motivo.svg" height="24" class="mr-3 mt-4">
+                    <div class="media-body">
+                      <div class="form-group ">
+                        <label for="tx_quantity" class="bmd-label-static is-filled titleInput">CANTIDAD <span class="text-warning">*</span></label>
+                        <input type="text" name="tx_quantity" id="tx_quantity" class="form-control">
+                      </div>
+                    </div>
+                  </li>-->
+                  
+
+                  
+                </ul>
+                <input type="hidden" value="" id="hid_email_colaborador" name="hid_email_colaborador">
+                <input type="hidden" value="" id="hid_name_colaborador" name="hid_name_colaborador">
+                <input type="hidden" value="" id="hid_anonymous_access_token" name="hid_anonymous_access_token">
+                <input type="hidden" value="" id=" hid_name_user" name=" hid_name_user">
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- body contenido itinerario ------------------------------------------------------------------------------------------------------------------------>
+        <div class="col-9 h-85" style="padding-right: 10px!important; padding-left: 0px!important;  overflow: auto; overflow-x: hidden; " id="body_form_request_register">          
+        </div>
+      </div>  
+      
+          
+    </main>
+    
+  </div>
+  <!-- header buttom -->
+  <div class="container-fluid bg-white fixed-bottom shadow-lg" style="height: 80px; display:none" id="headerButtom">
+    <div class="row  p-2" >
+      <div class="col-9 p-3 h6">¿Desea enviar la invitación a : <span class="font-weight-bold " id="span_email_invitation"></span></div>     
+      <div class="col-3 pt-3 p-2 text-right"><!--<button type="button" class="btn btn-danger btn-rounded btn-raised text-white" onclick="handlerUrlhtml('contentGlobal','view/selectTypeRequest.html')"  id="bt_register_visita_disabled">Cancelar</button>--> <button type="button" class="btn btn-primary btn-rounded btn-raised text-white" style="background: #05beee;"  id="bt_register_visita">Enviar y Solicitar</button> <button type="button" class="btn btn-primary btn-rounded btn-raised text-white" style="background: #34559c;"  id="bt_register_visita_aprove">Completar Información</button></div>
+      <!--<div class="col-sm-1 pt-3 p-2 text-right"></div>
+      <div class="col-sm-2 pt-3 p-2 text-right" ></div>
+      <div class="col-sm-2 pt-3 p-2 text-right" id="div_register_visita_aprove" style="display: none;"></div>-->
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="modalAddCompany" tabindex="-1" role="dialog" aria-labelledby="modalAddCompanyTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered  modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header" style="padding:5px 24px 0!important">
+          <h5 class="modal-title"></h5>
+          <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close">
+            <span class="text-danger">Cerrar</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>            
+            <span class="titleMain">Datos de Empresa</span> 
+              <div class="row">
+                  <div class="col">
+                    <div class="form-group">
+                      <label for="tx_ruc" class="bmd-label-static titleInput">RUC<span class="text-warning">*</span></label>
+                      <input type="text" class="form-control" id="tx_ruc" maxlength="11" >
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-group">
+                    <label for="tx_name" class="bmd-label-static titleInput">Nombre<span class="text-warning">*</span></label>
+                    <input type="text" class="form-control" id="tx_name" onkeyup="autoCompleteDate(this.id,'tx_business_name')" >
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="form-group">
+                    <label for="tx_business_name" class="bmd-label-static titleInput">Nombre Comercial<span class="text-warning">*</span></label>              
+                    <input type="text" class="form-control" id="tx_business_name" >              
+                  </div>
+                </div>
+            </div>
+           
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label for="tx_business_sector" class="bmd-label-static titleInput">Sector</label>              
+                  <input type="text" class="form-control" id="tx_business_sector" >              
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <label for="tx_business_pais" class="bmd-label-static titleInput">País</label>              
+                  <input type="text" class="form-control" id="tx_business_pais" value="Perú">              
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <label for="tx_business_ciudad" class="bmd-label-static titleInput">Ciudad</label>              
+                  <input type="text" class="form-control" id="tx_business_ciudad">              
+                </div>
+              </div>
+            </div>
+            
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label for="tx_business_street" class="bmd-label-static titleInput">Dirección</label>              
+                  <input type="text" class="form-control" id="tx_business_street">              
+                </div>
+              </div>
+              <div class="col"><div class="form-group">
+                <label for="tx_business_site_web" class="bmd-label-static titleInput">Sitio WEB</label>              
+                <input type="text" class="form-control" id="tx_business_site_web" >              
+              </div></div>
+              <div class="col">
+                <div class="form-group">
+                  <label for="sel_external_company_type" class="bmd-label-static titleInput">Tipo<span class="text-warning">*</span></label>              
+                  <select name="sel_external_company_type" class="form-control" id="sel_external_company_type" required>
+                    <option value="0"></option>
+                    <option value="1">Proveedor</option>
+                    <option value="2">Transportista</option>
+                    <option value="3">Contratista</option>
+                  </select>
+                </div>
+
+              </div>
+              
+              
+            </div>
+
+            <div class="row">
+             
+            </div>
+            <span class="titleMain">Datos de Usuario</span>
+            
+            <div class="row">
+
+              <div class="col">
+                <div class="form-group">
+                  <label for="tx_business_dni" class="bmd-label-static titleInput">TIPO DE DOCUMENTO<span class="text-warning">*</span></label>              
+                  <select class="form-control" id="sel_identity_document_type" name="sel_identity_document_type">
+                    <option value="DNI">DNI</option>
+                    <option value="CE">CE</option>
+                    <option value="PASAPORTE">PASAPORTE</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col">
+                <div class="form-group">
+                  <label for="tx_business_dni" class="bmd-label-static titleInput">DOCUMENTO DE IDENTIDAD<span class="text-warning">*</span></label>              
+                  <input type="text" class="form-control" id="tx_business_dni" maxlength="10" >              
+                </div>                
+              </div>
+            <div class="col">
+              <div class="form-group">
+                <label for="tx_business_nombre" class="bmd-label-static titleInput">Nombre<span class="text-warning">*</span></label>              
+                <input type="text" class="form-control" id="tx_business_nombre" >              
+              </div>
+            </div>
+             
+            
+            </div>
+            <div class="row">
+
+              <div class="col">
+                <div class="form-group">
+                  <label for="tx_business_apelllido" class="bmd-label-static titleInput">Apellido<span class="text-warning">*</span></label>              
+                  <input type="email" class="form-control" id="tx_business_apelllido" >              
+                </div>
+                
+              </div>
+            <div class="col">
+              <div class="form-group">
+                <label for="tx_business_mobile" class="bmd-label-static titleInput">Teléfono</label>              
+                <input type="text" class="form-control" id="tx_business_mobile" >              
+              </div>              
+            </div>
+
+            <div class="col">
+              <div class="form-group">
+                <label for="tx_business_email" class="bmd-label-static titleInput">Email<span class="text-warning">*</span></label>              
+                <input type="email" class="form-control" id="tx_business_email" onblur="autoCompleteDate(this.id,'tx_user_responsable')" >              
+              </div>
+              
+          </div>
+            </div>
+            <div class="row" style="display: none;">
+              <div class="col">
+                <div class="form-group">
+                  <label for="tx_business_client_flag" class="bmd-label-static titleInput">Usuario<span class="text-warning">*</span></label>              
+                  <input type="text" class="form-control col-sm-12" id="tx_user_responsable" >
+                  <small class="text-help text-danger " id="help_user_responsable"></small>
+                </div>
+                </div>
+              <div class="col">
+                <div class="form-group">
+                  <label for="tx_user_pass_1" class="bmd-label-static titleInput">Contraseña<span class="text-warning">*</span></label> 
+                  <input type="password" class="form-control col-sm-12" id="tx_user_pass_1"  >
+                  <!-- <small id="dateSystem" class="text-help colorLight"></small> -->
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <label for="tx_user_pass_2" class="bmd-label-static titleInput">Repetir Contraseña<span class="text-warning">*</span></label> 
+                  <input type="password" class="form-control col-sm-12" id="tx_user_pass_2"   >            
+                </div>
+              </div>
+            </div>
+            
+            <div class="modal-footer">
+              <button type="button" class="btn btn-raised btn-secondary btn-rounded" id="bt_cancel_register_externalcompany" data-dismiss="modal" style="margin: 5px!important">Cancelar</button>
+              <button type="button" class="btn btn-raised btn-green-lime  btn-rounded" onclick="vw_access_request.validateFormCompany()" style="margin: 5px!important;">Registrar</button>
+            </div>
+          </form>
+        </div>
+      
+      </div>
+    </div>
+  </div>
+</div>

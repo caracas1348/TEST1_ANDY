@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "The function openXml.OpenXmlPackage.prototype.addRelationship has a bug in it: the variable rootRelationshipPart is misspelled as rootRelationshipsPart and will result in the \"/_rels/.rels\" part not being added to the document if it is not already there.\r\n",
+    "LastUpdatedDate": "2016-05-16T10:57:29.977-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "openxmlsdkjs",
+    "ReportedDate": "2016-05-16T10:57:29.977-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Bug in openXml.OpenXmlPackage.prototype.addRelationship",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 4
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

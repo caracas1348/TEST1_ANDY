@@ -1,0 +1,574 @@
+<link rel="stylesheet" href="./view/ssoma/ssoma.css">
+<link rel="stylesheet" href="./css/pagination.css">
+<div class="row justify-content-center pt-5">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-2">
+                        <label for="" style="font-size: 13px">Unidad </label>
+                        <select name="" id="selectUnidadNegocioFiltro" class="form-control" onchange="eventFiltroUN()">
+                            <option value="" selected>Todos</option>
+                        </select>
+                    </div>
+                    <div class="col-2">
+                        <label for="">Sede</label>
+                        <select name="" id="selecSedeFiltro" class="form-control">
+                            <option value="" selected>Todos</option>
+                        </select>
+                    </div>
+                    <div class="col-2">
+                        <label for="">Área</label>
+                        <select name="" id="selectAreafiltro" class="form-control">
+                            <option value="" selected>Todos</option>
+                        </select>
+                    </div>
+                    <div class="col-2">
+                        <label for="">Frecuencia</label>
+                        <select name="" id="selectFrecuenciaFiltro" class="form-control">
+                            <option value="" selected>Todos</option>
+                            <option value="1">Diaria</option>
+                            <option value="2">Semanal</option>
+                            <option value="3">Mensual</option>
+                            <option value="4">Trimestral</option>
+                            <option value="5">Semestral</option>
+                            <option value="6">Anual</option>
+                        </select>
+                    </div>
+                    <div class="col-2">
+                        <label for="">Estado</label>
+                        <select name="" id="selecEstadoFiltro" class="form-control">
+                            <option value="" selected>Todos</option>
+                            <option value="1">Creada</option>
+                            <option value="2">Asignada</option>
+                            <option value="3">En Ejecución</option>
+                            <option value="4">Finalizada</option>
+                            <option value="5">Vencida</option>
+                            <option value="6">Reasignada</option>
+                        </select>
+                    </div>
+                    <div class="col-2">
+                        <div class="row justify-content-end">
+                            <button class="btn btn-system-green" onclick="buscarInspeccionFiltro()">Buscar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="row align-items-center justify-content-end" >
+                    <div class="px-4 border-right">
+                        <img src="./images/newsistema/iconos/registros.svg" alt="">
+                        <span class="cantidad ml-3" id="cantidad">0</span>
+                    </div>
+                    <div class="px-4">
+                        <button class="btn btn-system-celeste" style="font-size: 13px;"  onclick="ProgramarInspeccionModal()">
+                            <img src="./images/newsistema/iconos/calendario.svg" alt="">
+                            <span class="ml-2">Programar Inspección</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row justify-content-center mt-5">
+    <div class="col-md-12">
+        <div class="header-tabla p-3">
+            <div class="row m-0 justify-content-between align-items-center">
+                <div class="col-md-1" style="font-size: 13px">ID de Programa</div>
+                <div class="col-md-2" style="font-size: 13px">Inspecciones PASST</div>
+                <div class="col-md-1" style="font-size: 13px">Unidad de Negocio</div>
+                <div class="col-md-1" style="font-size: 13px">Sede</div>
+                <div class="col-md-2" style="font-size: 13px">Área de Inspección</div>
+                <div class="col-md-1" style="font-size: 13px">Tipo de Inspección</div>
+                <div class="col-md-1" style="font-size: 13px">Frecuencia</div>
+                <div class="col-md-1" style="font-size: 13px">Estado</div>
+                <div class="col-1 text-center" style="font-size: 13px">Editar</div>
+                <div class="col-1 text-center" style="font-size: 13px">Ver</div>
+            </div>
+        </div>
+        <div class="body-tabla-loader text-center py-3" id="body-tabla-loader">
+            <div class="spinner-border text-primary"></div>
+            <p class="text-center">Buscando resultados ....</p>
+        </div>
+        <div class="body-tabla d-none mt-4">
+            <div class="content-registros-no-encontrados">
+                <div>
+                    <img src="./images/newsistema/iconos/calendario-registros-vacios.svg" alt="">
+                    <p class="mt-4">No Tiene Inspecciones Ingresadas</p>
+                </div>
+            </div>
+        </div>
+        <div class="body-tabla-list" id="body-tabla-list">
+
+        </div>
+        <div id="pagination-container" class="mt-3"></div>
+    </div>
+</div>
+
+<div class="modal_confirmacion" id="modal-programar-inspeccion">
+    <div class="modal_confirmacion__content" style="width: 740px">
+        <div class="modal_confirmacion__head">
+            <h4>Programar Inspección</h4>
+        </div>
+        <input type="hidden" id="editinspectionid" value="0">
+        <div class="modal_confirmacion__body px-5 pb-4">
+            <div class="d-flex align-items-center pt-4 pb-4">
+               <!-- <div class="col-md-2">
+                    <h4 class="text-left"><strong>Datos</strong></h4>
+                </div>-->
+                <div class="col-md-11 pr-0">
+                    <div class="franja"></div>
+                </div>
+                <div class="col-md-1">
+                    <img src="./images/newsistema/iconos/menu.svg" alt="" class="img-fluid">
+                </div>
+            </div>
+            <div class="d-flex">
+                <div class="col-md-6">
+                    <div class="mdc-select mdc-select--filled demo-width-class demo-menu w-100 text-left">
+                        <div class="mdc-select__anchor">
+                            <span class="mdc-select__ripple"></span>
+                            <span class="mdc-select__selected-text"></span>
+                            <span class="mdc-select__dropdown-icon">
+                              <svg
+                                      class="mdc-select__dropdown-icon-graphic"
+                                      viewBox="7 10 10 5">
+                                <polygon
+                                        class="mdc-select__dropdown-icon-inactive"
+                                        stroke="none"
+                                        fill-rule="evenodd"
+                                        points="7 10 12 15 17 10">
+                                </polygon>
+                                <polygon
+                                        class="mdc-select__dropdown-icon-active"
+                                        stroke="none"
+                                        fill-rule="evenodd"
+                                        points="7 15 12 10 17 15">
+                                </polygon>
+                              </svg>
+                            </span>
+                            <span class="mdc-floating-label mdc-floating-label--float-above">Nombre de Inspección</span>
+                            <span class="mdc-line-ripple"></span>
+                        </div>
+
+                        <div class="mdc-select__menu demo-width-class mdc-menu mdc-menu-surface w-100">
+                            <ul class="mdc-list" id="listInspecciones">
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex mt-4">
+                <div class="col-md-6">
+                    <label for="" class="text-left w-100">Tipo de Inspección</label>
+                    <div class="d-flex">
+                        <div class="col-md-6 p-0 text-left">
+                            <div class="mdc-form-field">
+                                <div class="mdc-radio">
+                                    <input class="mdc-radio__native-control" onclick="Programado()" type="radio" id="Programada" name="inspeccion" value="1">
+                                    <div class="mdc-radio__background">
+                                        <div class="mdc-radio__outer-circle"></div>
+                                        <div class="mdc-radio__inner-circle"></div>
+                                    </div>
+                                    <div class="mdc-radio__ripple"></div>
+                                </div>
+                                <label for="Programada" class="m-0" style="font-size: 14px">Programada</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6 p-0 text-left" >
+                            <div class="mdc-form-field">
+                                <div class="mdc-radio">
+                                    <input class="mdc-radio__native-control" onclick="NoProgramado()" type="radio" id="No-Programada" name="inspeccion" value="2">
+                                    <div class="mdc-radio__background">
+                                        <div class="mdc-radio__outer-circle"></div>
+                                        <div class="mdc-radio__inner-circle"></div>
+                                    </div>
+                                    <div class="mdc-radio__ripple"></div>
+                                </div>
+                                <label for="No-Programada" class="m-0" style="font-size: 14px">No Programada</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label for="" class="text-left w-100">Tipo de asignación</label>
+                    <div class="d-flex">
+                        <div class="col-md-6 p-0 text-left">
+                            <div class="mdc-form-field">
+                                <div class="mdc-radio">
+                                    <input class="mdc-radio__native-control" type="radio" id="Delegable" name="asignacion" value="1">
+                                    <div class="mdc-radio__background">
+                                        <div class="mdc-radio__outer-circle"></div>
+                                        <div class="mdc-radio__inner-circle"></div>
+                                    </div>
+                                    <div class="mdc-radio__ripple"></div>
+                                </div>
+                                <label for="Delegable" class="m-0" style="font-size: 14px">Delegable</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6 p-0 text-left">
+                            <div class="mdc-form-field">
+                                <div class="mdc-radio">
+                                    <input class="mdc-radio__native-control" type="radio" id="No-Delegable" name="asignacion" value="2">
+                                    <div class="mdc-radio__background">
+                                        <div class="mdc-radio__outer-circle"></div>
+                                        <div class="mdc-radio__inner-circle"></div>
+                                    </div>
+                                    <div class="mdc-radio__ripple"></div>
+                                </div>
+                                <label for="No-Delegable" class="m-0" style="font-size: 14px">No Delegable</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex mt-4">
+                <div class="col-md-6">
+                    <div class="mdc-select mdc-select--filled demo-width-class unidad-de-negocio w-100 text-left">
+                        <div class="mdc-select__anchor">
+                            <span class="mdc-select__ripple"></span>
+                            <span class="mdc-select__selected-text"></span>
+                            <span class="mdc-select__dropdown-icon">
+                              <svg
+                                      class="mdc-select__dropdown-icon-graphic"
+                                      viewBox="7 10 10 5">
+                                <polygon
+                                        class="mdc-select__dropdown-icon-inactive"
+                                        stroke="none"
+                                        fill-rule="evenodd"
+                                        points="7 10 12 15 17 10">
+                                </polygon>
+                                <polygon
+                                        class="mdc-select__dropdown-icon-active"
+                                        stroke="none"
+                                        fill-rule="evenodd"
+                                        points="7 15 12 10 17 15">
+                                </polygon>
+                              </svg>
+                            </span>
+                            <span class="mdc-floating-label mdc-floating-label--float-above">Unidad de Negocio</span>
+                            <span class="mdc-line-ripple"></span>
+                        </div>
+
+                        <div class="mdc-select__menu demo-width-class mdc-menu mdc-menu-surface w-100">
+                            <ul class="mdc-list" id="listUnidadNegocio">
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="mdc-select mdc-select--filled demo-width-class sede w-100 text-left">
+                        <div class="mdc-select__anchor">
+                            <span class="mdc-select__ripple"></span>
+                            <span class="mdc-select__selected-text"></span>
+                            <span class="mdc-select__dropdown-icon">
+                              <svg
+                                      class="mdc-select__dropdown-icon-graphic"
+                                      viewBox="7 10 10 5">
+                                <polygon
+                                        class="mdc-select__dropdown-icon-inactive"
+                                        stroke="none"
+                                        fill-rule="evenodd"
+                                        points="7 10 12 15 17 10">
+                                </polygon>
+                                <polygon
+                                        class="mdc-select__dropdown-icon-active"
+                                        stroke="none"
+                                        fill-rule="evenodd"
+                                        points="7 15 12 10 17 15">
+                                </polygon>
+                              </svg>
+                            </span>
+                            <span class="mdc-floating-label mdc-floating-label--float-above">Sede</span>
+                            <span class="mdc-line-ripple"></span>
+                        </div>
+
+                        <div class="mdc-select__menu demo-width-class mdc-menu mdc-menu-surface w-100">
+                            <ul class="mdc-list" id="listSede">
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex mt-4">
+<!--                <div class="col-md-6">-->
+<!--                    <label class="mdc-text-field mdc-text-field&#45;&#45;filled mdc-text-field&#45;&#45;disabled w-100 area-de-la-inspeccion">-->
+<!--                        <span class="mdc-text-field__ripple"></span>-->
+<!--                        <span class="mdc-floating-label" id="my-label-id">Área de la Inspección</span>-->
+<!--                        <input class="mdc-text-field__input" type="text" aria-labelledby="my-label-id" disabled value="hola como estas">-->
+<!--                        <span class="mdc-line-ripple"></span>-->
+<!--                    </label>-->
+<!--                </div>-->
+                <div class="col-md-6">
+                    <div class="mdc-select mdc-select--filled demo-width-class areaInspeccion w-100 text-left">
+                        <div class="mdc-select__anchor">
+                            <span class="mdc-select__ripple"></span>
+                            <span class="mdc-select__selected-text"></span>
+                            <span class="mdc-select__dropdown-icon">
+                              <svg
+                                      class="mdc-select__dropdown-icon-graphic"
+                                      viewBox="7 10 10 5">
+                                <polygon
+                                        class="mdc-select__dropdown-icon-inactive"
+                                        stroke="none"
+                                        fill-rule="evenodd"
+                                        points="7 10 12 15 17 10">
+                                </polygon>
+                                <polygon
+                                        class="mdc-select__dropdown-icon-active"
+                                        stroke="none"
+                                        fill-rule="evenodd"
+                                        points="7 15 12 10 17 15">
+                                </polygon>
+                              </svg>
+                            </span>
+                            <span class="mdc-floating-label mdc-floating-label--float-above">Área de la Inspección</span>
+                            <span class="mdc-line-ripple"></span>
+                        </div>
+
+                        <div class="mdc-select__menu demo-width-class mdc-menu mdc-menu-surface w-100">
+                            <ul class="mdc-list" id="listAreaInspeccion">
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex mt-4">
+                <div class="col-md-12">
+                    <label for="" class="w-100 text-left mb-4">Frecuencia de Ejecución</label>
+                    <div class="d-flex" id="listaFrecuencia">
+                        <div class="mdc-form-field mr-1">
+                            <div class="mdc-radio">
+                                <input class="mdc-radio__native-control" type="radio" id="Diario" name="frecuencia" value="1">
+                                <div class="mdc-radio__background">
+                                    <div class="mdc-radio__outer-circle"></div>
+                                    <div class="mdc-radio__inner-circle"></div>
+                                </div>
+                                <div class="mdc-radio__ripple"></div>
+                            </div>
+                            <label for="Diario" class="m-0" style="font-size: 14px">Diario</label>
+                        </div>
+                        <div class="mdc-form-field mr-1">
+                            <div class="mdc-radio">
+                                <input class="mdc-radio__native-control" type="radio" id="Semanal" name="frecuencia" value="2">
+                                <div class="mdc-radio__background">
+                                    <div class="mdc-radio__outer-circle"></div>
+                                    <div class="mdc-radio__inner-circle"></div>
+                                </div>
+                                <div class="mdc-radio__ripple"></div>
+                            </div>
+                            <label for="Semanal" class="m-0" style="font-size: 14px">Semanal</label>
+                        </div>
+                        <div class="mdc-form-field mr-1">
+                            <div class="mdc-radio">
+                                <input class="mdc-radio__native-control" type="radio" id="Mensual" name="frecuencia" value="3">
+                                <div class="mdc-radio__background">
+                                    <div class="mdc-radio__outer-circle"></div>
+                                    <div class="mdc-radio__inner-circle"></div>
+                                </div>
+                                <div class="mdc-radio__ripple"></div>
+                            </div>
+                            <label for="Mensual" class="m-0" style="font-size: 14px">Mensual</label>
+                        </div>
+                        <div class="mdc-form-field mr-1">
+                            <div class="mdc-radio">
+                                <input class="mdc-radio__native-control" type="radio" id="Trimestral" name="frecuencia" value="4">
+                                <div class="mdc-radio__background">
+                                    <div class="mdc-radio__outer-circle"></div>
+                                    <div class="mdc-radio__inner-circle"></div>
+                                </div>
+                                <div class="mdc-radio__ripple"></div>
+                            </div>
+                            <label for="Trimestral" class="m-0" style="font-size: 14px">Trimestral</label>
+                        </div>
+                        <div class="mdc-form-field mr-1">
+                            <div class="mdc-radio">
+                                <input class="mdc-radio__native-control" type="radio" id="Semestral" name="frecuencia" value="5">
+                                <div class="mdc-radio__background">
+                                    <div class="mdc-radio__outer-circle"></div>
+                                    <div class="mdc-radio__inner-circle"></div>
+                                </div>
+                                <div class="mdc-radio__ripple"></div>
+                            </div>
+                            <label for="Semestral" class="m-0" style="font-size: 14px">Semestral</label>
+                        </div>
+                        <div class="mdc-form-field mr-1">
+                            <div class="mdc-radio">
+                                <input class="mdc-radio__native-control" type="radio" id="Anual" name="frecuencia" value="6">
+                                <div class="mdc-radio__background">
+                                    <div class="mdc-radio__outer-circle"></div>
+                                    <div class="mdc-radio__inner-circle"></div>
+                                </div>
+                                <div class="mdc-radio__ripple"></div>
+                            </div>
+                            <label for="Anual" class="m-0" style="font-size: 14px">Anual</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex mt-4 mb-3 justify-content-center">
+                <div class="col-md-4 pl-0">
+                    <button class="btn_confirmar_modal bg-green-lime-modal" onclick="saveInspeccion()">Guardar</button>
+                </div>
+                <div class="col-md-4 pr-0">
+                    <button class="btn_cerrar_modal" onclick="cerrarModal('modal-programar-inspeccion')">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal_confirmacion" id="modal-confirmacion">
+    <div class="modal_confirmacion__content">
+        <div class="modal_confirmacion__head">
+            <img src="./images/newsistema/iconos/informacion3.svg" alt="">
+        </div>
+        <div class="modal_confirmacion__body">
+            <div class="title" id="titlemodalsave">
+                Se guardará la inspección programada
+            </div>
+            <div class="content" id="subtitlemodalsave">
+                ¿Desea confirmar el guardado de la inspección?
+            </div>
+            <div class="footer">
+                <div class="d-flex">
+                    <div class="col-md-6 pl-0">
+                        <button class="btn_confirmar_modal" onclick="saveInspeccionConfirmar()">Confirmar</button>
+                    </div>
+                    <div class="col-md-6 pr-0">
+                        <button class="btn_cerrar_modal" onclick="cerrarModal('modal-confirmacion')">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal_confirmacion" id="modal-save">
+    <div class="modal_confirmacion__content">
+        <div class="modal_confirmacion__head bg-green-lime-modal">
+            <img src="./images/newsistema/iconos/correct1.svg" alt="">
+        </div>
+        <div class="modal_confirmacion__body">
+            <div class="title">
+                Se guardó la inspección
+                con éxito
+            </div>
+            <div class="content">
+                El código de la inspección es:
+                <h2 ><strong id="codigo">PCON001</strong></h2>
+            </div>
+            <div class="footer">
+                <div class="d-flex">
+                    <div class="col-md-12 px-0">
+                        <button class="btn_confirmar_modal bg-green-lime-modal" onclick="CerrarModalSaveInspeccion()">De Acuerdo</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal_confirmacion" id="modal-confirmacion__error">
+    <div class="modal_confirmacion__content">
+        <div class="modal_confirmacion__head bg-danger">
+            <img src="./images/newsistema/iconos/correct1.svg" alt="">
+        </div>
+        <div class="modal_confirmacion__body">
+            <div class="title py-4">
+                Datos Incompletos, llenar los campos faltantes
+            </div>
+<!--            <div class="content">-->
+<!--                El código de la inspección es:-->
+<!--                <h2 ><strong id="codigo">PCON001</strong></h2>-->
+<!--            </div>-->
+            <div class="footer">
+                <div class="d-flex">
+                    <div class="col-md-12 px-0">
+                        <button class="btn_confirmar_modal bg-danger" style="color: #fff" onclick="cerrarModal('modal-confirmacion__error')">De Acuerdo</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal_confirmacion" id="modal-visualizar">
+    <div class="modal_confirmacion__content" style="width: 503px">
+        <div class="modal_confirmacion__head">
+            <h5 style="font-size: 18px;">Inspección - <span class="titulo-modal-visualizar">Lista de Verificación COVID 19</span></h5>
+        </div>
+        <div class="modal_confirmacion__body px-5 pb-4 text-left">
+            <div class="d-flex align-items-center pt-4 pb-4">
+                <div class="col-md-3">
+                    <h6 class="text-left" style="font-size: 18px"><strong>Detalle</strong></h6>
+                </div>
+                <div class="col-md-8 pl-0">
+                    <div class="franja"></div>
+                </div>
+                <div class="col-md-1">
+                    <img src="./images/newsistema/iconos/menu.svg" alt="" class="img-fluid">
+                </div>
+            </div>
+            <div class="d-flex">
+                <div class="col-md-6">
+                    <label for="">ID de Inspección</label>
+                    <p class="text-consult id_inspeccion" ></p>
+                </div>
+                <div class="col-md-6">
+                    <label for="">Área de la Inspección</label>
+                    <p class="text-consult area_inspeccion"></p>
+                </div>
+            </div>
+            <div class="d-flex mt-4">
+                <div class="col-md-6">
+                    <label for="">Nombre de la inspección</label>
+                    <p class="text-consult" id="nmbre_inspeccion"></p>
+                </div>
+                <div class="col-md-6">
+                    <label for="">Tipo de Asignación</label>
+                    <p class="text-consult" id="tipo_asignacion"></p>
+                </div>
+            </div>
+            <div class="d-flex mt-4">
+                <div class="col-md-6">
+                    <label for="">Tipo de Inspección</label>
+                    <p class="text-consult" id="tipo_inspeccion"></p>
+                </div>
+                <div class="col-md-6">
+                    <label for="">Frecuencia de Ejecución</label>
+                    <p class="text-consult" id="frecuencia_ejecucion"></p>
+                </div>
+            </div>
+            <div class="d-flex mt-4 mb-3 justify-content-center">
+                <div class="col-md-6">
+                    <button class="btn_cerrar_modal" onclick="cerrarModal('modal-visualizar')">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--<script src="./view/ssoma/programar-inspeccion/index.js"></script>-->
+<script src="./js/paginator/pagination.js"></script>
+
+<script>
+
+    listInspeccionesProgramar();
+    getInspecciones();
+    getlistUnidadNegocioInspector();
+    $('.logoCompany').text('Programar Inspecciones')
+    $('#regresar').css('display','block')
+    $('#regresar').click(function (){
+        handlerUrlhtml('contentGlobal','view/ssoma/menu.html','externalAccessRequestList');
+    })
+    initprogramaInspeccion()
+    filtroGetUnidadNegocio()
+</script>

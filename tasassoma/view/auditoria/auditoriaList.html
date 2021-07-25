@@ -1,0 +1,1699 @@
+<style type="text/css">
+    .preloader {
+
+        width: 90px;
+        height: 90px;
+        border: 10px solid #eee;
+        border-top: 10px solid #666;
+        border-radius: 50%;
+        animation-name: girar;
+        animation-duration: 2s;
+        animation-iteration-count: infinite;
+    }
+    @keyframes girar {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    @media (max-width: 800px)
+    {
+        .fontZiseDinamico
+        {
+            font-size: 8px !important;
+            /*color: red !important;*/
+        }
+    }
+
+    @media screen and (min-width: 801px)
+        and (max-width: 1099px)
+    {
+        .fontZiseDinamico
+        {
+            font-size: 10px !important;
+            /*color: yellow !important;*/
+        }
+    }
+
+    @media screen and (min-width: 1100px)
+        and (max-width: 1399px)
+    {
+        .fontZiseDinamico
+        {
+            font-size: 12px !important;
+            /*color: green !important;*/
+        }
+    }
+
+    @media (min-width: 1400px)
+    {
+        .fontZiseDinamico
+        {
+            font-size: 13px !important;
+            /*color: blue !important;*/
+        }
+    }
+</style>
+<link rel="stylesheet" href="./view/ssoma/ssoma.css">
+<link rel="stylesheet" href="./css/pagination.css">
+<div class="row justify-content-center">
+    <div class="col-12">
+
+        <!-- start filtro -->
+        <div class="row mt-4 align-items-center" >
+           <table width = "100%" border="0" >
+                <tr>
+                     <td id='col1' width ="60%">
+                        <table width = "100%" border="0">
+                            <tr>
+                                <td id='col1-1-1' width ="20%"><label for="sel_filter_unidad_organizativa" class="textoLabelFiltrosCA">Unidad de Negocio</label></td>
+                                <td id='col1-1-6' width ="5%">&nbsp;</td>
+                                <td id='col1-1-2' width ="15%"> <label for="sel_filter_sede" class="textoLabelFiltrosCA">Sede</label></td>
+                                <td id='col1-1-6' width ="5%">&nbsp;</td>
+                                <td id='col1-1-3' width ="15%"><label for="txt_date_start_evaluacion" class="textoLabelFiltrosCA">Fecha Desde</label></td>
+                                <td id='col1-1-4' width ="5%">&nbsp;</td>
+                                <td id='col1-1-5' width ="15%"> <label for="txt_date_end_evaluacion" class="textoLabelFiltrosCA">Fecha Hasta</label></td>
+                                <td id='col1-1-6' width ="5%">&nbsp;</td>
+                                <td id='col1-1-7' width ="15%"><label for="sel_filter_estado" class="textoLabelFiltrosCA">Estado </label></td>
+                            </tr>
+                            <tr>
+                                <td id='col1-1-1' width ="20%">
+                                    <select name="sel_filter_unidad_organizativa" class="form-control" id="sel_filter_unidad_organizativa" onChange="vw_auditorias_list.cargarSelectSedesFilter('sel_filter_sede')"  style="padding: 0px !important;">
+                                    </select>
+                                </td>
+                                <td id='col1-1-6' width ="5%">&nbsp;</td>
+                                <td id='col1-1-2' width ="15%">
+                                    <select name="sel_filter_sede" class="form-control select-filtroCA Patch_selectCA" id="sel_filter_sede" style="padding: 0px !important;" required>
+                                        <option value="" selected disabled>Seleccionar</option>
+                                    </select>
+                                </td>
+                                <td id='col1-1-6' width ="5%">&nbsp;</td>
+                                <td id='col1-1-3' width ="15%">
+                                    <input  type="text" id="txt_date_start_evaluacion" name="txt_date_start_evaluacion" class="form-control bg-white" readonly onChange="vw_auditorias_list.validarFechas(3)">
+                                </td>
+                                <td id='col1-1-4' width ="5%">
+                                    <img src="images/iconos/calendario-3.svg"  style="cursor: pointer;" onclick="$('#txt_date_start_evaluacion').val('');">
+                                </td>
+                                <td id='col1-1-5' width ="15%">
+                                    <input  type="text" id="txt_date_end_evaluacion" name="txt_date_end_evaluacion" class="form-control bg-white" readonly onChange="vw_auditorias_list.validarFechas(3)">
+                                </td>
+                                <td id='col1-1-6' width ="5%">
+                                    <img src="images/iconos/calendario-3.svg"  style="cursor: pointer;" onclick="$('#txt_date_end_evaluacion').val('');">
+                                </td>
+                                <td id='col1-1-7' width ="15%">
+                                    <select name="sel_filter_estado" class="form-control select-filtroCA Patch_selectCA" id="sel_filter_estado" style="padding: 0px !important;" required>
+                                    </select>
+                                </td>
+                            </tr>
+                        </table>
+
+
+                    </td>
+
+
+                     <td id='col2' width ="2%">&nbsp;</td>
+                     <td id='col3' width ="9%">
+                        <button type="button" onClick="vw_auditorias_list.filtroTablaDivsAuditorias();" name="jesus" id="buscarAuditorias" class="btn btn-system-green">Buscar</button>
+                     </td>
+                     <td id='col4'  width ="2%">&nbsp;</td>
+                     <!-- <button onclick="   var a = $('#pagination-container').pagination('getSelectedPageNum'); $('#pagination-container').pagination('go', 3)" >ir a hoja 3</button> -->
+                     <!-- container.pagination('getTotalPage') -->
+                     <td id='col6'  width ="4%">
+                        <div class="form-group border-right" id="cant_auditorias" style="font-size: 25px;font-weight: bold;">
+
+                            <img src="images/iconos/copia-1.svg" class="mb-3" onclick="vw_auditorias_list.downloadExcel()" style="cursor: pointer" title="Descargar Listado en Excel">
+
+                            <span class="cantidad ml-3" id="cantidad">0</span>
+                        </div>
+                     </td>
+                     <td id='col7'  width ="2%">&nbsp;
+
+                     </td>
+
+                    <td id='col8'  width ="12%">
+                        <div id="divBtnNewAuditoria">
+                            <button class="btn btn-system-celeste " style="padding-left: 0.8rem;padding-right: 0.8rem; font-size: 15px; font-weight: bold; font-stretch: normal;" id="new_auditoria" name="new_auditoria" onclick="modalNewAuditoria();">
+                                <img src="./images/iconos/plus_.svg" alt="">
+                                <span class="ml-2">Nueva Auditor&iacute;a</span>
+                            </button>
+                        </div>
+                    </td>
+                    <td id='col9'  width ="1%">&nbsp;</td>
+
+                    <td id='col10'  width ="8%">
+                        <div id="divBtnBuscarAuditoriasx">
+                            <button type="button" style="font-size: 15px; !important; color:#fff !important;" class="btn btn-system-green "  name="jesuscristo" id="buscarAuditoriasx"  onclick="vw_auditorias_list.finalizeEvaluacion()">
+                                Finalizar
+                            </button>
+                        </div>
+                    </td>
+                 </tr>
+           </table>
+
+        </div>
+        <!-- end filtro -->
+    </div>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-12">
+        <!-- start listado -->
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-12">
+                <div class="header-tabla px-2 py-3">
+                    <div class="row m-0 justify-content-between align-items-center text-center">
+                        <div class="col-2 text-center" style="font-size: 13px">ID Auditor&iacute;a</div>
+                        <div class="col-2 text-center" style="font-size: 13px">Unidad Negocio</div>
+                        <div class="col-1 text-center" style="font-size: 13px">Sede</div>
+                        <div class="col-6 text-center" style="font-size: 13px">
+                            <div class="row">
+                                <div class="col-2 text-center" style="font-size: 13px">Norma</div>
+                                <div class="col-2 text-center" style="font-size: 13px">Tipo Auditor&iacute;a</div>
+                                <div class="col-2 text-center" style="font-size: 13px">Fecha Inicio</div>
+                                <div class="col-2 text-center" style="font-size: 13px">Fecha Fin</div>
+                                <div class="col-2 text-center" style="font-size: 13px">Estado</div>
+                                <div class="col-2 text-center" style="font-size: 13px">Evaluaci&oacute;n</div>
+                            </div>
+                        </div>
+                        <div class="col-1 text-center" style="font-size: 13px">
+                            <div class="row">
+                                <div class="col-6 text-center" style="font-size: 13px">Asignar</div>
+                                <div class="col-6 text-center" style="font-size: 13px">Ver</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="body-tabla mt-4" id="bodyTablaSinAuditorias" style="display: block">
+                    <div class="content-registros-no-encontrados">
+                        <div>
+                            <img src="./images/iconos/escritura-1.svg" alt="">
+                            <p class="mt-4">No tienes auditor&iacute;as ingresadas</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="body-tabla-list" id="body-tabla-list" style="display: block;">
+
+                </div>
+                <div id="pagination-container" class="mt-3"></div>
+            </div>
+
+        </div>
+        <!-- end   listado -->
+    </div>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-12">
+        <!-- ******************************************* START  NEW  AUDITORIA  ********************************************** -->
+
+        <!-- start modal ingresar auditoria-->
+        <div class="modal fade"  id="newAuditoriaModal" tabindex="-1" role="dialog" aria-labelledby="newAuditoriaModalLabel" aria-hidden="true" >
+            <div class="modal-dialog modal-dialog-centered rounded " role="document" style="max-width: 750px; z-index: 1030; ">
+                <div class="modal-content rounded border-0 " style="box-shadow: none;">
+                    <div style="overflow: hidden;height: 750px;overflow-x: hidden; ">
+                        <div class="modal-body" id="" style="padding: 0px;">
+                            <form id="formNewAuditoria" name="formNewAuditoria">
+
+                                <div class="col-sm-12 col-md-12" style="color:#575757c9; width: 100%; padding: 0px;">
+
+                                    <div class="card border-0" style="padding-top:0px; box-shadow: none; width: 100%;">
+                                        <div  class="card-header text-center text-white" style="background:#05beee; height: 61px;">
+                                            <div id="tituloModalNewAuditoria" class="d-flex justify-content-center titulo-modal-new-AuditoriaCA" > </div>
+                                            <!--img src="images/iconos/informacio1.svg"-->
+                                        </div>
+
+                                        <div class="card-body" style="background: white;">
+                                            <div class="row m-2 titulo-area-modal">
+                                                <div class="col-11"><b class="" style="font-weight: bold !Important;  font-size: 18px !important;">Datos</b></div>
+                                                <div class="col-1">
+                                                    <img src="images/iconos/menu.svg" alt="menu">
+                                                </div>
+                                            </div>
+                                            <div class="row m-2">
+                                                <div class="col-6 p-2">
+                                                    <div class="row m-1">
+                                                        <div class="col-12 border mb-2">
+                                                            <div class="media-body">
+                                                                <div class="form-group pt-1">
+                                                                    <label for="sel_new_unidad_organizativa" class="label-modal">Unidad de Negocio </label>
+                                                                    <div class="">
+                                                                        <select onChange="vw_auditorias_list.cargarSelectSedesFilter('sel_new_sede'); vw_auditorias_list.validarNormas(this); " name="sel_new_unidad_organizativa" class="form-control select-form Patch_selectCA" id="sel_new_unidad_organizativa">
+                                                                            <option value="" selected disabled>Seleccionar</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12 border mb-2">
+                                                            <div class="media-body">
+                                                                <div class="form-group pt-1">
+                                                                    <label for="sel_new_tipo_auditoria" class="label-modal">Tipo de Auditor&iacute;a </label>
+                                                                    <div class="input-group">
+                                                                        <select name="sel_new_tipo_auditoria" class="form-control select-form Patch_selectCA" id="sel_new_tipo_auditoria">
+                                                                            <option value="" disabled selected>Seleccionar</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6 p-2">
+                                                    <div class="row m-1">
+                                                        <div class="col-12 border mb-2">
+                                                            <div class="media-body">
+                                                                <div class="form-group pt-1">
+                                                                    <label for="sel_new_sede" class="label-modal">Sede A realizar Auditor&iacute;a </label>
+                                                                    <div class="input-group">
+                                                                        <select name="sel_new_sede" onChange="selectNewSedes(this);" class="form-control select-form Patch_selectCA" id="sel_new_sede">
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row m-2 titulo-area-modal">
+                                                <div class="col-6 pt-2">
+
+                                                    <div class="row m-1">
+                                                        <div class="col-10 mb-2">
+                                                            Seleccionar Normas
+                                                        </div>
+                                                        <div class="col-2 mb-2" id="divCountNormas">
+                                                            0
+                                                        </div>
+                                                        <div class="col-12 border pt-2" style="height: 140px !important;">
+                                                            <div class="media-body" >
+                                                                <div class="form-group">
+                                                                    <div class=""> <!-- onChange="selectNewNormas(this);" -->
+                                                                        <select name="sel_new_normas[]" size="6" class="form-control select-normasNEW"  style="padding: 0px !important; height: 120px !important;" id="sel_new_normas" multiple>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6 p-2">
+                                                    <div class="row m-1">
+                                                        <div class="col-12 mb-2">
+                                                            Rango de Fechas
+                                                        </div>
+                                                        <div class="col-12 border mb-1 pt-2">
+                                                            <div class="media-body">
+                                                                <div class="form-group p-lg-2" >
+                                                                    <label for="tx_date_start_new_auditoria" class="bmd-label-static "><b> Fecha Inicio</b> </label>
+                                                                    <input type="text" name="tx_date_start_new_auditoria" id="tx_date_start_new_auditoria" class="form-control form-control2 bg-white" onChange="vw_auditorias_list.validarFechas(1)" readonly maxlength="10" value="" autocomplete="off" >
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12 border pt-2">
+                                                            <div class="media-body">
+                                                                <div class="form-group p-lg-2" >
+                                                                    <label for="tx_date_end_new_auditoria" class="bmd-label-static "><b> Fecha Final</b> </label>
+                                                                    <input type="text" name="tx_date_end_new_auditoria" id="tx_date_end_new_auditoria" class="form-control form-control2 bg-white " readonly maxlength="10" value="" autocomplete="off" onChange="vw_auditorias_list.validarFechas(1)" >
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row m-5">
+                                                <div class="col-6 pl-5">
+                                                    <button type="button" onClick="guardarAuditoria();" class="btn-crearCA float-right" id="bt_new_auditoria" name="bt_new_auditoria">Crear</button>
+                                                </div>
+                                                <div class="col-6 pl-5">
+                                                    <button type="button" class="btn-cerrarCA" onClick="$('#newAuditoriaModal').removeClass('fade').modal('hide');" id="bt_cerrar_new_auditoria" name="bt_cerrar_new_auditoria">Cancelar</button>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- end modal ingresar auditoria-->
+
+        <!-- start modal confirmar ingreso auditoria -->
+        <div class="modal fade"  id="modalConfirmarIngresarAuditoria" tabindex="-1" role="dialog" aria-labelledby="ConfirmarIngresarAuditoriaModalLabel" aria-hidden="true"> <!-- border-radius: 10px 10px 0px 0px; -->
+            <div class="modal-dialog modal-dialog-centered rounded" role="document" style=" max-width: 300px; z-index: 1030; ">
+
+                <div class="modal-content rounded border-0 " style="height: 380px !important; background-color:rgba(0,0,0,.0001) !important; box-shadow: none;">
+                    <div style="height: 380px;">
+                        <div class="modal-body" id="" style="padding: 0px;">
+                            <div class="col-sm-12 col-md-12" style="color:#575757c9; width: 100%; padding: 0px;">
+
+                                <div class="card border-0" style="padding-top:0px; box-shadow: none; width: 100%;">
+                                    <div class="card-header text-white" style="background:#05beee; height: 95px;"> <!-- border-radius: 10px 10px 0px 0px; -->
+                                            <div class="d-flex justify-content-center">
+                                                <img src="images/iconos/informacio1.svg">
+                                            </div>
+                                    </div>
+
+                                    <div class="card-body" style="background: white; text-align: center;">
+                                        <div class="d-flex mb-3 justify-content-center titulo-confirmar-ingreso-auditoriaCA">
+                                            <b>Se ingresar&aacute; la auditor&iacute;a</b>
+                                        </div>
+                                        <div class="d-flex mx-0 px-0 justify-content-center pregunta-confirmar-ingreso-auditoriaCA">
+                                            ¿Desea confirmar el ingreso de la auditor&iacute;a?
+                                        </div>
+                                        <!-- <div class="d-flex mb-3 mx-0 justify-content-center pregunta-confirmar-ingreso-auditoriaCA">
+                                            auditoría?
+                                        </div> -->
+                                        <div class="mt-3 mx-0">
+                                            <div class="d-flex mt-3 mx-0 justify-content-between">
+                                                <div class=""> <!-- setRegistroAuditoria(); $('#modalConfirmarIngresarAuditoria').modal('hide');-->
+                                                    <button type="button" onClick="setRegistrarAuditoriaDB();" class="btn-confirmar-ingreso-auditoriaCA">Confirmar</button>
+                                                </div>
+                                                <div class="">
+                                                    <button type="button" onClick="$('#modalConfirmarIngresarAuditoria').modal('hide');$('#newAuditoriaModal').modal('show');" class="btn-cerrar-ingreso-auditoriaCA">Cerrar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <!-- end modal confirmar ingreso auditoria -->
+
+        <!-- start modal exito ingresar auditoria -->
+        <div class="modal fade"  id="modalExitoIngresarAuditoria" tabindex="-1" role="dialog" aria-labelledby="ExitoIngresarAuditoriaModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered rounded" role="document" style="max-width: 300px; z-index: 1030; ">
+
+                <div class="modal-content rounded border-0" style=" background-color:rgba(0,0,0,.0001) !important; box-shadow: none;">
+                    <div style="overflow: hidden;height: 360px;overflow-x: hidden; ">
+                        <div class="modal-body" id="" style="padding: 0px;">
+                            <div class="col-sm-12 col-md-12" style="color:#575757c9; width: 100%; padding: 0px;">
+
+                                <div class="card border-o" style="padding-top:0px; box-shadow: none; width: 100%;">
+                                    <div class="card-header text-white" style="background:#d2d97b; height: 95px;">
+                                            <div class="d-flex justify-content-center">
+                                                <img src="images/iconos/correct-1.svg">
+                                            </div>
+                                    </div>
+
+                                    <div class="card-body" style="background: white;">
+                                        <div class="d-flex justify-content-center titulo-exito-ingreso-auditoriaCA">
+                                            <b>Se registr&oacute; la auditor&iacute;a</b>
+                                        </div>
+                                        <div class="d-flex mb-2 justify-content-center titulo-confirmar-ingreso-auditoriaCA">
+                                            <b>con &eacute;xito</b>
+                                        </div>
+                                        <div class="d-flex mx-0 px-0 justify-content-center pregunta-exito-ingreso-auditoriaCA">
+                                            Puede revisar la auditor&iacute;a en su
+                                        </div>
+                                        <div class="d-flex mb-3 mx-0 justify-content-center pregunta-exito-ingreso-auditoriaCA">
+                                            bandeja con el c&oacute;digo:
+                                        </div>
+                                        <div id="idNewAuditoriaModalExito" class="d-flex mb-3 mx-0 justify-content-center titulo-exito-ingreso-auditoriaCA">
+                                            ...
+                                        </div>
+                                        <div class="mt-3 mx-0">
+                                            <div class="d-flex mt-3 mx-0 justify-content-between">
+                                                <div class="">
+                                                    <button type="button" onClick="$('#modalExitoIngresarAuditoria').modal('hide');" class="btn-exito-ingreso-auditoriaCA">De Acuerdo</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- end modal exito ingresar auditoria -->
+
+        <!-- **********************************************  END  NEW  AUDITORIA  ********************************************** -->
+    </div>
+</div>
+<div class="row justify-content-center">
+    <div class="col-12">
+
+        <!-- **********************************************  START  READ AUDITORIA ******************************************* -->
+
+        <!-- start modal ver auditoria-->
+        <div class="modal fade"  id="verModalAuditoria" tabindex="-1" role="dialog" aria-labelledby="modalVerAuditoria" aria-hidden="true" >
+            <div class="modal-dialog modal-dialog-centered rounded" role="document" style="max-width: 503px; z-index: 1031; ">
+                <div class="modal-content rounded border-0" style="box-shadow: none;">
+                    <div style="overflow-x: hidden; ">
+                        <div class="modal-body" id="" style="padding: 0px;">
+                            <div class="col-sm-12 col-md-12" style="color:#575757c9; width: 100%; padding: 0px;">
+                                <div class="card border-0" style="padding-top:0px; box-shadow: none; width: 100%;">
+
+
+                                   <div  class="card-header text-center text-white" style="background:#05beee; height: 61px;">
+                                            <div id="tituloModalVerAuditoria" class="d-flex justify-content-center titulo-modal-new-AuditoriaCA" >
+
+                                            </div>
+                                    </div>
+                                    <div class="card-body" style="background: white;">
+                                        <div class="d-flex m-2 titulo-area-modal">
+                                            <div class="mr-auto ml-3 p-0"><b>Detalle</b></div>
+                                            <div class="mr-3 pr-4">
+                                                <img src="images/iconos/menu.svg" alt="menu">
+                                            </div>
+                                        </div>
+                                        <div class="row m-2">
+                                            <div class="col-6 p-2">
+                                                <div class="row m-1">
+                                                    <div class="col-12 p-0 mb-2">
+                                                        <div class="media-body">
+                                                            <div class="form-group pt-2">
+                                                                <label for="" class="titulo-area-modalCA">Unidad de Negocio</label>
+                                                                <div id="divTextoUnidadOrganizativa" class="media-body mt-1 titulo-items-modalCA">
+                                                                    Harina y Aceite de pescado
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 p-0">
+                                                        <div class="media-body">
+                                                            <div class="form-group pt-2">
+                                                                <label for="" class="titulo-area-modalCA">Tipo de Auditor&iacute;a</label>
+                                                                <div id="divTextoTipoAuditoria" class="media-body mt-1 titulo-items-modalCA">
+                                                                    Interna
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-6 p-2">
+                                                <div class="row m-1">
+                                                    <div class="col-12 mb-2 p-0">
+                                                        <div class="media-body">
+                                                            <div class="form-group pt-2">
+                                                                <label for="" class="titulo-area-modalCA">Sede a realizar Auditor&iacute;a</label>
+                                                                <div id="divTextoSede" class="media-body mt-1 titulo-items-modalCA">
+                                                                    Matarani
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row m-2 titulo-area-modal">
+                                            <div class="col-6"><b>Normas</b></div>
+                                            <div class="col-6"><b>Rango de Fechas</b></div>
+                                        </div>
+                                        <div class="row m-2">
+                                            <div class="col-6 pl-3">
+                                                <div class="d-flex justify-content-between">
+                                                    <div id="divNorma1CA">
+                                                        <div class="norma-ver-auditoriaCA pl-3 pt-2 ml-3">4001</div>
+                                                    </div>
+                                                    <div id="divNorma2CA">
+                                                        <div class="norma-ver-auditoriaCA pl-3 pt-2 mr-3">BASCH</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-6 pl-3">
+                                                <div class="d-flex justify-content-between">
+                                                    <div class="titulo-area-modalCA">Fecha Inicio</div>
+                                                    <div id="divFechaInicioCA" class="titulo-items-modalCA">20/05/2020</div>
+                                                </div>
+                                                <div class="d-flex justify-content-between mt-2">
+                                                    <div class="titulo-area-modalCA pt-2">Fecha Fin</div>
+                                                    <div id="divFechaFinCA" class="titulo-items-modalCA pt-2">20/06/2020</div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                        <div id="divObservaciones" style="display: none;">
+                                            <div class="row m-2 titulo-area-modal">
+                                                <div class="col-12"><b>Observación Evaluador</b></div>
+                                            </div>
+                                            <div class="row m-2" style="margin-top: 2rem;">
+                                                <!--div id="divDetalleObservacion" class="col-12 ml-2 p-4 divObservacionCA titulo-items-modalCA">
+
+                                                </div-->
+                                                    <textarea id="observacionText" class="textoObservacionesCA p-2 scroll-observacion" name="observacionText" rows="3" cols="100%" readonly style="resize: none; background-color: #f4f4f4; border-radius: 5px; border-color: #b8b8b8;" > At w3schools.com you will learn how to make a website. They offer free tutorials in all web   development technologies.
+                                                    </textarea>
+                                            </div>
+                                        </div>
+
+                                        <div class="row my-2" id="divHistorialCambios" style="display: none;">
+                                            <div class="col-12">
+                                                <div class="d-flex m-4 justify-content-center">
+                                                    <div class="pt-2">
+                                                        <a href="#" id="linkVerHistorial" onClick="verHistorialAuditoriaId();" >Ver historial de la auditor&iacute;a</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="row mt-2">
+                                            <div class="d-flex mt-2 justify-content-center">
+                                                <div class="p-2 m-2">
+                                                    <button type="button" onclick="modalModificarAuditoria()" class="btn-modificarCA" id="bt_modificar_auditoria" name="bt_modificar_auditoria">Modificar</button>
+                                                </div>
+                                                <div class="p-2 m-2">
+                                                    <button type="button" class="btn-close" data-dismiss="modal" id="bt_cerrar_ver_auditoria" name="bt_cerrar_ver_auditoria">Cancelar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- end modal ver auditoria-->
+
+        <!-- **********************************************  END  READ AUDITORIA  ******************************************** -->
+
+
+        <!-- **********************************************  START  UPDATE AUDITORIA ******************************************* -->
+
+        <!-- start modal Modificar-Corregir auditoria-->
+        <div class="modal fade"  id="modificarAuditoriaModal" tabindex="-1" role="dialog" aria-labelledby="modalModificarAuditoria" aria-hidden="true" >
+            <div class="modal-dialog modal-dialog-centered rounded " role="document" style="max-width: 740px; z-index: 1030; ">
+                <div class="modal-content rounded border-0" style="box-shadow: none;"> <!-- box-shadow: none; -->
+                    <div style="overflow: hidden;overflow-x: hidden;"> <!-- height: 730px;overflow: hidden;overflow-x: hidden;  -->
+                        <div class="modal-body" id="" style="padding: 0px;">
+                            <div class="col-sm-12 col-md-12" style="color:#575757c9; width: 100%; padding: 0px;">
+                                <div class="card border-0" style="padding-top:0px; width: 100%;"> <!-- box-shadow: none; -->
+
+                                    <div  class="card-header text-center text-white" style="background:#05beee; height: 61px;">
+                                            <div id="titleModificarAuditoria" class="d-flex justify-content-center titulo-modal-new-AuditoriaCA" >
+                                                  <b>Modificar Auditor&iacute;a</b>
+                                            </div>
+                                    </div>
+
+                                    <div class="card-body" style="background: white;">
+                                        <div class="d-flex m-2 titulo-area-modal">
+                                            <div class="mr-auto ml-3 p-0"><b>Datos</b></div>
+                                            <div class="mr-3 pr-4">
+                                                <img src="images/iconos/menu.svg" alt="menu">
+                                            </div>
+                                        </div>
+
+                                        <div class="row m-2">
+                                            <div class="col-6 p-2">
+                                                <div class="row m-1">
+                                                    <div class="col-12 border mb-2">
+                                                        <div class="media-body">
+                                                            <div class="form-group pt-2">
+                                                                <label for="sel_unidad_organizativa" class="label-modal">Unidad Organizativa </label>
+                                                                <div class="">
+                                                                    <select onChange="vw_auditorias_list.cargarSelectSedesFilter('sel_sede')" name="sel_unidad_organizativa" class="form-control select-form" id="sel_unidad_organizativa">
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 border">
+                                                        <div class="media-body">
+                                                            <div class="form-group pt-2">
+                                                                <label for="sel_tipo_auditoria" class="label-modal">Tipo de Auditor&iacute;a </label>
+                                                                <div class="input-group">
+                                                                    <select name="sel_tipo_auditoria" class="form-control select-form" id="sel_tipo_auditoria">
+                                                                        <option value="" disabled selected>Seleccionar</option>
+                                                                        <option value="Interna">Interna</option>
+                                                                        <option value="Externa">Externa</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-6 p-2">
+                                                <div class="row m-1">
+                                                    <div class="col-12 border mb-2">
+                                                        <div class="media-body">
+                                                            <div class="form-group pt-2">
+                                                                <label for="sel_sede" class="label-modal">Sede A realizar Auditor&iacute;a </label>
+                                                                <div class="input-group">
+                                                                    <select name="sel_sede" class="form-control select-form" id="sel_sede">
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mx-2 titulo-area-modal">
+                                            <div class="col-6 pt-2">
+
+                                                <div class="row m-1">
+                                                    <div class="col-10 mb-2">
+                                                        Seleccionar Normas
+                                                    </div>
+                                                    <div class="col-2 mb-2" id="divCountNormasModificar">
+                                                        02
+                                                    </div>
+                                                    <div class="col-12 border pt-2" style="height: 20vh;">
+                                                        <div class="media-body" >
+                                                            <div class="form-group">
+                                                                <div class=""> <!-- style="padding-left: 1.5rem !important;" -->
+                                                                    <select name="sel_normas[]" size="6" onchange="selectNormas(this)"  class="form-control select-normas"  style="padding: 10px !important; height: 80px !important;" id="sel_normas" multiple>
+
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-6 p-2">
+                                                <div class="row m-1">
+                                                    <div class="col-12 mb-2">
+                                                        Rango de Fechas
+                                                    </div>
+                                                    <div class="col-12 border mb-1 pt-2">
+                                                        <div class="media-body">
+                                                            <div class="form-group">
+                                                                <label for="tx_date_start_auditoria" class="label-modal">Fecha Inicio </label>
+                                                                <div class="input-group" style="padding: 0px;">
+                                                                    <input type="text" class="form-control select-fechas bg-white" id="tx_date_start_auditoria" name="tx_date_start_auditoria" onChange="vw_auditorias_list.validarFechas(2)" autocomplete="off" placeholder="Desde" >
+                                                                    <input type="text" class="form-control select-fechas bg-white" id="tx_date_start_auditoria_ver" name="tx_date_start_auditoria_ver" disabled readonly >
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 border pt-2">
+                                                        <div class="media-body">
+                                                            <div class="form-group">
+                                                                <label for="tx_date_end_auditoria" class="label-modal">Fecha Fin </label>
+                                                                <div class="input-group">
+                                                                    <input type="text" class="form-control select-fechas bg-white" id="tx_date_end_auditoria" name="tx_date_end_auditoria" onChange="vw_auditorias_list.validarFechas(2)" autocomplete="off" placeholder="Hasta">
+                                                                    <input type="text" class="form-control select-fechas bg-white" id="tx_date_end_auditoria_ver" name="tx_date_end_auditoria_ver" disabled readonly >
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 border pt-2 label-modal" id="divMaxCambiosDate" style="color: red; font-family: ProductSans !important; font-size: 14;">
+                                                        * No puedes realizar m&aacute;s cambios de fechas.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="d-flex mt-1 justify-content-center">
+                                            <div class="" id="divDetalleObservacion2" class="textoObservaciones2CA">
+                                                <span>Ver observaciones</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mt-2">
+
+                                            <div class="col-6 p-0"> <!-- class="btn-modificarCA float-right" -->
+                                                <button type="button" onClick="modificarAuditoria()" class="btn-modificarCA float-right" id="bt_modificar_auditoria" name="bt_modificar_auditoria">Modificar</button>
+                                            </div>
+                                            <div class="col-6">
+                                                <button type="button" onClick="$('#modificarAuditoriaModal').removeClass('fade').modal('hide');" class="btn-cerrarCA" data-dismiss="modal" id="bt_cerrar_modificar_auditoria" name="bt_cerrar_modificar_auditoria">Cancelar</button>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- end modal Modificar-Corregir auditoria-->
+
+        <!-- start modal confirmar Modificar-Corregir auditoria -->
+        <div class="modal fade"  id="modalConfirmarCambiosAuditoria" tabindex="-1" role="dialog" aria-labelledby="ConfirmarCambiosAuditoriaModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered rounded" role="document" style="max-width: 300px; z-index: 1030; ">
+
+                <div class="modal-content rounded border-0" style=" background-color:rgba(0,0,0,.0001) !important; box-shadow: none;">
+                    <div style="overflow: hidden;overflow-x: hidden; ">
+                        <div class="modal-body" id="" style="padding: 0px;">
+                            <div class="col-sm-12 col-md-12" style="color:#05beee; width: 100%; padding: 0px;">
+
+                                <div class="card border-0" style="padding-top:0px; box-shadow: none; width: 100%;">
+                                    <div class="card-header text-white" style="background:#05beee; height: 95px;">
+                                            <div class="d-flex justify-content-center">
+                                                <img src="images/iconos/informacio1.svg">
+                                            </div>
+                                    </div>
+                                    <div class="card-body" style="background: white;">
+                                        <div class="d-flex mb-3 justify-content-center titulo-confirmar-ingreso-auditoriaCA" style="text-align: center !important;">
+                                            <b>Se guardar&aacute;n los cambios <br> de la auditor&iacute;a</b>
+                                        </div>
+                                        <!--div class="d-flex mb-3 justify-content-center titulo-confirmar-ingreso-auditoriaCA">
+                                            <b>de la auditor&iacute;a</b>
+                                        </div-->
+                                        <div class="d-flex mb-3 justify-content-center pregunta-confirmar-ingreso-auditoriaCA mx-0" style="height: 50px !important;">
+                                            <b>¿Desea confirmar los cambios?</b>
+                                        </div>
+                                        <div class="mt-3 mt-2 mx-0">
+                                            <div class="d-flex mt-3 mx-0 justify-content-between">
+                                                <div class="">
+                                                    <button type="button" onClick="confirmarCambiosAuditoria()" class="btn-confirmar-ingreso-auditoriaCA">Confirmar</button>
+                                                </div>
+                                                <div class="">
+                                                    <button type="button" onClick="$('#modalConfirmarCambiosAuditoria').modal('hide');$('#modificarAuditoriaModal').modal('show');" class="btn-cerrar-ingreso-auditoriaCA">Cerrar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- end modal confirmar Modificar-Corregir auditoria -->
+
+        <!-- start modal exito Modificar-Corregir auditoria -->
+        <div class="modal fade"  id="modalExitoCambiosAuditoria" tabindex="-1" role="dialog" aria-labelledby="ExitoCambiosAuditoriaModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered rounded" role="document" style="max-width: 300px; z-index: 1030; ">
+
+                <div class="modal-content rounded border-0" style=" background-color:rgba(0,0,0,.0001) !important; box-shadow: none;">
+                    <div style="overflow: hidden;overflow-x: hidden; ">
+                        <div class="modal-body" id="" style="padding: 0px;">
+                            <div class="col-sm-12 col-md-12" style="color:#575757c9; width: 100%; padding: 0px;">
+
+                                <div class="card border-0" style="padding-top:0px; box-shadow: none; width: 100%;">
+                                    <div class="card-header text-white" style="background:#d2d97b; height: 95px;">
+                                            <div class="d-flex justify-content-center">
+                                                <img src="images/iconos/correct-1.svg">
+                                            </div>
+                                    </div>
+
+                                    <div class="card-body" style="background: white;">
+                                        <div class="d-flex justify-content-center titulo-exito-ingreso-auditoriaCA">
+                                            <b>Se program&oacute; la auditor&iacute;a <br> con &eacute;xito</b>
+                                        </div>
+                                        <!--div class="d-flex mb-2 justify-content-center titulo-confirmar-ingreso-auditoriaCA">
+                                            <b>con &eacute;xito</b>
+                                        </div-->
+                                        <div class="d-flex mx-0 px-0 mt-4 justify-content-center pregunta-exito-ingreso-auditoriaCA">
+                                            <b>Puede revisar la auditor&iacute;a en <br> cualquier momento</b>
+                                        </div>
+                                        <!--div class="d-flex mb-3 mx-0 justify-content-center pregunta-exito-ingreso-auditoriaCA" style="height: 30px !important;">
+                                            <b>cualquier momento</b>
+                                        </div-->
+
+                                        <div class="my-4 mx-0">
+                                            <div class="d-flex mt-3 mx-0 justify-content-between">
+                                                <div class="">
+                                                    <button type="button" onClick="$('#modalExitoCambiosAuditoria').modal('hide');" class="btn-exito-ingreso-auditoriaCA">De Acuerdo</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- end modal exito Modificar-Corregir auditoria -->
+
+        <!-- start modal historial auditoria-->
+        <div id="historialAuditoriaModal" tabindex="-1" role="dialog" aria-labelledby="historialAuditoriaModalLabel" aria-hidden="true" class="modal fade">
+            <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+                <div class="modal-content">
+
+                    <div class="modal-header hearder-modal text-center pt-3" >
+                        <div class="container-fluid">
+                            <div class="row justify-content-center">
+                                <div class="col-2" style="color: #05beee !important">123</div>
+
+                                <div class="col-8 text-uppercase" id="divTituloHistorialAuditoria">
+                                    <b>Historial de auditor&iacute;a - 10001</b>
+                                </div>
+                                <div class="col-2 btn-close-modalCA pl-3">
+                                        <!--button type="button" id="closeVerAuditoriaModal"><span aria-hidden="true" class="btn-close-modalCA">Cerrar&nbsp;&nbsp;&nbsp;&nbsp;&times;</span></button--> <!-- class="close hearder-modal" data-dismiss="modal" aria-label="Close" -->
+                                        <div class="float-right p-2" cursor="pointer" style="font-weight: bold !important;" onClick="$('#historialAuditoriaModal').modal('hide');">Cerrar&nbsp;&nbsp;<span>&times;</span></div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="container-fluid">
+                            <div class="row mx-2 mt-4 titulo-tabla align-items-center" style="height: 10vh;">
+                                <div class="col-3">Tipo de Modificaci&oacute;n</div>
+                                <div class="col-3">Fecha de Modificaci&oacute;n</div>
+                                <div class="col-3">Dato Inicial</div>
+                                <div class="col-3">Dato Actual</div>
+                            </div>
+                            <div id="divDetalleHistorialAuditoria">
+                                <!--div class="row mx-2 mt-2 mb-5 row-table-modal align-items-center" style="height: 10vh;">
+                                      <div class="col-3">Rango de Fechas</div>
+                                      <div class="col-3">04-06-2020</div>
+                                      <div class="col-3">20/01/2020 al 25/03/2020</div>
+                                      <div class="col-3">01/02/2020 al 05/04/2020</div>
+                                </div-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- end modal historial auditoria-->
+
+        <!-- **********************************************  END  UPDATE AUDITORIA  ******************************************** -->
+    </div>
+</div>
+<div class="row justify-content-center">
+    <div class="col-12">
+         <!-- ******************************************  START  ASIGNAR  TEAM  AUDITORES  ************************************** -->
+
+        <!-- start modal asignar equipo auditor-->
+        <div class="modal fade"  id="asignarAuditorModal" tabindex="-1" role="dialog" aria-labelledby="modalasignarAuditor" aria-hidden="true" >
+            <div class="modal-dialog modal-dialog-centered rounded " role="document" style="max-width: 95%; z-index: 1030; ">
+                <div class="modal-content rounded border-0" style="box-shadow: none;">
+                    <div style="overflow-x: hidden; ">
+                        <div class="modal-body" id="" style="padding: 0px;">
+                            <div class="col-sm-12 col-md-12" style="color:#575757c9; width: 100%; padding: 0px;">
+                                <div class="card border-0" style="padding-top:0px; box-shadow: none; width: 100%;">
+
+
+                                    <div  class="card-header text-center text-white" style="background:#05beee; height: 61px;">
+                                        <div id="tituloModalAU" class="d-flex justify-content-center titulo-modal-new-AuditoriaCA" >
+
+                                        </div>
+                                    </div>
+                                    <div class="card-body" style="background: white;">
+                                        <div class="d-flex m-2 titulo-area-modal">
+                                            <div class="mr-auto p-2"><b>Detalle</b></div>
+                                            <div class="p-2">
+                                                <img src="images/iconos/menu.svg" alt="menu">
+                                            </div>
+                                            <div style="width: 100%;text-align: -webkit-center; position: absolute; z-index: 2;margin-top: 100px;">
+                                                <div class="preloader" id="preloader4" style="display: none;" > </div>
+                                                <div id="preloader_txt4" style="display: none; color: black;"> <b>Cargando Datos...</b></div>
+
+                                                </div>
+                                        </div>
+                                        <div class="row m-2">
+                                            <div class="col-12 p-2">
+                                                <div class="row m-1">
+                                                    <div class="p-0 mb-2" style="width: 21% !important;">
+                                                        <div class="media-body">
+                                                            <div class="form-group pt-2">
+                                                                <input type="hidden" id="idAuditoria">
+                                                                <label for="" class="titulo-area-modalAsignar">Unidad de Negocio</label>
+                                                                <div id="divTextoUnidadOrganizativaAA" class="media-body mt-1 titulo-items-modalAsignar">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="mb-2 p-0" style="width: 21% !important;">
+                                                        <div class="media-body">
+                                                            <div class="form-group pt-2">
+                                                                <label for="" class="titulo-area-modalAsignar">Sede a realizar Auditor&iacute;a</label>
+                                                                <div id="divTextoSedeAA" class="media-body mt-1 titulo-items-modalAsignar">
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="p-0" style="width: 14% !important;">
+                                                        <div class="media-body">
+                                                            <div class="form-group pt-2">
+                                                                <label for="" class="titulo-area-modalAsignar">Tipo de Auditor&iacute;a</label>
+                                                                <div id="divTextoTipoAuditoriaAA" class="media-body mt-1 titulo-items-modalAsignar">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="p-0" style="width: 18% !important;">
+                                                        <div class="media-body">
+                                                            <div class="form-group pt-2">
+                                                                <label for="" class="titulo-area-modalAsignar">Normas</label>
+                                                                <div id="divTextoNormasAA" class="media-body mt-1 titulo-items-modalAsignar">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="p-0" style="width: 13% !important;">
+                                                        <div class="media-body">
+                                                            <div class="form-group pt-2">
+                                                                <label for="" class="titulo-area-modalAsignar">Fecha Inicio</label>
+                                                                <div id="divFechaInicioCA_AA" class="media-body mt-1 titulo-items-modalAsignar">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="p-0" style="width: 13% !important;">
+                                                        <div class="media-body">
+                                                            <div class="form-group pt-2">
+                                                                <label for="" class="titulo-area-modalAsignar">Fecha Fin</label>
+                                                                <div id="divFechaFinCA_AA" class="media-body mt-1 titulo-items-modalAsignar">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+<!--                                        <div class="row m-2" style="height: 1.8rem;">-->
+<!--                                        </div>-->
+                                        <div class="row my-2">
+                                            <div class="col-12">
+                                              <div class="row" >
+
+                                                  <div class="col-4">
+                                                <div class="row m-1">
+
+                                                    <div class="col-9 mb-2 p-0 Titulo_Rol_Asignacion" id='lb_lider'>
+                                                        Auditor L&iacute;der
+                                                    </div>
+                                                    <div class="col-3 mb-2 pl-0 Titulo_Rol_Asignacion" >
+                                                        <img class="p-1" src="./images/iconos/rating_1.svg" style="width: 30px; object-fit: contain; height: 30px;">
+                                                        <span id="divCountAuditorLider">0</span>
+                                                    </div>
+                                                    <div class="col-12 border pt-2  caja-list2">
+                                                        <ol id="selectableAL">
+
+                                                          </ol>
+
+                                                </div>
+                                                    <!-- <div class="col-12 border pt-2" style="height: 140px !important;">
+                                                        <div class="media-body" >
+                                                            <div class="form-group">
+                                                                <div class="">
+                                                                    <select name="sel_AuditorLider[]" size="6" class="form-control select-normasNEW"  style="padding: 0px !important; height: 120px !important;" id="sel_AuditorLider" multiple>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div> -->
+                                                </div>
+                                                </div>
+                                                  <div class="col-4">
+                                                          <div class="row m-1">
+                                                              <div class="col-9 mb-2 Titulo_Rol_Asignacion" id='lb_auditor'>
+                                                                  Auditor
+                                                              </div>
+                                                              <div class="col-3 pl-0 mb-2 Titulo_Rol_Asignacion" >
+                                                                  <img class="p-1" src="./images/iconos/Group_7.svg" style="width: 33px; object-fit: contain;  height: 30px;">
+                                                                  <span id="divCountAuditor">0</span>
+                                                              </div>
+                                                              <div class="col-12 border pt-2  caja-list2">
+                                                                <ol id="selectableAU">
+
+                                                                  </ol>
+
+                                                        </div>
+                                                              <!-- <div class="col-12 border pt-2" style="height: 140px !important;">
+                                                                  <div class="media-body" >
+                                                                      <div class="form-group">
+                                                                          <div class=""> onChange="selectNewNormas(this);"
+                                                                              <select name="sel_Auditor[]" size="6" class="form-control select-normasNEW"  style="padding: 0px !important; height: 120px !important;" id="sel_Auditor" multiple>
+                                                                              </select>
+                                                                          </div>
+                                                                      </div>
+                                                                  </div>
+
+                                                              </div> -->
+                                                          </div>
+                                                      </div>
+                                                <div class="col-4">
+                                                <div class="row m-1">
+                                                    <div class="col-9 mb-2 Titulo_Rol_Asignacion" id='lb_observador'>
+                                                        Observador
+                                                    </div>
+                                                    <div class="col-3 mb-2 pl-0 Titulo_Rol_Asignacion" >
+                                                        <img class="p-1" src="./images/iconos/ojo_7.svg" style="width: 33px; object-fit: contain; height: 30px;">
+                                                        <span id="divCountObservador">0</span>
+                                                    </div>
+                                                    <div class="col-12 border pt-2  caja-list2">
+                                                        <ol id="selectableOB">
+
+                                                          </ol>
+
+                                                </div>
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                        <div class="row mt-4 col-12">
+                                            <div class="col-12 d-flex justify-content-center">
+                                                <div class="p-2 m-2">
+
+                                                    <button type="button"  class="btn-modificarCA confirm2" id="bt_modificar_auditoria" name="bt_modificar_auditoria">Asignar</button>
+                                                </div>
+                                                <div class="p-2 m-2">
+                                                    <button type="button" class="btn-close" data-dismiss="modal" id="bt_cerrar_ver_auditoria" name="bt_cerrar_ver_auditoria">Cancelar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- end modal asignar equipo auditor-->
+
+        <!-- ******************************************  END  ASIGNAR  TEAM  AUDITORES  ************************************** -->
+
+
+
+        </div>
+        <!-- end modal_2 ver-->
+
+        <!-- alert datos Guardados AUDITORES SELECCIONADOS-->
+        <!-- start modal confirmar Modificar-Corregir auditoria -->
+
+        <!-- end modal confirmar Modificar-Corregir auditoria -->
+        <!-- alert datos Guardados AUDITORES SELECCIONADOS-->
+
+    <div class="modal fade"  id="modalConfirmarAuditor2_2" tabindex="-1" role="dialog" aria-labelledby="confirmarAuditor2_2ModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered rounded" role="document" style=" border-radius: 10px 10px 0px 0px; max-width: 21.875rem; z-index: 1030; ">
+
+            <div class="modal-content rounded border-0" style=" background-color:rgba(0,0,0,.0001) !important; box-shadow: none;">
+                <div style="overflow: hidden;height: 50rem;overflow-x: hidden; ">
+                    <div class="modal-body" id="" style="padding: 0px;">
+                        <div class="col-sm-12 col-md-12" style="color:#05beee; width: 100%; padding: 0px;">
+
+                            <div class="card" style="padding-top:0px; box-shadow: none; width: 100%;">
+                                <div class="card-header text-white" style="background:#05beee; height: 95px;">
+                                    <div class="d-flex justify-content-center">
+                                        <img src="images/iconos/informacio1.svg">
+                                    </div>
+                                </div>
+                                <div class="card-body" style="background: white; height: 27rem;background: white;overflow-y: scroll;max-height: 35rem !important;">
+                                    <div class="d-flex justify-content-center text-center title_confrim_asignation mb-4" style="height:0px !important; font-size: 20px;">
+                                        <b>Se guardará la asignaci&oacute;n</b>
+                                    </div>
+                                    <div class="d-flex mb-3 justify-content-center title_confrim_asignation" style="font-size: 20px;">
+                                        <b>del equipo</b>
+                                    </div>
+                                        <div class="d-flex mb-3 mx-0 justify-content-center title_confrim_asignation" style="height: 50px !important; font-size: 15px;">
+                                        <b>¿Desea confirmar la acci&oacute;n?</b>
+                                    </div>
+                                    <div class="d-flex mt-2 titulo-area-modal">
+                                        <div class="mr-auto titulo-area-modalCA p-0"><b>Auditor Lider</b></div>
+                                        <div class="mr-3">
+                                            <img src="images/iconos/menu.svg" alt="menu">
+                                        </div>
+                                    </div>
+                                    <div class="d-flex flex-column mt-0">
+                                        <div id="divAuditorLiderName" class="media-body mt-1 titulo-items-modalCA">
+                                        </div>
+                                    </div>
+                                    <div class="d-flex mt-2 titulo-area-modal">
+                                        <div class="mr-auto titulo-area-modalCA p-0"><b>Equipo de Auditores</b></div>
+                                        <div class="mr-3">
+                                            <img src="images/iconos/menu.svg" alt="menu">
+                                        </div>
+                                    </div>
+                                    <div class="d-flex flex-column mt-0" id="divEquipoAuditor">
+                                        <div id="divAuditorName" style="width: 100%" class="media-body mt-1 titulo-items-modalCA">
+
+                                        </div>
+
+                                    </div>
+                                    <div class="d-flex mt-2 titulo-area-modal">
+                                        <div class="mr-auto titulo-area-modalCA p-0"><b>Observador</b></div>
+                                        <div class="mr-3">
+                                            <img src="images/iconos/menu.svg" alt="menu">
+                                        </div>
+                                    </div>
+                                    <div class="d-flex flex-column mt-0">
+                                        <div id="divAuditorObservadorName" class="media-body mt-1 titulo-items-modalCA">
+                                        </div>
+                                    </div>
+                                    <div class="row space"> <br>
+                                    </div>
+                                </div>
+                                <div class="card-body" style="background: white;">
+                                    <div class="mt-3 mt-2 mx-0">
+                                    <div class="d-flex mb-3 mx-0 justify-content-center " style="  color: #000000 !important;">
+                                        <b>¿Desea confirmar el equipo?</b>
+                                    </div>
+                                    </div>
+
+                                    <div class="mt-3 mt-2 mx-0">
+                                        <div class="d-flex mt-3 mx-0 justify-content-between">
+                                            <div class="">
+                                                <input type="hidden" id="value_body" >
+                                                <button type="button" onClick="vw_auditor_list.sendAsignarAuditor();" class="btn-confirmar-ingreso-auditoriaCA">Confirmar</button>
+                                            </div>
+                                            <div class="">
+                                                <button type="button" onClick="$('#modalConfirmarAuditor2_2').modal('hide');$('#asignarAuditorModal').modal('show');" class="btn-cerrar-ingreso-auditoriaCA">Cerrar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+          <!-- alert datos Guardados -->
+          <div class="modal fade "  id="modalShowAsignacionAlertOk" tabindex="-1" role="dialog" aria-labelledby="modalAddCompanyTitle" aria-hidden="true" >
+            <div class="modal-dialog modal-dialog-centered rounded " role="document" style="max-width: 472px; z-index: 1030; ">
+                <div class="modal-content rounded border-0" style="border: 0px !important; background-color:rgba(0,0,0,.0001) !important; box-shadow: none;">
+
+                    <div style="overflow: hidden;height: 500px;overflow-x: hidden; ">
+                        <div class="modal-body" id="">
+                            <div class="col-sm-12 col-md-12" style="color:#575757c9;">
+
+                                <div class="card border-0" style=" border-radius: 10px; box-shadow: none;">
+                                    <div class="card-header text-center text-white  " style="background:#d2d97b; height: 95px;"><img src="images/iconos/correct_1.svg"><span><b><br><br>&nbsp;&nbsp;&nbsp;&nbsp;</b></span></div>
+
+                                    <div class="card-body">
+                                        <div class="row p-0 d-flex justify-content-center">
+                                            <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important; font-family: ProductSansRegular !important; " >
+                                                <h4> <b>Se guardarón los datos con éxito</b></h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="espacio"></div>
+                                    <div class="card-body">
+                                        <div class="row p-0 d-flex justify-content-center">
+                                            <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important; font-family: ProductSansRegular !important; font-size: 15px;" >
+                                                <b>Puedes revisar la auditoría en cualquier momento</b>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="espacio"></div>
+                                    <div class="card-body">
+                                        <div class="row p-0 d-flex justify-content-center">
+                                            <div class="col-sm-12 align-self-center text-center" style="color: #000000 !important; font-family: ProductSansRegular !important; font-size: 15px;" >
+                                                <button type="button" onclick="$('#modalShowAsignacionAlertOk').removeClass('fade').modal('hide');" id="btnSalida"  class="btn  btn-raised" style="background-color: #d2d97b; height: 47px; width: 254px; object-fit: contain; border-radius: 4.4px !important;"  >De Acuerdo</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- alert Datos Guardados-->
+
+
+        <!-- start modal_2 ver-->
+        <div class="modal fade "  id="modalShowAuditor2_2" tabindex="-1" role="dialog" aria-labelledby="modalAddCompanyTitle" aria-hidden="true" >
+            <div class="modal-dialog modal-dialog-centered rounded dialog-positionAU " role="document">
+                <div class="modal-content rounded border-0 modal-FormAuditorVer " >
+                    <div class="modal-header fix-header-modal">
+                        <div class="card-header text-left text-white  card-header-FormAuditor" >
+                            <div class="row">
+                                <div class="col-2">
+                                </div>
+                                <div id="namePerfil_2" class="col-8 text-center txtHeadModalAuditor">
+                                   Buscando...
+                                </div>
+                                <div class="col-2 d-flex ml-auto">
+                                    <button type="button" class="close btn-close-auditor" id="cerrarModal" data-dismiss="modal" aria-hidden="true">
+                                        <img src="./images/iconos/sign_copy.svg" class="sign-copyVer">
+
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-body dialog-position" id="bodymodalShowAuditor" style=" justify-content:space-around; align-content:center; width:100%; height:40.125rem; overflow-y: scroll;">
+                    <div class="card border-0" style="border: 0px !important; border-radius: 10px; box-shadow: none; margin-left: 5% !important; ">
+                        <div class="card-body2">
+                            <div class="row p-0">
+                                <div class="detalle-formauditor">
+                                    <p >Detalle</p>
+                                </div>
+                                <div class="col-9 p-2">
+                                    <hr>
+                                </div>
+                                <div class="col-1 d-flex ml-auto">
+                                    <img src="./images/iconos/menu.svg" class="menu-1-1">
+                                </div>
+                            </div>
+                            <div class="row p-2 d-flex justify-content-between>">
+                                <div style="width: 33%;">
+                                    <label for="read_rol_2" class="bmd-label-static titleInput2">Rol </label><br>
+                                    <p id="read_rol_2"></p>
+                                </div>
+                                <div style="width: 33%;">
+                                    <label for="read_cargo_2" class="bmd-label-static titleInput2">Cargo </label><br>
+                                    <p id="read_cargo_2"></p>
+                                </div>
+                                <div style="width: 33%;">
+                                    <label for="read_sede_2" class="bmd-label-static titleInput2">Sede </label><br>
+                                    <p id="read_sede_2"></p>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="card-body2">
+                            <div class="row p-0">
+                                <div class="capacitaciones-verauditor">
+                                    <p >Capacitaciones</p>
+                                </div>
+                                <div class="col-8 p-2">
+                                    <hr>
+                                </div>
+                                <div class="col-1 d-flex ml-auto">
+                                    <img src="./images/iconos/img_smile.svg" class="menu-1-1">
+                                </div>
+                            </div>
+                            <div id="read_capacitaciones_2"></div>
+
+                        </div>
+                        <div class="card-body2">
+                            <div class="row p-0">
+                                <div class="experiencia-verauditor">
+                                    <p >Experiencia</p>
+                                </div>
+                                <div style="width: 31.6rem;" class=" p-2">
+                                    <hr>
+                                </div>
+                                <div class="col-1 d-flex ml-auto">
+                                    <img src="./images/iconos/img_double-click.svg" class="menu-1-1">
+                                </div>
+                            </div>
+                            <div id="read_experiencia_2"  ></div>
+                        </div>
+                    </div>
+                </div> <!--modal-body-->
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<! MODAL DE ERROR >
+<div class="modal fade"  id="modalMsgErrorSP1" tabindex="-1" role="dialog" aria-labelledby="ExitoIngresarAuditoriaModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered rounded" role="document" style="max-width: 300px; z-index: 1030; ">
+
+        <div class="modal-content rounded border-0" style=" background-color:rgba(0,0,0,.0001) !important; box-shadow: none;">
+            <div style="overflow: hidden;height: 360px;overflow-x: hidden; ">
+                <div class="modal-body" id="" style="padding: 0px;">
+                    <div class="col-sm-12 col-md-12" style="color:#575757c9; width: 100%; padding: 0px;">
+
+                        <div class="card border-0" style=" padding: 0px; border: 2px solid #ff5a5a; border-radius: 5px;    width: 100%;">
+                            <div class="card-header text-white" style="background:#ff5a5a; height: 95px;">
+                                    <div class="d-flex justify-content-center">
+                                        <img src="images/iconos/informacion3.svg">
+                                    </div>
+                            </div>
+                                <div class="card-body" style="background: white;">
+                                  <table align="center" width= "100%" border="0" >
+                                      <tr>
+                                          <td width="5%" >&nbsp;</td>
+                                               <td width="80%" >
+                                                <div class="d-flex justify-content-center titulo-exito-ingreso-auditoriaCA" style="font-size: 18px;">
+                                                    <b>ERROR !</b>
+                                                </div>
+
+                                               </td>
+                                          <td width="5%">&nbsp;</td>
+                                      </tr>
+
+                                      <tr>
+                                        <td width="5%" >&nbsp;</td>
+                                             <td width="80%" >
+                                                 <div id="subTituloErrorSP1" class="d-flex mb-2 justify-content-center titulo-confirmar-ingreso-auditoriaCA" style="font-size: 18px;">
+                                                       <b>auditorías con éxito</b>
+                                                 </div>
+                                             </td>
+                                        <td width="5%">&nbsp;</td>
+                                       </tr>
+
+                                        <tr>
+                                            <td width="5%" >&nbsp;</td>
+                                                <td width="80%" align="center" >
+                                                    <div id="mensajeErrorSP1" class="d-flex mx-0 px-0 justify-content-center pregunta-exito-ingreso-auditoriaCA">
+                                                        MENSAJE DEL ERROR DINAMICO
+                                                     </div>
+                                                </td>
+                                            <td width="5%">&nbsp;</td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <td width="5%" >&nbsp;</td>
+                                                <td width="80%" >
+                                                    <div class="d-flex mx-0 px-0 justify-content-center pregunta-exito-ingreso-auditoriaCA">
+                                                        &nbsp;
+                                                     </div>
+                                                </td>
+                                            <td width="5%">&nbsp;</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td width="5%" >&nbsp;</td>
+                                                <td width="80%" >
+                                                    <div  class="d-flex mb-3 mx-0 justify-content-center titulo-exito-ingreso-auditoriaCA" >
+                                                        <button type="button" onClick="$('#modalMsgErrorSP1').modal('hide');" class="btn_confirmar_modal bg-danger" style="color: #fff" >De Acuerdo</button>
+                                                    </div>
+                                                </td>
+                                            <td width="5%">&nbsp;</td>
+                                        </tr>
+
+
+
+                                  </table>
+                                </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<! MODAL DE ERROR >
+
+<div id="excel" class="export" style="display: block;">
+    <div class="row">
+        <div class="col-12">
+            <a href="#" id="ListadoDeAuditorias" style="display:none"></a><! PARA DESCARGAR EL EXCEL DEL LISTADO>
+        </div>
+
+    </div>
+</div>
+    <!-- ******************************************  START  JAVASCRIPT  FUNCTION ************************************** -->
+    <script>
+        //$(".").datetimepicker({format: 'd-m-Y', autoclose: true });
+        $('#sandbox-container input').datepicker({
+            dateFormat: "dd/mm/yy", autoclose: true,
+            beforeShow: function() {
+                setTimeout(function(){
+                    $('.ui-datepicker').css('z-index', 99999999999999);
+                }, 0);
+            }
+        });
+
+        $('document').ready(function (){
+
+            // para limitar a 2 el nuevo de normas a selecionar
+            // cuando vas a crear una autoria
+            $("#sel_new_normas").on('change', function(e) {
+                if (Object.keys($(this).val()).length > 2) {
+                    $('option[value="' + $(this).val().toString().split(',')[2] + '"]').prop('selected', false);
+                    swal("Error!!!", "Puedes Seleccionar un máximo de dos (2) normas.")
+                }else{
+                    $("#sel_new_normas option:selected").each(function() {
+                        sel_new_normas = $("#sel_new_normas").val();
+                        console.log("sel_new_normas",sel_new_normas)
+                        countNormas = sel_new_normas.length;
+                        console.log("countNormas",countNormas)
+                        $("#divCountNormas").html(countNormas)
+                    });
+                }
+            });
+
+            // para limitar a 2 el nuevo de normas a selecionar
+            // cuando vas a modificar-correguir una autoria
+            $("#sel_normas").on('change', function(e) {
+                if (Object.keys($(this).val()).length > 2) {
+                    $('option[value="' + $(this).val().toString().split(',')[2] + '"]').prop('selected', false);
+                }else{
+                    $("#sel_normas option:selected").each(function() {
+                        sel_normas = $("#sel_normas").val();
+                        normasCode = $('option:selected', e).attr('Code');
+                        $("#divCountNormas").html(countNormas)
+                    });
+                }
+            });
+
+        })
+
+        // para limitar a 2 el nuevo de normas a selecionar
+        // cuando vas a modificar-correguir una autoria
+        $("#sel_AuditorLider").on('change', function(e) {
+            if (Object.keys($(this).val()).length > 1) {
+                $('option[value="' + $(this).val().toString().split(',')[1] + '"]').prop('selected', false);
+                swal("Error!!!", "Puedes seleccionar un (1) Auditor Lider.")
+
+            }else{
+                $("#sel_AuditorLider option:selected").each(function() {
+                    sel_AuditorLider = $("#sel_AuditorLider").val();
+                    count_AuditorLider = sel_AuditorLider.length;
+                    $("#divCountAuditorLider").html(count_AuditorLider)
+                    var selAL = document.getElementById('sel_AuditorLider');
+                    var selectedAL = selAL.options[selAL.selectedIndex];
+                      NameAL = selectedAL.getAttribute('name');
+
+                });
+            }
+        });
+
+
+        $("#sel_Auditor").on('change', function(e) {
+
+                $("#sel_Auditor option:selected").each(function() {
+                    sel_Auditor = $("#sel_Auditor").val();
+                    count_Auditor = sel_Auditor.length;
+
+                    $("#divCountAuditor").html(count_Auditor)
+
+                });
+
+        });
+
+        $("#sel_Observador").on('change', function(e) {
+
+            $("#sel_Observador option:selected").each(function() {
+                sel_Observador = $("#sel_Observador").val();
+                count_Observador = sel_Observador.length;
+
+                $("#divCountObservador").html(count_Observador)
+
+            });
+
+        });
+
+        $('.confirm2').on('click', function () {
+            var NameAL= [];
+            var NameAU= [];
+            var  NameOBS = [];
+ /*
+            $("#sel_AuditorLider option:selected").each(function() {
+                sel_AuditorLider = $("#sel_AuditorLider").val();
+                count_AuditorLider = sel_AuditorLider.length;
+                $("#divCountAuditorLider").html(count_AuditorLider)
+                var selAL = document.getElementById('sel_AuditorLider');
+                var selectedAL = selAL.options[selAL.selectedIndex];
+                NameAL.push(selectedAL.getAttribute('name'));
+
+            });
+            $("#sel_Auditor option:selected").each(function() {
+                sel_Auditor = $("#sel_Auditor").val();
+                count_Auditor = sel_Auditor.length;
+
+                var selsAU = document.getElementById('sel_Auditor');
+                var selectedsAU = selsAU.options[selsAU.selectedIndex];
+                NameAU.push(selectedsAU.getAttribute('name'));
+
+            });
+
+
+
+           $("#sel_Observador option:selected").each(function() {
+                sel_Observador = $("#sel_Observador").val();
+                count_Observador = sel_Observador.length;
+
+                var selOBS = document.getElementById('sel_Observador');
+                var selectedOBS = selOBS.options[selOBS.selectedIndex];
+                NameOBS.push(selectedOBS.getAttribute('name'));
+
+            });*/
+
+            $( "#selectableAU .ui-selected" ).each(function() {
+            var datos = $( this ).attr('val');
+            if(datos){
+        NameAU.push(datos);
+            }
+        });
+
+        $( "#selectableAL .ui-selected" ).each(function()
+        {
+            var datos = $( this ).attr('val');
+            if(datos)
+            {
+                NameAL.push(datos);
+            }
+
+        });
+
+        $( "#selectableOB .ui-selected" ).each(function() {
+            var datos = $( this ).attr('val');
+            if(datos){
+        NameOBS.push(datos);
+            }
+        });
+
+                   vw_auditor_list.confirmAsignarAuditor(NameAL,NameAU,NameOBS);
+        })
+
+        $( function() {
+    $( "#selectableOB" ).selectable({
+      stop: function() {
+        var result = $( "#divCountObservador" ).empty();
+        //count_Observador =$( ".ui-selected", this ).length;
+        count_Observador =0;
+        $( ".ui-selected", this ).each(function() {
+            var datos = $( this ).attr('name');
+            if(datos){
+                count_Observador=count_Observador+1;
+            }
+            $('.icon' ,this).html('');
+        $(".icon", this).append('<i class="fa fa-check" aria-hidden="true" style="color: green;"></i>')
+        console.log(datos);
+        });
+          var index = $( "#selectableOB li" ).index( this );
+          $("#divCountObservador").html(count_Observador)
+          $( ".ui-selectee", this ).each(function() {
+              if(!$(this).hasClass('ui-selected')){
+                console.log(this);
+                $('.icon' ,this).html('');
+
+              }
+
+        });
+
+      }
+    });
+  } );
+
+  $( function() {
+    $( "#selectableAL" ).selectable({
+      stop: function() {
+        var result = $( "#divCountAuditorLider" ).empty();
+        count_AL =$( ".ui-selected", this ).length;
+        if(count_AL > 1)
+        {
+            //swal("Error!!!", "Puedes selecCionar un (1) Auditor Lider.")
+            let msj = 'Solo puede haber un (1) auditor líder'
+            $( "#subTituloErrorSP1" ).html( '<b> No puedes seleccionar dos (2) auditores lideres.</b>' )
+            $( "#mensajeErrorSP1" ).html( `${msj}` )
+            $( '#modalMsgErrorSP1' ).modal( 'show' ).addClass( 'fade' )
+
+            $( "#selectableAL .ui-selected" ).each(function() {
+                $(this).removeClass('ui-selected');
+                $('.icon' ,this).html('');
+
+            });
+            var result = $( "#divCountAuditorLider" ).html('0');
+
+        }
+        else
+        {
+            $( ".ui-selected", this ).each(function() {
+                var datos = $( this ).attr('name');
+                $('.icon' ,this).html('');
+            $(".icon", this).append('<i class="fa fa-check" aria-hidden="true" style="color: green;"></i>')
+            console.log(datos);
+        });
+          var index = $( "#selectableAL li" ).index( this );
+          $("#divCountAuditorLider").html(count_AL)
+          $( ".ui-selectee", this ).each(function() {
+              if(!$(this).hasClass('ui-selected')){
+                console.log(this);
+                $('.icon' ,this).html('');
+
+              }
+
+        });
+    }
+      }
+    });
+  } );
+
+  $( function() {
+    $( "#selectableAU" ).selectable({
+      stop: function() {
+        var result = $( "#divCountAuditor" ).empty();
+        //count_AU =$( ".ui-selected", this ).length;
+        count_AU=0;
+        $( ".ui-selected", this ).each(function() {
+            var datos = $( this ).attr('name');
+            if(datos){
+                count_AU=count_AU+1;
+            }
+        console.log(datos);
+        $('.icon' ,this).html('');
+        $(".icon", this).append('<i class="fa fa-check" aria-hidden="true" style="color: green;"></i>')
+        });
+          var index = $( "#selectableAU li" ).index( this );
+          $("#divCountAuditor").html(count_AU)
+
+          $( ".ui-selectee", this ).each(function() {
+              if(!$(this).hasClass('ui-selected')){
+                console.log(this);
+                $('.icon' ,this).html('');
+
+              }
+
+        });
+      }
+    });
+  } );
+
+
+
+
+      
+    </script>
+
+
+    <!-- ******************************************  END  JAVASCRIPT  FUNCTION   ************************************** -->
+

@@ -1,0 +1,543 @@
+<link rel="stylesheet" href="./view/ssoma/ssoma.css">
+<link rel="stylesheet" href="./css/pagination.css">
+<style>
+    
+.text-clear {
+    border-radius: 0.375em 0 0 0.375em !important;
+}
+.button-search {
+    border-radius: 0 !important;
+    width: 10px;
+    padding: .375rem .1rem !important;
+}
+.button-clear {
+    border-radius: 0 0.375em 0.375em 0 !important;
+    width: 10px;
+    padding: .375rem .1rem !important;
+}
+.card-body3 {
+    padding: 0rem 0.75rem;
+}
+.Title-Ssoma {
+    margin-bottom: 0.1rem !important;
+}
+
+.mdc-select__selected-text{
+    font-size: 13px !important;
+    transform: translateY(-7px) !important;
+}
+
+.mdc-text-field--outlined {
+    overflow: visible;
+}
+
+.modal-FormObservacion {
+    align-content: center;
+    width: 1200px;
+    height: auto;
+    background-color: rgb(255, 255, 255) !important;
+}
+
+.padding-tabs {
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+.card-header-FormObservacion {
+    width: 1200px;
+    height: 61px;
+    background-color: #d2d97b !important;
+}
+
+.btn-save-observaacion {
+    width: 82px;
+    height: 34px;
+    border-radius: 4px;
+    background-color: #34559c;
+    border: 1.1px solid #34559c;
+    /* border: 1.1px solid #05beee; */
+}
+.scroll-blue{
+    overflow-y: scroll;
+}
+.scroll-blue::-webkit-scrollbar{
+    width: 10px;
+}
+.scroll-blue::-webkit-scrollbar-thumb {
+    background-color: #34559c;
+}
+
+.preloader {
+  width: 70px;
+  height: 70px;
+  border: 10px solid #eee;
+  border-top: 10px solid #666;
+  border-radius: 50%;
+  animation-name: girar;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+.setup-content {
+    padding: 10px;
+}
+@keyframes girar {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.btn-warning2{
+    background-color: #deee05;
+    width: 82px;
+    height: 34px;
+    border-radius: 4px;
+    border: solid 0.8px #ffffff;
+}
+
+.btn-default2{
+    background-color: #c4c4c4;
+    width: 82px;
+    height: 34px;
+    border-radius: 4px;
+    border: solid 0.8px #ffffff;
+}
+.tools {
+    min-height: 30px;
+    border: solid 1px #c8c8c8;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.tool-selected {
+    background-color: #efefef;
+}
+.cbo-evento.mdc-select__anchor {
+    height: 100px !important;
+}
+.cbo-peligro.mdc-select__anchor {
+    height: 100px !important;
+}
+.input-send:focus {
+    border-color:#34559c
+}
+ul.ui-autocomplete.ui-menu { width: 400px !important; }
+  /* Customize the label (the container) */
+
+.mdc-text-field {
+    background-color: white !important;
+    border: solid 1px !important;
+    border-radius: 5px !important;
+    border-color: #c8c8c8 !important;
+}
+
+.mdc-text-field:focus {
+    background-color: white !important;
+}
+
+.mdc-text-field:hover {
+    background-color: white !important;
+}
+
+.mdc-text-field--focused {
+    background-color: white !important;
+}
+
+.mdc-ripple-upgraded--background-focused {
+    background-color: white !important;
+}
+.mdc-text-field:focus {
+    background-color: white !important;
+}
+.mdc-text-field:active {
+    background-color: white !important;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 39px;
+  height: 15px;
+  margin: 0px;
+  margin-left: 8px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 12px;
+  width: 12px;
+  left: 0px;
+  bottom: 1px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #58c25d;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #58c25d;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+</style>
+        <input type="hidden" id="PericonId" value="0">
+
+        <div class="row justify-content-left mt-5 mb-1">
+            <div class=" pt-2" style="width: 4%;">
+                Detalle
+            </div>
+            <div class=" pt-2" style="width: 94%;">
+                <hr>
+            </div>
+            <div class="pt-2" style="/* display: flex; *//* flex-direction: row-reverse; */width: 2%;">
+                <img src="./images/iconos/menu.svg" class="menu-1-1">
+            </div>
+        </div>
+        <div class="row justify-content-left mt-2 mb-4">
+            <div class="col-md-4 pt-2">
+                <div class="mdc-text-field mdc-text-field--filled w-100 field-password pericon_peligro">
+                    
+                    
+                    <span class="mdc-floating-label" id="my-label-id">Peligro</span>
+                    <input class="mdc-text-field__input" name="txt_pericon_peligro" id="txt_pericon_peligro" type="text" aria-labelledby="my-label-id">
+                    <span class="mdc-line-ripple"></span>
+                </div>
+            </div>
+            <div class="col-md-8 pt-2">
+                <div class="mdc-text-field mdc-text-field--filled w-100 field-password pericon_riesgo">
+                    
+                    
+                    <span class="mdc-floating-label" id="my-label-id">Riesgos</span>
+                    <input class="mdc-text-field__input" name="txt_pericon_riesgo" id="txt_pericon_riesgo" type="text" aria-labelledby="my-label-id">
+                    <span class="mdc-line-ripple"></span>
+                </div>
+            </div>
+            <div class="col-md-8 pt-2">
+                <div class="mdc-text-field mdc-text-field--filled w-100 field-password pericon_consecuencia">
+                    
+                    
+                    <span class="mdc-floating-label" id="my-label-id">Consecuencia</span>
+                    <input class="mdc-text-field__input" name="txt_pericon_consecuencia" id="txt_pericon_consecuencia" type="text" aria-labelledby="my-label-id">
+                    <span class="mdc-line-ripple"></span>
+                </div>
+            </div>
+            <div class="col-md-1 pt-2">
+                <div class="mdc-text-field mdc-text-field--filled w-100 field-password pericon_severidad">
+                    
+                    
+                    <span class="mdc-floating-label" id="my-label-id">Severidad</span>
+                    <input class="mdc-text-field__input" name="txt_pericon_severidad" id="txt_pericon_severidad" type="text" aria-labelledby="my-label-id">
+                    <span class="mdc-line-ripple"></span>
+                </div>
+            </div>
+            <div class="col-md-1 pt-2">
+                <div style="text-align: right; width: 100%; margin-right: 0px;height: 100%;" id="btnCancelarEdicion" class="d-none">
+                    <button class="btn btn-system-celeste" style="font-size: 13px; padding: 10px; width: 100%;height: 100%;background-color: #94999b !important;"  onclick="cancelarEdicion()">
+                        <span class="ml-1" >Cancelar</span>
+                    </button>
+                </div>
+            </div>
+            <div class="col-md-2 pt-2">
+                <div style="text-align: right; width: 100%; margin-right: 0px;height: 100%;">
+                    <button class="btn btn-system-celeste" style="font-size: 13px; padding: 10px; width: 100%;height: 100%;background-color: #52BCE9 !important;"  onclick="mostrarAvisoConfirmacion()">
+                        <img src="./images/iconos/plus_.svg" alt="">
+                        <span class="ml-1" id="btnGuardarPericonText">Agregar nuevo</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+<div class="row justify-content-center mt-5 mb-4">
+    <div class="col-md-12">
+        <div class="header-tabla p-3" style="font-size: 15px">
+            <div class="row m-0 justify-content-between" id="tbPERICON">
+                <div class="col-md-3 text-center row">  
+                    Peligro
+                </div>
+
+                <div class="col-md-3 text-center row">
+                    Riesgo
+                </div>
+
+                <div class="col-md-3 text-center row">
+                    Consecuencia
+                </div>
+                <div class="col-md-1 text-center row">  
+                    Severidad
+                </div>
+                <div class="col-md-2 text-center row">  
+                    <div class="col-md-8 text-center">
+                        Estado
+                    </div>
+                    
+                    <div class="col-md-4 text-center">
+                        Editar
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="body-tabla-loader text-center py-3" id="body-tabla-loader">
+            <div class="spinner-border text-primary"></div>
+            <p class="text-center">Buscando resultados ....</p>
+        </div>
+        <div class="body-tabla mt-4 d-none" id="body-tabla-Vacio">
+            <div class="content-registros-no-encontrados">
+                <div>
+                    <img src="./images/newsistema/iconos/calendario-registros-vacios.svg" alt="">
+                    <p class="mt-4">No tiene actividades registradas</p>
+                </div>
+            </div>
+        </div>
+        <div class="body-tabla-list scroll-blue" id="body-tabla-list" style="max-height: 400px;">
+
+        </div>
+        <div id="pagination-container" class="mt-3"></div>
+    </div>
+</div>
+
+
+
+<div class="modal_confirmacion" id="modal-confirmacion-delete">
+    <div class="modal_confirmacion__content">
+        <div class="modal_confirmacion__head bg-danger">
+            <img src="./images/newsistema/iconos/informacion3.svg" alt="">
+        </div>
+        <div class="modal_confirmacion__body">
+            <div class="title mb-4 mt-3" id="mensajeEliminar">
+            </div>
+            <div class="content">
+                ¿Desea confirmar la acción?
+            </div>
+            <div class="footer">
+                <div class="d-flex">
+                    <div class="col-md-6 pl-0">
+                        <button class="btn_confirmar_modal" onclick="deleteObservacionForm()">Confirmar</button>
+                    </div>
+                    <div class="col-md-6 pr-0">
+                        <button class="btn_cerrar_modal" onclick="cerrarModal('modal-confirmacion-delete')">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal_confirmacion" id="modal-confirmacion-delete-mensaje">
+    <div class="modal_confirmacion__content">
+        <div class="modal_confirmacion__head bg-green-lime-modal">
+            <img src="./images/newsistema/iconos/correct1.svg" alt="">
+        </div>
+        <div class="modal_confirmacion__body">
+            <div class="title mb-4 mt-3">
+                Se eliminó la observación con éxito
+            </div>
+            <div class="content">
+                Puede regresar a su bandeja de entrada
+            </div>
+            <div class="footer">
+                <div class="d-flex">
+                    <div class="col-md-12 px-0">
+                        <button class="btn_confirmar_modal bg-green-lime-modal" onclick="cerrarModal('modal-confirmacion-delete-mensaje')">De Acuerdo</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal_confirmacion" id="modal-observacion" >
+    <div class="modal_confirmacion__content " style="width: 375px;">
+        <div class="modal_confirmacion__head d-flex align-items-center">
+            <h6 class="title_modal_header text-left px-3 m-0" style="width: 80%;"></h6>
+            <div style="width: 20% ; cursor:pointer;" onclick="cerrarModal('modal-observacion')">
+                <i class="fas fa-times"></i>
+            </div>
+        </div>
+        <div class="modal_confirmacion__body" style="    height: calc(100vh - 150px); overflow: auto;">
+<!--            <div class="title mb-4 mt-3">-->
+<!--                ¿Estas seguro de eliminar <span class="title_formulario_delete"></span> ?-->
+<!--            </div>-->
+            <div class="content" id="contenido-detalle">
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade "  id="modalShowAlertConfirm" tabindex="-1" role="dialog" aria-labelledby="modalAddCompanyTitle" aria-hidden="true" >
+    <div class="modal-dialog modal-dialog-centered rounded " role="document" style="max-width: 472px; z-index: 1030; ">
+        <div class="modal-content rounded " style="border: 0px !important; background-color:rgba(0,0,0,.0001) !important; box-shadow: none;">
+
+            <div style="overflow: hidden;height: 500px;overflow-x: hidden; ">
+                <div class="modal-body" id="">
+                    <div class="col-sm-12 col-md-12" style="color:#575757c9;">
+                        <div style="width: 100%;text-align: -webkit-center; position: absolute; z-index: 2;">
+                            <div class="preloader" id="preloader" style="display: none;" ></div>
+                            </div>
+                        <div class="card " style=" border-radius: 10px; box-shadow: none;">
+                            <div class="card-header text-center text-white  " style=" border-radius: 10px 10px 0px 0px; background:#05beee; height: 95px;"><img src="images/iconos/informacio1.svg"><span><b><br><br>&nbsp;&nbsp;&nbsp;&nbsp;</b></span></div>
+
+                            <div class="card-body">
+                                <div class="row p-0 d-flex justify-content-center">
+                                    <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;" >
+                                        <h4>
+                                            <b id="titleConfirm"></b>
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="espacio"></div>
+                            <div class="card-body">
+                                <div class="row p-0 d-flex justify-content-center">
+                                    <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;font-size: 15px;" >
+                                        <h5<b>¿Desea confirmar la acción?</b>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="espacio"></div>
+                            <div class="card-body">
+                                <div class="row p-0 d-flex justify-content-center">
+                                    <div class="col-sm-12 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;font-size: 15px;" >
+                                        <button type="button" id="btnValida" class="btn  btn-raised" onclick="guardarPericon();" style="background-color: #05beee; height: 338px; width: 160.4px; object-fit: contain; border-radius: 4.4px !important;" >Confirmar</button>
+
+                                        <button type="button" class="btn   btn-white btn-raised" style=" background-color: #fff; height: 338px;  width: 160.4px; object-fit: contain; border-radius: 4.4px !important;   border: solid 1.1px #000000 !important;" onclick="cancelConfirmPERICON()">Cerrar</button>
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+
+
+
+
+                            <div ></div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade "  id="modalShowAlertOk" tabindex="-1" role="dialog" aria-labelledby="modalAddCompanyTitle" aria-hidden="true" >
+    <div class="modal-dialog modal-dialog-centered rounded " role="document" style="max-width: 472px; z-index: 1030; ">
+        <div class="modal-content rounded border-0" style="border: 0px !important; background-color:rgba(0,0,0,.0001) !important; box-shadow: none;">
+
+            <div style="overflow: hidden;height: 500px;overflow-x: hidden; ">
+                <div class="modal-body" id="">
+                    <div class="col-sm-12 col-md-12" style="color:#575757c9;">
+
+                        <div class="card border-0" style=" border-radius: 10px; box-shadow: none;">
+                            <div class="card-header text-center text-white  " style="background:#d2d97b; height: 95px;"><img src="images/iconos/correct_1.svg"><span><b><br><br>&nbsp;&nbsp;&nbsp;&nbsp;</b></span></div>
+
+                            <div class="card-body">
+                                <div class="row p-0 d-flex justify-content-center">
+                                    <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important; font-family: ProductSansRegular !important; " >
+                                        <h4>
+                                            <b id="titleMessage"></b>
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="espacio"></div>
+                            <div class="card-body" id="bodyActualizar">
+                                <div class="row p-0 d-flex justify-content-center">
+                                    <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important; font-family: ProductSansRegular !important; font-size: 15px;" >
+                                        <b>Puedes regresar a tu bandeja</b>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="espacio"></div>
+                            <div class="card-body">
+                                <div class="row p-0 d-flex justify-content-center">
+                                    <div class="col-sm-12 align-self-center text-center" style="color: #000000 !important; font-family: ProductSansRegular !important; font-size: 15px;" >
+                                        <button type="button" onclick="$('#modalShowAlertOk').removeClass('fade').modal('hide');fnCargarGridPERICON();" id="btnSalida"  class="btn  btn-raised" style="background-color: #d2d97b; height: 47px; width: 254px; object-fit: contain; border-radius: 4.4px !important;"  >De Acuerdo</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+<script src="./js/paginator/pagination.js"></script>
+<!-- <script src="./view/ssoma/Seguimiento-Observaciones-Preventivas/index.js"></script> -->
+<!-- <script src="./view/ssoma/configuracion-de-inspecciones/edit-inspeccion.js"></script> -->
+
+
+<script src="./js/pdfmake/pdfmake.min.js"></script>
+<script src="./js/pdfmake/vfs_fonts.js"></script>
+
+
+
+<script>
+    $('.logoCompany').text(' Gestión de IPERC');
+    fnCargarGridPERICON();
+    
+    $("#txt_date_start").datetimepicker({
+        timepicker:false,
+        format:'d/m/Y',
+    });
+    $("#txt_date_end").datetimepicker({
+        timepicker:false,
+        format:'d/m/Y',
+        onShow:function( ct ){
+          //console.log(moment($('#tx_date_init').val(),'DD/MM/YYYY').format("YYYY-MM-DD"), $('#tx_date_init').val());
+          this.setOptions({
+          minDate:moment($('#txt_date_start').val(),'DD/MM/YYYY').format("YYYY-MM-DD")?moment($('#txt_date_start').val(),'DD/MM/YYYY').format("YYYY-MM-DD"):false
+         })
+        }
+    });
+
+</script>

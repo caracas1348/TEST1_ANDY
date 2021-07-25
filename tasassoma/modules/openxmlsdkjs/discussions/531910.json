@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1208425",
+    "ThreadId": "531910",
+    "Html": "Please help.\r<br />\n<br />\nI have a really simple example where I am doing the following: <br />\n<ul>\n<li>read a .docx as base64 (it contains one image)</li>\n<li>create a OpenXmlPackage </li>\n<li>save back to Base64 </li>\n<li>\nwrite a new file out. <br />\n</li>\n</ul>\nHowever, the resulting files image is corrupt every time. \r<br />\n<br />\nexample: <br />\n<pre><code>var template = fs.readFileSync('templates/content_control_example_1.docx', 'base64');\nvar doc = new openXml.OpenXmlPackage(template);\nvar theContent = doc.saveToBase64();\nvar buffer = new Buffer(theContent, &quot;base64&quot;);\nfs.writeFileSync(&quot;test.docx&quot;, buffer);\n</code></pre>\n\nIs this a known issue?\r<br />\n<br />\nThanks.<br />\n",
+    "PostedDate": "2014-02-14T07:59:17.72-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1303618",
+    "ThreadId": "531910",
+    "Html": "I'm also having this problem. Did you find a solution, or just give up?<br />\n",
+    "PostedDate": "2014-09-11T06:22:01.277-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

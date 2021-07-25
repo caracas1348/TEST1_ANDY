@@ -1,0 +1,172 @@
+<div class="container-fluid">
+  <div class="row px-3">	
+    <main role="main" class="col-md-12 ml-sm-auto col-lg-12 ">
+     <!-- <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Dashboard</h1>
+      </div> 
+    -->
+      <div class="row" >
+        <div class="col-md-12 " style="padding-right: 5px!important; padding-left: 0px!important">
+          <div class="card  h-100 " style="box-shadow: none;">
+            <div class="card-body  ">
+              <form id="fm_visita" name="fm_visita" class="">
+
+   
+				  <span class="titleMain">Datos de Empresa</span>
+				  <br>
+	              <div class="row">
+	             
+	              </div>
+	              <div class="row">
+	                  <div class="col">
+	                    <div class="form-group">
+	                      <label for="tx_ruc" class="bmd-label-static titleInput">RUC<span class="text-warning">*</span></label>
+	                      <input type="text" class="form-control" id="tx_ruc" maxlength="11" >
+	                    </div>
+	                  </div>
+	                  <div class="col">
+	                    <div class="form-group">
+	                    <label for="tx_name" class="bmd-label-static titleInput">Nombre<span class="text-warning">*</span></label>
+	                    <input type="text" class="form-control" id="tx_name" >
+	                  </div>
+	                </div>
+	                <div class="col">
+	                  <div class="form-group">
+	                    <label for="tx_business_name" class="bmd-label-static titleInput">Nombre Comercial<span class="text-warning">*</span></label>              
+	                    <input type="text" class="form-control" id="tx_business_name" >              
+	                  </div>
+	                </div>
+	            </div>
+	           
+	            <div class="row">
+	              <div class="col">
+	                <div class="form-group">
+	                  <label for="tx_business_sector" class="bmd-label-static titleInput">Sector</label>              
+	                  <input type="text" class="form-control" id="tx_business_sector" >              
+	                </div>
+	              </div>
+	              <div class="col">
+	                <div class="form-group">
+	                  <label for="tx_business_pais" class="bmd-label-static titleInput">País</label>              
+	                  <input type="text" class="form-control" id="tx_business_pais" value="Perú">              
+	                </div>
+	              </div>
+	              <div class="col">
+	                <div class="form-group">
+	                  <label for="tx_business_ciudad" class="bmd-label-static titleInput">Ciudad</label>              
+	                  <input type="text" class="form-control" id="tx_business_ciudad">              
+	                </div>
+	              </div>
+	            </div>
+	            
+	            <div class="row">
+	              <div class="col">
+	                <div class="form-group">
+	                  <label for="tx_business_street" class="bmd-label-static titleInput">Dirección</label>              
+	                  <input type="text" class="form-control" id="tx_business_street">              
+	                </div>
+	              </div>
+	              <div class="col"><div class="form-group">
+	                <label for="tx_business_site_web" class="bmd-label-static titleInput">Sitio WEB</label>              
+	                <input type="text" class="form-control" id="tx_business_site_web" >              
+	              </div></div>
+	              <div class="col">
+	                <div class="form-group">
+	                  <label for="sel_external_company_type" class="bmd-label-static titleInput">Tipo<span class="text-warning">*</span></label>              
+	                  <select name="sel_external_company_type" class="form-control bg-white" id="sel_external_company_type" required disabled>
+	                    <option value="0"></option>
+	                    <option value="1">Proveedor</option>
+	                    <option value="2">Transportista</option>
+	                    <option value="3">Contratista</option>
+	                  </select>
+	                </div>
+
+	              </div>
+	              
+	              
+	            </div>
+
+	            <div class="row">
+	             
+	            </div>
+				<span class="titleMain">Datos de Usuario</span>
+				<br>
+	            <div class="row">
+	             
+	            </div>           
+	            <div class="row">
+
+	              <div class="col">
+	                <div class="form-group">
+	                  <label for="tx_business_dni" class="bmd-label-static titleInput">DOCUMENTO DE IDENTIDAD<span class="text-warning">*</span></label>              
+	                  <input type="text" class="form-control" id="tx_business_dni" maxlength="10" >              
+	                </div>
+	              </div>
+
+	              <div class="col">
+	                <div class="form-group">
+	                  <label for="tx_business_nombre" class="bmd-label-static titleInput">Nombre<span class="text-warning">*</span></label>              
+	                  <input type="text" class="form-control" id="tx_business_nombre" >              
+	                </div>
+	              </div>
+	            <div class="col">
+	              <div class="form-group">
+	                <label for="tx_business_apelllido" class="bmd-label-static titleInput">Apellido<span class="text-warning">*</span></label>              
+	                <input type="email" class="form-control" id="tx_business_apelllido" >              
+	              </div>
+	            </div>
+	             
+	            
+	            </div>
+	            <div class="row">
+
+	              <div class="col">
+	                <div class="form-group">
+	                  <label for="tx_business_mobile" class="bmd-label-static titleInput">Teléfono</label>              
+	                  <input type="text" class="form-control" id="tx_business_mobile" >              
+	                </div>
+	              </div>
+	            <div class="col">
+	              <div class="form-group">
+	                <label for="tx_business_email" class="bmd-label-static titleInput">Email<span class="text-warning">*</span></label>              
+	                <input type="email" class="form-control" id="tx_business_email" onblur="autoCompleteDate(this.id,'tx_user_responsable')" >              
+	              </div>
+	            </div>
+
+	            <div class="col"><div class="form-group">
+	              <label for="tx_business_client_flag" class="bmd-label-static titleInput">Usuario<span class="text-warning">*</span></label>              
+	              <input type="text" class="form-control col-sm-12" id="tx_user_responsable" >
+	              
+	            </div>
+	          </div>
+	             
+	            
+	            </div>
+
+	            <div class="row">
+	              
+	              <div class="col"><div class="form-group">
+	                <label for="tx_user_pass_1" class="bmd-label-static titleInput">Contraseña<span class="text-warning">*</span></label> 
+	                <input type="password" class="form-control col-sm-12" id="tx_user_pass_1"  >
+	                <!-- <small id="dateSystem" class="text-help colorLight"></small> -->
+	              </div></div>
+	              <div class="col">
+	                <div class="form-group">
+	                  <label for="tx_user_pass_2" class="bmd-label-static titleInput">Repetir Contraseña<span class="text-warning">*</span></label> 
+	                  <input type="password" class="form-control col-sm-12" id="tx_user_pass_2"   >            
+	                </div>
+	              </div>
+				  <div class="col"></div>
+	            </div>
+              </form>
+            </div>
+          </div>
+        </div>
+		<div class="text-center col-md-12 col-lg-12">
+            <button type="button" class="btn btn-green-lime btn-raised btn-rounded" id="bt_update_external_company">Actualizar</button>
+        </div>
+      </div>      
+    </main>
+  </div>
+
+</div>

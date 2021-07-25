@@ -1,0 +1,325 @@
+
+<div id="IdDivMenuAuditoria" name = "IdDivMenuAuditoria" class="d-flex justify-content-center align-items-center" style="        height: calc(100vh - 80px);">
+
+
+
+</div>
+
+<script>
+
+   /*  console.log("#########################################    DATOS SESSION  #################")
+    console.log("vtas_id:",getCookie("vtas_id"+sessionStorage.tabVisitasa))
+    console.log("vtas_type_user:",getCookie("vtas_type_user"+sessionStorage.tabVisitasa))
+    console.log("vtas_id_hash:",getCookie("vtas_id_hash"+sessionStorage.tabVisitasa))
+    console.log("vtas_perfil:",getCookie("vtas_perfil"+sessionStorage.tabVisitasa))
+    console.log("vtas_rolexternalrol:",getCookie("vtas_rolexternalrol"+sessionStorage.tabVisitasa))
+    console.log("vtas_sede:",getCookie("vtas_sede"+sessionStorage.tabVisitasa))
+    console.log("#########################################    DATOS SESSION  ##################") */
+    /*setCookie("vtas_id"+sessionStorage.tabVisitasa, "", 0);
+    setCookie("vtas_type_user"+sessionStorage.tabVisitasa, "", 0);
+    setCookie("vtas_rolexternalrol"+sessionStorage.tabVisitasa, '', 0);
+    destroy_cookies("vtas_id"+sessionStorage.tabVisitasa);
+    destroy_cookies("vtas_id_hash"+sessionStorage.tabVisitasa);
+    destroy_cookies("vtas_fullname"+sessionStorage.tabVisitasa);
+    destroy_cookies("vtas_external_company_id"+sessionStorage.tabVisitasa);
+    destroy_cookies("vtas_external_user"+sessionStorage.tabVisitasa);
+    destroy_cookies("vtas_perfil"+sessionStorage.tabVisitasa);
+    destroy_cookies("vtas_type_user"+sessionStorage.tabVisitasa);*/
+
+   // prompt("xxxxx", getCookie("vtas_rolexternalrol"+sessionStorage.tabVisitasa))
+
+    if(getCookie("vtas_rolexternalrol"+sessionStorage.tabVisitasa) == 'ROL_LIDERAUDITORIA')
+    {
+        //console.log("############################ ENTRO EN MENU AHORA A CENTRAR #############################");
+        menuc = `
+
+
+                        <div >
+                            <div id="secWelcomeAuditoria">
+                                <div id="msgWelcomeAuditoria" ><b>Bienvenido</b> al Sistema de Gesti&oacute;n de Auditor&iacute;as <b>TASA</b></div>
+                            </div>
+                            <div id="barraImg">
+                                <div class="mt-4 mb-5"><img src="images/barra_ini.svg" ></div>
+                            </div>
+                            <!-- Contenedores de Mensaje de Bienvenida }-->
+
+                            <div class="modulosTasa" >
+                                <div class="modulosTasaInt text-center">
+
+                                    <div id="divModulo1" class="moduloTasa"  title="" >
+                                        <div >
+                                            <div class="moduloSeparador" >
+                                            </div>
+                                        </div>
+
+                                        <div class="labelModulo" >
+                                        </div>
+                                    </div>
+
+                                    <div class="moduloSeparador">
+                                    </div>
+
+                                    <div id="divModuloGestionarAuditoria" class="moduloTasa"  title="Gestionar Auditor&iacute;as" >
+                                        <div >
+                                            <div id="moduloGestionarAuditoria" onclick="showxMenuGestAudi();" >
+                                            </div>
+                                        </div>
+
+                                        <div class="labelModulo" >Gestionar Auditor&iacute;as
+                                        </div>
+                                    </div>
+
+                                    <div class="moduloSeparador" >
+                                    </div>
+
+                                    <div id="divModulo2" class="moduloTasa"  title="" >
+                                        <div >
+                                            <div class="moduloSeparador" >
+                                            </div>
+                                        </div>
+
+                                        <div class="labelModulo" >
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>`;
+
+
+
+    }
+    else
+    {
+
+        if(getCookie("vtas_rolexternalrol"+sessionStorage.tabVisitasa) == 'ROL_RESPONSABLEAUDITORIA')
+        {
+
+            menuc = `
+
+
+                            <div >
+                                <div id="secWelcomeAuditoria">
+                                    <div id="msgWelcomeAuditoria" ><b>Bienvenido</b> al Sistema de Gesti&oacute;n de Auditor&iacute;as <b>TASA</b></div>
+                                </div>
+                                <div id="barraImg">
+                                    <div class="mt-4 mb-5"><img src="images/barra_ini.svg" ></div>
+                                </div>
+                                <!-- Contenedores de Mensaje de Bienvenida }-->
+
+                                <div class="modulosTasa" >
+                                    <div class="modulosTasaInt text-center">
+
+                                        <div id="divModulo1" class="moduloTasa"  title="" >
+                                            <div >
+                                                <div class="moduloSeparador" >
+                                                </div>
+                                            </div>
+
+                                            <div class="labelModulo" >
+                                            </div>
+                                        </div>
+
+                                        <div class="moduloSeparador">
+                                        </div>
+
+                                        <div id="divModuloGestionarAuditoria" class="moduloTasa"  title="Gestionar Auditor&iacute;as" >
+                                            <div >
+                                                <div id="moduloGestionarAuditoria" onclick="showxMenuResponsableAuditoria();" >
+                                                </div>
+                                            </div>
+
+                                            <div class="labelModulo" >Gestionar Auditor&iacute;as
+                                            </div>
+                                        </div>
+
+                                        <div class="moduloSeparador" >
+                                        </div>
+
+                                        <div id="divModulo2" class="moduloTasa"  title="" >
+                                            <div >
+                                                <div class="moduloSeparador" >
+                                                </div>
+                                            </div>
+
+                                            <div class="labelModulo" >
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>`;
+
+        }
+        else if(getCookie("vtas_rolexternalrol"+sessionStorage.tabVisitasa) == 'ROL_RESPONSABLEASIGNADO')
+        {
+            menuc = `
+                <div >
+                    <div id="secWelcomeAuditoria">
+                        <div id="msgWelcomeAuditoria" ><b>Bienvenido</b> al Sistema de Gesti&oacute;n de Auditor&iacute;as <b>TASA</b></div>
+                    </div>
+                    <div id="barraImg">
+                        <div class="mt-4 mb-5"><img src="images/barra_ini.svg" ></div>
+                    </div>
+                    <!-- Contenedores de Mensaje de Bienvenida }-->
+
+                    <div class="modulosTasa" >
+                        <div class="modulosTasaInt text-center">
+
+                            <div id="divModuloAccionesCorrectivas" class="moduloTasa" title="Acciones Correctivas" style="" >
+                                <div >
+                                    <!--div id="moduloAccionesCorrectivas" onclick="alert('Acciones Correctivas');vistaAuditor ();" >
+                                    </div-->
+                                    <div id="moduloAccionesCorrectivas" onclick="showxMenuRolResponsableAsignado();" >
+                                    </div>
+                                </div>
+
+                                <div class="labelModulo" >Acciones Correctivas
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+             `;
+        }
+        else if(getCookie("vtas_rolexternalrol"+sessionStorage.tabVisitasa) == 'ROL_COORDINADORAUDITORIA')
+        {
+            menuc = `
+                <div >
+                    <div id="secWelcomeAuditoria">
+                        <div id="msgWelcomeAuditoria" ><b>Bienvenido</b> al Sistema de Gesti&oacute;n de Auditor&iacute;as <b>TASA</b></div>
+                    </div>
+                    <div id="barraImg">
+                        <div class="mt-4 mb-5"><img src="images/barra_ini.svg" ></div>
+                    </div>
+                    <!-- Contenedores de Mensaje de Bienvenida }-->
+
+                    <div class="modulosTasa" >
+                        <div class="modulosTasaInt text-center">
+
+                            <div id="divModuloGestionarAuditoria" class="moduloTasa"  title="Gestionar Auditor&iacute;as" >
+                                <div >
+                                    <div id="moduloGestionarAuditoria" onclick="showxMenuGestAudi();" >
+                                    </div>
+                                </div>
+
+                                <div class="labelModulo" >Gestionar Auditor&iacute;as
+                                </div>
+                            </div>
+
+                            <div class="moduloSeparador">
+                            </div>
+
+                            <div id="divModuloAccionesCorrectivas" class="moduloTasa" title="Acciones Correctivas" style="" >
+                                <div >
+                                    <!--div id="moduloAccionesCorrectivas" onclick="alert('Acciones Correctivas');vistaAuditor ();" >
+                                    </div-->
+                                    <div id="moduloAccionesCorrectivas" onclick="showxMenuAccionesCorrectivas();" >
+                                    </div>
+                                </div>
+
+                                <div class="labelModulo" >Acciones Correctivas
+                                </div>
+                            </div>
+
+                            <div class="moduloSeparador" >
+                            </div>
+
+                            <div id="divModuloConfiguraciones" class="moduloTasa" title="Configuraciones" style="display: none;" >
+                                <div >
+                                    <div id="moduloConfiguraciones"   onclick=" showxMenuConfiguraciones(); "></div>
+                                </div>
+
+                                <div class="labelModulo" >Configuraciones
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            `;
+        }
+        else if(getCookie("vtas_rolexternalrol"+sessionStorage.tabVisitasa) == 'ROL_EVALUADORLOCAL_AC')
+        {
+            menuc = `
+                <div >
+
+                    <div id="secWelcomeAuditoria">
+                        <div id="msgWelcomeAuditoria" ><b>Bienvenido</b> al Sistema de Gesti&oacute;n de Auditor&iacute;as <b>TASA</b></div>
+                    </div>
+                    <div id="barraImg">
+                        <div class="mt-4 mb-5"><img src="images/barra_ini.svg" ></div>
+                    </div>
+
+                    <div class="modulosTasa" >
+                        <div class="modulosTasaInt text-center">
+
+                            <div id="divModuloAccionesCorrectivas" class="moduloTasa" title="Acciones Correctivas" style="" >
+                                <div >
+                                    <div id="moduloAccionesCorrectivas" onclick="showxMenuRolEvaluadorLocalAC();" >
+                                    </div>
+                                </div>
+
+                                <div class="labelModulo" >Acciones Correctivas
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            `;
+
+        }
+        else if(getCookie("vtas_rolexternalrol"+sessionStorage.tabVisitasa) == 'ROL_RESPONSABLEASIGNADO_AC')
+        {
+            menuc = `
+                <div >
+
+                    <div id="secWelcomeAuditoria">
+                        <div id="msgWelcomeAuditoria" ><b>Bienvenido</b> al Sistema de Gesti&oacute;n de Auditor&iacute;as <b>TASA</b></div>
+                    </div>
+                    <div id="barraImg">
+                        <div class="mt-4 mb-5"><img src="images/barra_ini.svg" ></div>
+                    </div>
+
+                    <div class="modulosTasa" >
+                        <div class="modulosTasaInt text-center">
+
+                        <div id="divModuloAccionesCorrectivas" class="moduloTasa" title="Acciones Correctivas" style="" >
+                            <div >
+                                <div id="moduloAccionesCorrectivas" onclick="showxMenuRolResponsableAsignadoAC()" >
+                                </div>
+                            </div>
+
+                            <div class="labelModulo" >Acciones Correctivas
+                            </div>
+                        </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            `;
+        }
+        else
+        {//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+            //alert(getCookie("vtas_rolexternalrol"+sessionStorage.tabVisitasa));
+            menuc = `
+                sin menu
+
+            `;
+
+        }//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+   }
+
+   $("#IdDivMenuAuditoria").html(menuc);
+
+</script>

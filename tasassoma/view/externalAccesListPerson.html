@@ -1,0 +1,126 @@
+<div class="container-fluid">  
+ 
+  <div class="d-flex flex-row-reverse">
+    <div class="">
+    </div>      
+  </div>
+ 
+ <div class="row bg-white " style="padding: 25px; border-bottom: 1px solid #ebebeb;">
+    <!-- buscar -->
+      <div class="col-8" style="height: 50px !important">
+      </div>
+    <div class="col-2 text-left pt-2" style="height: 50px !important; ">
+      <input type="text" id="tx_access_dni_list" maxlength="30"   autocomplete="off" name="tx_access_dni_list" style="width: 210px;" class=" shadow-sm inputFind" placeholder="Buscar">
+    </div>
+      <div class="col-2 text-right pt-3" style="height: 50px !important">
+        <button type="button" class="btn btn-green-lime btn-rounded btn-raised " onclick="$('#modalRegisterPerson').modal('show');vw_access_request.initFormPerson(0);"> REGISTRAR NUEVO </button>
+      </div>
+
+    </div>
+  
+  <div class="row">    
+    <div class="col-md-12 h-100 " >
+      <table id="tb_external_list_person" name="tb_external_list_person" class="table responsive" class="w-100" >
+      </table>
+    </div>
+  </div>
+  <div class="modal fade col-md-12"  id="modalShowPersonDetails" tabindex="-1" role="dialogooo" aria-labelledby="modalAddCompanyTitle" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered rounded " role="document" style="max-width:80%; z-index: 1030; " >
+      <div class="modal-content rounded " style=" background-color:rgba(0,0,0,.0001);  box-shadow: none;">        
+        <div class="modal-header" style="padding:5px 24px 0!important">
+          <h5 class="modal-title"></h5>
+          <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close">
+            <span class="text-danger">Cerrar</span>
+          </button>
+        </div>
+        
+        <div style=" ">
+          <div class="modal-body p-3" id="modal_show_request_details12">  
+            <div class="row">
+              <div class="col-sm-12 col-md-12">
+                <div class="card" style=" border-radius: 10px; box-shadow: none;">
+                  <div class="card-header text-white " style=" border-radius: 10px 10px 0px 0px; background: #35569d ; height: 55px;">                  
+                    <div class="row">                        
+                      <div class="col">
+                        <h6 style="font-size:20px">&nbsp;&nbsp;<b>Registrar</b></h6>                          
+                      </div>
+
+                    </div>                    
+                  </div>
+                        
+                  <div style="width: 100%;padding-top: 10px;padding-left: 10px;padding-right: 10px; " class="p-3"> 
+                    
+                    
+                    <div style="overflow: auto;height: 500px;overflow-x: hidden; ">
+                      <div class="modal-body row" id="modal_show_person_details">
+            
+                      </div>
+                    </div>
+                    <div class="modal-footer" >
+                      <div class="col-md-12 row"  id="modal_show_request_details_footer">
+                      </div>
+                    </div>
+                 
+                   
+                  </div>                  
+                </div>      
+              </div>        
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="modal fade col-md-12"  id="modalRegisterPerson" tabindex="-1" role="dialogooo" aria-labelledby="modalAddCompanyTitle" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered rounded " role="document" style="max-width:80%; z-index: 1030; " >
+      <div class="modal-content rounded " style=" background-color:rgba(0,0,0,.0001);  box-shadow: none;">        
+        <div class="modal-header" style="padding:5px 24px 0!important">
+          <h5 class="modal-title"></h5>
+          <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close">
+            <span class="text-danger">Cerrar</span>
+          </button>
+        </div>
+        
+        <div style=" ">
+          <div class="modal-body p-3" id="modal_show_request_details12">  
+            <div class="row">
+              <div class="col-sm-12 col-md-12">
+                <div class="card" style=" border-radius: 10px; box-shadow: none;">
+                  <div class="card-header text-white " style=" border-radius: 10px 10px 0px 0px; background: #35569d ; height: 55px;">                  
+                    <div class="row">                        
+                      <div class="col">
+                        <h6 style="font-size:20px">&nbsp;&nbsp;<b>Registrar</b></h6>                          
+                      </div>
+
+                    </div>                    
+                  </div>
+                        
+                  <div style="width: 100%;padding-top: 10px;padding-left: 10px;padding-right: 10px; " class="p-3"> 
+                    
+                    
+                    <div style="overflow: auto;height: 500px;overflow-x: hidden; ">
+                      <div class="modal-body row" id="modal_register_person">
+            
+                      </div>
+                    </div>
+                    <div class="modal-footer" >
+                      <div class="col-md-12 row"  id="modal_register_person_footer">
+                      </div>
+                    </div>
+                 
+                   
+                  </div>                  
+                </div>      
+              </div>        
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>

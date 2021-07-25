@@ -1,0 +1,2072 @@
+<div class="col-12"><link rel="stylesheet" href="./view/ssoma/ssoma.css">
+    <link rel="stylesheet" href="./css/pagination.css">
+    <link rel="stylesheet" href="./css/auditorLiderList.css">
+    
+    
+    
+    
+    
+    
+    
+    <div class="row justify-content-center">
+        <style type="text/css">
+    
+    @media screen and (min-width: 1100px) 
+        and (max-width: 1399px)
+    {
+        .fontsizeLeyenda
+        {
+            font-size: 8px !important; 
+        }
+
+    }
+
+    @media (min-width: 1400px) 
+    {
+        .fontsizeLeyenda
+        { 
+            font-size: 13px !important; 
+            /*color: blue !important;*/
+        }
+    }
+        ul.ui-autocomplete.ui-menu { width: 400px !important; }
+    
+    
+        /*
+    
+        */
+        .Adjuntar-Documento {
+      width: 112px;
+      height: 21px;
+      flex-grow: 0;
+      margin: 2px 0 0 13.3px;
+      font-family: ProductSans;
+      font-size: 11.9px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.64;
+      letter-spacing: 0.12px;
+      text-align: right;
+      color: #ffffff;
+    }
+    
+    .count_motivocc{
+      margin-top: 10px;
+      font-family: ProductSans;
+      font-size: 15px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.64;
+      letter-spacing: 0.15px;
+      text-align: right;
+      color: #000;
+    }
+        .btnAdjuntosCC{
+         width: 153px;
+         height: 34px;
+         flex-grow: 0;
+         margin: 3px 15px 2px 34px;
+         padding: 5px 10px 6px 17.7px;
+         border-radius: 4px;
+         background-color: #c5cf55;
+         }
+    
+        .semana{
+          color:#000;
+          background-color:#fff;
+          cursor: pointer;
+        }
+    
+    
+        .semana:hover{
+         color:#fff;
+         background-color:#05BEEE;
+         cursor: pointer;
+        }
+    
+    
+    
+        #sel_procesoPlan{
+            height: 24px;
+            background-color: white;
+            cursor: pointer;
+        }
+    
+        #sel_procesoPlan:hover{
+            height: 124px;
+            background-color: white;
+            cursor: pointer;
+        }
+    
+    
+        .txtAreaLista{
+             border-radius: 4px;
+            -moz-border-radius: 4px;
+            -webkit-border-radius: 4px;
+            -o-border-radius: 4px;
+            background: #F2F2F2;
+            background: linear-gradient(left, #F2F2F2, #F2F2F2);
+            background: -moz-linear-gradient(left, #F2F2F2, #F2F2F2);
+            background: -webkit-linear-gradient(left, #F2F2F2, #F2F2F2);
+            background: -o-linear-gradient(left, #F2F2F2, #F2F2F2);
+            width: 100%;
+            height: 80%;
+            border-color:#F2F2F2;
+            resize: none;
+        }
+    
+    
+    
+    
+    
+    
+        input[type="time"]::-webkit-calendar-picker-indicator
+        {
+            filter: invert(48%) sepia(13%) saturate(3207%) hue-rotate(130deg) brightness(95%) contrast(80%);
+            cursor:pointer;
+        }
+    
+    
+    
+    .btn_si_adv{
+        width: 10px;
+        border-radius: 4.4px;
+        background-color:#05beee;
+        padding: 15px 10px;
+        color: #fff;
+        border: none;
+        font-size: 15px;
+        cursor: pointer;
+    }
+    
+    
+    .btn_no_adv{
+        width: 10px;
+        border-radius: 4.4px;
+        background-color:#fff;
+        border-style: solid;
+        border-color: #000 !important;
+        padding: 15px 10px;
+        color: #000;
+        border: none;
+        font-size: 15px;
+        cursor: pointer;
+    }
+    
+    .subTitleModal {
+          font-size: 1rem;
+          font-weight: bold;
+          padding-left: 1rem;
+      }
+      .btn-save-auditor2{
+        background-color: #58c25d !important;
+        color: #fff !important;
+        font-size: 0.8rem !important;
+        width: 9rem !important;
+        margin-left: 4px !important;
+      }
+      .headerTablaModalPlanAnual{
+        font-weight: normal !important;
+        font-size: 1rem !important;
+        height: 3.5rem !important;
+        padding-top: 0rem !important;
+        background-color: #34559c;
+        border-radius: 4px;
+        color: #fff !important;
+      }
+    
+      .textoListadosPlanAnual{
+        color: #5c5c5c !important;
+        margin: 10px 0px 0px 13px !important;
+      }
+      .textoVerDetalleObjetivos{
+        text-decoration: underline !important;
+        cursor: pointer !important;
+      }
+    
+      .altoListado{
+        height: 6.013rem;
+        font-size: 0.938rem;
+        padding: 4px !important;
+      }
+      .listadoVacio{
+        background-color: #ececec !important;
+      }
+      .bgBlue{
+        background-color: #34559c !important;
+        color: #34559c !important;
+        border-radius: 4px 4px 0px 0px !important;
+      }
+      .bgBlue2{
+        background-color: #05BEEE !important;
+        color: #05BEEE  !important;
+        border-radius: 4px 4px 0px 0px !important;
+      }
+
+      .bgGreen{
+        background-color: #58c25d !important;
+        color: #58c25d !important;
+        border-radius: 0px 0px 4px 4px !important;
+      }
+      .bgRed{
+        background-color: #ff6767 !important;
+        color: #ff6767 !important;
+        border-radius: 0px 0px 4px 4px !important;
+      }
+      .bgYellow{
+        background-color: #ffb525 !important;
+        color: #ffb525 !important;
+        border-radius: 0px 0px 4px 4px !important;
+      }
+      .bgWhite{
+        background-color: #fff !important;
+        color: #fff !important;
+        border-radius: 0px 0px 4px 4px !important;
+      }
+      .fontGris{
+        color: #5c5c5c !important;
+      }
+      .fontWhite{
+        color: #fff !important;
+      }
+    
+      .preloader {
+    
+    width: 90px;
+    height: 90px;
+    border: 10px solid #eee;
+    border-top: 10px solid #666;
+    border-radius: 50%;
+    animation-name: girar;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    }
+    @keyframes girar {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+    }
+    </style>
+    <div class="col-12">
+        <div style="width: 100%;text-align: -webkit-center; position: absolute; z-index: 2;margin-top: 100px;">
+            <div class="preloader" id="preloader" style="display: none;" > </div>
+            <div id="preloader_txt" style="display: none; color: black;"> <b>Cargando Datos...</b></div>
+
+            </div>
+        <div class="row mt-4 align-items-center"  >
+           <table width = "97%" border="0" style = " margin-left: auto; margin-right: auto; "  >
+                 <tr>
+                     <td id='col1' width ="72%">
+                        <table width = "100%" border="0">
+                            <tr>
+                                <td id='col1-1-1'   width ="12%"><label for="sel_filter_unidad_organizativa" class="textoLabelFiltrosCA">Programa </label></td>
+                                <td id='col1-1-1e'  width ="2%">&nbsp;</td>
+                                <td id='col1-1-2'   width ="12%"><label for="sel_filter_unidad_organizativa" class="textoLabelFiltrosCA">Gerencia</label></td>
+                                <td id='col1-1-5e'  width ="2%">&nbsp;</td>
+                                <td id='col1-1-6'   width ="12%"> <label for="txt_date_end_evaluacion" class="textoLabelFiltrosCA">Fecha Desde</label></td>
+                                <td id='col1-1-6e'  width ="2%">&nbsp;</td>
+                                <td id='col1-1-7'   width ="12%"><label for="sel_filter_estado" class="textoLabelFiltrosCA">Fecha Hasta </label></td>
+                                <td id='col1-1-4e'  width ="2%">&nbsp;</td>
+                                <td id='col1-1-5'   width ="12%"><label for="txt_date_start_evaluacion" class="textoLabelFiltrosCA">Estado</label></td>
+                            </tr>
+                            <tr>
+                                <td id='col1-1-1' width ="12%">
+                                    <select name="sel_filter_programa_p" class="form-control" id="sel_filter_programa_p" onChange=" "  style="padding: 0px !important;">
+                                    </select>
+                                </td>
+                                <td id='col1-1-6' width ="2%">&nbsp;</td>
+
+
+                                <td id='col1-1-1' width ="12%">
+                                    <select name="sel_filter_gerencia_p" class="form-control" id="sel_filter_gerencia_p" onChange=" "  style="padding: 0px !important;">
+                                    </select>
+                                </td>
+                                <td id='col1-1-6' width ="2%">&nbsp;</td>
+                                <td id='col1-1-3' width ="12%">
+                                    <input  type="text" id="sp3_txt_fecha_desde_p" name="sp3_txt_fecha_desde_p" class="form-control bg-white" readonly onChange="">
+                                </td>
+                                <td id='col1-1-4' width ="2%">
+                                    <img src="images/iconos/calendario-3.svg"  style="cursor: pointer;" onclick="$('#sp3_txt_fecha_desde_p').val('');">
+                                </td>
+
+                                <td id='col1-1-5' width ="12%">
+                                    <input  type="text" id="sp3_txt_fecha_hasta_p" name="sp3_txt_fecha_hasta_p" class="form-control bg-white" readonly onChange="">
+                                </td>
+                                <td id='col1-1-6' width ="2%">
+                                    <img src="images/iconos/calendario-3.svg"  style="cursor: pointer;" onclick="$('#sp3_txt_fecha_hasta_p').val('');">
+                                </td>
+                                <!-- <td id='col1-1-6' width ="3%">&nbsp;aaaaaaaaaaaa</td> -->
+
+                                <td id='col1-1-1' width ="12%">
+                                    <select name="sel_filter_estado_p" class="form-control" id="sel_filter_estado_p" onChange=" "  style="padding: 0px !important;">
+                                    </select>
+                                </td>
+
+
+                            </tr>
+<!-- solo para verc los avances de las ventanas -->
+<tr >
+
+<!-- solo para verc los avances de las ventanas -->
+                        </table>
+
+
+                    </td>
+
+
+                     <td id='col2' width ="2%">&nbsp;</td>
+                     <td id='col10'  width ="7%">
+                        <button type="button" style=" width:145px !important;"  class="btn btn-system-green"  onClick="fnSp3CargaFiltroEstadoExecPlanAnual() "  id="sp3BtFiltroPlanAnual"
+                           class="btn btn-system-green">Buscar</button>
+                     </td>
+
+
+
+                     <td id='col8'  width ="2%">&nbsp;
+
+                     </td>
+                     <td id='col4'  width ="1%">
+                        <div id="cant_planes" style="font-size: 25px; font-weight: bold; text-align:left; ">
+                            <img src="images/iconos/copia-1.svg" style="margin-top:25px;"   class="mb-3"  >
+                        </div>
+                     </td>
+
+                     <td id='col9'  width ="1%" align="center" ><span style="top:5px; text-align: center; " class="cantidad ml-3" id="cant_adm_plan_anual">0</span></td>
+
+                     <td id='col7'  width ="1%">&nbsp;</td>
+
+                     <td id='col6'  width ="9%" class="btn_new_">
+                         <button class="btn btn-system-celeste center "  onclick="accPlanAnual = 0; fnSp3VentanaMostrarPlanAnual();" style="padding-left: 0.8rem;padding-right: 0.8rem; width: 184 !important; font-size: 15px; font-weight: bold; font-stretch: normal;">
+                            <img src="./images/iconos/plus_.svg" alt="" >
+                            <span class="ml-3">Nuevo Plan Anual</span>
+                        </button>
+                     </td>
+
+                 </tr>
+
+
+           </table>
+
+        </div>
+
+    </div>
+
+
+
+
+<table width = "97%" border="0" style = " margin-left: auto; margin-right: auto; "  >
+    <tr>
+        <td id='col1' width ="100%">
+
+
+            <div class="row justify-content-center mt-5">
+                 <div class="col-md-12">
+                        <div class="header-tabla px-2 py-3">
+                            <table width = "100%" border="0">
+                                <tr >
+                                    <td width = "10%" align="center"><div id="c1TabGeny" class="text-left lbCabezaTabla" style='margin: 0px 0px 0px 8px !important;'  >ID Plan Anual</div></td>
+                                    <td width = "10%" align="center"><div id="c2TabGeny" class="text-left lbCabezaTabla"  >Programa</div></td>
+                                    <td width = "14%" align="center"><div id="c3TabGeny" class="text-left lbCabezaTabla"  >Gerencia</div></td>
+                                    <td width = "8%" align="center"><div id="c5TabGeny" class="text-left lbCabezaTabla"  >Equipo</div></td>
+
+                                    <td width = "8%" align="center"><div id="c6TabGeny" class="text-left lbCabezaTabla"  >Número de Objetivos</div></td>
+                                    <td width = "10%" align="center"><div id="c7TabGeny" class="text-left lbCabezaTabla"  >Fecha de Creación</div></td>
+                                    <td width = "8%" align="center"><div id="c8TabGeny" class="text-left lbCabezaTabla"  >Estado</div></td>
+
+                                    <td  width = "3%" align="center" class="btn_edit"><div id="c12TabGeny" class="text-center lbCabezaTabla"  >Editar</div></td>
+                                    <td width = "3%" align="center"><div id="c13TabGeny" class="text-center lbCabezaTabla"  >Ver</div></td>
+                                    <td width = "1%" align="center"><div id="c13TabGeny" class="text-center lbCabezaTabla"  >&nbsp</div></td>
+
+
+                                </tr>
+                            </table>
+                       </div>
+
+
+
+
+                            <div class="body-tabla mt-4" id="bodyTablaSinAuditorias" style="display: block; font-weight: bold;">
+                                <div class="content-registros-no-encontrados">
+                                    <div>
+                                        <img src="./images/newsistema/iconos/planning2.svg" style="width:128px; height: 128 px;" alt="">
+                                        <p class="mt-4">No Existen Planes</p>
+                                        <img src="./images/iconos/loadingAdj.gif" style="visibility: hidden;" >
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="body-tabla-list-EvalAud" id="body-tabla-list-EvalAud" ></div>
+                            <div id="pagination-container-EvalAud" class="mt-3"></div>
+
+                </td>
+            </tr>
+        </table>
+
+
+
+</div>
+    
+
+</div>
+
+<!-- START MODAL VER PLAN ANUAL SP3 -->
+<div class="modal fade "  id="modalVerPlanAnualSP3" tabindex="-1" data-backdrop="static" data-keyboard="false" aria-hidden="true"  tabindex="-1" role="dialog" >
+  <div class="modal-dialog modal-dialog-centered rounded" role="document" style="max-width: 80%; z-index: 1030; ">
+      <div class="modal-content rounded border-0"  style="background:white; height: 800px !important;" >
+          <div style="overflow: hidden; height: 750px; overflow-x: hidden; ">
+
+              <! START MODAL-HEADER >
+              <div class="modal-header fix-header-modal" >
+                  <div class="card-header text-center text-white modal-dialog-centered  card-header-FormAuditor" id="red-head" style="width: 100%; padding: 0px 0px !important;">
+                      <div class="row align-items-center" style="width: 100%;">
+                          <div class="col-1">
+                              <img src="./images/prev.svg" style="cursor:pointer; display: none" title="Salir" onclick=" $('#modalVerPlanAnualSP3').modal('hide').removeClass('fade');">
+                          </div>
+                          <div class="col-10">
+                              <span id="titleModalVerPlanAnualSP3"><h5 class="m-0">Ver PASST21001</h5></span>
+                          </div>
+                          <div class="col-1">
+                              <img src="./images/iconos/delete.svg" style="cursor:pointer;" title = 'Salir' onclick="$('#modalVerPlanAnualSP3').modal('hide').removeClass('fade');" >
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <! END MODAL-HEADER >
+
+              <! START MODAL-BODY >
+              <div class="modal-body dialog-position" id="bodymodalShowAuditor" style=" justify-content:space-around; align-content:center; padding: 10px 0px 0px !important;">
+                  <div class="card " style="border: 0px !important; border-radius: 5px; box-shadow: none;">
+                      <div class="card-body2" >
+
+                          <div class="row justify-content-around align-items-center">
+
+                              <div class="col-12">
+                                  <table border="0" width="100%">
+                                      <tr>
+                                          <td width="55%">
+                                              <span id="subTitleModalVerPlanAnualSP3" class="subTitleModal">Objetivos ( 8 )/ Actividades (40)</span>
+                                          </td>
+                                          <td width="20%">
+                                              <span class="subTitleModal">Seleccionar Mes</span>
+                                          </td>
+                                          <td width="10%">
+                                              <select id="selectMesPlanAnual" name="selectMesPlanAnual" class="form-control" onChange="fnSeleccionarMesSp3(this)">
+                                                  <option value="0"></option>
+                                                  <option value="1">Enero</option>
+                                                  <option value="2">Febrero</option>
+                                                  <option value="3">Marzo</option>
+                                                  <option value="4">Abrir</option>
+                                                  <option value="5">Mayo</option>
+                                                  <option value="6">Junio</option>
+                                                  <option value="7">Julio</option>
+                                                  <option value="8">Agosto</option>
+                                                  <option value="9">Septiembre</option>
+                                                  <option value="10">Octubre</option>
+                                                  <option value="11">Noviembre</option>
+                                                  <option value="12">Diciembre</option>
+                                              </select>
+                                          </td>
+                                          <td width="15%">
+                                               &nbsp;&nbsp;<button type="button" id="btnExportarPlanAnual" onclick="fnExcelReportPA();" style="display: none;" class="btn btn-save-auditor2">Exportar Plan Anual</button>
+                                                <a href="#" id="link" style="display:none"></a>
+                                          </td>
+                                      </tr>
+                                  </table>
+                              </div>
+                              <div class="col-12 d-flex">
+                                  <div class="col-5">
+                                <div class="body-tabla-list-EvalAud" id="body-list-actividades">
+                                    <table border="1" width="100%" style="border-color: #fff0;">
+                                        <thead>
+                                            <tr>
+                                                <th width="5%"  class="text-center headerTablaModalPlanAnual" style="border-radius: 4px 0px 0px 4px !important;">&nbsp;Peso</th>
+                                                <th width="95%" colspan="2" class="text-center headerTablaModalPlanAnual" style="border-radius: 0px 4px 4px 0px !important;">&nbsp;Actividad/Entregable</th>
+                                            </tr>
+                                        </thead>
+                                        </table>
+                                        </div>      
+</div>
+                                        <div class="col-7 pl-0">
+                                            <div class=" scroll-blue3 verga scrollDuo" style="width: 100% !important;">
+                                                <div style="width: 2500px;" class="verga">
+                                                    <div class=" px-2">
+                                                        <div class="row m-0 justify-content-between align-items-start text-center">
+  
+                                                            <div class="col-8 pl-0">
+  
+                                                                <table border="1" width="100%" style="border-color: #fff0;">
+                                                                    <thead style="background-color: #fff !important;">
+                                                                        <tr class="d-flex justify-content-center">
+                                                                            <th id="mes_0" width="9%" class="text-center headerTablaModalPlanAnual  d-flex justify-content-center align-items-center">Enero</th>
+                                                                            <th width="1%" style="background-color: #fff !important;">&nbsp;</th>
+                                                                            <th id="mes_1" width="9%" class="text-center headerTablaModalPlanAnual  d-flex justify-content-center align-items-center">Febrero</th>
+                                                                            <th width="1%" style="background-color: #fff !important;">&nbsp;</th>
+                                                                            <th id="mes_2" width="9%" class="text-center headerTablaModalPlanAnual  d-flex justify-content-center align-items-center">Marzo</th>
+                                                                            <th width="1%" style="background-color: #fff !important;">&nbsp;</th>
+                                                                            <th id="mes_3" width="9%" class="text-center headerTablaModalPlanAnual  d-flex justify-content-center align-items-center">Abril</th>
+                                                                            <th width="1%" style="background-color: #fff !important;">&nbsp;</th>
+                                                                            <th id="mes_4" width="9%" class="text-center headerTablaModalPlanAnual  d-flex justify-content-center align-items-center">Mayo</th>
+                                                                            <th width="1%" style="background-color: #fff !important;">&nbsp;</th>
+                                                                            <th id="mes_5" width="9%" class="text-center headerTablaModalPlanAnual  d-flex justify-content-center align-items-center">Junio</th>
+                                                                            <th width="1%" style="background-color: #fff !important;">&nbsp;</th>
+                                                                            <th  id="mes_6"width="8%" class="text-center headerTablaModalPlanAnual  d-flex justify-content-center align-items-center">Julio</th>
+                                                                            <th width="1%" style="background-color: #fff !important;">&nbsp;</th>
+                                                                            <th id="mes_7" width="9%" class="text-center headerTablaModalPlanAnual  d-flex justify-content-center align-items-center">Agosto</th>
+                                                                            <th width="1%" style="background-color: #fff !important;">&nbsp;</th>
+                                                                            <th id="mes_8" width="9%" class="text-center headerTablaModalPlanAnual  d-flex justify-content-center align-items-center">Septiembre</th>
+                                                                            <th width="1%" style="background-color: #fff !important;">&nbsp;</th>
+                                                                            <th id="mes_9" width="9%" class="text-center headerTablaModalPlanAnual  d-flex justify-content-center align-items-center">Octubre</th>
+                                                                            <th width="1%" style="background-color: #fff !important;">&nbsp;</th>
+                                                                            <th id="mes_10" width="9%" class="text-center headerTablaModalPlanAnual  d-flex justify-content-center align-items-center">Noviembre</th>
+                                                                            <th width="1%" style="background-color: #fff !important;">&nbsp;</th>
+                                                                            <th id="mes_11" width="9%" class="text-center headerTablaModalPlanAnual  d-flex justify-content-center align-items-center">Diciembre</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    </table>
+                                                                </div>
+                                                                <div class="col-4 pl-0">
+                                                                    <table border="1" width="100%" style="border-color: #fff0;">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th width="15%" class="text-center headerTablaModalPlanAnual">Responsable</th>
+                                                                                <th width="2%" class="bgWhite">&nbsp;</th>
+                                                                                <th width="15%" class="text-center headerTablaModalPlanAnual">Avance de <br>Etapa</th>
+                                                                                <th width="2%" class="bgWhite">&nbsp;</th>
+                                                                                <th width="15%" class="text-center headerTablaModalPlanAnual">Avance del<br> Proyecto</th>
+                                                                                <th width="2%" class="bgWhite">&nbsp;</th>
+                                                                                <th width="15%" class="text-center headerTablaModalPlanAnual">Cumplimiento</th>
+                                                                                <th width="2%" class="bgWhite">&nbsp;</th>
+                                                                                <th width="15%" class="text-center headerTablaModalPlanAnual" style="font-size: 0.7rem !important;">Cumplimiento al: <br><span id="cumplimentoAlMes"></span></th>
+                                                                                <th width="2%" class="bgWhite">&nbsp;</th>
+                                                                                <th width="15%" class="text-center headerTablaModalPlanAnual" style="font-size: 0.7rem !important;">Cumplimiento del <br>Proyecto</th>
+    
+                                                                            </tr>
+                                                                        </thead>
+                                                                        </table>
+                                                                        
+                                                                  </div>
+                                                            </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    </div>
+
+                              </div>
+
+                              <div class="col-12 caja-adj scroll-blue" style="height: 480px !important; border-color: white !important;">
+
+                                  <div class="row justify-content-around align-items-start text-center">
+
+                                      <div class="col-5">
+
+                                          <div class="body-tabla-list-EvalAud" id="body-list-actividades">
+                                              <table border="1" width="100%" style="border-color: #fff0;">
+                                                  <thead style="display: none;">
+                                                      <tr>
+                                                          <th width="5%"  class="text-center headerTablaModalPlanAnual" style="border-radius: 4px 0px 0px 4px !important;">&nbsp;Peso</th>
+                                                          <th width="95%" colspan="2" class="text-center headerTablaModalPlanAnual" style="border-radius: 0px 4px 4px 0px !important;">&nbsp;Actividad/Entregable</th>
+                                                      </tr>
+                                                  </thead>
+                                                  <tbody id="listadoActividades">
+                                                      <! START LISTADO DE ACTIVIDADES
+                                                      <tr>
+                                                          <td colspan="2">
+
+                                                              <div class="body-tabla-list-EvalAud" id="body-tabla-list-EvalAud1">
+                                                                  <div id = 'iddd'  class="item-tabla p-2" style="z-index: 1; padding: 0px !important; margin: 10px 0px 0px !important;">
+                                                                      <div class="row m-0 justify-content-between align-items-center tbody_trainning">
+                                                                          <div class="col-12 text-center altoListado listadoVacio">
+                                                                              <div class="row">
+
+                                                                                  <table width = "100%" border="0" style="border-color: white;font-size: 0.98rem;">
+                                                                                      <tr >
+                                                                                          <td width = "100%" colspan="3" align="center"><div id="c1TabGeny" class="text-left textoListadosPlanAnual" > Objetivo 1: Programa de Inspecciones SSOMA </div></td>
+                                                                                      </tr>
+                                                                                  </table>
+                                                                              </div>
+                                                                          </div>
+                                                                      </div>
+                                                                  </div>
+                                                              </div>
+
+                                                              <div class="body-tabla-list-EvalAud" id="body-tabla-list-EvalAud1">
+                                                                  <div id = 'iddd'  class="item-tabla p-2" style="z-index: 1; padding: 0px !important; margin: 10px 0px 0px !important;">
+                                                                      <div class="row m-0 justify-content-between align-items-center tbody_trainning">
+                                                                          <div class="col-12 text-center altoListado">
+                                                                              <div class="row">
+
+                                                                                  <table width = "100%" border="0" style="border-color: red;font-size: 0.95rem;">
+                                                                                      <tr >
+                                                                                          <td width = "10%" align="center"><div id="c1TabGeny" class="text-left textoListadosPlanAnual" > 2% </div></td>
+                                                                                          <td width = "70%" align="center"><div id="c1TabGeny" class="text-left textoListadosPlanAnual" > Actividad 1</div></td>
+                                                                                          <td width = "20%" align="center"><div id="c1TabGeny" class="text-left textoListadosPlanAnual textoVerDetalleObjetivos"> Ver Detalle</div></td>
+                                                                                      </tr>
+                                                                                  </table>
+                                                                              </div>
+                                                                          </div>
+                                                                      </div>
+                                                                  </div>
+                                                              </div>
+                                                          </td>
+                                                      </tr>
+                                                      <! END LISTADO DE ACTIVIDADES
+                                                  </tbody>
+                                              </table>
+
+                                          </div>
+
+                                          <div class="body-tabla-list-EvalAud" id="body-leyenda-1">
+                                              <div class="row mt-0 px-2">
+
+                                                  <div class="col-1 altoListado d-flex justify-content-center align-items-center" style="background-color: #58c25d; padding-left: 10px !important; color: #fff;">
+                                                      <span id="numPesoTotalVER"></span> %
+                                                  </div>
+                                                  <div class="col-11 altoListado" style="background-color: #58c25d; padding-left: 10px !important; color: #fff;">
+                                                  </div>
+
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="col-7 pl-0">
+                                          <div class=" scroll-blue3 verga scrollDuo" style="width: 100% !important;overflow-x: hidden;">
+                                              <div style="width: 2500px;" class="verga">
+                                                  <div class=" px-2">
+                                                      <div class="row m-0 justify-content-between align-items-start text-center">
+
+                                                          <div class="col-8 pl-0">
+
+                                                              <table border="1" width="100%" style="border-color: #fff0;">
+                                                                  <thead style="display: none;">
+                                                                      <tr>
+                                                                          <th id="mes_0" width="9%" class="text-center headerTablaModalPlanAnual">Enero</th>
+                                                                          <th width="1%" style="background-color: #fff !important;">&nbsp;</th>
+                                                                          <th id="mes_1" width="9%" class="text-center headerTablaModalPlanAnual">Febrero</th>
+                                                                          <th width="1%" style="background-color: #fff !important;">&nbsp;</th>
+                                                                          <th id="mes_2" width="9%" class="text-center headerTablaModalPlanAnual">Marzo</th>
+                                                                          <th width="1%" style="background-color: #fff !important;">&nbsp;</th>
+                                                                          <th id="mes_3" width="9%" class="text-center headerTablaModalPlanAnual">Abril</th>
+                                                                          <th width="1%" style="background-color: #fff !important;">&nbsp;</th>
+                                                                          <th id="mes_4" width="9%" class="text-center headerTablaModalPlanAnual">Mayo</th>
+                                                                          <th width="1%" style="background-color: #fff !important;">&nbsp;</th>
+                                                                          <th id="mes_5" width="9%" class="text-center headerTablaModalPlanAnual">Junio</th>
+                                                                          <th width="1%" style="background-color: #fff !important;">&nbsp;</th>
+                                                                          <th  id="mes_6"width="8%" class="text-center headerTablaModalPlanAnual">Julio</th>
+                                                                          <th width="1%" style="background-color: #fff !important;">&nbsp;</th>
+                                                                          <th id="mes_7" width="9%" class="text-center headerTablaModalPlanAnual">Agosto</th>
+                                                                          <th width="1%" style="background-color: #fff !important;">&nbsp;</th>
+                                                                          <th id="mes_8" width="9%" class="text-center headerTablaModalPlanAnual">Septiembre</th>
+                                                                          <th width="1%" style="background-color: #fff !important;">&nbsp;</th>
+                                                                          <th id="mes_9" width="9%" class="text-center headerTablaModalPlanAnual">Octubre</th>
+                                                                          <th width="1%" style="background-color: #fff !important;">&nbsp;</th>
+                                                                          <th id="mes_10" width="9%" class="text-center headerTablaModalPlanAnual">Noviembre</th>
+                                                                          <th width="1%" style="background-color: #fff !important;">&nbsp;</th>
+                                                                          <th id="mes_11" width="9%" class="text-center headerTablaModalPlanAnual">Diciembre</th>
+                                                                      </tr>
+                                                                  </thead>
+                                                                  <tbody id="listadoMeses">
+                                                                      <! START LISTADO DE MESES
+                                                                      <tr>
+                                                                          <td colspan="23">
+                                                                              <div class="body-tabla-list-EvalAud" id="body-tabla-list-EvalAud1">
+                                                                                  <div id = 'iddd'  class="item-tabla p-2" style="z-index: 1; padding: 0px !important; margin: 10px 0px 0px !important;">
+                                                                                      <div class="row m-0 justify-content-between align-items-center tbody_trainning">
+                                                                                          <div class="col-12 text-center altoListado listadoVacio">
+                                                                                              <div class="row">
+                                                                                                  <table width = "100%" border="0" style="border-color: red;font-size: 0.95rem;">
+                                                                                                      <tr >
+                                                                                                          <td width="100%" colspan="23"></td>
+                                                                                                      </tr>
+                                                                                                  </table>
+                                                                                              </div>
+                                                                                          </div>
+                                                                                      </div>
+                                                                                  </div>
+                                                                              </div>
+
+                                                                              <div class="body-tabla-list-EvalAud" id="body-tabla-list-EvalAud1">
+                                                                                  <div id = 'iddd'  class="item-tabla p-2" style="z-index: 1; padding: 0px !important; margin: 0px 3px 0px 3px !important; border: 0px !important;">
+                                                                                      <div class="row m-0 justify-content-between align-items-center tbody_trainning">
+                                                                                          <div class="col-12 text-center altoListado d-flex align-items-center">
+                                                                                              <div class="row">
+                                                                                                  <table width = "100%" border="0" style="border-color: red; margin: 3px 0px 0px 0px !important;">
+                                                                                                      <tr>
+                                                                                                          <td width="7%">
+                                                                                                              <table width="100%" border="0" style="border-color: green">
+                                                                                                                  <tbody>
+                                                                                                                      <tr>
+                                                                                                                          <td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+                                                                                                                          <!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+                                                                                                                          <td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+                                                                                                                          <!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+                                                                                                                          <td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+                                                                                                                          <!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+                                                                                                                          <td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+                                                                                                                      </tr>
+                                                                                                                      <tr>
+                                                                                                                          <td width="20%" class="text-white tdVerPlan bgWhite">sad</td>
+                                                                                                                          <!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+                                                                                                                          <td width="20%" class="text-white tdVerPlan bgGreen">asd</td>
+                                                                                                                          <!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+                                                                                                                          <td width="20%" class="text-white tdVerPlan bgYellow">asd</td>
+                                                                                                                          <!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+                                                                                                                          <td width="20%" class="text-white tdVerPlan bgRed">dsa</td>
+                                                                                                                      </tr>
+                                                                                                                  </tbody>
+                                                                                                              </table>
+                                                                                                          </td>
+                                                                                                          <td width="1%"></td>
+                                                                                                          <td width="7%">
+                                                                                                              <table width="100%" border="0" style="border-color: green">
+                                                                                                                  <tbody>
+                                                                                                                      <tr>
+                                                                                                                          <td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+                                                                                                                          <!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+                                                                                                                          <td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+                                                                                                                          <!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+                                                                                                                          <td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+                                                                                                                          <!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+                                                                                                                          <td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+                                                                                                                      </tr>
+                                                                                                                      <tr>
+                                                                                                                          <td width="20%" class="text-white tdVerPlan bgGreen">sad</td>
+                                                                                                                          <!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+                                                                                                                          <td width="20%" class="text-white tdVerPlan bgGreen">asd</td>
+                                                                                                                          <!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+                                                                                                                          <td width="20%" class="text-white tdVerPlan bgYellow">asd</td>
+                                                                                                                          <!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+                                                                                                                          <td width="20%" class="text-white tdVerPlan bgRed">dsa</td>
+                                                                                                                      </tr>
+                                                                                                                  </tbody>
+                                                                                                              </table>
+                                                                                                          </td>
+                                                                                                          <td width="1%"></td>
+                                                                                                          <td width="7%">
+                                                                                                              <table width="100%" border="0" style="border-color: green">
+                                                                                                                  <tbody>
+                                                                                                                      <tr>
+                                                                                                                          <td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+                                                                                                                          <!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+                                                                                                                          <td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+                                                                                                                          <!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+                                                                                                                          <td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+                                                                                                                          <!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+                                                                                                                          <td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+                                                                                                                      </tr>
+                                                                                                                      <tr>
+                                                                                                                          <td width="20%" class="text-white tdVerPlan bgGreen">sad</td>
+                                                                                                                          <!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+                                                                                                                          <td width="20%" class="text-white tdVerPlan bgGreen">asd</td>
+                                                                                                                          <!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+                                                                                                                          <td width="20%" class="text-white tdVerPlan bgYellow">asd</td>
+                                                                                                                          <!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+                                                                                                                          <td width="20%" class="text-white tdVerPlan bgRed">dsa</td>
+                                                                                                                      </tr>
+                                                                                                                  </tbody>
+                                                                                                              </table>
+                                                                                                          </td>
+                                                                                                          <td width="1%"></td>
+                                                                                                          <td width="7%">
+                                                                                                              <table width="100%" border="0" style="border-color: green">
+                                                                                                                  <tbody>
+                                                                                                                      <tr>
+                                                                                                                          <td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+                                                                                                                          <!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+                                                                                                                          <td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+                                                                                                                          <!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+                                                                                                                          <td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+                                                                                                                          <!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+                                                                                                                          <td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+                                                                                                                      </tr>
+                                                                                                                      <tr>
+                                                                                                                          <td width="20%" class="text-white tdVerPlan bgGreen">sad</td>
+                                                                                                                          <!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+                                                                                                                          <td width="20%" class="text-white tdVerPlan bgGreen">asd</td>
+                                                                                                                          <!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+                                                                                                                          <td width="20%" class="text-white tdVerPlan bgYellow">asd</td>
+                                                                                                                          <!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+                                                                                                                          <td width="20%" class="text-white tdVerPlan bgRed">dsa</td>
+                                                                                                                      </tr>
+                                                                                                                  </tbody>
+                                                                                                              </table>
+                                                                                                          </td>
+                                                                                                          <td width="1%"></td>
+                                                                                                          <td width="7%">
+                                                                                                              <table width="100%" border="0" style="border-color: green">
+                                                                                                                  <tbody>
+                                                                                                                      <tr>
+                                                                                                                          <td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+                                                                                                                          <!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+                                                                                                                          <td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+                                                                                                                          <!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+                                                                                                                          <td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+                                                                                                                          <!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+                                                                                                                          <td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+                                                                                                                      </tr>
+                                                                                                                      <tr>
+                                                                                                                          <td width="20%" class="text-white tdVerPlan bgGreen">sad</td>
+                                                                                                                          <!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+                                                                                                                          <td width="20%" class="text-white tdVerPlan bgGreen">asd</td>
+                                                                                                                          <!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+                                                                                                                          <td width="20%" class="text-white tdVerPlan bgYellow">asd</td>
+                                                                                                                          <!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+                                                                                                                          <td width="20%" class="text-white tdVerPlan bgRed">dsa</td>
+                                                                                                                      </tr>
+                                                                                                                  </tbody>
+                                                                                                              </table>
+                                                                                                          </td>
+                                                                                                          <td width="1%"></td>
+                                                                                                          <td width="7%">
+                                                                                                              <table width="100%" border="0" style="border-color: green">
+                                                                                                                  <tbody>
+                                                                                                                      <tr>
+                                                                                                                          <td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+                                                                                                                          <!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+                                                                                                                          <td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+                                                                                                                          <!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+                                                                                                                          <td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+                                                                                                                          <!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+                                                                                                                          <td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+                                                                                                                      </tr>
+                                                                                                                      <tr>
+                                                                                                                          <td width="20%" class="text-white tdVerPlan bgGreen">sad</td>
+                                                                                                                          <!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+                                                                                                                          <td width="20%" class="text-white tdVerPlan bgGreen">asd</td>
+                                                                                                                          <!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+                                                                                                                          <td width="20%" class="text-white tdVerPlan bgYellow">asd</td>
+                                                                                                                          <!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+                                                                                                                          <td width="20%" class="text-white tdVerPlan bgRed">dsa</td>
+                                                                                                                      </tr>
+                                                                                                                  </tbody>
+                                                                                                              </table>
+                                                                                                          </td>
+                                                                                                          <td width="1%"></td>
+                                                                                                          <td width="7%">
+                                                                                                              <table width="100%" border="0" style="border-color: green">
+                                                                                                                  <tbody>
+                                                                                                                      <tr>
+                                                                                                                          <td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+                                                                                                                          <!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+                                                                                                                          <td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+                                                                                                                          <!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+                                                                                                                          <td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+                                                                                                                          <!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+                                                                                                                          <td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+                                                                                                                      </tr>
+                                                                                                                      <tr>
+                                                                                                                          <td width="20%" class="text-white tdVerPlan bgGreen">sad</td>
+                                                                                                                          <!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+                                                                                                                          <td width="20%" class="text-white tdVerPlan bgGreen">asd</td>
+                                                                                                                          <!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+                                                                                                                          <td width="20%" class="text-white tdVerPlan bgYellow">asd</td>
+                                                                                                                          <!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+                                                                                                                          <td width="20%" class="text-white tdVerPlan bgRed">dsa</td>
+                                                                                                                      </tr>
+                                                                                                                  </tbody>
+                                                                                                              </table>
+                                                                                                          </td>
+                                                                                                          <td width="1%"></td>
+                                                                                                          <td width="7%">
+                                                                                                              <table width="100%" border="0" style="border-color: green">
+                                                                                                                  <tbody>
+                                                                                                                      <tr>
+                                                                                                                          <td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+                                                                                                                          <!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+                                                                                                                          <td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+                                                                                                                          <!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+                                                                                                                          <td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+                                                                                                                          <!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+                                                                                                                          <td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+                                                                                                                      </tr>
+                                                                                                                      <tr>
+                                                                                                                          <td width="20%" class="text-white tdVerPlan bgGreen">sad</td>
+                                                                                                                          <!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+                                                                                                                          <td width="20%" class="text-white tdVerPlan bgGreen">asd</td>
+                                                                                                                          <!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+                                                                                                                          <td width="20%" class="text-white tdVerPlan bgYellow">asd</td>
+                                                                                                                          <!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+                                                                                                                          <td width="20%" class="text-white tdVerPlan bgRed">dsa</td>
+                                                                                                                      </tr>
+                                                                                                                  </tbody>
+                                                                                                              </table>
+                                                                                                          </td>
+                                                                                                          <td width="1%"></td>
+                                                                                                          <td width="7%">
+                                                                                                              <table width="100%" border="0" style="border-color: green">
+                                                                                                                  <tbody>
+                                                                                                                      <tr>
+                                                                                                                          <td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+                                                                                                                          <!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+                                                                                                                          <td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+                                                                                                                          <!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+                                                                                                                          <td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+                                                                                                                          <!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+                                                                                                                          <td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+                                                                                                                      </tr>
+                                                                                                                      <tr>
+                                                                                                                          <td width="20%" class="text-white tdVerPlan bgGreen">sad</td>
+                                                                                                                          <!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+                                                                                                                          <td width="20%" class="text-white tdVerPlan bgGreen">asd</td>
+                                                                                                                          <!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+                                                                                                                          <td width="20%" class="text-white tdVerPlan bgYellow">asd</td>
+                                                                                                                          <!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+                                                                                                                          <td width="20%" class="text-white tdVerPlan bgRed">dsa</td>
+                                                                                                                      </tr>
+                                                                                                                  </tbody>
+                                                                                                              </table>
+                                                                                                          </td>
+                                                                                                          <td width="1%"></td>
+                                                                                                          <td width="7%">
+                                                                                                              <table width="100%" border="0" style="border-color: green">
+                                                                                                                  <tbody>
+                                                                                                                      <tr>
+                                                                                                                          <td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+                                                                                                                          <!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+                                                                                                                          <td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+                                                                                                                          <!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+                                                                                                                          <td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+                                                                                                                          <!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+                                                                                                                          <td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+                                                                                                                      </tr>
+                                                                                                                      <tr>
+                                                                                                                          <td width="20%" class="text-white tdVerPlan bgGreen">sad</td>
+                                                                                                                          <!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+                                                                                                                          <td width="20%" class="text-white tdVerPlan bgGreen">asd</td>
+                                                                                                                          <!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+                                                                                                                          <td width="20%" class="text-white tdVerPlan bgYellow">asd</td>
+                                                                                                                          <!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+                                                                                                                          <td width="20%" class="text-white tdVerPlan bgRed">dsa</td>
+                                                                                                                      </tr>
+                                                                                                                  </tbody>
+                                                                                                              </table>
+                                                                                                          </td>
+                                                                                                          <td width="1%"></td>
+                                                                                                          <td width="7%">
+                                                                                                              <table width="100%" border="0" style="border-color: green">
+                                                                                                                  <tbody>
+                                                                                                                      <tr>
+                                                                                                                          <td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+                                                                                                                          <!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+                                                                                                                          <td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+                                                                                                                          <!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+                                                                                                                          <td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+                                                                                                                          <!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+                                                                                                                          <td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+                                                                                                                      </tr>
+                                                                                                                      <tr>
+                                                                                                                          <td width="20%" class="text-white tdVerPlan bgGreen">sad</td>
+                                                                                                                          <!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+                                                                                                                          <td width="20%" class="text-white tdVerPlan bgGreen">asd</td>
+                                                                                                                          <!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+                                                                                                                          <td width="20%" class="text-white tdVerPlan bgYellow">asd</td>
+                                                                                                                          <!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+                                                                                                                          <td width="20%" class="text-white tdVerPlan bgRed">dsa</td>
+                                                                                                                      </tr>
+                                                                                                                  </tbody>
+                                                                                                              </table>
+                                                                                                          </td>
+                                                                                                          <td width="1%"></td>
+                                                                                                          <td width="7%">
+                                                                                                              <table width="100%" border="0" style="border-color: green">
+                                                                                                                  <tbody>
+                                                                                                                      <tr>
+                                                                                                                          <td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+                                                                                                                          <!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+                                                                                                                          <td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+                                                                                                                          <!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+                                                                                                                          <td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+                                                                                                                          <!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+                                                                                                                          <td width="24%" class="text-white tdVerPlan bgBlue">---</td>
+                                                                                                                      </tr>
+                                                                                                                      <tr>
+                                                                                                                          <td width="20%" class="text-white tdVerPlan bgGreen">sad</td>
+                                                                                                                          <!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+                                                                                                                          <td width="20%" class="text-white tdVerPlan bgGreen">asd</td>
+                                                                                                                          <!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+                                                                                                                          <td width="20%" class="text-white tdVerPlan bgYellow">asd</td>
+                                                                                                                          <!--<td width="1%" style="background-color: #fff !important;">&nbsp;</td>-->
+
+                                                                                                                          <td width="20%" class="text-white tdVerPlan bgRed">dsa</td>
+                                                                                                                      </tr>
+                                                                                                                  </tbody>
+                                                                                                              </table>
+                                                                                                          </td>
+
+                                                                                                      </tr>
+
+                                                                                                  </table>
+                                                                                              </div>
+                                                                                          </div>
+                                                                                      </div>
+                                                                                  </div>
+                                                                              </div>
+
+                                                                          </td>
+                                                                      </tr>
+                                                                      <! END LISTADO DE MESES
+                                                                  </tbody>
+
+                                                              </table>
+                                                              <div class="body-tabla-list-EvalAud" id="body-leyenda-2">
+                                                                  <div class="row mt-3">
+
+                                                                      <div class="col-12 altoListado">
+
+                                                                      </div>
+
+                                                                  </div>
+                                                              </div>
+
+                                                          </div>
+
+                                                          <div class="col-4 pl-0">
+
+                                                              <table border="1" width="100%" style="border-color: #fff0;">
+                                                                  <thead style="display: none;">
+                                                                      <tr>
+                                                                          <th width="15%" class="text-center headerTablaModalPlanAnual">Responsable</th>
+                                                                          <th width="2%" class="bgWhite">&nbsp;</th>
+                                                                          <th width="15%" class="text-center headerTablaModalPlanAnual">Avance de <br>Etapa</th>
+                                                                          <th width="2%" class="bgWhite">&nbsp;</th>
+                                                                          <th width="15%" class="text-center headerTablaModalPlanAnual">Avance del<br> Proyecto</th>
+                                                                          <th width="2%" class="bgWhite">&nbsp;</th>
+                                                                          <th width="15%" class="text-center headerTablaModalPlanAnual">Cumplimiento</th>
+                                                                          <th width="2%" class="bgWhite">&nbsp;</th>
+                                                                          <th width="15%" class="text-center headerTablaModalPlanAnual" style="font-size: 0.7rem !important;">Cumplimiento al: <br><span id="cumplimentoAlMes">03/10/2020</span></th>
+                                                                          <th width="2%" class="bgWhite">&nbsp;</th>
+                                                                          <th width="15%" class="text-center headerTablaModalPlanAnual" style="font-size: 0.7rem !important;">Cumplimiento del <br>Proyecto</th>
+
+                                                                      </tr>
+                                                                  </thead>
+                                                                  <tbody id="listadoComplemento">
+                                                                      <! START LISTADO DE COMPLEMENTOS
+                                                                      <tr>
+                                                                          <td colspan="11">
+                                                                              <div class="body-tabla-list-EvalAud" id="body-tabla-list-EvalAud1">
+                                                                                  <div id = 'iddd'  class="item-tabla p-2" style="z-index: 1; padding: 0px !important; margin: 0px 3px 0px 3px !important;">
+                                                                                      <div class="row m-0 justify-content-between align-items-center tbody_trainning">
+                                                                                          <div class="col-12 text-center altoListado listadoVacio">
+                                                                                              <div class="row">
+                                                                                                  <table width = "100%" border="0" style="border-color: red;font-size: 0.95rem;">
+                                                                                                      <tr >
+                                                                                                          <td width="100%" colspan="11"></td>
+                                                                                                      </tr>
+                                                                                                  </table>
+                                                                                              </div>
+                                                                                          </div>
+                                                                                      </div>
+                                                                                  </div>
+                                                                              </div>
+                                                                          </td>
+                                                                      </tr>
+                                                                      <tr>
+                                                                          <td colspan="11">
+
+                                                                              <div class="body-tabla-list-EvalAud" id="body-tabla-list-EvalAud1">
+                                                                                  <div id = 'iddd'  class="p-2" style="z-index: 1; padding: 0px !important; margin: 10px 3px 0px 3px !important;">
+                                                                                      <div class="row m-0 justify-content-between align-items-center tbody_trainning">
+                                                                                          <div class="col-12 text-center altoListado">
+                                                                                              <div class="row">
+                                                                                                  <table width = "100%" border="0" style="border-color: red;font-size: 0.95rem;">
+                                                                                                      <tr >
+                                                                                                          <td width="15%">
+                                                                                                              <div id="c1TabGeny" class="text-left textoListadosPlanAnual" > Jesus Millan </div>
+                                                                                                          </td>
+                                                                                                          <td width="2%" class="bgWhite"></td>
+                                                                                                          <td width="15%">
+                                                                                                              <div id="c1TabGeny" class="text-center textoListadosPlanAnual" > <span class="pr-4">6</span> <span>12</span>
+                                                                                                              </div>
+                                                                                                          </td>
+                                                                                                          <td width="2%" class="bgWhite"></td>
+                                                                                                          <td width="15%">
+                                                                                                              <div id="c1TabGeny" class="text-center textoListadosPlanAnual" > <span class="pr-4">50</span> <span>50</span>
+                                                                                                              </div>
+                                                                                                          </td>
+                                                                                                          <td width="2%" class="bgWhite"></td>
+                                                                                                          <td width="15%">
+                                                                                                              <div id="c1TabGeny" class="text-center textoListadosPlanAnual" > <span>6</span>
+                                                                                                              </div>
+                                                                                                          </td>
+                                                                                                          <td width="2%" class="bgWhite"></td>
+                                                                                                          <td width="15%">
+                                                                                                              <div id="c1TabGeny" class="text-left textoListadosPlanAnual bgYellow" style="margin: 0px !important;">
+                                                                                                                  <table width="100%" border="0" style="border-color: green">
+                                                                                                                      <tbody>
+                                                                                                                          <tr>
+                                                                                                                              <td rowspan="2" width="24%" class="bgYellow fontGris text-center">70 %</td>
+                                                                                                                          </tr>
+                                                                                                                      </tbody>
+                                                                                                                  </table>
+
+                                                                                                              </div>
+                                                                                                          </td>
+                                                                                                          <td width="2%" class="bgWhite"></td>
+                                                                                                          <td width="15%">
+                                                                                                              <div id="c1TabGeny" class="text-left textoListadosPlanAnual bgGreen" style="margin: 0px !important;">
+                                                                                                                  <table width="100%" border="0" style="border-color: green">
+                                                                                                                      <tbody>
+                                                                                                                          <tr>
+                                                                                                                              <td rowspan="2" width="24%" class="bgGreen fontWhite text-center">70 %</td>
+                                                                                                                          </tr>
+                                                                                                                      </tbody>
+                                                                                                                  </table>
+                                                                                                              </div>
+                                                                                                          </td>
+                                                                                                      </tr>
+                                                                                                  </table>
+                                                                                              </div>
+                                                                                          </div>
+                                                                                      </div>
+                                                                                  </div>
+                                                                              </div>
+                                                                          </td>
+                                                                      </tr>
+                                                                      <! END LISTADO DE COMPLEMENTOS
+                                                                  </tbody>
+                                                              </table>
+
+                                                              <div class="body-tabla-list-EvalAud" id="body-leyenda-3">
+                                                                  <div class="row mt-3 px-2">
+                                                                      <div class="col-12 altoListado ml-2" style="background-color: #58c25d">
+                                                                          <table border="1" width="100%" style="border-color: #fff0;">
+                                                                              <tbody>
+                                                                                  <tr>
+                                                                                      <td width="15%" class="text-center "></td>
+                                                                                      <td width="2%" >&nbsp;</td>
+                                                                                      <td width="15%" class="text-center "></td>
+                                                                                      <td width="2%" >&nbsp;</td>
+                                                                                      <td width="15%" class="text-center ">
+                                                                                          <div id="c1TabGeny" class="text-center pt-2" style="color: #fff !important;" >
+                                                                                              <span class="pr-4" id="avanceProyecto">100%</span>
+                                                                                              <span id="avanceProyectoXMes">50%</span>
+                                                                                          </div>
+                                                                                          <!-- <span style="color: #fff">55%</span>
+                                                                                          <span style="color: #fff">55%</span> -->
+
+                                                                                      </td>
+                                                                                      <td width="2%" >&nbsp;</td>
+                                                                                      <td width="15%" class="text-center"></td>
+                                                                                      <td width="2%" >&nbsp;</td>
+                                                                                      <td width="15%" class="text-center">
+                                                                                          <div id="c1TabGeny" class="text-center pt-2" style="color: #fff !important;" >
+                                                                                              <span class="pr-4" id="totalProcentajeProyectoXMes">100%</span>
+                                                                                          </div>
+                                                                                      </td>
+                                                                                      <td width="2%" >&nbsp;</td>
+                                                                                      <td width="15%" class="text-center">
+                                                                                          <div id="c1TabGeny" class="text-center pt-2" style="color: #fff !important;" >
+                                                                                              <span class="pr-4" id="totalProcentajeProyecto">100%</span>
+                                                                                          </div>
+                                                                                      </td>
+
+                                                                                  </tr>
+                                                                              </tbody>
+                                                                          </table>
+                                                                      </div>
+                                                                  </div>
+                                                              </div>
+
+                                                          </div>
+
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                          </div>
+
+                                      </div>
+
+                                  </div>
+
+
+                              </div>
+                          </div>
+
+                      </div>
+                      <div class="card-body2">
+                          <div class="row justify-content-around align-items-center" style="padding-left: 25px;">
+                            <div class="col-2 altoListado"></div>
+                                <div class="col-8  d-flex justify-content-between fontsizeLeyenda">
+
+                                <div >
+                                    <span class="badge badge-pill badge-success" style="color: #34559c; border-radius: 50% !important; background-color: #35559c !important; height: 20px !important; width: 20px !important;">-</span> &nbsp;&nbsp;&nbsp;Programada
+                                </div>
+
+                                <div >
+                                    <span class="badge badge-pill badge-success" style="color: #05beee; border-radius: 50% !important; background-color: #05beee !important; height: 20px !important; width: 20px !important;">-</span> &nbsp;&nbsp;&nbsp;Atendida
+                                </div>
+
+                                <div>
+                                    <span class ="badge badge-pill badge-success" style="color: #58c25d; border-radius: 50% !important; background-color: #58c25d !important; height: 20px !important; width: 20px !important;">-</span> &nbsp;&nbsp;&nbsp;Ejecutada y Aprobada
+                                </div>
+                                <div >
+                                    <span class="badge badge-pill badge-success" style="color: #ffb525; border-radius: 50% !important; background-color: #ffb525 !important; height: 20px !important; width: 20px !important;">-</span> &nbsp;&nbsp;&nbsp;Evidencia Subida Fuera de Tiempo
+                                </div>
+                                <div >
+                                    <span class="badge badge-pill badge-success" style="color: #ff6767; border-radius: 50% !important; background-color: #ff6767 !important; height: 20px !important; width: 20px !important;">-</span> &nbsp;&nbsp;&nbsp;Vencida u Observada / Sin Adjunto
+                                </div>
+                                <div class="altoListado"></div>
+
+                            </div>
+                            <div class="col-2 altoListado"></div>
+
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <! END MODAL-BODY >
+
+              <! START MODAL-FOOTER >
+              <!-- <div class="modal-footer">
+                  <div class="row justify-content-center">
+                      <div class="col-12">
+
+                          modal footer
+
+                      </div>
+                  </div>
+              </div> -->
+              <! END MODAL-FOOTER >
+
+
+          </div>
+      </div>
+  </div>
+</div>
+<!--  END  MODAL VER PLAN ANUAL SP3 -->
+
+<!--  START  MODAL INGRESAR TAREAS ACTIVIDAD SP3 -->
+<div class="modal fade"  id="modalIngresarTareasActividadSp3" tabindex="-1" data-backdrop="static" data-keyboard="false" aria-hidden="true"  tabindex="-1" role="dialog" >
+  <div class="modal-dialog modal-dialog-centered rounded" role="document" style="max-width: 1322px; z-index: 1030; ">
+      <div class="modal-content rounded border-0"  style="background:white; height: 500px !important;" >
+          <div style="overflow: hidden; height: 500px; overflow-x: hidden; ">
+              <div class="modal-header fix-header-modal" >
+                  <div class="card-header text-center text-white modal-dialog-centered  card-header-FormAuditor" id="red-head" style="width: 100%; padding: 0px 0px !important;">
+                      <div class="row d-flex justify-content-center text-center" style="width: 100%;">
+                          <div class="col-1 btn-close-modalCA pl-3 my-2">
+
+                          </div>
+                          <div class="col justify-content-center text-center col-12" style="margin-top: -28px !important;" >
+
+                              <table border='0' style="margin-left: auto; margin-right: auto; width: 1250px;">
+                                  <tr>
+                                      <td width='10%'><img src="./images/prev.svg" style="cursor:pointer;" title = 'Salir' onclick=" $('#modalIngresarTareasActividadSp3').modal('hide').removeClass('fade'); $('#modalVerPlanAnualSP3').modal('show').addClass('fade');" > </td>
+                                      <td width='10%'></td>
+                                      <td width='65%'><h5 id='titleModalIngresarTareasActividadSp3' style="font-size: 16px !important; color:#fff; font-weight: normal; text-align: center;">Ingresar Tareas de Actividad - Visitas de liderazgo del superintendente (<span id="" name=""> IAS, inpecciones, observaciones preventivas)</span></h5></td>
+                                      <td width='10%'>
+
+                                      <td width='7%'>
+                                  </tr>
+                              </table>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+
+              <div class="modal-body dialog-position" id="bodymodalShowAuditor" style=" justify-content:space-around; align-content:center; padding: 10px 0px 0px !important;">
+
+                  <div class="card " style="border: 0px !important; border-radius: 5px; box-shadow: none;">
+
+                      <div class="card-body2" >
+
+                          <div class="row justify-content-around align-items-center text-center">
+                              <!-- <div class="col-12 caja-adj scroll-blue" style="height: 600px !important; border-color: red !important;"> -->
+                              <div class="col-12" style="height: 450px !important; border-color:chartreuse !important;">
+
+                                  <div id="divPreviewEval" class="divPreviewEval overflow-auto" style="margin-left: auto; margin-right: auto; margin-top: 2px !important;" >
+
+                                      <table border="0" style="margin-left: auto; margin-right: auto; width: 1233px; ">
+                                          <tr>
+                                              <td colspan="3">
+                                                  <table width="100%" border="0">
+                                                      <tr>
+                                                          <td width="50%" style="text-align: left !important;">
+                                                              <label   class="lbEvalAud_02">
+                                                                  <b style="text-align: left !important;">Responsable Asignado: </b>
+                                                                  <span id="nameResponsableTarea" name="nameResponsableTarea" >Erick Arrasco</span>
+                                                              </label>
+                                                          </td>
+                                                          <td width="50%">
+                                                              <p style="color:#c1c1c1;">
+                                                              </p>
+                                                          </td>
+                                                      </tr>
+                                                  </table>
+                                              </td>
+                                          </tr>
+                                      </table>
+
+
+
+                                      <div class="row justify-content-around align-items-center text-center" style="cursor: auto;">
+
+                                          <div class="header-tabla px-2 py-3" style="width: 1233px !important; ">
+                                              <table width = "100%" border="0">
+                                                  <tr >
+                                                      <td width = "5%" align="center"><div id="it1PlanAnual2" class="text-left lbCabezaTabla" style='margin: 0px 0px 0px 8px !important;  font-size: 14px !important; font-weight: bold !important;'  >Item </div></td>
+                                                      <td width = "45%" align="center"><div id="evidenciasPlanAnual2" class="text-left lbCabezaTabla" style=" font-size: 14px !important; font-weight: bold !important;"  > Evidencias </div></td>
+                                                      <td width = "20%" align="center"><div id="fechaProgPlanAnual2" class="text-left lbCabezaTabla" style=" font-size: 14px !important; font-weight: bold !important;"  > Fecha Programada </div></td>
+                                                      <td width = "20%" align="center"><div id="fechaEjePlanAnual22" class="text-left lbCabezaTabla" style=" font-size: 14px !important; font-weight: bold !important;"  > Fecha Ejecutada
+                                                      </label> <img id='loadRespPa' style="visibility: hidden;"  class=" float-top text-center" src="./images/iconos/loadingAdj.gif"  >
+                                                      </div></td>
+
+                                                      <td width = "20%" align="center"><div id="estadoPlanAnual2" class="text-left lbCabezaTabla" style='margin: 0px 0px 0px 8px !important;  font-size: 14px !important; font-weight: bold !important;'  >Estado</div></td>
+
+                                                      <td width = "25%" align="center"><div id="" class="text-left lbCabezaTabla" style='margin: 0px 0px 0px 8px !important;  font-size: 14px !important; font-weight: bold !important;'  >&nbsp;</div></td>
+
+
+                                                      <td width = "6%" align="center"><div id="adjuntarPlanAnual2" class="text-left lbCabezaTabla" style="margin: 0px 20px 0px 0px !important; font-size: 14px !important; font-weight: bold !important;"  >Adjuntar</div></td>
+                                                  </tr>
+                                              </table>
+                                          </div>
+                                          <!-- START LISTADO DE EVIDENCIAS -->
+                                          <div class="body-tabla-list-EvalAud" id="listadoEvidenciasTareas" name="listadoEvidenciasTareas" style="width: 100%; margin: 10px 1% 0px 1%;" >
+
+                                          </div>
+                                          <!-- END LISTADO DE EVIDENCIAS -->
+
+
+
+                                      <!-- aqui vamos a publicar las filas  -->
+                                      </div>
+                                  </div>
+
+                              </div>
+                          </div>
+                      </div>
+
+                  </div>
+               </div>
+          </div>
+      </div>
+  </div>
+</div>
+<!--   END   MODAL INGRESAR TAREAS ACTIVIDAD SP3 -->
+
+<!-- START MODAL MOTIVO DOCUMENTOS RECHAZADOS ------------------------** -->
+<div class="modal fade "  id="modalMotivoDocumentosRechazadosSp3_andy" tabindex="-1" data-backdrop="static" data-keyboard="false" aria-hidden="true"  tabindex="-1" role="dialog" >
+    <div class="modal-dialog modal-dialog-centered rounded" role="document" style="max-width: 1092px; z-index: 1031; ">
+        <div class="modal-content rounded border-0"  style="background:white; height: 650px !important;" >
+            <div style="overflow: hidden; height: 900px; overflow-x: hidden; ">
+                <div class="modal-header fix-header-modal" >
+                    <div class="card-header text-center text-white modal-dialog-centered  card-header-FormAuditor" id="red-head" style="width: 100%; padding: 0px 0px !important;">
+                        <div class="row d-flex justify-content-center text-center" style="width: 100%;">
+
+                            <div class="col-1 btn-close-modalCA pl-3 my-2">
+                                <!--button type="button" id="closeVerAuditoriaModal"><span aria-hidden="true" class="btn-close-modalCA">Cerrar&nbsp;&nbsp;&nbsp;&nbsp;&times;</span></button--> <!-- class="close hearder-modal" data-dismiss="modal" aria-label="Close" -->
+                                <!-- <div class="float-right" cursor="pointer" id="btn-close-Adj"><span style="font-size: 40px">
+                                <img src="images/prev.svg"  style="cursor: pointer;"></span>
+                                </div> -->
+                            </div>
+                            <div class="col justify-content-center text-center col-12" style="margin-top: -28px !important;" >
+                                <table border='0' style="margin-left: auto; margin-right: auto; width: 100%;">
+                                    <tr>
+                                        <td width='3%'>&nbsp;</td>
+                                        <td width="4%">
+                                            <img src="./images/prev.svg" style="cursor:pointer;" title="Salir" 
+                    onclick=" $('#modalMotivoDocumentosRechazadosSp3_andy').modal('hide').removeClass('fade'); $('#modalAdjuntarDocumentosTareasSp3').modal('show').addClass('fade'); ">
+                                        </td>
+
+                                        <td width='78%'><h5 id='lbTitleModalMotivoDocumentosRechazadosSp3_andy' style="font-size: 18px !important; color:#fff; font-weight: normal !important; text-align: center;">Motivo de Observación - Documento 1</h5></td>
+
+                                        
+
+                                        <td width='5%'>&nbsp;</td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-body dialog-position" id="bodyModalMotivoDocumentosRechazadosSp3_andy" style=" justify-content:space-around; align-content:center; padding: 10px 0px 0px !important;">
+
+                    <div class="card " style="border: 0px !important; border-radius: 5px; box-shadow: none;">
+
+                        <div class="card-body2" >
+
+                            <div class="row justify-content-around align-items-center text-center">
+
+                                <div class="col-12" style="height: 772px !important; border-color:chartreuse !important;">
+
+                                    <div id="divPreviewEval" class="divPreviewEval overflow-auto" style="margin-left: auto; margin-right: auto; margin-top: 2px !important;" >
+
+                                        <div class="row justify-content-around align-items-center text-center" style=" height: 57px !important;">
+
+                                            <!-- <div id="motivoVentanaObservacionSp3_andy" style=" width: 793px !important; height: 261px !important; margin: 0px 74px 44px 75px !important; color: #7a7a7a !important; font-size: 18px; text-align: center !important; padding: 10px 5px;">
+                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor nam deserunt ullam ad unde atque distinctio, asperiores aut dolores doloribus harum odio architecto expedita, ab numquam tempora eius blanditiis! Accusantium?Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci, ut ab minus obcaecati facere inventore consequatur cupiditate assumenda architecto, impedit doloremque voluptatem optio ea similique quibusdam, numquam? Fugiat, pariatur, vel. Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, deserunt sapiente maxime quae nobis ut tempora porro libero, dolor minus aperiam, accusamus minima illum laborum. Incidunt atque laboriosam aspernatur modi. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magnam numquam, quam placeat.
+                                            </div> -->
+
+                                            <table border='0' style="margin-left: auto; margin-right: auto; width: 100%;">
+                                                <tr>
+                                                    <td width="2%"><div>&nbsp;</div></td>
+
+                                                    <td width='96%'>
+                                                        <div class="form-group col-12 border text-left"   style="height: 410px;  border-color:#DEE2E6 !important;  margin:0px 0px 6px !important; padding: 10px 0px !important;"  id = "div8_andy">
+                                                            <label for="objetivo" class="label label-caja" style="font-size: 14px !important; font-weight: normal; color:#575757c9;"  >
+                                                   
+                                                </label>
+                                 <textarea class=" textarea-fecha2" onkeyup="fnSp3onchangeColor('div8_andy')"  placeholder="Escriba su Observación" style="height: 360px;  font-size: 16px !important;  color:#534b4b; background-color: white; text-align: left !important;"  id="motivoVentanaObservacionSp3_andy"  name = "motivoVentanaObservacionSp3_andy" readonly> Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor nam deserunt ullam ad unde atque distinctio, asperiores aut dolores doloribus harum odio architecto expedita, ab numquam tempora eius blanditiis! Accusantium?Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci, ut ab minus obcaecati facere inventore consequatur cupiditate assumenda architecto, impedit doloremque voluptatem optio ea similique quibusdam, numquam? Fugiat, pariatur, vel. Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, deserunt sapiente maxime quae nobis ut tempora porro libero, dolor minus aperiam, accusamus minima illum laborum. Incidunt atque laboriosam aspernatur modi. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magnam numquam, quam placeat.</textarea>
+
+
+                                                </div> 
+                                                    </td>
+
+                                                    
+                                                     <td width="2%"><div>&nbsp;</div></td>
+
+                                                </tr>
+
+                                                <tr> <td colspan="4"><div style="height:30px; background-color:white;">&nbsp;</div></td></tr>
+                                                <tr>
+                                                    <td colspan="4">
+                                                       <!--  <table border='0' width="100%" align="center">
+                                                            <tr>
+                                                                <td width='20%'>&nbsp;</td>
+                                                                <td width='25%'>
+    <button type="button" style=" width: 100% !important;"  class="btn_confirmar_modal bg-green-lime-modal"  
+    onmouseup="fnGuardarEnviarObsDocActAndy();" id="btnGuardarObs_andy" class="btn btn-system-green" >Guardar y Enviar</button></td>
+                                                                <td width='10%'>&nbsp;</td>
+                                                               <td width='25%'>
+    <button type="button" class="btn_cerrar_modal" style="background-color: #ffffff; font-size: 14px;"   onclick=" $('#modalMotivoDocumentosRechazadosSp3_andy').modal('hide').removeClass('fade'); " id="btnCancelarObs_andy" >Cancelar</button></td>
+                                                                <td width='20%'>&nbsp;</td>
+                                                            </tr>
+                                                        </table> -->
+
+
+
+                                                    </td>
+                                                </tr>
+                                            </table>
+
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--  END  MODAL MOTIVO DOCUMENTOS RECHAZADOS ------------------------** -->
+
+
+
+
+
+
+<div class="modal fade "  id="modalAdjuntarDocumentosTareasSp3" tabindex="-1" data-backdrop="static" data-keyboard="false" aria-hidden="true"  tabindex="-1" role="dialog" >
+  <div class="modal-dialog modal-dialog-centered rounded" role="document" style="max-width: 1092px; z-index: 1030; ">
+      <div class="modal-content rounded border-0"  style="background:white; height: 540px !important;" >
+          <div style="overflow: hidden; height: 692px; overflow-x: hidden; ">
+
+              <div class="modal-header fix-header-modal" >
+                  <div class="card-header text-center text-white modal-dialog-centered  card-header-FormAuditor" id="red-head" style="width: 100%; padding: 0px 0px !important;">
+                      <div class="row d-flex justify-content-center text-center" style="width: 100%;">
+                          <div class="col-1 btn-close-modalCA pl-3 my-2">
+                            <!--button type="button" id="closeVerAuditoriaModal"><span aria-hidden="true" class="btn-close-modalCA">Cerrar&nbsp;&nbsp;&nbsp;&nbsp;&times;</span></button--> <!-- class="close hearder-modal" data-dismiss="modal" aria-label="Close" -->
+                            <!-- <div class="float-right" cursor="pointer" id="btn-close-Adj"><span style="font-size: 40px">
+                                <img src="images/prev.svg"  style="cursor: pointer;"></span>
+                            </div> -->
+                           </div>
+                          <div class="col justify-content-center text-center col-12" style="margin-top: -28px !important;" >
+                              <table border='0' style="margin-left: 2rem; margin-right: auto; width: 900px;">
+                                  <tr>
+                                      <td width='20%' ><img src="./images/prev.svg" style="cursor:pointer;" title = 'Salir' onclick=" $('#modalAdjuntarDocumentosTareasSp3').modal('hide').removeClass('fade');$('#modalIngresarTareasActividadSp3').modal('show').addClass('fade');" > </td>
+                                      <td width='63%'><h5 id='lbTitleActividadPlanAnual' style="font-size: 16px !important; color:#fff; font-weight: bold !important; text-align: center;">Evidencia de IAS, inspecciones, observaciones preventivas</h5></td>
+                                      <td width='10%'>
+
+                                      <td width='7%'>
+                                  </tr>
+                              </table>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+
+              <div class="modal-body dialog-position" id="bodymodalShowAuditor" style=" justify-content:space-around; align-content:center; padding: 10px 0px 0px !important;">
+
+                  <div class="card " style="border: 0px !important; border-radius: 5px; box-shadow: none;">
+
+                      <div class="preloader" id="preloader" style="display: none; position: absolute; top: 50%; left: 50%; z-index: 9000;" ></div>
+
+                      <div class="card-body2" >
+
+                          <div class="row justify-content-around align-items-center text-center">
+
+                         <div class="col-12" style="height: 500px !important; border-color:chartreuse !important;">
+
+
+                        <div id="divPreviewEval" class="divPreviewEval overflow-auto" style="margin-left: auto; margin-right: auto; margin-top: 2px !important;" >
+
+                              <table border="0" style="margin-left: auto; margin-right: auto; width: 100%; ">
+                                    <tr>
+                                        <td colspan="3">
+                                            <table width="100%" border="0">
+                                              <tr>
+                                                  <td width="23%" style="text-align: left !important;">
+                                                      <label   class="lbEvalAud_02">
+                                                          <b style="text-align: left !important;">Documentos </b>
+                                                      </label>
+                                                  </td>
+                                                  <td width="70%"><p style="color:#c1c1c1;"></p></td>
+
+                                                  <td width="7%" text-align:rigth !important;>
+                                                      <button  id="agregarEvidencia" class="btn verde2" onmouseup="fnAgregarAdjuntarDocumento(0,'','Pendiente','',2,0)" style="font-size: 12px !important; margin-left: 5px; margin-top: -5px;"  >Agregar</button>
+                                                  </td>
+                                              </tr>
+                                          </table>
+                                        </td>
+                                    </tr>
+                              </table>
+
+                         <!-- aqui vamos a colocar el listado de objetivos y subobjetivos  -->
+
+                         <div class="row justify-content-around align-items-center text-center" >
+
+
+                            <div class="header-tabla px-2 py-3" style="width: 1025px !important; ">
+                                <table width = "100%" border="0">
+                                    <tr >
+                                        <td width = "50%" align="center"><div id="c3TabNombreDoc" class="text-left lbCabezaTabla" style=" font-size: 14px !important; font-weight: bold !important;"  > Nombre del documento </div></td>
+
+                                        <td width = "20%" align="center"><div id="c4TabEstadoDoc" class="text-center lbCabezaTabla" style=" font-size: 14px !important; font-weight: bold !important;"  >Estado</div></td>
+
+                                        <td width = "8%" align="center"><div id="c5TabAdjuntarDoc" class="text-center lbCabezaTabla" style=" font-size: 14px !important; font-weight: bold !important;"  >Adjuntar</div></td>
+
+                                        <td width = "8%" align="center"><div id="c6TabVerDoc" class="text-center lbCabezaTabla" style=" font-size: 14px !important; font-weight: bold !important;"  >Descargar</div></td>
+                                    </tr>
+                                </table>
+                           </div>
+
+                                      </div>
+
+                                      <div class="row justify-content-around align-items-center text-center" id="filasAdjuntarDocumentosTareas">
+                                      </div>
+
+                                          <div class="body-tabla-list-EvalAud" id="fila2Documentos" >
+
+                                             <div class="body-tabla-list-EvalAud" id="fila3Documentos" >
+
+                                                  <!-- Aqui me encuentro fuera de la tabla -->
+                                                  <div style="margin: 30px auto !important; width: 50%; height: 10%;">
+                                                    <a href="#" id="verHistorialDoc" onmouseup="fnVerHistorialDocumentosSp3()" style="text-align: center !important; margin-top: 20px; font-size: 16px !important; text-decoration: underline;">Ver historial de documentos</a>
+                                                  </div>
+
+                                                  <table border="0" width="100%" style="margin-top:20px !important;">
+
+                          <tbody>
+                            <tr>
+                              <td width="35%">&nbsp;</td>
+                              <td width="14%">
+                                <button type="button" style=" width: 100% !important;"  class="btn_confirmar_modal bg-green-lime-modal"  onmouseup="fnEnviarEvidenciasSp3()" id="btnGuardarDocs" class="btn btn-system-green">Guardar y Enviar</button>
+                              </td>
+                              <td width="2%">&nbsp;</td>
+
+
+                              <td width="14%">
+                                <button type="button" class="btn_cerrar_modal" style="background-color: #ffffff; font-size: 14px;"  onclick=" $('#modalAdjuntarDocumentosTareasSp3').modal('hide').removeClass('fade');$('#modalIngresarTareasActividadSp3').modal('show').addClass('fade');" id="btnCancelarDoc" >Cancelar</button>
+                              </td>
+
+                              <td width="35%">&nbsp;</td>
+                            </tr>
+                          </tbody>
+                        </table>
+
+                                              <!-- Aqui cierran listados de los item de la tabla Resposable asignado -->
+                                              </div>
+
+                                          <!-- aqui vamos a publicar las filas  -->
+                                          </div>
+                                      </div>
+
+                                 </div>
+                              </div>
+                          </div>
+
+                      </div>
+                  </div>
+
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- START MODAL CONFIRMAR CONTROL DE CAMBIO PLAN ANUAL  ------------------------** -->
+<div class="modal fade"  id="modalConfirmarSolicitudEjecucionVencidaPlanAnualSp3" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="modalConfirmarCorrecionPlanAnualSp3Title" aria-hidden="true" >
+    <div class="modal-dialog modal-dialog-centered rounded " role="document" style="max-width: 392px; z-index: 1030; ">
+        <div class="modal-content rounded " style="border: 0px !important; background-color:rgba(0,0,0,.0001) !important; box-shadow: none;">
+
+            <div style="overflow: hidden;height: 500px;overflow-x: hidden; ">
+                <div class="modal-body" id="">
+                    <div class="col-sm-12 col-md-12" style="color:#575757c9;">
+
+                        <div class="card border-0" style=" border-radius: 10px; box-shadow: none;">
+                            <div class="card-header text-center text-white  " style=" border-radius: 10px 10px 0px 0px; background:#05beee; height: 95px;"><img src="images/iconos/informacio1.svg"><span><b><br><br>&nbsp;&nbsp;&nbsp;&nbsp;</b></span></div>
+                                <br>
+                            <div class="card-body mt-2" style=" padding: 10px !important; ">
+                                <div class="row p-0 d-flex justify-content-center">
+
+                                    <div class="col-sm-10 align-self-center text-center"   >
+                                        <h4><b id="msj_confirm_fin_corrige_plan2" style=" color: #000000 !important;  font-size: 17px !important; " >No puede adjuntar<br> evidencias, comunicarse con<br> gerencia SSOMA</b></h4>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="espacio"></div>
+                            <div class="card-body my-4">
+                                <div class="row p-0 d-flex justify-content-center">
+                                    <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;font-size: 15px;" >
+                                        <h4><b style=" color: #000000 !important;  font-size: 16px !important; " >¿Desea enviar solicitud?</b></h4>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="card-body" style=" padding: 10px !important; ">
+                                <div class="row p-0 d-flex justify-content-center">
+                                    <div class="col-sm-12 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;font-size: 15px;" >
+                                        <div class="card-body2">
+                                        <div class="row justify-content-around align-items-center">
+                                            <div class="col-6">
+                                                <button type="button" class="btn_confirmar_modal bg-green-lime-modal confirm btn-confirmar-fecha btn-blue" id="btnConfirmarEnvioCorrecionPlanAnual" onmouseup="guardarSolicitudEvaluacionVencPA()"><b>Confirmar</b></button>
+                                            </div>
+                                            <div class="col-6">
+                                                <button class="btn_cerrar_modal btn-cerrar-fecha" id="btn-cancelar-ACR" onmouseup="$('#modalConfirmarSolicitudEjecucionVencidaPlanAnualSp3').modal('hide').removeClass('fade'); $('#modalIngresarTareasActividadSp3').modal('show').addClass('fade');" ><b>Cerrar</b></button>
+                                            </div>
+                                        </div>
+                                        </div>
+                                     </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- START MODAL ALERT OK CORRECCION PLAN ANUAL------------------------** -->
+<div class="modal fade"  id="modalExitoEnvioSolicitudPlanAnualSp3" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="modalExitoCorreccionPlanAnualSp3Label" aria-hidden="true" >
+    <div class="modal-dialog modal-dialog-centered rounded " role="document" style="max-width: 392px; z-index: 1030; ">
+        <div class="modal-content rounded " style="border: 0px !important; background-color:rgba(0,0,0,.0001) !important; box-shadow: none;">
+
+            <div style="overflow: hidden;height: 500px;overflow-x: hidden; ">
+                <div class="modal-body" >
+                    <div class="col-sm-12 col-md-12" style="color:#575757c9;">
+
+                        <div class="card border-0" style=" border-radius: 10px; box-shadow: none;">
+                            <div class="card-header text-center text-white  " style=" border-radius: 10px 10px 0px 0px; background:#D2D97B; height: 95px;"><img src="images/iconos/correct_1.svg"><span><b><br><br>&nbsp;&nbsp;&nbsp;&nbsp;</b></span></div>
+
+                            <div class="card-body my-4">
+                                <div class="row p-0 d-flex justify-content-center">
+                                    <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;" >
+                                        <h4> <b id="text_msj_confirm_exitoCC" style=" color: #000000 !important;  font-size: 17px !important; ">Se envió solicitud de permiso</b></h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="espacio"></div>
+                            <div class="card-body">
+                                <div class="row p-0 d-flex justify-content-center">
+                                    <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;font-size: 15px;" >
+                                        <b style=" color: #000000 !important;  font-size: 15px !important; ">El tiempo de respuesta es de un<br> máximo de 24 horas</b>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                             <div class="card-body2">
+                                <div class="row justify-content-around align-items-center">
+                                    <div class="col-5 ml-3" style="padding:10px 0px !important;" >
+                                        <button type="button" onmouseup="$('#modalExitoEnvioSolicitudPlanAnualSp3').modal('hide').removeClass('fade');    $('#modalVerPlanAnualSP3').modal('show').addClass('fade')                                       " class="btn_confirmar_modal bg-green-lime-modal confirm btn-confirmar-fecha-end" id="btnExitoCorreccionPlanAnual"><b>De Acuerdo</b></button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- END MODAL ALERT OK CORRECCION PLAN ANUAL------------------------** -->
+
+  <!-- START MODAL CONFIRMAR ENVIAR CORRECION PLAN ANUAL ------------------------** -->
+<div class="modal fade"  id="modalConfirmarEjecucionPlanAnualSp3" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="modalConfirmarCorrecionPlanAnualSp3Title" aria-hidden="true" >
+  <div class="modal-dialog modal-dialog-centered rounded " role="document" style="max-width: 392px; z-index: 1030; ">
+      <div class="modal-content rounded " style="border: 0px !important; background-color:rgba(0,0,0,.0001) !important; box-shadow: none;">
+
+          <div style="overflow: hidden;height: 500px;overflow-x: hidden; ">
+              <div class="modal-body" id="">
+                  <div class="col-sm-12 col-md-12" style="color:#575757c9;">
+
+                      <div class="card border-0" style=" border-radius: 10px; box-shadow: none;">
+                          <div class="card-header text-center text-white  " style=" border-radius: 10px 10px 0px 0px; background:#05beee; height: 95px;"><img src="images/iconos/informacio1.svg"><span><b><br><br>&nbsp;&nbsp;&nbsp;&nbsp;</b></span></div>
+                              <br>
+                          <div class="card-body mt-2" style=" padding: 10px !important; ">
+                              <div class="row p-0 d-flex justify-content-center">
+
+                                  <div class="col-sm-10 align-self-center text-center"   >
+                                      <h4><b id="msj_confirm_fin_corrige_plan" style=" color: #000000 !important;  font-size: 17px !important; " >¿Desea guardar los cambios actuales?                                    </b></h4>
+                                  </div>
+
+                              </div>
+                          </div>
+                          <div class="espacio"></div>
+                          <div class="card-body my-4">
+                              <div class="row p-0 d-flex justify-content-center">
+                                  <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;font-size: 15px;" >
+                                      <h4><b style=" color: #000000 !important;  font-size: 16px !important; " >¿Desea Confirmar?</b></h4>
+                                  </div>
+
+                              </div>
+                          </div>
+
+                          <div class="card-body" style=" padding: 10px !important; ">
+                              <div class="row p-0 d-flex justify-content-center">
+                                  <div class="col-sm-12 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;font-size: 15px;" >
+                                      <div class="card-body2">
+                                      <div class="row justify-content-around align-items-center">
+                                          <div class="col-6">
+                                              <button type="button" class="btn_confirmar_modal bg-green-lime-modal confirm btn-confirmar-fecha btn-blue" id="btnConfirmarEnvioCorrecionPlanAnual" onmouseup="Sp3fnGuardarEvidenciasEjecucionPA();"><b>Confirmar</b></button>
+                                          </div>
+                                          <div class="col-6">
+                                              <button class="btn_cerrar_modal btn-cerrar-fecha" id="btn-cancelar-ACR" onmouseup="$('#modalConfirmarEjecucionPlanAnualSp3').modal('hide').removeClass('fade'); $('#modalEnviarCorrecionPlanAnualSp3').modal('show').addClass('fade');" ><b>Cerrar</b></button>
+                                          </div>
+                                      </div>
+                                      </div>
+                                   </div>
+
+                              </div>
+                          </div>
+
+                      </div>
+                  </div>
+              </div>
+
+          </div>
+      </div>
+  </div>
+</div>
+
+<!-- START MODAL ALERT OK CORRECCION PLAN ANUAL------------------------** -->
+<div class="modal fade"  id="modalExitoEjecucionPlanAnualSp3" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="modalExitoCorreccionPlanAnualSp3Label" aria-hidden="true" >
+    <div class="modal-dialog modal-dialog-centered rounded " role="document" style="max-width: 392px; z-index: 1030; ">
+        <div class="modal-content rounded " style="border: 0px !important; background-color:rgba(0,0,0,.0001) !important; box-shadow: none;">
+
+            <div style="overflow: hidden;height: 500px;overflow-x: hidden; ">
+                <div class="modal-body" >
+                    <div class="col-sm-12 col-md-12" style="color:#575757c9;">
+
+                        <div class="card border-0" style=" border-radius: 10px; box-shadow: none;">
+                            <div class="card-header text-center text-white  " style=" border-radius: 10px 10px 0px 0px; background:#D2D97B; height: 95px;"><img src="images/iconos/correct_1.svg"><span><b><br><br>&nbsp;&nbsp;&nbsp;&nbsp;</b></span></div>
+
+                            <div class="card-body my-4">
+                                <div class="row p-0 d-flex justify-content-center">
+                                    <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;" >
+                                        <h4> <b id="text_msj_confirm_exitoCC" style=" color: #000000 !important;  font-size: 17px !important; ">Se agregaron nuevas incidencias</b></h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="espacio"></div>
+                            <div class="card-body">
+                                <div class="row p-0 d-flex justify-content-center">
+                                    <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;font-size: 15px;" >
+                                        <b style=" color: #000000 !important;  font-size: 15px !important; ">Puedes revirsarlas en la bandeja de incidencias</b>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                             <div class="card-body2">
+                                <div class="row justify-content-around align-items-center">
+                                    <div class="col-5 ml-3" style="padding:10px 0px !important;" >
+                                        <button type="button" onmouseup="$('#modalExitoEjecucionPlanAnualSp3').modal('hide').removeClass('fade');    $('#modalIngresarTareasActividadSp3').modal('show').addClass('fade')                                       " class="btn_confirmar_modal bg-green-lime-modal confirm btn-confirmar-fecha-end" id="btnExitoCorreccionPlanAnual"><b>De Acuerdo</b></button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+<div class="modal fade "  id="modalHistorialDocumentosRechazadosSp3" tabindex="-1" data-backdrop="static" data-keyboard="false" aria-hidden="true"  tabindex="-1" role="dialog" >
+    <div class="modal-dialog modal-dialog-centered rounded" role="document" style="max-width: 974px; z-index: 1030; ">
+        <div class="modal-content rounded border-0"  style="background:white; height: 400px !important;" >
+            <div style="overflow: hidden; height: 400px; overflow-x: hidden; ">
+                <div class="modal-header fix-header-modal" >
+                    <div class="card-header text-center text-white modal-dialog-centered  card-header-FormAuditor" id="red-head" style="width: 100%; padding: 0px 0px !important;">
+
+                        <div class="col justify-content-center text-center col-12" >
+                            <table border='0' style="margin-left: auto; margin-right: auto; width: 100%;">
+                                <tr>
+
+                                    <td width="20%"><div>&nbsp;</div></td>
+
+                                    <td width='60%'><h5 id='lbTitlemodalHistorialDocumentosRechazadosSp3' style="font-size: 16px !important; color:#fff; font-weight: normal !important; text-align: center;">Historial de Evidencia de IAS, inspecciones, observaciones preventinas</h5></td>
+
+                                    <td width='15%'></td>
+
+                                    <td width='5%'><img src="./images/iconos/delete.svg" style="cursor:pointer;" title = 'Salir' onclick="$('#modalHistorialDocumentosRechazadosSp3').modal('hide').removeClass('fade'); $('#modalAdjuntarDocumentosTareasSp3').modal('show').addClass('fade');" > </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-body dialog-position" id="bodymodalShowAuditor" style=" justify-content:space-around; align-content:center; padding: 10px 0px 0px !important;">
+
+                    <div class="card " style="border: 0px !important; border-radius: 5px; box-shadow: none;">
+
+                        <div class="card-body2" >
+
+                            <div class="row justify-content-around align-items-center text-center">
+                                <!-- <div class="col-12 caja-adj scroll-blue" style="height: 600px !important; border-color: red !important;"> -->
+                                <div class="col-12" style="height: 400px !important; border-color:chartreuse !important;">
+
+                                    <div id="divPreviewEval" class="divPreviewEval" style="margin-left: auto; margin-right: auto; margin-top: 2px !important;" >
+
+                                        <div class="row justify-content-around align-items-center text-center" style=" height: 57px !important;">
+
+                                            <div class="header-tabla px-2 py-3" style="width: 100% !important;  ">
+                                                <table width = "100%" border="0">
+                                                    <tr >
+                                                        <td width="5%">
+                                                            <div>&nbsp;</div>
+                                                        </td>
+
+                                                        <td width = "25%" align="center" ><div id="archInicial" class="text-left lbCabezaTabla" style=" font-size: 14px !important ; font-weight: normal !important;"  > Archivo inicial </div></td>
+
+                                                        <td width = "25%" align="center" ><div id="archFinal" class="text-left lbCabezaTabla" style=" font-size: 14px !important; font-weight: normal !important;" >Archivo Final</div></td>
+
+                                                        <td width = "25%" align="center" ><div id="motivoArch" class="text-left lbCabezaTabla" style=" font-size: 14px !important; font-weight: normal !important;" >Motivo</div></td>
+
+                                                        <td width = "20%" align="center" ><div id="fechaSubArch" class="text-left lbCabezaTabla" style=" font-size: 14px !important; font-weight: normal !important;"  >Fecha de Subida</div></td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+
+
+                                            <div id="listadoHistorialDocumentosRechadosSp3" name="listadoHistorialDocumentosRechadosSp3" class=" divPreviewEval overflow-auto" style=" height: 200px !important; width: 100% !important; margin: 0px !important;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<!-- START MODAL MOTIVO DOCUMENTOS RECHAZADOS ------------------------** -->
+<div class="modal fade "  id="modalMotivoDocumentosRechazadosSp3" tabindex="-1" data-backdrop="static" data-keyboard="false" aria-hidden="true"  tabindex="-1" role="dialog" >
+    <div class="modal-dialog modal-dialog-centered rounded" role="document" style="max-width: 70%; z-index: 1030; ">
+        <div class="modal-content rounded border-0"  style="background:white; height: 450px !important;" >
+            <div style="overflow: hidden; height: 700px; overflow-x: hidden; ">
+                <div class="modal-header fix-header-modal" >
+                    <div class="card-header text-center text-white modal-dialog-centered  card-header-FormAuditor" id="red-head" style="width: 100%; padding: 0px 0px !important;">
+                        <div class="row d-flex justify-content-center text-center" style="width: 100%;">
+
+                            <div class="col-1 btn-close-modalCA pl-3 my-2">
+                                <!--button type="button" id="closeVerAuditoriaModal"><span aria-hidden="true" class="btn-close-modalCA">Cerrar&nbsp;&nbsp;&nbsp;&nbsp;&times;</span></button--> <!-- class="close hearder-modal" data-dismiss="modal" aria-label="Close" -->
+                                <!-- <div class="float-right" cursor="pointer" id="btn-close-Adj"><span style="font-size: 40px">
+                                <img src="images/prev.svg"  style="cursor: pointer;"></span>
+                                </div> -->
+                            </div>
+                            <div class="col justify-content-center text-center col-12" style="margin-top: -28px !important;" >
+                                <table border='0' style="margin-left: auto; margin-right: auto; width: 100%;">
+                                    <tr>
+                                        <td width="5%"><div>&nbsp;</div></td>
+
+                                        <td width='80%'><h5 id='lbTitleModalMotivoDocumentosRechazadosSp3' style="font-size: 16px !important; color:#fff; font-weight: normal !important; text-align: center;">Motivo de Observación - Documento 1</h5></td>
+
+                                        <td width='10%'></td>
+
+                                        <td width='5%'><img src="./images/iconos/delete.svg" style="cursor:pointer;" title = 'Salir' onclick=" $('#modalMotivoDocumentosRechazadosSp3').modal('hide').removeClass('fade'); $('#modalHistorialDocumentosRechazadosSp3').modal('show').addClass('fade');" > </td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-body dialog-position" id="bodyModalMotivoDocumentosRechazadosSp3" style=" justify-content:space-around; align-content:center; padding: 10px 0px 0px !important;">
+
+                    <div class="card " style="border: 0px !important; border-radius: 5px; box-shadow: none;">
+
+                        <div class="card-body2" >
+
+                            <div class="row justify-content-around align-items-center text-center">
+
+                                <div class="col-12" style="height: 772px !important; border-color:chartreuse !important;">
+
+                                    <div id="divPreviewEval" class="divPreviewEval overflow-auto" style="margin-left: auto; margin-right: auto; margin-top: 2px !important;" >
+
+                                        <div class="row justify-content-around align-items-center text-center" style=" height: 57px !important;">
+
+                                            <div id="motivoVentanaObservacionSp3" style=" width: 793px !important; height: 261px !important; margin: 0px 74px 44px 75px !important; color: #7a7a7a !important; font-size: 18px; text-align: center !important; padding: 10px 5px;">
+                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor nam deserunt ullam ad unde atque distinctio, asperiores aut dolores doloribus harum odio architecto expedita, ab numquam tempora eius blanditiis! Accusantium?Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci, ut ab minus obcaecati facere inventore consequatur cupiditate assumenda architecto, impedit doloremque voluptatem optio ea similique quibusdam, numquam? Fugiat, pariatur, vel. Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, deserunt sapiente maxime quae nobis ut tempora porro libero, dolor minus aperiam, accusamus minima illum laborum. Incidunt atque laboriosam aspernatur modi. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magnam numquam, quam placeat.
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--  END  MODAL MOTIVO DOCUMENTOS RECHAZADOS ------------------------** -->
+
+
+
+
+<!-- END MODAL ALERT OK CORRECCION PLAN ANUAL------------------------** -->
+<script src="./js/paginator/pagination.js"></script>
+<script src="./view/ssoma/plan-anual/gestionPlanAnual.js"></script>
+<script src="./view/ssoma/plan-anual/gestionPlanActividades.js"></script>
+<script src="./view/ssoma/plan-anual/gestionPlanAnualCronogramas.js"></script>
+<script>
+
+  // ---------------------------------    cosas propias de ssoma  -----------------------
+    $('.logoCompany').text('Gestión de Plan Anual')
+    $('#regresar').css('display','block')
+    // $('#regresar').click(function (){
+    //     handlerUrlhtml('contentGlobal','view/ssoma/menu.html','externalAccessRequestList');
+    // })
+   // ---------------------------------    cosas propias de ssoma  -----------------------
+
+
+    //*.......................................... */
+       $("#sp3_txt_fecha_desde_p").datetimepicker({
+        timepicker:false,
+        format:'d/m/Y'});
+    //*.......................................... */
+
+    //*.......................................... */
+    $("#sp3_txt_fecha_hasta_p").datetimepicker({
+        timepicker:false,
+        format:'d/m/Y'});
+    //*.......................................... */
+
+
+
+
+
+
+
+    _init_fnSp3PlanAnualEstadoEjecutado();
+
+</script>

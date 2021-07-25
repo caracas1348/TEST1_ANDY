@@ -1,0 +1,1155 @@
+<!--  start container-fliud -->
+<div class="container-fluid bg-light p-0 " style="width: 100%; background-color: #ffffff !important;  font-family: ProductSans !important ;position: static; margin-top: 0.5rem; margin-left: 1rem; margin-right: 1rem;">   
+
+    <!-- start filtro -->
+    <div class="row mt-4 mx-3 form-group">
+        <div class="col-8 pt-4">
+            
+            <div class="row align-items-center">
+                <div class="col-2 py-2" style="height: 100px !important">
+                    <div class="media-body">
+                    <div class="form-group">
+                        <label for="sel_filter_unidad_organizativa" class="text-filterCA">Unidad de Negocio </label>
+                            <select name="sel_filter_unidad_organizativa" class="form-control select-filtroCA Patch_selectCA" id="sel_filter_unidad_organizativa" onChange="selectUnidadOrganizativaFilter()"  style="padding: 0px !important;">
+                            </select>
+                    </div>
+                    </div>
+                </div>
+                <div class="col-2 py-2" style="height: 100px !important">
+                    <div class="media-body">
+                        <div class="form-group">
+                            <label for="tx_filter_date_init" class="text-filterCA">Fecha Desde </label>
+                            <input type="text" class="form-control select-filtroCA Patch_DatesCA" id="tx_date_init" autocomplete="off" placeholder="Desde">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2 py-2" style="height: 100px !important">
+                    <div class="media-body">
+                        <div class="form-group">
+                            <label for="tx_filter_date_end" class="text-filterCA">Fecha Hasta </label>
+                            <input type="text" class="form-control select-filtroCA Patch_DatesCA" id="tx_date_end" autocomplete="off" placeholder="Desde">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2 py-2" style="height: 100px !important">
+                    <div class="media-body">
+                    <div class="form-group">
+                        <label for="sel_filter_sede" class="text-filterCA">Sede </label>
+                            <select name="sel_filter_sede" class="form-control select-filtroCA Patch_selectCA" id="sel_filter_sede" style="padding: 0px !important;" required>
+                                <option value="" selected disabled>Seleccionar</option>
+                            </select>
+                    </div>
+                    </div>
+                </div>
+                <div class="col-2 py-2" style="height: 100px !important">
+                    <div class="media-body">
+                        <div class="form-group">
+                            <label for="sel_filter_estado" class="text-filterCA">Estado </label>
+                            <select name="sel_filter_estado" class="form-control select-filtroCA Patch_selectCA" id="sel_filter_estado" style="padding: 0px !important;" required>
+                                <!--option value="" selected>Seleccione</option>
+                                <option value="1">Creada</option>
+                                <option value="2">Reprogramada</option>
+                                <option value="3">Asignada</option>
+                                <option value="4">En Atención</option>
+                                <option value="5">En Ejecución</option>
+                                <option value="6">Finalizada</option>
+                                <option value="7">Suspendida</option-->
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2 py-2" style="margin-top: 0.5rem;height: 100px !important">
+                    <div class="media-body mt-2">
+                        <div class="form-group">
+                            <button type="button" onClick="buscarAuditorias();" name="jesus" id="buscarAuditorias" class="btn-buscarCA">Buscar</button>
+                        </div>
+                    </div>
+                </div> <!-- onClick="buscarAuditorias()" -->
+
+            </div>
+        </div>
+        <div class="col-4 pt-4">
+            <div class="row aling-items-center">
+                <div class="col-6" style="margin-top: 1.5rem;height: 100px !important">
+                    <div class="media-body mt-2">
+                        <div class="form-group" id="cant_auditorias">
+                            <img src="images/iconos/copia-1.svg" class="copia-1"> 0
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3" style="margin-top: 0.5rem;height: 100px !important">
+                    <div class="media-body mt-2">
+                        <div class="form-group">
+                            <button type="button" id="new_auditoria" name="new_auditoria" onclick="modalNewAuditoria();$('#newAuditoriaModal').modal('show')"  class="btn-newCA float-right">
+                                <span class="text-btn-newAuditoriaCA"><span class="textSpanMas">+</span> Nueva Auditoría</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3" style="margin-top: 0.5rem;height: 100px !important">
+                    <div class="media-body mt-2">
+                        <div class="form-group">
+                            <button type="button" class="btn-endCA float-right" disabled="disabled" onclick="finalizarAuditoria()">
+                                <span class="text-btn-newAuditoriaCA">Finalizar</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>   
+
+    </div>
+    <!-- end filtro -->
+
+
+    <!-- start Listado false-->
+    <!--div class="row ml-3" style="width: 100%; margin-top: 0.5rem;">
+        <input type="hidden" id="searchBox">
+        <div class="col">
+            <div class="card p-0" style="box-shadow: none; border: none !important;">
+                <div class="card-body p-0" style="overflow:hidden; border-radius: 4px;" >
+                    <div class="contanier-fluid">
+                        <div class="row">
+                            <dic class="col-12 p-0">                                
+                            
+                                <table id="tb_list_auditorias" name="tb_list_auditorias" class="table p-0" style="width:100%;">
+                                        <tr class="texto-titulo-tablaCA"  style="background-color: #34559c; min-width: 1250px;  max-width: 1314px; padding: 5px; height: 57px; align-items: center;">
+                                            <th style="width: 10%; color: #ffffff;"><b>Id Autidoria</b></th>
+                                            <th style="width: 15%; color: #ffffff;"><b>Unidad de Negocio</b></th>
+                                            <th style="width: 8%; color: #ffffff;"><b>Sede</b></th>
+                                            <th style="width: 8%; color: #ffffff;"><b>Norma</b></th>
+                                            <th style="width: 15%; color: #ffffff;"><b>Tipo de Auditoria</b></th>
+                                            <th style="width: 10%; color: #ffffff;"><b>Fecha Inicio</b></th>
+                                            <th style="width: 10%; color: #ffffff;"><b></b>Fecha Fin</th>
+                                            <th style="width:  7%; color: #ffffff;"><b>Estado</b></th>
+                                            <th style="width:  7%; color: #ffffff;"><b>Evaluacion</b></th>
+                                            <th style="width:  5%; color: #ffffff;"><b>Asignar</b></th>
+                                            <th style="width:  5%; color: #ffffff;"><b>Ver</b></th>
+                                        </tr>
+                                    <tbody id="tbody_auditorias" style="overflow:hidden; border-radius: 4px;">
+
+                                    </tbody>
+                                </table>
+
+                                
+
+                            </dic>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                                    
+             <div id="divSinAuditorias">
+                <div  class="d-flex flex-column border align-items-center" style="padding-top: 117px; height: 413px;">
+                    <div>
+                        <img src="images/iconos/escritura-1.svg" class="escritura1CA">
+                    </div>
+                    <div class="d-flex" style="padding-top: 20px;">
+                        <span class="sin-auditoriasCA">
+                            No tienes auditorias ingresadas
+                        </span>
+                    </div>
+                </div>
+             </div>   
+                  
+        </div>
+    </div-->
+    <!-- end Listado false-->
+
+    <!-- start listado -->
+    <!--div class="container-fluid border-0" style="padding: 2px 0px !important;"-->
+        <div class="row m-2">
+            <div class="col-12">
+                <div class="card p-0" style="box-shadow: none;">
+                    <div class="card-body p-0 " >
+                        <table id="tb_black_list" name="tb_black_list" class="table responsive p-0 border-0" style="width:100%">
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!--/div-->
+    <!-- end listado -->
+</div>
+<!--  end container-fliud -->
+
+
+
+<!-- start modal ingresar auditoria-->
+<div class="modal fade"  id="newAuditoriaModal" tabindex="-1" role="dialog" aria-labelledby="newAuditoriaModalLabel" aria-hidden="true" >
+    <div class="modal-dialog modal-dialog-centered rounded " role="document" style="max-width: 750px; z-index: 1030; ">
+        <div class="modal-content rounded " style="box-shadow: none;">
+            <div style="overflow: hidden;height: 750px;overflow-x: hidden; ">
+                <div class="modal-body" id="" style="padding: 0px;">
+                    <div class="col-sm-12 col-md-12" style="color:#575757c9; width: 100%; padding: 0px;">
+                        
+                        <div class="card border-0" style="padding-top:0px; box-shadow: none; width: 100%;">
+                            <div  class="card-header text-center text-white" style="background:#05beee; height: 61px;">
+                                    <div id="tituloModalNewAuditoria" class="d-flex justify-content-center titulo-modal-new-AuditoriaCA" >
+                                        
+                                    </div>
+                                    <!--img src="images/iconos/informacio1.svg"-->
+                            </div>
+
+                            <div class="card-body" style="background: white;">
+                                <div class="row m-2 titulo-area-modal">
+                                    <div class="col-11"><b>Datos</b></div>
+                                    <div class="col-1">
+                                        <img src="images/iconos/menu.svg" alt="menu">
+                                    </div>
+                                </div>
+                                <div class="row m-2">
+                                    <div class="col-6 p-2">
+                                        <div class="row m-1">
+                                            <div class="col-12 border mb-2">
+                                                <div class="media-body">
+                                                    <div class="form-group pt-1">
+                                                        <label for="sel_new_unidad_organizativa" class="label-modal">Unidad de Negocio </label>
+                                                        <div class="">
+                                                            <select onChange="selectUnidadOrganizativaNewAuditoria()" name="sel_new_unidad_organizativa" class="form-control select-form Patch_selectCA" id="sel_new_unidad_organizativa">
+                                                                <option value="" selected disabled>Seleccionar</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 border mb-2">
+                                                <div class="media-body">
+                                                    <div class="form-group pt-1">
+                                                        <label for="sel_new_tipo_auditoria" class="label-modal">Tipo de Auditoria </label>
+                                                        <div class="input-group">
+                                                            <select name="sel_new_tipo_auditoria" class="form-control select-form Patch_selectCA" id="sel_new_tipo_auditoria">
+                                                                <option value="" disabled selected>Seleccionar</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 p-2">
+                                        <div class="row m-1">
+                                            <div class="col-12 border mb-2">
+                                                <div class="media-body">
+                                                    <div class="form-group pt-1">
+                                                        <label for="sel_new_sede" class="label-modal">Sede A realizar Auditoria </label>
+                                                        <div class="input-group">
+                                                            <select name="sel_new_sede" onChange="selectNewSedes(this);" class="form-control select-form Patch_selectCA" id="sel_new_sede">
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row m-2 titulo-area-modal">
+                                    <div class="col-6 pt-2">
+
+                                        <div class="row m-1">
+                                            <div class="col-10 mb-2">
+                                                Seleccionar Normas
+                                            </div>
+                                            <div class="col-2 mb-2">
+                                                02
+                                            </div>
+                                            <div class="col-12 border pt-2" style="height: 140px !important;">
+                                                <div class="media-body" >
+                                                    <div class="form-group">
+                                                        <div class=""> <!-- onChange="selectNewNormas(this);" -->
+                                                            <select name="sel_new_normas[]" size="6" class="form-control select-normasNEW"  style="padding: 0px !important; height: 120px !important;" id="sel_new_normas" multiple>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 p-2">
+                                        <div class="row m-1">
+                                            <div class="col-12 mb-2">
+                                                Rango de Fechas
+                                            </div>
+                                            <div class="col-12 border mb-1 pt-2">
+                                                <div class="media-body">
+                                                    <div class="form-group">
+                                                        <label for="tx_date_start_new_auditoria" class="label-modal">Fecha Inicio </label>
+                                                        <div class="input-group" style="padding: 0px;">
+                                                            <input type="date" class="form-control select-fechas" id="tx_date_start_new_auditoria" name="tx_date_start_new_auditoria" autocomplete="off" placeholder="Desde">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 border pt-2">
+                                                <div class="media-body">
+                                                    <div class="form-group">
+                                                        <label for="tx_date_end_new_auditoria" class="label-modal">Fecha Fin </label>
+                                                        <div class="input-group">
+                                                            <input type="date" class="form-control select-fechas" id="tx_date_end_new_auditoria" name="tx_date_end_new_auditoria" autocomplete="off" placeholder="Hasta">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row mt-5">
+                                    
+                                    <div class="col-6 p-0">
+                                        <button type="button" onClick="guardarAuditoria();" class="btn-crearCA float-right" id="bt_new_auditoria" name="bt_new_auditoria">Crear</button>
+                                    </div>
+                                    <div class="col-6">
+                                        <button type="button" class="btn-cerrarCA" data-dismiss="modal" id="bt_cerrar_new_auditoria" name="bt_cerrar_new_auditoria">Cancelar</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        
+    </div>
+</div>
+<!-- end modal ingresar auditoria-->
+
+<!-- start modal confirmar ingreso auditoria -->
+<div class="modal fade"  id="modalConfirmarIngresarAuditoria" tabindex="-1" role="dialog" aria-labelledby="ConfirmarIngresarAuditoriaModalLabel" aria-hidden="true"> <!-- border-radius: 10px 10px 0px 0px; -->
+    <div class="modal-dialog modal-dialog-centered rounded" role="document" style=" max-width: 300px; z-index: 1030; ">
+        
+        <div class="modal-content rounded border-0 " style="height: 380px !important; background-color:rgba(0,0,0,.0001) !important; box-shadow: none;">
+            <div style="overflow: hidden;height: 380px;overflow-x: hidden; ">
+                <div class="modal-body" id="" style="padding: 0px;">
+                    <div class="col-sm-12 col-md-12" style="color:#575757c9; width: 100%; padding: 0px;">
+                        
+                        <div class="card border-0" style="padding-top:0px; box-shadow: none; width: 100%;">
+                            <div class="card-header text-white" style="background:#05beee; height: 95px;"> <!-- border-radius: 10px 10px 0px 0px; -->
+                                    <div class="d-flex justify-content-center">
+                                        <img src="images/iconos/informacio1.svg">
+                                    </div>
+                            </div>
+
+                            <div class="card-body" style="background: white;">
+                                <div class="d-flex mb-3 justify-content-center titulo-confirmar-ingreso-auditoriaCA">
+                                    <b>Se ingresará la auditoría</b>
+                                </div>
+                                <div class="d-flex mx-0 px-0 justify-content-center pregunta-confirmar-ingreso-auditoriaCA">
+                                    ¿Desea confirmar el ingreso de la
+                                </div>
+                                <div class="d-flex mb-3 mx-0 justify-content-center pregunta-confirmar-ingreso-auditoriaCA">
+                                    auditoría?
+                                </div>
+                                <div class="mt-3 mx-0">
+                                    <div class="d-flex mt-3 mx-0 justify-content-between">
+                                        <div class=""> <!-- setRegistroAuditoria(); $('#modalConfirmarIngresarAuditoria').modal('hide');-->
+                                            <button type="button" onClick="setRegistrarAuditoriaDB();" class="btn-confirmar-ingreso-auditoriaCA">Confirmar</button>
+                                        </div>
+                                        <div class="">
+                                            <button type="button" onClick="$('#modalConfirmarIngresarAuditoria').modal('hide');$('#newAuditoriaModal').modal('show');" class="btn-cerrar-ingreso-auditoriaCA">Cerrar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+<!-- end modal confirmar ingreso auditoria -->
+
+<!-- start modal exito ingresar auditoria -->
+<div class="modal fade"  id="modalExitoIngresarAuditoria" tabindex="-1" role="dialog" aria-labelledby="ExitoIngresarAuditoriaModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered rounded" role="document" style="max-width: 300px; z-index: 1030; ">
+        
+        <div class="modal-content rounded " style=" background-color:rgba(0,0,0,.0001) !important; box-shadow: none;">
+            <div style="overflow: hidden;height: 360px;overflow-x: hidden; ">
+                <div class="modal-body" id="" style="padding: 0px;">
+                    <div class="col-sm-12 col-md-12" style="color:#575757c9; width: 100%; padding: 0px;">
+                        
+                        <div class="card border-o" style="padding-top:0px; box-shadow: none; width: 100%;">
+                            <div class="card-header text-white" style="background:#d2d97b; height: 95px;">
+                                    <div class="d-flex justify-content-center">
+                                        <img src="images/iconos/correct-1.svg">
+                                    </div>
+                            </div>
+
+                            <div class="card-body" style="background: white;">
+                                <div class="d-flex justify-content-center titulo-exito-ingreso-auditoriaCA">
+                                    <b>Se registró la auditoría</b>
+                                </div>
+                                <div class="d-flex mb-2 justify-content-center titulo-confirmar-ingreso-auditoriaCA">
+                                    <b>con éxito</b>
+                                </div>
+                                <div class="d-flex mx-0 px-0 justify-content-center pregunta-exito-ingreso-auditoriaCA">
+                                    Puede revisar la auditoría en su 
+                                </div>
+                                <div class="d-flex mb-3 mx-0 justify-content-center pregunta-exito-ingreso-auditoriaCA">
+                                    bandeja con el códdigo:
+                                </div>
+                                <div id="idNewAuditoriaModalExito" class="d-flex mb-3 mx-0 justify-content-center titulo-exito-ingreso-auditoriaCA">
+                                    ...
+                                </div>
+                                <div class="mt-3 mx-0">
+                                    <div class="d-flex mt-3 mx-0 justify-content-between">
+                                        <div class="">
+                                            <button type="button" onClick="$('#modalExitoIngresarAuditoria').modal('hide');" class="btn-exito-ingreso-auditoriaCA">De Acuerdo</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end modal exito ingresar auditoria -->
+
+
+
+<!-- start modal ver auditoria-->
+<div class="modal fade"  id="verAuditoriaModal" tabindex="-1" role="dialog" aria-labelledby="modalverAuditoria" aria-hidden="true" >
+    <div class="modal-dialog modal-dialog-centered rounded " role="document" style="max-width: 503px; z-index: 1030; ">
+        <div class="modal-content rounded " style="box-shadow: none;">
+            <div style="overflow-x: hidden; ">
+                <div class="modal-body" id="" style="padding: 0px;">
+                    <div class="col-sm-12 col-md-12" style="color:#575757c9; width: 100%; padding: 0px;">
+                        <div class="card" style="padding-top:0px; box-shadow: none; width: 100%;">
+
+                           
+                           <div  class="card-header text-center text-white" style=" border-radius: 10px 10px 0px 0px; background:#05beee; height: 61px;">
+                                    <div id="tituloModalVerAuditoria" class="d-flex justify-content-center titulo-modal-new-AuditoriaCA" >
+                                          
+                                    </div>
+                            </div>
+                            <div class="card-body" style="background: white;">
+                                <div class="d-flex m-2 titulo-area-modal">
+                                    <div class="mr-auto ml-3 p-0"><b>Detalle</b></div>
+                                    <div class="mr-3 pr-4">
+                                        <img src="images/iconos/menu.svg" alt="menu">
+                                    </div>
+                                </div>
+                                <div class="row m-2">
+                                    <div class="col-6 p-2">
+                                        <div class="row m-1">
+                                            <div class="col-12 p-0 mb-2">
+                                                <div class="media-body">
+                                                    <div class="form-group pt-2">
+                                                        <label for="" class="titulo-area-modalCA">Unidad de Negocio</label>
+                                                        <div id="divTextoUnidadOrganizativa" class="media-body mt-1 titulo-items-modalCA">
+                                                            Harina y Aceite de pescado 
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 p-0">
+                                                <div class="media-body">
+                                                    <div class="form-group pt-2">
+                                                        <label for="" class="titulo-area-modalCA">Tipo de Auditoria</label>
+                                                        <div id="divTextoTipoAuditoria" class="media-body mt-1 titulo-items-modalCA">
+                                                            Interna
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 p-2">
+                                        <div class="row m-1">
+                                            <div class="col-12 mb-2 p-0">
+                                                <div class="media-body">
+                                                    <div class="form-group pt-2">
+                                                        <label for="" class="titulo-area-modalCA">Sede Arealizar Auditoria</label>
+                                                        <div id="divTextoSede" class="media-body mt-1 titulo-items-modalCA">
+                                                            Matarani
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row m-2 titulo-area-modal">
+                                    <div class="col-6"><b>Normas</b></div>
+                                    <div class="col-6"><b>Rango de Fechas</b></div>
+                                </div>
+                                <div class="row my-2">
+                                    <div class="col-6 pl-3">
+                                        <div class="d-flex justify-content-between">
+                                            <div id="divNorma1CA">
+                                                <div class="norma-ver-auditoriaCA pl-3 pt-2 ml-3">4001</div>
+                                            </div>
+                                            <div id="divNorma2CA">
+                                                <div class="norma-ver-auditoriaCA pl-3 pt-2 mr-3">BASCH</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 pl-3">
+                                        <div class="d-flex justify-content-around">
+                                            <div class="titulo-area-modalCA">Fecha Inicio</div>
+                                            <div class="titulo-area-modalCA">Fecha Fin</div>
+                                        </div>
+                                        <div class="d-flex justify-content-around mt-2">
+                                            <div id="divFechaInicioCA" class="titulo-items-modalCA pt-2">20/05/2020</div>
+                                            <div id="divFechaFinCA" class="titulo-items-modalCA pt-2">20/06/2020</div>
+                                        </div>
+
+                                    </div>
+                                    
+                                </div>
+
+                                <div class="row my-2" id="divHistorialCambios" style="display: none;">
+                                    <div class="col-12">
+                                        <div class="d-flex m-4 justify-content-center">
+                                            <div class=""> <!-- data-toggle="modal" data-target="#historialAuditoriaModal" -->
+                                                <a href="#" id="linkVerHistorial" onClick="verHistorialAuditoriaId();" >Ver historial de la auditoria</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+
+                                <div class="row mt-2">
+                                    <div class="d-flex justify-content-center">
+                                        <div class="p-2 m-2">
+                                            <button type="button" onclick="modalModificarAuditoria()" class="btn-modificarCA" id="bt_modificar_auditoria" name="bt_modificar_auditoria">Modificar</button>
+                                        </div>
+                                        <div class="p-2 m-2">
+                                            <button type="button" class="btn-close" data-dismiss="modal" id="bt_cerrar_ver_auditoria" name="bt_cerrar_ver_auditoria">Cancelar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end modal ver auditoria-->
+
+<!-- start modal Modificar-Corregir auditoria-->
+<div class="modal fade"  id="modificarAuditoriaModal" tabindex="-1" role="dialog" aria-labelledby="modalModificarAuditoria" aria-hidden="true" >
+    <div class="modal-dialog modal-dialog-centered rounded " role="document" style="max-width: 740px; z-index: 1030; ">
+        <div class="modal-content rounded " style="box-shadow: none;"> <!-- box-shadow: none; -->
+            <div style="overflow: hidden;overflow-x: hidden;"> <!-- height: 730px;overflow: hidden;overflow-x: hidden;  -->
+                <div class="modal-body" id="" style="padding: 0px;">
+                    <div class="col-sm-12 col-md-12" style="color:#575757c9; width: 100%; padding: 0px;">
+                        <div class="card" style="padding-top:0px; width: 100%;"> <!-- box-shadow: none; -->
+
+                            <div  class="card-header text-center text-white" style=" border-radius: 10px 10px 0px 0px; background:#05beee; height: 61px;">
+                                    <div id="titleModificarAuditoria" class="d-flex justify-content-center titulo-modal-new-AuditoriaCA" >
+                                          <b>Modificar Auditoria</b>
+                                    </div>
+                            </div>
+
+                            <div class="card-body" style="background: white;">
+                                <div class="d-flex m-2 titulo-area-modal">
+                                    <div class="mr-auto ml-3 p-0"><b>Datos</b></div>
+                                    <div class="mr-3 pr-4">
+                                        <img src="images/iconos/menu.svg" alt="menu">
+                                    </div>
+                                </div>
+
+                                <div class="row m-2">
+                                    <div class="col-6 p-2">
+                                        <div class="row m-1">
+                                            <div class="col-12 border mb-2">
+                                                <div class="media-body">
+                                                    <div class="form-group pt-2">
+                                                        <label for="sel_unidad_organizativa" class="label-modal">Unidad Organizativa </label>
+                                                        <div class="">
+                                                            <select onChange="selectUnidadOrganizativaModificarAuditoria()" name="sel_unidad_organizativa" class="form-control select-form" id="sel_unidad_organizativa">
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 border">
+                                                <div class="media-body">
+                                                    <div class="form-group pt-2">
+                                                        <label for="sel_tipo_auditoria" class="label-modal">Tipo de Auditoria </label>
+                                                        <div class="input-group">
+                                                            <select name="sel_tipo_auditoria" class="form-control select-form" id="sel_tipo_auditoria">
+                                                                <option value="" disabled selected>Seleccionar</option>
+                                                                <option value="Interna">Interna</option>
+                                                                <option value="Externa">Externa</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 p-2">
+                                        <div class="row m-1">
+                                            <div class="col-12 border mb-2">
+                                                <div class="media-body">
+                                                    <div class="form-group pt-2">
+                                                        <label for="sel_sede" class="label-modal">Sede A realizar Auditoria </label>
+                                                        <div class="input-group">
+                                                            <select name="sel_sede" class="form-control select-form" id="sel_sede">
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row mx-2 titulo-area-modal">
+                                    <div class="col-6 pt-2">
+
+                                        <div class="row m-1">
+                                            <div class="col-10 mb-2">
+                                                Seleccionar Normas
+                                            </div>
+                                            <div class="col-2 mb-2">
+                                                02
+                                            </div>
+                                            <div class="col-12 border pt-2" style="height: 20vh;">
+                                                <div class="media-body" >
+                                                    <div class="form-group">
+                                                        <div class="" style="padding-left: 1.5rem !important;">
+                                                            <select name="sel_normas[]" size="6" onchange="selectNormas(this)"  class="form-control select-normas"  style="padding: 0px !important; height: 80px !important;" id="sel_normas" multiple>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 p-2">
+                                        <div class="row m-1">
+                                            <div class="col-12 mb-2">
+                                                Rango de Fechas
+                                            </div>
+                                            <div class="col-12 border mb-1 pt-2">
+                                                <div class="media-body">
+                                                    <div class="form-group">
+                                                        <label for="tx_date_start_auditoria" class="label-modal">Fecha Inicio </label>
+                                                        <div class="input-group" style="padding: 0px;">
+                                                            <input type="date" class="form-control select-fechas" id="tx_date_start_auditoria" name="tx_date_start_auditoria" autocomplete="off" placeholder="Desde">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 border pt-2">
+                                                <div class="media-body">
+                                                    <div class="form-group">
+                                                        <label for="tx_date_end_auditoria" class="label-modal">Fecha Fin </label>
+                                                        <div class="input-group">
+                                                            <input type="date" class="form-control select-fechas" id="tx_date_end_auditoria" name="tx_date_end_auditoria" autocomplete="off" placeholder="Hasta">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--div class="d-flex mt-1 justify-content-center">
+                                    <div class="">
+                                        <a href="#" id="linkVerHistorial" data-toggle="modal" data-target="#historialAuditoriaModal">Ver historial de la auditoria</a>
+                                    </div>
+                                </div-->
+
+                                <div class="row mt-2">
+                                    
+                                    <div class="col-6 p-0">
+                                        <button type="button" onClick="modificarAuditoria()" class="btn-modificarCA float-right" id="bt_modificar_auditoria" name="bt_modificar_auditoria">Modificar</button>
+                                    </div>
+                                    <div class="col-6">
+                                        <button type="button" onClick="$('#verAuditoriaModal').modal('show'); $('#modificarAuditoriaModal').modal('hide');" class="btn-cerrarCA" data-dismiss="modal" id="bt_cerrar_modificar_auditoria" name="bt_cerrar_modificar_auditoria">Cancelar</button>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!--div class="modal-dialog modal-xl modal-dialog-centered rounded " role="document" style="z-index: 1030;"> <!style="max-width: 750px; z-index: 1030; ">
+        <div class="modal-content rounded">  
+            <!input type="hidden" name="idAuditoriaModificar" id="idAuditoriaModificar">
+            
+            <div class="modal-header hearder-modal text-uppercase">
+                <div class="container-fluid">
+                    <div class="row justify-content-center">
+                        <div class="col-12">
+                            <div id="titleModificarAuditoria" class="ml-5"><b>Modificar Auditoria</b></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row m-2 titulo-area-modal">
+                        <div class="col-11"><b>Detalle</b></div>
+                        <div class="col-1">
+                            <img src="images/iconos/menu.svg" alt="menu">
+                        </div>
+                    </div>
+                    <div class="row m-2">
+                        <div class="col-6 p-2">
+                            <div class="row m-1">
+                                <div class="col-12 border mb-2">
+                                    <div class="media-body">
+                                        <div class="form-group">
+                                            <label for="sel_unidad_organizativa" class="label-modal">Unidad Organizativa </label>
+                                            <div class="input-group">
+                                                <select name="sel_unidad_organizativa" class="form-control" style="padding: 0px !important;" id="sel_unidad_organizativa">
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 border">
+                                    <div class="media-body">
+                                        <div class="form-group">
+                                            <label for="sel_tipo_auditoria" class="label-modal">Tipo de Auditoria </label>
+                                            <div class="input-group">
+                                                <select name="sel_tipo_auditoria" class="form-control" style="padding: 0px !important;" id="sel_tipo_auditoria">
+                                                    
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 p-2">
+                            <div class="row m-1">
+                                <div class="col-12 border mb-2">
+                                    <div class="media-body">
+                                        <div class="form-group">
+                                            <label for="sel_sede" class="label-modal">Sede Arealizar Auditoria </label>
+                                            <div class="input-group">
+                                                <select name="sel_sede" style="padding: 0px !important;" class="form-control" id="sel_sede">
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="row m-2 titulo-area-modal">
+                        <div class="col-6 p-2">
+
+                            <div class="row m-1">
+                                <div class="col-10 mb-2">
+                                    Seleccionar Normas
+                                </div>
+                                <div class="col-1 mb-2">
+                                    02
+                                </div>
+                                <div class="col-12 border">
+                                    <div class="media-body">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <select name="sel_normas[]" style="padding: 5px !important;" class="form-control" id="sel_normas" multiple>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-6 p-2">
+                            <div class="row m-1">
+                                <div class="col-12 mb-2">
+                                    Rango de Fechas
+                                </div>
+                                <div class="col-12 border">
+                                    <div class="media-body">
+                                        <div class="form-group">
+                                            <label for="tx_date_start_auditoria" class="label-modal">Fecha Inicio </label>
+                                            <div class="input-group">
+                                                <input type="date" class="form-control" id="tx_date_start_auditoria" name="tx_date_start_auditoria" autocomplete="off" placeholder="Desde">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 border">
+                                    <div class="media-body">
+                                        <div class="form-group">
+                                            <label for="tx_date_end_auditoria" class="label-modal">Fecha Fin </label>
+                                            <div class="input-group">
+                                                <input type="date" class="form-control" id="tx_date_end_auditoria" autocomplete="off" placeholder="Desde">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row mt-5 justify-content-center">
+                        <div class="col-4">
+                            <a href="#" id="linkVerHistorial" data-toggle="modal" data-target="#historialAuditoriaModal">Ver historial de la auditoria</a>
+                        </div>
+                    </div>
+
+                    <div class="row mt-5 justify-content-center">
+                        <div class="col-4">
+                            <button type="button" class="btn btn-block btn-modificar" onClick="modificarAuditoria()" id="bt_modificar_auditoria" name="bt_modificar_auditoria">Modificar</button>
+                        </div>
+                        <div class="col-4">
+                            <button type="button" class="btn btn-block btn-close" data-dismiss="modal" id="bt_cerrar_modificar_auditoria" name="bt_cerrar_modificar_auditoria">Cancelar</button>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+            </div>
+
+
+        </div>
+    </div-->
+</div>
+<!-- start modal Modificar-Corregir auditoria-->
+
+<!-- start modal confirmar cambios auditoria -->
+<div class="modal fade"  id="modalConfirmarCambiosAuditoria" tabindex="-1" role="dialog" aria-labelledby="ConfirmarCambiosAuditoriaModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered rounded" role="document" style=" border-radius: 10px 10px 0px 0px; max-width: 300px; z-index: 1030; ">
+
+        <div class="modal-content rounded " style=" background-color:rgba(0,0,0,.0001) !important; box-shadow: none;">
+            <div style="overflow: hidden;height: 360px;overflow-x: hidden; ">
+                <div class="modal-body" id="" style="padding: 0px;">
+                    <div class="col-sm-12 col-md-12" style="color:#05beee; width: 100%; padding: 0px;">
+                        
+                        <div class="card" style="padding-top:0px; box-shadow: none; width: 100%;">
+                            <div class="card-header text-white" style="border-radius: 10px 10px 0px 0px; background:#05beee; height: 95px;">
+                                    <div class="d-flex justify-content-center">
+                                        <img src="images/iconos/informacio1.svg">
+                                    </div>
+                            </div>
+                            <div class="card-body" style="background: white;">
+                                <div class="d-flex justify-content-center titulo-confirmar-ingreso-auditoriaCA mb-4" style="height:0px !important;">
+                                    <b>Se guardarán los cambios</b>
+                                </div>
+                                <div class="d-flex mb-3 justify-content-center titulo-confirmar-ingreso-auditoriaCA">
+                                    <b>de la auditoría</b>
+                                </div>
+                                <div class="d-flex mb-3 mx-0 justify-content-center pregunta-confirmar-ingreso-auditoriaCA" style="height: 50px !important;">
+                                    <b>¿Desea confirmar los cambios?</b>
+                                </div>
+                                <div class="mt-3 mt-2 mx-0">
+                                    <div class="d-flex mt-3 mx-0 justify-content-between">
+                                        <div class="">
+                                            <button type="button" onClick="confirmarCambiosAuditoria()" class="btn-confirmar-ingreso-auditoriaCA">Confirmar</button>
+                                        </div>
+                                        <div class="">
+                                            <button type="button" onClick="$('#modalConfirmarCambiosAuditoria').modal('hide');$('#modificarAuditoriaModal').modal('show');" class="btn-cerrar-ingreso-auditoriaCA">Cerrar</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- end modal confirmar cambios auditoria -->
+
+<!-- start modal exito cambios auditoria -->
+<div class="modal fade"  id="modalExitoCambiosAuditoria" tabindex="-1" role="dialog" aria-labelledby="ExitoCambiosAuditoriaModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered rounded" role="document" style=" border-radius: 10px 10px 0px 0px; max-width: 300px; z-index: 1030; ">
+        
+        <div class="modal-content rounded " style=" background-color:rgba(0,0,0,.0001) !important; box-shadow: none;">
+            <div style="overflow: hidden;height: 360px;overflow-x: hidden; ">
+                <div class="modal-body" id="" style="padding: 0px;">
+                    <div class="col-sm-12 col-md-12" style="color:#575757c9; width: 100%; padding: 0px;">
+                        
+                        <div class="card" style="padding-top:0px; box-shadow: none; width: 100%;">
+                            <div class="card-header text-white" style="border-radius: 10px 10px 0px 0px; background:#d2d97b; height: 95px;">
+                                    <div class="d-flex justify-content-center">
+                                        <img src="images/iconos/correct-1.svg">
+                                    </div>
+                            </div>
+
+                            <div class="card-body" style="background: white;">
+                                <div class="d-flex justify-content-center titulo-exito-ingreso-auditoriaCA">
+                                    <b>Se programó la auditoría</b>
+                                </div>
+                                <div class="d-flex mb-2 justify-content-center titulo-confirmar-ingreso-auditoriaCA">
+                                    <b>con éxito</b>
+                                </div>
+                                <div class="d-flex mx-0 px-0 justify-content-center pregunta-exito-ingreso-auditoriaCA">
+                                    <b>Puede revisar la auditoría en</b>
+                                </div>
+                                <div class="d-flex mb-3 mx-0 justify-content-center pregunta-exito-ingreso-auditoriaCA" style="height: 30px !important;">
+                                    <b>cualquier momento</b>
+                                </div>
+                                
+                                <div class="my-4 mx-0">
+                                    <div class="d-flex mt-3 mx-0 justify-content-between">
+                                        <div class="">
+                                            <button type="button" onClick="$('#modalExitoCambiosAuditoria').modal('hide');" class="btn-exito-ingreso-auditoriaCA">De Acuerdo</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end modal exito cambios auditoria -->
+
+<!-- start modal historial auditoria-->
+<div id="historialAuditoriaModal" tabindex="-1" role="dialog" aria-labelledby="historialAuditoriaModalLabel" aria-hidden="true" class="modal fade">
+  <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+      <div class="modal-content">
+          
+          <div class="modal-header hearder-modal text-uppercase">
+              <div class="container-fluid">
+                    <div class="row justify-content-center">
+                        <div class="col-10" id="divTituloHistorialAuditoria">
+                            <b>Historial de auditoria - 10001</b>
+                        </div>
+                        <div class="col-2">
+                            <button type="button" id="closeVerAuditoriaModal" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">Cerrar&nbsp;&nbsp;&nbsp;&nbsp;&times;</span></button>
+                        </div>
+
+                      </div>
+                  </div>
+              </div>
+
+         <div class="modal-body">
+            <div class="container-fluid">
+                <div class="row mx-2 mt-4 titulo-tabla align-items-center" style="height: 10vh;">
+                    <div class="col-3">Tipo de Modificación</div>
+                    <div class="col-3">Fecha de Modificación</div>
+                    <div class="col-3">Dato Inicial</div>
+                    <div class="col-3">Dato Actual</div>
+                </div>
+                <div id="divDetalleHistorialAuditoria">
+                    <!--div class="row mx-2 mt-2 mb-5 row-table-modal align-items-center" style="height: 10vh;">
+                          <div class="col-3">Rango de Fechas</div>
+                          <div class="col-3">04-06-2020</div>
+                          <div class="col-3">20/01/2020 al 25/03/2020</div>
+                          <div class="col-3">01/02/2020 al 05/04/2020</div>
+                    </div-->
+                </div>
+            </div>
+        </div>
+
+
+        </div>
+    </div>
+</div>
+<!-- start modal historial auditoria-->
+
+<!-- start modal asignar equipo auditor-->
+<div class="modal fade"  id="asignarAuditorModal" tabindex="-1" role="dialog" aria-labelledby="modalverAuditoria" aria-hidden="true" >
+    <div class="modal-dialog modal-dialog-centered rounded " role="document" style="max-width: 70vw; z-index: 1030; ">
+        <div class="modal-content rounded " style="box-shadow: none;">
+            <div style="overflow-x: hidden; ">
+                <div class="modal-body" id="" style="padding: 0px;">
+                    <div class="col-sm-12 col-md-12" style="color:#575757c9; width: 100%; padding: 0px;">
+                        <div class="card" style="padding-top:0px; box-shadow: none; width: 100%;">
+
+
+                            <div  class="card-header text-center text-white" style=" border-radius: 10px 10px 0px 0px; background:#05beee; height: 61px;">
+                                <div id="tituloModalVerAuditoria" class="d-flex justify-content-center titulo-modal-new-AuditoriaCA" >
+
+                                </div>
+                            </div>
+                            <div class="card-body" style="background: white;">
+                                <div class="d-flex m-2 titulo-area-modal">
+                                    <div class="mr-auto ml-3 p-0"><b>Detalle</b></div>
+                                    <div class="mr-3 pr-4">
+                                        <img src="images/iconos/menu.svg" alt="menu">
+                                    </div>
+                                </div>
+                                <div class="row m-2">
+                                    <div class="col-12 p-2">
+                                        <div class="row m-1">
+                                            <div class="p-0 mb-2" style="width: 21% !important;">
+                                                <div class="media-body">
+                                                    <div class="form-group pt-2">
+                                                        <label for="" class="titulo-area-modalAsignar">Unidad de Negocio</label>
+                                                        <div id="divTextoUnidadOrganizativaAA" class="media-body mt-1 titulo-items-modalAsignar">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="mb-2 p-0" style="width: 21% !important;">
+                                                <div class="media-body">
+                                                    <div class="form-group pt-2">
+                                                        <label for="" class="titulo-area-modalAsignar">Sede Arealizar Auditoria</label>
+                                                        <div id="divTextoSedeAA" class="media-body mt-1 titulo-items-modalAsignar">
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="p-0" style="width: 14% !important;">
+                                                <div class="media-body">
+                                                    <div class="form-group pt-2">
+                                                        <label for="" class="titulo-area-modalAsignar">Tipo de Auditoria</label>
+                                                        <div id="divTextoTipoAuditoriaAA" class="media-body mt-1 titulo-items-modalAsignar">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="p-0" style="width: 18% !important;">
+                                                <div class="media-body">
+                                                    <div class="form-group pt-2">
+                                                        <label for="" class="titulo-area-modalAsignar">Normas</label>
+                                                        <div id="divTextoNormasAA" class="media-body mt-1 titulo-items-modalAsignar">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="p-0" style="width: 13% !important;">
+                                                <div class="media-body">
+                                                    <div class="form-group pt-2">
+                                                        <label for="" class="titulo-area-modalAsignar">Fecha Inicio</label>
+                                                        <div id="divFechaInicioCA_AA" class="media-body mt-1 titulo-items-modalAsignar">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="p-0" style="width: 13% !important;">
+                                                <div class="media-body">
+                                                    <div class="form-group pt-2">
+                                                        <label for="" class="titulo-area-modalAsignar">Fecha Fin</label>
+                                                        <div id="divFechaFinCA_AA" class="media-body mt-1 titulo-items-modalAsignar">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row m-2">
+                                    <div class="col-12">
+                                       <div class="row m-1">
+                                        <div class="col-4 text-center"> -</div>
+                                        <div class="col-4 text-center">-</div>
+                                        <div class="col-4 text-center"> -</div>
+                                    </div>
+                                </div>
+                            </div>       
+                                <div class="row">
+                                    <div class="col-12 d-flex justify-content-center">
+                                        <div class="p-2 m-2">
+                                            <button type="button" onclick="modalModificarAuditoria()" class="btn-modificarCA" id="bt_modificar_auditoria" name="bt_modificar_auditoria">Modificar</button>
+                                        </div>
+                                        <div class="p-2 m-2">
+                                            <button type="button" class="btn-close" data-dismiss="modal" id="bt_cerrar_ver_auditoria" name="bt_cerrar_ver_auditoria">Cancelar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end modal asignar equipo auditor-->
+
+
+<script>
+    $('document').ready(function (){
+        
+        // para limitar a 2 el nuevo de normas a selecionar
+        // cuando vas a crear una autoria
+        $("#sel_new_normas").on('change', function(e) {
+            if (Object.keys($(this).val()).length > 2) {
+                $('option[value="' + $(this).val().toString().split(',')[2] + '"]').prop('selected', false);
+                showNotification("Puedes selecionar un máximo de 2 Normas.")
+            }else{
+                $("#sel_new_normas option:selected").each(function() {
+                    sel_new_normas = $("#sel_new_normas").val();  
+                    normasCode = $('option:selected', e).attr('Code');      
+                    //console.log("sel_new_normas",sel_new_normas)
+                    console.log("normasCode",normasCode)
+                    //console.log("length",$("#sel_new_normas option:selected").length)
+                });
+            }
+        });
+
+        // para limitar a 2 el nuevo de normas a selecionar
+        // cuando vas a modificar-correguir una autoria
+        $("#sel_normas").on('change', function(e) {
+            if (Object.keys($(this).val()).length > 2) {
+                $('option[value="' + $(this).val().toString().split(',')[2] + '"]').prop('selected', false);
+                showNotification("Puedes selecionar un máximo de 2 Normas.")
+            }else{
+                $("#sel_normas option:selected").each(function() {
+                    sel_normas = $("#sel_normas").val();  
+                    normasCode = $('option:selected', e).attr('Code');      
+                    //console.log("sel_normas",sel_normas)
+                    //console.log("normasCode",normasCode)
+                });
+            }
+        });
+        
+       /*let options = {
+            numberPerPage:10, //Cantidad de datos por pagina
+            goBar:true, //Barra donde puedes digitar el numero de la pagina al que quiere ir
+            pageCounter:true, //Contador de paginas, en cual estas, de cuantas paginas
+        };
+
+        let filterOptions = {
+            el:'#searchBox' //Caja de texto para filtrar, puede ser una clase o un ID
+        };
+
+        paginate2.init('#tb_list_auditorias',options,filterOptions);//*/
+    
+    })
+    
+
+</script>

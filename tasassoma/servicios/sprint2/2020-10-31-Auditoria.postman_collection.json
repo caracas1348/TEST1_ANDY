@@ -1,0 +1,2722 @@
+{
+	"info": {
+		"_postman_id": "4f936327-ead7-4d14-bd5c-f5b04f9cf144",
+		"name": "Auditoria",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Gets",
+			"item": [
+				{
+					"name": "GetPersona",
+					"item": [
+						{
+							"name": "GetToken",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"client_id\": \"370d607d-5650-41fb-aa5f-644254136dab\",\r\n    \"client_secret\": \"c1M7qP.s@]s-84BA5bgVG.W1:=h=QVsr\",\r\n    \"scope\": \"https://graph.microsoft.com/.default\",\r\n    \"grant_type\": \"client_credentials\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://s3cur17y7454-prd-access-security.azurewebsites.net/api/AuthClientCredentials?code=/op2e7jeHfWUM69VHN/WBlIWf98Xa43lXtVE1eShEBNKGkCiLALisg==",
+									"protocol": "https",
+									"host": [
+										"s3cur17y7454-prd-access-security",
+										"azurewebsites",
+										"net"
+									],
+									"path": [
+										"api",
+										"AuthClientCredentials"
+									],
+									"query": [
+										{
+											"key": "code",
+											"value": "/op2e7jeHfWUM69VHN/WBlIWf98Xa43lXtVE1eShEBNKGkCiLALisg=="
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetNombrePersona",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImppYk5ia0ZTU2JteFBZck45Q0ZxUms0SzRndyIsImtpZCI6ImppYk5ia0ZTU2JteFBZck45Q0ZxUms0SzRndyJ9.eyJhdWQiOiIwMDAwMDAwMi0wMDAwLTAwMDAtYzAwMC0wMDAwMDAwMDAwMDAiLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC9iN2UyNmY0OC0yMjkyLTRhMTQtYTM1NS0xYWViODQ4OWFlM2QvIiwiaWF0IjoxNjAwOTg4Njc0LCJuYmYiOjE2MDA5ODg2NzQsImV4cCI6MTYwMDk5MjU3NCwiYWlvIjoiRTJSZ1lEalA4Mno3bjJuR205Zit1SGRJZG1XbkRBQT0iLCJhcHBpZCI6IjM3MGQ2MDdkLTU2NTAtNDFmYi1hYTVmLTY0NDI1NDEzNmRhYiIsImFwcGlkYWNyIjoiMSIsImlkcCI6Imh0dHBzOi8vc3RzLndpbmRvd3MubmV0L2I3ZTI2ZjQ4LTIyOTItNGExNC1hMzU1LTFhZWI4NDg5YWUzZC8iLCJvaWQiOiIyZDU5OWI3YS1mMTkzLTQzNGEtYmRhMi05MGQ2MWQzZmE2NGIiLCJyaCI6IjAuQVFZQVNHX2l0NUlpRkVxalZScnJoSW11UFgxZ0RUZFFWdnRCcWw5a1FsUVRiYXNHQUFBLiIsInJvbGVzIjpbIkRpcmVjdG9yeS5SZWFkLkFsbCJdLCJzdWIiOiIyZDU5OWI3YS1mMTkzLTQzNGEtYmRhMi05MGQ2MWQzZmE2NGIiLCJ0ZW5hbnRfcmVnaW9uX3Njb3BlIjoiU0EiLCJ0aWQiOiJiN2UyNmY0OC0yMjkyLTRhMTQtYTM1NS0xYWViODQ4OWFlM2QiLCJ1dGkiOiJDNU45UzJ2V0ZFMlVQXzVpdzczT0FBIiwidmVyIjoiMS4wIn0.PkGqQ9xvB0MyvbdEKOSIwnYfjMwPlhpmNrK8xixeBWkXrJ3SPkI9IiWSAZ9W_cIr8RGu2zf8MV8paNqQkBpsAuvBdmimcycUOGdU1SQ5nP0G8gkQf5qgnD_8K8m1y4DtUUfnmly5cEAJdV03Kmdobg3gIThr67Dw_ZqBs6pFUr8t2WoN0-SGCichj_3RphdAJzNun4jygImZPxTOuWQ68bDsufnKuCmxGlZsUQHPIwYxUd_jQG6ACqUFFlB7g3ze6S1KTvWyYzaA1sY9XING2YdZtMGUJA4qvnozDxIqX513T2qNxOYIvFEh7d9S-KLDxnWF9xy4Pv8_LVGOhYMIlQ",
+										"type": "text"
+									},
+									{
+										"key": "apiKey",
+										"value": "r$3#23516ewew5",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"filter\":\"JUAN\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://s3cur17y7454-prd-access-security.azurewebsites.net/api/Get-Collaborator?code=RLDaPd/6ulmvJ9tL7fpLii9J/twr3nwXyJZTxs1g1Jxq8q7sc6WjzA==&httpmethod=objectlist",
+									"protocol": "https",
+									"host": [
+										"s3cur17y7454-prd-access-security",
+										"azurewebsites",
+										"net"
+									],
+									"path": [
+										"api",
+										"Get-Collaborator"
+									],
+									"query": [
+										{
+											"key": "code",
+											"value": "RLDaPd/6ulmvJ9tL7fpLii9J/twr3nwXyJZTxs1g1Jxq8q7sc6WjzA=="
+										},
+										{
+											"key": "httpmethod",
+											"value": "objectlist"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "GetEspecialidad",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "apiKey",
+								"value": "r$3#23516ewew5",
+								"equals": true
+							}
+						],
+						"url": {
+							"raw": "https://550m44ud1tmg7454-audit-dev.azurewebsites.net/api/Get-Especialidad-All?code=tzTo63fygC1rQtqr0mXxg7a9HQ/WFAPI3XaE/h/OBzhZHgIZTqj93Q==&httpmethod=objectlist",
+							"protocol": "https",
+							"host": [
+								"550m44ud1tmg7454-audit-dev",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Get-Especialidad-All"
+							],
+							"query": [
+								{
+									"key": "code",
+									"value": "tzTo63fygC1rQtqr0mXxg7a9HQ/WFAPI3XaE/h/OBzhZHgIZTqj93Q=="
+								},
+								{
+									"key": "httpmethod",
+									"value": "objectlist"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAuditoria_Norma",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "apiKey",
+								"value": "r$3#23516ewew5",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"AuditoriaId\":62\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://550m44ud1tmg7454-audit-dev.azurewebsites.net/api/Get-Auditoria_Norma-All?code=c7pMem7ZH6HyXlIt2JEYfxaB96dSq9T5O1ZGWH7Ng7W8XPiNWXk1bg==&httpmethod=objectlist&AuditoriaId=62",
+							"protocol": "https",
+							"host": [
+								"550m44ud1tmg7454-audit-dev",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Get-Auditoria_Norma-All"
+							],
+							"query": [
+								{
+									"key": "code",
+									"value": "c7pMem7ZH6HyXlIt2JEYfxaB96dSq9T5O1ZGWH7Ng7W8XPiNWXk1bg=="
+								},
+								{
+									"key": "httpmethod",
+									"value": "objectlist"
+								},
+								{
+									"key": "AuditoriaId",
+									"value": "62"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAuditoria",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "apiKey",
+								"value": "r$3#23516ewew5",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://550m44ud1tmg7454-audit-dev.azurewebsites.net/api/Get-Auditoria-All?code=H4VLj4KN6GZdCduqoToDVkDdP56Fz4t10niae2jucl8sXGaKz6bFuQ==&httpmethod=objectlist",
+							"protocol": "https",
+							"host": [
+								"550m44ud1tmg7454-audit-dev",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Get-Auditoria-All"
+							],
+							"query": [
+								{
+									"key": "code",
+									"value": "H4VLj4KN6GZdCduqoToDVkDdP56Fz4t10niae2jucl8sXGaKz6bFuQ=="
+								},
+								{
+									"key": "httpmethod",
+									"value": "objectlist"
+								},
+								{
+									"key": "ProgramaAuditoriaId",
+									"value": "94",
+									"disabled": true
+								},
+								{
+									"key": "Fecha_Desde",
+									"value": "2020-09-20",
+									"disabled": true
+								},
+								{
+									"key": "Fecha_Hasta",
+									"value": "2020-09-21",
+									"disabled": true
+								},
+								{
+									"key": "UnidadNegocioId",
+									"value": "5",
+									"disabled": true
+								},
+								{
+									"key": "StatusId",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "SedeId",
+									"value": "22",
+									"disabled": true
+								},
+								{
+									"key": "Id",
+									"value": "175",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetNorma",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "apiKey",
+								"value": "r$3#23516ewew5",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://550m44ud1tmg7454-audit-dev.azurewebsites.net/api/Get-Norma-All?code=QunwZ0j56jljksBrF3QtFYnaou6l7bF8zolp0ZvfXKQEQ5NwPGhHHQ==&httpmethod=objectlist&EspecialidadId=0",
+							"protocol": "https",
+							"host": [
+								"550m44ud1tmg7454-audit-dev",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Get-Norma-All"
+							],
+							"query": [
+								{
+									"key": "code",
+									"value": "QunwZ0j56jljksBrF3QtFYnaou6l7bF8zolp0ZvfXKQEQ5NwPGhHHQ=="
+								},
+								{
+									"key": "httpmethod",
+									"value": "objectlist"
+								},
+								{
+									"key": "EspecialidadId",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetProgramaAuditoria",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "apiKey",
+								"value": "r$3#23516ewew5",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://550m44ud1tmg7454-audit-dev.azurewebsites.net/api/Get-Programa_Auditoria-All?code=X4XURduZbR20wwsOaEVVs4trLnrmd4mfO3KtqksohFm5bQQPqoO10g==&httpmethod=objectlist",
+							"protocol": "https",
+							"host": [
+								"550m44ud1tmg7454-audit-dev",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Get-Programa_Auditoria-All"
+							],
+							"query": [
+								{
+									"key": "code",
+									"value": "X4XURduZbR20wwsOaEVVs4trLnrmd4mfO3KtqksohFm5bQQPqoO10g=="
+								},
+								{
+									"key": "httpmethod",
+									"value": "objectlist"
+								},
+								{
+									"key": "vvcode",
+									"value": "ss",
+									"disabled": true
+								},
+								{
+									"key": "ProgramaAuditoriaId",
+									"value": "4",
+									"disabled": true
+								},
+								{
+									"key": "Fecha_Desde",
+									"value": "2020-10-01",
+									"disabled": true
+								},
+								{
+									"key": "Fecha_Hasta",
+									"value": "2020-10-14",
+									"disabled": true
+								},
+								{
+									"key": "StatusId",
+									"value": "2",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetSede",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "apiKey",
+								"value": "r$3#23516ewew5",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://550m44ud1tmg7454-audit-dev.azurewebsites.net/api/Get-Sede-All?code=0N470WSSjrIb6hhHAsgBHgS8wplALMbCB6KcP5FmsjFDvjQkcaaWbw==&httpmethod=objectlist",
+							"protocol": "https",
+							"host": [
+								"550m44ud1tmg7454-audit-dev",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Get-Sede-All"
+							],
+							"query": [
+								{
+									"key": "code",
+									"value": "0N470WSSjrIb6hhHAsgBHgS8wplALMbCB6KcP5FmsjFDvjQkcaaWbw=="
+								},
+								{
+									"key": "httpmethod",
+									"value": "objectlist"
+								},
+								{
+									"key": "UnidadNegocioId",
+									"value": "6",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetStatusProgramaAuditoria",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "apiKey",
+								"value": "r$3#23516ewew5",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://550m44ud1tmg7454-audit-dev.azurewebsites.net/api/Get-Status_Programa_Auditoria-All?code=qOqHuW1VD50eWi6m3mZ2MjJPR7kjm7tdEhwdApDA2oEnWcS1hjofcg==&httpmethod=objectlist",
+							"protocol": "https",
+							"host": [
+								"550m44ud1tmg7454-audit-dev",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Get-Status_Programa_Auditoria-All"
+							],
+							"query": [
+								{
+									"key": "code",
+									"value": "qOqHuW1VD50eWi6m3mZ2MjJPR7kjm7tdEhwdApDA2oEnWcS1hjofcg=="
+								},
+								{
+									"key": "httpmethod",
+									"value": "objectlist"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetUnidadNegocio",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "apiKey",
+								"value": "r$3#23516ewew5",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://550m44ud1tmg7454-audit-dev.azurewebsites.net/api/Get-Unidad_Negocio-All?code=25Ewv7NJf5i1HTalqXRIrAfk7i1bXkRkB58utsEzQrWtP21B07BHtw==&httpmethod=objectlist",
+							"protocol": "https",
+							"host": [
+								"550m44ud1tmg7454-audit-dev",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Get-Unidad_Negocio-All"
+							],
+							"query": [
+								{
+									"key": "code",
+									"value": "25Ewv7NJf5i1HTalqXRIrAfk7i1bXkRkB58utsEzQrWtP21B07BHtw=="
+								},
+								{
+									"key": "httpmethod",
+									"value": "objectlist"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetTipoAuditoria",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "apiKey",
+								"value": "r$3#23516ewew5",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://550m44ud1tmg7454-audit-dev.azurewebsites.net/api/Get-Tipo_Auditoria-All?code=xS4gwxC7HETttJm8ZIp9rQi/Qw8zOhYFhJJE05EjsbpbAgACN3bT8w==&httpmethod=objectlist",
+							"protocol": "https",
+							"host": [
+								"550m44ud1tmg7454-audit-dev",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Get-Tipo_Auditoria-All"
+							],
+							"query": [
+								{
+									"key": "code",
+									"value": "xS4gwxC7HETttJm8ZIp9rQi/Qw8zOhYFhJJE05EjsbpbAgACN3bT8w=="
+								},
+								{
+									"key": "httpmethod",
+									"value": "objectlist"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetStatus_Auditoria",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "apikey",
+								"value": "r$3#23516ewew5",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://550m44ud1tmg7454-audit-dev.azurewebsites.net/api/Get-Status_Auditoria-All?code=066JGAvFAHugXr5JRHMQpKd408bUgy31F0c3FJ5dPraS2fxhgVrSzQ==&httpmethod=objectlist",
+							"protocol": "https",
+							"host": [
+								"550m44ud1tmg7454-audit-dev",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Get-Status_Auditoria-All"
+							],
+							"query": [
+								{
+									"key": "code",
+									"value": "066JGAvFAHugXr5JRHMQpKd408bUgy31F0c3FJ5dPraS2fxhgVrSzQ=="
+								},
+								{
+									"key": "httpmethod",
+									"value": "objectlist"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetStatus_Evaluacion_Auditoria",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "apikey",
+								"value": "r$3#23516ewew5",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://550m44ud1tmg7454-audit-dev.azurewebsites.net/api/Get-Status_Evaluacion_Auditoria-All?code=btq2qIQE5h2jljkDGHPNabW/WYPRSulqMtZg2gYqz7d2DP57fyC6ew==&httpmethod=objectlist",
+							"protocol": "https",
+							"host": [
+								"550m44ud1tmg7454-audit-dev",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Get-Status_Evaluacion_Auditoria-All"
+							],
+							"query": [
+								{
+									"key": "code",
+									"value": "btq2qIQE5h2jljkDGHPNabW/WYPRSulqMtZg2gYqz7d2DP57fyC6ew=="
+								},
+								{
+									"key": "httpmethod",
+									"value": "objectlist"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAuditor",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "apikey",
+								"value": "r$3#23516ewew5",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://550m44ud1tmg7454-audit-dev.azurewebsites.net/api/Get-Auditor-All?code=hbrZXRJdmxkGPmAHm035VP1oCBnsAbJVu4IuZozBS1Yj/ePB1mQtYg==&httpmethod=objectlist",
+							"protocol": "https",
+							"host": [
+								"550m44ud1tmg7454-audit-dev",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Get-Auditor-All"
+							],
+							"query": [
+								{
+									"key": "code",
+									"value": "hbrZXRJdmxkGPmAHm035VP1oCBnsAbJVu4IuZozBS1Yj/ePB1mQtYg=="
+								},
+								{
+									"key": "httpmethod",
+									"value": "objectlist"
+								},
+								{
+									"key": "Id",
+									"value": "0",
+									"disabled": true
+								},
+								{
+									"key": "UserIdhash",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "Name",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "Rol_Code",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "SedeId",
+									"value": "0",
+									"disabled": true
+								},
+								{
+									"key": "Active",
+									"value": "0",
+									"disabled": true
+								},
+								{
+									"key": "EspecialidadId",
+									"value": "0",
+									"disabled": true
+								},
+								{
+									"key": "Cargo",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetObservacion_Auditoria",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "apikey",
+								"value": "r$3#23516ewew5",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://550m44ud1tmg7454-audit-dev.azurewebsites.net/api/Get-Observacion_Auditoria-All?code=USTkprfiPea9NXKlJtaJEA43TdAWtgLspeX0sE0di0DoEOfFE4f07A==&httpmethod=objectlist&AuditoriaId=62&Active=1",
+							"protocol": "https",
+							"host": [
+								"550m44ud1tmg7454-audit-dev",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Get-Observacion_Auditoria-All"
+							],
+							"query": [
+								{
+									"key": "code",
+									"value": "USTkprfiPea9NXKlJtaJEA43TdAWtgLspeX0sE0di0DoEOfFE4f07A=="
+								},
+								{
+									"key": "httpmethod",
+									"value": "objectlist"
+								},
+								{
+									"key": "AuditoriaId",
+									"value": "62"
+								},
+								{
+									"key": "Active",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAuditoriaModificacionLog",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "apikey",
+								"value": "r$3#23516ewew5",
+								"type": "text"
+							},
+							{
+								"key": "TipoModificacionId",
+								"value": "0",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://550m44ud1tmg7454-audit-dev.azurewebsites.net/api/Get-Auditoria_Modificacion_Log-All?code=7jsdVKH8Qz4bKFXpaOWQQFWtwxL4ijawwH6TL7edDHnqd0YsvfdW7g==&httpmethod=objectlist",
+							"protocol": "https",
+							"host": [
+								"550m44ud1tmg7454-audit-dev",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Get-Auditoria_Modificacion_Log-All"
+							],
+							"query": [
+								{
+									"key": "code",
+									"value": "7jsdVKH8Qz4bKFXpaOWQQFWtwxL4ijawwH6TL7edDHnqd0YsvfdW7g=="
+								},
+								{
+									"key": "httpmethod",
+									"value": "objectlist"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetEvaluacionAuditoriaLog",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "apikey",
+								"value": "r$3#23516ewew5",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://550m44ud1tmg7454-audit-dev.azurewebsites.net/api/Get-Evaluacion_Auditoria_Log-All?code=5/R4yNvVQLDq5ca6C2Tcwvuz08ulNCKg0TeNYr5Al44rW3UbLbUvJA==&httpmethod=objectlist&Id=0&StatusEvaluacionId=0&AuditoriaId=0",
+							"protocol": "https",
+							"host": [
+								"550m44ud1tmg7454-audit-dev",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Get-Evaluacion_Auditoria_Log-All"
+							],
+							"query": [
+								{
+									"key": "code",
+									"value": "5/R4yNvVQLDq5ca6C2Tcwvuz08ulNCKg0TeNYr5Al44rW3UbLbUvJA=="
+								},
+								{
+									"key": "httpmethod",
+									"value": "objectlist"
+								},
+								{
+									"key": "Id",
+									"value": "0"
+								},
+								{
+									"key": "StatusEvaluacionId",
+									"value": "0"
+								},
+								{
+									"key": "AuditoriaId",
+									"value": "0"
+								},
+								{
+									"key": "Active",
+									"value": "0",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAuditoria_Auditor",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "apikey",
+								"value": "r$3#23516ewew5",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://550m44ud1tmg7454-audit-dev.azurewebsites.net/api/Get-Auditoria-Auditor-All?code=Rl5A5zfJRatOqun8D3YzKOeoKIDauTzwkkjQ1ua6jgyqqABAHvLLZw==&httpmethod=objectlist&Id=206&SedeId=12&EspecialidadId=6",
+							"protocol": "https",
+							"host": [
+								"550m44ud1tmg7454-audit-dev",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Get-Auditoria-Auditor-All"
+							],
+							"query": [
+								{
+									"key": "code",
+									"value": "Rl5A5zfJRatOqun8D3YzKOeoKIDauTzwkkjQ1ua6jgyqqABAHvLLZw=="
+								},
+								{
+									"key": "httpmethod",
+									"value": "objectlist"
+								},
+								{
+									"key": "Id",
+									"value": "206"
+								},
+								{
+									"key": "SedeId",
+									"value": "12"
+								},
+								{
+									"key": "EspecialidadId",
+									"value": "6"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAuditoria_AuditorPerfil",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "apikey",
+								"value": "r$3#23516ewew5",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://550m44ud1tmg7454-audit-dev.azurewebsites.net/api/Get-Auditoria-Auditor-Perfil-All?code=1gpIZEzdwHTFO9ry60Ne3PHbejEHlITBTRWz8WpO8R7S/bB1494nBw==&httpmethod=objectlist&Id=5",
+							"protocol": "https",
+							"host": [
+								"550m44ud1tmg7454-audit-dev",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Get-Auditoria-Auditor-Perfil-All"
+							],
+							"query": [
+								{
+									"key": "code",
+									"value": "1gpIZEzdwHTFO9ry60Ne3PHbejEHlITBTRWz8WpO8R7S/bB1494nBw=="
+								},
+								{
+									"key": "httpmethod",
+									"value": "objectlist"
+								},
+								{
+									"key": "Id",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetRol",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "apikey",
+								"value": "r$3#23516ewew5",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://550m44ud1tmg7454-audit-dev.azurewebsites.net/api/Get-Rol-All?code=M3VI7uKk/ztuDa1cywHOZsQcBiJdCYv0je/dQQb61TmlT7rDhsDZXw==&httpmethod=objectlist&Active=1",
+							"protocol": "https",
+							"host": [
+								"550m44ud1tmg7454-audit-dev",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Get-Rol-All"
+							],
+							"query": [
+								{
+									"key": "code",
+									"value": "M3VI7uKk/ztuDa1cywHOZsQcBiJdCYv0je/dQQb61TmlT7rDhsDZXw=="
+								},
+								{
+									"key": "httpmethod",
+									"value": "objectlist"
+								},
+								{
+									"key": "Active",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAuditoriaAuditorLider",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "apiKey",
+								"value": "r$3#23516ewew5",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://550m44ud1tmg7454-audit-dev.azurewebsites.net/api/Get-Auditoria-Lider-All?code=UAIRBeY2QaKbBgPA4aEGXzAYjgDu4T4WvBa04WvkGpB1RazLa3462w==&Id=user-keyid-4147&TipoAuditor=1&httpmethod=objectlist",
+							"protocol": "https",
+							"host": [
+								"550m44ud1tmg7454-audit-dev",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Get-Auditoria-Lider-All"
+							],
+							"query": [
+								{
+									"key": "code",
+									"value": "UAIRBeY2QaKbBgPA4aEGXzAYjgDu4T4WvBa04WvkGpB1RazLa3462w=="
+								},
+								{
+									"key": "Id",
+									"value": "user-keyid-4147"
+								},
+								{
+									"key": "TipoAuditor",
+									"value": "1"
+								},
+								{
+									"key": "httpmethod",
+									"value": "objectlist"
+								}
+							]
+						},
+						"description": "asdasd"
+					},
+					"response": []
+				},
+				{
+					"name": "GetRequisitosAll",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "apiKey",
+								"value": "r$3#23516ewew5",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://550m44ud1tmg7454-audit-dev.azurewebsites.net/api/Get-Requisitos-All?code=2CGU9CgCzDIQbm15eiygeamwd6qph2IJcF0cArLQTO3JvPgDNjk90A==&httpmethod=objectlist&UnidadNegocioId=3&NormaId=3&ProcesoId=1",
+							"protocol": "https",
+							"host": [
+								"550m44ud1tmg7454-audit-dev",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Get-Requisitos-All"
+							],
+							"query": [
+								{
+									"key": "code",
+									"value": "2CGU9CgCzDIQbm15eiygeamwd6qph2IJcF0cArLQTO3JvPgDNjk90A=="
+								},
+								{
+									"key": "httpmethod",
+									"value": "objectlist"
+								},
+								{
+									"key": "UnidadNegocioId",
+									"value": "3"
+								},
+								{
+									"key": "NormaId",
+									"value": "3"
+								},
+								{
+									"key": "ProcesoId",
+									"value": "1"
+								},
+								{
+									"key": "UnidadNegocioProcesoId",
+									"value": "0",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Enviar \r\nUnidadNegocioID y NormaID"
+					},
+					"response": []
+				},
+				{
+					"name": "Get-Procesos-All",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "apiKey",
+								"value": "r$3#23516ewew5",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://550m44ud1tmg7454-audit-dev.azurewebsites.net/api/Get-Procesos-All?code=tEAp2tNAKmv7vI/cojury2FgxRalWR60atxCqa7hReHfM42lxTrasA==&httpmethod=objectlist&UnidadNegocioId=3&NormaId=3",
+							"protocol": "https",
+							"host": [
+								"550m44ud1tmg7454-audit-dev",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Get-Procesos-All"
+							],
+							"query": [
+								{
+									"key": "code",
+									"value": "tEAp2tNAKmv7vI/cojury2FgxRalWR60atxCqa7hReHfM42lxTrasA=="
+								},
+								{
+									"key": "httpmethod",
+									"value": "objectlist"
+								},
+								{
+									"key": "UnidadNegocioId",
+									"value": "3"
+								},
+								{
+									"key": "NormaId",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get-Tipo-Hallazgos",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "apiKey",
+								"value": "r$3#23516ewew5",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://550m44ud1tmg7454-audit-dev.azurewebsites.net/api/Get-Tipo_Hallazgos-All?code=25N7v0Mdg58fgZCD7e1INz19kNyKivJLgq3Fo5mCz6PL34jg/5UbwA==&httpmethod=objectlist",
+							"protocol": "https",
+							"host": [
+								"550m44ud1tmg7454-audit-dev",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Get-Tipo_Hallazgos-All"
+							],
+							"query": [
+								{
+									"key": "code",
+									"value": "25N7v0Mdg58fgZCD7e1INz19kNyKivJLgq3Fo5mCz6PL34jg/5UbwA=="
+								},
+								{
+									"key": "httpmethod",
+									"value": "objectlist"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get-Plan-Auditoria-Log-All",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "apiKey",
+								"value": "r$3#23516ewew5",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://550m44ud1tmg7454-audit-dev.azurewebsites.net/api/Get-Plan_Auditoria_Log-All?code=D64Wsaxe6Wxm0muSEKyAoUggY7Jv0oru2nyub4JHzji7fJsCYDhgrg==&httpmethod=objectlist&PlanAuditoriaId=94",
+							"protocol": "https",
+							"host": [
+								"550m44ud1tmg7454-audit-dev",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Get-Plan_Auditoria_Log-All"
+							],
+							"query": [
+								{
+									"key": "code",
+									"value": "D64Wsaxe6Wxm0muSEKyAoUggY7Jv0oru2nyub4JHzji7fJsCYDhgrg=="
+								},
+								{
+									"key": "httpmethod",
+									"value": "objectlist"
+								},
+								{
+									"key": "PlanAuditoriaId",
+									"value": "94"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get-Procesos_Auditoria-All",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "apiKey",
+								"value": "r$3#23516ewew5",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://550m44ud1tmg7454-audit-dev.azurewebsites.net/api/Get-Procesos_Auditoria-All?code=/dbQLvwyy2aaIJr2kkaYHzdkMuQfWOLCSwA0b1HvHqeeQHKLhHf1/Q==&httpmethod=objectlist&AuditoriaId=175&NormaId=3,4",
+							"protocol": "https",
+							"host": [
+								"550m44ud1tmg7454-audit-dev",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Get-Procesos_Auditoria-All"
+							],
+							"query": [
+								{
+									"key": "code",
+									"value": "/dbQLvwyy2aaIJr2kkaYHzdkMuQfWOLCSwA0b1HvHqeeQHKLhHf1/Q=="
+								},
+								{
+									"key": "httpmethod",
+									"value": "objectlist"
+								},
+								{
+									"key": "AuditoriaId",
+									"value": "175"
+								},
+								{
+									"key": "NormaId",
+									"value": "3,4"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get-Lista_Envio-All",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "apiKey",
+								"value": "r$3#23516ewew5",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://550m44ud1tmg7454-audit-dev.azurewebsites.net/api/Get-Lista_Envio-All?code=/tXqtxILOwK4/jC0SYBAFaOFChIVn4aOshoJIiL9G7ApLKCUC5RQqA==&httpmethod=objectlist&PlanAuditoriaId=93",
+							"protocol": "https",
+							"host": [
+								"550m44ud1tmg7454-audit-dev",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Get-Lista_Envio-All"
+							],
+							"query": [
+								{
+									"key": "code",
+									"value": "/tXqtxILOwK4/jC0SYBAFaOFChIVn4aOshoJIiL9G7ApLKCUC5RQqA=="
+								},
+								{
+									"key": "httpmethod",
+									"value": "objectlist"
+								},
+								{
+									"key": "PlanAuditoriaId",
+									"value": "93"
+								}
+							]
+						},
+						"description": "enviar PlanAuditoriaId"
+					},
+					"response": []
+				},
+				{
+					"name": "GetPlanAuditoria",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "apiKey",
+								"value": "r$3#23516ewew5",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://550m44ud1tmg7454-audit-dev.azurewebsites.net/api/Get-Auditoria-Lider-All?code=UAIRBeY2QaKbBgPA4aEGXzAYjgDu4T4WvBa04WvkGpB1RazLa3462w==&IdAuditoria=176&httpmethod=object&Inicio=2020-11-22",
+							"protocol": "https",
+							"host": [
+								"550m44ud1tmg7454-audit-dev",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Get-Auditoria-Lider-All"
+							],
+							"query": [
+								{
+									"key": "code",
+									"value": "UAIRBeY2QaKbBgPA4aEGXzAYjgDu4T4WvBa04WvkGpB1RazLa3462w=="
+								},
+								{
+									"key": "httpmethod",
+									"value": "objectlist",
+									"disabled": true
+								},
+								{
+									"key": "Id",
+									"value": "user-keyid-4147",
+									"disabled": true
+								},
+								{
+									"key": "TipoAuditor",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "Fin",
+									"value": "2020-11-28",
+									"disabled": true
+								},
+								{
+									"key": "IdAuditoria",
+									"value": "176"
+								},
+								{
+									"key": "httpmethod",
+									"value": "object"
+								},
+								{
+									"key": "Inicio",
+									"value": "2020-11-22"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetListaAsistencia",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "apiKey",
+								"value": "r$3#23516ewew5",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://550m44ud1tmg7454-audit-dev.azurewebsites.net/api/Get-Lista-Asistencia-All?code=xpPpAaANhw8DaLfb1vcVmXy4PbBSF2XvA6FwQDXMiGLdBUi9C44xgw==&httpmethod=objectlist",
+							"protocol": "https",
+							"host": [
+								"550m44ud1tmg7454-audit-dev",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Get-Lista-Asistencia-All"
+							],
+							"query": [
+								{
+									"key": "code",
+									"value": "xpPpAaANhw8DaLfb1vcVmXy4PbBSF2XvA6FwQDXMiGLdBUi9C44xgw=="
+								},
+								{
+									"key": "httpmethod",
+									"value": "objectlist"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get-one-ListaAsistencia",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "apiKey",
+								"value": "r$3#23516ewew5",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://550m44ud1tmg7454-audit-dev.azurewebsites.net/api/Get-Lista-Asistencia-All?code=xpPpAaANhw8DaLfb1vcVmXy4PbBSF2XvA6FwQDXMiGLdBUi9C44xgw==&httpmethod=object&Id=7",
+							"protocol": "https",
+							"host": [
+								"550m44ud1tmg7454-audit-dev",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Get-Lista-Asistencia-All"
+							],
+							"query": [
+								{
+									"key": "code",
+									"value": "xpPpAaANhw8DaLfb1vcVmXy4PbBSF2XvA6FwQDXMiGLdBUi9C44xgw=="
+								},
+								{
+									"key": "httpmethod",
+									"value": "object"
+								},
+								{
+									"key": "Id",
+									"value": "7"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Posts",
+			"item": [
+				{
+					"name": "Auditoria",
+					"item": [
+						{
+							"name": "Auditoria_Update",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "apikey",
+										"value": "r$3#23516ewew5",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Id\": 225,\r\n    //\"Created_By\":\"Walter Pretell\",\r\n    \"Last_Updated_By\":\"Walter Pretell\",\r\n    //\"Fin\":\"2020-10-18\"\r\n    \"StatusId\": 6,\r\n    //\"StatusEvaluacionId\":\"3\",\r\n    //\"ProgramaAuditoriaId\":96\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://550m44ud1tmg7454-audit-dev.azurewebsites.net/api/Post-Auditoria-All?code=l/Ucgq69Kj8Yur7Se2RlCYtWga8XKfd8TuLSma8pYoGnsP/GqJO81g==&httpmethod=put&Id=175",
+									"protocol": "https",
+									"host": [
+										"550m44ud1tmg7454-audit-dev",
+										"azurewebsites",
+										"net"
+									],
+									"path": [
+										"api",
+										"Post-Auditoria-All"
+									],
+									"query": [
+										{
+											"key": "code",
+											"value": "l/Ucgq69Kj8Yur7Se2RlCYtWga8XKfd8TuLSma8pYoGnsP/GqJO81g=="
+										},
+										{
+											"key": "httpmethod",
+											"value": "put"
+										},
+										{
+											"key": "Id",
+											"value": "175"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Auditoria_Delete",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "apikey",
+										"value": "r$3#23516ewew5",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Id\":1,\r\n    \"Delete_By\":\"Héctor Walter\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://550m44ud1tmg7454-audit-dev.azurewebsites.net/api/Post-Auditoria-All?code=l/Ucgq69Kj8Yur7Se2RlCYtWga8XKfd8TuLSma8pYoGnsP/GqJO81g==&httpmethod=delete",
+									"protocol": "https",
+									"host": [
+										"550m44ud1tmg7454-audit-dev",
+										"azurewebsites",
+										"net"
+									],
+									"path": [
+										"api",
+										"Post-Auditoria-All"
+									],
+									"query": [
+										{
+											"key": "code",
+											"value": "l/Ucgq69Kj8Yur7Se2RlCYtWga8XKfd8TuLSma8pYoGnsP/GqJO81g=="
+										},
+										{
+											"key": "httpmethod",
+											"value": "delete"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Auditoria_Insert",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "apikey",
+										"value": "r$3#23516ewew5",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Description\":\"Inocuidad-Calidad 4\",\r\n    \"Code\":\"0000000004\",\r\n    \"SedeId\":12,\r\n    \"TipoId\":1,\r\n    \"StatusId\":1,\r\n    \"Inicio\":\"2020-09-17\",\r\n    \"Fin\":\"2020-10-04\",\r\n    \"Code_Normas\":\"BASC,14001\",\r\n    \"Created_By\":\"Walter Pretell\",\r\n    \"Last_Updated_By\":\"Walter Pretell\",\r\n    \"ProgramaAuditoriaId\":51,\r\n    \"StatusEvaluacionId\":0\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://550m44ud1tmg7454-audit-dev.azurewebsites.net/api/Post-Auditoria-All?code=l/Ucgq69Kj8Yur7Se2RlCYtWga8XKfd8TuLSma8pYoGnsP/GqJO81g==&httpmethod=post",
+									"protocol": "https",
+									"host": [
+										"550m44ud1tmg7454-audit-dev",
+										"azurewebsites",
+										"net"
+									],
+									"path": [
+										"api",
+										"Post-Auditoria-All"
+									],
+									"query": [
+										{
+											"key": "code",
+											"value": "l/Ucgq69Kj8Yur7Se2RlCYtWga8XKfd8TuLSma8pYoGnsP/GqJO81g=="
+										},
+										{
+											"key": "httpmethod",
+											"value": "post"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Auditoria-putStatusId",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "apikey",
+										"value": "r$3#23516ewew5",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Last_Updated_By\":\"Jesus Millan\",\r\n    \"StatusId\": 4\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://550m44ud1tmg7454-audit-dev.azurewebsites.net/api/Post-Auditoria-All?code=l/Ucgq69Kj8Yur7Se2RlCYtWga8XKfd8TuLSma8pYoGnsP/GqJO81g==&httpmethod=putStatusId&Id=206",
+									"protocol": "https",
+									"host": [
+										"550m44ud1tmg7454-audit-dev",
+										"azurewebsites",
+										"net"
+									],
+									"path": [
+										"api",
+										"Post-Auditoria-All"
+									],
+									"query": [
+										{
+											"key": "code",
+											"value": "l/Ucgq69Kj8Yur7Se2RlCYtWga8XKfd8TuLSma8pYoGnsP/GqJO81g=="
+										},
+										{
+											"key": "httpmethod",
+											"value": "putStatusId"
+										},
+										{
+											"key": "Id",
+											"value": "206"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Programa_Auditoria",
+					"item": [
+						{
+							"name": "ProgramaAuditoria_Insert",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "apikey",
+										"value": "r$3#23516ewew5",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "  {\r\n    \"Code\": \"SEGURIDAD2020\",\r\n    \"EspecialidadId\": 3,\r\n    \"StatusId\": 1,\r\n    \"Evaluador_name\": null,\r\n    \"Evaluador_code\": null,\r\n    \"Year\": \"2020\",\r\n    \"Flag_Completada\": 0,\r\n    \"Created_By\": \"Walter Pretell\",\r\n    \"Last_Updated_By\": \"Walter Pretell\"\r\n  }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://550m44ud1tmg7454-audit-dev.azurewebsites.net/api/Post-Programa_Auditoria-All?code=g38OQrxNikLSJIxsYIv03hTcmsYXfmMA7kanUqFykcdNNGAHwMGFQg==&httpmethod=post",
+									"protocol": "https",
+									"host": [
+										"550m44ud1tmg7454-audit-dev",
+										"azurewebsites",
+										"net"
+									],
+									"path": [
+										"api",
+										"Post-Programa_Auditoria-All"
+									],
+									"query": [
+										{
+											"key": "code",
+											"value": "g38OQrxNikLSJIxsYIv03hTcmsYXfmMA7kanUqFykcdNNGAHwMGFQg=="
+										},
+										{
+											"key": "httpmethod",
+											"value": "post"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ProgramaAuditoria_Update",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "apikey",
+										"value": "r$3#23516ewew5",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "  {\r\n    \"Id\":95,\r\n    \"Code\": \"CALIDAD2020\",\r\n    //\"EspecialidadId\": 3,\r\n    //\"StatusId\": 1,\r\n    \"Evaluador_name\": \"Andy Vasquez\",\r\n    \"Evaluador_code\": 12,\r\n    \"Year\": \"2020\",\r\n    \"Delete\": null,\r\n    \"Flag_Completada\": 1,\r\n    \"Created_By\": \"Walter Pretell\",\r\n    \"Last_Updated_By\": \"Walter Pretell\"\r\n  }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://550m44ud1tmg7454-audit-dev.azurewebsites.net/api/Post-Programa_Auditoria-All?code=g38OQrxNikLSJIxsYIv03hTcmsYXfmMA7kanUqFykcdNNGAHwMGFQg==&httpmethod=put",
+									"protocol": "https",
+									"host": [
+										"550m44ud1tmg7454-audit-dev",
+										"azurewebsites",
+										"net"
+									],
+									"path": [
+										"api",
+										"Post-Programa_Auditoria-All"
+									],
+									"query": [
+										{
+											"key": "code",
+											"value": "g38OQrxNikLSJIxsYIv03hTcmsYXfmMA7kanUqFykcdNNGAHwMGFQg=="
+										},
+										{
+											"key": "httpmethod",
+											"value": "put"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ProgramaAuditoria_Delete",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "apikey",
+										"value": "r$3#23516ewew5",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Id\":95,\r\n    \"Delete_By\":\"Héctor Walter\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://550m44ud1tmg7454-audit-dev.azurewebsites.net/api/Post-Programa_Auditoria-All?code=g38OQrxNikLSJIxsYIv03hTcmsYXfmMA7kanUqFykcdNNGAHwMGFQg==&httpmethod=delete",
+									"protocol": "https",
+									"host": [
+										"550m44ud1tmg7454-audit-dev",
+										"azurewebsites",
+										"net"
+									],
+									"path": [
+										"api",
+										"Post-Programa_Auditoria-All"
+									],
+									"query": [
+										{
+											"key": "code",
+											"value": "g38OQrxNikLSJIxsYIv03hTcmsYXfmMA7kanUqFykcdNNGAHwMGFQg=="
+										},
+										{
+											"key": "httpmethod",
+											"value": "delete"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ProgramaAuditoria_Finalize",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "apikey",
+										"value": "r$3#23516ewew5",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "  {\r\n    \"Id\":95,\r\n    \"CodeEspecialidad\": \"SSOMA\",\r\n    \"Last_Updated_By\": \"Walter Pretell\",\r\n    \"Flag_Completada\":0,\r\n    \"Flag_Evaluador\":0\r\n  }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://550m44ud1tmg7454-audit-dev.azurewebsites.net/api/Post-Programa_Auditoria-All?code=g38OQrxNikLSJIxsYIv03hTcmsYXfmMA7kanUqFykcdNNGAHwMGFQg==&httpmethod=finalize",
+									"protocol": "https",
+									"host": [
+										"550m44ud1tmg7454-audit-dev",
+										"azurewebsites",
+										"net"
+									],
+									"path": [
+										"api",
+										"Post-Programa_Auditoria-All"
+									],
+									"query": [
+										{
+											"key": "code",
+											"value": "g38OQrxNikLSJIxsYIv03hTcmsYXfmMA7kanUqFykcdNNGAHwMGFQg=="
+										},
+										{
+											"key": "httpmethod",
+											"value": "finalize"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Observacion_Auditoria",
+					"item": [
+						{
+							"name": "Observacion_Auditoria_Insert",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "apikey",
+										"value": "r$3#23516ewew5",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Observacion\":\"Modificar los rangos de fechas y el Tipo de Auditoria a Externa\",\r\n    \"AuditoriaId\":183,\r\n    \"Active\":1,\r\n    \"Created_By\":\"Walter Pretell\",\r\n    \"ProgramaAuditoriaId\":96\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://550m44ud1tmg7454-audit-dev.azurewebsites.net/api/Post-Observacion_Auditoria-All?code=PnWLiDon3Yjf6raNH4JP/N2P7J7uXIEvJ1ZL3tU3ljDfVOEoHswwEQ==&httpmethod=post",
+									"protocol": "https",
+									"host": [
+										"550m44ud1tmg7454-audit-dev",
+										"azurewebsites",
+										"net"
+									],
+									"path": [
+										"api",
+										"Post-Observacion_Auditoria-All"
+									],
+									"query": [
+										{
+											"key": "code",
+											"value": "PnWLiDon3Yjf6raNH4JP/N2P7J7uXIEvJ1ZL3tU3ljDfVOEoHswwEQ=="
+										},
+										{
+											"key": "httpmethod",
+											"value": "post"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Observacion_Auditoria_Update",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "apikey",
+										"value": "r$3#23516ewew5",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Id\":1,\r\n    \"Observacion\":\"Solo modificar los rangos de fechas\",\r\n    \"AuditoriaId\":54,\r\n    \"Active\":1,\r\n    \"Created_By\":\"Walter Pretell\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://550m44ud1tmg7454-audit-dev.azurewebsites.net/api/Post-Observacion_Auditoria-All?code=PnWLiDon3Yjf6raNH4JP/N2P7J7uXIEvJ1ZL3tU3ljDfVOEoHswwEQ==&httpmethod=put&Id=1",
+									"protocol": "https",
+									"host": [
+										"550m44ud1tmg7454-audit-dev",
+										"azurewebsites",
+										"net"
+									],
+									"path": [
+										"api",
+										"Post-Observacion_Auditoria-All"
+									],
+									"query": [
+										{
+											"key": "code",
+											"value": "PnWLiDon3Yjf6raNH4JP/N2P7J7uXIEvJ1ZL3tU3ljDfVOEoHswwEQ=="
+										},
+										{
+											"key": "httpmethod",
+											"value": "put"
+										},
+										{
+											"key": "Id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Observacion_Auditoria_Delete",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "apikey",
+										"value": "r$3#23516ewew5",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://550m44ud1tmg7454-audit-dev.azurewebsites.net/api/Post-Observacion_Auditoria-All?code=PnWLiDon3Yjf6raNH4JP/N2P7J7uXIEvJ1ZL3tU3ljDfVOEoHswwEQ==&httpmethod=delete&Id=0",
+									"protocol": "https",
+									"host": [
+										"550m44ud1tmg7454-audit-dev",
+										"azurewebsites",
+										"net"
+									],
+									"path": [
+										"api",
+										"Post-Observacion_Auditoria-All"
+									],
+									"query": [
+										{
+											"key": "code",
+											"value": "PnWLiDon3Yjf6raNH4JP/N2P7J7uXIEvJ1ZL3tU3ljDfVOEoHswwEQ=="
+										},
+										{
+											"key": "httpmethod",
+											"value": "delete"
+										},
+										{
+											"key": "Id",
+											"value": "0"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Auditoria_Norma",
+					"item": [
+						{
+							"name": "Auditoria_Norma_Insert",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "apikey",
+										"value": "r$3#23516ewew5",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Id\":62,\r\n    \"NormaCode\":\"BASC\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://550m44ud1tmg7454-audit-dev.azurewebsites.net/api/Post-Auditoria_Norma-All?code=FvuqxVqEnvDfTwEXbX4lMfRsfNQ9346Gyd6wQa/7Z7JGK7csthO4IQ==&httpmethod=post",
+									"protocol": "https",
+									"host": [
+										"550m44ud1tmg7454-audit-dev",
+										"azurewebsites",
+										"net"
+									],
+									"path": [
+										"api",
+										"Post-Auditoria_Norma-All"
+									],
+									"query": [
+										{
+											"key": "code",
+											"value": "FvuqxVqEnvDfTwEXbX4lMfRsfNQ9346Gyd6wQa/7Z7JGK7csthO4IQ=="
+										},
+										{
+											"key": "httpmethod",
+											"value": "post"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Auditoria_Norma_Update",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "apikey",
+										"value": "r$3#23516ewew5",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Id\":167,\r\n    \"AuditoriaId\":62,\r\n    \"NormaCode\":\"14001\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://550m44ud1tmg7454-audit-dev.azurewebsites.net/api/Post-Auditoria_Norma-All?code=FvuqxVqEnvDfTwEXbX4lMfRsfNQ9346Gyd6wQa/7Z7JGK7csthO4IQ==&httpmethod=put&Id=167",
+									"protocol": "https",
+									"host": [
+										"550m44ud1tmg7454-audit-dev",
+										"azurewebsites",
+										"net"
+									],
+									"path": [
+										"api",
+										"Post-Auditoria_Norma-All"
+									],
+									"query": [
+										{
+											"key": "code",
+											"value": "FvuqxVqEnvDfTwEXbX4lMfRsfNQ9346Gyd6wQa/7Z7JGK7csthO4IQ=="
+										},
+										{
+											"key": "httpmethod",
+											"value": "put"
+										},
+										{
+											"key": "Id",
+											"value": "167"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Auditoria_Norma_Delete",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "apikey",
+										"value": "r$3#23516ewew5",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Id\":167,\r\n    \"Deleted_By\":\"Walter\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://550m44ud1tmg7454-audit-dev.azurewebsites.net/api/Post-Auditoria_Norma-All?code=FvuqxVqEnvDfTwEXbX4lMfRsfNQ9346Gyd6wQa/7Z7JGK7csthO4IQ==&httpmethod=delete&Id=167&Delete_By=Walter",
+									"protocol": "https",
+									"host": [
+										"550m44ud1tmg7454-audit-dev",
+										"azurewebsites",
+										"net"
+									],
+									"path": [
+										"api",
+										"Post-Auditoria_Norma-All"
+									],
+									"query": [
+										{
+											"key": "code",
+											"value": "FvuqxVqEnvDfTwEXbX4lMfRsfNQ9346Gyd6wQa/7Z7JGK7csthO4IQ=="
+										},
+										{
+											"key": "httpmethod",
+											"value": "delete"
+										},
+										{
+											"key": "Id",
+											"value": "167"
+										},
+										{
+											"key": "Delete_By",
+											"value": "Walter"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Especialidad",
+					"item": [],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Norma",
+					"item": [],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Sede",
+					"item": [],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Status_Programa_Auditoria",
+					"item": [],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Tipo_Auditoria",
+					"item": [],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Unidad_Negocio",
+					"item": [],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Auditor",
+					"item": [
+						{
+							"name": "Auditor_Insert",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "apikey",
+										"value": "r$3#23516ewew5",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"UserIdhash\":\"b71dada304875838f0263e3ae50c2c49\",\r\n    \"Name\":\"Paulo Ravi\",\r\n    \"Rol_Code\":\"demo 01\",\r\n    \"SedeId\":1,\r\n    \"Active\":1,\r\n    \"EspecialidadId\":1,\r\n    \"Cargo\":\"ASISTENTE DE FINANZAS\",\r\n    \"Create_By\":\"Paulo Ravi\",\r\n    \"Tipo\": 2,\r\n    \"Capacitacion\": [\r\n        {\r\n            \"NormaId\":3,\r\n            \"TipoCursoId\":1,\r\n            \"Tipo\":2,\r\n            \"Fecha_Inicio\": \"2020-11-11\",\r\n            \"Fecha_Final\": \"2020-11-11\",\r\n            \"Adjunto\": \"frgertrtry\",\r\n            \"Active\":1,\r\n            \"Created_By\":\"Paulo Ravi Cáceres\"\r\n        },{\r\n            \"NormaId\":4,\r\n            \"TipoCursoId\":2,\r\n            \"Tipo\":1,\r\n            \"Fecha_Inicio\": \"2020-10-10\",\r\n            \"Fecha_Final\": \"2020-10-10\",\r\n            \"Adjunto\": \"\",\r\n            \"Active\":1,\r\n            \"Created_By\":\"Paulo Ravi Cáceres\"\r\n        }\r\n    ],\r\n    \"Experiencia\": [\r\n        {\r\n            \"NormaId\":3,\r\n            \"RolId\":4,\r\n            \"FechaInicio\": \"2020-09-07\",\r\n            \"FechaFin\": \"2020-09-17\",\r\n            \"Adjunto\": \"frgertrtry\",\r\n            \"Active\":1,\r\n            \"Created_By\":\"Paulo Ravi Cáceres\"\r\n        },{\r\n            \"NormaId\":4,\r\n            \"RolId\":5,\r\n            \"FechaInicio\": \"2020-09-07\",\r\n            \"FechaFin\": \"2020-09-17\",\r\n            \"Adjunto\": \"frgertrtry\",\r\n            \"Active\":1,\r\n            \"Created_By\":\"Paulo Ravi Cáceres\"\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://550m44ud1tmg7454-audit-dev.azurewebsites.net/api/Post-Auditor-All?code=oqry/2vpfBCUjljT5F/hmQJOgJXscu7j1ZWq9D6y3RXOEpVipRHySw==&httpmethod=post",
+									"protocol": "https",
+									"host": [
+										"550m44ud1tmg7454-audit-dev",
+										"azurewebsites",
+										"net"
+									],
+									"path": [
+										"api",
+										"Post-Auditor-All"
+									],
+									"query": [
+										{
+											"key": "code",
+											"value": "oqry/2vpfBCUjljT5F/hmQJOgJXscu7j1ZWq9D6y3RXOEpVipRHySw=="
+										},
+										{
+											"key": "httpmethod",
+											"value": "post"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Auditor_Update",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "apikey",
+										"value": "r$3#23516ewew5",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Id\":1,\r\n    \"UserIdhash\":\"b71dada304875838f0263e3ae50c2c49\",\r\n    \"Name\":\"HECTOR WALTER PRETELL HINOSTROZA\",\r\n    \"Rol_Code\":\"AJDHFHFUDEJSND\",\r\n    \"SedeId\":1,\r\n    \"Active\":1,\r\n    \"EspecialidadId\":1,\r\n    \"Cargo\":\"ANALISTA DE SISTEMAS SENIOR\",\r\n    \"Create_By\":\"Walter Pretell\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://550m44ud1tmg7454-audit-dev.azurewebsites.net/api/Post-Auditor-All?code=oqry/2vpfBCUjljT5F/hmQJOgJXscu7j1ZWq9D6y3RXOEpVipRHySw==&httpmethod=put&Id=1",
+									"protocol": "https",
+									"host": [
+										"550m44ud1tmg7454-audit-dev",
+										"azurewebsites",
+										"net"
+									],
+									"path": [
+										"api",
+										"Post-Auditor-All"
+									],
+									"query": [
+										{
+											"key": "code",
+											"value": "oqry/2vpfBCUjljT5F/hmQJOgJXscu7j1ZWq9D6y3RXOEpVipRHySw=="
+										},
+										{
+											"key": "httpmethod",
+											"value": "put"
+										},
+										{
+											"key": "Id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Auditor_Delete",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "apikey",
+										"value": "r$3#23516ewew5",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://550m44ud1tmg7454-audit-dev.azurewebsites.net/api/Post-Auditor-All?code=oqry/2vpfBCUjljT5F/hmQJOgJXscu7j1ZWq9D6y3RXOEpVipRHySw==&httpmethod=delete&Id=1",
+									"protocol": "https",
+									"host": [
+										"550m44ud1tmg7454-audit-dev",
+										"azurewebsites",
+										"net"
+									],
+									"path": [
+										"api",
+										"Post-Auditor-All"
+									],
+									"query": [
+										{
+											"key": "code",
+											"value": "oqry/2vpfBCUjljT5F/hmQJOgJXscu7j1ZWq9D6y3RXOEpVipRHySw=="
+										},
+										{
+											"key": "httpmethod",
+											"value": "delete"
+										},
+										{
+											"key": "Id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "AuditoriaModificacionLog",
+					"item": [
+						{
+							"name": "AuditoriaModificacionLog_Insert",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "apikey",
+										"value": "r$3#23516ewew5",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Data_Final\":\"Datos Dinal\",\r\n    \"Data_Inicial\":\"Datos inciales\",\r\n    \"TipoModificacionId\":1,\r\n    \"Create_By\":\"Walter Pretell\",\r\n    \"AuditoriaId\":51,\r\n    \"Active\":1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://550m44ud1tmg7454-audit-dev.azurewebsites.net/api/Post-Auditoria_Modificacion_Log?code=z4V/ApQkXV0GjWGhjv7Jaqn/kdugFfMbAQPyyAQAW3LM64FJNPj8rg==&httpmethod=post",
+									"protocol": "https",
+									"host": [
+										"550m44ud1tmg7454-audit-dev",
+										"azurewebsites",
+										"net"
+									],
+									"path": [
+										"api",
+										"Post-Auditoria_Modificacion_Log"
+									],
+									"query": [
+										{
+											"key": "code",
+											"value": "z4V/ApQkXV0GjWGhjv7Jaqn/kdugFfMbAQPyyAQAW3LM64FJNPj8rg=="
+										},
+										{
+											"key": "httpmethod",
+											"value": "post"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "EvaluacionAuditoriaLog",
+					"item": [],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Auditoria_Auditor",
+					"item": [
+						{
+							"name": "Auditoria_Auditor_Insert",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "apikey",
+										"value": "r$3#23516ewew5",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "[{\r\n    \"AuditoriaId\":187,\r\n    \"AuditorId\":80,\r\n    \"Tipo\":1,\r\n    \"Active\":1,\r\n    \"Create_By\":\"Paulo Ravi Cáceres\"\r\n},{\r\n    \"AuditoriaId\":187,\r\n    \"AuditorId\":60,\r\n    \"Tipo\":2,\r\n    \"Active\":1,\r\n    \"Create_By\":\"Paulo Ravi Cáceres\"\r\n},{\r\n    \"AuditoriaId\":187,\r\n    \"AuditorId\":75,\r\n    \"Tipo\":3,\r\n    \"Active\":1,\r\n    \"Create_By\":\"Paulo Ravi Cáceres\"\r\n}\r\n]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://550m44ud1tmg7454-audit-dev.azurewebsites.net/api/Post-Auditoria-Auditor-All?code=NgQxCtJuMJtiNHPiqxGCi1W1bhQcDwIxX5dd9kxuYabbncWwbqVNRQ==&httpmethod=post",
+									"protocol": "https",
+									"host": [
+										"550m44ud1tmg7454-audit-dev",
+										"azurewebsites",
+										"net"
+									],
+									"path": [
+										"api",
+										"Post-Auditoria-Auditor-All"
+									],
+									"query": [
+										{
+											"key": "code",
+											"value": "NgQxCtJuMJtiNHPiqxGCi1W1bhQcDwIxX5dd9kxuYabbncWwbqVNRQ=="
+										},
+										{
+											"key": "httpmethod",
+											"value": "post"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Plan-Auditoria-All",
+					"item": [
+						{
+							"name": "Plan-Auditoria-All-post",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "apiKey",
+										"value": "r$3#23516ewew5",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"AuditoriaId\":888,\r\n    \"Detalle\":\"Prueba 888\",\r\n    \"Alcance\":\"888 alcancea\",\r\n    \"Inicio\": \"2021-02-09\",\r\n    \"Fin\": \"2021-02-09\",\r\n    \"Created_By\":\"JM\",\r\n    \"Last_Updated_By\":\"JM\",\r\n    \"Flag_Finalizado\": 0,\r\n    \"Resumen_Auditoria\":\"Este Resumen update 3.3\",\r\n    \"Programacion\":[\r\n        {\r\n            \"UnidadNegocioProcesoId\": 23,\r\n            \"AuditorId\": 80,\r\n            \"Inicio\": \"2020-11-10\",\r\n            \"Hora_Inicio\": \"09:00:00\",\r\n            \"Hora_Fin\": \"10:30:00\",\r\n            \"TipoHallazgoId\":1,\r\n            \"Hallazgo\":\"Hallazgo 123\",\r\n            \"Created_By\": \"JM\",\r\n            \"Created_Date\": \"2020-10-15\",\r\n            \"Last_Updated_By\": \"JM\",\r\n            \"Last_Updated_Date\": \"2020-10-15\"\r\n        },\r\n        {\r\n            \"UnidadNegocioProcesoId\": 23,\r\n            \"AuditorId\": 80,\r\n            \"Inicio\": \"2020-11-10\",\r\n            \"Hora_Inicio\": \"10:30:00\",\r\n            \"Hora_Fin\": \"12:00:00\",\r\n            \"TipoHallazgoId\":2,\r\n            \"Hallazgo\":\"Hallazgo ABC\",\r\n            \"Created_By\": \"JM\",\r\n            \"Created_Date\": \"2020-10-15\",\r\n            \"Last_Updated_By\": \"JM\",\r\n            \"Last_Updated_Date\": \"2020-10-15\"\r\n        }\r\n    ]\r\n    \r\n}",
+									"options": {
+										"raw": {}
+									}
+								},
+								"url": {
+									"raw": "https://550m44ud1tmg7454-audit-dev.azurewebsites.net/api/Post-Plan_Auditoria-All?code=pac7W1TYax/86yT1BJStOIXUuZ0xQ8ETYPEe0bQUjd3R7nSY6grahg==&httpmethod=post",
+									"protocol": "https",
+									"host": [
+										"550m44ud1tmg7454-audit-dev",
+										"azurewebsites",
+										"net"
+									],
+									"path": [
+										"api",
+										"Post-Plan_Auditoria-All"
+									],
+									"query": [
+										{
+											"key": "code",
+											"value": "pac7W1TYax/86yT1BJStOIXUuZ0xQ8ETYPEe0bQUjd3R7nSY6grahg=="
+										},
+										{
+											"key": "httpmethod",
+											"value": "post"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Plan-Auditoria-All-put",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "apiKey",
+										"value": "r$3#23516ewew5",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Id\":149,\r\n    \"AuditoriaId\": 888,\r\n    \"Detalle\":\"Objetivo Mod 888\",\r\n    \"Alcance\":\"Modificar ALCANCE-888\",\r\n    \"Last_Updated_By\":\"JMQ\",\r\n    \"Flag_Finalizado\": 1,\r\n    \"Resumen_Auditoria\":\"Este Resumen es del plan 88b\",\r\n    \"Programacion\":[\r\n        {\r\n            \"UnidadNegocioProcesoId\": 19,\r\n            \"AuditorId\": 85,\r\n            \"Inicio\": \"2020-11-15\",\r\n            \"Hora_Inicio\": \"17:00:00\",\r\n            \"Hora_Fin\": \"18:30:00\",\r\n            \"TipoHallazgoId\":2,\r\n            \"Hallazgo\":\"Hallazgo \",\r\n            \"Created_By\": \"JM\",\r\n            \"Created_Date\": \"2020-10-16\",\r\n            \"Last_Updated_By\": \"JM11\",\r\n            \"Last_Updated_Date\": \"2020-10-15\"\r\n        },\r\n        {\r\n            \"UnidadNegocioProcesoId\": 20,\r\n            \"AuditorId\": 80,\r\n            \"Inicio\": \"2020-11-15\",\r\n            \"Hora_Inicio\": \"11:00:00\",\r\n            \"Hora_Fin\": \"12:00:00\",\r\n            \"TipoHallazgoId\":3,\r\n            \"Hallazgo\":\"Hallazgo ABCa\",\r\n            \"Created_By\": \"JaM\",\r\n            \"Created_Date\": \"2020-10-15\",\r\n            \"Last_Updated_By\": \"JM\",\r\n            \"Last_Updated_Date\": \"2020-10-15\"\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {}
+									}
+								},
+								"url": {
+									"raw": "https://550m44ud1tmg7454-audit-dev.azurewebsites.net/api/Post-Plan_Auditoria-All?code=pac7W1TYax/86yT1BJStOIXUuZ0xQ8ETYPEe0bQUjd3R7nSY6grahg==&httpmethod=put&Id=149",
+									"protocol": "https",
+									"host": [
+										"550m44ud1tmg7454-audit-dev",
+										"azurewebsites",
+										"net"
+									],
+									"path": [
+										"api",
+										"Post-Plan_Auditoria-All"
+									],
+									"query": [
+										{
+											"key": "code",
+											"value": "pac7W1TYax/86yT1BJStOIXUuZ0xQ8ETYPEe0bQUjd3R7nSY6grahg=="
+										},
+										{
+											"key": "httpmethod",
+											"value": "put"
+										},
+										{
+											"key": "Id",
+											"value": "149"
+										},
+										{
+											"key": "SedeId",
+											"value": "12",
+											"disabled": true
+										}
+									]
+								},
+								"description": "guardar plan auditoria"
+							},
+							"response": []
+						},
+						{
+							"name": "Plan-Auditoria-All-putlog",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "apiKey",
+										"value": "r$3#23516ewew5",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Id\":93,\r\n    \"AuditoriaId\": 175,\r\n    \"Inicio\": \"2021-07-28\",\r\n    \"Fin\": \"2021-07-28\",\r\n    \"Created_By\":\"JM07\",\r\n    \"Data_Inicial\":\"del 29/05/2020 al 29-05-2020\",\r\n    \"Data_Final\":\"del 09/07/2021 al 29-07-2021\",\r\n    \"Motivo\": \"07Prueba guardado en el log con cambio de fechas de elaboración 07\",\r\n    \"Last_Updated_By\":\"JM07\",\r\n    \"Flag_Completado\":0\r\n}"
+								},
+								"url": {
+									"raw": "https://550m44ud1tmg7454-audit-dev.azurewebsites.net/api/Post-Plan_Auditoria-All?code=pac7W1TYax/86yT1BJStOIXUuZ0xQ8ETYPEe0bQUjd3R7nSY6grahg==&httpmethod=putlog&Id=93&SedeId=12",
+									"protocol": "https",
+									"host": [
+										"550m44ud1tmg7454-audit-dev",
+										"azurewebsites",
+										"net"
+									],
+									"path": [
+										"api",
+										"Post-Plan_Auditoria-All"
+									],
+									"query": [
+										{
+											"key": "code",
+											"value": "pac7W1TYax/86yT1BJStOIXUuZ0xQ8ETYPEe0bQUjd3R7nSY6grahg=="
+										},
+										{
+											"key": "httpmethod",
+											"value": "putlog"
+										},
+										{
+											"key": "Id",
+											"value": "93",
+											"description": "obligatorio"
+										},
+										{
+											"key": "SedeId",
+											"value": "12",
+											"description": "Obligatorio"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Post-Lista_Envio-All.Insert (Enviar Plan de Auditoria)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "apiKey",
+										"value": "r$3#23516ewew5",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"PlanPdf\": \"Prueba Archivo PDF en base64 para el envio del correo\",\r\n    \"Personas\":[\r\n        {\r\n            \"Created_By\": \"JM\",\r\n            \"UserIdHash\": \"asddsa\", \r\n            \"Persona_Name\": \"Jesus Millan\",\r\n            \"Persona_Cargo\": \"Admin\",\r\n            \"Persona_Correo\": \"millanqjesus@gmail.com\",\r\n            \"PlanAuditoriaId\": 131\r\n        },{\r\n            \"Created_By\": \"JM2\",\r\n            \"UserIdHash\": \"asdasd\", \r\n            \"Persona_Name\": \"Jesus A Millan\",\r\n            \"Persona_Cargo\": \"Coord\",\r\n            \"Persona_Correo\": \"millanqjesus2@gmail.com\",\r\n            \"PlanAuditoriaId\": 131\r\n        },{\r\n            \"Created_By\": \"JM3\",\r\n            \"UserIdHash\": \"asdasd\", \r\n            \"Persona_Name\": \"Jesus E. Millan\",\r\n            \"Persona_Cargo\": \"Dueño\",\r\n            \"Persona_Correo\": \"millanqjesus3@gmail.com\",\r\n            \"PlanAuditoriaId\": 131\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {}
+									}
+								},
+								"url": {
+									"raw": "https://550m44ud1tmg7454-audit-dev.azurewebsites.net/api/Post-Lista_Envio-All?code=27NBV2iB2M130igerkn/Qha8zbtPaKCDIMDbSLyk/sgzFzIoncY3wQ==&httpmethod=post",
+									"protocol": "https",
+									"host": [
+										"550m44ud1tmg7454-audit-dev",
+										"azurewebsites",
+										"net"
+									],
+									"path": [
+										"api",
+										"Post-Lista_Envio-All"
+									],
+									"query": [
+										{
+											"key": "code",
+											"value": "27NBV2iB2M130igerkn/Qha8zbtPaKCDIMDbSLyk/sgzFzIoncY3wQ=="
+										},
+										{
+											"key": "httpmethod",
+											"value": "post"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Lista-Asistencia",
+					"item": [
+						{
+							"name": "Post-Lista-Asistencia.insert",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "apiKey",
+										"value": "r$3#23516ewew5",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"AuditoriaID\":\"278\",\n    \"Code\":\"CODEEEE2\",\n    \"Created_By\":\"Darie\",\n    \"asistentes\":[\n        {\n            \"UserIdHash\":\"HDHDHSAJDUAS\",\n            \"Nombres\":\"DARIE\",\n            \"Cargo\":\"DESARROLLADOR\"\n        },\n        {\n            \"UserIdHash\":\"DDDDDDDDDDD\",\n            \"Nombres\":\"JUAN\",\n            \"Cargo\":\"DESARROLLADOR\"\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://550m44ud1tmg7454-audit-dev.azurewebsites.net/api/Post-Lista-Asistencia-All?code=aWEffc30oxwrufXbJDi6nB5eMcvtdV3mDu9InLECYlVxnaHyGCxXEw==&httpmethod=post",
+									"protocol": "https",
+									"host": [
+										"550m44ud1tmg7454-audit-dev",
+										"azurewebsites",
+										"net"
+									],
+									"path": [
+										"api",
+										"Post-Lista-Asistencia-All"
+									],
+									"query": [
+										{
+											"key": "code",
+											"value": "aWEffc30oxwrufXbJDi6nB5eMcvtdV3mDu9InLECYlVxnaHyGCxXEw=="
+										},
+										{
+											"key": "httpmethod",
+											"value": "post"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Put-List-Asistencia.Update",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "apiKey",
+										"value": "r$3#23516ewew5",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"Last_Updated_By\":\"Jesus\",\n    \"asistentes\":[\n        {\n            \"Id\":\"8\",\n            \"Flag_Asistencia\":1,\n            \"Hora_Asistencia_Cierre\":\"04:30:00\",\n            \"Fecha_Asistencia_Cierre\":\"2020-10-20\"\n        },\n        {\n            \"Id\":\"9\",\n            \"Flag_Asistencia\":1,\n            \"Hora_Asistencia_Apertura\":\"04:31:00\",\n            \"Fecha_Asistencia_Apertura\":\"2020-10-20\"\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://550m44ud1tmg7454-audit-dev.azurewebsites.net/api/Post-Lista-Asistencia-All?code=aWEffc30oxwrufXbJDi6nB5eMcvtdV3mDu9InLECYlVxnaHyGCxXEw==&httpmethod=put&Id=7",
+									"protocol": "https",
+									"host": [
+										"550m44ud1tmg7454-audit-dev",
+										"azurewebsites",
+										"net"
+									],
+									"path": [
+										"api",
+										"Post-Lista-Asistencia-All"
+									],
+									"query": [
+										{
+											"key": "code",
+											"value": "aWEffc30oxwrufXbJDi6nB5eMcvtdV3mDu9InLECYlVxnaHyGCxXEw=="
+										},
+										{
+											"key": "httpmethod",
+											"value": "put"
+										},
+										{
+											"key": "Id",
+											"value": "7"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

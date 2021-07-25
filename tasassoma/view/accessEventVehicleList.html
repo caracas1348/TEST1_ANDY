@@ -1,0 +1,211 @@
+<div class="row bg-white " style="padding: 0px; border-bottom: 1px solid #ebebeb;" >
+
+<div class="col-1 p-2" style="height: 50px !important;display: none;" >
+  <div class="media-body">
+    <div class="form-group">
+      <label for="sel_type" class="bmd-label-static titleInput">TIPO</label>
+      <select name="sel_type" class="form-control" id="sel_type"   required>
+        <option value="0">Todos</option>
+        <option value="1">Contratista</option>
+        <option value="2">Colaborador</option>
+      </select>
+    </div>
+  </div>
+</div>
+<div class="col-2 p-2" style="height: 50px !important;display:none ;" >
+  <div class="media-body">
+    <div class="form-group">
+      <label for="sel_type" class="bmd-label-static titleInput">TIPO DE INGRESO</label>
+      <select name="sel_type_access" class="form-control" id="sel_type_access"   required>
+        <option value="">Todos</option>
+        <option value="Normal">Normal</option>
+        <option value="Temporal">Temporal</option>
+        <option value="Excepcional">Excepcional</option>
+        <option value="Vencido">Vencido</option>
+      </select>
+    </div>
+  </div>
+</div>
+<div class="col-1 p-2" style="height: 50px !important">
+  <div class="media-body">
+    <div class="form-group">
+      <label for="sel_company" class="bmd-label-static titleInput">EMPRESA </label>
+      <select name="sel_company" class="form-control" id="sel_company"   required>
+        <option value="0">Todos</option>
+      </select>
+    </div>
+  </div>
+</div>
+<div class="col-1 p-2" style="height: 50px !important">
+  <div class="media-body">
+    <div class="form-group">
+      <label for="sel_sede" class="bmd-label-static titleInput">SEDE </label>
+      <select name="sel_sede" class="form-control" id="sel_sede"   required>
+        <option value="0">Todos</option>
+      </select>
+    </div>
+  </div>
+</div>
+<div class="col-1 p-2" style="height: 50px !important; display:none">
+  <div class="media-body">
+    <div class="form-group">
+      <label for="sel_area" class="bmd-label-static titleInput">AREA </label>
+      <select name="sel_area" class="form-control" id="sel_area"  required>
+        <option value="0">Todos</option>
+        <option value="1">Operaciones</option>
+        <option value="3">Pesca</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<div class="col-1 p-2" style="height: 50px !important">
+  <div class="media-body">
+    <div class="form-group">
+      <label for="tx_date_init" class="bmd-label-static titleInput">Fecha </label>
+      <input type="text" class="form-control bg-white" id="tx_date_initi" readonly placeholder="">
+    </div>
+  </div>
+</div>
+
+<div class="col-1 p-2" style="height: 50px !important; display:">
+  <div class="media-body">
+    <div class="form-group">
+      <label for="tx_date_end" class="bmd-label-static titleInput text-white">Ingreso</label>
+      <input type="text" class="form-control bg-white" id="tx_date_endi" placeholder="" readonly>
+    </div>
+  </div>
+</div>
+<div class="col-1 pt-4" style="height: 50px !important">
+  <button type="button" class="btn btn-green-lime btn-rounded btn-raised" id="btn_buscar" onclick="vw_access_event.initAccessRequestListveh()"> Buscar </button>
+</div>
+
+<div class="col-1 pt-2 text-center text-gray" >
+  <span id="cantTotal" class="h3 mute">0</span><br><small class="text-gray" style="font-size: 12px;">Registros</small>
+</div>
+
+<div class="col-md-1 p-3 " style="">      
+  <input type="text" placeholder="Buscar" id="txt_search_visita" style="width: 170px;" name="txt_search_visita" class="shadow-sm inputFind" autocomplete="off">
+</div>
+
+
+<!-- <div class="col-sm-1 pt-3 text-center pr-5" style="height: 50px !important">
+  <img src="images/iconos/regresh.svg" class="" style="cursor: pointer;" onclick="vw_collaborator_approver.tableListTamizaje()"  height="36px" title="Limpiar filtros">
+</div> -->
+
+ 
+
+</div>
+
+<!-- botom menu -->
+<div class="row bg-white " style="padding: 0px; border-bottom: 1px solid #ebebeb;" >
+
+  <div class="col-10 pt-3" style="height: 50px !important">
+   
+  </div>
+  <div class="col-2 pt-2" style="height: 50px !important">
+    <button type="button" class="btn btn-white btn-rounded btn-raised" id="btn_buscar" onclick="handlerUrlhtml('contentGlobal','view/accessEventList.html','accessEventList')"> Reporte de Personas </button>
+  </div>
+ 
+</div>
+<!--  -->
+
+     
+    <div class="col-md-12 p-1" style="">
+      <table id="tb_list_visita" name="tb_list_visita" class="table responsive  " style="width:100%;">
+      </table>
+    </div>
+
+
+    <div class="modal fade "  id="modalDetailExceptional" tabindex="-1"  role="dialog" aria-labelledby="modalDetailExceptional" aria-hidden="true" >
+      <div class="modal-dialog modal-lg modal-dialog-centered rounded " role="document" style="min-width:80%; z-index: 1030; ">
+        <div class="modal-content rounded " style=" background-color:rgba(0,0,0,.0001) !important; box-shadow: none;">        
+        <div class="modal-header" style="padding:5px 24px 0!important">
+          <h5 class="modal-title"></h5>
+        </div>
+        <div style="overflow: auto;overflow-x: hidden; ">
+          <div class="modal-body p-5" id="">  
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <div class="card" style=" border-radius: 10px; box-shadow: none;">
+                        <div class="card-header text-white " id="headerFormCovid" style=" border-radius: 10px 10px 0px 0px; background: #039be0; height: 55px;">                          
+                          <div class="row">
+                            <div class="col-10">
+                              <h6>Detalles</h6>
+                            </div>
+                            <div class="col-2 text-right">
+                              <h5 class="fa fa-times text-white"  style="cursor: pointer;" data-dismiss="modal" aria-label="Close" onclick="$('#headerFormCovid').css({background:'#039be0'})"></h5>                         
+                            </div>
+                          </div>
+                        </div>
+                        <div class="card-body" id="" style="padding: 0 !important; ">
+                          <div class="col-12">
+                            <form>
+                              <div class="form-group row">
+                                <label for="staticEmail" class="col-md-2 col-form-label">Observación:</label>
+                                <div class="col-md-10 mt-2" id="span_exceptional_observation">
+                                 
+                                </div>
+                              </div>
+                              
+                            </form>                            
+                          </div>
+                        </div>
+                        <div class="modal-footer" >
+                          <div class="col-md-12 row"  id="">
+                          </div>
+                        </div>
+                    </div>  
+                </div>
+            </div>        
+          </div>
+        </div>
+        <div class="modal-footer" >
+          <div class="col-md-12 row"  id="">
+          </div>
+        </div>
+        
+        </div>
+      </div>
+      </div>
+
+
+
+
+      <div class="modal fade "  id="modalShowPhoto" tabindex="-1" role="dialog" aria-labelledby="modalShowPhoto" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered rounded " role="document" style="max-width: 90%; z-index: 1030; ">
+          <div class="container">
+            <div class="row justify-content-md-center">
+              <div class="col-md-auto">
+                <div class="modal-content " style="background: transparent; border-radius: 10px;">   <!--col-md-3 -->          
+                  <div class="card" style="width: 800px; border-radius: 10px; box-shadow: none;">
+                    <div class="card-header text-white bg-green-lime" style="border-radius: 10px 10px 0px 0px; height: 40px; padding: 0.5rem !important;">
+                      <h5>Fotos</h5>
+                    </div>
+                    <div class="card-body text-center">
+                      <div class="row">
+                        <div class="col-md-4"><img src="images/iconos/vehiclesecu.svg" height="250" width="250" class="" id="image-vehicle_1" name="image-vehicle_1" style="height: 250px; width: 250px;"  > </div>
+                        <div class="col-md-4"><img src="images/iconos/vehiclesecu.svg" height="250" width="250" id="image-vehicle_2" name="image-vehicle_2" style="height: 250px; width: 250px;"></div>
+                        <div class="col-md-4"><img src="images/iconos/vehiclesecu.svg" height="250" width="250" id="image-vehicle_3" name="image-vehicle_3" style="height: 250px; width: 250px;"></div>
+                      </div> 
+                      <div class="row">
+                        <div class="col-md-4"><img src="images/iconos/vehiclesecu.svg" height="250" width="250" id="image-vehicle_3" name="image-vehicle_4" style="height: 250px; width: 250px;"></div>
+                        <div class="col-md-4"><img src="images/iconos/vehiclesecu.svg" height="250" width="250" id="image-vehicle_3" name="image-vehicle_5" style="height: 250px; width: 250px;"></div>
+                        <div class="col-md-4"><img src="images/iconos/vehiclesecu.svg" height="250" width="250" id="image-vehicle_3" name="image-vehicle_6" style="height: 250px; width: 250px;"></div>
+                      </div>
+                    </div>
+                    <div class="card-footer text-center border-0" style="border-radius: 0px 0px 10px 10px; ">            
+                      <button type="button" class="btn btn-sm btn-primary  btn-raised btn-rounded" data-toggle="modal" data-target="#modalShowPhoto" id="" style="border-radius: 25px;" onclick=""> &nbsp; &nbsp; Cerrar &nbsp; &nbsp;</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+ 
+
+ 
+
+  

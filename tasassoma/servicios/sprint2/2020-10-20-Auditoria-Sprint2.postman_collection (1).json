@@ -1,0 +1,580 @@
+{
+	"info": {
+		"_postman_id": "331eed28-8d50-4310-a83a-db699b9ec390",
+		"name": "Auditoria-Sprint2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Gets",
+			"item": [
+				{
+					"name": "Get-Auditorias-Auditor-Lider",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "apiKey",
+								"value": "r$3#23516ewew5",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://550m44ud1tmg7454-audit-dev.azurewebsites.net/api/Get-Auditoria-Lider-All?code=UAIRBeY2QaKbBgPA4aEGXzAYjgDu4T4WvBa04WvkGpB1RazLa3462w==&httpmethod=objectlist&Id=user-keyid-4147&TipoAuditor=1",
+							"protocol": "https",
+							"host": [
+								"550m44ud1tmg7454-audit-dev",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Get-Auditoria-Lider-All"
+							],
+							"query": [
+								{
+									"key": "code",
+									"value": "UAIRBeY2QaKbBgPA4aEGXzAYjgDu4T4WvBa04WvkGpB1RazLa3462w=="
+								},
+								{
+									"key": "httpmethod",
+									"value": "objectlist"
+								},
+								{
+									"key": "Id",
+									"value": "user-keyid-4147"
+								},
+								{
+									"key": "TipoAuditor",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get-Plan-Auditoria-All",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "apiKey",
+								"value": "r$3#23516ewew5",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://550m44ud1tmg7454-audit-dev.azurewebsites.net/api/Get-Auditoria-Lider-All?code=UAIRBeY2QaKbBgPA4aEGXzAYjgDu4T4WvBa04WvkGpB1RazLa3462w==&IdAuditoria=176&httpmethod=object",
+							"protocol": "https",
+							"host": [
+								"550m44ud1tmg7454-audit-dev",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Get-Auditoria-Lider-All"
+							],
+							"query": [
+								{
+									"key": "code",
+									"value": "UAIRBeY2QaKbBgPA4aEGXzAYjgDu4T4WvBa04WvkGpB1RazLa3462w=="
+								},
+								{
+									"key": "Fin",
+									"value": "2020-11-28",
+									"disabled": true
+								},
+								{
+									"key": "IdAuditoria",
+									"value": "176"
+								},
+								{
+									"key": "httpmethod",
+									"value": "object"
+								},
+								{
+									"key": "Inicio",
+									"value": "2020-11-22",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get-Plan-Auditoria-Log-All",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "apiKey",
+								"value": "r$3#23516ewew5",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://550m44ud1tmg7454-audit-dev.azurewebsites.net/api/Get-Plan_Auditoria_Log-All?code=D64Wsaxe6Wxm0muSEKyAoUggY7Jv0oru2nyub4JHzji7fJsCYDhgrg==&httpmethod=objectlist&PlanAuditoriaId=86",
+							"protocol": "https",
+							"host": [
+								"550m44ud1tmg7454-audit-dev",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Get-Plan_Auditoria_Log-All"
+							],
+							"query": [
+								{
+									"key": "code",
+									"value": "D64Wsaxe6Wxm0muSEKyAoUggY7Jv0oru2nyub4JHzji7fJsCYDhgrg=="
+								},
+								{
+									"key": "httpmethod",
+									"value": "objectlist"
+								},
+								{
+									"key": "PlanAuditoriaId",
+									"value": "86"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get-Lista_Envio-All",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "apiKey",
+								"value": "r$3#23516ewew5",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://550m44ud1tmg7454-audit-dev.azurewebsites.net/api/Get-Lista_Envio-All?code=/tXqtxILOwK4/jC0SYBAFaOFChIVn4aOshoJIiL9G7ApLKCUC5RQqA==&httpmethod=objectlist&PlanAuditoriaId=87",
+							"protocol": "https",
+							"host": [
+								"550m44ud1tmg7454-audit-dev",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Get-Lista_Envio-All"
+							],
+							"query": [
+								{
+									"key": "code",
+									"value": "/tXqtxILOwK4/jC0SYBAFaOFChIVn4aOshoJIiL9G7ApLKCUC5RQqA=="
+								},
+								{
+									"key": "httpmethod",
+									"value": "objectlist"
+								},
+								{
+									"key": "PlanAuditoriaId",
+									"value": "87"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get-Procesos_Auditoria-All",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "apiKey",
+								"value": "r$3#23516ewew5",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://550m44ud1tmg7454-audit-dev.azurewebsites.net/api/Get-Procesos_Auditoria-All?code=/dbQLvwyy2aaIJr2kkaYHzdkMuQfWOLCSwA0b1HvHqeeQHKLhHf1/Q==&httpmethod=objectlist&AuditoriaId=176&NormaId=3",
+							"protocol": "https",
+							"host": [
+								"550m44ud1tmg7454-audit-dev",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Get-Procesos_Auditoria-All"
+							],
+							"query": [
+								{
+									"key": "code",
+									"value": "/dbQLvwyy2aaIJr2kkaYHzdkMuQfWOLCSwA0b1HvHqeeQHKLhHf1/Q=="
+								},
+								{
+									"key": "httpmethod",
+									"value": "objectlist"
+								},
+								{
+									"key": "AuditoriaId",
+									"value": "176"
+								},
+								{
+									"key": "NormaId",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get-Tipo-Hallazgos",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "apiKey",
+								"value": "r$3#23516ewew5",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://550m44ud1tmg7454-audit-dev.azurewebsites.net/api/Get-Tipo_Hallazgos-All?code=25N7v0Mdg58fgZCD7e1INz19kNyKivJLgq3Fo5mCz6PL34jg/5UbwA==&httpmethod=objectlist",
+							"protocol": "https",
+							"host": [
+								"550m44ud1tmg7454-audit-dev",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Get-Tipo_Hallazgos-All"
+							],
+							"query": [
+								{
+									"key": "code",
+									"value": "25N7v0Mdg58fgZCD7e1INz19kNyKivJLgq3Fo5mCz6PL34jg/5UbwA=="
+								},
+								{
+									"key": "httpmethod",
+									"value": "objectlist"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetRequisitosAll",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "apiKey",
+								"value": "r$3#23516ewew5",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://550m44ud1tmg7454-audit-dev.azurewebsites.net/api/Get-Requisitos-All?code=2CGU9CgCzDIQbm15eiygeamwd6qph2IJcF0cArLQTO3JvPgDNjk90A==&httpmethod=objectlist&UnidadNegocioId=2&NormaId=3&ProcesoId=1",
+							"protocol": "https",
+							"host": [
+								"550m44ud1tmg7454-audit-dev",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Get-Requisitos-All"
+							],
+							"query": [
+								{
+									"key": "code",
+									"value": "2CGU9CgCzDIQbm15eiygeamwd6qph2IJcF0cArLQTO3JvPgDNjk90A=="
+								},
+								{
+									"key": "httpmethod",
+									"value": "objectlist"
+								},
+								{
+									"key": "UnidadNegocioId",
+									"value": "2"
+								},
+								{
+									"key": "NormaId",
+									"value": "3"
+								},
+								{
+									"key": "ProcesoId",
+									"value": "1"
+								},
+								{
+									"key": "UnidadNegocioProcesoId",
+									"value": "1",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Post",
+			"item": [
+				{
+					"name": "Plan-Auditoria",
+					"item": [
+						{
+							"name": "Plan-Auditoria-All-post",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "apiKey",
+										"value": "r$3#23516ewew5",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"AuditoriaId\": 176,\r\n    \"Detalle\":\"Prueba 85.2\",\r\n    \"Alcance\":\"Prueba 85.2 alcance\",\r\n    \"Inicio\": \"2020-02-09\",\r\n    \"Fin\": \"2020-03-10\",\r\n    \"Created_By\":\"JM\",\r\n    \"Data_Inicial\":\"del 12/11/2020 al 17-11-2020\",\r\n    \"Data_Final\":\"del 15/11/2020 al 20-11-2020\",\r\n    \"Motivo\": \"Prueba Log\",\r\n    \"Last_Updated_By\":\"JM\",\r\n    \"Flag_Finalizado\": 0,\r\n    \"Resumen_Auditoria\":\"Este Resumen update 3.3\",\r\n    \"Programacion\":[\r\n        {\r\n            \"UnidadNegocioProcesoId\": 23,\r\n            \"AuditorId\": 80,\r\n            \"Inicio\": \"2020-11-10\",\r\n            \"Hora_Inicio\": \"09:00:00\",\r\n            \"Hora_Fin\": \"10:30:00\",\r\n            \"TipoHallazgoId\":1,\r\n            \"Hallazgo\":\"Hallazgo 123\",\r\n            \"Created_By\": \"JM\",\r\n            \"Created_Date\": \"2020-10-15\",\r\n            \"Last_Updated_By\": \"JM\",\r\n            \"Last_Updated_Date\": \"2020-10-15\"\r\n        },\r\n        {\r\n            \"UnidadNegocioProcesoId\": 23,\r\n            \"AuditorId\": 80,\r\n            \"Inicio\": \"2020-11-10\",\r\n            \"Hora_Inicio\": \"10:30:00\",\r\n            \"Hora_Fin\": \"12:00:00\",\r\n            \"TipoHallazgoId\":2,\r\n            \"Hallazgo\":\"Hallazgo ABC\",\r\n            \"Created_By\": \"JM\",\r\n            \"Created_Date\": \"2020-10-15\",\r\n            \"Last_Updated_By\": \"JM\",\r\n            \"Last_Updated_Date\": \"2020-10-15\"\r\n        }\r\n    ]\r\n}"
+								},
+								"url": {
+									"raw": "https://550m44ud1tmg7454-audit-dev.azurewebsites.net/api/Post-Plan_Auditoria-All?code=pac7W1TYax/86yT1BJStOIXUuZ0xQ8ETYPEe0bQUjd3R7nSY6grahg==&httpmethod=post",
+									"protocol": "https",
+									"host": [
+										"550m44ud1tmg7454-audit-dev",
+										"azurewebsites",
+										"net"
+									],
+									"path": [
+										"api",
+										"Post-Plan_Auditoria-All"
+									],
+									"query": [
+										{
+											"key": "code",
+											"value": "pac7W1TYax/86yT1BJStOIXUuZ0xQ8ETYPEe0bQUjd3R7nSY6grahg=="
+										},
+										{
+											"key": "httpmethod",
+											"value": "post"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Plan-Auditoria-All-put (modificar Plan Auditoria)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "apiKey",
+										"value": "r$3#23516ewew5",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Id\":87,\r\n    \"AuditoriaId\": 176,\r\n    \"Detalle\":\"Objetivo 87\",\r\n    \"Alcance\":\"Modificar alcance 87\",\r\n    \"Last_Updated_By\":\"JM\",\r\n    \"Flag_Finalizado\": 0,\r\n    \"Resumen_Auditoria\":\"Este Resumen es del plan 87\",\r\n    \"Programacion\":[\r\n        {\r\n            \"UnidadNegocioProcesoId\": 19,\r\n            \"AuditorId\": 80,\r\n            \"Inicio\": \"2020-11-14\",\r\n            \"Hora_Inicio\": \"17:00:00\",\r\n            \"Hora_Fin\": \"18:30:00\",\r\n            \"TipoHallazgoId\":2,\r\n            \"Hallazgo\":\"Hallazgo 123\",\r\n            \"Created_By\": \"JM\",\r\n            \"Created_Date\": \"2020-10-15\",\r\n            \"Last_Updated_By\": \"JM\",\r\n            \"Last_Updated_Date\": \"2020-10-15\"\r\n        },\r\n        {\r\n            \"UnidadNegocioProcesoId\": 19,\r\n            \"AuditorId\": 80,\r\n            \"Inicio\": \"2020-11-15\",\r\n            \"Hora_Inicio\": \"11:00:00\",\r\n            \"Hora_Fin\": \"12:00:00\",\r\n            \"TipoHallazgoId\":3,\r\n            \"Hallazgo\":\"Hallazgo ABC\",\r\n            \"Created_By\": \"JM\",\r\n            \"Created_Date\": \"2020-10-15\",\r\n            \"Last_Updated_By\": \"JM\",\r\n            \"Last_Updated_Date\": \"2020-10-15\"\r\n        }\r\n    ]\r\n}"
+								},
+								"url": {
+									"raw": "https://550m44ud1tmg7454-audit-dev.azurewebsites.net/api/Post-Plan_Auditoria-All?code=pac7W1TYax/86yT1BJStOIXUuZ0xQ8ETYPEe0bQUjd3R7nSY6grahg==&httpmethod=put&Id=87",
+									"protocol": "https",
+									"host": [
+										"550m44ud1tmg7454-audit-dev",
+										"azurewebsites",
+										"net"
+									],
+									"path": [
+										"api",
+										"Post-Plan_Auditoria-All"
+									],
+									"query": [
+										{
+											"key": "code",
+											"value": "pac7W1TYax/86yT1BJStOIXUuZ0xQ8ETYPEe0bQUjd3R7nSY6grahg=="
+										},
+										{
+											"key": "httpmethod",
+											"value": "put"
+										},
+										{
+											"key": "Id",
+											"value": "87"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Plan-Auditoria-All-putlog (cambiar fechas y guardar en log)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "apiKey",
+										"value": "r$3#23516ewew5",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Id\":87,\r\n    \"AuditoriaId\": 176,\r\n    \"Inicio\": \"2020-03-15\",\r\n    \"Fin\": \"2020-03-30\",\r\n    \"Last_Updated_By\":\"JM\",\r\n    \"Data_Inicial\":\"del 09/02/2020 al 10-03-2020\",\r\n    \"Data_Final\":\"del 15/03/2020 al 30-03-2020\",\r\n    \"Motivo\": \"Prueba guardado en el log con cambio de fechas de elaboración\",\r\n    \"Last_Updated_By\":\"JM\"\r\n}"
+								},
+								"url": {
+									"raw": "https://550m44ud1tmg7454-audit-dev.azurewebsites.net/api/Post-Plan_Auditoria-All?code=pac7W1TYax/86yT1BJStOIXUuZ0xQ8ETYPEe0bQUjd3R7nSY6grahg==&httpmethod=putlog&Id=87",
+									"protocol": "https",
+									"host": [
+										"550m44ud1tmg7454-audit-dev",
+										"azurewebsites",
+										"net"
+									],
+									"path": [
+										"api",
+										"Post-Plan_Auditoria-All"
+									],
+									"query": [
+										{
+											"key": "code",
+											"value": "pac7W1TYax/86yT1BJStOIXUuZ0xQ8ETYPEe0bQUjd3R7nSY6grahg=="
+										},
+										{
+											"key": "httpmethod",
+											"value": "putlog"
+										},
+										{
+											"key": "Id",
+											"value": "87"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Post-Lista_Envio-All.Insert (Enviar Plan de Auditoria)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "apiKey",
+										"value": "r$3#23516ewew5",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "[\r\n    {\r\n        \"Created_By\": \"JM\",\r\n        \"PersonaId\": 1, \r\n        \"Persona_Name\": \"Jesus Millan\",\r\n        \"Persona_Cargo\": \"Admin\",\r\n        \"Persona_Correo\": \"millanqjesus@gmail.com\",\r\n        \"PlanAuditoriaId\": 21\r\n    },{\r\n        \"Created_By\": \"JM2\",\r\n        \"PersonaId\": 2, \r\n        \"Persona_Name\": \"Jesus A Millan\",\r\n        \"Persona_Cargo\": \"Coord\",\r\n        \"Persona_Correo\": \"millanqjesus2@gmail.com\",\r\n        \"PlanAuditoriaId\": 21\r\n    },{\r\n        \"Created_By\": \"JM3\",\r\n        \"PersonaId\": 3, \r\n        \"Persona_Name\": \"Jesus E. Millan\",\r\n        \"Persona_Cargo\": \"Dueño\",\r\n        \"Persona_Correo\": \"millanqjesus3@gmail.com\",\r\n        \"PlanAuditoriaId\": 21\r\n    }\r\n]"
+								},
+								"url": {
+									"raw": "https://550m44ud1tmg7454-audit-dev.azurewebsites.net/api/Post-Lista_Envio-All?code=27NBV2iB2M130igerkn/Qha8zbtPaKCDIMDbSLyk/sgzFzIoncY3wQ==&httpmethod=post",
+									"protocol": "https",
+									"host": [
+										"550m44ud1tmg7454-audit-dev",
+										"azurewebsites",
+										"net"
+									],
+									"path": [
+										"api",
+										"Post-Lista_Envio-All"
+									],
+									"query": [
+										{
+											"key": "code",
+											"value": "27NBV2iB2M130igerkn/Qha8zbtPaKCDIMDbSLyk/sgzFzIoncY3wQ=="
+										},
+										{
+											"key": "httpmethod",
+											"value": "post"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Auditoria",
+					"item": [
+						{
+							"name": "Auditoria_Suspender",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "apikey",
+										"value": "r$3#23516ewew5",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Id\": 190,\r\n    \"Motivo\": \"Se fue a comer el presidente \",\r\n    \"Created_By\": \"JM\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://550m44ud1tmg7454-audit-dev.azurewebsites.net/api/Post-Auditoria-All?code=l/Ucgq69Kj8Yur7Se2RlCYtWga8XKfd8TuLSma8pYoGnsP/GqJO81g==&httpmethod=suspender",
+									"protocol": "https",
+									"host": [
+										"550m44ud1tmg7454-audit-dev",
+										"azurewebsites",
+										"net"
+									],
+									"path": [
+										"api",
+										"Post-Auditoria-All"
+									],
+									"query": [
+										{
+											"key": "code",
+											"value": "l/Ucgq69Kj8Yur7Se2RlCYtWga8XKfd8TuLSma8pYoGnsP/GqJO81g=="
+										},
+										{
+											"key": "httpmethod",
+											"value": "suspender"
+										},
+										{
+											"key": "Id",
+											"value": "7",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

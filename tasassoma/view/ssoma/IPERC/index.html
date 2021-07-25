@@ -1,0 +1,2824 @@
+<link rel="stylesheet" href="./view/ssoma/ssoma.css">
+<link rel="stylesheet" href="./css/pagination.css">
+<style>
+
+.text-clear {
+    border-radius: 0.375em 0 0 0.375em !important;
+}
+.button-search {
+    border-radius: 0 !important;
+    width: 10px;
+    padding: .375rem .1rem !important;
+}
+.button-clear {
+    border-radius: 0 0.375em 0.375em 0 !important;
+    width: 10px;
+    padding: .375rem .1rem !important;
+}
+.card-body3 {
+    padding: 0rem 0.75rem;
+}
+.Title-Ssoma {
+    margin-bottom: 0.1rem !important;
+}
+
+.mdc-select__selected-text{
+    font-size: 13px !important;
+    transform: translateY(-7px) !important;
+}
+
+.mdc-text-field--outlined {
+    overflow: visible;
+}
+
+.modal-FormObservacion {
+    align-content: center;
+    width: 1200px;
+    height: auto;
+    background-color: rgb(255, 255, 255) !important;
+}
+
+.padding-tabs {
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+.card-header-FormObservacion {
+    width: 1200px;
+    height: 61px;
+    background-color: #d2d97b !important;
+}
+
+.btn-save-observaacion {
+    width: 82px;
+    height: 34px;
+    border-radius: 4px;
+    background-color: #34559c;
+    border: 1.1px solid #34559c;
+    /* border: 1.1px solid #05beee; */
+}
+.scroll-blue{
+    overflow-y: scroll;
+}
+.scroll-blue::-webkit-scrollbar{
+    width: 10px;
+}
+.scroll-blue::-webkit-scrollbar-thumb {
+    background-color: #34559c;
+}
+
+.preloader {
+  width: 70px;
+  height: 70px;
+  border: 10px solid #eee;
+  border-top: 10px solid #666;
+  border-radius: 50%;
+  animation-name: girar;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+.setup-content {
+    padding: 10px;
+}
+.modal {
+  overflow-y:auto;
+}
+@keyframes girar {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.btn-warning2{
+    background-color: #deee05;
+    width: 82px;
+    height: 34px;
+    border-radius: 4px;
+    border: solid 0.8px #ffffff;
+}
+
+.btn-default2{
+    background-color: #c4c4c4;
+    width: 82px;
+    height: 34px;
+    border-radius: 4px;
+    border: solid 0.8px #ffffff;
+}
+.tools {
+    min-height: 30px;
+    border: solid 1px #c8c8c8;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.tool-selected {
+    background-color: #efefef;
+}
+.cbo-evento.mdc-select__anchor {
+    height: 100px !important;
+}
+.cbo-peligro.mdc-select__anchor {
+    height: 100px !important;
+}
+.input-send:focus {
+    border-color:#34559c
+}
+ul.ui-autocomplete.ui-menu { width: 400px !important; }
+  /* Customize the label (the container) */
+  .containercb {
+  display: block;
+  position: relative;
+  padding-left: 6%;
+  margin-top: 1%;
+  margin-bottom: 0px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.containercb input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  top: 0;
+  left: 0;
+  height: 24px;
+  width: 24px;
+  background-color: #eee;
+  border-radius: 20px;
+  border: solid 0.5px;
+  border-color: #828282;
+  display: flex;
+}
+
+/* On mouse-over, add a grey background color */
+.containercb:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.containercb input:checked ~ .checkmark {
+  background-color: #d2d97b;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.containercb input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.containercb .checkmark:after {
+  left: 9px;
+  top: 9px;
+  width: 12px;
+  height: 5px;
+  border: solid white;
+  border-width: 1px 1px 0px 0px;
+  -webkit-transform: rotate(125deg);
+  -ms-transform: rotate(125deg);
+  transform: rotate(125deg);
+}
+.mdc-text-field {
+    background-color: white !important;
+    border: solid 1px !important;
+    border-radius: 5px !important;
+    border-color: #c8c8c8 !important;
+}
+</style>
+<input type="hidden" id="ObservacionId">
+<input type="hidden" id="Codigo_Reportante_Selected">
+        <!-- start filtro -->
+        <div class="modulosTasa" style="background-color:white;font-family: product-sans;" >
+            <div class="modulosTasaInt">
+                <table width = "100%" border="0">
+                    <tr>
+                        <td colspan="10"  align="center"><br><br></td>
+                    <tr>
+                    <tr>
+                        <td width = "20%" align="center" style="position: relative;">
+                            <div>
+                                <table width ="100%" align="center">
+                                    <tr><td > <label for="" class="lbFormsoma">Puesto de trabajo</label></td></tr>
+                                    <tr><td align="center" >
+                                        <select name="Selec-PuestoTrabajo-Filtro" id="Selec-PuestoTrabajo-Filtro" class="form-control">
+                                            <option value="0" selected>Todos</option>
+                                        </select>
+                                    </td></tr>
+                                </table>
+                            </div>
+                        </td>
+                        <td width="1%">&nbsp;</td>
+                        <td width = "10%" align="center" style="position: relative;">
+                            <div>
+                                <table width ="100%" align="center">
+                                    <tr><td > <label for="" class="lbFormsoma">Gerencia</label></td></tr>
+                                    <tr><td align="center" >
+                                        <select name="Selec-Gerencia-Filtro"  id="Selec-Gerencia-Filtro" class="form-control" onchange="evSelectSedeFiltroChange()">
+                                            <option value="0" selected>Todos</option>
+                                        </select>
+                                    </td></tr>
+                                </table>
+                            </div>
+                        </td>
+                        <td width="1%" class="filtro-sede" style="display: none;">&nbsp;</td>
+                        <td width = "10%" class="filtro-sede" align="center" style="display: none;position: relative;">
+                            <div>
+                                <table width ="100%" align="center">
+                                    <tr><td > <label for="" class="lbFormsoma">Sede</label></td></tr>
+                                    <tr><td align="center" >
+                                        <select name="Selec-Sede-Filtro" id="Selec-Sede-Filtro" class="form-control" onchange="evSelectSedeFiltroChange()">
+                                            <option value="0" selected>Todos</option>
+                                        </select>
+                                    </td></tr>
+                                </table>
+                            </div>
+                        </td>
+                        <td width="1%">&nbsp;</td>
+                        <td width = "10%" align="center" style="position: relative;">
+                            <div>
+                                <table width ="100%" align="center">
+                                    <tr><td > <label for="" class="lbFormsoma">Área</label></td></tr>
+                                    <tr><td align="center" >
+                                        <select name="Selec-Area-Filtro" id="Selec-Area-Filtro" class="form-control" onchange="evSelectEmbarcacionFiltroChange()">
+                                            <option value="0" selected>Todos</option>
+                                        </select>
+                                    </td></tr>
+                                </table>
+                            </div>
+                        </td>
+                        <td width="1%">&nbsp;</td>
+                        <td width = "15%" align="center" style="position: relative;">
+                            <div>
+                                <table width ="100%" align="center">
+                                    <tr><td > <label for="" class="lbFormsoma">Proceso</label></td></tr>
+                                    <tr><td align="center" >
+                                        <select name="Selec-Proceso-Filtro" id="Selec-Proceso-Filtro" class="form-control">
+                                            <option value="0" selected>Todos</option>
+                                        </select>
+                                    </td></tr>
+                                </table>
+                            </div>
+                        </td>
+                        <td width="1%">&nbsp;</td>
+                        <td width = "10%" align="center" style="position: relative;">
+                            <div class="filtro-estado">
+                                <table width ="100%" align="center">
+                                    <tr><td > <label for="" class="lbFormsoma">Estado</label></td></tr>
+                                    <tr><td align="center" >
+                                        <select name="Selec-Estado-Filtro" id="Selec-Estado-Filtro" class="form-control">
+                                            <option value="0" selected>Todos</option>
+                                            <option value="3">En Desarrollo</option>
+                                            <option value="4">Por Validar</option>
+                                            <option value="5">En Validación</option>
+                                            <option value="6">Observado</option>
+                                            <option value="7">Validado</option>
+                                        </select>
+                                    </td></tr>
+                                </table>
+                            </div>
+                        </td>
+                        <td width="1%">&nbsp;</td>
+
+                        <td width = "10%" align="center">
+                            <button class="btn btn-system-green" style="padding: 10px;" onclick="fnCargarGridIPERC()">Buscar</button>
+                        </td>
+                        <td width = "1%" align="center">
+                        </td>
+                        <td width = "2%" align="center">
+                            <img src="images/iconos/nPrograma.svg" height="30px">
+                        </td>
+
+
+                        <td width = "3%" align="center">
+                            <span id="cantidad" class="h3 mute d-none" style="color:#757575;font-weight: bold;">0</span><br><small class="text-gray" style="font-size: 12px; color:#757575;font-weight: bold;"></small>
+                        </td>
+                        <td width = "1%" align="center">
+                            <div class="iconBarraLateral"></div>
+                        </td>
+                        <td width = "11%" align="center" id="columnButtonNewIperc">
+                            <div style="text-align: right; width: 100%; margin-right: 0px;">
+                                <button class="btn btn-system-celeste" style="font-size: 13px; padding: 10px; width: 100%;"  onclick="fnAbrirModalNIPERC()">
+                                    <img src="./images/iconos/plus_.svg" alt="">
+                                    <span class="ml-1">Nuevo IPERC</span>
+                                </button>
+                            </div>
+                        </td>
+
+                    </tr>
+
+                                </table>
+
+
+            </div>
+        </div>
+
+        <!-- end filtro -->
+
+<div class="row justify-content-center mt-5 mb-4">
+    <div class="col-md-12">
+        <div class="header-tabla p-3" style="font-size: 15px">
+            <div class="row m-0 justify-content-between" id="tbIPERC">
+
+            </div>
+        </div>
+        <div class="body-tabla-loader text-center py-3" id="body-tabla-loader">
+            <div class="spinner-border text-primary"></div>
+            <p class="text-center">Buscando resultados ....</p>
+        </div>
+        <div class="body-tabla mt-4 d-none" id="body-tabla-Vacio">
+            <div class="content-registros-no-encontrados">
+                <div>
+                    <img src="./images/newsistema/iconos/calendario-registros-vacios.svg" alt="">
+                    <p class="mt-4">No tiene actividades registradas</p>
+                </div>
+            </div>
+        </div>
+        <div class="body-tabla-list" id="body-tabla-list">
+
+        </div>
+        <div id="pagination-container" class="mt-3"></div>
+    </div>
+</div>
+
+
+
+
+<!-- Inicio: modal-mantenimiento-observacion -->
+<div class="modal fade " id="modal-mantenimiento-observacion" tabindex="-1" role="dialog"  data-backdrop="static" data-keyboard="false" aria-labelledby="modalAddCompanyTitle" aria-hidden="true" >
+    <div class="modal-dialog modal-dialog-centered rounded dialog-positionAU " style="max-width: 1350px !important;" role="document" >
+        <div class="modal-content rounded modal-FormObservacion " style="width: 1350px !important;" >
+            <div class="modal-header fix-header-modal">
+                <div class="card-header text-left text-white card-header-FormObservacion" style="background-color: #05beee !important; width: 100% !important;">
+                    <div class="row">
+                        <div class="col-3">
+                        </div>
+                        <div id="txtHeadModalMantenimiento" class="col-5 text-center txtHeadModalAuditor"
+                        style="color: #fff !important; background-color: #05beee !important;">
+                        </div>
+                        <div class="col-4 txtHeadModalAuditor" style="display: flex;justify-content: flex-end;">
+                            <button type="button" class="btn-save-observaacion d-none" onclick="evalueIPERC();" id="btn_eval_iperc"
+                            style="background-color: #cf3939 !important; border-color: #cf3939 !important;width: 100px;margin-right: 1%;">
+                                <i class="txt-btn-close" id="textEvalButton" style="color: #ffffff !important;line-height: normal;">Evaluar</i> </button>
+                            <button type="button" class="btn-save-observaacion" onclick="guardarIPERC();" id="btn_create_auditor"
+                            style="background-color: #d2d97b !important; border-color: #d2d97b !important;margin-right: 1%;">
+                                <i class="txt-btn-close" id="textoBotonGuardar" style="color: #ffffff !important;">Guardar</i> </button>
+
+
+
+                            <button type="button" class="btn-close-auditor" onclick="descargarIPERC();" id="btn-iperc-pdf" style="background-color: #d2d97b !important; border-color: #d2d97b !important;margin-right: 1%;width: 100px; visibility: hidden !important;" >
+                    <i class="txt-btn-save" style="line-height: normal;font-size: 10px !important; visibility: hidden !important;">Descargar PDF</i>
+                            </button>
+
+
+
+
+                            <button type="button" class="btn-close-auditor" onclick="exportarIPERC();" id="btn-iperc-excel" style="background-color: #d2d97b
+
+                            !important; border-color: #d2d97b !important;margin-right: 1%;width: 100px;">
+                                <i class="txt-btn-save" style="line-height: normal;font-size: 10px !important;">Exportar a Excel</i> </button>
+
+                            <button type="button" class="btn-default2" onclick="alertfinalizarIPERC();" id="btn-cancelar2"
+                                    style="background-color: #858585 !important; border-color: #858585 !important; color: #fff !important;margin-right: 1%;">
+                                <i class="txt-btn-save" style="color: #fff !important;">Finalizar</i> </button>
+                            <button type="button" class="btn-save-observaacion" onclick="closeModalIPERC();" id="btn_close_iperc"
+                            style="background-color: transparent !important; border-color: transparent !important;width: 20px;margin-right: 1%;">
+                                <i class="txt-btn-close" id="textEvalButton" style="color: #ffffff !important;">X</i> </button>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="modal-body dialog-position" id="bodymodalShowAuditor" style=" justify-content:space-around; align-content:center;">
+
+                <div class="card " style="border: 0px !important; border-radius: 10px; box-shadow: none;">
+                    <div class="card-body2">
+                        <form id="formAjax" action="" class="form floating-label" novalidate="novalidate">
+
+                            <input type="hidden" name="formIpercId" id="formIpercId" value="0">
+                            <input type="hidden" name="formIpercCodigo" id="formIpercCodigo" >
+
+                            <div class="stepwizard " id="manipulation">
+                                <div class="d-flex justify-content-center stepwizard-row setup-panel">
+                                    <div class="col-2 padding-tabs">
+                                        <a href="#step-1" id="step1">
+                                            <button type="button" class="btn-formAuditor w-100" href="#step-1" id="btn_step1">
+                                            <b>Datos Generales</b> </button>
+                                        </a>
+                                    </div>
+                                    <div class="col-2 padding-tabs">
+                                        <a href="#step-2" id="step2">
+                                            <button type="button" class="btn-formAuditor w-100" href="#step-2" id="btn_step2" >
+                                            <b>Detalle de la Actividad</b> </button>
+                                        </a>
+                                    </div>
+                                    <div class="col-2 padding-tabs">
+                                        <a href="#step-3" id="step3">
+                                            <button type="button" class="btn-formAuditor w-100" href="#step-3" id="btn_step3" >
+                                            <b>Eventos</b> </button>
+                                        </a>
+                                    </div>
+                                    <div class="col-2 padding-tabs">
+                                        <a href="#step-4" id="step4">
+                                            <button type="button" class="btn-formAuditor w-100" href="#step-4" id="btn_step4" disabled>
+                                            <b>Peligro, Riesgos y Lesiones</b> </button>
+                                        </a>
+                                    </div>
+                                    <div class="col-2 padding-tabs">
+                                        <a href="#step-5" id="step5">
+                                            <button type="button" class="btn-formAuditor w-100" href="#step-5" id="btn_step5" disabled >
+                                            <b>Evaluación de Riesgos y Controles</b> </button>
+                                        </a>
+                                    </div>
+                                    <div class="col-2 padding-tabs">
+                                        <a href="#step-6" id="step6">
+                                            <button type="button" class="btn-formAuditor w-100" href="#step-6" id="btn_step6" disabled >
+                                            <b>Controles Complementarios para reducir IR</b> </button>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row setup-content" id="step-1" style="display: block;">
+                                <div class="card-body2" style="padding-bottom: 0px !important; padding-top: 1.75rem !important;">
+                                    <div class="row p-0">
+                                        <div style="width: 6%;">
+                                            <p class="detalle-formauditor" style="margin-bottom: 0rem !important;">Puesto</p>
+                                        </div>
+                                        <div style="width: 92%;">
+                                            <hr>
+                                        </div>
+                                        <div style="width: 2%;" class="pt-2">
+                                            <img src="./images/iconos/menu.svg" class="menu-1-1">
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                                <div>
+                                    <div class="d-flex mt-3">
+
+                                        <div class="col-md-3">
+                                            <div class="mdc-select mdc-select--filled demo-width-class cbo-gerencia w-100 text-left">
+                                                <div class="mdc-select__anchor">
+                                                    <span class="mdc-select__ripple"></span>
+                                                    <span class="mdc-select__selected-text"></span>
+                                                    <span class="mdc-select__dropdown-icon">
+                                                      <svg
+                                                              class="mdc-select__dropdown-icon-graphic"
+                                                              viewBox="7 10 10 5">
+                                                        <polygon
+                                                                class="mdc-select__dropdown-icon-inactive"
+                                                                stroke="none"
+                                                                fill-rule="evenodd"
+                                                                points="7 10 12 15 17 10">
+                                                        </polygon>
+                                                        <polygon
+                                                                class="mdc-select__dropdown-icon-active"
+                                                                stroke="none"
+                                                                fill-rule="evenodd"
+                                                                points="7 15 12 10 17 15">
+                                                        </polygon>
+                                                      </svg>
+                                                    </span>
+                                                    <span class="mdc-floating-label mdc-floating-label--float-above">Gerencia</span>
+                                                    <span class="mdc-line-ripple"></span>
+                                                </div>
+
+                                                <div class="mdc-select__menu demo-width-class mdc-menu mdc-menu-surface w-100">
+                                                    <ul class="mdc-list" id="ul-Gerencia">
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <div class="mdc-select mdc-select--filled demo-width-class cbo-area w-100 text-left">
+                                                <div class="mdc-select__anchor">
+                                                    <span class="mdc-select__ripple"></span>
+                                                    <span class="mdc-select__selected-text"></span>
+                                                    <span class="mdc-select__dropdown-icon">
+                                                      <svg
+                                                              class="mdc-select__dropdown-icon-graphic"
+                                                              viewBox="7 10 10 5">
+                                                        <polygon
+                                                                class="mdc-select__dropdown-icon-inactive"
+                                                                stroke="none"
+                                                                fill-rule="evenodd"
+                                                                points="7 10 12 15 17 10">
+                                                        </polygon>
+                                                        <polygon
+                                                                class="mdc-select__dropdown-icon-active"
+                                                                stroke="none"
+                                                                fill-rule="evenodd"
+                                                                points="7 15 12 10 17 15">
+                                                        </polygon>
+                                                      </svg>
+                                                    </span>
+                                                    <span class="mdc-floating-label mdc-floating-label--float-above">Área / Planta / Embarcación</span>
+                                                    <span class="mdc-line-ripple"></span>
+                                                </div>
+
+                                                <div class="mdc-select__menu demo-width-class mdc-menu mdc-menu-surface w-100">
+                                                    <ul class="mdc-list" id="ul-Area">
+
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <div class="mdc-select mdc-select--filled demo-width-class cbo-puesto w-100 text-left">
+                                                <div class="mdc-select__anchor">
+                                                    <span class="mdc-select__ripple"></span>
+                                                    <span class="mdc-select__selected-text"></span>
+                                                    <span class="mdc-select__dropdown-icon">
+                                                      <svg
+                                                              class="mdc-select__dropdown-icon-graphic"
+                                                              viewBox="7 10 10 5">
+                                                        <polygon
+                                                                class="mdc-select__dropdown-icon-inactive"
+                                                                stroke="none"
+                                                                fill-rule="evenodd"
+                                                                points="7 10 12 15 17 10">
+                                                        </polygon>
+                                                        <polygon
+                                                                class="mdc-select__dropdown-icon-active"
+                                                                stroke="none"
+                                                                fill-rule="evenodd"
+                                                                points="7 15 12 10 17 15">
+                                                        </polygon>
+                                                      </svg>
+                                                    </span>
+                                                    <span class="mdc-floating-label mdc-floating-label--float-above">Puesto de trabajo</span>
+                                                    <span class="mdc-line-ripple"></span>
+                                                </div>
+
+                                                <div class="mdc-select__menu demo-width-class mdc-menu mdc-menu-surface w-100">
+                                                    <ul class="mdc-list" id="ul-Puesto">
+
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!--<div class="col-md-3" id="reportante-content">
+                                            <div class="mdc-text-field mdc-text-field--outlined  w-100 field-password reportante">
+                                                <input class="mdc-text-field__input autocompletecollaborator" name="Nombres_Reportante" id="Nombres_Reportante" type="text" >
+                                                <input name="Codigo_Reportante" id="Codigo_Reportante" type="hidden" >
+                                                <div class="loader" id="add_firtnameload_1" style="display:none"></div>
+                                                <input type="hidden" class="form-control" id="hid_Name_id_1" value="" >
+                                                <div class="mdc-notched-outline">
+                                                    <div class="mdc-notched-outline__leading"></div>
+                                                    <div class="mdc-notched-outline__notch">
+                                                    <label for="Nombres_Reportante" class="mdc-floating-label  f-15px">Puesto de trabajo</label>
+                                                    </div>
+                                                    <div class="mdc-notched-outline__trailing"></div>
+                                                </div>
+                                            </div>
+                                        </div>-->
+
+
+                                        <div class="col-md-3">
+                                            <div class="mdc-text-field mdc-text-field--filled w-100 field-password fecha-operacion">
+
+                                                <span class="mdc-text-field__ripple"></span>
+                                                <span class="mdc-floating-label" id="my-label-id">Fecha Creación</span>
+                                                <input class="mdc-text-field__input" disabled name="txt_fecha_operacion" id="txt_fecha_operacion" type="text" aria-labelledby="my-label-id">
+                                                <span class="mdc-line-ripple"></span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="d-flex mt-3">
+
+                                        <div class="col-md-3">
+                                            <div class="mdc-select mdc-select--filled demo-width-class cbo-proceso w-100 text-left">
+                                                <div class="mdc-select__anchor">
+                                                    <span class="mdc-select__ripple"></span>
+                                                    <span class="mdc-select__selected-text"></span>
+                                                    <span class="mdc-select__dropdown-icon">
+                                                      <svg
+                                                              class="mdc-select__dropdown-icon-graphic"
+                                                              viewBox="7 10 10 5">
+                                                        <polygon
+                                                                class="mdc-select__dropdown-icon-inactive"
+                                                                stroke="none"
+                                                                fill-rule="evenodd"
+                                                                points="7 10 12 15 17 10">
+                                                        </polygon>
+                                                        <polygon
+                                                                class="mdc-select__dropdown-icon-active"
+                                                                stroke="none"
+                                                                fill-rule="evenodd"
+                                                                points="7 15 12 10 17 15">
+                                                        </polygon>
+                                                      </svg>
+                                                    </span>
+                                                    <span class="mdc-floating-label mdc-floating-label--float-above">Proceso</span>
+                                                    <span class="mdc-line-ripple"></span>
+                                                </div>
+
+                                                <div class="mdc-select__menu demo-width-class mdc-menu mdc-menu-surface w-100">
+                                                    <ul class="mdc-list" id="ul-Proceso">
+
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-md-3">
+                                            <div class="mdc-select mdc-select--filled demo-width-class cbo-subproceso mdc-select--disabled w-100 text-left">
+                                                <div class="mdc-select__anchor">
+                                                    <span class="mdc-select__ripple"></span>
+                                                    <span class="mdc-select__selected-text"></span>
+                                                    <span class="mdc-select__dropdown-icon">
+                                                      <svg
+                                                              class="mdc-select__dropdown-icon-graphic"
+                                                              viewBox="7 10 10 5">
+                                                        <polygon
+                                                                class="mdc-select__dropdown-icon-inactive"
+                                                                stroke="none"
+                                                                fill-rule="evenodd"
+                                                                points="7 10 12 15 17 10">
+                                                        </polygon>
+                                                        <polygon
+                                                                class="mdc-select__dropdown-icon-active"
+                                                                stroke="none"
+                                                                fill-rule="evenodd"
+                                                                points="7 15 12 10 17 15">
+                                                        </polygon>
+                                                      </svg>
+                                                    </span>
+                                                    <span class="mdc-floating-label mdc-floating-label--float-above">Sub-Proceso</span>
+                                                    <span class="mdc-line-ripple"></span>
+                                                </div>
+
+                                                <div class="mdc-select__menu demo-width-class mdc-menu mdc-menu-surface w-100">
+                                                    <ul class="mdc-list" id="ul-Subproceso">
+
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <div class="mdc-select mdc-select--filled demo-width-class cbo-alcance w-100 text-left">
+                                                <div class="mdc-select__anchor">
+                                                    <span class="mdc-select__ripple"></span>
+                                                    <span class="mdc-select__selected-text"></span>
+                                                    <span class="mdc-select__dropdown-icon">
+                                                      <svg
+                                                              class="mdc-select__dropdown-icon-graphic"
+                                                              viewBox="7 10 10 5">
+                                                        <polygon
+                                                                class="mdc-select__dropdown-icon-inactive"
+                                                                stroke="none"
+                                                                fill-rule="evenodd"
+                                                                points="7 10 12 15 17 10">
+                                                        </polygon>
+                                                        <polygon
+                                                                class="mdc-select__dropdown-icon-active"
+                                                                stroke="none"
+                                                                fill-rule="evenodd"
+                                                                points="7 15 12 10 17 15">
+                                                        </polygon>
+                                                      </svg>
+                                                    </span>
+                                                    <span class="mdc-floating-label mdc-floating-label--float-above">Alcance</span>
+                                                    <span class="mdc-line-ripple"></span>
+                                                </div>
+
+                                                <div class="mdc-select__menu demo-width-class mdc-menu mdc-menu-surface w-100">
+                                                    <ul class="mdc-list" id="ul-Alcance">
+
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+
+
+                                <div class="card-body2" style="padding-bottom: 0px !important; padding-top: 1.75rem !important;">
+                                    <div class="row p-0">
+                                        <div style="width: 10%;">
+                                            <p class="detalle-formauditor" style="margin-bottom: 0rem !important;">Actividades</p>
+                                        </div>
+                                        <div style="width: 88%;">
+                                            <hr>
+                                        </div>
+                                        <div style="width: 2%;" class="pt-2">
+                                            <img src="./images/iconos/menu.svg" class="menu-1-1">
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div style="width: 98%;" class="readonly">
+                                    <div class="row p-0" style="display: flex; justify-content: flex-end">
+                                        <div>
+                                            <p class="Rol-en-Auditora Title-Ssoma">
+                                                <button type="button" class="btn-save-observaacion" onclick="agregarActividad();" id="btn_create_actividad"
+                                                style="background-color: #58c25d !important; border-color: #58c25d !important;">
+                                                    <i class="txt-btn-close" id="textoBotonGuardar" style="color: #fff !important;">Agregar</i> </button>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card-body3">
+                                    <div class="row p-0">
+                                        <div id="contenido-detalle_0" class="" style="width: 100%; min-height: 327px;overflow-x: scroll;max-height: 327px;">
+
+
+                                            <div class="row justify-content-center mt-1">
+                                                <div class="col-md-12">
+                                                    <div class="header-tabla p-3" style="font-size: 15px">
+                                                        <div class="row m-0 justify-content-between">
+
+                                                            <div class="col-md-1 text-center row">
+                                                                <div class="col-md-12">Item</div>
+                                                            </div>
+
+                                                            <div class="col-md-9 text-center row" id="lbl_des_act">
+                                                                <div class="col-md-12">Descripción de Actividad</div>
+                                                            </div>
+                                                            <div class="col-md-1 text-center row">
+                                                            </div>
+                                                            <div class="col-md-1 text-center row readonly">
+                                                                <div class="col-md-12">Eliminar</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="body-tabla-loader text-center py-3 d-none" id="body-activities-loader">
+                                                        <div class="spinner-border text-primary"></div>
+                                                        <p class="text-center">Buscando resultados ....</p>
+                                                    </div>
+                                                    <div class="body-tabla mt-4 d-none" id="body-activities-Vacio">
+                                                        <div class="content-registros-no-encontrados">
+                                                            <div>
+                                                                <img src="./images/newsistema/iconos/calendario-registros-vacios.svg" alt="">
+                                                                <p class="mt-4">No tiene observaciones registradas</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="body-tabla-list" id="body-activities-list">
+
+                                                    </div>
+                                                    <div id="pagination-container" class="mt-3"></div>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+
+
+
+
+
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+                            <div class="row setup-content" id="step-2">
+                                    <div class="card-body2" style="padding-bottom: 0px !important; padding-top: 1.75rem !important;">
+                                        <div class="row p-0">
+                                            <div style="width: 6%;">
+                                                <p class="detalle-formauditor">Detalle</p>
+                                            </div>
+                                            <div style="width: 92%;">
+                                                <hr>
+                                            </div>
+                                            <div style="width: 2%;" class="pt-2">
+                                                <img src="./images/iconos/menu.svg" class="menu-1-1">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="width: 100%;">
+                                        <div class="d-flex mt-3">
+
+                                            <div class="col-md-12">
+                                                <div class="mdc-select mdc-select--filled demo-width-class cbo-actividad w-100 text-left">
+                                                    <div class="mdc-select__anchor">
+                                                        <span class="mdc-select__ripple"></span>
+                                                        <span class="mdc-select__selected-text"></span>
+                                                        <span class="mdc-select__dropdown-icon">
+                                                          <svg
+                                                                  class="mdc-select__dropdown-icon-graphic"
+                                                                  viewBox="7 10 10 5">
+                                                            <polygon
+                                                                    class="mdc-select__dropdown-icon-inactive"
+                                                                    stroke="none"
+                                                                    fill-rule="evenodd"
+                                                                    points="7 10 12 15 17 10">
+                                                            </polygon>
+                                                            <polygon
+                                                                    class="mdc-select__dropdown-icon-active"
+                                                                    stroke="none"
+                                                                    fill-rule="evenodd"
+                                                                    points="7 15 12 10 17 15">
+                                                            </polygon>
+                                                          </svg>
+                                                        </span>
+                                                        <span class="mdc-floating-label mdc-floating-label--float-above">Actividad</span>
+                                                        <span class="mdc-line-ripple"></span>
+                                                    </div>
+
+                                                    <div class="mdc-select__menu demo-width-class mdc-menu mdc-menu-surface w-100">
+                                                        <ul class="mdc-list" id="ul-Actividad">
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="card-body3" style="width: 100%;margin-top: 2%;">
+                                        <div class="row p-0">
+                                            <div id="contenido-detalle_1" style="width: 100%; height: 327px;display: flex;">
+                                                <div class="col-md-5" id="contenido-detalle_2">
+                                                    <div class="mt-5 p-0 col-md-10">
+                                                        <div class="mdc-select mdc-select--filled demo-width-class cbo-tipoactividad w-100 text-left">
+                                                            <div class="mdc-select__anchor">
+                                                                <span class="mdc-select__ripple"></span>
+                                                                <span class="mdc-select__selected-text"></span>
+                                                                <span class="mdc-select__dropdown-icon">
+                                                                  <svg
+                                                                          class="mdc-select__dropdown-icon-graphic"
+                                                                          viewBox="7 10 10 5">
+                                                                    <polygon
+                                                                            class="mdc-select__dropdown-icon-inactive"
+                                                                            stroke="none"
+                                                                            fill-rule="evenodd"
+                                                                            points="7 10 12 15 17 10">
+                                                                    </polygon>
+                                                                    <polygon
+                                                                            class="mdc-select__dropdown-icon-active"
+                                                                            stroke="none"
+                                                                            fill-rule="evenodd"
+                                                                            points="7 15 12 10 17 15">
+                                                                    </polygon>
+                                                                  </svg>
+                                                                </span>
+                                                                <span class="mdc-floating-label mdc-floating-label--float-above">Tipo de Actividad</span>
+                                                                <span class="mdc-line-ripple"></span>
+                                                            </div>
+
+                                                            <div class="mdc-select__menu demo-width-class mdc-menu mdc-menu-surface w-100">
+                                                                <ul class="mdc-list" id="ul-TipoActividad">
+                                                                    <li class="mdc-list-item" data-value="1" tabindex="-1" onclick="selectTypeActivity(1)">
+                                                                        <span class="mdc-list-item__ripple"></span>
+                                                                        <span class="mdc-list-item__text">Rutinaria</span>
+                                                                    </li>
+                                                                    <li class="mdc-list-item" data-value="2" tabindex="-1" onclick="selectTypeActivity(2)">
+                                                                        <span class="mdc-list-item__ripple"></span>
+                                                                        <span class="mdc-list-item__text">No Rutinaria</span>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="mt-3 p-0 col-md-10">
+                                                        <div class="mdc-select mdc-select--filled demo-width-class cbo-frecuencia w-100 text-left">
+                                                            <div class="mdc-select__anchor">
+                                                                <span class="mdc-select__ripple"></span>
+                                                                <span class="mdc-select__selected-text"></span>
+                                                                <span class="mdc-select__dropdown-icon">
+                                                                  <svg
+                                                                          class="mdc-select__dropdown-icon-graphic"
+                                                                          viewBox="7 10 10 5">
+                                                                    <polygon
+                                                                            class="mdc-select__dropdown-icon-inactive"
+                                                                            stroke="none"
+                                                                            fill-rule="evenodd"
+                                                                            points="7 10 12 15 17 10">
+                                                                    </polygon>
+                                                                    <polygon
+                                                                            class="mdc-select__dropdown-icon-active"
+                                                                            stroke="none"
+                                                                            fill-rule="evenodd"
+                                                                            points="7 15 12 10 17 15">
+                                                                    </polygon>
+                                                                  </svg>
+                                                                </span>
+                                                                <span class="mdc-floating-label mdc-floating-label--float-above">Frecuencia</span>
+                                                                <span class="mdc-line-ripple"></span>
+                                                            </div>
+
+                                                            <div class="mdc-select__menu demo-width-class mdc-menu mdc-menu-surface w-100">
+                                                                <ul class="mdc-list" id="ul-Frecuencia">
+                                                                    <li class="mdc-list-item" data-value="1" tabindex="-1" onclick="selectFrequency(1)">
+                                                                        <span class="mdc-list-item__ripple"></span>
+                                                                        <span class="mdc-list-item__text">Al menos 1 vez a la semana</span>
+                                                                    </li>
+                                                                    <li class="mdc-list-item" data-value="2" tabindex="-1" onclick="selectFrequency(2)">
+                                                                        <span class="mdc-list-item__ripple"></span>
+                                                                        <span class="mdc-list-item__text">Al menos 1 vez al mes</span>
+                                                                    </li>
+                                                                    <li class="mdc-list-item" data-value="3" tabindex="-1" onclick="selectFrequency(3)">
+                                                                        <span class="mdc-list-item__ripple"></span>
+                                                                        <span class="mdc-list-item__text">1 vez al mes </span>
+                                                                    </li>
+                                                                    <li class="mdc-list-item" data-value="4" tabindex="-1" onclick="selectFrequency(4)">
+                                                                        <span class="mdc-list-item__ripple"></span>
+                                                                        <span class="mdc-list-item__text">Por lo menos 1 vez al año</span>
+                                                                    </li>
+                                                                    <li class="mdc-list-item" data-value="5" tabindex="-1" onclick="selectFrequency(5)">
+                                                                        <span class="mdc-list-item__ripple"></span>
+                                                                        <span class="mdc-list-item__text">Esporádico</span>
+                                                                    </li>
+                                                                    <li class="mdc-list-item" data-value="6" tabindex="-1" onclick="selectFrequency(6)">
+                                                                        <span class="mdc-list-item__ripple"></span>
+                                                                        <span class="mdc-list-item__text">Permanente</span>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="mt-3 p-0 col-md-10">
+                                                        <div class="mdc-select mdc-select--filled demo-width-class cbo-genero w-100 text-left">
+                                                            <div class="mdc-select__anchor">
+                                                                <span class="mdc-select__ripple"></span>
+                                                                <span class="mdc-select__selected-text"></span>
+                                                                <span class="mdc-select__dropdown-icon">
+                                                                  <svg
+                                                                          class="mdc-select__dropdown-icon-graphic"
+                                                                          viewBox="7 10 10 5">
+                                                                    <polygon
+                                                                            class="mdc-select__dropdown-icon-inactive"
+                                                                            stroke="none"
+                                                                            fill-rule="evenodd"
+                                                                            points="7 10 12 15 17 10">
+                                                                    </polygon>
+                                                                    <polygon
+                                                                            class="mdc-select__dropdown-icon-active"
+                                                                            stroke="none"
+                                                                            fill-rule="evenodd"
+                                                                            points="7 15 12 10 17 15">
+                                                                    </polygon>
+                                                                  </svg>
+                                                                </span>
+                                                                <span class="mdc-floating-label mdc-floating-label--float-above">Género</span>
+                                                                <span class="mdc-line-ripple"></span>
+                                                            </div>
+
+                                                            <div class="mdc-select__menu demo-width-class mdc-menu mdc-menu-surface w-100">
+                                                                <ul class="mdc-list" id="ul-Genero">
+                                                                    <li class="mdc-list-item" data-value="1" tabindex="-1" onclick="selectGenre(1)">
+                                                                        <span class="mdc-list-item__ripple"></span>
+                                                                        <span class="mdc-list-item__text">Masculino</span>
+                                                                    </li>
+                                                                    <li class="mdc-list-item" data-value="2" tabindex="-1" onclick="selectGenre(2)">
+                                                                        <span class="mdc-list-item__ripple"></span>
+                                                                        <span class="mdc-list-item__text">Femenino</span>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-7" id="contenido-detalle_3">
+                                                    <div class="row p-0">
+                                                        <div class="col-md-4">
+                                                            <p class="detalle-formauditor">Maquinarias y Equipos</p>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                        </div>
+                                                        <div class="col-md-2" style="text-align: right;">
+                                                            <p class="detalle-formauditor" id="tools-count">00</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row p-0 scroll-blue" id="maquina-equipo-list" style="max-height: 83%;">
+                                                        <div class="col-md-12 tools">
+                                                            <div class="col-md-11">
+                                                                Chalana, Remolcador, EP
+                                                            </div>
+                                                            <div class="col-md-1">
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div>
+                            <div class="row setup-content" id="step-3">
+                                <div class="card-body2" style="padding-bottom: 0px !important; padding-top: 1.75rem !important;">
+                                    <div class="row p-0">
+                                        <div style="width: 16%;">
+                                            <p class="detalle-formauditor">Definición de Evento</p>
+                                        </div>
+                                        <div style="width: 82%;">
+                                            <hr>
+                                        </div>
+                                        <div style="width: 2%;" class="pt-2">
+                                            <img src="./images/iconos/menu.svg" class="menu-1-1">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="width: 100%;" class="readonly">
+                                    <div class="d-flex mt-3">
+
+                                        <div class="col-md-12">
+                                            <div class="mdc-select mdc-select--filled demo-width-class cbo-actividad-2 w-100 text-left">
+                                                <div class="mdc-select__anchor">
+                                                    <span class="mdc-select__ripple"></span>
+                                                    <span class="mdc-select__selected-text"></span>
+                                                    <span class="mdc-select__dropdown-icon">
+                                                      <svg
+                                                              class="mdc-select__dropdown-icon-graphic"
+                                                              viewBox="7 10 10 5">
+                                                        <polygon
+                                                                class="mdc-select__dropdown-icon-inactive"
+                                                                stroke="none"
+                                                                fill-rule="evenodd"
+                                                                points="7 10 12 15 17 10">
+                                                        </polygon>
+                                                        <polygon
+                                                                class="mdc-select__dropdown-icon-active"
+                                                                stroke="none"
+                                                                fill-rule="evenodd"
+                                                                points="7 15 12 10 17 15">
+                                                        </polygon>
+                                                      </svg>
+                                                    </span>
+                                                    <span class="mdc-floating-label mdc-floating-label--float-above">Actividad</span>
+                                                    <span class="mdc-line-ripple"></span>
+                                                </div>
+
+                                                <div class="mdc-select__menu demo-width-class mdc-menu mdc-menu-surface w-100">
+                                                    <ul class="mdc-list" id="ul-Actividad-2" >
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex mt-3">
+                                        <div class="col-md-8">
+                                            <div class="mdc-text-field mdc-text-field--filled w-100 field-password descripcion-evento">
+
+                                                <span class="mdc-text-field__ripple"></span>
+                                                <span class="mdc-floating-label" id="descripcion_evento">Descripción del Evento</span>
+                                                <input class="mdc-text-field__input" name="txt_descripcion_evento" id="txt_descripcion_evento" type="text" aria-labelledby="descripcion_evento" onkeyup="habilitaAddEvent()">
+                                                <span class="mdc-line-ripple"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="mdc-select mdc-select--filled demo-width-class cbo-maq-equip w-100 text-left">
+                                                <div class="mdc-select__anchor">
+                                                    <span class="mdc-select__ripple"></span>
+                                                    <span class="mdc-select__selected-text"></span>
+                                                    <span class="mdc-select__dropdown-icon">
+                                                      <svg
+                                                              class="mdc-select__dropdown-icon-graphic"
+                                                              viewBox="7 10 10 5">
+                                                        <polygon
+                                                                class="mdc-select__dropdown-icon-inactive"
+                                                                stroke="none"
+                                                                fill-rule="evenodd"
+                                                                points="7 10 12 15 17 10">
+                                                        </polygon>
+                                                        <polygon
+                                                                class="mdc-select__dropdown-icon-active"
+                                                                stroke="none"
+                                                                fill-rule="evenodd"
+                                                                points="7 15 12 10 17 15">
+                                                        </polygon>
+                                                      </svg>
+                                                    </span>
+                                                    <span class="mdc-floating-label mdc-floating-label--float-above">Maquinaria y/o Equipo</span>
+                                                    <span class="mdc-line-ripple"></span>
+                                                </div>
+
+                                                <div class="mdc-select__menu demo-width-class mdc-menu mdc-menu-surface w-100">
+                                                    <ul class="mdc-list" id="ul-Maq-Equip">
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="width: 98%;margin-top: 10px;" class="readonly">
+                                    <div class="row p-0" style="display: flex; justify-content: flex-end">
+                                        <div>
+                                            <p class="Rol-en-Auditora Title-Ssoma">
+                                                <button type="button" class="btn-save-observaacion d-none" onclick="updateEvent();" id="btn_edit_event"
+                                                style="background-color: #58c25d !important; border-color: #58c25d !important;">
+                                                    <i class="txt-btn-close" id="textoBotonGuardar" style="color: #fff !important;">Editar</i> </button>
+                                                <button type="button" class="btn-save-observaacion d-none" onclick="clearEvent();" id="btn_cancel_edit_event"
+                                                style="background-color: #58c25d !important; border-color: #c56458 !important;">
+                                                    <i class="txt-btn-close" id="textoBotonGuardar" style="color: #fff !important;">Cancelar</i> </button>
+                                                <button type="button" class="btn-save-observaacion" onclick="addEvent();" id="btn_add_event"
+                                                style="background-color: #58c25d !important; border-color: #58c25d !important;" disabled>
+                                                    <i class="txt-btn-close" id="textoBotonGuardar" style="color: #fff !important;">Agregar</i> </button>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body3" style="width: 100%;margin-top: 10px;">
+                                    <div class="row p-0">
+                                        <div id="contenido-detalle_0" class="scroll-blue" style="width: 100%; min-height: 327px;">
+
+
+                                            <div class="row justify-content-center mt-1">
+                                                <div class="col-md-12">
+                                                    <div class="header-tabla p-3" style="font-size: 15px">
+                                                        <div class="row m-0 justify-content-between">
+                                                            <div class="col-md-5 text-center row">
+                                                                <div class="col-md-12">Actividad</div>
+                                                            </div>
+                                                            <div class="col-md-2 text-center row" id="lbl_maq_event">
+                                                                <div class="col-md-12">Maquinaria y Equipo</div>
+                                                            </div>
+                                                            <div class="col-md-3 text-center row" id="lbl_des_event">
+                                                                <div class="col-md-12">Evento</div>
+                                                            </div>
+                                                            <div class="col-md-1 text-center row readonly">
+                                                                <div class="col-md-12">Editar</div>
+                                                            </div>
+                                                            <div class="col-md-1 text-center row readonly">
+                                                                <div class="col-md-12">Eliminar</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="body-tabla-loader text-center py-3 d-none" id="body-events-loader">
+                                                        <div class="spinner-border text-primary"></div>
+                                                        <p class="text-center">Buscando resultados ....</p>
+                                                    </div>
+                                                    <div class="body-tabla mt-4 d-none" id="body-events-Vacio">
+                                                        <div class="content-registros-no-encontrados">
+                                                            <div>
+                                                                <img src="./images/newsistema/iconos/calendario-registros-vacios.svg" alt="">
+                                                                <p class="mt-4">No tiene Eventos registradas</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="body-tabla-list" id="body-events-list">
+
+                                                    </div>
+                                                    <div id="pagination-container" class="mt-3"></div>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+
+
+
+
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="row setup-content" id="step-4">
+                                <div style="width: 100%;" class="readonly">
+                                    <div class="d-flex mt-3">
+                                        <div class="col-md-12">
+                                            <div class="mdc-text-field mdc-text-field--filled w-100 field-password actividad-label-1">
+
+                                                <span class="mdc-text-field__ripple"></span>
+                                                <span class="mdc-floating-label" id="my-label-id">Actividad</span>
+                                                <input class="mdc-text-field__input" disabled name="txt_actividad_label_1" id="txt_actividad_label_1" type="text" aria-labelledby="my-label-id">
+                                                <span class="mdc-line-ripple"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex mt-3">
+                                        <div class="col-md-6">
+                                            <div class="mdc-select mdc-select--filled demo-width-class cbo-evento w-100 text-left">
+                                                <div class="mdc-select__anchor">
+                                                    <span class="mdc-select__ripple"></span>
+                                                    <span class="mdc-select__selected-text"></span>
+                                                    <span class="mdc-select__dropdown-icon">
+                                                      <svg
+                                                              class="mdc-select__dropdown-icon-graphic"
+                                                              viewBox="7 10 10 5">
+                                                        <polygon
+                                                                class="mdc-select__dropdown-icon-inactive"
+                                                                stroke="none"
+                                                                fill-rule="evenodd"
+                                                                points="7 10 12 15 17 10">
+                                                        </polygon>
+                                                        <polygon
+                                                                class="mdc-select__dropdown-icon-active"
+                                                                stroke="none"
+                                                                fill-rule="evenodd"
+                                                                points="7 15 12 10 17 15">
+                                                        </polygon>
+                                                      </svg>
+                                                    </span>
+                                                    <span class="mdc-floating-label mdc-floating-label--float-above">Evento</span>
+                                                    <span class="mdc-line-ripple"></span>
+                                                </div>
+
+                                                <div class="mdc-select__menu demo-width-class mdc-menu mdc-menu-surface w-100">
+                                                    <ul class="mdc-list" id="ul-Evento">
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mdc-select mdc-select--filled demo-width-class cbo-peligro w-100 text-left">
+                                                <div class="mdc-select__anchor">
+                                                    <span class="mdc-select__ripple"></span>
+                                                    <span class="mdc-select__selected-text"></span>
+                                                    <span class="mdc-select__dropdown-icon">
+                                                      <svg
+                                                              class="mdc-select__dropdown-icon-graphic"
+                                                              viewBox="7 10 10 5">
+                                                        <polygon
+                                                                class="mdc-select__dropdown-icon-inactive"
+                                                                stroke="none"
+                                                                fill-rule="evenodd"
+                                                                points="7 10 12 15 17 10">
+                                                        </polygon>
+                                                        <polygon
+                                                                class="mdc-select__dropdown-icon-active"
+                                                                stroke="none"
+                                                                fill-rule="evenodd"
+                                                                points="7 15 12 10 17 15">
+                                                        </polygon>
+                                                      </svg>
+                                                    </span>
+                                                    <span class="mdc-floating-label mdc-floating-label--float-above">Peligro</span>
+                                                    <span class="mdc-line-ripple"></span>
+                                                </div>
+
+                                                <div class="mdc-select__menu demo-width-class mdc-menu mdc-menu-surface w-100">
+                                                    <ul class="mdc-list" id="ul-Peligro">
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="width: 98%;margin-top: 10px;" class="readonly">
+                                    <div class="row p-0" style="display: flex; justify-content: flex-end">
+                                        <div>
+                                            <p class="Rol-en-Auditora Title-Ssoma">
+                                                <button type="button" class="btn-save-observaacion" onclick="addDangers();" id="btn_create_actividad"
+                                                style="background-color: #58c25d !important; border-color: #58c25d !important;">
+                                                    <i class="txt-btn-close" id="textoBotonGuardar" style="color: #fff !important;">Agregar</i> </button>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body3" style="width: 100%;margin-top: 10px;">
+                                    <div class="row p-0">
+                                        <div id="contenido-detalle_0" class="scroll-blue" style="width: 100%; min-height: 327px;">
+
+
+                                            <div class="row justify-content-center mt-1">
+                                                <div class="col-md-12">
+                                                    <div class="header-tabla p-2" style="font-size: 15px">
+                                                        <div class="row m-0 justify-content-between" style="align-items: center;">
+                                                            <div class="col-md-1 text-center row">
+                                                                <div class="col-md-12">Item</div>
+                                                            </div>
+                                                            <div class="col-md-2  row" id="lbl_event_dang">
+                                                                <div class="col-md-12">Evento</div>
+                                                            </div>
+                                                            <div class="col-md-2  row">
+                                                                <div class="col-md-12">Maquinaria</div>
+                                                            </div>
+                                                            <div class="col-md-2  row" id="lbl_danger_dang">
+                                                                <div class="col-md-12">Peligro</div>
+                                                            </div>
+                                                            <div class="col-md-2  row" id="lbl_risk_dang">
+                                                                <div class="col-md-12">Riesgo</div>
+                                                            </div>
+                                                            <div class="col-md-2  row">
+                                                                <div class="col-md-12">Lesión/ Enfermedad/ Sensibilidad</div>
+                                                            </div>
+                                                            <div class="col-md-1  row readonly">
+                                                                <div class="col-md-12">Eliminar</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="body-tabla-loader text-center py-3 d-none" id="body-events-loader">
+                                                        <div class="spinner-border text-primary"></div>
+                                                        <p class="text-center">Buscando resultados ....</p>
+                                                    </div>
+                                                    <div class="body-tabla mt-4 d-none" id="body-events-Vacio">
+                                                        <div class="content-registros-no-encontrados">
+                                                            <div>
+                                                                <img src="./images/newsistema/iconos/calendario-registros-vacios.svg" alt="">
+                                                                <p class="mt-4">No tiene Eventos registradas</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="body-tabla-list" id="body-peligros-list">
+
+                                                    </div>
+                                                    <div id="pagination-container" class="mt-3"></div>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="row setup-content" id="step-5">
+                                <div style="width: 100%;" class="readonly">
+                                    <div class="d-flex mt-3">
+                                        <div class="col-md-12">
+                                            <div class="mdc-text-field mdc-text-field--filled w-100 field-password actividad-label-2">
+
+                                                <span class="mdc-text-field__ripple"></span>
+                                                <span class="mdc-floating-label" id="my-label-id">Actividad</span>
+                                                <input class="mdc-text-field__input" disabled name="txt_actividad_label_2" id="txt_actividad_label_2" type="text" aria-labelledby="my-label-id">
+                                                <span class="mdc-line-ripple"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex mt-3">
+                                        <div class="col-md-7">
+                                            <div class="col-md-12 p-0">
+                                                <p class="detalle-formauditor">Detalle</p>
+                                            </div>
+                                            <div class="mdc-select mdc-select--filled demo-width-class cbo-riesgo w-100 text-left">
+                                                <div class="mdc-select__anchor">
+                                                    <span class="mdc-select__ripple"></span>
+                                                    <span class="mdc-select__selected-text"></span>
+                                                    <span class="mdc-select__dropdown-icon">
+                                                      <svg
+                                                              class="mdc-select__dropdown-icon-graphic"
+                                                              viewBox="7 10 10 5">
+                                                        <polygon
+                                                                class="mdc-select__dropdown-icon-inactive"
+                                                                stroke="none"
+                                                                fill-rule="evenodd"
+                                                                points="7 10 12 15 17 10">
+                                                        </polygon>
+                                                        <polygon
+                                                                class="mdc-select__dropdown-icon-active"
+                                                                stroke="none"
+                                                                fill-rule="evenodd"
+                                                                points="7 15 12 10 17 15">
+                                                        </polygon>
+                                                      </svg>
+                                                    </span>
+                                                    <span class="mdc-floating-label mdc-floating-label--float-above">Seleccionar Riesgo</span>
+                                                    <span class="mdc-line-ripple"></span>
+                                                </div>
+
+                                                <div class="mdc-select__menu demo-width-class mdc-menu mdc-menu-surface w-100">
+                                                    <ul class="mdc-list" id="ul-Riesgo">
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5" style="display: flex;flex-wrap: wrap;">
+                                            <div class="col-md-12 p-0">
+                                                <p class="detalle-formauditor">Nivel de Riesgo Actual</p>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="mdc-select mdc-select--filled demo-width-class cbo-probabilidad w-100 text-left">
+                                                    <div class="mdc-select__anchor">
+                                                        <span class="mdc-select__ripple"></span>
+                                                        <span class="mdc-select__selected-text"></span>
+                                                        <span class="mdc-select__dropdown-icon">
+                                                          <svg
+                                                                  class="mdc-select__dropdown-icon-graphic"
+                                                                  viewBox="7 10 10 5">
+                                                            <polygon
+                                                                    class="mdc-select__dropdown-icon-inactive"
+                                                                    stroke="none"
+                                                                    fill-rule="evenodd"
+                                                                    points="7 10 12 15 17 10">
+                                                            </polygon>
+                                                            <polygon
+                                                                    class="mdc-select__dropdown-icon-active"
+                                                                    stroke="none"
+                                                                    fill-rule="evenodd"
+                                                                    points="7 15 12 10 17 15">
+                                                            </polygon>
+                                                          </svg>
+                                                        </span>
+                                                        <span class="mdc-floating-label mdc-floating-label--float-above">Pobabilidad</span>
+                                                        <span class="mdc-line-ripple"></span>
+                                                    </div>
+
+                                                    <div class="mdc-select__menu demo-width-class mdc-menu mdc-menu-surface w-100">
+                                                        <ul class="mdc-list" id="ul-Probabilidad">
+                                                            <li class="mdc-list-item" data-value="1" tabindex="-1" onclick="selectProbability(1)">
+                                                                <span class="mdc-list-item__ripple"></span>
+                                                                <span class="mdc-list-item__text">1</span>
+                                                            </li>
+                                                            <li class="mdc-list-item" data-value="2" tabindex="-1" onclick="selectProbability(2)">
+                                                                <span class="mdc-list-item__ripple"></span>
+                                                                <span class="mdc-list-item__text">2</span>
+                                                            </li>
+                                                            <li class="mdc-list-item" data-value="3" tabindex="-1" onclick="selectProbability(3)">
+                                                                <span class="mdc-list-item__ripple"></span>
+                                                                <span class="mdc-list-item__text">3</span>
+                                                            </li>
+                                                            <li class="mdc-list-item" data-value="4" tabindex="-1" onclick="selectProbability(4)">
+                                                                <span class="mdc-list-item__ripple"></span>
+                                                                <span class="mdc-list-item__text">4</span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="mdc-text-field mdc-text-field--filled w-100 field-password indice-severidad">
+                                                    <span class="mdc-text-field__ripple"></span>
+                                                    <span class="mdc-floating-label" id="indice_severidad">Índice de Severidad</span>
+                                                    <input class="mdc-text-field__input" disabled name="txt_indice_severidad" id="txt_indice_severidad" type="text" aria-labelledby="indice_severidad">
+                                                    <span class="mdc-line-ripple"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="mdc-text-field mdc-text-field--filled w-100 field-password indice-riesgo">
+                                                    <span class="mdc-text-field__ripple"></span>
+                                                    <span class="mdc-floating-label" id="indice-riesgo">Índice de Riesgo</span>
+                                                    <input class="mdc-text-field__input" disabled name="txt_indice_riesgo" id="txt_indice_riesgo" type="text" aria-labelledby="indice-riesgo">
+                                                    <span class="mdc-line-ripple"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex mt-3">
+                                        <div class="col-md-4">
+                                            <div class="mdc-text-field mdc-text-field--filled w-100 field-password control-fisico">
+                                                <span class="mdc-text-field__ripple"></span>
+                                                <span class="mdc-floating-label" id="control_fisico">Control físico</span>
+                                                <input class="mdc-text-field__input" name="txt_control_fisico" id="txt_control_fisico" type="text" aria-labelledby="control_fisico">
+                                                <span class="mdc-line-ripple"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="mdc-text-field mdc-text-field--filled w-100 field-password control-administrativo">
+                                                <span class="mdc-text-field__ripple"></span>
+                                                <span class="mdc-floating-label" id="control_administrativo">Control Administrativo, capacitación</span>
+                                                <input class="mdc-text-field__input" name="txt_control_administrativo" id="txt_control_administrativo" type="text" aria-labelledby="control_administrativo">
+                                                <span class="mdc-line-ripple"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="mdc-select mdc-select--filled demo-width-class cbo-epp w-100 text-left">
+                                                <div class="mdc-select__anchor">
+                                                    <span class="mdc-select__ripple"></span>
+                                                    <span class="mdc-select__selected-text"></span>
+                                                    <span class="mdc-select__dropdown-icon">
+                                                      <svg
+                                                              class="mdc-select__dropdown-icon-graphic"
+                                                              viewBox="7 10 10 5">
+                                                        <polygon
+                                                                class="mdc-select__dropdown-icon-inactive"
+                                                                stroke="none"
+                                                                fill-rule="evenodd"
+                                                                points="7 10 12 15 17 10">
+                                                        </polygon>
+                                                        <polygon
+                                                                class="mdc-select__dropdown-icon-active"
+                                                                stroke="none"
+                                                                fill-rule="evenodd"
+                                                                points="7 15 12 10 17 15">
+                                                        </polygon>
+                                                      </svg>
+                                                    </span>
+                                                    <span class="mdc-floating-label mdc-floating-label--float-above">EPP</span>
+                                                    <span class="mdc-line-ripple"></span>
+                                                </div>
+
+                                                <div class="mdc-select__menu demo-width-class mdc-menu mdc-menu-surface w-100">
+                                                    <ul class="mdc-list" id="ul-Epp">
+                                                        <li class="mdc-list-item" data-value="0" tabindex="-1" onclick="">
+                                                            <span class="mdc-list-item__ripple"></span>
+                                                            <span class="mdc-list-item__text">Seleccione</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="width: 98%;margin-top: 10px;" class="readonly">
+                                    <div class="row p-0" style="display: flex; justify-content: flex-end">
+                                        <div>
+                                            <p class="Rol-en-Auditora Title-Ssoma">
+                                                <button type="button" class="btn-save-observaacion d-none" onclick="updateRiskEval();" id="btn_edit_eval"
+                                                style="background-color: #58c25d !important; border-color: #58c25d !important;">
+                                                    <i class="txt-btn-close" id="textoBotonGuardar" style="color: #fff !important;">Editar</i> </button>
+                                                <button type="button" class="btn-save-observaacion d-none" onclick="clearEval();" id="btn_cancel_edit_eval"
+                                                style="background-color: #58c25d !important; border-color: #c56458 !important;">
+                                                    <i class="txt-btn-close" id="textoBotonGuardar" style="color: #fff !important;">Cancelar</i> </button>
+                                                <button type="button" class="btn-save-observaacion" onclick="addRiskEval();" id="btn_add_eval"
+                                                style="background-color: #58c25d !important; border-color: #58c25d !important;">
+                                                    <i class="txt-btn-close" id="textoBotonGuardar" style="color: #fff !important;">Agregar</i> </button>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body3" style="width: 100%;margin-top: 10px;">
+                                    <div class="row p-0">
+                                        <div id="contenido-detalle_0" class="scroll-blue" style="width: 100%; min-height: 327px;">
+
+
+                                            <div class="row justify-content-center mt-1" style="width: 110%;">
+                                                <div class="col-md-12">
+                                                    <div class="header-tabla p-2" style="font-size: 12px">
+                                                        <div class="row m-0 justify-content-between" style="align-items: center;">
+                                                            <div class="col-md-1 p-0 text-center row">
+                                                                <div class="col-md-12">Item</div>
+                                                            </div>
+                                                            <div class="col-md-1 p-0 text-center text-center row">
+                                                                <div class="col-md-12">Riesgo</div>
+                                                            </div>
+                                                            <div class="col-md-1 p-0 text-center row">
+                                                                <div class="col-md-12">Control Físico</div>
+                                                            </div>
+                                                            <div class="col-md-2 p-0 text-center row">
+                                                                <div class="col-md-12">Control Administrativo, Capacitación</div>
+                                                            </div>
+                                                            <div class="col-md-2 p-0 text-center row" id="lbl_eval_epp">
+                                                                <div class="col-md-12">EPP</div>
+                                                            </div>
+                                                            <div class="col-md-1 p-0 text-center row">
+                                                                <div class="col-md-12">Probabilidad</div>
+                                                            </div>
+                                                            <div class="col-md-1 p-0 text-center row">
+                                                                <div class="col-md-12">Índice de Severidad</div>
+                                                            </div>
+                                                            <div class="col-md-1 p-0 text-center row">
+                                                                <div class="col-md-12">Índice de Riesgo</div>
+                                                            </div>
+                                                            <div class="col-md-1 p-0 text-center row">
+                                                                <div class="col-md-12">Categor&iacute;a del Riesgo</div>
+                                                            </div>
+                                                            <div class="col-md-1 p-0 text-center row">
+                                                                <div class="col-md-12">Significancia</div>
+                                                            </div>
+                                                            <div class="col-md-1 text-center  row readonly">
+                                                                <div class="col-md-12">Eliminar</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="body-tabla-loader text-center py-3 d-none" id="body-events-loader">
+                                                        <div class="spinner-border text-primary"></div>
+                                                        <p class="text-center">Buscando resultados ....</p>
+                                                    </div>
+                                                    <div class="body-tabla mt-4 d-none" id="body-events-Vacio">
+                                                        <div class="content-registros-no-encontrados">
+                                                            <div>
+                                                                <img src="./images/newsistema/iconos/calendario-registros-vacios.svg" alt="">
+                                                                <p class="mt-4">No tiene Eventos registradas</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="body-tabla-list" id="body-riskeval-list">
+
+                                                    </div>
+                                                    <div id="pagination-container" class="mt-3"></div>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="row setup-content" id="step-6">
+                                <div style="width: 100%;" class="readonly">
+                                    <div class="d-flex mt-3">
+                                        <div class="col-md-12">
+                                            <div class="mdc-text-field mdc-text-field--filled w-100 field-password actividad-label-3">
+
+                                                <span class="mdc-text-field__ripple"></span>
+                                                <span class="mdc-floating-label" id="my-label-id">Actividad</span>
+                                                <input class="mdc-text-field__input" disabled name="txt_actividad_label_3" id="txt_actividad_label_3" type="text" aria-labelledby="my-label-id">
+                                                <span class="mdc-line-ripple"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex mt-3">
+                                        <div class="col-md-7">
+                                            <div class="col-md-12 p-0">
+                                                <p class="detalle-formauditor">Detalle</p>
+                                            </div>
+                                            <div class="mdc-select mdc-select--filled demo-width-class cbo-riesgo-2 w-100 text-left">
+                                                <div class="mdc-select__anchor">
+                                                    <span class="mdc-select__ripple"></span>
+                                                    <span class="mdc-select__selected-text"></span>
+                                                    <span class="mdc-select__dropdown-icon">
+                                                      <svg
+                                                              class="mdc-select__dropdown-icon-graphic"
+                                                              viewBox="7 10 10 5">
+                                                        <polygon
+                                                                class="mdc-select__dropdown-icon-inactive"
+                                                                stroke="none"
+                                                                fill-rule="evenodd"
+                                                                points="7 10 12 15 17 10">
+                                                        </polygon>
+                                                        <polygon
+                                                                class="mdc-select__dropdown-icon-active"
+                                                                stroke="none"
+                                                                fill-rule="evenodd"
+                                                                points="7 15 12 10 17 15">
+                                                        </polygon>
+                                                      </svg>
+                                                    </span>
+                                                    <span class="mdc-floating-label mdc-floating-label--float-above">Seleccionar Riesgo</span>
+                                                    <span class="mdc-line-ripple"></span>
+                                                </div>
+
+                                                <div class="mdc-select__menu demo-width-class mdc-menu mdc-menu-surface w-100">
+                                                    <ul class="mdc-list" id="ul-Riesgo-2">
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5" style="display: flex;flex-wrap: wrap;">
+                                            <div class="col-md-12 p-0">
+                                                <p class="detalle-formauditor">Nivel de Riesgo Actual</p>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="mdc-select mdc-select--filled demo-width-class cbo-probabilidad-2 w-100 text-left">
+                                                    <div class="mdc-select__anchor">
+                                                        <span class="mdc-select__ripple"></span>
+                                                        <span class="mdc-select__selected-text"></span>
+                                                        <span class="mdc-select__dropdown-icon">
+                                                          <svg
+                                                                  class="mdc-select__dropdown-icon-graphic"
+                                                                  viewBox="7 10 10 5">
+                                                            <polygon
+                                                                    class="mdc-select__dropdown-icon-inactive"
+                                                                    stroke="none"
+                                                                    fill-rule="evenodd"
+                                                                    points="7 10 12 15 17 10">
+                                                            </polygon>
+                                                            <polygon
+                                                                    class="mdc-select__dropdown-icon-active"
+                                                                    stroke="none"
+                                                                    fill-rule="evenodd"
+                                                                    points="7 15 12 10 17 15">
+                                                            </polygon>
+                                                          </svg>
+                                                        </span>
+                                                        <span class="mdc-floating-label mdc-floating-label--float-above">Probabilidad</span>
+                                                        <span class="mdc-line-ripple"></span>
+                                                    </div>
+
+                                                    <div class="mdc-select__menu demo-width-class mdc-menu mdc-menu-surface w-100">
+                                                        <ul class="mdc-list" id="ul-Probabilidad-2">
+                                                            <li class="mdc-list-item" data-value="1" tabindex="-1" onclick="selectProbability2(1)">
+                                                                <span class="mdc-list-item__ripple"></span>
+                                                                <span class="mdc-list-item__text">1</span>
+                                                            </li>
+                                                            <li class="mdc-list-item" data-value="2" tabindex="-1" onclick="selectProbability2(2)">
+                                                                <span class="mdc-list-item__ripple"></span>
+                                                                <span class="mdc-list-item__text">2</span>
+                                                            </li>
+                                                            <li class="mdc-list-item" data-value="3" tabindex="-1" onclick="selectProbability2(3)">
+                                                                <span class="mdc-list-item__ripple"></span>
+                                                                <span class="mdc-list-item__text">3</span>
+                                                            </li>
+                                                            <li class="mdc-list-item" data-value="4" tabindex="-1" onclick="selectProbability2(4)">
+                                                                <span class="mdc-list-item__ripple"></span>
+                                                                <span class="mdc-list-item__text">4</span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="mdc-text-field mdc-text-field--filled w-100 field-password indice-severidad-2">
+                                                    <span class="mdc-text-field__ripple"></span>
+                                                    <span class="mdc-floating-label" id="indice_severidad_2">Índice de Severidad</span>
+                                                    <input class="mdc-text-field__input" disabled name="txt_indice_severidad_2" id="txt_indice_severidad_2" type="text" aria-labelledby="indice_severidad_2">
+                                                    <span class="mdc-line-ripple"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="mdc-text-field mdc-text-field--filled w-100 field-password indice-riesgo-2">
+                                                    <span class="mdc-text-field__ripple"></span>
+                                                    <span class="mdc-floating-label" id="indice-riesgo-2">Índice de Riesgo</span>
+                                                    <input class="mdc-text-field__input" disabled name="txt_indice_riesgo_2" id="txt_indice_riesgo_2" type="text" aria-labelledby="indice-riesgo-2">
+                                                    <span class="mdc-line-ripple"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex mt-3">
+                                        <div class="col-md-7 p-0" style="display: flex;flex-wrap: wrap;">
+                                            <div class="col-md-4">
+                                                <div class="mdc-text-field mdc-text-field--filled w-100 field-password eliminacion-riesgo">
+                                                    <span class="mdc-text-field__ripple"></span>
+                                                    <span class="mdc-floating-label" id="eliminacion_riesgo">Eliminación del riesgo</span>
+                                                    <input class="mdc-text-field__input" name="txt_eliminacion_riesgo" id="txt_eliminacion_riesgo" type="text" aria-labelledby="eliminacion_riesgo">
+                                                    <span class="mdc-line-ripple"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="mdc-text-field mdc-text-field--filled w-100 field-password sustitucion">
+                                                    <span class="mdc-text-field__ripple"></span>
+                                                    <span class="mdc-floating-label" id="sustitucion">Sustitución</span>
+                                                    <input class="mdc-text-field__input" name="txt_sustitucion" id="txt_sustitucion" type="text" aria-labelledby="sustitucion">
+                                                    <span class="mdc-line-ripple"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="mdc-text-field mdc-text-field--filled w-100 field-password control-ingenieria">
+                                                    <span class="mdc-text-field__ripple"></span>
+                                                    <span class="mdc-floating-label" id="control_ingenieria">Control de Ingeniería</span>
+                                                    <input class="mdc-text-field__input" name="txt_control_ingenieria" id="txt_control_ingenieria" type="text" aria-labelledby="control_ingenieria">
+                                                    <span class="mdc-line-ripple"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5" style="display: flex;flex-wrap: wrap;">
+                                            <div class="col-md-6">
+                                                <div class="mdc-text-field mdc-text-field--filled w-100 field-password control-administrativo-2">
+                                                    <span class="mdc-text-field__ripple"></span>
+                                                    <span class="mdc-floating-label" id="control_administrativo_2">Control Administrativo</span>
+                                                    <input class="mdc-text-field__input" name="txt_control_administrativo_2" id="txt_control_administrativo_2" type="text" aria-labelledby="control_administrativo_2">
+                                                    <span class="mdc-line-ripple"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="mdc-select mdc-select--filled demo-width-class cbo-epp-2 w-100 text-left">
+                                                    <div class="mdc-select__anchor">
+                                                        <span class="mdc-select__ripple"></span>
+                                                        <span class="mdc-select__selected-text"></span>
+                                                        <span class="mdc-select__dropdown-icon">
+                                                          <svg
+                                                                  class="mdc-select__dropdown-icon-graphic"
+                                                                  viewBox="7 10 10 5">
+                                                            <polygon
+                                                                    class="mdc-select__dropdown-icon-inactive"
+                                                                    stroke="none"
+                                                                    fill-rule="evenodd"
+                                                                    points="7 10 12 15 17 10">
+                                                            </polygon>
+                                                            <polygon
+                                                                    class="mdc-select__dropdown-icon-active"
+                                                                    stroke="none"
+                                                                    fill-rule="evenodd"
+                                                                    points="7 15 12 10 17 15">
+                                                            </polygon>
+                                                          </svg>
+                                                        </span>
+                                                        <span class="mdc-floating-label mdc-floating-label--float-above">EPP</span>
+                                                        <span class="mdc-line-ripple"></span>
+                                                    </div>
+
+                                                    <div class="mdc-select__menu demo-width-class mdc-menu mdc-menu-surface w-100">
+                                                        <ul class="mdc-list" id="ul-Epp-2">
+                                                            <li class="mdc-list-item" data-value="0" tabindex="-1" onclick="">
+                                                                <span class="mdc-list-item__ripple"></span>
+                                                                <span class="mdc-list-item__text">Seleccione</span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div style="width: 98%;margin-top: 10px;" class="readonly">
+                                    <div class="row p-0" style="display: flex; justify-content: flex-end">
+                                        <div>
+                                            <p class="Rol-en-Auditora Title-Ssoma">
+                                                <button type="button" class="btn-save-observaacion d-none" onclick="updateControl();" id="btn_edit_control"
+                                                style="background-color: #58c25d !important; border-color: #58c25d !important;">
+                                                    <i class="txt-btn-close" id="textoBotonGuardar" style="color: #fff !important;">Editar</i> </button>
+                                                <button type="button" class="btn-save-observaacion d-none" onclick="clearControl();" id="btn_cancel_edit_control"
+                                                style="background-color: #58c25d !important; border-color: #c56458 !important;">
+                                                    <i class="txt-btn-close" id="textoBotonGuardar" style="color: #fff !important;">Cancelar</i> </button>
+                                                <button type="button" class="btn-save-observaacion" onclick="addControl();" id="btn_add_control"
+                                                style="background-color: #58c25d !important; border-color: #58c25d !important;">
+                                                    <i class="txt-btn-close" id="textoBotonGuardar" style="color: #fff !important;">Agregar</i> </button>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body3" style="width: 100%;margin-top: 10px;">
+                                    <div class="row p-0">
+                                        <div id="contenido-detalle_0" class="scroll-blue" style="width: 100%; min-height: 327px;">
+
+
+                                            <div class="row justify-content-center mt-1" style="width: 110%;">
+                                                <div class="col-md-12">
+                                                    <div class="header-tabla p-2" style="font-size: 12px">
+                                                        <div class="row m-0 justify-content-between" style="align-items: center;">
+                                                            <div class="col-md-1 p-0 text-center row">
+                                                                <div class="col-md-12">Item</div>
+                                                            </div>
+                                                            <div class="col-md-1 p-0 text-center row">
+                                                                <div class="col-md-12">Eliminación del Riesgo</div>
+                                                            </div>
+                                                            <div class="col-md-1 p-0 text-center row">
+                                                                <div class="col-md-12">Situación</div>
+                                                            </div>
+                                                            <div class="col-md-1 p-0 text-center row">
+                                                                <div class="col-md-12">Control de Ingeniería</div>
+                                                            </div>
+                                                            <div class="col-md-1 p-0 text-center row" id="lbl_admin_control">
+                                                                <div class="col-md-12">Control Administrativo</div>
+                                                            </div>
+                                                            <div class="col-md-1 p-0 text-center row">
+                                                                <div class="col-md-12">EPP</div>
+                                                            </div>
+                                                            <div class="col-md-1 p-0 text-center row">
+                                                                <div class="col-md-12">Índice de Probabilidad</div>
+                                                            </div>
+                                                            <div class="col-md-1 p-0 text-center row">
+                                                                <div class="col-md-12">Índice de Severidad</div>
+                                                            </div>
+                                                            <div class="col-md-1 p-0 text-center row">
+                                                                <div class="col-md-12">Índice de Riesgo</div>
+                                                            </div>
+                                                            <div class="col-md-1 p-0 text-center row">
+                                                                <div class="col-md-12">Catálogo del Riesgo</div>
+                                                            </div>
+                                                            <div class="col-md-1 p-0 text-center row">
+                                                                <div class="col-md-12">Significancia</div>
+                                                            </div>
+                                                            <div class="col-md-1 text-center row readonly">
+                                                                <div class="col-md-12">Eliminar</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="body-tabla-loader text-center py-3 d-none" id="body-events-loader">
+                                                        <div class="spinner-border text-primary"></div>
+                                                        <p class="text-center">Buscando resultados ....</p>
+                                                    </div>
+                                                    <div class="body-tabla mt-4 d-none" id="body-events-Vacio">
+                                                        <div class="content-registros-no-encontrados">
+                                                            <div>
+                                                                <img src="./images/newsistema/iconos/calendario-registros-vacios.svg" alt="">
+                                                                <p class="mt-4">No tiene Eventos registradas</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="body-tabla-list" id="body-controls-list">
+
+                                                    </div>
+                                                    <div id="pagination-container" class="mt-3"></div>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                    </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Fin: modal-mantenimiento-observacion -->
+
+
+<!-- Inicio: modal-envio-iperc -->
+<div class="modal fade " id="modal-envio-iperc" tabindex="-1" role="dialog"  data-backdrop="static" data-keyboard="false" aria-labelledby="modalAddCompanyTitle" aria-hidden="true" >
+    <div class="modal-dialog modal-dialog-centered rounded dialog-positionAU " style="max-width: 900px !important;" role="document" >
+        <div class="modal-content rounded modal-FormObservacion " style="width: 100% !important;" >
+            <div class="modal-header fix-header-modal">
+                <div class="card-header text-left text-white card-header-FormObservacion" style="background-color: #05beee !important;">
+                    <div class="row">
+                        <div class="col-3">
+                        </div>
+                        <div id="txtHeadModalMantenimiento" class="col-6 text-center txtHeadModalAuditor"
+                        style="color: #fff !important; background-color: #05beee !important;">Enviar IPERC
+                        </div>
+                        <div class="col-3 txtHeadModalAuditor" style="text-align: right;">
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="modal-body dialog-position" id="bodymodalShowAuditor" style=" justify-content:space-around; align-content:center;padding: 20px 60px 24px !important;">
+
+                <div class="card " style="border: 0px !important; border-radius: 10px; box-shadow: none;">
+                    <div class="card-body2" style="padding-bottom: 0px !important;">
+                        <div class="row p-0">
+                            <div style="width: 18%;display: flex;align-items: center;">
+                                <p class="detalle-formauditor" style="margin-bottom: 0rem !important;">Lista de envío <strong id="countEnvio">00</strong></p>
+                            </div>
+                            <div style="width: 72%;">
+                                <hr>
+                            </div>
+                            <div style="width: 10%;" style="display: flex;align-items: center;padding-top: 0px !important;">
+                                <button type="button" class="btn-save-observaacion" onclick=""  style="background-color: #58c25d !important; border-color: #58c25d !important;">
+                                <i class="txt-btn-close"  style="color: #ffffff !important;" onclick="addPersonEnvio()">Agregar</i> </button>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="hidden" id="hiddenIpercIdEnvio">
+                    <input type="hidden" id="hiddenIpercCodeEnvio">
+                    <div class="card-body3" style="padding-right: 0px;padding-top: 20px;">
+                        <div class="row p-0">
+                            <div id="contenido-detalle_0"  style="width: 100%; min-height: 327px;">
+
+
+                                <div class="row justify-content-center mt-1">
+                                    <div class="col-md-12">
+                                        <div class="header-tabla p-3" style="font-size: 15px">
+                                            <div class="row m-0 justify-content-between">
+
+                                                <div class="col-md-3  row">
+                                                    <div class="col-md-12">Nombres</div>
+                                                </div>
+                                                <div class="col-md-3  row">
+                                                    <div class="col-md-12">Cargo</div>
+                                                </div>
+                                                <div class="col-md-4  row">
+                                                    <div class="col-md-12">Correo</div>
+                                                </div>
+                                                <div class="col-md-2 text-center row">
+                                                    <div class="col-md-12">Eliminar</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="body-tabla-loader text-center py-3 d-none" id="body-envio-loader" style="height: 200px;">
+                                            <div class="spinner-border text-primary"></div>
+                                            <p class="text-center">Buscando resultados ....</p>
+                                        </div>
+                                        <div class="body-tabla mt-4" id="body-envio-vacio" style="height: 200px;">
+                                            <div class="content-registros-no-encontrados" style="height: 200px;">
+                                                <div>
+                                                    <p class="mt-4">No tiene lista de envio</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="body-tabla-list" id="body-envio-list">
+
+                                        </div>
+                                        <div id="pagination-container" class="mt-3"></div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+
+
+
+
+                        </div>
+
+                    </div>
+                    <div class="col-12" style="text-align: right;display: flex;justify-content: space-evenly;height: 50px;">
+
+                        <button type="button" class="btn-save-observaacion" onclick="sendEmail()"  style="background-color: #d2d97b !important; border-color: #d2d97b !important;width: 30%;height: auto;">
+                            <i class="txt-btn-close" id="" style="color: #565933 !important;font-size: 16px !important;">Enviar</i>
+                        </button>
+                        <button type="button" class="btn-default2" onclick="cancelSendEmail()" style="background-color: #858585 !important; border-color: #858585 !important; color: #fff !important;width: 30%;height: auto;">
+                            <i class="txt-btn-save" style="color: #fff !important;font-size: 16px !important;">Cancelar</i>
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Fin: modal-envio-observacion -->
+
+<!-- Inicio: modal-evaluacion-iperc -->
+<div class="modal fade " id="modal-eval-iperc" tabindex="-1" role="dialog"  data-backdrop="static" data-keyboard="false" aria-labelledby="modalAddCompanyTitle" aria-hidden="true" >
+    <div class="modal-dialog modal-dialog-centered rounded dialog-positionAU " style="max-width: 900px !important;" role="document" >
+        <div class="modal-content rounded modal-FormObservacion " style="width: 100% !important;" >
+            <div class="modal-header fix-header-modal">
+                <div class="card-header text-left text-white card-header-FormObservacion" style="background-color: #05beee !important;">
+                    <div class="row">
+                        <div class="col-3">
+                        </div>
+                        <div id="txtHeadModalMantenimiento" class="col-6 text-center txtHeadModalAuditor"
+                        style="color: #fff !important; background-color: #05beee !important;">Evaluar IPERC <strong id="codeIpercEval"></strong>
+                        </div>
+                        <div class="col-2 txtHeadModalAuditor" style="text-align: right;">
+
+                        </div>
+                        <div class="col-1 txtHeadModalAuditor" style="text-align: right;" onclick="closeModalEvaluacion()">
+                            X
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="modal-body dialog-position" id="bodymodalShowAuditor" style=" justify-content:space-around; align-content:center;padding: 20px 60px 24px !important;">
+
+                <div class="card " style="border: 0px !important; border-radius: 10px; box-shadow: none;">
+                    <input type="hidden" id="hiddenIpercIdEvaluacion">
+                    <input type="hidden" id="hiddenIpercCodeEvaluacion">
+                    <div class="card-body3" style="padding-right: 0px;padding-top: 20px;">
+                        <div class="row p-0">
+                            <div id="contenido-detalle_0"  style="width: 100%; min-height: 290px;">
+
+
+                                <div class="row mt-1" style="justify-content: left;">
+                                    <div class="col-md-1 evaluador" style="margin-bottom: 10px;">
+                                        <label class="containercb">
+                                            <input type="checkbox" name="evaluacion"  id="cb_validado" onclick="selectCheck(1)">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                    <div class="col-md-2 evaluador" style="align-self: center;margin-bottom: 10px;">
+                                        Validado
+                                    </div>
+                                    <div class="col-md-1 evaluador" style="margin-bottom: 10px;">
+                                        <label class="containercb">
+                                            <input type="checkbox" name="evaluacion"  id="cb_observado" onclick="selectCheck(2)">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                    <div class="col-md-2 evaluador" style="align-self: center;margin-bottom: 10px;">
+                                        Observado
+                                    </div>
+                                    <div class="col-md-12">
+
+                                        <textarea style="width: 100%;" rows="10" id="evaluacionDescription" disabled>
+
+                                        </textarea>
+
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="col-12 evaluador" style="text-align: right;display: flex;justify-content: space-evenly;height: 50px;">
+
+                        <button type="button" class="btn-save-observaacion" onclick="guardarEvaluacionIperc(1)"  style="background-color: #d2d97b !important; border-color: #d2d97b !important;width: 30%;height: auto;">
+                            <i class="txt-btn-close" id="" style="color: #565933 !important;font-size: 16px !important;">Guardar</i>
+                        </button>
+                        <button type="button" class="btn-default2" onclick="guardarEvaluacionIperc(2)" style="background-color: #34559c !important; border-color: #34559c !important; color: #fff !important;width: 30%;height: auto;">
+                            <i class="txt-btn-save" style="color: #fff !important;font-size: 16px !important;">Finalizar y enviar</i>
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Fin: modal-evaluacion-observacion -->
+
+<!-- Inicio: modal-historial-modificacion-iperc -->
+<div class="modal fade " id="modal-historial-modificacion-iperc" tabindex="-1" role="dialog"  data-backdrop="static" data-keyboard="false" aria-labelledby="modalAddCompanyTitle" aria-hidden="true" >
+    <div class="modal-dialog modal-dialog-centered rounded dialog-positionAU " style="max-width: 1400px !important;" role="document" >
+        <div class="modal-content rounded modal-FormObservacion " style="width: 100% !important;" >
+            <div class="modal-header fix-header-modal">
+                <div class="card-header text-left text-white card-header-FormObservacion" style="background-color: #05beee !important;width: 100% !important;">
+                    <div class="row">
+                        <div class="col-3">
+                        </div>
+                        <div id="txtHeadModalMantenimiento" class="col-6 text-center txtHeadModalAuditor"
+                        style="color: #fff !important; background-color: #05beee !important;">Ver historial IPERC: Editar IPERC: <strong id="cod-ipers-historial"></strong>
+                        </div>
+                        <div class="col-2 txtHeadModalAuditor" style="text-align: right;">
+
+                        </div>
+                        <div class="col-1 txtHeadModalAuditor" style="text-align: right;" onclick="closeModalHistorialModificacion()">
+                            X
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="modal-body dialog-position" id="bodymodalShowAuditor" style=" justify-content:space-around; align-content:center;padding: 20px 40px 24px !important;">
+
+                <div class="card " style="border: 0px !important; border-radius: 10px; box-shadow: none;">
+                    <div class="card-body3" style="padding-right: 0px;padding-top: 20px;">
+                        <div class="row p-0">
+                            <div id="contenido-detalle_0"  style="width: 100%; min-height: 327px;">
+
+
+                                <div class="row justify-content-center mt-1">
+                                    <div class="col-md-12">
+                                        <div class="header-tabla p-3" style="font-size: 15px">
+                                            <div class="row m-0 justify-content-between">
+
+                                                <div class="col-md-2  row">
+                                                    Ubicación
+                                                </div>
+                                                <div class="col-md-1  row">
+                                                    Campo
+                                                </div>
+                                                <div class="col-md-1  row">
+                                                    Tipo Modificación
+                                                </div>
+                                                <div class="col-md-3 text-center row">
+                                                    Dato Inicial
+                                                </div>
+                                                <div class="col-md-3 text-center row">
+                                                    Dato Actual
+                                                </div>
+                                                <div class="col-md-1 text-center row">
+                                                    Fecha Modificación
+                                                </div>
+                                                <div class="col-md-1 text-center row">
+                                                    Usuario que edita
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="body-tabla-loader text-center py-3 d-none" id="body-historial-modificacion-loader" style="height: 200px;">
+                                            <div class="spinner-border text-primary"></div>
+                                            <p class="text-center">Buscando resultados ....</p>
+                                        </div>
+                                        <div class="body-tabla mt-4" id="body-historial-modificacion-vacio" style="height: 200px;">
+                                            <div class="content-registros-no-encontrados" style="height: 200px;">
+                                                <div>
+                                                    <p class="mt-4">No tiene historial de modificaciones</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="body-tabla-list" id="body-historial-modificacion-list">
+
+                                        </div>
+                                        <div id="pagination-container" class="mt-3"></div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+
+
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Fin: modal-historial-modificacion-observacion -->
+
+<!-- Inicio: modal-pdf -->
+<div class="modal fade " id="modal-pdf" tabindex="-1" role="dialog"  data-backdrop="static" data-keyboard="false" aria-labelledby="modalAddCompanyTitle" aria-hidden="true" >
+    <div class="modal-dialog modal-dialog-centered rounded dialog-positionAU " style="width: 800px !important;" role="document" >
+        <div class="modal-content rounded modal-FormObservacion " >
+            <div class="modal-header fix-header-modal">
+                <div class="card-header text-left text-white card-header-FormObservacion" >
+                    <div class="row">
+                        <div class="col-3">
+                        </div>
+                        <div class="col-6 text-center txtHeadModalAuditor" style="color: #000 !important;">
+                            Vista previa del documento
+                        </div>
+                        <div class="col-3 txtHeadModalAuditor" style="text-align: right;">
+                            <button type="button" class="btn-close-auditor" onclick="onDescargarPdf();" id="btn-cancelar" >
+                                <i class="txt-btn-save">Descargar</i> </button>
+                            <button type="button" class="btn-save-observaacion" onclick="fnCerrarModalPdf();" id="btn_create_auditor" >
+                                <i class="txt-btn-close">Cancelar</i> </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="modal-body dialog-position" id="bodymodalShowAuditor" style=" justify-content:space-around; align-content:center;">
+
+                <div class="card " style="border: 0px !important; border-radius: 10px; box-shadow: none;">
+                    <div class="card-body2">
+                        <iframe id="pdfView" type="application/pdf" width="900" height="450"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Fin: modal-pdf -->
+
+<!-- Inicio: modal-responsables-iperc -->
+<div class="modal fade " id="modal-responsables-iperc" tabindex="-1" role="dialog"  data-backdrop="static" data-keyboard="false" aria-labelledby="modalAddCompanyTitle" aria-hidden="true" >
+    <div class="modal-dialog modal-dialog-centered rounded dialog-positionAU " style="max-width: 900px !important;" role="document" >
+        <div class="modal-content rounded modal-FormObservacion " style="width: 100% !important;" >
+            <div class="modal-header fix-header-modal">
+                <div class="card-header text-left text-white card-header-FormObservacion" style="background-color: #05beee !important;">
+                    <div class="row">
+                        <div class="col-3">
+                        </div>
+                        <div id="txtHeadModalMantenimiento" class="col-6 text-center txtHeadModalAuditor"
+                        style="color: #fff !important; background-color: #05beee !important;">Responsables de matriz IPERC
+                        </div>
+                        <div class="col-2 txtHeadModalAuditor" style="text-align: right;">
+
+                        </div>
+                        <div class="col-1 txtHeadModalAuditor" style="text-align: right;" onclick="closeModalResponsables()">
+                            X
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="modal-body dialog-position" id="bodymodalShowAuditor" style=" justify-content:space-around; align-content:center;padding: 20px 60px 24px !important;">
+
+                <div class="card " style="border: 0px !important; border-radius: 10px; box-shadow: none;">
+                    <div class="card-body2" style="padding-bottom: 0px !important;">
+                        <div class="row p-0">
+                            <input  id="txt_id_responsable" type="hidden" value="0" >
+                            <input  id="txt_documento_responsable" type="hidden" value="" >
+                            <input  id="txt_hash_responsable" type="hidden" value="" >
+                            <input  id="txt_correo_responsable" type="hidden" value="" >
+                            <div class="col-md-6 pt-2">
+                                <div class="mdc-text-field mdc-text-field--filled w-100 field-password nombre_responsable">
+
+                                    <span class="mdc-text-field__ripple"></span>
+                                    <span class="mdc-floating-label" id="my-label-id">Responsables de matriz IPERC</span>
+                                    <input class="mdc-text-field__input" name="txt_nombre_responsable" id="txt_nombre_responsable" type="text" aria-labelledby="my-label-id">
+                                    <span class="mdc-line-ripple"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-3 pt-2">
+                                <div class="mdc-text-field mdc-text-field--filled w-100 field-password cargo_responsable">
+
+                                    <span class="mdc-text-field__ripple"></span>
+                                    <span class="mdc-floating-label" id="my-label-id">Cargo</span>
+                                    <input class="mdc-text-field__input" name="txt_cargo_responsable" id="txt_cargo_responsable" type="text" aria-labelledby="my-label-id">
+                                    <span class="mdc-line-ripple"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-3 pt-2">
+                                <div class="mdc-text-field mdc-text-field--filled w-100 field-password firma_responsable">
+
+                                    <span class="mdc-text-field__ripple"></span>
+                                    <span class="mdc-floating-label" id="my-label-id">Firma</span>
+                                    <input class="mdc-text-field__input" name="txt_firma_responsable" id="txt_firma_responsable" type="text" aria-labelledby="my-label-id">
+                                    <span class="mdc-line-ripple"></span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <hr>
+
+                    </div>
+                    <div class="card-body2" style="padding-bottom: 0px !important;">
+                        <div class="row p-0">
+                            <div style="width: 10%;display: flex;align-items: center;">
+                                <p class="detalle-formauditor" style="margin-bottom: 0rem !important;">Lista <strong id="countResponsables">00</strong></p>
+                            </div>
+                            <div style="width: 80%;">
+                                <hr>
+                            </div>
+                            <div style="width: 10%;" style="display: flex;align-items: center;padding-top: 0px !important;">
+                                <button type="button" class="btn-save-observaacion" onclick=""  style="background-color: #58c25d !important; border-color: #58c25d !important;">
+                                <i class="txt-btn-close"  style="color: #ffffff !important;" onclick="addPersonResponsable()">Agregar</i> </button>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="hidden" id="hiddenIpercIdResponsable">
+                    <div class="card-body3" style="padding-right: 0px;padding-top: 20px;">
+                        <div class="row p-0">
+                            <div id="contenido-detalle_0"  style="width: 100%; min-height: 327px;">
+
+
+                                <div class="row justify-content-center mt-1">
+                                    <div class="col-md-12">
+                                        <div class="header-tabla p-3" style="font-size: 15px">
+                                            <div class="row m-0 justify-content-between">
+
+                                                <div class="col-md-4  row">
+                                                    <div class="col-md-12">Nombres</div>
+                                                </div>
+                                                <div class="col-md-3  row">
+                                                    <div class="col-md-12">Cargo</div>
+                                                </div>
+                                                <div class="col-md-3  row">
+                                                    <div class="col-md-12">Firma</div>
+                                                </div>
+                                                <div class="col-md-2 text-center row">
+                                                    <div class="col-md-12">Eliminar</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="body-tabla-loader text-center py-3 d-none" id="body-responsable-loader" style="height: 200px;">
+                                            <div class="spinner-border text-primary"></div>
+                                            <p class="text-center">Buscando resultados ....</p>
+                                        </div>
+                                        <div class="body-tabla mt-4" id="body-responsable-vacio" style="height: 200px;">
+                                            <div class="content-registros-no-encontrados" style="height: 200px;">
+                                                <div>
+                                                    <p class="mt-4">No tiene lista de responsable</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="body-tabla-list" id="body-responsable-list">
+
+                                        </div>
+                                        <div id="pagination-container" class="mt-3"></div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+
+
+
+
+                        </div>
+
+                    </div>
+                    <div class="col-12" style="text-align: right;display: flex;justify-content: space-evenly;height: 50px;">
+
+                        <button type="button" class="btn-save-observaacion" onclick="openModalConfirmResponsables()"  style="background-color: #d2d97b !important; border-color: #d2d97b !important;width: 30%;height: auto;">
+                            <i class="txt-btn-close" id="" style="color: #565933 !important;font-size: 16px !important;">Guardar</i>
+                        </button>
+                        <button type="button" class="btn-default2" onclick="closeModalResponsables()" style="background-color: #858585 !important; border-color: #858585 !important; color: #fff !important;width: 30%;height: auto;">
+                            <i class="txt-btn-save" style="color: #fff !important;font-size: 16px !important;">Cancelar</i>
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Fin: modal-responsables-observacion -->
+
+
+
+
+<div class="modal_confirmacion" id="modal-confirmacion-delete">
+    <div class="modal_confirmacion__content">
+        <div class="modal_confirmacion__head bg-danger">
+            <img src="./images/newsistema/iconos/informacion3.svg" alt="">
+        </div>
+        <div class="modal_confirmacion__body">
+            <div class="title mb-4 mt-3" id="mensajeEliminar">
+            </div>
+            <div class="content">
+                ¿Desea confirmar la acción?
+            </div>
+            <div class="footer">
+                <div class="d-flex">
+                    <div class="col-md-6 pl-0">
+                        <button class="btn_confirmar_modal" onclick="deleteObservacionForm()">Confirmar</button>
+                    </div>
+                    <div class="col-md-6 pr-0">
+                        <button class="btn_cerrar_modal" onclick="cerrarModal('modal-confirmacion-delete')">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal_confirmacion" id="modal-confirmacion-delete-mensaje">
+    <div class="modal_confirmacion__content">
+        <div class="modal_confirmacion__head bg-green-lime-modal">
+            <img src="./images/newsistema/iconos/correct1.svg" alt="">
+        </div>
+        <div class="modal_confirmacion__body">
+            <div class="title mb-4 mt-3">
+                Se eliminó la observación con éxito
+            </div>
+            <div class="content">
+                Puede regresar a su bandeja de entrada
+            </div>
+            <div class="footer">
+                <div class="d-flex">
+                    <div class="col-md-12 px-0">
+                        <button class="btn_confirmar_modal bg-green-lime-modal" onclick="cerrarModal('modal-confirmacion-delete-mensaje')">De Acuerdo</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal_confirmacion" id="modal-observacion" >
+    <div class="modal_confirmacion__content " style="width: 375px;">
+        <div class="modal_confirmacion__head d-flex align-items-center">
+            <h6 class="title_modal_header text-left px-3 m-0" style="width: 80%;"></h6>
+            <div style="width: 20% ; cursor:pointer;" onclick="cerrarModal('modal-observacion')">
+                <i class="fas fa-times"></i>
+            </div>
+        </div>
+        <div class="modal_confirmacion__body" style="    height: calc(100vh - 150px); overflow: auto;">
+<!--            <div class="title mb-4 mt-3">-->
+<!--                ¿Estas seguro de eliminar <span class="title_formulario_delete"></span> ?-->
+<!--            </div>-->
+            <div class="content" id="contenido-detalle">
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade "  id="modalShowAlertConfirm" tabindex="-1" role="dialog" aria-labelledby="modalAddCompanyTitle" aria-hidden="true" >
+    <div class="modal-dialog modal-dialog-centered rounded " role="document" style="max-width: 472px; z-index: 1030; ">
+        <div class="modal-content rounded " style="border: 0px !important; background-color:rgba(0,0,0,.0001) !important; box-shadow: none;">
+
+            <div style="overflow: hidden;height: 500px;overflow-x: hidden; ">
+                <div class="modal-body" id="">
+                    <div class="col-sm-12 col-md-12" style="color:#575757c9;">
+                        <div style="width: 100%;text-align: -webkit-center; position: absolute; z-index: 2;">
+                            <div class="preloader" id="preloader" style="display: none;" ></div>
+                            </div>
+                        <div class="card " style=" border-radius: 10px; box-shadow: none;">
+                            <div class="card-header text-center text-white  " style=" border-radius: 10px 10px 0px 0px; background:#05beee; height: 95px;"><img src="images/iconos/informacio1.svg"><span><b><br><br>&nbsp;&nbsp;&nbsp;&nbsp;</b></span></div>
+
+                            <div class="card-body">
+                                <div class="row p-0 d-flex justify-content-center">
+                                    <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;" >
+                                        <h4>
+                                            <b id="titleConfirm"></b>
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="espacio"></div>
+                            <div class="card-body">
+                                <div class="row p-0 d-flex justify-content-center">
+                                    <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;font-size: 15px;" >
+                                        <h5<b>¿Desea confirmar la acción?</b>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="espacio"></div>
+                            <div class="card-body">
+                                <div class="row p-0 d-flex justify-content-center">
+                                    <div class="col-sm-12 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;font-size: 15px;" >
+                                        <button type="button" id="btnValida" class="btn  btn-raised" onclick="aceptarConfirmIPERC();" style="background-color: #05beee; height: 338px; width: 160.4px; object-fit: contain; border-radius: 4.4px !important;" >Confirmar</button>
+
+                                        <button type="button" class="btn   btn-white btn-raised" style=" background-color: #fff; height: 338px;  width: 160.4px; object-fit: contain; border-radius: 4.4px !important;   border: solid 1.1px #000000 !important;" onclick="cancelConfirmIPERC()">Cerrar</button>
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+
+
+
+
+                            <div ></div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade "  id="modalShowAlertOk" tabindex="-1" role="dialog" aria-labelledby="modalAddCompanyTitle" aria-hidden="true" >
+    <div class="modal-dialog modal-dialog-centered rounded " role="document" style="max-width: 472px; z-index: 1030; ">
+        <div class="modal-content rounded border-0" style="border: 0px !important; background-color:rgba(0,0,0,.0001) !important; box-shadow: none;">
+
+            <div style="overflow: hidden;height: 500px;overflow-x: hidden; ">
+                <div class="modal-body" id="">
+                    <div class="col-sm-12 col-md-12" style="color:#575757c9;">
+
+                        <div class="card border-0" style=" border-radius: 10px; box-shadow: none;">
+                            <div class="card-header text-center text-white  " style="background:#d2d97b; height: 95px;"><img src="images/iconos/correct_1.svg"><span><b><br><br>&nbsp;&nbsp;&nbsp;&nbsp;</b></span></div>
+
+                            <div class="card-body">
+                                <div class="row p-0 d-flex justify-content-center">
+                                    <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important; font-family: ProductSansRegular !important; " >
+                                        <h4>
+                                            <b id="titleMessage"></b>
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="espacio"></div>
+                            <div class="card-body" id="bodyCrear">
+                                <div class="row p-0 d-flex justify-content-center">
+                                    <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important; font-family: ProductSansRegular !important; font-size: 15px;" >
+                                        <b>Puede revisar el IPERC en si bandeja con el código:</b>
+                                    <div id="codeIPERC"></div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="card-body" id="bodyActualizar">
+                                <div class="row p-0 d-flex justify-content-center">
+                                    <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important; font-family: ProductSansRegular !important; font-size: 15px;" >
+                                        <b>Puedes regresar a tu bandeja de entrada</b>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="espacio"></div>
+                            <div class="card-body">
+                                <div class="row p-0 d-flex justify-content-center">
+                                    <div class="col-sm-12 align-self-center text-center" style="color: #000000 !important; font-family: ProductSansRegular !important; font-size: 15px;" >
+                                        <button type="button" onclick="$('#modalShowAlertOk').removeClass('fade').modal('hide');fnCargarGridIPERC();" id="btnSalida"  class="btn  btn-raised" style="background-color: #d2d97b; height: 47px; width: 254px; object-fit: contain; border-radius: 4.4px !important;"  >De Acuerdo</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="modal fade "  id="modalAviso" tabindex="-1" role="dialog" aria-labelledby="modalAddCompanyTitle" aria-hidden="true" >
+    <div class="modal-dialog modal-dialog-centered rounded " role="document" style="max-width: 472px; z-index: 1030; ">
+        <div class="modal-content rounded border-0" style="border: 0px !important; background-color:rgba(0,0,0,.0001) !important; box-shadow: none;">
+
+            <div style="overflow: hidden;height: 500px;overflow-x: hidden; ">
+                <div class="modal-body" id="">
+                    <div class="col-sm-12 col-md-12" style="color:#575757c9;">
+
+                        <div class="card border-0" style=" border-radius: 10px; box-shadow: none;">
+                            <div class="card-header text-center text-white  " style="background:#d2d97b; height: 95px;"><img src="images/iconos/correct_1.svg"><span><b><br><br>&nbsp;&nbsp;&nbsp;&nbsp;</b></span></div>
+
+                            <div class="card-body">
+                                <div class="row p-0 d-flex justify-content-center">
+                                    <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important; font-family: ProductSansRegular !important; " >
+                                        <h4>
+                                            <b id="titleMessageAviso"></b>
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="espacio"></div>
+                            <div class="card-body" id="bodyActualizar">
+                                <div class="row p-0 d-flex justify-content-center">
+                                    <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important; font-family: ProductSansRegular !important; font-size: 15px;" >
+                                        <b id="messageAviso"></b>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="espacio"></div>
+                            <div class="card-body">
+                                <div class="row p-0 d-flex justify-content-center">
+                                    <div class="col-sm-12 align-self-center text-center" style="color: #000000 !important; font-family: ProductSansRegular !important; font-size: 15px;" >
+                                        <button type="button" onclick="$('#modalAviso').modal('hide');$('#modal-mantenimiento-observacion').modal('show');" id="btnSalida"  class="btn  btn-raised" style="background-color: #d2d97b; height: 47px; width: 254px; object-fit: contain; border-radius: 4.4px !important;"  >De Acuerdo</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="modal fade "  id="modalCofirmResponsables" tabindex="-1" role="dialog" aria-labelledby="modalAddCompanyTitle" aria-hidden="true" >
+    <div class="modal-dialog modal-dialog-centered rounded " role="document" style="max-width: 472px; z-index: 1030; ">
+        <div class="modal-content rounded " style="border: 0px !important; background-color:rgba(0,0,0,.0001) !important; box-shadow: none;">
+
+            <div style="overflow: hidden;height: 500px;overflow-x: hidden; ">
+                <div class="modal-body" id="">
+                    <div class="col-sm-12 col-md-12" style="color:#575757c9;">
+                        <div style="width: 100%;text-align: -webkit-center; position: absolute; z-index: 2;">
+                            <div class="preloader" id="preloader" style="display: none;" ></div>
+                            </div>
+                        <div class="card " style=" border-radius: 10px; box-shadow: none;">
+                            <div class="card-header text-center text-white  " style=" border-radius: 10px 10px 0px 0px; background:#05beee; height: 95px;"><img src="images/iconos/informacio1.svg"><span><b><br><br>&nbsp;&nbsp;&nbsp;&nbsp;</b></span></div>
+
+                            <div class="card-body">
+                                <div class="row p-0 d-flex justify-content-center">
+                                    <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;" >
+                                        <h4>
+                                            <b id="titleConfirmResponsables"></b>
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="espacio"></div>
+                            <div class="card-body">
+                                <div class="row p-0 d-flex justify-content-center">
+                                    <div class="col-sm-10 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;font-size: 15px;" >
+                                        <h5<b>¿Desea confirmar la acción?</b>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="espacio"></div>
+                            <div class="card-body">
+                                <div class="row p-0 d-flex justify-content-center">
+                                    <div class="col-sm-12 align-self-center text-center" style="color: #000000 !important; font-family: ProductSans;font-size: 15px;" >
+                                        <button type="button" id="btnValida" class="btn  btn-raised" onclick="guardarResponsables();" style="background-color: #05beee; height: 338px; width: 160.4px; object-fit: contain; border-radius: 4.4px !important;" >Confirmar</button>
+
+                                        <button type="button" class="btn   btn-white btn-raised" style=" background-color: #fff; height: 338px;  width: 160.4px; object-fit: contain; border-radius: 4.4px !important;   border: solid 1.1px #000000 !important;" onclick="closeModalConfirmResponsables()">Cerrar</button>
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+
+
+
+
+                            <div ></div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="./js/paginator/pagination.js"></script>
+<!-- <script src="./view/ssoma/Seguimiento-Observaciones-Preventivas/index.js"></script> -->
+<!-- <script src="./view/ssoma/configuracion-de-inspecciones/edit-inspeccion.js"></script> -->
+<script type="text/javascript" src="js/jsPDF/jspdf_1.5.3.js"></script>
+<script type="text/javascript" src="js/jsPDF/jspdf_autotable.js"></script>
+
+<script src="./js/pdfmake/pdfmake.min.js"></script>
+<script src="./js/pdfmake/vfs_fonts.js"></script>
+
+
+
+<script>
+    $('.logoCompany').text(' Gestión de IPERC');
+    fnCargarGridIPERC();
+
+    $("#txt_date_start").datetimepicker({
+        timepicker:false,
+        format:'d/m/Y',
+    });
+    $("#txt_date_end").datetimepicker({
+        timepicker:false,
+        format:'d/m/Y',
+        onShow:function( ct ){
+          //console.log(moment($('#tx_date_init').val(),'DD/MM/YYYY').format("YYYY-MM-DD"), $('#tx_date_init').val());
+          this.setOptions({
+          minDate:moment($('#txt_date_start').val(),'DD/MM/YYYY').format("YYYY-MM-DD")?moment($('#txt_date_start').val(),'DD/MM/YYYY').format("YYYY-MM-DD"):false
+         })
+        }
+    });
+
+
+    $(function() {
+        fnCargarFiltrosIPERC();
+    })
+    $('document').ready(function (){
+
+
+
+        //Cambio de los Step del formulario y color de los botones
+        var navListItems = $('div.setup-panel div a button'), // tab nav items
+            allWells = $('.setup-content'), // content div
+            allNextBtn = $('.nextBtn'), // next button
+            step1 = $('#step-1');
+        allWells.hide(); // hide all contents by defauld
+        step1.show();
+        $('#btn_step1').addClass('btn-primary-check');
+        navListItems.click(function (e) {
+            e.preventDefault();
+            var $target = $($(this).attr('href')),
+                $item = $(this);
+                console.log($item)
+
+            if (!$item.hasClass('disabled')) {
+                navListItems.removeClass('btn-primary-check').addClass('btn-default');
+                $item.addClass('btn-primary-check');
+                allWells.hide();
+                $target.show();
+                // $target.find('input:eq(0)').focus();
+            }
+        });
+        // next button
+        allNextBtn.click(function(){
+            var curStep = $(this).closest(".setup-content"),
+                curStepBtn = curStep.attr("id"),
+                nextStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().next().children("a"),
+                isValid = true;
+            // Validation
+            $(".form-group").removeClass("has-error");
+
+            // move to next step if valid
+            if (isValid)
+                nextStepWizard.removeAttr('disabled').trigger('click');
+        });
+
+        $('div.setup-panel div a.btn-primary').trigger('click');
+        //Cambio de los Step del formulario y color de los botones
+
+  });
+
+    // Cargar Filtros
+    function fnConfigurarCalendar() {
+        moment.locale('es');
+        var fecha = new Date() - 1;
+        var fechaActual = moment(fecha).format('DD/MM/YYYY');
+
+        $('#daterange').daterangepicker({
+                opens: 'left',
+                "autoApply": true,
+                locale: {
+                    format: 'DD/MM/YYYY',
+                    "daysOfWeek": [
+                        "Do",
+                        "Lu",
+                        "Ma",
+                        "Mi",
+                        "Ju",
+                        "Vi",
+                        "Sá"
+                    ],
+                    "monthNames": [
+                        "Enero",
+                        "Febrero",
+                        "Marzo",
+                        "Abril",
+                        "Mayo",
+                        "Junio",
+                        "Julio",
+                        "Agosto",
+                        "Septiembre",
+                        "Octubre",
+                        "Noviembre",
+                        "Diciembre"
+                    ]
+                },
+                maxDate: fechaActual
+        }, function(start, end, label) {
+            if (start === undefined || end === undefined)
+            {
+                fechaInicio = '';
+                fechaFin = '';
+                $('input[name="Rango-Fechas-Filtro"]').val('');
+            }
+            else{
+                fechaInicio = start.format('YYYYMMDD');
+                fechaFin = end.format('YYYYMMDD');
+                $('input[name="Rango-Fechas-Filtro"]').val(start.format('DD/MM/YYYY') + ' - ' + end.format('DD/MM/YYYY'));
+            }
+
+        });
+    }
+    // fnConfigurarCalendar();
+
+    // function limpiarFecha(){
+    //     $('input[name="Rango-Fechas-Filtro"]').val('');
+    //     fnConfigurarCalendar();
+    // }
+</script>

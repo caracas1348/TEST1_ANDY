@@ -1,0 +1,468 @@
+<style type="text/css">
+	
+    .labelMsgInfo{
+    
+    
+      width: 339px;
+      height: 52px;
+      font-size: 18px;
+      font-weight: bold;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.45;
+      letter-spacing: 0.26px;
+      text-align: center;
+      color: #3a3a3a;
+    
+    }
+    
+    
+    </style>
+    
+    
+    <div class="container-fluid bg-light p-0" >
+      
+          <div class="row bg-white " style="padding: 12px; border-bottom: 1px solid #ebebeb;margin-top:10px;" >
+            <!-- buscar -->
+              <div class="col-2 pt-2" style="height: 50px !important">
+                <div class="media-body">
+                    <div class="form-group">
+                      <label for="sel_area" class="bmd-label-static titleInput">ID Programa</label>
+                      <input type="text" name="tx_access_id_programa" class="form-control" id="tx_access_id_programa" maxlength="50"  placeholder="Ingresar Número">
+                      <!-- <select class="form-control" id="text_estado_list" name="text_estado_list"  required>
+                        <option value="">Todos XXXX</option>
+                        <option value="1">Activo</option>
+                        <option value="0">Inactivo</option>
+                      </select>  -->
+                    </div>
+                </div>
+            </div>
+    
+    
+         <div class="col-2 p-2" style="height: 50px !important">
+          <div class="media-body">
+            <div class="form-group">
+              <label for="tx_date_init" class="bmd-label-static titleInput">Fecha Desde</label>
+                  <div class="row">
+                    <div class="col-md-6"><input type="date" class="form-control" id="tx_date_init" autocomplete="off" placeholder="16/03/2020" > </div>
+                    <!-- <div class="col-md-6"><input type="date" class="form-control" id="tx_date_end" placeholder="Hasta" autocomplete="off">  </div>           -->
+               </div>
+            </div>
+          </div>
+        </div>
+    
+    
+    
+    
+    <div class="col-2 p-2" style="height: 50px !important">
+          <div class="media-body">
+            <div class="form-group">
+              <label for="tx_date_init" class="bmd-label-static titleInput">Hasta Desde</label>
+                  <div class="row">
+                    <div class="col-md-6"><input type="date" class="form-control" id="tx_date_end" placeholder="16/03/2020" autocomplete="off">  </div>          
+               </div>
+            </div>
+          </div>
+        </div>
+    
+    
+    
+    
+            <div class="col-2 pt-2" style="height: 50px !important">
+                <div class="media-body">
+                    <div class="form-group">
+                      <label for="sel_area" class="bmd-label-static titleInput">Estado </label>
+                      <select class="form-control" id="sel_estado_filter" name="sel_sede_filter"  required>
+                          <option value="1">Creado</option>
+                        <option value="2">En Revisión</option>
+                        <option value="3">Observado</option>
+                        <option value="4">Aprobado</option>
+                        
+                      </select>
+                    </div>
+                </div>
+            </div>
+    
+           <div class="col-1 text-right pt-3" style="height: 50px !important">
+                <button type="button" class="btn btn-green-lime  btn-raised " style="background-color:#d2d97b; width: 115px; height: 50px;" id="btnAddBlacklist"   onclick="searchAct=0;$('#modalShowpersonBlack').modal('show');$('#tipo_documentolistBlack').val('');$('#tx_access_dni').val('');$('#tx_nombre_ListaBlack').val('');$('#tx_ocupacion_ListaBlack').val('');$('#textEmPCam1').removeClass('col-md-12');$('#textEmPCam2').show();"> Buscar <!-- <i class="fas fa-plus"></i> --><!-- <i class="material-icons">add</i> -->
+                </button>
+            </div>
+    
+            <!-- <div class="col-5 pt-2" style="height: 50px !important;" align="right">
+                <input type="text" id="tx_access_dni_list" maxlength="30"   autocomplete="off" name="tx_access_dni_list" class="shadow-sm inputFind" placeholder="Buscar">
+            </div> -->
+            <div class="col-1 pt-2 text-center text-gray" >
+                <table style="width:100%;">
+                    <tr>
+                        <td align="right"><img src="images/iconos/nPrograma.svg" height="40px">&nbsp;&nbsp;</td>
+                        <td align="center"><span id="cantTotalCovid19" class="h3 mute" style="color:#757575;font-weight: bold;">0</span><br><small class="text-gray" style="font-size: 12px;color:#757575;font-weight: bold;"></small></td>
+                    </tr>
+                </table>
+            </div>
+            <!-- div class="col-1 pt-2 text-center text-gray" >
+                <table style="width:100%;">
+                    <tr>
+                        <td align="right"><img src="images/iconos/personExcedido.svg" height="40px">&nbsp;&nbsp;</td>
+                        <td align="center"><span id="cantTotalCovid19_inac" class="h3 mute" style="color:#757575;font-weight: bold;">0</span><br><small class="text-gray" style="font-size: 12px;color:#757575;font-weight: bold;">Registros Inactivos</small></td>
+                    </tr>
+                </table>
+            </div> -->
+            
+            <div class="col-1 text-right pt-3" style="height: 50px !important">
+                <button type="button" class="btn btn-green-lime  btn-raised " style="background-color:#05beee;  width: 184px; height: 50px; " id="btnAddBlacklist"   onclick="searchAct=0;$('#modalShowpersonBlack').modal('show');$('#tipo_documentolistBlack').val('');$('#tx_access_dni').val('');$('#tx_nombre_ListaBlack').val('');$('#tx_ocupacion_ListaBlack').val('');$('#textEmPCam1').removeClass('col-md-12');$('#textEmPCam2').show();"><i class="fas fa-plus"></i> Crear Programa <!-- <i class="material-icons">add</i> -->
+                </button>
+            </div>
+    
+    
+          </div>
+          
+            
+        <!-- listado -->
+                   <div class="row ">
+                       <div class="col ">
+                            <div class="card p-0" style="box-shadow: none;">
+                                <div class="card-body p-0 " >
+                                  <table id="tb_black_list" border="0"  name="tb_black_list" class="table p-0" style="width:100%">
+                                      <tr class="cabeceraTabla"><td colspan="7" ></td> </tr>
+                                  </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+    
+    
+          
+          <!-- modal ingresar -->
+          <div class="modal fade "  id="modalShowpersonBlack" tabindex="-1" role="dialog" aria-labelledby="modalAddCompanyTitle" aria-hidden="true" >
+            <div class="modal-dialog modal-dialog-centered rounded " role="document" style="max-width: 472px; z-index: 1030; ">
+              <div class="modal-content rounded " style=" background-color:rgba(0,0,0,.0001) !important; box-shadow: none;">        
+                
+                <div style="overflow: hidden;height: 500px;overflow-x: hidden; ">
+                  <div class="modal-body" id="">
+                        <div class="col-sm-12 col-md-12" style="color:#575757c9;">
+                            
+                            <div class="card " style=" border-radius: 10px; box-shadow: none;">
+                                <div class="card-header text-center text-white  " style=" border-radius: 10px 10px 0px 0px; background:#05beee; height: 95px;"><img src="images/iconos/informacio1.svg"><span><b><br><br>&nbsp;&nbsp;&nbsp;&nbsp;</b></span></div>
+                             
+                            <div class="card-body">
+                                <div class="row p-0">
+                                    <!-- <div class="col-3">
+                                        <span><b>TIPO DE DOCUMENTO</b></span><br>
+                                        <select class="custom-select text-mute selectNewBlack" name="tipo_documentolistBlack" id="tipo_documentolistBlack">
+                                            <option value="">Seleccionar</option>
+                                            <option value="dni">DNI</option>
+                                            <option value="ruc">RUC</option>
+                                            <option value="pa">PA</option>
+                                            <option value="ce">CE</option>
+                                        </select>
+                                    </div> -->
+                                    <div class="col-3" >
+                                        <table width="100%" >
+                                            
+                                            <tr>
+                                                <td><div class = "labelMsgInfo">Ingrese la información para la creación del programa</div></td>
+                                            </tr>	
+                                        </table>	
+                                    </div>
+                                    
+                                </div>
+                            </div>
+    
+                            <div class="card-body">
+                                <div class="row p-0">
+                                    
+                                     
+                                    <div class="col-3" >
+    
+                                         <table width="100%" >
+                                            
+                                            <tr>
+                                                <td  >
+                                                    <div  >
+                                                        <span ><b>Especialidad</b></span><br>
+                                                        <select class="custom-select text-mute text-center selectNewBlack  border-1" style=" width:299px;" name="sel_sede" id="sel_sede" onchange="vw_secury_agent.getGarita(this.value)">
+                                                        </select>
+                                                    </div>
+    
+                                                </td>
+                                            </tr>	
+                                        </table>
+    
+                                        <!-- <span><b>Especialidad</b></span><br>
+                                        <select class="custom-select text-mute selectNewBlack" name="sel_sede" id="sel_sede" onchange="vw_secury_agent.getGarita(this.value)">
+                                        </select> -->
+                                    </div>
+                                    
+    
+                                    
+    
+    
+    
+                                </div>
+                            </div>
+                                
+                                
+                                <div ></div>
+                                            <!-- <div class="row text-center">
+                                                <div class="col-sm-4"></div>
+                                                <div class="col-sm-2">
+                                                    <button type="button" id="btnValida" class="btn btn-green-lime btn-rounded btn-raised" onclick="vw_secury_agent.register();">Confirmar</button>
+                                                </div>
+                                                <div class="col-sm-2">
+                                                    <button type="button" class="btn btn-danger btn-rounded btn-raised" onclick="vw_secury_agent.cancelform()">Cerrar</button>
+                                                </div>	
+                                                <div class="col-sm-4">&nbsp;</div>
+                                            </div> -->
+    
+                                         <table width="100%" border="0" >
+                                            
+                                            <tr>
+                                                <td width="10%" ><br></td>
+    
+                                                <td align="center" width="35%" >
+            <button type="button" id="btnValida" class="btn  btn-raised" style="background-color: #05beee; width: 160.4px;" onclick="vw_secury_agent.register();">Confirmar</button>
+                                                </td>
+    
+                                                <td width="10%">&nbsp;&nbsp;&nbsp; </td>
+    
+                                                <td align="center" width="35%">
+                                                    <button type="button" class="btn   btn-white btn-raised" style=" background-color: #fff;  width: 160.4px;" onclick="vw_secury_agent.cancelform()">Cerrar</button>
+                                                </td>
+                                                <td width="10%" ><br></td>
+                                            </tr>
+                                            <tr><td colspan="5">&nbsp;<br><br><br><br><br>&nbsp;</td></tr>
+                                        </table>
+    
+    
+    
+    
+    
+                                <div ></div>
+                              </div>
+                            </div>
+                      </div>
+                        
+                    
+    
+                  </div>
+                </div>
+                <div class="modal-footer" >
+                  <div class="col-md-12 row"  id="modal_show_request_details_footer">
+                  </div>
+                </div>
+              
+              </div>
+            </div>
+          </div>
+    
+          <!--table id="tb_list_time_exceededs" name="tb_list_time_exceededs" class="table" style="max-width:100%;"></table-->
+        <div class="modal fade col-md-12"  id="Listbinnacle" tabindex="-1" role="dialogooo" aria-labelledby="modalAddCompanyTitle" aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-dialog-centered rounded " role="document" style="max-width:80%; z-index: 1030; " >
+            <div class="modal-content rounded " style=" background-color:rgba(0,0,0,.0001);  box-shadow: none;">        
+                <div class="modal-header" style="padding:5px 24px 0!important">
+                <h5 class="modal-title"></h5>
+                </div>
+                
+                <div style="overflow: hidden;overflow-x: hidden; ">
+                <div class="modal-body" id="modal_show_request_details12">  
+                    <div class="row">
+                    <div class="col-sm-12 col-md-12">
+                        <div class="card" style=" border-radius: 10px; box-shadow: none;">
+                        <div class="card-header text-white " style=" border-radius: 10px 10px 0px 0px; background: #35569d; height: 50px;">                  
+                            <div class="row">                        
+                                <div class="col">
+                                    <h6 ><b>Listado bitácora </b></h6> 
+                                </div>
+                                <div class="col">
+                                    <h6 ><text class="textName"></text></b></h6> 
+                                </div>	
+                                <div class="col-md-2 text-center">
+                                    <table style="width:100%;top:-5px">
+                                        <tr>
+                                            <td align="right"><img src="images/iconos/users_writhe.svg" style="margin-top: -10px;height:25px;">&nbsp;&nbsp;</td>
+                                            <td align="center"><div style="font-weight: bold;color: #fff;"><span class="CantExceBlack" class="h3 mute">0</span><br><small class="text-gray" style="font-size: 12px;">Registros</small></div></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>                    
+                        </div>
+                                
+                        <div style="width: 100%;padding-top: 10px;padding-left: 10px;padding-right: 10px; "> 
+                            <div style="max-height:400px !important; overflow: hidden;overflow-x: hidden;">  
+                            <table id="List_table_binnacle" name="List_table_binnacle" class="table" style="width:100%"></table>          
+                            </div>                      
+                        
+                            <hr>  
+                            <div class="row justify-content-md-center  mt-2 P-4">
+                            <div class="col-md-12">
+                            <center><button type="button" class="btn btn-danger  btn-rounded btn-raised " onclick="$('#Listbinnacle').modal('hide');$('.CantExceBlack').text('0')" style="width: 150px !important;"> &nbsp;&nbsp;Salir&nbsp;&nbsp;&nbsp;&nbsp;</button></center>
+                            </div>
+                            </div>  
+                        </div>                  
+                        </div>      
+                    </div>        
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+            <!-- modal fin -->
+    
+          <!-- modal editar -->
+          <!-- modal ingresar -->
+          <div class="modal fade "  id="modalShowpersonBlacke" tabindex="-1" role="dialog" aria-labelledby="modalAddCompanyTitle" aria-hidden="true" >
+            <div class="modal-dialog modal-dialog-centered rounded " role="document" style="max-width: 750px; z-index: 1030; ">
+              <div class="modal-content rounded " style=" background-color:rgba(0,0,0,.0001) !important; box-shadow: none;">        
+                
+                <div style="overflow: hidden;height: 500px;overflow-x: hidden; ">
+                  <div class="modal-body" id="">
+                        <div class="col-12 col-md-12" style="color:#575757c9;">
+                            
+                            <div class="card " style=" border-radius: 10px; box-shadow: none;">
+                                <div class="card-header text-left text-white  " style=" border-radius: 10px 10px 0px 0px; background: #35569d; height: 40px;"><span><b>Gestionar Lista Negra</b></span></div>
+                             
+                              <div class="card-body">
+                                <div class="row p-0">
+                                    <div class="col-4">
+                                        <span><b>DOCUMENTO</b></span><br>
+                                        <span id="dniedit"></span>
+                                        <span></span>
+                                    </div>
+                                    <div class="col-4">
+                                        <span><b>NOMBRE</b></span><br>
+                                        <span id="nameedit"></span>
+                                    </div>
+                                    <div class="col-4">
+                                        <span><b>EMPRESA</b></span><br>
+                                        <span id="span_name_company"></span>
+                                    </div>
+                                    </div>
+                                    <div class="col-3">
+                                </div>
+                            </div>
+                                
+                                <div style="height: 0px;"></div>
+                                <div class="col-12">
+                                    <span><b>OBSERVACIÓN</b></span>
+                                </div>
+                                <div class="col-12">
+                                    <div class="col boxBlacklist ">
+                                        <textarea id="tx_reasonedit" name="tx_reasonedit"  value="Ingrese una observación" placeholder="Ingrese una observación." rows="2"   maxlength="50" style="width: 100%; height: 70px; border: none !important;"></textarea>
+                                    </div>	
+                                </div>
+                                <div style="height: 20px;"></div>
+                                <div class="row text-right">
+                                    <div class="col-sm-6 "></div>
+                                    <div class="col-sm-3">
+                                        <button type="button" class="btn btn-green-lime btn-rounded btn-raised" id="butEditBlack" onclick="vw_secury_agent.thumbsUpregister();">Retirar de lista</button>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <button type="button" class="btn btn-primary btn-rounded btn-raised" onclick="$('#modalShowpersonBlacke').modal('hide')">Cancelar</button>
+                                    </div>	
+                                    <div class="col-sm-12">&nbsp;</div>
+                                </div>
+                              </div>
+                            </div>
+                    </div>
+    
+                  </div>
+                </div>
+                <div class="modal-footer" >
+                  <div class="col-md-12 row"  id="modal_show_request_details_footer">
+                  </div>
+                </div>
+              
+              </div>
+            </div>
+          
+          <!--div class="modal fade "  id="modalShowpersonBlacke" tabindex="-1" role="dialog" aria-labelledby="modalAddCompanyTitle" aria-hidden="true" >
+            <div class="modal-dialog modal-dialog-centered rounded " role="document" style="max-width: 950px; z-index: 1030; ">
+              <div class="modal-content rounded " style=" background-color:rgba(0,0,0,.0001) !important; box-shadow: none;">        
+                <div class="modal-header" style="padding:5px 24px 0!important">
+                    <h5 class="modal-title"></h5>
+                    
+                </div>
+                <div style="overflow: auto;height: 500px;overflow-x: hidden; ">
+                  <div class="modal-body row" id="modal_show_request_details">
+    
+                    <div class="row ">
+                        <div class="col ">
+                
+                              <div class="card" style="width: 350px; border-radius: 10px; box-shadow: none;">
+                                <div class="card-header text-center text-white  " style=" border-radius: 10px 10px 0px 0px; background: #35569d; height: 40px;"><span class="badge badge-light text-light shadow badge-pill">visitasa</span></div>
+                                <div class="card-body text-center">
+                                    <div class="row">
+                                        <div class="col text-primary font-weight-bold">Gestionar Lista Negra aaa</div>	
+                                    </div>
+                                    <div style="height: 6px;"></div>
+                                    <div class="row">
+                                        <div class="col"><img class="rounded-circle" id="img_user_black_list" src="images/iconos/user.svg" height="250"></div>	
+                                    </div>
+                                    <div class="row">
+                                        <div class="col boxBlacklistread font-weight-bold " id="contenedor-nombre"><label id="nameedit">Nombre y Apellido</label></div>	
+                                    </div>
+                                    <div style="height: 4px;"></div>
+                                    <div class="row">
+                                        <div class="col boxBlacklistread" id="span_name_company">Empresa</div>	
+                                    </div>
+                                    
+                                </div>
+                              </div>
+                        </div>
+    
+                        <div class="col pl-0">
+                
+                            <div class="card " style="width: 520px; border-radius: 10px; box-shadow: none;">
+                             
+                              <div class="card-body">
+                                 
+                                <div class="row p-0">
+                                    <div class="col-9">
+                                        <span class="titleMain p-2 font-weight-bold" style="border: none;">Observaciones</span></div>
+                                    <div class="col-3">
+       
+                                       <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close">
+                                           <span class="text-danger text-right">Cerrar</span>
+                                         </button>
+       
+                                    </div>
+                                    </div>
+                                
+                                <div class="row">
+                                    <div class="col boxBlacklist ">
+                                        <textarea id="tx_reasonedit" name="tx_reasonedit" class="" rows="2"   maxlength="250" style="width: 100%; height: 282px; border: none !important;"></textarea>
+                                    </div>	
+                                </div>
+                                <br>
+                                <div class="row text-right">
+                                    <div class="col-sm-5"></div>
+                                    <div class="col-sm-4">
+                                        <button type="button" class="btn btn-green-lime btn-rounded btn-raised" id="butEditBlack" onclick="vw_secury_agent.thumbsUpregister();">Retirar de lista</button>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <button type="button" class="btn btn-primary btn-rounded btn-raised" onclick="$('#modalShowpersonBlacke').modal('hide')">Cancelar</button>
+                                    </div>	
+                                </div>
+                                
+                                    
+                                 
+                              </div>
+                            </div>
+                      </div>
+                        
+                    </div>
+    
+                  </div>
+                </div>
+                <div class="modal-footer" >
+                  <div class="col-md-12 row"  id="modal_show_request_details_footer">
+                  </div>
+                </div>
+              
+              </div>
+            </div>
+          </div-->
+     
+    </div>

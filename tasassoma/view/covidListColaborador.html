@@ -1,0 +1,890 @@
+<div class="container-fluid bg-light p-0" >
+  
+
+  
+
+    <div class="row bg-white " style="padding: 25px; border-bottom: 1px solid #ebebeb;" >
+   
+      <div class="col-1" style="height: 50px !important">
+        <div class="media-body">
+          <div class="form-group">
+            <label for="sel_area" class="bmd-label-static titleInput">ESTATUS </label>
+            <select name="sel_status" class="form-control" id="sel_status"  required>
+              <option value="0" selected>Todos</option>
+              <option value="7">Habilitado Indefinido</option>
+              <option value="4">Pendiente por Aprobación</option> 
+              <option value="1">Tamizaje Agendado</option>
+              <option value="5">Tamizaje Cancelado</option>           
+              <option value="2">Tamizaje Realizado</option>
+              <option value="3">Tamizaje Vencido</option>
+                            
+              
+            </select>
+          </div>
+        </div>
+    </div>
+    <div class="col-1" style="height: 50px !important;display: none;" >
+      <div class="media-body">
+        <div class="form-group">
+          <label for="sel_type" class="bmd-label-static titleInput">TIPO </label>
+          <select name="sel_type" class="form-control" id="sel_type"   required>
+            <option value="0">Todos</option>
+            <option value="1">Contratista</option>
+            <option value="2">Colaborador</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="col-1" style="height: 50px !important">
+      <div class="media-body">
+        <div class="form-group">
+          <label for="sel_company" class="bmd-label-static titleInput">EMPRESA </label>
+          <select name="sel_company" class="form-control" id="sel_company"   required>
+            <option value="0">Todos</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="col-1" style="height: 50px !important">
+      <div class="media-body">
+        <div class="form-group">
+          <label for="sel_sede" class="bmd-label-static titleInput">SEDE </label>
+          <select name="sel_sede" class="form-control" id="sel_sede"   required>
+            <option value="0">Todos</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="col-1" style="height: 50px !important">
+      <div class="media-body">
+        <div class="form-group">
+          <label for="sel_area" class="bmd-label-static titleInput">AREA </label>
+          <select name="sel_area" class="form-control" id="sel_area"  required>
+            <option value="0">Todos</option>
+            <option value="1">Operaciones</option>
+            <option value="3">Pesca</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-1 " style="height: 50px !important">
+      <div class="media-body">
+        <div class="form-group">
+          <label for="tx_date_init" class="bmd-label-static titleInput">Fecha</label>
+          <input type="text" class="form-control" id="tx_date_init" autocomplete="off" placeholder="Desde">
+        </div>
+      </div>
+    </div>
+
+    <div class="col-1 " style="height: 50px !important; left: -16px;">
+      <div class="media-body">
+        <div class="form-group">
+          <label for="tx_date_end" class="bmd-label-static titleInput" id="labelDateEnd">Tamizaje</label>
+          <input type="text" class="form-control" id="tx_date_end" placeholder="Hasta" autocomplete="off">
+        </div>
+      </div>
+    </div>
+
+    <div class="col-2 " style="height: 50px !important;">
+      <div class="media-body">
+        <div class="form-group">
+          <label for="tx_date_end" class="bmd-label-static titleInput" id="labelDateEnd">Fecha de Vencimiento</label>
+          <div class="row">
+            <div class="col-md-6"><input type="text" class="form-control" id="tx_date_vencimiento_init" autocomplete="off"> </div>
+            <div class="col-md-6"><input type="text" class="form-control" id="tx_date_vencimiento_end"  autocomplete="off"></div>          
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <div class="col-1 pt-3" style="height: 50px !important">
+      <button type="button" class="btn btn-green-lime btn-rounded btn-raised" id="btn_buscar" onclick="$('#tx_access_dni_list').val('');showLoading()"> Buscar </button>
+    </div>
+   
+    <div class="col-1 pt-2 text-center text-gray" >
+      <span id="cantTotalCovid19" class="h3 mute">0</span><br><small class="text-gray" style="font-size: 12px;">Registros</small>
+    </div>
+
+    <div class="col-2 text-center pt-2" style="height: 50px !important">
+      <input type="text" id="tx_access_dni_list" maxlength="30"  autocomplete="off"  name="tx_access_dni_list" class=" shadow-sm inputFind" placeholder="Buscar" style="width:9em;" autocomplete="off">
+    </div>
+
+   <!--  <div class="col-sm-1 pt-3 text-center pr-5" style="height: 50px !important">
+      <img src="images/iconos/regresh.svg" class="" style="cursor: pointer;" onclick="vw_covid_list.refreshListCovid()"  height="36px" title="Limpiar filtros">
+    </div> -->
+    <!--Activa el modal-->
+  </div>
+  <div class="row ">
+    <div class="col-10"></div>
+    <div class="col-2 text-left pt-3" style="height: 50px !important;display:none;"  id="butRequesExam">
+      <button type="button" class="btn btn-green-lime btn-rounded btn-raised " onclick="searchAct=0;$('#modalShowpersonBlack').modal('show');"> Solicitar Tamizaje </button>
+    </div>
+  </div>
+  
+
+  <!-- <div class="row bg-white" style="display: ;">
+    <div class="col-6">&nbsp;</div>
+    
+   
+    <div class="col-6 text-right pt-1" style="height: 40px !important;display:"  id="butIngressTemp">
+      <button type="button" class="btn btn-primary btn-rounded btn-raised " id="label_status_list_ingr" sty onclick="$('#modalShowpersonAccessTemp').modal('show')"  style="background-color: #0eca98;" > Solicitar Ingreso Temporal 
+       </button>
+       <button type="button" class="btn btn-primary btn-rounded btn-raised " id="label_list_ingreso_temporal" onclick="vw_covid_list.tableMyRequestTemp()"  style="background-color: #0eca98;"  > Mis Solicitudes de Ingreso Temporal 
+       </button>
+    </div>
+  </div> -->
+  <div style="height: 6px;"></div>
+  <!-- listado -->
+  <div class="row ">
+  
+      <div class="col ">
+        <div class="card p-0" style="box-shadow: none;">
+          <div class="card-body p-0 " >
+        <table id="tb_black_list" name="tb_black_list" class="table p-0" style="width:100%">
+          <tbody> 
+            <tr class="mt-5">
+              <td class="text-center"><h6><br><br>Realice la búsqueda por nombre, empresa o documento de identidad en el campo "Buscar"</h6></td>
+            </tr>
+          </tbody>
+        </table>
+          </div>
+    </div>
+    
+    
+      </div>
+  
+  </div>
+  <!-- background-color:rgba(0,0,0,.0001) -->
+  <!-- modal ingresar -->
+  <div class="modal fade"  id="modalShowpersonBlack" tabindex="-1" role="dialog" aria-labelledby="modalAddCompanyTitle" aria-hidden="true"     >
+  <div class="modal-dialog modal-xl modal-dialog-centered rounded " role="document" style="min-width: 90%; z-index: 1030; " >
+    <div class="modal-content rounded " style=" background-color:rgba(0,0,0,.0001);  box-shadow: none;">        
+    <div class="modal-header" style="padding:5px 24px 0!important">
+      <h5 class="modal-title"></h5>
+    </div>
+    <div style="overflow: auto;overflow-x: hidden; ">
+      <div class="modal-body" id="modal_show_request_details">  
+        <div class="row">
+            <div class="col-sm-12 col-md-12">
+                <div class="card" style=" border-radius: 10px; box-shadow: none;">
+                    <div class="card-header text-white " style=" border-radius: 10px 10px 0px 0px; background: #039be0; height: 55px;">                  
+                      <div class="row">                        
+                        <div class="col">
+                          <h6>Solicitud de Exámen COVID-19<span style="font-size: 17px; " id="badgelistRequest">&nbsp;( 1 )</span></h6>                          
+                        </div>
+                        <!--<div class="col-md-auto mt-1 text-right " style="padding-right: 0px!important;">
+                          <label class="text-white">Seleccionar:</label>
+                        </div>-->
+                        <div class="col-md-auto" style="padding-left: 0px!important;">
+                          <div class="form-group bmd-form-group " style="padding-top:0!important;"> 
+                           <!--  <select name="sel_type_contact" id="sel_type_contact" style="color:#fff; width: 120px; background-image: none!important;" class="form-control pl-2 pb-2 ">
+                              <option value="contratista">Contratista</option>
+                              <option value="colaborador">Colaborador</option>                        
+                            </select> -->
+                           <!--  <small class="text-white"  style="font-size: 11px;">Seleccione el tipo</small> -->
+                          </div>
+                        </div>
+                        <div class="col-md-2 text-right"> 
+                          <div class="custom-file text-right pl-2" style="cursor: pointer;">
+                            <input type="file" class="custom-file-input" id="fileUpload22" lang="es">
+                            <label class="custom-file-label" for="fileUpload22"></label>
+                          </div>
+                        </div>
+                        <div class=" col-md-2 text-left pt-1 pr-4">
+                          <img id="upload22" src="images/iconos/iconexcell.svg" onclick="builexcel()" alt="" width="34"  style="vertical-align:middle; cursor: pointer;"  class="imgvinculo" title="Procesar Excel Seleccionado"/>  
+                        </div>
+                        <div class="col-md-2 ">
+                          <a href="https://visitasa.tasa.com.pe/formatos/FORMATOMASIVO.xlsx" class="btn text-decoration-underline text-white" target="_blank" style="top:-3px">   Descargar formato </a>
+                         </div>
+                        
+                        
+                        <div class="col-md-1 text-right">
+                          <h5 class="fa fa-plus text-white" onclick="vw_covid_list.addContact()" style="cursor: pointer;"></h5> 
+                        </div>
+                      </div>                    
+                    </div>
+                   
+                    <div class="card-body text-center " style="padding: 0 !important; "> 
+                      <div style=" max-height:400px !important; overflow: auto !important;">                       
+                      <table name="tb_covid_list" class="table p-4 dataTable no-footer"  role="grid">                            
+                        <thead>
+                          <tr role="row p-5">
+                            <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 2%"></th>
+                            <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 10%">Tipo</th>
+                            <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 10%">Documento</th>
+                            <!-- <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 22%">Nombre</th> -->
+                            <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 20%">Nombre y apellido</th> 
+                            <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 10%">RUC</th> 
+                            <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 20%">Empresa</th>                            
+                            <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 10%">Sede</th>                                                          
+                            <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 10%">Área</th>
+                            <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 17%">Fecha</th>
+                            <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 4%"></th>
+                          </tr>
+                        </thead>
+                        <tbody id="tb_tbody_covid_list" >
+                          <tr class="row_covid" id="row_covid_1">
+                            <td>
+                              <div class="form-group bmd-form-group" style="padding-top:0!important">  
+                                <img src="images/iconos/organizador.svg" class="mr-3 mt-2" height="24">
+                              </div>
+                            </td>
+
+                            <td>
+                              <div class="form-group bmd-form-group" style="padding-top:0!important">
+                                <select class="form-control" id="sel_type_contact_1" name="sel_type_contact_1">
+                                  <option value="contratista">Contratista</option>
+                                  <option value="colaborador">Colaborador</option>
+                                </select>
+                                <small class="text-white"  id="" style="font-size: 11px;">Validations</small>                                                                           
+                              </div>
+                            </td>
+
+                            <td>
+                              <div class="form-group bmd-form-group" style="padding-top:0!important">                                  
+                                <input type="text" class="form-control" id="add_covid_dni_1" maxlength="10" onkeyup="validaSoloNumeros(this.id)">
+                                <small class="text-white"  id="validationsIdOiid_1" style="font-size: 11px;">OIS Autorizado</small>
+                                <div id="add_covid_dniload_1" class="loader" style="display:none"></div>                                                  
+                              </div>
+                            </td> 
+                            <td>
+                              <div class="form-group bmd-form-group" style="padding-top:0!important">  
+                                <input type="text" class="form-control autocompletecollaborator" id="add_covid_firtname_1" maxlength="25">
+                                <small class="text-white">Validations</small>
+                                <div class="loader" id="add_covid_firtnameload_1" style="display:none"></div> 
+                                <input type="hidden" class="form-control" id="hid_collaborator_id_1" name="hid_collaborator_id_1">
+                              </div>
+                            </td>
+                          <!--   <td>
+                              <div class="form-group bmd-form-group" style="padding-top:0!important">                                  
+                                <input type="text" class="form-control" id="add_covid_lastname_1" maxlength="25" >                                                    
+                              </div>
+                            </td> -->
+                            <td>
+                              <div class="form-group bmd-form-group" style="padding-top:0!important">                                                     
+                                <input type="text" class="form-control autocompletecollaborator" id="ruc_company_1" onkeyup="validaSoloNumeros(this.id)" maxlength="20" onfocus="if (this.value!='') /*this.value='';$('#ruc_company_1').val('');*/">  
+                                <small class="text-white">Validations</small>                               
+                              </div>
+                            </td>
+                            <td>
+                              <div class="form-group bmd-form-group" style="padding-top:0!important">                                                     
+                                <input type="text" class="form-control autocompletecollaborator" id="sel_company_1" maxlength="15" onfocus="if (this.value!='') /*this.value='';$('#sel_cod_company_1').val(''); $('#sel_company_1')[0].className='form-control';*/">  
+                                <small class="text-white">Validations</small>                             
+                              </div>                             
+                            </td>
+                                                      
+                            <td>
+                              <div class="form-group bmd-form-group" style="padding-top:0!important">  
+                                <select name="sel_location_1" class="form-control validations_cupos" id="sel_location_1">Seleccione</select>
+                                <small class="text-white" id="small_message_1" name="small_message_1">Seleccione</small>
+                              </div>
+                            </td>
+                            <td>
+                              <div class="form-group bmd-form-group" style="padding-top:0!important">                                                                 
+                                <div class="form-group bmd-form-group" style="padding-top:0!important">                                  
+                                  <select name="sel_area_1" class="form-control" id="sel_area_1">Seleccione</select> 
+                                  <small class="text-white">Validations</small>                                                
+                                </div>                                                 
+                              </div>
+                            </td>
+                            <td>
+                              <div class="form-group bmd-form-group" style="padding-top:0!important">                                  
+                                <input type="text" class="form-control validations_cupos" id="tx_date_start_1" autocomplete="off" maxlength="20" onkeyup="validaSoloNumeros(this.id)">
+                                <small class="text-mute mutetexthelp">DD/MM/YYYY</small>
+                                <input type="hidden" class="form-control " id="sel_cod_company_1" name="sel_cod_company_1">                                                   
+                              </div>
+                            </td>
+                            <td>
+                              <div id="bt_delete_row_covid_1" style="cursor: pointer;">
+                                <img src="images/iconos/trash.svg" class="" >
+                            </div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>  
+                      </div> 
+                      <div class="row justify-content-md-left pl-4 pr-4" style="display: none;">
+                        <div class="col-md-4">
+                          <table class="table table-sm" id="tb_cupos_disponibles">
+                            <thead>
+                              <tr>
+                                <th scope="col">Sede</th>
+                                <th scope="col">Fecha</th>
+                                <th scope="col">Cantidad</th>
+                                <th scope="col">Cupo</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                      <div class="row justify-content-md-center  P-2" id="div_message_req">
+                      </div>
+
+                      <div class="row justify-content-md-center  mt-2 P-4">
+                       
+                        <div class="col-md-8">
+                          <button type="button" class="btn btn-green-lime btn-rounded btn-raised  " onclick="vw_covid_list.validate()" style="width: 150px; " > &nbsp;&nbsp; Enviar solicitud &nbsp;&nbsp;</button> 
+                          <button type="button" class="btn btn-info btn-rounded btn-raised " onclick="vw_covid_list.cancelarForm()" style="width: 150px !important;"> &nbsp;&nbsp;Limpiar &nbsp;&nbsp;</button>
+                          <button type="button" class="btn btn-danger btn-rounded btn-raised " onclick="$('#modalShowpersonBlack').modal('hide');vw_covid_list.cancelarForm()" style="width: 150px;"> &nbsp;&nbsp;Salir &nbsp;&nbsp;</button>
+                        </div>
+                        
+                      </div>                  
+                    </div>
+                </div></div>
+        </div>        
+      </div>
+    </div>
+    <div class="modal-footer" >
+      <div class="col-md-12 row"  id="modal_show_request_details_footer">
+      </div>
+    </div>
+    
+    </div>
+  </div>
+  </div>
+
+   <!-- modal ingresar -->
+   <div class="modal fade"  id="modalShowpersonAccessTemp" tabindex="-1" role="dialog" aria-labelledby="modalAddCompanyTitle" aria-hidden="true"     >
+    <div class="modal-dialog modal-xl modal-dialog-centered rounded " role="document" style="min-width: 90%; z-index: 1030; " >
+      <div class="modal-content rounded " style=" background-color:rgba(0,0,0,.0001);  box-shadow: none;">        
+      <div class="modal-header" style="padding:5px 24px 0!important">
+        <h5 class="modal-title"></h5>
+      </div>
+      <div style="overflow: auto;overflow-x: hidden; ">
+        <div class="modal-body" id="modal_show_request_details">  
+          <div class="row">
+              <div class="col-sm-12 col-md-12">
+                  <div class="card" style=" border-radius: 10px; box-shadow: none;">
+                      <div class="card-header text-white " style=" border-radius: 10px 10px 0px 0px; background: #039be0; height: 55px;">                  
+                        <div class="row">                        
+                          <div class="col">
+                            <h6>Solicitud de Ingreso Temporal<span style="font-size: 17px; " id="badgelistRequesttemp">&nbsp;( 1 )</span></h6>                          
+                          </div>
+                          <div class="col-md-auto" style="padding-left: 0px!important;">
+                            <div class="form-group bmd-form-group " style="padding-top:0!important;"> 
+                            </div>
+                          </div>
+                         
+                      
+                          <div class="col-md-1 text-right">
+                            <h5 class="fa fa-plus text-white" onclick="vw_covid_list.addContacttemp()" style="cursor: pointer;"></h5> 
+                          </div>
+                        </div>                    
+                      </div>
+                     
+                      <div class="card-body text-center " style="padding: 0 !important; "> 
+                        <div class="col-12 text-center pt-2" style="height: 50px !important">
+                          <h6 class="pt-2">Los Ingresos Temporales no deben superar las dos horas de Permanencia en nuestras instalaciones y serán notificados al Supervisor o Gerente del Área responsable.</h6>
+                        </div>
+                        <div style=" max-height:400px !important; overflow: auto !important;">                       
+                        <table name="tb_covid_listtemp" class="table p-4 dataTable no-footer"  role="grid">                            
+                          <thead>
+                            <tr role="row p-5">
+                              <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 2%"></th>
+                              <!-- <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 10%">Tipo</th> -->
+                              <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 10%">Documento</th>
+                              <!-- <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 22%">Nombre</th> -->
+                              <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 20%">Nombre y apellido</th> 
+                              <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 10%">RUC</th> 
+                              <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 20%">Empresa</th>                            
+                              <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 10%">Sede</th>                                                          
+                              <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 10%">Área</th>
+                              <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 17%">Fecha</th>
+                              <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 4%"></th>
+                            </tr>
+                          </thead>
+                          <tbody id="tb_tbody_covid_listtemp" >
+                            <tr class="row_covid" id="row_covidtemp_1">
+                              <td>
+                                <div class="form-group bmd-form-group" style="padding-top:0!important">  
+                                  <img src="images/iconos/organizador.svg" class="mr-3 mt-2" height="24">
+                                </div>
+                              </td>
+  
+                              <td style="display:none">
+                                <div class="form-group bmd-form-group" style="padding-top:0!important">
+                                  <select class="form-control" id="sel_type_contacttemp_1" name="sel_type_contacttemp_1">
+                                    <option value="contratista">Contratista</option>
+                                    <option value="colaborador">Colaborador</option>
+                                  </select>
+                                  <small class="text-white"  id="" style="font-size: 11px;">Validations</small>                                                                           
+                                </div>
+                              </td>
+  
+                              <td>
+                                <div class="form-group bmd-form-group" style="padding-top:0!important">                                  
+                                  <input type="text" class="form-control" id="add_covid_dnitemp_1" maxlength="10" onkeyup="validaSoloNumeros(this.id)">
+                                  <small class="text-white"  id="validationsIdOiidTemp_1" style="font-size: 11px;">Validations</small>                                  
+                                </div>
+                              </td> 
+                              <td>
+                                <div class="form-group bmd-form-group" style="padding-top:0!important">  
+                                  <input type="text" class="form-control autocompletecollaborator" id="add_covid_firtnametemp_1" maxlength="25">
+                                  <input type="hidden" class="form-control" id="hid_collaboratortemp_id_1" name="hid_collaboratortemp_id_1">
+                                  <small class="text-white"  id="" style="font-size: 11px;">Validations</small> 
+                                </div>
+                              </td>
+                              <td>
+                                <div class="form-group bmd-form-group" style="padding-top:0!important">                                                     
+                                  <input type="text" class="form-control autocompletecollaborator" id="ruc_companytemp_1" onkeyup="validaSoloNumeros(this.id)" maxlength="20" onfocus="if (this.value!='') /*this.value='';$('#ruc_company_1').val('');*/">  
+                                  <small class="text-white">Validations</small>                               
+                                </div>
+                              </td>
+                              <td>
+                                <div class="form-group bmd-form-group" style="padding-top:0!important">                                                     
+                                  <input type="text" class="form-control autocompletecollaborator" id="sel_companytemp_1" maxlength="15" onfocus="if (this.value!='') /*this.value='';$('#sel_cod_company_1').val(''); $('#sel_company_1')[0].className='form-control';*/">                      
+                                  <small class="text-white"  id="" style="font-size: 11px;">Validations</small> </div>                             
+
+                              </td>
+                                                        
+                              <td>
+                                <div class="form-group bmd-form-group" style="padding-top:0!important">  
+                                  <select name="sel_location_1" class="form-control validations_cupos" id="sel_locationtemp_1">Seleccione</select>
+                                  <small class="text-white"  id="" style="font-size: 11px;">Validations</small> 
+                                </div>
+                              </td>
+                              <td>
+                                <div class="form-group bmd-form-group" style="padding-top:0!important">                                                                 
+                                  <div class="form-group bmd-form-group" style="padding-top:0!important">                                  
+                                    <select name="sel_areatemp_1" class="form-control" id="sel_areatemp_1">Seleccione</select> 
+                                    <small class="text-white"  id="" style="font-size: 11px;">Validations</small>                                                
+                                  </div>                                                 
+                                </div>
+                              </td>
+                              <td>
+                                <div class="form-group bmd-form-group" style="padding-top:0!important">                                  
+                                  <input type="text" class="form-control validations_cupos" id="tx_date_starttemp_1" autocomplete="off" maxlength="20" onkeyup="validaSoloNumeros(this.id)">
+                                  <small class="text-mute mutetexthelp">DD/MM/YYYY</small>
+                                  <input type="hidden" class="form-control " id="sel_cod_companytemp_1" name="sel_cod_companytemp_1">                                                   
+                                </div>
+                              </td>
+                              <td>
+                                <div id="bt_delete_row_covidtemp_1" style="cursor: pointer;">
+                                  <img src="images/iconos/trash.svg" class="" >
+                              </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>  
+                        </div> 
+                       
+                        <div class="row justify-content-md-center  P-0" id="div_message_reqtemp">
+                        </div>
+                        <div class="row justify-content-md-center  mt-0 P-0">
+                         
+                          <div class="col-md-4"></div>
+                          <div class="col-md-1">Responsable</div>
+                          <div class="col-md-2">
+                            <div class="form-group bmd-form-group" style="padding-top:0!important">                                  
+                              <input type="text" class="form-control " id="responsableRequest" autocomplete="off" maxlength="20">
+                              <input type="hidden" class="form-control " id="responsableRequestEmail" name="responsableRequestEmail"> 
+                              <input type="hidden" class="form-control " id="responsableRequestId" name="responsableRequestId">
+                              
+                              
+                            </div>
+                          </div>
+                          <div class="col-md-5"></div>
+                          
+                        </div> 
+                        <div class="row justify-content-md-center  mt-2 P-4">
+                         
+                          <div class="col-md-8">
+                            <button type="button" class="btn btn-green-lime btn-rounded btn-raised  " onclick="vw_covid_list.validatetemp()" style="width: 150px; " > &nbsp;&nbsp; Enviar solicitud &nbsp;&nbsp;</button> 
+                            <button type="button" class="btn btn-info btn-rounded btn-raised " onclick="vw_covid_list.cancelarFormtemp()" style="width: 150px !important;"> &nbsp;&nbsp;Limpiar &nbsp;&nbsp;</button>
+                            <button type="button" class="btn btn-danger btn-rounded btn-raised " onclick="$('#modalShowpersonAccessTemp').modal('hide');vw_covid_list.cancelarFormtemp()" style="width: 150px;"> &nbsp;&nbsp;Salir &nbsp;&nbsp;</button>
+                          </div>
+                          
+                        </div>                  
+                      </div>
+                  </div></div>
+          </div>        
+        </div>
+      </div>
+      <div class="modal-footer" >
+        <div class="col-md-12 row"  id="modal_show_request_details_footer">
+        </div>
+      </div>
+      
+      </div>
+    </div>
+    </div>
+
+
+    <div class="modal fade"  id="modalListPersonAccessTemp" tabindex="-1" role="dialog" aria-labelledby="modalAddCompanyTitle" aria-hidden="true"     >
+      <div class="modal-dialog modal-xl modal-dialog-centered rounded " role="document" style="min-width: 90%; z-index: 1030; " >
+        <div class="modal-content rounded " style=" background-color:rgba(0,0,0,.0001);  box-shadow: none;">        
+        <div class="modal-header" style="padding:5px 24px 0!important">
+          <h5 class="modal-title"></h5>
+        </div>
+        <div style="overflow: auto;overflow-x: hidden; ">
+          <div class="modal-body" id="modal_show_request_details">  
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <div class="card" style=" border-radius: 10px; box-shadow: none;">
+                        <div class="card-header text-white " style=" border-radius: 10px 10px 0px 0px; background: #039be0; height: 55px;">                  
+                          <div class="row">                        
+                            <div class="col">
+                              <h6>Solicitud de Ingreso Temporal<span style="font-size: 17px; " id="badgelistPersonttemp">&nbsp;( 0 )</span></h6>                          
+                            </div>
+                            <div class="col-md-auto" style="padding-left: 0px!important;">
+                              <div class="form-group bmd-form-group " style="padding-top:0!important;"> 
+                              </div>
+                            </div>
+                            <div class="col-md-1 text-right">
+                              <button type="button" class="close " data-dismiss="modal" aria-label="Close">
+                                <h5 class="fa fa-times text-white"  style="cursor: pointer;" data-dismiss="modal" aria-label="Close" ></h5> 
+                              </button>
+                            </div>
+                          </div>                    
+                        </div>
+                        <div class="col-12 text-right pt-2" style="height: 50px !important">
+                          <input type="text" id="tx_access_dni_list_temp" maxlength="30"  autocomplete="off"  name="tx_access_dni_list_temp" class=" shadow-sm inputFind" placeholder="Buscar" style="width:15em;" autocomplete="off">
+                        </div>
+                        <div class="card-body text-center " style="padding: 0 !important; " id="divListTemp">           
+                          <table name="tb_covid_list_person_temp" id="tb_covid_list_person_temp" class="table dataTable no-footer dtr-inline collapsed" style="width:100%">                              
+                          </table> 
+                        </div>
+                    </div>
+                  </div>
+            </div>        
+          </div>
+        </div>
+        <div class="modal-footer" >
+          <div class="col-md-12 row"  id="modal_show_request_details_footer">
+          </div>
+        </div>
+        
+        </div>
+      </div>
+    </div>
+  
+  <!-- modal editar -->
+  <div class="modal fade "  id="modalShowpersonBlacke" tabindex="-1" role="dialog" aria-labelledby="modalAddCompanyTitle" aria-hidden="true" >
+  <div class="modal-dialog modal-dialog-centered rounded " role="document" style="max-width: 950px; z-index: 1030; ">
+    <div class="modal-content rounded " style=" background-color:rgba(0,0,0,.0001) !important; box-shadow: none;">        
+    <div class="modal-header" style="padding:5px 24px 0!important">
+      <h5 class="modal-title"></h5>
+      
+    </div>
+    <div style="overflow: auto;height: 500px;overflow-x: hidden; ">
+      <div class="modal-body row" id="modal_show_request_details">
+  
+      <div class="row ">
+        <div class="col ">
+    
+            <div class="card" style="width: 350px; border-radius: 10px; box-shadow: none;">
+            <div class="card-header text-center text-white  " style=" border-radius: 10px 10px 0px 0px; background: #039be0; height: 40px;"><span class="badge badge-light text-light shadow badge-pill">visitasa</span></div>
+            <div class="card-body text-center">
+              <div class="row">
+                <div class="col text-primary font-weight-bold">Gestionar COVID-19</div>	
+              </div>
+              <div style="height: 6px;"></div>
+              <div class="row">
+                <div class="col"><img class="rounded-circle" id="img_user_black_list" src="images/iconos/user.svg" height="250"></div>	
+              </div>
+              <div class="row">
+                <div class="col boxBlacklistread font-weight-bold "><label id="nameedit">Nombre y Apellido</label></div>	
+              </div>
+              <div style="height: 4px;"></div>
+              <div class="row">
+                <div class="col boxBlacklistread" id="span_name_company">Empresa</div>	
+              </div>
+              
+            </div>
+            </div>
+        </div>
+  
+        <div class="col pl-0">
+    
+          <div class="card " style="width: 520px; border-radius: 10px; box-shadow: none;">
+           
+            <div class="card-body">
+             
+            <div class="row p-0">
+              <div class="col-9">
+                <span class="titleMain p-2 font-weight-bold" style="border: none;">Observaciones</span></div>
+              <div class="col-3">
+  
+                 <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close">
+                   <span class="text-danger text-right">Cerrar</span>
+                 </button>
+  
+              </div>
+              </div>
+            
+            <div class="row">
+              <div class="col boxBlacklist ">
+                <textarea id="tx_reasonedit" name="tx_reasonedit" class="" rows="2"  required maxlength="250" style="width: 100%; height: 282px; border: none !important;"></textarea>
+              </div>	
+            </div>
+            <br>
+            <div class="row text-right">
+              <div class="col-sm-5"></div>
+              <div class="col-sm-4">
+                <button type="button" class="btn btn-green-lime btn-rounded btn-raised" id="butEditBlack" onclick="vw_black_list.thumbsUpregister();">Retirar de lista</button>
+              </div>
+              <div class="col-sm-3">
+                <button type="button" class="btn btn-primary btn-rounded btn-raised" onclick="$('#modalShowpersonBlacke').modal('hide')">Cancelar</button>
+              </div>	
+            </div>
+            
+              
+             
+            </div>
+          </div>
+        </div>
+        
+      </div>
+  
+      </div>
+    </div>
+    <div class="modal-footer" >
+      <div class="col-md-12 row"  id="modal_show_request_details_footer">
+      </div>
+    </div>
+    
+    </div>
+  </div>
+  </div>
+  
+
+<!-- modal examen -->
+<div class="modal fade "  id="modalEditBlacklist" tabindex="-1"  role="dialog" aria-labelledby="modalEditBlacklist" aria-hidden="true" >
+  <div class="modal-dialog modal-lg modal-dialog-centered rounded " role="document" style="min-width:80%; z-index: 1030; ">
+    <div class="modal-content rounded " style=" background-color:rgba(0,0,0,.0001) !important; box-shadow: none;">        
+    <div class="modal-header" style="padding:5px 24px 0!important">
+      <h5 class="modal-title"></h5>
+    </div>
+    <div style="overflow: auto;overflow-x: hidden; ">
+      <div class="modal-body p-5" id="modal_show_request_details">  
+        <div class="row">
+            <div class="col-sm-12 col-md-12">
+                <div class="card" style=" border-radius: 10px; box-shadow: none;">
+                    <div class="card-header text-white " id="headerFormCovid" style=" border-radius: 10px 10px 0px 0px; background: #039be0; height: 55px;">
+                      
+                      <div class="row">
+                        <div class="col-10">
+                          
+                          <h6>COVID-19</h6>
+                          
+                        </div>
+                        <div class="col-2 text-right">
+                          <h5 class="fa fa-times text-white"  style="cursor: pointer;" data-dismiss="modal" aria-label="Close" onclick="$('#headerFormCovid').css({background:'#039be0'})"></h5>                         
+                        </div>
+                      </div>
+
+                    </div>
+                    <div class="card-body text-center " id="modalRegisterCovidTestBody" style="padding: 0 !important; ">                       
+                      <div  class="row ml-3" style="margin-bottom: 0rem!important;">
+                        <div class="form-group col-md-1 no-particular bmd-form-group is-filled">  
+                          <img src="images/iconos/sedegray.svg" height="24" class="mr-3 mt-4">
+                      </div>
+                        <div class="form-group col-md-3  no-particular bmd-form-group is-filled text-left">  
+                            <label class="bmd-label-static titleInput" style="padding-left: 14px;"></label>  
+                            <div style="height: 5px;"></div>                    
+                            <span class="text-left" id="local"></span>
+                            <small id="" class="form-text text-muted text-left">Planta</small>
+                        </div>
+                        <div class="form-group col-md-3  bmd-form-group text-left">  
+                            <label class="bmd-label-static titleInput"></label>
+                            <div style="height: 5px;"></div>
+                            <label class="text-left" id="area"></label>                      
+                                             
+                            <small id="" class="form-text text-muted text-left">Area</small>
+                        </div>
+                        <div class="form-group col-md-4  bmd-form-group text-left">
+                          <div style="height: 5px;"></div>
+                            <label class="text-left" id="company"></label>   
+                            <small id="" class="form-text text-muted text-left">Empresa</small>
+                        </div> 
+                        <div class="form-group col-md-1  no-particular bmd-form-group is-filled">  
+                      </div>                  
+                    </div>
+                    <hr>
+                    <div  class="row ml-3" style="margin-bottom: 0.125rem!important;">
+                      
+                      <div class="form-group col-md-1 no-particular bmd-form-group is-filled">  
+                        <img src="images/iconos/organizadorgray.svg" height="24" class="mr-3 mt-4">
+                        <input type="hidden" name="hid_is_collaborator" id="hid_is_collaborator">
+                        <input type="hidden" name="hid_id_area" id="hid_id_area">
+                        <input type="hidden" name="hid_id_location" id="hid_id_location">
+                        <input type="hidden" name="hid_id_company" id="hid_id_company">   
+                        <input type="hidden" name="hid_name_company" id="hid_name_company">   
+                        <input type="hidden" name="hid_covid_test" id="hid_covid_test">                       
+                      </div>
+
+                      <div class="form-group col-md-4  bmd-form-group is-filled">  
+                        <label class="bmd-label-static titleInput"></label>                      
+                        <input type="text" class="form-control autocompleteblacklistname" id="tx_nomape" maxlength="50">
+                        <small id="" class="form-text text-muted text-left">Nombre y apellido</small>
+                      </div>
+                      <div class="form-group col-md-2  bmd-form-group is-filled">                   
+                        <input type="text" class="form-control bg-white" id="tx_docum" name="tx_docum" disabled maxlength="50" onkeyup="validaSoloNumeros(this.id)">
+                        <small id="" class="form-text text-muted text-left">Documento</small>
+                      </div>
+                        <div class="form-group col-md-3  bmd-form-group is-filled">  
+                            <input type="text" class="form-control" id="tx_ocupacion" maxlength="50">
+                            <small id="" class="form-text text-muted text-left">Ocupación</small>
+                        </div>
+                      
+                        <div class="form-group col-md-2  no-particular bmd-form-group is-filled" id="fechaReeustExamCol"> 
+                          <input type="text" class="form-control" id="tx_date_tamizaje" name="tx_date_tamizaje" maxlength="50">
+                          <small id="" class="form-text text-muted text-left">Fecha de Solicitud</small>
+                        </div>                  
+                    </div>
+                    <hr>
+                    <div  class="row ml-3" style="margin-bottom: 0.125rem!important;" id="temperatureUSer" >
+                      
+                      <div class="form-group col-md-1 no-particular bmd-form-group is-filled">  
+                        <img src="images/iconos/iconTemp.svg" height="24" class="mr-3 mt-4">                                              
+                      </div>
+
+                      <div class="form-group col-md-3  bmd-form-group is-filled">  
+                        <label class="bmd-label-static titleInput"></label>
+                        <input type="text" class="form-control" id="tx_tempIN_lg" maxlength="4" onkeyup="validarMoneda(this.id)" >
+                        <small id="" class="form-text text-dark font-weight-bold text-left">Temperatura de Entrada</small>
+                      </div>
+                      <div class="form-group col-md-3  bmd-form-group is-filled">
+                        <input type="text" class="form-control" id="tx_temoOUT_lg" maxlength="4" onkeyup="validarMoneda(this.id)">
+                        <small id="" class="form-text text-dark font-weight-bold text-left">Temperatura de Salida</small>
+                      </div> 
+                      <hr>           
+                    </div>
+                    
+
+                    <div  class="row justify-content-md-center p-2" style="margin-bottom: 0.125rem!important; height: 55px;"  >                      
+                      <div class="col-md-auto pt-2 p-2">
+                        <span id="span_notification"></span>
+                      </div>   
+                    </div>
+
+
+                    <div class="row col-12">
+                      <div class="col-sm-1"></div>
+                      <div class="col-sm-10 text-center">
+                        <input type="hidden" id="hid_check_in_out" name="hid_check_in_out">
+                        <button type="button" style="width: 165px;display:none" class="btn btn-info btn-rounded btn-raised butEditBlack" id="butEditBlack" onclick="vw_covid_list.thumbsUpregister();">Actualizar información</button>
+                        <button type="button" style="width: 165px;" class="btn btn-green-lime btn-rounded btn-raised" id="btnValidateIn" onclick="vw_covid_list.confirmSaveCheckInCovid19(1);">Validar ingreso</button>
+                        <button type="button" style="width: 165px;" class="btn btn-danger btn-rounded btn-raised" id="btnValidateOut" onclick="vw_covid_list.confirmSaveCheckInCovid19(0);">Validar Salida</button>
+                        <button type="button" style="display:none;width: 165px;" class="btn btn-danger btn-rounded btn-raised" id="btnNoAuthorizedeIn" onclick="vw_covid_list.confirmNoauthorizedCovid19(0);">Denegar ingreso</button>
+                        <button type="button" style="width: 165px;display:none" class="btn btn-primary btn-rounded btn-raised" id="btnSolicitudTamizaje" onclick="vw_covid_list.confirmSolicitudTamizaje();">Solicitud de tamizaje</button>
+                        <button type="button" style="width: 165px;display: none;" class="btn btn-warning btn-rounded btn-raised" id="btnCancelTamizaje" onclick="vw_covid_list.confirmCancelTamizaje();">Cancelar Tamizaje</button>
+                      </div>
+                      <div class="col-sm-1">
+                      </div>  
+                    </div>
+                    </div>
+                    
+                    <div class="modal-footer" >
+                      <div class="col-md-12 row"  id="modalRegisterCovidTestFooter">
+                      </div>
+                    </div>
+                </div>  
+            </div>
+        </div>        
+      </div>
+    </div>
+    <div class="modal-footer" >
+      <div class="col-md-12 row"  id="modal_show_request_details_footer">
+      </div>
+    </div>
+    
+    </div>
+  </div>
+  </div>
+
+
+
+  <!-- fin modal examen -->
+
+  <div class="modal fade "  id="modalNonAuthorized" tabindex="-1" role="dialog" aria-labelledby="modalEditBlacklist" aria-hidden="true" >
+    <div class="modal-dialog modal-lg modal-dialog-centered rounded " role="document" style="width: 450px; z-index: 1030; ">
+      <div class="modal-content rounded " style=" background-color:rgba(0,0,0,.0001) !important; box-shadow: none;">        
+      <div class="modal-header" style="padding:5px 24px 0!important">
+        <h5 class="modal-title"></h5>
+      </div>
+      <div style="overflow: auto;overflow-x: hidden; ">
+        <div class="modal-body p-5" id="modal_show_request_details">  
+          <div class="row">
+              <div class="col-sm-12 col-md-12">
+                  <div class="card" style=" border-radius: 10px; box-shadow: none;">
+                      <div class="card-header text-white " style=" border-radius: 10px 10px 0px 0px; background: #03a9f4; height: 45px;">
+                        
+                        <div class="row">
+                          <div class="col-10">
+                            
+                            <h6>Confirmación</h6>
+                            
+                          </div>
+                          <div class="col-2 text-right">
+                            <h5 class="fa fa-times text-white"  style="cursor: pointer;" data-dismiss="modal" aria-label="Close"></h5> 
+                           
+                          </div>
+                        </div>
+  
+                      </div>
+                      <div class="card-body text-center " id="" style="padding: 0 !important; ">                        
+
+                      <div  class="row ml-3 pt-4" style="margin-bottom: 0.125rem!important;">
+                        
+                        <div class="form-group col-md-1 no-particular bmd-form-group is-filled">  
+                          <!-- <img src="images/iconos/estetoscopio.svg" height="24" class="mr-3 mt-4"> -->
+                                              
+                        </div>
+  
+                        <input id="ideditseleted" type="hidden">
+                            <input id="enterselected" type="hidden">
+                                          
+                            
+                           <!--  <input id="tx_temperature" name="tx_temperature" class=""   required maxlength="250" style="width: 100%; height: 50px; border: none !important;"></textarea> -->
+                           <div class="form-group bmd-form-group text-center p-2" style="padding-top:0!important">                                  
+                            <input type="text" class="form-control" id="tx_temperature" maxlength="4" onkeyup="validarMoneda(this.id)" >
+                            <small id="" class="form-text text-muted text-left">Ingresar Temperatura</small>           
+                          </div>
+                         
+                        
+                              
+                      </div>
+                      <div class="row p-2">
+                        <div class="col-6 text-right">
+
+                          <button type="button" class="btn btn-success btn-rounded btn-raised" style="width: 140px;" id="btnNoAuthorizedeIn" onclick="vw_covid_list.confirmAuthorizedCovid19(1);">Registrar</button>
+                          
+                        </div>
+                        <div class="col-6 text-left">
+
+                          <button type="button" class="btn btn-danger btn-rounded btn-raised" style="width: 140px;"  id="btnNoAuthorizedeIn" onclick="vw_covid_list.confirmAuthorizedCovid19(0);">Denegar ingreso</button>
+                          
+                        </div>
+
+                       
+                      </div>
+                      <div class="row ">
+                        
+                       <div style="height: 30px;"></div>
+                       
+                      </div>
+                      </div>
+                      
+                  </div>  
+              </div>
+          </div>        
+        </div>
+      </div>
+      <div class="modal-footer" >
+        <div class="col-md-12 row"  id="modal_show_request_details_footer">
+        </div>
+      </div>
+      
+      </div>
+    </div>
+    </div>
+
+  </div>
