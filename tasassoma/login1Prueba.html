@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+
+                <!----------------------- *** Inicio de la Cabecera ***   ----------------------->
+    <head>
+        <meta http-equiv="Expires" content="0">
+        <meta http-equiv="Last-Modified" content="0">
+        <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <link rel="shortcut icon" href="images/iconos/favicon.ico" type="image/x-icon"/>
+        <meta name="author" content="Visualsat Peru">
+        <title>SSOMA JUAN PRUEBA</title>
+        <!-- css estaticos -->
+        <link href="modules/bootstrap-4.4.1/dist/css/bootstrap.min.css" rel="stylesheet" >
+        <link rel="stylesheet" href="modules/bootstrap-sweetalert-master/dist/sweetalert.css" rel="stylesheet">
+        <link href="css/loadingEffect.css" rel="stylesheet" >
+        <!-- dinamico -->
+        <link href="css/visitasa.css" rel="stylesheet" >
+        <link href="css/crearAuditorias.css" rel="stylesheet" >
+
+               <!-- //------------------bloque codigo-----------------------#@andy---------------------------------------------// -->
+                  <!----------------------- estilos estaticos de este arhivo ----------------------->
+         <style>
+
+            .padre {
+
+                display: flex !important;
+                justify-content: center !important;
+                align-items: center !important;
+                background:#fff url('images/fondologin.jpg') no-repeat center center  ; min-height:100%;
+                background-attachment: fixed;
+                background-size: cover;
+            }
+
+            .olvidaste-tu-contra {
+                width: 168px;
+                height: 17px;
+                font-family: ProductSans;
+                font-size: 14px;
+                font-weight: bold;
+                font-stretch: normal;
+                font-style: normal;
+                line-height: normal;
+                letter-spacing: normal;
+                color: #51b499;
+            }
+
+            #tx_login_usuario{
+
+                background-color: white;
+                background-image: url('images/iconos/iconUser.svg');
+                background-position:330px;
+                background-repeat: no-repeat;
+                padding-left: 40px;
+            }
+
+                #tx_login_password{
+
+                background-color: white;
+                background-image: url('images/iconos/iconPass.svg');
+                background-position:330px;
+                background-repeat: no-repeat;
+                padding-left: 40px;
+            }
+
+            #barra_superior{
+                background-color:#254373;
+                height: 77px;
+                width: 100%;
+            }
+
+            .lbBienvenido {
+
+                height: 24px;
+                font-size: 24.3px;
+                font-weight: normal;
+                font-stretch: normal;
+                font-style: normal;
+                line-height: 1;
+                letter-spacing: 0.15px;
+                color: #000000;
+            }
+
+            .trazado {
+                width: 40.1px;
+                height: 0;
+                margin: 0 auto;
+                border: solid 1px #707070;
+            }
+         </style>
+
+                  <!----------------------- estilos estaticos de este arhivo ----------------------->
+
+    </head>
+                <!----------------------- *** Fin de la Cabecera ***   ----------------------->
+
+
+
+
+
+
+
+
+
+
+
+                <!----------------------- *** Inicio de la Cuerpo de la Pagina ***   ----------------------->
+
+    <body class="text-center" id="body_index"  >
+
+                <!----------------------------- barra superior ---------------------------------------------->
+        <div id="barra_superior" class="row" >
+            <div class="col-5 d-flex align-items-center" >
+                <p class="text-white mt-2" style="margin-left: 5rem;">Ingresar</p>
+            </div>
+
+            <div class="d-flex align-items-center ml-2">
+                <img src="images/iconos/iconTasa.svg" class="ml-5"  >
+            </div>
+        </div>
+                <!------------------------------ barra superior ---------------------------------------------->
+
+
+
+
+
+                <!----------------------- *** Inicio Capa Padre ***   ----------------------->
+        <div class="padre">
+
+
+
+
+                    <!------------------------------**  Inicio Formulario Logeo **  ----------------------------->
+            <form class="form-signin form-row ld ld-blur-in bg-blue "  name="fm_login" id="fm_login1" style="max-width: 475px; margin-top: 75px;  ">
+
+                <div class=" " id="cardlogin" style="width: 445px;" >
+                    <div class="alert" role="alert" style="display: none;"></div>
+                    <h2 class="card-title text-center lbBienvenido "  >¡Bienvenido!</h2>
+                    <hr class="trazado">
+                    <h5 class="card-title text-center mt-4"> <img class="img-fluid" src="images/logo1salud.webp" alt="" width="225" ></h5>
+                    <div class="card-body  text-center" style="background-color:white;">
+
+
+                            <div style="background-color:white; height:8px;" ></div>
+
+
+
+                            <div class="container mt-5"  style="text-align:center; background-color:white; width: 390px;">
+                                <div class="form-group   m-0" style=" width: 360px; background-color:white;">
+                                    <div class="input-group mb-3">
+                                        <button class="btn btn-lg buttonActive btn-block d-flex justify-content-center " style=" height: 52px; border-radius: 7px; width: 360px; background-color: #8fbb02;" type="submit">
+                                            <div class="d-flex justify-content-center">
+                                                <div class="spinner-grow spinner-border-sm text-white" role="status" aria-hidden="true" style="display: none;">
+                                                </div>
+                                            </div>
+                                            Ingresar
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="container"  style="text-align:center; background-color:white; width: 390px;">
+                                <div class="form-group   m-0" style=" width: 360px; background-color:white;">
+                                    <div class="input-group mb-3">
+                                        <div class="w-100 mt-0" >
+                                            <button class="btn btn-lg btn-primary btn-block d-flex justify-content-center " onclick="" style=" height: 52px; border-radius: 7px; width: 360px; background: #254373;" type="button">
+                                                Ingresar usuario de TASA
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="container" style="text-align:center; background-color:white; width: 390px;">
+                                <div class="form-group   m-0" style=" width: 360px; background-color:white;">
+                                    <div class="input-group mb-3">
+                                        <div class="w-100 mt-0" >
+                                            <button class="btn btn-lg btn-primary btn-block d-flex justify-content-center " onclick="" style=" height: 52px; border-radius: 7px; width: 360px; background:#d8801f;" type="button">
+                                                Ingreso office 365
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="  mt-5 w-100 text-center pr-4 " style="font-size: 16px;">
+                                2020 Visitasa. All rights reserved.
+                            </div>
+
+                    </div>
+                </div>
+            </form>
+            <!------------------------------**  Fin Formulario Logeo **  ----------------------------->
+
+        </div><!----------------------- *** Fin Capa Padre ***   ----------------------->
+    </body>
+<!----------------------- *** Fin de la Cuerpo de la Pagina ***   ----------------------->
+
+
+
+
+    <!-- libs estaticos -->
+    <script src="js/jquery-3.4.1.js" ></script>
+    <script src="modules/bootstrap-4.4.1/dist/js/bootstrap.min.js"  ></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer ></script>
+
+    <script src="modules/bootstrap-sweetalert-master/dist/sweetalert.js"></script>
+    <script src="modules/bootstrap-4-floating-labels-material-inputs/materialize-inputs.jquery.js" ></script>
+    <!-- libs dinamicos -->
+    <script src="js/common.js" ></script>
+
+    <script src="js/apiRoute.js"></script>
+    <script src="js/msal.js" ></script>
+    <script src="js/login.js" ></script>
+    <script src="js/loginlog.js" ></script>
+
+
+    <script>
+
+
+        $(document).ready(function(){
+        login.init();//llamado al metodo init//
+
+        });
+    </script>
+
+</html>
