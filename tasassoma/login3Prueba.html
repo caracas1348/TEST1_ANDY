@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en">
+
+                <!----------------------- *** Inicio de la Cabecera ***   ----------------------->
+    <head>
+        <meta http-equiv="Expires" content="0">
+        <meta http-equiv="Last-Modified" content="0">
+        <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <link rel="shortcut icon" href="images/iconos/favicon.ico" type="image/x-icon"/>
+        <meta name="author" content="Visualsat Peru">
+        <title>SSOMA JuanPrueba</title>
+        <!-- css estaticos -->
+        <link href="modules/bootstrap-4.4.1/dist/css/bootstrap.min.css" rel="stylesheet" >
+        <link rel="stylesheet" href="modules/bootstrap-sweetalert-master/dist/sweetalert.css" rel="stylesheet">
+        <link href="css/loadingEffect.css" rel="stylesheet" >
+        <!-- dinamico -->
+        <link href="css/visitasa.css" rel="stylesheet" >
+        <link href="css/crearAuditorias.css" rel="stylesheet" >
+
+               <!-- //------------------bloque codigo-----------------------#@andy---------------------------------------------// -->
+                  <!----------------------- estilos estaticos de este arhivo ----------------------->
+         <style>
+
+            .padre {
+
+                display: flex !important;
+                justify-content: center !important;
+                align-items: center !important;
+                background:#fff url('images/fondologin.jpg') no-repeat center center  ; min-height:100%;
+                background-attachment: fixed;
+                background-size: cover;
+            }
+
+            .olvidaste-tu-contra {
+                width: 168px;
+                height: 17px;
+                font-family: ProductSans;
+                font-size: 14px;
+                font-weight: bold;
+                font-stretch: normal;
+                font-style: normal;
+                line-height: normal;
+                letter-spacing: normal;
+                color: #51b499;
+            }
+
+            #login_usuario_salud{
+
+                background-color: white;
+                background-image: url('images/iconos/iconUser.svg');
+                background-position:330px;
+                background-repeat: no-repeat;
+                padding-left: 40px;
+            }
+
+                #login_password_salud {
+
+                background-color: white;
+                background-image: url('images/iconos/iconPass.svg');
+                background-position:330px;
+                background-repeat: no-repeat;
+                padding-left: 40px;
+            }
+
+            #login_usuario_salud_token{
+                width: 360px;
+                height: 89px;
+                resize: none;
+                padding: .5rem;
+                border-radius: 4px;
+                border: solid 1px #c8c8c8;
+                background-color: #ffffff;
+            }
+
+            #barra_superior{
+                background-color:#254373;
+                height: 77px;
+                width: 100%;
+            }
+
+            .lbBienvenido {
+
+                height: 24px;
+                font-size: 24.3px;
+                font-weight: normal;
+                font-stretch: normal;
+                font-style: normal;
+                line-height: 1;
+                letter-spacing: 0.15px;
+                color: #000000;
+            }
+
+         </style>
+
+                  <!----------------------- estilos estaticos de este arhivo ----------------------->
+
+    </head>
+                <!----------------------- *** Fin de la Cabecera ***   ----------------------->
+
+
+
+
+
+
+
+
+
+
+
+                <!----------------------- *** Inicio de la Cuerpo de la Pagina ***   ----------------------->
+
+    <body class="text-center" id="body_index"  >
+
+                <!----------------------------- barra superior ---------------------------------------------->
+                <div id="barra_superior" class="row" >
+                    <div class="col-5 d-flex align-items-center" >
+                        <p class="text-white mt-2" style="margin-left: 5rem;"> 
+                         Ingresar
+                        </p>
+                    </div>
+        
+                    <div class="d-flex align-items-center ml-2">
+                        <img src="images/iconos/iconTasa.svg" class="ml-5"  >
+                    </div>
+                </div>
+                <!------------------------------ barra superior ---------------------------------------------->
+
+
+
+
+
+                <!----------------------- *** Inicio Capa Padre ***   ----------------------->
+        <div class="padre">
+
+
+
+
+                    <!------------------------------**  Inicio Formulario Logeo **  ----------------------------->
+            <form class="form-signin form-row ld ld-blur-in bg-blue "  name="fm_login" id="fm_login3" style="max-width: 475px; margin-top: 75px; ">
+
+                <div class=" " id="cardlogin" style="width: 445px;" >
+                    <div class="alert" role="alert" style="display: none;"></div>
+                    <h2 class="card-title text-center lbBienvenido "  >Ingresar usuario de TASA</h2>
+                    <div class="card-body  text-center" style="background-color:white;">
+                        <h6 class=" mb-4 mt-3 text-left" style="color:#254373; margin-left: 1.5rem;">Credenciales</h6>
+
+                        <!-- <img class="" src="images/credenciales.webp" alt="" width="225" class="img-fluid" > -->
+
+
+                            <div class="form-group   m-0 " >
+                                <input type="text" placeholder="DNI" class="form left border" id="login_usuario_salud" style=" width: 360px;  height:58px; border-radius: 4px;"  required >
+                            </div>
+
+                            <div style="background-color:white; height:16px;" ></div>
+
+                            <div class="form-group   m-0">
+                                <input type="password"   placeholder="Código trabajador" class="form iconPass border" id="login_password_salud" style=" width: 360px;  height:58px; border-radius: 4px;" required>
+
+                            </div>
+
+
+                            <div style="background-color:white; height:8px;" ></div>
+
+
+
+
+
+                            <div class="container"  style="text-align:center; background-color:white; width: 390px;">
+                                <div class="form-group   m-0" style=" width: 360px; background-color:white;">
+                                    <div class="input-group mb-3">
+                                        <button class="btn btn-lg buttonActive btn-block d-flex justify-content-center " style=" height: 52px; border-radius: 7px; width: 360px; background-color: 
+                                        #1e4277;" type="submit">
+                                            <div class="d-flex justify-content-center">
+                                                <div class="spinner-grow spinner-border-sm text-white" role="status" aria-hidden="true" style="display: none;">
+                                                </div>
+                                            </div>
+                                            Enviar Token
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h6 class=" mb-4 mt-5 text-left" style="color:#254373; margin-left: 1.5rem;">Ingresar Token</h6>
+
+                            <div class="form-group   m-0 " >
+                                <textarea
+                                    class="form left border" 
+                                    id="login_usuario_salud_token"  
+                                    required
+                                ></textarea>
+                            </div>
+
+                            
+                            <div class="container mt-4"  style="text-align:center; background-color:white; width: 390px;">
+                                <div class="form-group   m-0" style=" width: 360px; background-color:white;">
+                                    <div class="input-group mb-3">
+                                        <button class="btn btn-lg buttonActive btn-block d-flex justify-content-center " style=" height: 52px; border-radius: 7px; width: 360px; background-color:#c1c1c1;" type="submit">
+                                            <div class="d-flex justify-content-center">
+                                                <div class="spinner-grow spinner-border-sm text-white" role="status" aria-hidden="true" style="display: none;">
+                                                </div>
+                                            </div>
+                                            Validar Token
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="  mt-4 w-100 text-center pr-4 " style="font-size: 16px;">
+                                    2020 Visitasa. All rights reserved.
+                            </div>
+
+                    </div>
+                </div>
+            </form>
+                        <!------------------------------**  Fin Formulario Logeo **  ----------------------------->
+
+
+
+
+
+                        <!------------------------------**  Inicio Formulario Recuperar Usuario **  ----------------------------->
+            <form class="form-signin form-row ld ld-blur-in bg-blue" name="fm_rememberPassword" id="fm_rememberPassword" style="max-width: 400px; display: none;">
+                <div class="card border-0 shadow-lg bg-white rounded  mb-5  pl-4 pr-4" style=" background-color: rgba(255, 255, 255, 0.5); ">
+                    <div class="alert" role="alert" style="display: none;"></div>
+                    <h5 class="card-title text-left mt-5"><img src="images/iconos/multimedia-option.svg" id="img_back" width="20" height="15" class="img-fluid"> Recuperar contraseña</h5>
+                    <div class="card-body text-left mr-2 ml-2" style="padding-top: 0px !important;">
+                        <h6 class="text-muted">Coloque el correo al que desea que le llegue la restauración de su contraseña </h6>
+                        <div class="" id="spinner-rememberPassword" style="display: none; margin-top: 80px;">
+                            <div class="d-flex justify-content-center">
+                                <div class="spinner-border text-info" role="status" style="width: 5rem; height: 5rem;">
+                                <span class="sr-only">Loading...</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="success-rememberPassword" style="display: none; margin-top: 80px;">
+                            <div class="d-flex justify-content-center">
+                            <img src="images/iconos/correct.svg" alt="" style="width: 7rem; height: 7rem;">
+                            </div>
+                            <h6 class="text-muted text-center mt-2">Datos enviados correctamente</h6>
+                        </div>
+                        <div class="form-group mt-5 form-rememberPassword">
+                            <label for="tx_usermane_remember" class="font-weight-bolder">USUARIO</label>
+                            <input type="text" class="form-control input iconUser " id="tx_usermane_remember" style="" required >
+                        </div>
+                        <br>
+                        <div class="w-100 mt-5 form-rememberPassword">
+                            <button class="btn btn-lg buttonActive btn-block d-flex justify-content-center ml-3" style=" height: 52px; border-radius: 7px; width: 230px; background-color: #bed138;" type="submit">
+                                Enviar
+                            </button>
+                        </div>
+                        <br>
+                        <div class=" w-100 text-center pr-4 " style="font-size: 0.9em; margin-top: 150px;">
+                            &reg;2020 Tasa. All Rights reserved.
+                        </div>
+                    </div>
+                </div>
+            </form>
+                        <!------------------------------**  Fin Formulario Recuperar Usuario **  ----------------------------->
+
+
+        </div><!----------------------- *** Fin Capa Padre ***   ----------------------->
+    </body>
+<!----------------------- *** Fin de la Cuerpo de la Pagina ***   ----------------------->
+
+
+
+
+
+
+    <!-- libs estaticos -->
+    <script src="js/jquery-3.4.1.js" ></script>
+    <script src="modules/bootstrap-4.4.1/dist/js/bootstrap.min.js"  ></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer ></script>
+
+    <script src="modules/bootstrap-sweetalert-master/dist/sweetalert.js"></script>
+    <script src="modules/bootstrap-4-floating-labels-material-inputs/materialize-inputs.jquery.js" ></script>
+    <!-- libs dinamicos -->
+    <script src="js/common.js" ></script>
+
+    <script src="js/apiRoute.js"></script>
+    <script src="js/msal.js" ></script>
+    <script src="js/login.js" ></script>
+    <script src="js/loginlog.js" ></script>
+
+
+    <script>
+
+
+        $(document).ready(function(){
+        login.init();//llamado al metodo init//
+
+        });
+    </script>
+
+</html>
