@@ -9,7 +9,7 @@
 * | 1 |  zzzz    |  |  14/03/2021  |  | 05:28:50 |    ccccc@gmail.com   |
 * |___|_________________|__|______________|__|__________|____________________________|
 *
-* DESCRIPCION: ARCHIVO SQL BACKEND DE FUNCIONALIDAD EN SERVIDOR  QUE OBTIENE LISTADO DE INCIDENTES CREADOS EN LA APP x2
+* DESCRIPCION: ARCHIVO SQL BACKEND DE FUNCIONALIDAD EN SERVIDOR  QUE OBTIENE LISTADO DE INCIDENTES CREADOS EN LA APP x3
 *
 * ARCHIVOS DE FRONT       ____________________________________
 * | # |     MODULO             |  |         NOMBRE            |
@@ -42,15 +42,15 @@ public static Task<IActionResult> Run(HttpRequest req, ILogger log)
 
     // obteniendo los datos 
 
-    var requestHeader           = req.Headers; 
-    var vvapikeysecure          = Environment.GetEnvironmentVariable("apikey",EnvironmentVariableTarget.Process);
-    // string vvapiKeyparameter    = requestHeader["apiKey"];
+    // var requestHeader           = req.Headers; 
+    // var vvapikeysecure          = Environment.GetEnvironmentVariable("apikey",EnvironmentVariableTarget.Process);
+    // // string vvapiKeyparameter    = requestHeader["apiKey"];
     // string vvhttpmethod         = req.Query["httpmethod"];
 
-    int c = 2;
+    // int c = 2;
 
     // log.LogInformation(" * requestHeader: " + requestHeader);
-    log.LogInformation(" **   vvapikeysecure: " + vvapikeysecure);
+    // log.LogInformation(" **   vvapikeysecure: " + vvapikeysecure);
     // log.LogInformation(" **   vvapiKeyparameter: " + vvapiKeyparameter);
     // log.LogInformation(" **   vvhttpmethod: " + vvhttpmethod);
     log.LogInformation(" **++++   REQ: " + req);
@@ -83,7 +83,8 @@ public static Task<IActionResult> Run(HttpRequest req, ILogger log)
     // }
 
 
-    return (ActionResult)new OkObjectResult(c); 
+    return new BadRequestObjectResult("Pase un nombre en la cadena de consulta o en el cuerpo de la solicitud"); 
+    // return (ActionResult)new OkObjectResult(c); 
     // != null
     //     ? (ActionResult)new OkObjectResult(jsonrspt)
     //     : new BadRequestObjectResult("Pase un nombre en la cadena de consulta o en el cuerpo de la solicitud");
