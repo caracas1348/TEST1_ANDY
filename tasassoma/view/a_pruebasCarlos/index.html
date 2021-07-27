@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Atenciones Médicas</title>
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+      crossorigin="anonymous"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      @font-face {
+        font-family: "myfont";
+        src: url("fonts/ITCAvantGardeStd-Md.otf") format("opentype");
+      }
+      body {
+        font-family: myfont;
+        /* height: 500vh; */
+      }
+      body::-webkit-scrollbar {
+        width: 10px;
+      }
+      body::-webkit-scrollbar-thumb {
+        background: #254373;
+        border-radius: 10px;
+      }
+      .menu {
+        opacity: 0.9;
+        padding: 0 80px 80px 80px;
+      }
+
+      .titulo-menu {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        flex-wrap: wrap;
+        padding-top: 210px;
+        margin-bottom: 100px;
+      }
+
+      .titulo-menu span {
+        font-size: 33px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 0.61;
+        letter-spacing: normal;
+        text-align: center;
+        color: #254373;
+      }
+
+      .buscar-menu {
+        position: relative;
+        width: 327px;
+      }
+      .buscar-menu input {
+        width: 100%;
+        padding: 15px 10px;
+        border: none;
+        outline: none;
+        border-bottom: 2px solid #404040;
+      }
+      .buscar-menu .icon {
+        font-size: 18px;
+        color: #254373;
+        position: absolute;
+        right: 0;
+        bottom: 50%;
+        transform: translateY(50%);
+      }
+      .buscar-menu .label {
+        position: absolute;
+        left: 0;
+        top: -14px;
+        color: #254373;
+        font-size: 14px;
+      }
+
+      .content-menu {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 4em 2em;
+      }
+
+      .items-busqueda {
+        width: 250px;
+        cursor: pointer;
+      }
+
+      .items-busqueda:hover span {
+        color: #254373;
+      }
+
+      .items-busqueda img {
+        display: block;
+        margin: 0 auto;
+        height: 101px;
+        margin-bottom: 2em;
+      }
+
+      .items-busqueda span {
+        text-align: center;
+        font-size: 20px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.25;
+        letter-spacing: normal;
+        text-align: center;
+        color: #000000;
+        display: block;
+        padding: 0 1em;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="menu">
+      <div class="titulo-menu">
+        <span>Módulo de salud ocupacional</span>
+
+        <div class="buscar-menu">
+          <span class="icon"><i class="fa fa-search"></i></span>
+          <span class="label">Buscar</span>
+          <input type="text" name="buscar" id="inputBuscar" />
+        </div>
+      </div>
+      <div class="content-menu">
+        <div class="items-busqueda"></div>
+      </div>
+    </div>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      // objeto con los items del menu
+      let items = [
+        {
+          name: "Historia Clínica Electrónica (HCE)",
+          icon: "1.svg",
+        },
+        {
+          name: "Registro Estadístico de EMO",
+          icon: "1.svg",
+        },
+        {
+          name: "Auditoría para centros médicos",
+          icon: "1.svg",
+        },
+        {
+          name: "Levantamiento de observaciones a centros médicos",
+          icon: "1.svg",
+        },
+        {
+          name: "Registro de Inspección de Instalaciones",
+          icon: "1.svg",
+        },
+        {
+          name: "Investigación de Enfermedades Ocupacionales",
+          icon: "1.svg",
+        },
+        {
+          name: "Revisión de Menú Mensual",
+          icon: "1.svg",
+        },
+        {
+          name: "Registro de Enfermedades Ocupacionales",
+          icon: "1.svg",
+        },
+        {
+          name: "Registro de Enfermedades Crónicas",
+          icon: "1.svg",
+        },
+        {
+          name: "Registro de Exámenes Toxicológicos",
+          icon: "1.svg",
+        },
+        {
+          name: "Registro de Atenciones Médicas",
+          icon: "1.svg",
+        },
+        {
+          name: "Registro Estadístico de VMO",
+          icon: "1.svg",
+        },
+        {
+          name: "Accidentes de Trabajo",
+          icon: "1.svg",
+        },
+        {
+          name: "Registro de Trabajadores Reubicados",
+          icon: "1.svg",
+        },
+        {
+          name: "Registro de Vacunas",
+          icon: "1.svg",
+        },
+        {
+          name: "Registro de Descansos Médicos",
+          icon: "1.svg",
+        },
+        {
+          name: "Registro de Trabajadores Discapacitados",
+          icon: "1.svg",
+        },
+        {
+          name: "Registro de Mujeres en Edad Fértil y Gestantes",
+          icon: "1.svg",
+        },
+        {
+          name: "IPERC",
+          icon: "1.svg",
+        },
+        {
+          name: "Notificaciones",
+          icon: "1.svg",
+        },
+        {
+          name: "Reportes",
+          icon: "1.svg",
+        },
+        {
+          name: "Programa Anual de Salud e Higiene Ocupacional",
+          icon: "1.svg",
+        },
+        {
+          name: "Kardex de Medicamentos",
+          icon: "1.svg",
+        },
+        {
+          name: "Programa de promoción de la salud",
+          icon: "1.svg",
+        },
+        {
+          name: "Registro de interconsultas",
+          icon: "1.svg",
+        },
+      ];
+      // fin items
+
+      // Cargar items en el menu
+      function renderItems(items) {
+        const $container = $(".content-menu");
+        $container.html("");
+
+        items.forEach((item) => {
+          const $item = $container.append(`
+          <div class="items-busqueda">
+            <img src="./img/${item.icon}" />
+            <span>${item.name}</span>
+          </div>
+          `);
+        });
+        console.log($container);
+      }
+
+      // Selecion del input
+      const $inputBusqueda = $("#inputBuscar");
+
+      // Escuchar evento en el input
+      $inputBusqueda.keyup((e) => {
+        console.log(e);
+        const keyWords = e.target.value.toLowerCase();
+        const newItems = items.filter((item) => {
+          if (item.name.toLowerCase().includes(keyWords)) {
+            return item;
+          }
+        });
+        // cargar nuevos items
+        renderItems(newItems);
+      });
+
+      renderItems(items);
+    </script>
+  </body>
+</html>
