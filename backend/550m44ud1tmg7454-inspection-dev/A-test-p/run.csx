@@ -19,7 +19,7 @@
 * VERSION: 0.1 Beta
 *******************************************************************************************/
 #r "Newtonsoft.Json"
-#load "sql.csx"
+// #load "sql.csx"
 
 
 using System;
@@ -44,15 +44,15 @@ public static Task<IActionResult> Run(HttpRequest req, ILogger log)
 
     var requestHeader           = req.Headers; 
     var vvapikeysecure          = Environment.GetEnvironmentVariable("apikey",EnvironmentVariableTarget.Process);
-    string vvapiKeyparameter    = requestHeader["apiKey"];
-    string vvhttpmethod         = req.Query["httpmethod"];
+    // string vvapiKeyparameter    = requestHeader["apiKey"];
+    // string vvhttpmethod         = req.Query["httpmethod"];
 
     int c = 2;
 
-    log.LogInformation(" * requestHeader: " + requestHeader);
+    // log.LogInformation(" * requestHeader: " + requestHeader);
     log.LogInformation(" **   vvapikeysecure: " + vvapikeysecure);
-    log.LogInformation(" **   vvapiKeyparameter: " + vvapiKeyparameter);
-    log.LogInformation(" **   vvhttpmethod: " + vvhttpmethod);
+    // log.LogInformation(" **   vvapiKeyparameter: " + vvapiKeyparameter);
+    // log.LogInformation(" **   vvhttpmethod: " + vvhttpmethod);
     log.LogInformation(" **++++   REQ: " + req);
     // string jsonrspt = ""; 
     // //Evaluar Clave API
@@ -83,7 +83,7 @@ public static Task<IActionResult> Run(HttpRequest req, ILogger log)
     // }
 
 
-    return c; 
+    return (ActionResult)new OkObjectResult(c); 
     // != null
     //     ? (ActionResult)new OkObjectResult(jsonrspt)
     //     : new BadRequestObjectResult("Pase un nombre en la cadena de consulta o en el cuerpo de la solicitud");
