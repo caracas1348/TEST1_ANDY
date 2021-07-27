@@ -9,7 +9,7 @@
 * | 1 |  zzzz    |  |  14/03/2021  |  | 05:28:50 |    ccccc@gmail.com   |
 * |___|_________________|__|______________|__|__________|____________________________|
 *
-* DESCRIPCION: ARCHIVO SQL BACKEND DE FUNCIONALIDAD EN SERVIDOR  QUE OBTIENE LISTADO DE INCIDENTES CREADOS EN LA APP x1
+* DESCRIPCION: ARCHIVO SQL BACKEND DE FUNCIONALIDAD EN SERVIDOR  QUE OBTIENE LISTADO DE INCIDENTES CREADOS EN LA APP x2
 *
 * ARCHIVOS DE FRONT       ____________________________________
 * | # |     MODULO             |  |         NOMBRE            |
@@ -47,6 +47,8 @@ public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
     string vvapiKeyparameter    = requestHeader["apiKey"];
     string vvhttpmethod         = req.Query["httpmethod"];
 
+    int c = 2;
+
     log.LogInformation(" * requestHeader: " + requestHeader);
     log.LogInformation(" **   vvapikeysecure: " + vvapikeysecure);
     log.LogInformation(" **   vvapiKeyparameter: " + vvapiKeyparameter);
@@ -81,7 +83,7 @@ public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
     // }
 
 
-    return jsonrspt = true; 
+    return c; 
     // != null
     //     ? (ActionResult)new OkObjectResult(jsonrspt)
     //     : new BadRequestObjectResult("Pase un nombre en la cadena de consulta o en el cuerpo de la solicitud");
