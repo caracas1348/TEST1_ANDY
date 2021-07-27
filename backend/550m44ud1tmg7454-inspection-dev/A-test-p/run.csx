@@ -36,7 +36,7 @@ using Microsoft.Extensions.Primitives;
 using Newtonsoft.Json; 
 
 
-public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
+public static Task<IActionResult> Run(HttpRequest req, ILogger log)
 {
     log.LogInformation("C# La función de activación HTTP procesó una solicitud. MILA");
 
