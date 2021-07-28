@@ -6,18 +6,20 @@
 * MODULO : GESTIÓN DE PLAN ANUAL
 * OPERADORES_________________________________________________________________________
 * | # | PROGRAMADOR     |  |      FECHA   |  |   HORA   |           CORREO           |
-* | 1 |  zzzz    |  |  14/03/2021  |  | 05:28:50 |    ccccc@gmail.com   |
+* | 1 | mmmm    |  |  16/03/2021  |  | 17:30:50 |              lllll@gmail.com   |
 * |___|_________________|__|______________|__|__________|____________________________|
 *
-* DESCRIPCION: ARCHIVO SQL BACKEND DE FUNCIONALIDAD EN SERVIDOR  QUE OBTIENE LISTADO DE INCIDENTES CREADOS EN LA APP x2
+* DESCRIPCION: ARCHIVO RUN BACKEND DE FUNCIONALIDAD EN SERVIDOR DEL LISTADO E INFORMACION --run 1
+*              LOS INCIDENTES ACCIDENTES DESDE LA WEB
 *
-* ARCHIVOS DE FRONT       ____________________________________
-* | # |     MODULO             |  |         NOMBRE            |
-* | 1 |      SSOMA             |  |  pppppp.html   |
-* |___________________________________________________________|
+* ARCHIVOS DE FRONT       _____________________________________________
+* | # |     MODULO             |  |         NOMBRE                    |
+* | 1 |      SSOMA             |  |      ttttttt.html   |
+* |___________________________________________________________________|
 *
 * VERSION: 0.1 Beta
 *******************************************************************************************/
+
 #r "Newtonsoft.Json"
 #load "sql.csx"
 
@@ -33,61 +35,65 @@ using System.Collections;
 using System.Text;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Primitives;
-using Newtonsoft.Json; 
-
-
+using Newtonsoft.Json;
+// run a-test-p
 public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
 {
-    log.LogInformation("C# La función de activación HTTP procesó una solicitud. MILA");
+    log.LogInformation("C# La función de activación HTTP procesó una solicitud.");
 
-    // obteniendo los datos 
-
-    var requestHeader           = req.Headers; 
+    var requestHeader           = req.Headers;
     var vvapikeysecure          = Environment.GetEnvironmentVariable("apikey",EnvironmentVariableTarget.Process);
     string vvapiKeyparameter    = requestHeader["apiKey"];
     string vvhttpmethod         = req.Query["httpmethod"];
 
-    int c = 2;
+    string jsonrspt = "";
+    //Evaluar Clave API
+    if(vvapikeysecure != vvapiKeyparameter )
+    {
+        vvhttpmethod    = "";
+        jsonrspt        = "{}";
+    }
 
-    log.LogInformation(" * requestHeader: " + requestHeader);
-    log.LogInformation(" **   vvapikeysecure: " + vvapikeysecure);
-    log.LogInformation(" **   vvapiKeyparameter: " + vvapiKeyparameter);
-    log.LogInformation(" **   vvhttpmethod: " + vvhttpmethod);
-    log.LogInformation(" **++++   REQ: " + req);
-    // string jsonrspt = ""; 
-    // //Evaluar Clave API
-    // if(vvapikeysecure != vvapiKeyparameter )
-    // {
-    //     vvhttpmethod    = "";
-    //     jsonrspt        = "{}";
-    // }
-
-
-    /*START - Parametros de Lectura*/        
-    // long UnidadNegocioId = req.Query["UnidadNegocioId"] == "" ? 0 : System.Convert.ToInt64(req.Query["UnidadNegocioId"]);
+    /*START - Parametros de Lectura*/
+    // long IdTipoEvento           = req.Query["IdTipoEvento"] == "" ? 0 : System.Convert.ToInt64(req.Query["IdTipoEvento"]);//tipo evento
+    // long IdEmpresa             = req.Query["IdEmpresa"] == "" ? 0 : System.Convert.ToInt64(req.Query["IdEmpresa"]); //empresa
+    // long IdSede                = req.Query["IdSede"] == "" ? 0 : System.Convert.ToInt64(req.Query["IdSede"]);//sede
+    // string FechaInicio         = req.Query["FechaInicio"].ToString();
+    // string FechaFin            = req.Query["FechaFin"].ToString();
+    // long IdEmbarcacion         = req.Query["IdEmbarcacion"] == "" ? 0 : System.Convert.ToInt64(req.Query["IdEmbarcacion"]);//embarcacion
 
 
+    // FechaInicio                = FechaInicio == "" ? "" : FechaInicio + " 00:00:00";
+    // FechaFin                   = FechaFin == "" ? "" : FechaFin + " 23:59:59";
 
-    // Objetos a Utilizar "DataPlanAnualGetAll" que esta en el archivo sql.csx
-    // DataPlanAnualGetAll vobj_sqldata = new DataPlanAnualGetAll();
+
+    // Objetos a Utilizar
+    DataPlanAnualGetAll vobj_sqldata = new DataPlanAnualGetAll();
 
     //Metodo:  listado de evaluacion de auditores
-    // if (vvhttpmethod == "objectlist")
-    // {
-    //     DataPlanAnual curobj = new DataPlanAnual();
-    //     long Id = 0;
-    //     curobj = await vobj_sqldata.funGetPlanAnualAllList( log, UnidadNegocioId);
+    if (vvhttpmethod == "objectlist")
+    {
+        DataPlanAnual curobj = new DataPlanAnual();
+        // long Id = 0;
+        curobj = await vobj_sqldata.funGetPlanAnualAllList( log );
         
-    //     //Conversion de Respuestas a JSON
-    //     jsonrspt = JsonConvert.SerializeObject(curobj, Formatting.Indented);
-    // }
+        // curobj = await vobj_sqldata.funGetPlanAnualAllList( log
+        //                                                     , Id
+        //                                                     , IdTipoEvento   //Tipo Evento
+        //                                                     , IdEmpresa   //IdEmpresa
+        //                                                     , IdSede       // Sede
+        //                                                     , FechaInicio  //Fecha desde
+        //                                                     , FechaFin     //Fecha Hasta
+        //                                                     , IdEmbarcacion   //Embarcacion
+        //                                                     );
+
+        //Conversion de Respuestas a JSON
+        jsonrspt = JsonConvert.SerializeObject(curobj, Formatting.Indented);
+    }
 
 
-    return c; 
-    // != null
-    //     ? (ActionResult)new OkObjectResult(jsonrspt)
-    //     : new BadRequestObjectResult("Pase un nombre en la cadena de consulta o en el cuerpo de la solicitud");
+
+    return jsonrspt != null
+        ? (ActionResult)new OkObjectResult(jsonrspt)
+        : new BadRequestObjectResult("Pase un nombre en la cadena de consulta o en el cuerpo de la solicitud");
 }
-
-
-
