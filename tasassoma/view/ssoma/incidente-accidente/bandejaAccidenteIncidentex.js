@@ -1742,14 +1742,7 @@ if(Item.HayPersonalAfectado == 0){Item.NombreEmpresa = 'Tasa';}
                                                         <img src='./images/iconos/ojo_1.svg' class='ojo-1'  >
                                                     </button>
                                                 </td>
-                                                
 
-                                                   <td style = 'width:60px;' align="center"><div id="c13TabGeny" class="text-center lbCabezaTabla1"  ${respF}'  >
-                                                <button type='button' title='Datos Generales' onclick="  accPlanAnual = 2; sp4FnModalDatosGnerales(${Item.Id})"   class='btn-circle btn_read border-0' style='background-color:#f9bc61 !important;' id='btn_verHallago${Item.Id}'>
-                                                    <img src='./images/iconos/file3.svg' class='ojo-1'  >
-                                                </button>
-
-                                                 </td>
 
                                                 <td style = 'width:60px;' align="center"><div id="c12TabGeny" class="text-center lbCabezaTabla1"  ${respF}'  >
                                                         <button type='button' title='${ttitle}' onclick="  fnSp4MostrarModalGenAlerta(${Item.Id}); "   class='btn-circle btn_read border-0' style='background-color:${ccolor2} !important;' id='btn_verHallago${Item.Id}' ${readonly2}>
@@ -1765,7 +1758,12 @@ if(Item.HayPersonalAfectado == 0){Item.NombreEmpresa = 'Tasa';}
 
                                                 </td>
 
-                                             
+                                                <td style = 'width:60px;' align="center"><div id="c13TabGeny" class="text-center lbCabezaTabla1"  ${respF}'  >
+                                                <button type='button' title='Datos Generales' onclick="  accPlanAnual = 2; sp4FnModalDatosGnerales(${Item.Id})"   class='btn-circle btn_read border-0' style='background-color:#f9bc61 !important;' id='btn_verHallago${Item.Id}'>
+                                                    <img src='./images/iconos/file3.svg' class='ojo-1'  >
+                                                </button>
+
+                                                 </td>
 
                                                 <td style = 'width:60px;' align="center"><div id="c14TabGeny" class="text-center lbCabezaTabla1"  ${respF}'  >
                                                 <button type='button' title='${ttitle2}' onclick="  accPlanAnual = 2; sp4FnTrasformaIncidenteEnHallazgo(${Item.Id})"   class='btn-circle btn_read border-0' style='background-color:${ccolor} !important;' id='btn_verHallago${Item.Id}' ${readonly}>
@@ -1890,9 +1888,9 @@ function fnSp3VentanaMostrarPlanAnual(pos)
                     
             
 
-        $('#divBordeDG_4').css('background-color','#ffffff');
-        $('#txtd_f_dg_gv_4').css('background-color','#ffffff');
-        $('#txtd_f_dg_gv_4').prop('disabled', false);//14-07-2021 que se ahabilitado
+        $('#divBordeDG_4').css('background-color','#efefef');
+        $('#txtd_f_dg_gv_4').css('background-color','#efefef');
+        $('#txtd_f_dg_gv_4').prop('disabled', true);
         $('#txtd_f_dg_gv_4').val(date_AAAA_MM_DD_T_HH_MM_S_to_DD_MM_AAAA(paObj[istAud].a.Fecha));
 
         // $('#divBordeDG_5').css('background-color','#efefef');
@@ -1900,52 +1898,28 @@ function fnSp3VentanaMostrarPlanAnual(pos)
         // $('#txtt_f_dg_gv_5').prop('disabled', true);
         $('#txtt_f_dg_gv_5').val(paObj[istAud].a.Hora)
 
+        $('#divBordeDG_6').css('background-color','#efefef');
+        $('#sel_f_dg_gv_6').css('background-color','#efefef');
         
-        
-
-        if(paObj[istAud].a.IdSede >0)
-        {
-
-             // $('#divBordeDG_6').css('background-color','#efefef');
-             // $('#sel_f_dg_gv_6').css('background-color','#efefef');
-  
-
-             $('#sel_f_dg_gv_6').val(paObj[istAud].a.IdSede)
-             $('#sel_f_dg_gv_6').prop('disabled', false);//14-07-2021 que se ahabilitado
-             $('#divBordeDG_6').css('background-color','#ffffff');
-             $('#sel_f_dg_gv_6').css('background-color','#ffffff');
-        }else{ $('#divBordeDG_6').css('background-color','#efefef');  $('#sel_f_dg_gv_6').css('background-color','#efefef');$('#sel_f_dg_gv_6').prop('disabled', true);}
-       
+        $('#sel_f_dg_gv_6').val(paObj[istAud].a.IdSede)
+        $('#sel_f_dg_gv_6').prop('disabled', true);
 
       
         
-         if(paObj[istAud].a.IdEmbarcacion > 0)
-        {
-             //si hay embarcacion no hay sede por ende condicion de embarcacion habilitada
-            // $('#divBordeDG_7').css('background-color','#efefef');
-            // $('#sel_f_dg_gv_7').css('background-color','#efefef');
-            $('#sel_f_dg_gv_7').prop('disabled', false);//14-07-2021 que se ahabilitado
-            $('#sel_f_dg_gv_7').val(paObj[istAud].a.IdEmbarcacion)
-            $('#divBordeDG_7').css('background-color','#ffffff');
-            $('#sel_f_dg_gv_7').css('background-color','#ffffff');
-        }else{$('#divBordeDG_7').css('background-color','#efefef'); $('#sel_f_dg_gv_7').css('background-color','#efefef'); $('#sel_f_dg_gv_7').prop('disabled', true);}
-       
+
+        //si hay embarcacion no hay sede por ende condicion de embarcacion habilitada
+        $('#divBordeDG_7').css('background-color','#efefef');
+        $('#sel_f_dg_gv_7').css('background-color','#efefef');
+        $('#sel_f_dg_gv_7').prop('disabled', true);
+        $('#sel_f_dg_gv_7').val(paObj[istAud].a.IdEmbarcacion)
 
 
-        $('#divBordeDG_8').css('background-color','#ffffff');
-        $('#sel_f_dg_gv_10').css('background-color','#ffffff');//14-07-2021 que se ahabilitado
-        $('#sel_f_dg_gv_10').prop('disabled', false);//NombreEmpresa
+        $('#divBordeDG_8').css('background-color','#efefef');
+        $('#sel_f_dg_gv_10').css('background-color','#efefef');
+        $('#sel_f_dg_gv_10').prop('disabled', true);//NombreEmpresa
         //$('#sel_f_dg_gv_10').val(paObj[istAud].a.IdEmpresa);//antes id por que era un listado ahora es tecleado
         $('#sel_f_dg_gv_10').val(paObj[istAud].a.NombreEmpresa);
         //alert('1475 sp4FnModalDatosGnerales');
-
-
-
-
-
-
-
-
 
          if(paObj[istAud].a.HayPersonalAfectado == 0) // es personal de tasa
             {
@@ -2027,9 +2001,7 @@ function fnSp3VentanaMostrarPlanAnual(pos)
          {
              //console.log('fueraaaaaaaaaaaaa 8',i,")=", item.Area); i++;
             if(item.UnidadNegocioId == n)
-            { 
-
-             //$('#sel_f_dg_gv_6 option:selected').
+            {
              $("#"+'sel_f_dg_gv_16').append(`<option value='${item.Id}' title='${item.UnidadNegocioId}' >${item.Area}</option>`);
              //$("#"+'sel_f_dg_gv_16k').append(`<option value='${item.Id}' title='${item.UnidadNegocioId}' >${item.Area}</option>`);
              $("#"+'sel_f_dg_gv_32').append(`<option value='${item.Id}' title='${item.UnidadNegocioId}' >${item.Area}</option>`);
@@ -2037,20 +2009,6 @@ function fnSp3VentanaMostrarPlanAnual(pos)
             }
                         
          });
-
-
-         if($('#sel_f_dg_gv_7').val() > 0 )
-         {
-             LTA.map(function(item)
-         {
-             //console.log('fueraaaaaaaaaaaaa 8',i,")=", item.Area); i++;
-                   
-                     $("#"+'sel_f_dg_gv_32').append(`<option value='${item.Id}' title='${item.UnidadNegocioId}' >${item.Area}</option>`);
-                   
-                    
-                                
-                 });
-         }
 
            let i = 1;
 
@@ -2162,23 +2120,6 @@ function fnSp3VentanaMostrarPlanAnual(pos)
         $('#txt_f_dg_gv_39').css('background-color','#efefef');
         $('#txt_f_dg_gv_39').prop('disabled', true);
 
-
-
-
-
-                                            
-
-
-
-
-
-
-
-
-
-
-
-
      //----------------- estado inicial de los campos inabilitados u en gris --------------------------//
 
     fnSp3onchangeObjetivoSubojetitivo('si');
@@ -2196,9 +2137,9 @@ function fnSp3VentanaMostrarPlanAnual(pos)
                         $("#titleModalDatosGenerales").html("<b>Datos Generales - "+paObj[istAud].a.Code+"</b>");
 
 
-                        $('#divBordeDG_x4').css('background-color','#ffffff');//efefef
-                        $('#txtd_f_dg_gv_4y').css('background-color','#ffffff');
-                        $('#txtd_f_dg_gv_4y').prop('disabled', false);
+                        $('#divBordeDG_x4').css('background-color','#efefef');
+                        $('#txtd_f_dg_gv_4y').css('background-color','#efefef');
+                        $('#txtd_f_dg_gv_4y').prop('disabled', true);
                         $('#txtd_f_dg_gv_4y').val(date_AAAA_MM_DD_T_HH_MM_S_to_DD_MM_AAAA(paObj[istAud].a.Fecha));
 
                         // $('#divBordeDG_x5').css('background-color','#efefef');
@@ -2206,17 +2147,17 @@ function fnSp3VentanaMostrarPlanAnual(pos)
                         // $('#txtt_f_dg_gv_5y').prop('disabled', true);
                         $('#txtt_f_dg_gv_5y').val(paObj[istAud].a.Hora)
 
-                        $('#divBordeDG_x6').css('background-color','#ffffff');
-                        $('#sel_f_dg_gv_6y').css('background-color','#ffffff');
-                        $('#sel_f_dg_gv_6y').prop('disabled', false);
+                        $('#divBordeDG_x6').css('background-color','#efefef');
+                        $('#sel_f_dg_gv_6y').css('background-color','#efefef');
+                        $('#sel_f_dg_gv_6y').prop('disabled', true);
                         $('#sel_f_dg_gv_6y').val(paObj[istAud].a.IdSede)
 
                         
                         
                         //si hay embarcacion no hay sede por ende condicion de embarcacion habilitada
-                        $('#divBordeDG_x8').css('background-color','#ffffff');
-                        $('#sel_f_dg_gv_10y').css('background-color','#ffffff');
-                        $('#sel_f_dg_gv_10y').prop('disabled', false);
+                        $('#divBordeDG_x8').css('background-color','#efefef');
+                        $('#sel_f_dg_gv_10y').css('background-color','#efefef');
+                        $('#sel_f_dg_gv_10y').prop('disabled', true);
                         //$('#sel_f_dg_gv_10y').val(paObj[istAud].a.IdEmpresa);
 
                          if(paObj[istAud].a.HayPersonalAfectado == 0) // es personal de tasa
@@ -6832,7 +6773,7 @@ if(paObj[istAud].a.yIdAlerta > 0)
                                                                                 "IdTipoEvento_": parseInt( $('#sel_fuente_tipo_incidente').val()),
                                                                                 "IdSede": $('#sel_filter_sede_p2AL').val(),
                                                                                 "Fecha":  nff,
-                                                                                "FraseCorta":$('#txt_describe_incidenteAlerta').val(), //txt_describe_incidenteAlerta
+                                                                                "FraseCorta":$('#txt_describe_incidenteAlerta').val(), 
                                                                                 "Descripcion":$('#txt_describe_incidenteAlertaX').val(),
                                                                                 "Codigo":paObj[istAud].a.Code,
                                                                                 "TipoDatoGeneral":0,
@@ -7028,7 +6969,7 @@ if(paObj[istAud].a.yIdAlerta > 0)
                                                                                 "IdTipoEvento_": parseInt( $('#sel_fuente_tipo_incidente').val()),
                                                                                 "IdSede": $('#sel_filter_sede_p2AL').val(),
                                                                                 "Fecha":  nff,
-                                                                                "FraseCorta":$('#txt_describe_incidenteAlerta').val(), //txt_describe_incidenteAlertaaa
+                                                                                "FraseCorta":$('#txt_describe_compromisoAlerta').val(), 
                                                                                 "Descripcion":$('#txt_describe_incidenteAlertaX').val(),
                                                                                 "Codigo":paObj[istAud].a.Code,
                                                                                 "TipoDatoGeneral":0,
@@ -9111,11 +9052,10 @@ var hoyy = f.getFullYear() + "-" + measx+ "-" +diax;
     $('#btn_step1').html("<b> Datos del Evento SSO </b>")
     $('#sel_f_dg_gv_30').val(0);
 
-    $('#txt_f_dg_gv_29').val('');
-    $('#txta_f_dg_gv_22').val('');
-    $('#txta_f_dg_gv_26').val('');
-    $('#txta_f_dg_gv_25').val('');
-    $('#sel_f_dg_gv_27').val('');
+    $('#txt_f_dg_gv_29').val(0);
+    $('#txta_f_dg_gv_22').val(0);
+    $('#txta_f_dg_gv_26').val(0);
+    $('#txta_f_dg_gv_25').val(0);
     fnSp3VentanaMostrarPlanAnual(idIncidentex);
 }
 
@@ -9332,21 +9272,6 @@ function sp4FnConfirmarGuardarGenerales()
                                              var idBarco = parseInt($('#sel_f_dg_gv_7').val());
 
                                              ///alert("HORA"+$('#txtt_f_dg_gv_5').val());
-
-                                             if($('#txta_f_dg_gv_20').val() == ''){$('#txta_f_dg_gv_20').val(0)}
-                                             if($('#txt_f_dg_gv_29').val() == ''){$('#txt_f_dg_gv_29').val(0)}//txta_f_dg_gv_20
-                                             if($('#txta_f_dg_gv_22').val() == ''){$('#txta_f_dg_gv_22').val(0)}
-                                             if($('#txta_f_dg_gv_26').val() == ''){$('#txta_f_dg_gv_26').val(0)}
-                                             if($('#txta_f_dg_gv_25').val() == ''){$('#txta_f_dg_gv_25').val(0)}
-                                             if($('#sel_f_dg_gv_27').val() == ''){$('#sel_f_dg_gv_27').val(0)}
-                                             if($('#txt_f_dg_gv_29').val() == ''){$('#txt_f_dg_gv_29').val(0)}
-
-
-
-
-
-
-
 
                                             let body = {
                                                     //*****************************DATOS GENERALES******************txta_f_dg_gv_21
@@ -10122,16 +10047,6 @@ function fnSp4AgregarListadoDatosGenerales()
 
              //alert('BARCO INSERT = '+$('#sel_f_dg_gv_7').val());
              var Barq =  parseInt($('#sel_f_dg_gv_7').val());
-
-                                              if($('#txta_f_dg_gv_20').val() == ''){$('#txta_f_dg_gv_20').val(0)}
-                                             if($('#txt_f_dg_gv_29').val() == ''){$('#txt_f_dg_gv_29').val(0)}//txta_f_dg_gv_20
-                                             if($('#txta_f_dg_gv_22').val() == ''){$('#txta_f_dg_gv_22').val(0)}
-                                             if($('#txta_f_dg_gv_26').val() == ''){$('#txta_f_dg_gv_26').val(0)}
-                                             if($('#txta_f_dg_gv_25').val() == ''){$('#txta_f_dg_gv_25').val(0)}
-                                             if($('#sel_f_dg_gv_27').val() == ''){$('#sel_f_dg_gv_27').val(0)}
-                                             if($('#txt_f_dg_gv_29').val() == ''){$('#txt_f_dg_gv_29').val(0)}
-
-
              //alert('BARCO INSERT2 = '+Barq);
 
             let body = {
@@ -19982,13 +19897,8 @@ function sp4FnEditarDatoGeneral(idDatosGeneral)
 
 
 
-                                             if($('#txta_f_dg_gv_20').val() == 0){$('#txta_f_dg_gv_20').val('')}
-                                             if($('#txt_f_dg_gv_29').val() == 0){$('#txt_f_dg_gv_29').val('')}
-                                             if($('#txta_f_dg_gv_22').val() == 0){$('#txta_f_dg_gv_22').val('')}
-                                             if($('#txta_f_dg_gv_26').val() == 0){$('#txta_f_dg_gv_26').val('')}
-                                             if($('#txta_f_dg_gv_25').val() == 0){$('#txta_f_dg_gv_25').val('')}
-                                             if($('#sel_f_dg_gv_27').val() == 0){$('#sel_f_dg_gv_27').val('')}
-                                             if($('#txt_f_dg_gv_29').val() == 0){$('#txt_f_dg_gv_29').val('')}
+
+
 
 
 
@@ -20675,7 +20585,7 @@ function sp4FnVentanaLeccionAprendidada(idIncidente)
 
                             $("#"+'dat_la_fecha').val(ffg);
                             $("#"+'dat_la_sede').val(item.IdSede);
-                            $("#"+'dat_la_frase').val(item.FraseCorta); //alert('aqui frase corta = '+item.FraseCorta);
+                            $("#"+'dat_la_frase').val(item.FraseCorta);
 
                             //alert('20518 = '+item.Potencial+" ========================="+idIncidente);
 
@@ -21504,7 +21414,7 @@ function Pdf_la_hoja(doc)
     doc.setFontSize(10);
     doc.setFontType('bold'); 
     doc.setTextColor(0,122,195);
-    var dat = 'Sede/ Embarcación :';
+    var dat = 'Sede/ Embarcacion :';
     doc.text(100, 59, dat);
     // paObj[istAud].a.LA[istLA].
      
@@ -22180,41 +22090,34 @@ console.log('LINEA 21295:: LTE_LA1', LTE_LA1);
 
 
 
-    if(paObj[istAud].a.LA[istLA].Adjunto1)
-    {
-        //************************************************************************** IMAGEN_1
-         var ext =  paObj[istAud].a.LA[istLA].Adjunto1.split(';base64,');
-         ext = ext[0].split('data:image/');
-        var xtend = ext[1].toUpperCase();
-        console.log("EXTENSION = ",xtend);
-        doc.addImage(paObj[istAud].a.LA[istLA].Adjunto1, xtend, 9, 108, 53, 53)
-       //_____________________________________________________________________________________]
-    }
-  
+
+  //************************************************************************** IMAGEN_1
+      var ext =  paObj[istAud].a.LA[istLA].Adjunto1.split(';base64,');
+       ext = ext[0].split('data:image/');
+      var xtend = ext[1].toUpperCase();
+      console.log("EXTENSION = ",xtend);
+      doc.addImage(paObj[istAud].a.LA[istLA].Adjunto1, xtend, 9, 108, 53, 53)
+ //_____________________________________________________________________________________]
 
 
-     if(paObj[istAud].a.LA[istLA].Adjunto2)
-    {
-     //************************************************************************** IMAGEN_2
-          var ext =  paObj[istAud].a.LA[istLA].Adjunto2.split(';base64,');
-           ext = ext[0].split('data:image/');
-          var xtend = ext[1].toUpperCase();
-          console.log("EXTENSION = ",xtend);
-          doc.addImage(paObj[istAud].a.LA[istLA].Adjunto2, xtend, 9, 167, 53, 53)
-     //_____________________________________________________________________________________]
-    }
 
-   
-    if(paObj[istAud].a.LA[istLA].Adjunto3)
-    {
+ //************************************************************************** IMAGEN_2
+      var ext =  paObj[istAud].a.LA[istLA].Adjunto2.split(';base64,');
+       ext = ext[0].split('data:image/');
+      var xtend = ext[1].toUpperCase();
+      console.log("EXTENSION = ",xtend);
+      doc.addImage(paObj[istAud].a.LA[istLA].Adjunto2, xtend, 9, 167, 53, 53)
+ //_____________________________________________________________________________________]
+
+
   //************************************************************************** IMAGEN_3
       var ext =  paObj[istAud].a.LA[istLA].Adjunto3.split(';base64,');
        ext = ext[0].split('data:image/');
       var xtend = ext[1].toUpperCase();
       console.log("EXTENSION = ",xtend);
       doc.addImage(paObj[istAud].a.LA[istLA].Adjunto3, xtend, 9, 226, 53, 53)
-    }
-   
+
+
 
 
  //_____________________________________________________________________________________]
@@ -22284,7 +22187,7 @@ console.log('LINEA 21295:: LTE_LA1', LTE_LA1);
     doc.setFontSize(18);
     doc.setFontType('bold'); //doc.setFontType('normal');
     doc.setTextColor(255,255,255);
-    var dat = 'Tipo de Lesión pérdida incidente';
+    var dat = 'Tipo_de_Lesión_pérdida_incidente';
     doc.text(85, 148, dat,{maxWidth:130, maxHeight:15});
 
 
@@ -22337,7 +22240,7 @@ console.log('LINEA 21295:: LTE_LA1', LTE_LA1);
     doc.rect(142, 180,62,11, 'F');//(x1,y1,x2,y2) gris como actuar
 
 
-    var dat = 'Lección aprendida';
+    var dat = 'Lección_aprendida';
     doc.text(85, 176, dat);
 
 
@@ -22352,7 +22255,7 @@ console.log('LINEA 21295:: LTE_LA1', LTE_LA1);
     doc.setFontSize(12);
     doc.setFontType('bold'); 
     doc.setTextColor(0,122,195);
-    var dat = '¿En que fallamos?';
+    var dat = '¿En_que_fallamos?';
     doc.text(83, 187, dat);
 
 
@@ -22362,13 +22265,13 @@ console.log('LINEA 21295:: LTE_LA1', LTE_LA1);
     doc.setFontSize(12);
     doc.setFontType('bold'); 
     doc.setTextColor(0,122,195);
-    var dat = '¿Cómo debemos actuar?';
+    var dat = '¿Cómo_debemos_actuar?';
     doc.text(147, 186, dat);
 
     doc.setFontSize(10);
     doc.setFontType('bolditalic');
     doc.setTextColor(20,71,121); 
-    var dat = 'La prevención de accidentes es tarea de todos. ¡Tu participación es Importante!'
+    var dat = 'La_prevención_de_accidentes_es_tarea_de_todos._¡Tu_participación_es_Importante!'
     doc.text(105, 292, dat ,{maxWidth:160, align:'center'});//aqui va el detalle de la ---------- alerta
 
 
@@ -22478,7 +22381,7 @@ for(var k = 0; k< jj; k++)
             doc.setFontType('normal');
 
             doc.setTextColor(0,0,0);
-            var dat =  (k+1)+'. '+ XA[k]
+            var dat =  (k+1)+'._'+ XA[k]
            doc.text(75, paso, dat,{maxWidth:59, maxHeight:22, align:'justify'});
 // //=========================================================================================
 
@@ -22488,7 +22391,7 @@ for(var k = 0; k< jj; k++)
             doc.setFontType('normal');
 
             doc.setTextColor(0,0,0);
-            var dat =  (k+1)+'. '+ XB[k];
+            var dat =  (k+1)+'._'+ XB[k];
             //var dat =  '1- bbbbbbb bbbbb bbbbbb b bbbbb bb bbb bb bbbbb b bbbbb bb bbb bb bbbbb b  bb bbb bb bb bbb bb bbbbb b bbbbb bb bbb bb bbaxx.';//paObj[istAud].a.LA[istLA].TipoLesionDanio;
             doc.text(142, paso, dat,{maxWidth:59, maxHeight:22, align:'justify'});
 // //=========================================================================================
@@ -22896,10 +22799,6 @@ function downloadPDF_LA(pdf) {
 
 function sp4FnVentanaInformeInvestigacion(idIncidente)
 {
-
-istAud = idIncidente;
-
-$('#titleModalInformeInvestigacion').html("Creación del Informe de Investigación - "+paObj[istAud].a.Code)
 
 
 $('#modalInformeInvestigacion').modal('show').addClass('fade');
