@@ -23,6 +23,11 @@
                <!-- //------------------bloque codigo-----------------------#@andy---------------------------------------------// -->
                   <!----------------------- estilos estaticos de este arhivo ----------------------->
          <style>
+            .headerSalud {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                /* background-color: blue; */
+            }
             .titulo {
                 font-size: 24.3px;
                 font-weight: normal;
@@ -30,35 +35,26 @@
                 font-style: normal;
                 color: #254373;
             }
-            input[type=text] {
-                width: 50%;
-                height: 2rem;
-                display: flex;
-                border: solid 1px #404040;
-            }
-            .buscador {
-                display:flex;
-                justify-content: center;
-            }
-
             .buscadorLabel {
                 position: absolute;
-                top: 20px;
-                left: 200px;
-                transform: translateY(10px);
-                transition: transform .3s;
+                top: 30px;
+                left: 66.5%;
             }
-            .contenedorLista {
-                display: flex;
+
+            input[type=text] {
+                width: 40%;
+                border: solid 1px #404040;
             }
+            .contenedorMedico {
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr 1fr;
+            }
+           
             .parrafos {
                 font-family: ITCAvantGardeStd-Md;
                 font-size: 20px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                padding: 0 4rem;
                 color: #000;
+                padding: 1rem 4rem;
             }
             img {
                 width: 101.1px;
@@ -68,6 +64,24 @@
                 height: 50px;
                 color: transparent;
                 border: none;
+            }
+
+            @media only screen and (max-width: 768px) {
+                .contenedorMedico {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr ;
+                }
+                .titulo {
+                    font-size: 20px;
+                    text-align: center;
+                }
+                .buscadorLabel {
+                    left: 68.5%;
+                }
+                input[type=text] {
+                    width: 50%;
+                    border: solid 1px #404040;
+                }
             }
         </style>
         <!----------------------- estilos estaticos de este arhivo ----------------------->
@@ -81,14 +95,13 @@
         <!----------------------- *** Inicio Capa Padre ***   ----------------------->
 
         <div id="contenedorPadre" class="container-fluid contenedorPadre">
-            <div class=" " id="tituloSalud">
-                <div class="alert" role="alert" style="display: none;"></div>
-                <div class="row">
-                    <div class="col-6">
-                        <h2 class="titulo text-left mt-5 ml-4">Módulo de salud ocupacional</h2>
+            <div class="headerSalud" id="tituloSalud">
+                <!-- <div class="alert" role="alert" style="display: none;"></div> -->
+                    <div class="">
+                        <h2 class="titulo mt-5 text-left ml-5">Módulo de salud ocupacional</h2>
                     </div>
 
-                    <div class="col-6 buscador" id="buscador">
+                    <div class="buscador" id="buscador">
                         <input
                             class="mt-5 ml-5"
                             placeholder=""
@@ -98,245 +111,12 @@
                         >
                         <label class="buscadorLabel" for="buscadorSalud">Buscar</label>
                     </div>
-                </div>
             </div>
 
             <hr>
 
-            <div class="section">
-                <div class="row mt-5 " >
-                    <div class="col-3" id="icono1Historia" >
-                        <img class="iconos" src="../images/seguimientoAuditoriaOn.svg" alt="icono1">
-                    </div>
-
-                    <div class="col-3" id="icono2Resitro " >
-                        <img  class="iconos" src="../images/seguimientoAuditoriaOn.svg" alt="icono2">
-                    </div>
-
-                    <div class="col-3" id="icono3Audi" >
-                        <img class="iconos" src="../images/seguimientoAuditoriaOn.svg" alt="icono3">
-                    </div>
-
-                    <div class="col-3" id="icono4Observaciones" >
-                        <img class="iconos" src="../images/seguimientoAuditoriaOn.svg" alt="icono4">
-                    </div>
-                </div>
-
-                <div class="row mt-4" >
-                    <div class="col-3 contenedorLista" id="hce" >
-                        <p class="parrafos">Historia Clínica Electrónica (HCE)</p>
-                    </div>
-
-                    <div class="col-3 contenedorLista" id="registroEmo">
-                        <p class="parrafos">Registro Estadístico de EMO</p>
-                    </div>
-
-                    <div class="col-3 contenedorLista" id="audiCentrosMed">
-                        <p class="parrafos">Auditoría para centros médicos</p>
-                    </div>
-
-                    <div class="col-3 contenedorLista" id="obserCentrosMed">
-                        <p class="parrafos">Levantamiento de observaciones a centros médicos</p>
-                    </div>
-                </div>
-
-                <div class="row mt-5 " >
-                    <div class="col-3" id="icono5Inspeccion" >
-                        <img class="iconos" src="../images/seguimientoAuditoriaOn.svg" alt="icono1">
-                    </div>
-                    
-                    <div class="col-3" id="icono6Inv" >
-                        <img class="iconos" src="../images/seguimientoAuditoriaOn.svg" alt="icono1">
-                    </div>
-
-                    <div class="col-3" id="icono7Revision" >
-                        <img class="iconos" src="../images/seguimientoAuditoriaOn.svg" alt="icono1">
-                    </div>
-
-                    <div class="col-3" id="icono8RegEnfermedades" >
-                        <img class="iconos" src="../images/seguimientoAuditoriaOn.svg" alt="icono1">
-                    </div>
-                </div>
-
-                <div class="row mt-4">
-                    <div class="col-3 contenedorLista" id="regInspeccion" >
-                        <p class="parrafos">Registro de Inspección de Instalaciones</p>
-                    </div>
-
-                    <div class="col-3 contenedorLista" id="invEnfermedades">
-                        <p class="parrafos">Investigación de Enfermedades Ocupacionales</p>
-                    </div>
-
-                    <div class="col-3 contenedorLista" id="revisionMenuMensual">
-                        <p class="parrafos">Revisión de Menú Mensual</p>
-                    </div>
-
-                    <div class="col-3 contenedorLista" id="regEnfermedades">
-                        <p class="parrafos">Registro de Enfermedades Ocupacionales</p>
-                    </div>
-                </div>
-
-                <div class="row mt-5 " >
-                    <div class="col-3 " id="icono9Cronicas" >
-                        <img class="iconos" src="../images/seguimientoAuditoriaOn.svg" alt="icono1">
-                    </div>
-                    
-                    <div class="col-3" id="icono10toxicologico" >
-                        <img class="iconos" src="../images/seguimientoAuditoriaOn.svg" alt="icono1">
-                    </div>
-
-                    <div class="col-3" id="icono11atenciones" >
-                        <img class="iconos" src="../images/seguimientoAuditoriaOn.svg" alt="icono1">
-                    </div>
-
-                    <div class="col-3" id="icono12vmo" >
-                        <img  class="iconos" src="../images/seguimientoAuditoriaOn.svg" alt="icono1">
-                    </div>
-                </div>
-
-                <div class="row mt-4" >
-                    <div class="col-3 contenedorLista" id="regCronicas" >
-                        <p class="parrafos">Registro de Enfermedades Crónicas</p>
-                    </div>
-
-                    <div class="col-3 contenedorLista" id="regToxico" >
-                        <p class="parrafos">Registro de Exámenes Toxicológicos</p>
-                    </div>
-
-                    <div class="col-3 contenedorLista" id="regAtencionMed">
-                        <p class="parrafos">Registro de Atenciones Médicas</p>
-                    </div>
-
-                    <div class="col-3 contenedorLista" id="regVmo" >
-                        <p class="parrafos">Registro Estadístico de VMO</p>
-                    </div>
-                </div>
-
-                <div class="row mt-5 " >
-                    <div class="col-3" id="icono9Accidentes" >
-                        <img src="../images/seguimientoAuditoriaOn.svg" alt="icono1">
-                    </div>
-                    
-                    <div class="col-3" id="icono10TrabReubicados" >
-                        <img src="../images/seguimientoAuditoriaOn.svg" alt="icono1">
-                    </div>
-
-                    <div class="col-3" id="icono11Vacunas" >
-                        <img src="../images/seguimientoAuditoriaOn.svg" alt="icono1">
-                    </div>
-
-                    <div class="col-3" id="icono12DescansosMed" >
-                        <img src="../images/seguimientoAuditoriaOn.svg" alt="icono1">
-                    </div>
-                </div>
-
-                <div class="row mt-4" >
-                    <div class="col-3 contenedorLista" id="accidentesTrab" >
-                        <p class="parrafos">Accidentes de trabajo</p>
-                    </div>
-
-                    <div class="col-3 contenedorLista" id="regTrabReubicados" >
-                        <p class="parrafos">Registro de Trabajadores Reubicados</p>
-                    </div>
-
-                    <div class="col-3 contenedorLista" id="regVacunas">
-                        <p class="parrafos">Registro de Vacunas</p>
-                    </div>
-
-                    <div class="col-3 contenedorLista" id="regDescMedicos" >
-                        <p class="parrafos">Registro de Descansos Médicos</p>
-                    </div>
-                </div>
-
-                <div class="row mt-5 iconos" >
-                    <div class="col-3" id="icono9Discapacitados" >
-                        <img src="../images/seguimientoAuditoriaOn.svg" alt="icono1">
-                    </div>
-                    
-                    <div class="col-3" id="icono10Gestantes" >
-                        <img src="../images/seguimientoAuditoriaOn.svg" alt="icono1">
-                    </div>
-
-                    <div class="col-3" id="icono11Iperc" >
-                        <img src="../images/seguimientoAuditoriaOn.svg" alt="icono1">
-                    </div>
-
-                    <div class="col-3" id="icono12Notificaciones" >
-                        <img src="../images/seguimientoAuditoriaOn.svg" alt="icono1">
-                    </div>
-                </div>
-
-                <div class="row mt-4" >
-                    <div class="col-3 contenedorLista" id="regTrabDiscapacitados" >
-                        <p class="parrafos">Registro de Trabajadores Discapacitados</p>
-                    </div>
-
-                    <div class="col-3 contenedorLista" id="regMujeresGestantes" >
-                        <p class="parrafos">Registro de Mujeres en Edad Fértil y Gestantes</p>
-                    </div>
-
-                    <div class="col-3 contenedorLista" id="iperc">
-                        <p class="parrafos ml-5">IPERC</p>
-                    </div>
-
-                    <div class="col-3 contenedorLista" id="notificaciones" >
-                        <p class="parrafos ml-4">Notificaciones</p>
-                    </div>
-                </div>
-
-                <div class="row mt-4 iconos" >
-                    <div class="col-3" id="iconoReportes" >
-                        <img src="../images/seguimientoAuditoriaOn.svg" alt="icono1">
-                    </div>
-                    
-                    <div class="col-3" id="iconoProgAnualSalud" >
-                        <img src="../images/seguimientoAuditoriaOn.svg" alt="icono1">
-                    </div>
-
-                    <div class="col-3" id="iconoKardexMed" >
-                        <img src="../images/seguimientoAuditoriaOn.svg" alt="icono1">
-                    </div>
-
-                    <div class="col-3" id="iconoProgPromocion" >
-                        <img src="../images/seguimientoAuditoriaOn.svg" alt="icono1">
-                    </div>
-                </div>
-
-                <div class="row mt-4" >
-                    <div class="col-3 contenedorLista" id="regTrabDiscapacitados" >
-                        <p class="parrafos ml-5">Reportes</p>
-                    </div>
-
-                    <div class="col-3 contenedorLista" id="regMujeresGestantes" >
-                        <p class="parrafos">Programa Anual de Salud e Higiene Ocupacional</p>
-                    </div>
-
-                    <div class="col-3 contenedorLista" id="iperc">
-                        <p class="parrafos">Kardex de Medicamentos</p>
-                    </div>
-
-                    <div class="col-3 contenedorLista" id="notificaciones" >
-                        <p class="parrafos">Programa de promoción de la Salud</p>
-                    </div>
-                </div>
-
-                <div class="row mt-4" >
-                    <div class="col-3 iconos" id="iconoInterconsultas" >
-                        <img src="../images/seguimientoAuditoriaOn.svg" alt="icono1">
-                    </div>
-                </div>
-
-                <div class="row mt-4" >
-                    <div class="col-3 contenedorLista" id="regInterconsultas" >
-                        <p class="parrafos">Registro de Interconsultas</p>
-                    </div>
-                </div>
-
-                <!-- <div class="row mt-4" >
-                    <div class="col-3 contenedorLista" id="resultadoBusqueda" >
-                        <p class="parrafos"></p>
-                    </div>
-                </div> -->
+            <div class="contenedorMedico" id="contenedorMedico">
+                <!-- Aqui dentro van las opciones del menú -->
             </div>
         </div>
         <!----------------------- *** Fin Capa Padre ***   ----------------------->
