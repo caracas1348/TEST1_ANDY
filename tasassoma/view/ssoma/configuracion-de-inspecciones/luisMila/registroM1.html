@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Registro de actenciones médicas</title>
+	<link rel="stylesheet" href="./registroM1.css">
+</head>
+<body>
+
+	<div id="contenActencionesMedicas" class="contenActencionesMedicas">
+		<div id="contenHeader" class="contenHeader">
+			<div class="header0Titulo">
+				<img src="./multimedia-option.svg" alt="Flecha">
+				<p>Registro de actenciones médicas</p>
+			</div>
+			<div class="header0Logo">
+				<img src="./Group 619.svg" alt="logo">
+			</div>
+			<div class="header0Perfil">
+					<div class="header0Perfil2">
+						<img src="./logout 1.svg" alt="salida">
+					</div>
+					<div class="header0Perfil1" id="header0Perfil1">
+						<p>Erick Arrasco Guevara</p>
+						<p>Lunes 7 de Septiembre</p>
+					</div>
+					<img src="./user 1.svg" alt="user" class="header0Perfil0">
+			</div>
+		</div>
+		<div id="contenBody" class="contenBody">
+
+			<div id="contenOpction" class="contenOpction">
+				<div class="opctionTitulo" id="opctionTitulo">
+					<h2>Búsqueda de registros</h2>
+				</div>
+				<div class="opctionLista" id="opctionLista">
+					<div class="opctionList0">
+						<div>
+							<label for="opctionLista0">Gerencia</label>
+						</div>
+						<select name="gerencia" id="opctionLista0">
+							<option value=""></option>
+						</select>
+					</div>
+					<div class="opctionList1">
+						<div>
+							<label for="opctionLista1">Planta</label>
+						</div>
+						<select name="planta" id="opctionLista1">
+							<option value=""></option>
+						</select>
+					</div>
+					<div class="opctionList2">
+						<div>
+							<label for="opctionLista2">Área</label>
+						</div>
+						<select name="area" id="opctionLista2">
+							<option value=""></option>
+						</select>
+					</div>
+					<div class="opctionList3">
+						<div>
+							<label for="opctionLista3">Puesto de trabajo</label>
+						</div>
+						<input type="text" name="puestoDeTrabajo" id="opctionLista3">
+					</div>
+					<div class="opctionList4">
+						<div>
+							<label for="opctionLista4">Documento</label>
+						</div>
+						<input type="text" name="documento" id="opctionLista4">
+					</div>
+					<div class="opctionList5">
+						<div>
+							<label for="opctionLista5">Nombres</label>
+						</div>
+						<input type="text" name="nombre" id="opctionLista5">
+					</div>
+					<div class="opctionList6">
+						<div>
+							<label for="opctionLista6">Apellidos</label>
+						</div>
+						<input type="text" name="apellido" id="opctionLista6">
+					</div>
+					<div class="opctionList7">
+						<div>
+							<label for="opctionLista7">Actividad médica</label>
+						</div>
+						<select name="" id="opctionLista7">
+							<option value="">...</option>
+						</select>
+					</div>
+					<div class="opctionList8">
+						<div>
+							<label for="opctionLista8">Sistema afectado</label>
+						</div>
+						<input type="text" name="sistemaAfectado" id="opctionLista8">
+					</div>
+					<div class="opctionList9">
+						<div>
+							<label for="opctionLista9">F.Registro desde</label>
+						</div>
+						<input type="date" name="fechaDesde" id="opctionLista9" >
+					</div>
+					<div class="opctionList10">
+						<div>
+							<label for="opctionLista10">F.Registro hasta</label>
+						</div>
+						<input type="date" name="fechaHasta" id="opctionLista10">
+					</div>
+					<div class="opctionList11">
+						<div>
+							<label for="opctionLista11">Buscar</label>
+						</div>
+						<input type="text" name="buscador" id="opctionLista11">
+					</div>
+				</div>
+			</div>
+
+			<div id="contenDatos" class="contenDatos">
+				<div id="datosBoton0" class="datosBoton0">
+					<div class="botonD0">
+						<div>
+							<img src="./copia 1.svg" alt="registro">
+							<div>000</div>
+							<p>registros</p>		
+						</div>
+					</div>
+
+					<div class="botonD1">
+						<div>
+							<div class="botonD1a" id="botonD1a">∨</div>
+							<div class="botonD1b" id="botonD1b">
+								<p>Nueva atención</p>
+								<div>+</div>
+							</div>		
+						</div>
+					</div>
+				</div>
+				<div id="datosConten0" class="datosConten0">
+					<div id="conten0Titulo" class="conten0Titulo">
+						<div>
+							<p>Documento</p>
+						</div>
+						<div>
+							<p>Nombres</p>
+						</div>
+						<div>
+							<p>Apellidos</p>
+						</div>
+						<div>
+							<p>Gerencia</p>
+						</div>
+						<div>
+							<p>Planta</p>
+						</div>
+						<div>
+							<p>Área</p>
+						</div>
+						<div>
+							<p>F.Registro</p>
+						</div>
+						<div>
+							<p>Puesto de trabajo</p>
+						</div>
+						<div>
+							<p>Empresa</p>
+						</div>
+						<div>
+							
+						</div>
+					</div>
+					<div id="conten0Lista" class="conten0Lista">
+						<div id="conten1Lista" class="conten1Lista">
+			
+							<div id="conten1Lista1" class="conten1Lista1">
+								<div>
+									<p>Documento</p>
+								</div>
+								<div>
+									<p>Nombres</p>
+								</div>
+								<div>
+									<p>Apellidos</p>
+								</div>
+								<div>
+									<p>Gerencia</p>
+								</div>
+								<div>
+									<p>Planta</p>
+								</div>
+								<div>
+									<p>Área</p>
+								</div>
+								<div>
+									<p>F.Registro</p>
+								</div>
+								<div>
+									<p>Puesto de trabajo</p>
+								</div>
+								<div>
+									<p>Empresa</p>
+								</div>
+								<div class="conten1Lista1opt1">
+									<div class="conten1Lista1opt2" id="conten1Lista1opt2">
+											
+										<div>
+											<p>.</p>
+										</div>
+										<div>
+											<p>.</p>
+										</div>
+										<div>
+											<p>.</p>
+										</div>
+									</div>		
+								</div>
+							</div>	
+
+							<div id="conten1Lista1" class="conten1Lista1">
+								<div>
+									<p>Documento</p>
+								</div>
+								<div>
+									<p>Nombres</p>
+								</div>
+								<div>
+									<p>Apellidos</p>
+								</div>
+								<div>
+									<p>Gerencia</p>
+								</div>
+								<div>
+									<p>Planta</p>
+								</div>
+								<div>
+									<p>Área</p>
+								</div>
+								<div>
+									<p>F.Registro</p>
+								</div>
+								<div>
+									<p>Puesto de trabajo</p>
+								</div>
+								<div>
+									<p>Empresa</p>
+								</div>
+								<div>
+									
+								</div>
+							</div>	
+
+							<div id="conten1Lista1" class="conten1Lista1">
+								<div>
+									<p>Documento</p>
+								</div>
+								<div>
+									<p>Nombres</p>
+								</div>
+								<div>
+									<p>Apellidos</p>
+								</div>
+								<div>
+									<p>Gerencia</p>
+								</div>
+								<div>
+									<p>Planta</p>
+								</div>
+								<div>
+									<p>Área</p>
+								</div>
+								<div>
+									<p>F.Registro</p>
+								</div>
+								<div>
+									<p>Puesto de trabajo</p>
+								</div>
+								<div>
+									<p>Empresa</p>
+								</div>
+								<div>
+									
+								</div>
+							</div>	
+
+							<div id="conten1Lista1" class="conten1Lista1">
+								<div>
+									<p>Documento</p>
+								</div>
+								<div>
+									<p>Nombres</p>
+								</div>
+								<div>
+									<p>Apellidos</p>
+								</div>
+								<div>
+									<p>Gerencia</p>
+								</div>
+								<div>
+									<p>Planta</p>
+								</div>
+								<div>
+									<p>Área</p>
+								</div>
+								<div>
+									<p>F.Registro</p>
+								</div>
+								<div>
+									<p>Puesto de trabajo</p>
+								</div>
+								<div>
+									<p>Empresa</p>
+								</div>
+								<div>
+									
+								</div>
+							</div>	
+
+							<div id="conten1Lista1" class="conten1Lista1">
+								<div>
+									<p>Documento</p>
+								</div>
+								<div>
+									<p>Nombres</p>
+								</div>
+								<div>
+									<p>Apellidos</p>
+								</div>
+								<div>
+									<p>Gerencia</p>
+								</div>
+								<div>
+									<p>Planta</p>
+								</div>
+								<div>
+									<p>Área</p>
+								</div>
+								<div>
+									<p>F.Registro</p>
+								</div>
+								<div>
+									<p>Puesto de trabajo</p>
+								</div>
+								<div>
+									<p>Empresa</p>
+								</div>
+								<div>
+									
+								</div>
+							</div>
+
+							<div id="conten1Lista1" class="conten1Lista1">
+								<div>
+									<p>Documento</p>
+								</div>
+								<div>
+									<p>Nombres</p>
+								</div>
+								<div>
+									<p>Apellidos</p>
+								</div>
+								<div>
+									<p>Gerencia</p>
+								</div>
+								<div>
+									<p>Planta</p>
+								</div>
+								<div>
+									<p>Área</p>
+								</div>
+								<div>
+									<p>F.Registro</p>
+								</div>
+								<div>
+									<p>Puesto de trabajo</p>
+								</div>
+								<div>
+									<p>Empresa</p>
+								</div>
+								<div>
+									
+								</div>
+							</div>	
+
+							<div id="conten1Lista1" class="conten1Lista1">
+								<div>
+									<p>Documento</p>
+								</div>
+								<div>
+									<p>Nombres</p>
+								</div>
+								<div>
+									<p>Apellidos</p>
+								</div>
+								<div>
+									<p>Gerencia</p>
+								</div>
+								<div>
+									<p>Planta</p>
+								</div>
+								<div>
+									<p>Área</p>
+								</div>
+								<div>
+									<p>F.Registro</p>
+								</div>
+								<div>
+									<p>Puesto de trabajo</p>
+								</div>
+								<div>
+									<p>Empresa</p>
+								</div>
+								<div>
+									
+								</div>
+							</div>	
+
+							<div id="conten1Lista1" class="conten1Lista1">
+								<div>
+									<p>Documento</p>
+								</div>
+								<div>
+									<p>Nombres</p>
+								</div>
+								<div>
+									<p>Apellidos</p>
+								</div>
+								<div>
+									<p>Gerencia</p>
+								</div>
+								<div>
+									<p>Planta</p>
+								</div>
+								<div>
+									<p>Área</p>
+								</div>
+								<div>
+									<p>F.Registro</p>
+								</div>
+								<div>
+									<p>Puesto de trabajo</p>
+								</div>
+								<div>
+									<p>Empresa</p>
+								</div>
+								<div>
+									
+								</div>
+							</div>	
+
+							<div id="conten1Lista1" class="conten1Lista1">
+								<div>
+									<p>Documento</p>
+								</div>
+								<div>
+									<p>Nombres</p>
+								</div>
+								<div>
+									<p>Apellidos</p>
+								</div>
+								<div>
+									<p>Gerencia</p>
+								</div>
+								<div>
+									<p>Planta</p>
+								</div>
+								<div>
+									<p>Área</p>
+								</div>
+								<div>
+									<p>F.Registro</p>
+								</div>
+								<div>
+									<p>Puesto de trabajo</p>
+								</div>
+								<div>
+									<p>Empresa</p>
+								</div>
+								<div>
+									
+								</div>
+							</div>	
+
+							<div id="conten1Lista1" class="conten1Lista1">
+								<div>
+									<p>Documento</p>
+								</div>
+								<div>
+									<p>Nombres</p>
+								</div>
+								<div>
+									<p>Apellidos</p>
+								</div>
+								<div>
+									<p>Gerencia</p>
+								</div>
+								<div>
+									<p>Planta</p>
+								</div>
+								<div>
+									<p>Área</p>
+								</div>
+								<div>
+									<p>F.Registro</p>
+								</div>
+								<div>
+									<p>Puesto de trabajo</p>
+								</div>
+								<div>
+									<p>Empresa</p>
+								</div>
+								<div>
+									
+								</div>
+							</div>	
+
+							<div id="conten1Lista1" class="conten1Lista1">
+								<div>
+									<p>Documento</p>
+								</div>
+								<div>
+									<p>Nombres</p>
+								</div>
+								<div>
+									<p>Apellidos</p>
+								</div>
+								<div>
+									<p>Gerencia</p>
+								</div>
+								<div>
+									<p>Planta</p>
+								</div>
+								<div>
+									<p>Área</p>
+								</div>
+								<div>
+									<p>F.Registro</p>
+								</div>
+								<div>
+									<p>Puesto de trabajo</p>
+								</div>
+								<div>
+									<p>Empresa</p>
+								</div>
+								<div>
+									
+								</div>
+							</div>
+
+							<div id="conten1Lista1" class="conten1Lista1">
+								<div>
+									<p>Documento</p>
+								</div>
+								<div>
+									<p>Nombres</p>
+								</div>
+								<div>
+									<p>Apellidos</p>
+								</div>
+								<div>
+									<p>Gerencia</p>
+								</div>
+								<div>
+									<p>Planta</p>
+								</div>
+								<div>
+									<p>Área</p>
+								</div>
+								<div>
+									<p>F.Registro</p>
+								</div>
+								<div>
+									<p>Puesto de trabajo</p>
+								</div>
+								<div>
+									<p>Empresa</p>
+								</div>
+								<div>
+									
+								</div>
+							</div>	
+
+						</div>
+					</div>
+					<div id="conten0Cola" class="conten0Cola">
+						<div class="conten0Cola1" id="conten0Cola1">></div>
+						<div class="conten0Cola2" id="conten0Cola2"><</div>
+						<div class="conten0Cola3" id="conten0Cola3">De 1</div>
+						<div class="conten0Cola4" id="conten0Cola4">1</div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+	
+</body>
+</html>
