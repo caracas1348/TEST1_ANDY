@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="description" content="">
+	<title>Prueba Tabla</title>
+	<link rel="stylesheet" type="text/css" href="../../../../modules/bootstrap-4.4.1/dist/css/bootstrap-grid.min.css">
+	<link rel="stylesheet" type="text/css" href="../../../../css/visitasa.css">
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@mdi/font@5.4.55/css/materialdesignicons.min.css">
+	<!-- Custom styles !-->
+	<style type="text/css">
+		*{
+			box-sizing: border-box;
+		}
+		h1,h2,h3{
+			color: #254373;
+		}
+		.flex{
+			display: flex;
+		}
+		.mb-6{
+			margin-bottom: 6em;
+		}
+		.main{
+			padding-top: 5em;
+		}
+		.justify-space-between{
+			justify-content: space-between;
+		}
+		.navbar{
+			height: 60px;
+			background: #254373;
+			color: white;
+			display: flex;
+			justify-content: space-around;
+			align-items: center;
+		}
+		.navbar-link a{
+			display: flex;
+			align-items: center;
+			color: #fff;
+			text-decoration: none;
+			font-weight: 600;
+		}
+		.navbar-link i{
+			font-size: 18px;
+			margin-right: 5px;
+		}
+		.navbar-link a:hover{
+			color: #fff;
+		}
+		.btn{
+			padding: 12px;
+    	border-radius: 7px;
+    	border:0;
+		}
+		.btn--lg{
+			padding: 1.2em 1em;
+		}
+		.btn--primary{
+			color: #fff;
+    	background: #8ebb02;
+    	font-weight: 600;
+		}
+		.btn--secondary{
+			color: #fff;
+    	background: #0072a0;
+    	font-weight: 600;
+		}
+		.input-group label{
+			display: block;
+		}
+		.input-group input{
+			padding: 8px 12px;
+			border: none;
+			border-bottom: 1px solid;
+			max-height: 32px;
+			width: 100%;
+		}
+		.input-group-icon{
+			display: flex;
+		}
+		.input-group-icon span{
+			display: flex;
+			max-height: 32px;
+			border-bottom: 1px solid;
+		}
+		.input-group-icon span i{
+			font-size: 18px;
+		}
+		.records{
+			display: flex;
+			align-items: center;
+		}
+		.records i{
+			color: #b9d8e8;
+			margin-right: 5px;
+		}
+		.table{
+			width: 100%;
+			border-collapse: collapse;
+		}
+		.table thead th{
+			padding: 14px 6px;
+			background: #254373;
+			color: #fff;
+		}
+		.table thead th:first-child{
+			border-top-left-radius: 10px;
+			border-bottom-left-radius: 10px;
+		}
+		.table thead th:last-child{
+			border-top-right-radius: 10px;
+			border-bottom-right-radius: 10px;
+		}
+		tr.spacer td{
+		 padding: 6px!important;
+		 border: 0!important;
+		}
+		.table tbody tr td{
+			padding: 16px 6px;
+			border-top: 1px solid #ccc;
+			border-bottom: 1px solid #ccc;
+		}
+		.table tbody tr td:first-child{
+			padding-left: 12px;
+			border-left-style: solid;
+			border-left-color: #ccc;
+			border-left-width: 1px;
+			border-top-left-radius: 10px; 
+    	border-bottom-left-radius: 10px;
+		}
+		.table tbody td:last-child{
+			padding-right: 12px;
+			border-right-style: solid;
+			border-right-color: #ccc;
+			border-right-width: 1px;
+			border-top-right-radius: 10px; 
+    	border-bottom-right-radius: 10px;
+		}
+	</style>
+</head>
+<body>
+	<nav class="navbar">
+		<div class="container">
+			<div class="navbar-link">
+				<a href="">
+					<i class="mdi mdi-arrow-left"></i>
+					<span>Historia Clínica Electrónica</span>
+				</a>
+			</div>
+			<div class="navba-logo"></div>
+			<div class="navbar-profile">
+				
+			</div>
+		</div>
+	</nav>
+	<div class="container main">
+		<div class="row mb-3">
+			<div class="col-sm-12">	
+				<h3>Búsqueda de registros</h3>
+			</div>
+		</div>
+		<div class="row mb-3">
+			<div class="col-sm-2">	
+				<div class="input-group">
+					<label for="gerencia">Gerencia</label>
+					<input type="text" name="gerencia">
+				</div>
+			</div>
+			<div class="col-sm-2">	
+				<div class="input-group">
+					<label for="planta">Planta</label>
+					<input type="text" name="planta">
+				</div>
+			</div>
+			<div class="col-sm-2">	
+				<div class="input-group">
+					<label for="area">Área</label>
+					<input type="text" name="area">
+				</div>
+			</div>
+			<div class="col-sm-2">	
+				<div class="input-group">
+					<label for="trabajo">Puesto de Trabajo</label>
+					<input type="text" name="trabajo">
+				</div>
+			</div>
+			<div class="col-sm-2">	
+				<div class="input-group">
+					<label for="nombres">Nombres</label>
+					<input type="text" name="nombres">
+				</div>
+			</div>
+			<div class="col-sm-2">	
+				<div class="input-group">
+					<label for="apellidos">Apellidos</label>
+					<input type="text" name="apellidos">
+				</div>
+			</div>
+		</div>
+		<div class="row mb-3">
+			<div class="col-sm-2">	
+				<div class="input-group">
+					<label for="archivoMed">Archivo médico</label>
+					<input type="text" name="archivoMed">
+				</div>
+			</div>
+			<div class="col-sm-2">	
+				<div class="input-group">
+					<label for="sistemaAfec">Sistema Afectado</label>
+					<input type="text" name="sistemaAfec">
+				</div>
+			</div>
+			<div class="col-sm-2">	
+				<div class="input-group">
+					<label for="sistemaAfec">Sistema Afectado</label>
+					<input type="text" name="sistemaAfec">
+				</div>
+			</div>
+			<div class="col-sm-2">	
+				<div class="input-group">
+					<label for="search">Buscar</label>
+					<div class="input-group-icon">
+						<input type="text" name="search">
+						<span><i class="mdi mdi-magnify"></i></span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row mb-3">
+			<div class="col-sm-12">
+				<div class="flex justify-space-between">
+					<div class="records">
+							<i class="mdi mdi-file-document-multiple mdi-24px"></i>
+             		<span><strong>150</strong> registros</span>
+					</div>
+					<div>
+						<button type="button" class="btn btn--primary btn--lg" style="width: 160px;">Nueva Atencíon</button>
+						<button type="button" class="btn btn--secondary btn--lg"><i class="mdi mdi-chevron-down mdi"></i></button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12">
+				<table class="table">
+					<thead>
+						<th>Área</th>
+						<th>Sede</th>
+						<th>Teléfono</th>
+						<th>F. Última atención médica</th>
+						<th>Diagnóstico</th>
+						<th>Aptitud</th>
+						<th>F. última</th>
+						<th>Otro campo</th>
+					</thead>
+					<tbody>
+						<tr class="spacer">
+							<td colspan="8"></td>
+						</tr>
+						<tr>
+							<td>Mantenimiento</td>
+							<td>Callao</td>
+							<td>977863442</td>
+							<td>Puesto 1</td>
+							<td>Diaganóstico 1</td>
+							<td>Apto</td>
+							<td>20/10/2021</td>
+							<td>20/10/2021</td>
+						</tr>
+						<tr class="spacer">
+							<td colspan="8"></td>
+						</tr>
+						<tr>
+							<td>Mantenimiento</td>
+							<td>Callao</td>
+							<td>977863442</td>
+							<td>Puesto 1</td>
+							<td>Diaganóstico 1</td>
+							<td>Apto</td>
+							<td>20/10/2021</td>
+							<td>20/10/2021</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+	<script src="../../../../js/jquery-3.4.1.js" ></script>
+</html>
