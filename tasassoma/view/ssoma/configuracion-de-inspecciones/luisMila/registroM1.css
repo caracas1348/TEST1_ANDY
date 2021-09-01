@@ -1,0 +1,562 @@
+*  {
+	margin: 0px;
+	padding: 0px;
+	box-sizing: border-box;
+}
+
+ 
+body {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 1024px;
+}
+
+.contenActencionesMedicas {
+	width: 1024px;
+	/* height: 768px; */
+	height: 900px;
+	background: green;
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 77px 1fr;
+	border: 1px solid #254373;
+}
+
+	.contenHeader {
+		background: #254373;
+		display: grid;
+		grid-template-columns: repeat(3,1fr);
+		grid-template-rows: auto;
+		color: #fff;
+		font-family: arial;
+		padding: 0% 3.1% 0% 3%;
+	}
+
+		.header0Titulo {
+			display: flex;
+  			flex-direction: row;
+  			align-items: center;
+  			padding: 0px 0px 0px 20px;
+		}
+
+			.header0Titulo img {
+			width: 26px;
+			padding-right: 10px;
+			}
+				.header0Titulo img:hover {
+					width: 28px;
+					cursor: pointer;
+				}
+
+			.header0Titulo p {
+				font-size: 1.1rem;
+			}
+
+		.header0Logo {
+			display: flex;
+			align-content: center;
+			align-items: center;
+			justify-content:center;			
+		}
+
+			.header0Logo img {
+				width: 27%;
+			}
+
+		.header0Perfil {
+			display: flex;
+  			flex-direction: row;
+  			flex-direction: row-reverse;
+  			align-items: center;
+  			padding: 0px 20px 5px 0px;
+		}
+
+			.header0Perfil0 {
+
+			}
+
+			.header0Perfil1 {
+				margin: 10px;
+				padding-right: 10px;
+				border-right: 1px solid;
+			}
+
+				.header0Perfil1 p {
+					font-size: .8rem;
+				}
+			
+			.header0Perfil2 {
+				background: #fff;
+				border-radius: 50%;
+				width: 30px;
+				height: 30px;
+				display: flex;
+				align-content: center;
+				align-items: center;
+				justify-content:center; 
+			}
+
+				.header0Perfil2 img {
+					width: 55%;
+				}
+
+				.header0Perfil2 img:hover {
+					width: 56%;
+					cursor: pointer;
+				}
+
+
+
+
+	.contenBody {
+		display: grid;
+		grid-template-columns: 1fr;
+		grid-template-rows: 170px 1fr;
+		padding: 3% 3% 5% 3%;
+		background-color: #fff;
+	}
+
+		.contenOpction {
+			/* background: green; */
+			/* border: 1px solid; */
+			display: grid;
+			grid-template-rows: 30px 1fr;
+		}
+
+			.opctionTitulo {
+
+			}
+
+				.opctionTitulo h2 {
+					color: #254373;
+					font-size: 1.1rem;
+					font-family: arial;
+				}
+
+			.opctionLista {
+				display: grid;
+				padding: 10px 0px 10px 0px;
+				grid-template-columns: repeat(7,1fr);
+				grid-template-rows: 1fr 1fr;
+				grid-gap: 20px;
+				font-family: ITCAvantGardeStd-Md;
+				font-size: 1rem; 
+				padding-right: 20px;
+			}
+
+			.opctionLista div:nth-child(1) { 
+				padding-bottom: 5px;
+			}
+
+				.opctionLista select {
+					background: transparent;
+					width: 100%;
+					height: 25px;
+					border-style: none;
+					border-bottom: 1px solid;
+				}
+
+				.opctionLista input {
+					outline: none;
+					width: 100%;
+					height: 25px;
+   					background: transparent;
+   					border-style: none ;
+   					border-bottom: 1px solid;
+				}
+
+	/* 			.opctionLista .opctionLista10::-webkit-calendar-picker-indicator {
+					display: none;
+				}
+ */
+				.opctionLista .opctionList11 {
+					grid-column-start: 5;
+					grid-column-end: 7;
+				}
+
+
+
+
+		.contenDatos {
+			/* background: #2CDDED; */
+			display: grid;
+			grid-template-columns: 1fr;
+			grid-template-rows: 80px 1fr;
+
+		}
+
+			.datosBoton0 {
+				/* background: #F7D662; */
+				display: grid;
+				grid-template-columns: repeat(2, 1fr);
+				grid-template-rows: auto;
+				font-family: ITCAvantGardeStd-Md;
+			}
+
+				.datosBoton0 .botonD0 {
+					/* background: #33f; */
+				}
+
+					.datosBoton0 .botonD0 > div {
+						bottom: 0px;
+						display: flex;
+						align-items: center;
+						padding-top: 9%;
+						font-size: .9rem;
+						color: #000;
+					}
+
+						.datosBoton0 .botonD0 > div img {
+							width: 4%;
+						}
+						
+						.datosBoton0 .botonD0 > div div {
+							padding: 0px 3px 4px 4px;
+						}
+
+						.datosBoton0 .botonD0 > div p {
+							padding: 0px 0px 4px 0px;
+						}
+
+				.datosBoton0 .botonD1 {
+					/* background: #33f; */
+				}
+
+					.datosBoton0 .botonD1 > div {
+						bottom: 0px;
+						display: flex;
+						align-items: center;
+						flex-direction: row-reverse;
+						color: #fff;
+						padding-top: 2.5%;
+						/* font-size: .9rem; */
+					}
+
+						.datosBoton0 .botonD1 > div .botonD1b {
+							background: #8fbb02;
+							width: 200px;
+  							height:45px;
+  							box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+  							background-color: #8fbb02;
+  							border-radius: 3px;
+  							display: flex;
+  							justify-content: center;
+  							align-items: center;
+							font-family: arial;
+						}
+							.datosBoton0 .botonD1 > div .botonD1b:hover {
+								width: 199px;
+  								height:44px;
+  								font-size: 1.1rem;
+  								cursor: pointer;
+							}
+
+						.datosBoton0 .botonD1 > div .botonD1b div {
+							font-size: 2rem;
+							margin-left: 5px;
+						}
+
+						.datosBoton0 .botonD1 > div .botonD1a {
+							/* background: #01719d; */
+							width: 55px;
+							height: 45px;
+							box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+  							background-color: #01719d;
+  							border-radius: 3px;
+  							display: flex;
+  							justify-content: center;
+  							align-items: center;
+  							font-size: 1.5rem;
+  							font-family: arial;
+  							margin: 0px 0px 0px 5px;
+						}
+
+							.datosBoton0 .botonD1 > div .botonD1a:hover {
+								width: 54px;
+  								height:44px;
+  								font-size: 1.6rem;
+  								cursor: pointer;	
+							}
+
+						
+
+
+
+			.datosConten0 {
+				/* background: #FF9751; */
+				display: grid;
+				grid-template-columns: 1fr;
+				grid-template-rows: 50px  minmax(300px, 1fr)  50px;
+			}
+
+				.conten0Titulo {
+					background: #254373;
+					color: #fff;
+					padding-left: 8px;
+					display: grid;
+					grid-template-columns: 2fr 3fr 3fr 2fr 2fr 3fr 2fr 3fr 2fr 3fr;
+					/* grid-template-columns: repeat(10, 1fr); */
+					grid-template-rows: auto;
+					border-radius: 5px;
+					grid-column-gap: 5px;
+					font-family: arial;
+					font-size: .8rem;
+				}
+
+
+				.conten0Titulo div {
+					display: flex;
+					align-items: center;
+						/* background: green; */
+						/* border: 1px solid; */
+				}
+
+				.conten0Lista {
+					overflow-x: scroll;
+					padding: 10px 0px 10px 0px;
+					scrollbar-color: #44b5ff rgba(255,255,255, .2);
+				}
+
+
+				.conten0Lista::-webkit-scrollbar {
+					height: 10px;
+					background: #fff;
+					border-radius: 3px;
+  					border: solid 1px #ededed;
+  					background-color: #f8f8f8;
+				}
+
+				.conten0Lista::-webkit-scrollbar-thumb {
+					background: #44b5ff;
+					border-radius: 10px;
+				}
+
+					.conten1Lista  {
+						width: 100%;
+						height: 100%;
+						display: grid;
+						grid-row-gap: 10px;						
+						grid-column-gap: 40px;						
+						grid-auto-flow: column;
+    					grid-auto-columns: minmax(951px, auto);
+						grid-template-rows: repeat(6, 1fr);
+					}
+
+					
+						.conten1Lista .conten1Lista1 {
+							min-width: 960px;
+							width: 100%;
+							display: grid;
+							grid-template-columns: 2fr 3fr 3fr 2fr 2fr 3fr 2fr 3fr 2fr 3fr;
+							grid-template-rows: auto;
+							grid-column-gap: 5px;
+							font-family: ITCAvantGardeStd-Md;
+							font-size: .8rem;
+							/* background: green; */
+							border-radius: 5px;
+						    border: solid 1px #c8c8c8;
+						    background-color: #fff;
+						    padding-left: 8px;
+						}
+
+							.conten1Lista .conten1Lista1 div {
+								display: flex;
+								align-items: center;
+									/* background: blue; */
+									/* border: 1px solid; */
+							}
+
+							.conten1Lista1opt1 {
+								display: flex; 
+								/* background: green; */
+								align-items: none;
+								flex-direction: row-reverse; 
+							}
+
+								.conten1Lista1opt1 .conten1Lista1opt2 {
+									display: grid;
+									height: 30px;
+									/* background: red; */
+									grid-template-columns: 1fr; 
+									grid-template-rows: repeat(3,1fr);
+								}
+
+								.conten1Lista1opt1 .conten1Lista1opt2 img {
+									height: 22px;
+									width: 22px;
+								}
+									.conten1Lista1opt1 .conten1Lista1opt2 img:hover {
+										height: 24px;
+										width: 24px;
+										cursor: pointer;
+									}
+
+		
+				.conten0Cola {
+					/* background: #95E1FD; */
+					display: flex;
+					flex-direction: row-reverse;
+					padding-top: 10px;
+					
+				}
+
+					.conten0Cola .conten0Cola1 {
+						background: #254373;
+						width: 30px;
+  						height: 30px;
+  						border-radius: 5px;
+  						box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+  						margin-left: 6px;
+  						display: flex;
+  						align-items: center;
+  						justify-content: center;
+  						color: #fff;
+  						font-size: 1.5rem;
+					}
+
+						.conten0Cola .conten0Cola1:hover {
+							width: 31px;
+						  	height: 31px;
+						  	font-size: 1.6rem;
+						  	cursor: pointer;
+						}
+
+					.conten0Cola .conten0Cola2 {
+						background: #254373;
+						width: 30px;
+  						height: 30px;
+  						border-radius: 5px;
+  						box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+  						margin-left: 6px;
+  						display: flex;
+  						align-items: center;
+  						justify-content: center;
+  						color: #fff;
+  						font-size: 1.5rem;	
+					}		
+						.conten0Cola .conten0Cola2:hover {
+							width: 31px;
+						  	height: 31px;
+						  	font-size: 1.6rem;
+						  	cursor: pointer;
+						}
+
+					.conten0Cola .conten0Cola3 {
+						width: 36px;
+  						height: 30px;
+  						margin-left: 6px;
+  						display: flex;
+  						align-items: center;
+  						justify-content: center;
+  						color: #000;
+					}
+
+					.conten0Cola .conten0Cola4 {
+						width: 46px;
+  						height: 30px;
+  						border-radius: 5px;
+  						box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+  						border: 1px solid;
+  						color: #000;
+  						display: flex;
+  						align-items: center;
+  						justify-content: center;
+					}
+					
+
+@media (min-width: 1280px) {
+	
+	.contenActencionesMedicas { 
+		width: 1280px;
+	 }
+
+	 .conten1Lista  {					
+		grid-column-gap: 300px;						
+	}
+
+	 .conten1Lista .conten1Lista1 {
+ 		min-width: 1150px;
+ 	 }
+
+	.datosBoton0 .botonD0 > div {
+		padding-top: 7%;
+	}
+
+	.contenBody {
+		padding: 3% 5% 5% 5%;
+	}
+}
+
+@media (min-width: 1360px) {
+	
+	.contenActencionesMedicas { 
+		width: 1360px;
+	 }
+
+	 .conten1Lista  {					
+		grid-column-gap: 300px;						
+	}
+
+	 .conten1Lista .conten1Lista1 {
+ 		min-width: 1210px;
+ 	 }
+
+	.datosBoton0 .botonD0 > div {
+		padding-top: 7%;
+	}
+
+	.contenBody {
+		padding: 3% 5% 5% 5%;
+	}
+} 
+
+@media (min-width: 1440px) {
+	
+	.contenActencionesMedicas { 
+		width: 1440px;
+	 }	
+
+	 .conten1Lista  {					
+		grid-column-gap: 500px;						
+	}
+
+	.conten1Lista .conten1Lista1 {
+ 		min-width: 1294px;
+ 	}
+
+
+	.datosBoton0 .botonD0 > div {
+		padding-top: 6%;
+	}
+
+	.contenBody {
+		padding: 3% 5% 5% 5%;
+	}
+
+}
+
+@media (min-width: 1600px) {
+		
+	.contenActencionesMedicas { 
+		width: 1600px;
+	 }	
+
+	 .conten1Lista  {					
+		grid-column-gap: 500px;						
+	}
+
+	.conten1Lista .conten1Lista1 {
+ 		min-width: 1438px;
+ 	}
+
+
+	.datosBoton0 .botonD0 > div {
+		padding-top: 6%;
+	}
+
+	.contenBody {
+		padding: 3% 5% 5% 5%;
+	}
+
+}
