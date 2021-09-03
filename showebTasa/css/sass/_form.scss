@@ -1,0 +1,18 @@
+.form{
+
+    &-icon{
+        border: 1px solid lightgray;
+        padding: 12px;
+        border-radius: 5px;
+        margin-top: 1em;
+        display: flex !important;
+
+        img{
+            width: 20px !important;
+        }
+
+        &__input{
+            border: 0px;
+        }
+    }
+}

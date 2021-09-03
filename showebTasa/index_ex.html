@@ -1,0 +1,671 @@
+<!doctype html>
+<html lang="en">
+
+<!----------------------- *** Inicio de la Cabecera ***   ----------------------->
+
+<head>
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Last-Modified" content="0">
+    <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <link rel="shortcut icon" href="images/iconos/favicon.ico" type="image/x-icon" />
+    <meta name="author" content="Visualsat Peru">
+    <title>SSOMA</title>
+    <!-- css estaticos -->
+    <link href="modules/bootstrap-4.4.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="modules/bootstrap-sweetalert-master/dist/sweetalert.css" rel="stylesheet">
+
+    <link href="css/loadingEffect.css" rel="stylesheet">
+    <!-- dinamico -->
+    <link href="css/visitasa.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/sweetalert2.css">
+
+
+    <!-- //------------------bloque codigo-----------------------#@andy---------------------------------------------// -->
+    <!----------------------- estilos estaticos de este arhivo ----------------------->
+    <style>
+        .padre {
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+            background: #fff url('images/fondologin.jpg') no-repeat center center;
+            min-height: 100%;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+        
+        .olvidaste-tu-contra {
+            width: 168px;
+            height: 17px;
+            font-family: ProductSans;
+            font-size: 14px;
+            font-weight: bold;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: normal;
+            letter-spacing: normal;
+            color: #51b499;
+        }
+        
+        #tx_login_usuario {
+            background-color: white;
+            background-image: url('images/iconos/iconUser.svg');
+            background-position: 330px;
+            background-repeat: no-repeat;
+            padding-left: 40px;
+        }
+        
+        #tx_login_password {
+            background-color: white;
+            background-image: url('images/iconos/iconPass.svg');
+            background-position: 330px;
+            background-repeat: no-repeat;
+            padding-left: 40px;
+        }
+        
+        #barra_superior {
+            background-color: #254373;
+            height: 77px;
+            width: 100%;
+        }
+        
+        .lbBienvenido {
+            height: 24px;
+            font-size: 24.3px;
+            font-weight: normal;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1;
+            letter-spacing: 0.15px;
+            color: #000000;
+        }
+        
+        .trazado {
+            width: 40.1px;
+            height: 0;
+            margin: 0 auto;
+            border: solid 1px #707070;
+        }
+        
+        .lb_title_sho0 {
+            object-fit: contain;
+            font-family: ITCAvantGardeStd-Demi;
+            font-size: 20px;
+            font-weight: normal;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1;
+            letter-spacing: normal;
+            text-align: center;
+            color: #fff;
+            margin-left: 8px;
+        }
+        
+        .lb_title_sho1 {
+            object-fit: contain;
+            font-family: ITCAvantGardeStd-Demi;
+            font-size: 32px;
+            font-weight: normal;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.06;
+            letter-spacing: normal;
+            text-align: center;
+            color: #798d2c;
+        }
+        
+        .lb_title_sho2 {
+            object-fit: contain;
+            font-family: ITCAvantGardeStd-Demi;
+            font-size: 32px;
+            font-weight: normal;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.06;
+            letter-spacing: normal;
+            text-align: center;
+            color: #1e4277;
+        }
+        
+        .lb_title_sho3 {
+            object-fit: contain;
+            font-family: ITCAvantGardeStd-Demi;
+            font-size: 20px;
+            font-weight: normal;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1;
+            letter-spacing: normal;
+            text-align: left;
+            color: #254373;
+        }
+        
+        #tx_tokens {
+            background-color: white;
+            font-weight: normal;
+            padding: 12px 12px 12px 12px;
+            text-align: center;
+            object-fit: contain;
+            font-family: ITCAvantGardeStd-Demi;
+            font-size: 33px;
+            font-weight: normal;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 0.61;
+            letter-spacing: normal;
+            text-align: center;
+            color: #000;
+            height: 189px;
+            border-radius: 5px;
+            border: solid 1px #c8c8c8;
+            background-color: #fff;
+            width: 360px;
+            height: 89px;
+        }
+    </style>
+
+    <!----------------------- estilos estaticos de este arhivo ----------------------->
+
+</head>
+<!----------------------- *** Fin de la Cabecera ***   ----------------------->
+
+
+
+
+
+
+
+
+
+
+
+<!----------------------- *** Inicio de la Cuerpo de la Pagina ***   ----------------------->
+
+<body class="text-center" id="body_index">
+
+    <!----------------------------- barra superior ---------------------------------------------->
+    <div id="barra_superior" class="row justify-content-center">
+
+        <!-- <img  class=" float-top" src="images/iconos/iconTasa.svg"  > -->
+
+        <div class="col" style="margin-top: 27px;"><img src="images/prev.svg" onclick="loginHigiene();" style="cursor: pointer; width: 22px; height: 17px;">
+            <Label class='lb_title_sho0'>Ingresar</label>
+        </div>
+        <div class="col" style="margin-top: 17px;"><img class=" float-top" src="images/iconos/iconTasa.svg"></div>
+        <div class="col">&nbsp;</div>
+
+    </div>
+    <!------------------------------ barra superior ---------------------------------------------->
+
+
+
+
+
+    <!----------------------- *** Inicio Capa Padre ***   ----------------------->
+    <div class="padre">
+
+
+
+
+        <!------------------------------**  Inicio Formulario Logeo **  ----------------------------->
+        <form class="form-signin form-row ld ld-blur-in bg-blue " name="fm_login" id="fm_login" style="max-width: 475px; margin-top: 55px;  ">
+
+            <div class=" " id="cardlogin" style="width: 445px;">
+                <div class="alert" role="alert" style="display: none;"></div>
+                <h2 class="card-title text-center lbBienvenido " onclick="fnExcelReportPAHC();">Ingreso externo</h2>
+                <a href="#" id="link" style="display:none"></a>
+                <!-- <hr class="trazado"> -->
+                <!-- <h5 class="card-title text-center mt-1"> <img class="" src="images/logo.svg" alt="" width="225" class="img-fluid" ></h5> -->
+                <div class="card-body  text-center" style="background-color:white;">
+                    <h2 class="card-title text-center " style="height: 20px;">&nbsp;</h2>
+
+                    <!-- <h2 class="card-title text-center lb_title_sho1 "  >¡SALUD E HIGIENE!</h2>
+                    <h2 class="card-title text-center lb_title_sho2 "  >OCUPACIONAL</h2> -->
+
+
+
+                    <div class="form-group   m-0 ">
+                        <h1 class="card-title text-left lb_title_sho3" style="margin-left: 21px;">Credenciales</h1>
+                    </div>
+
+                    <div class="form-group   m-0 ">
+                        <input type="text" placeholder="Usuario" class="form left border" id="tx_login_usuario" style=" width: 360px;  height:58px; border-radius: 4px;" required>
+                    </div>
+
+                    <div style="background-color:white; height:16px;"></div>
+
+                    <div class="form-group   m-0">
+                        <input type="password" placeholder="Contraseña" class="form iconPass border" id="tx_login_password" style=" width: 360px;  height:58px; border-radius: 4px;" required>
+
+                    </div>
+
+
+
+                    <div style="background-color:white; height:8px;"></div>
+
+                    <div class="container" style="text-align:center; background-color:white; width: 390px; visibility: hidden; display: none;">
+                        <div class="form-group   m-0" style=" width: 360px; background-color:white;">
+                            <div class="input-group mb-3">
+                                <div class="form-control" style="width: 360px; border-right:0; height: 58px; background-color: #D9D9D9;">
+                                    <div style="height:56px; margin-top:-11px; margin-left: -12px; width: 353px;">
+                                        <div class="g-recaptcha" style=" transform: scale(0.75);  transform-origin: 0 0;" data-sitekey="6LeXxNYUAAAAAIbyjKs16JSb1_uzRiG015RdilTm"></div>
+                                    </div>
+
+                                </div>
+                                <div class="input-group-append">
+                                    <span class="input-group-text" style="background-color:#D9D9D9; color:gray; font-size: 11px; ">&nbsp; Power By: Google Inc.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                    <h2 class="card-title text-center " style="height: 3px;">&nbsp;</h2>
+
+                    <div class="container" style="text-align:center; background-color:white; width: 390px;">
+                        <div class="form-group   m-0" style=" width: 360px; background-color:white;">
+                            <div class="input-group mb-3">
+                                <!-- id="bt_login_tokens" -->
+                                <button id="fm_login" name="fm_login" class="btn btn-lg buttonActive btn-block d-flex justify-content-center " onclick="enviarTokenUserClave()" style=" height: 52px; border-radius: 7px; width: 360px; background: #8fbb02 !important; " type="submit">
+                                            <div class="d-flex justify-content-center">
+                                                <div class="spinner-grow spinner-border-sm text-white" role="status" aria-hidden="true" style="display: none;">
+                                                </div>
+                                            </div>
+                                            Solicitar token
+                                        </button>
+                            </div>
+
+                             <div class="input-group mb-3" style="width:360px; ">
+                                        <div class="form-control"  style="width: 360px; border-right:0; height: 66px; background-color: #D9D9D9;">
+                                             
+                                              <div class="text-center" style="text-align: left !important; padding-left: 0px; margin-top: -10px !important;  margin-left: -10px !important; ">
+                                                     <div id="recaptcha-container" style="width:90px; transform: scale(0.82);  transform-origin: 0 0; height: 60px;"></div>
+                                              </div>
+
+                                        </div>
+                                        <div class="input-group-append">
+                                              <span class="input-group-text" style="background-color:#D9D9D9; color:gray; font-size: 11px; ">&nbsp; By: Google Inc.</span>
+                                        </div>
+                              </div>
+
+
+                        </div>
+                    </div>
+
+                   
+
+
+                                   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </form>
+
+                    <h2 class="card-title text-center " style="height: 7px;">&nbsp;</h2>
+                    <div class="form-group   m-0 ">
+                        <h1 class="card-title text-left lb_title_sho3" style="margin-left: 21px;">Ingresar token</h1>
+                    </div>
+
+                    <h2 class="card-title text-center " style="height: 4px;">&nbsp;</h2>
+
+                    <div class="form-group   m-0 ">
+                        <input type="text" placeholder="000123786" class="form border" onkeyup="/*activaTokens()*/" id="tx_tokens" style="" >
+                    </div>
+
+                    <h2 class="card-title text-center " style="height: 14px;">&nbsp;</h2>
+
+                    <div class="container" style="text-align:center; background-color:white; width: 390px;">
+                        <div class="form-group   m-0" style=" width: 360px; background-color:white;">
+                            <div class="input-group mb-3">
+                                <button type="button" id="bt_valida_tokens_sho" class="btn btn-lg buttonActive btn-block d-flex justify-content-center " onclick="validaTokens()" style=" height: 52px; border-radius: 7px; width: 360px; background: #c1c1c1 !important; ">
+                                            <div class="d-flex justify-content-center">
+                                                <div class="spinner-grow spinner-border-sm text-white" role="status" aria-hidden="true" style="display: none;">
+                                                </div>
+                                            </div>
+                                            Validar token
+                                        </button>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                    <!--  <div class="container"  style="text-align:center; background-color:white; width: 390px;"">
+                                <div class="form-group   m-0" style=" width: 360px; background-color:white;">
+                                    <div class="input-group mb-3">
+                                        <div class="w-100 mt-0" >
+                                            <button class="btn btn-lg btn-primary btn-block d-flex justify-content-center " onclick="signIn()" style=" height: 52px; border-radius: 7px; width: 360px; background: #254373;" type="button">
+                                                Ingresar Usuario TASA
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="container"  style="text-align:center; background-color:white; width: 390px;"">
+                                <div class="form-group   m-0" style=" width: 360px; background-color:white;">
+                                    <div class="input-group mb-3">
+                                        <div class="w-100 mt-0" >
+                                            <button class="btn btn-lg btn-primary btn-block d-flex justify-content-center " onclick="signIn()" style=" height: 52px; border-radius: 7px; border-color:orange !important; width: 360px; background:orange !important;" type="button">
+                                                ingreso office 365
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+ -->
+
+
+
+                    <!-- <div class="form-group  input-material mt-2 w-100 text-center colorLight objectVinculo">
+                                ¿Olvidaste tu contraseña?
+                                </div> -->
+                    <!-- <div class="mt-4 w-100 text-center pr-4" id="rememberPassword" style="font-size: 14px; color: #51b499;font-weight: bold; cursor: pointer;">
+                                    ¿Olvidaste tu contraseña?
+                                </div> -->
+
+                    <div class="  mt-4 w-100 text-center pr-4 " style="font-size: 16px; margin-top: 30px !important;">
+                        &reg;2020 Tasa. All Rights reserved.
+                    </div>
+
+                </div>
+            </div>
+       
+        <!------------------------------**  Fin Formulario Logeo **  ----------------------------->
+
+
+
+
+
+        <!------------------------------**  Inicio Formulario Recuperar Usuario **  ----------------------------->
+        <form class="form-signin form-row ld ld-blur-in bg-blue" name="fm_rememberPassword" id="fm_rememberPassword" style="max-width: 400px; display: none;">
+            <div class="card border-0 shadow-lg bg-white rounded  mb-5  pl-4 pr-4" style=" background-color: rgba(255, 255, 255, 0.5); ">
+                <div class="alert" role="alert" style="display: none;"></div>
+                <h5 class="card-title text-left mt-5"><img src="images/iconos/multimedia-option.svg" id="img_back" width="20" height="15" class="img-fluid"> Recuperar contraseña</h5>
+                <div class="card-body text-left mr-2 ml-2" style="padding-top: 0px !important;">
+                    <h6 class="text-muted">Coloque el correo al que desea que le llegue la restauración de su contraseña </h6>
+                    <div class="" id="spinner-rememberPassword" style="display: none; margin-top: 80px;">
+                        <div class="d-flex justify-content-center">
+                            <div class="spinner-border text-info" role="status" style="width: 5rem; height: 5rem;">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="success-rememberPassword" style="display: none; margin-top: 80px;">
+                        <div class="d-flex justify-content-center">
+                            <img src="images/iconos/correct.svg" alt="" style="width: 7rem; height: 7rem;">
+                        </div>
+                        <h6 class="text-muted text-center mt-2">Datos enviados correctamente</h6>
+                    </div>
+                    <div class="form-group mt-5 form-rememberPassword">
+                        <label for="tx_usermane_remember" class="font-weight-bolder">USUARIO</label>
+                        <input type="text" class="form-control input iconUser " id="tx_usermane_remember" style="" required>
+                    </div>
+                    <br>
+                    <div class="w-100 mt-5 form-rememberPassword">
+                        <button class="btn btn-lg buttonActive btn-block d-flex justify-content-center ml-3" style=" height: 52px; border-radius: 7px; width: 230px; background-color: #bed138;">
+                                Enviar
+                            </button>
+                    </div>
+                    <br>
+                    <div class=" w-100 text-center pr-4 " style="font-size: 0.9em; margin-top: 150px;">
+                        &reg;2020 Tasa. All Rights reserved.
+                    </div>
+                </div>
+            </div>
+        </form>
+        <!------------------------------**  Fin Formulario Recuperar Usuario **  ----------------------------->
+
+
+    </div>
+    <!----------------------- *** Fin Capa Padre ***   ----------------------->
+</body>
+<!----------------------- *** Fin de la Cuerpo de la Pagina ***   ----------------------->
+
+
+
+
+
+
+<!-- libs estaticos -->
+<script src="js/jquery-3.4.1.js"></script>
+<script src="modules/bootstrap-4.4.1/dist/js/bootstrap.min.js"></script>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+<!-- <script src="modules/bootstrap-sweetalert-master/dist/sweetalert.js"></script> -->
+<script src="js/sweetalert2.js"></script>
+<script src="modules/bootstrap-4-floating-labels-material-inputs/materialize-inputs.jquery.js"></script>
+<!-- libs dinamicos -->
+<script src="js/common.js"></script>
+
+<script src="js/apiRoute.js"></script>
+<script src="js/msal.js"></script>
+<script src="js/login.js"></script>
+<script src="js/loginlog.js"></script>
+<script src="js/collaboratorApprover.js"></script>
+<script src="js/proccessExcell.js"></script>
+<script src="js/riskList.js"></script>
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-analytics.js"></script>
+<!--<script src="/__/firebase/6.2.0/firebase-firestore.js"></script>-->
+
+
+
+<script>
+    $(document).ready(function() {
+        login.init(); //llamado al metodo init//
+        $("#bt_valida_tokens_sho").attr("disabled", true);
+        $("#bt_login_tokens").attr("disabled", true);
+
+    });
+
+
+    function loginHigiene() {
+        window.location.href = "index.html";
+    }
+
+    function activaTokens() {
+        if ($('#tx_tokens').val().length >= 9) {
+            //alert('entreeeeee')
+
+            document.getElementById('bt_valida_tokens_sho').style.background = '#8fbb02';
+            $("#bt_valida_tokens_sho").attr("disabled", false);
+        } else {
+            //alert('entreeeeee')
+
+            document.getElementById('bt_valida_tokens_sho').style.background = '#c1c1c1';
+            $("#bt_valida_tokens_sho").attr("disabled", true);
+        }
+    }
+
+
+
+
+
+    
+
+
+    function enviarTokenUserClave() {
+        console.log('JHe aqui el login*************************');
+         
+        Swal.fire({
+         // position: 'top-end',
+          icon: 'success',
+          title: 'Se ha enviado un código a su teléfono',
+          showConfirmButton: false,
+          timer: 1500
+        })
+
+
+    }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    // es necesario habilitar los dominos que usaran este servico en firebase*****************
+    var firebaseConfig = {
+        apiKey: "AIzaSyDiq4S6EyuELLT_bzdTmlOnxEY20vo9f-c",
+        authDomain: "admin-seguridad-tasa.firebaseapp.com",
+        projectId: "admin-seguridad-tasa",
+        storageBucket: "admin-seguridad-tasa.appspot.com",
+        messagingSenderId: "1048339104209",
+        appId: "1:1048339104209:web:0561ed3593ae2327f0a0f0",
+        measurementId: "G-Q3VK3W8PPM"
+
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    //firebase.analytics();
+
+    if (firebase) {
+        window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
+        recaptchaVerifier.render();
+    }
+
+
+
+
+
+
+
+function validaTokens() {
+        console.log('validando el tokes.............');
+        //var tokensServer = '0123456789'; //aqui vamos a poner el valor que nos traiga el servicio
+        // if ($('#tx_tokens').val() == tokensServer) {
+        //     //activamos el boton ingresar y le cambiamos el titulo
+            $("#bt_login_tokens").attr("disabled", false);
+            $("#bt_login_tokens").html('Enviar token');
+
+
+         //----------------------------------------------------------------------------------
+
+
+         console.log("Validando codigo...")
+        var code = document.getElementById('tx_tokens').value;
+        confirmationResult.confirm(code).then(function(result) {
+
+            var user = result.user;
+            // alert("Acceso autorizado", 'success', 5000);
+             Swal.fire({
+                 // position: 'top-end',
+                  icon: 'success',
+                  title: 'Acceso autorizado',
+                  showConfirmButton: false,
+                  timer: 1500
+                })
+
+            location.href = "main.html";
+
+
+            //console.log("Devolviando data autorizada...")
+           // window.opener.postMessage({ sucessSapTasa: 1, data: responseData }, '*')
+            //window.close();
+
+        }).catch(function(error) {
+
+            console.log("Firebase codeverify: " + error.message);
+
+            //alert("Acceso no autorizado", 'success', 5000);
+
+
+             Swal.fire({
+                 // position: 'top-end',
+                  icon: 'error',
+                  title: 'Acceso no autorizado',
+                  showConfirmButton: false,
+                  timer: 1500
+                })
+
+
+            console.log("Close windows")
+            // window.opener.postMessage({ sucessSapTasa: 0 }, '*')
+            // window.close();
+        })
+
+         //----------------------------------------------------------------------------------
+
+
+
+        // }
+    }
+
+
+
+
+// function  () codeverify() {
+
+//         console.log("Validando codigo...")
+//         var code = document.getElementById('tx_tokens').value;
+//         confirmationResult.confirm(code).then(function(result) {
+
+//             var user = result.user;
+//             messagealert("Acceso autorizado", 'success', 5000);
+//             console.log("Devolviando data autorizada...")
+//             window.opener.postMessage({ sucessSapTasa: 1, data: responseData }, '*')
+//             window.close();
+
+//         }).catch(function(error) {
+
+//             console.log("Firebase codeverify: " + error.message);
+
+//             messagealert("Acceso no autorizado", 'success', 5000);
+//             console.log("Close windows")
+//             window.opener.postMessage({ sucessSapTasa: 0 }, '*')
+//             window.close();
+//         })
+//     }
+</script>
+
+</html>

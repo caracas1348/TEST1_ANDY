@@ -1,0 +1,202 @@
+<div class="card  card-radius  border border-muted gp_no_programada" style="box-shadow: none;">
+    <div class="card-body" style="padding-bottom: 0.25rem!important;">
+        <div class="row">
+            <div class="col-md-3 ml-2 "><h6 class=""><img src="images/iconos/calendar.svg" height="24px" class="mr-2 "> <span class="titleMain">Itinerario</span></h6></div>
+            <!--<div class="col-md-2 bmd-drawer-f-r"><button type="button" class="btn btn-link btn-raised btn-sm" id="btAccessRetorneList" name="btAccessRetorneList"><i class="fa fa-arrow-left"></i>&nbsp; &nbsp;Regresar</button></div>-->     
+        </div>     
+        
+        <div class="col-md-12 col-lg-12">
+            <form id="fm_itinerary" name="fm_itinerary" class="form-row">                
+                <div class="form-group  col-md-3" > 
+                    <label for="tx_date_start" class="bmd-label-static titleInput">FECHA DE INICIO <span class="text-warning">*</span></label>                    
+                    <input type="text" class="form-control bg-white " id="tx_date_start" readonly name="tx_date_start" onkeyup="validateFieldMinForm()" onblur="autoCompleteDate(this.id,'tx_date_end');calculateDayCheck(this.id);validateFieldMinForm();enabledDaySel('tx_date_start','tx_time_start','tx_date_end','tx_time_end')">                    
+                </div>
+
+                <div class="form-group  col-md-3">             
+                    <label for="tx_time_start" class="bmd-label-static titleInput" >HORA DE INICIO <span class="text-warning">*</span></label>           
+                    <input type="time"  style="height: 41px;" class="form-control bg-white" id="tx_time_start" readonly name="tx_time_start" onkeyup="validateFieldMinForm()" onblur="autoCompleteDate(this.id,'tx_time_end');validateFieldMinForm();" >                    
+                    <small id="" class="form-text text-muted"></small>
+                    <span class="bmd-help"></span>
+                </div>
+                <div class="form-group col-md-3"> 
+                    <label for="tx_date_end" class="bmd-label-static titleInput">FECHA DE FIN <span class="text-warning">*</span></label>                       
+                    <input type="text" class="form-control bg-white" id="tx_date_end" onkeyup="validateFieldMinForm();" onBlur="enabledDaySel('tx_date_start','tx_time_start','tx_date_end','tx_time_end');validateFieldMinForm();" readonly name="tx_date_end">                    
+                    <small id="" class="form-text text-muted"></small>
+                    <span class="bmd-help"></span>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="tx_time_end" class="bmd-label-static titleInput" >HORA FIN <span class="text-warning">*</span></label>                        
+                    <input type="time" style="height: 41px;" class="form-control bg-white" id="tx_time_end" onkeyup="validateFieldMinForm()" onBlur="validateFieldMinForm()" readonly name="tx_time_end">                    
+                    <small id="" class="form-text text-muted"></small>
+                    <span class="bmd-help"></span>
+                </div>
+                <div class="form-group col-md-3 col-lg-3" style="display: none;">                        
+                    <label for="sel_frequency" class="bmd-label-static titleInput">FRECUENCIA</label>
+                    <select id="sel_frequency" mane="sel_frequency" class="form-control">
+                        <option value="0"> </option>
+                        <option value="1">Diario</option>
+                        <option value="2">Semanal</option>
+                        <option value="3">Mensual</option>
+                        <option value="4">Anual</option>
+                    </select>
+                    <span class="bmd-help"></span>
+                </div>
+               
+                <div class="col text-center " style="margin-top: -15px;margin-left: -21px;">
+                    <div class="checkbox d-flex text-center" style="padding-top: 0.75rem!important;">
+                        <div class="custom-control custom-radio">
+                            <input type="radio" class="custom-control-input" id="ch_itinirary_lu" disabled >
+                            <label class="custom-control-label text-mute" for="ch_itinirary_lu">Lunes</label>
+                          </div>
+                          <div class="custom-control custom-radio">
+                            <input type="radio" class="custom-control-input" id="ch_itinirary_ma" disabled >
+                            <label class="custom-control-label" for="ch_itinirary_ma">Martes</label>
+                          </div>
+                          <div class="custom-control custom-radio">
+                            <input type="radio" class="custom-control-input" id="ch_itinirary_mi" disabled >
+                            <label class="custom-control-label" for="ch_itinirary_mi">Miercoles</label>
+                          </div>
+                          <div class="custom-control custom-radio">
+                            <input type="radio" class="custom-control-input" id="ch_itinirary_ju" disabled >
+                            <label class="custom-control-label" for="ch_itinirary_ju">Jueves</label>
+                          </div>
+                          <div class="custom-control custom-radio">
+                            <input type="radio" class="custom-control-input" id="ch_itinirary_vi" disabled >
+                            <label class="custom-control-label" for="ch_itinirary_vi">Viernes</label>
+                          </div>
+                          <div class="custom-control custom-radio">
+                            <input type="radio" class="custom-control-input" id="ch_itinirary_sa" disabled >
+                            <label class="custom-control-label" for="ch_itinirary_sa">Sabado</label>
+                          </div>
+                          <div class="custom-control custom-radio">
+                            <input type="radio" class="custom-control-input" id="ch_itinirary_do" disabled >
+                            <label class="custom-control-label" for="ch_itinirary_do">Domingo</label>
+                          </div>
+
+                    </div>
+
+                   
+                     
+                </div>
+            </form>
+        </div>               
+    </div>
+</div>
+
+<div class="card " style="box-shadow: none;">
+    <div class="card-body p-0" style="padding-bottom: 0.25rem!important;">
+         <!-- titulo form -->
+         <ul class="list-unstyled">
+            <li class="media mb-2 p-2 titleFormSecond" id="blockperson">
+                <img src="images/iconos/organizadorwhite.svg" height="24" class="mr-3 mt-3">
+                <div class="media-body pt-1 ">                
+                    <div class="row">
+                        <div class="col-auto"><h4 id="">Personas que asistirán ( <span  id="cant_row_persona">1</span> )</h4></div>
+                    </div>                
+                    <small>Invitación para completar datos de los asistentes. Si no cuentan con empresa seleccione la opción “Sin empresa”</small>
+                </div>
+                <div class="col-md-3 bmd-drawer-f-r text-right p-0"> <button type="button" class="btn btn-sm btn-green-lime btn-raised btn-rounded mt-3" style="border-radius: 25px;" id="bt_add_row_participante" name="bt_add_row_participante" > &nbsp; &nbsp;Agregar&nbsp; &nbsp;<i class="fas fa-plus"></i>&nbsp; &nbsp;</button></div>        
+            </li>
+        </ul>
+        <!--contenido del form  -->
+        <div class="row">
+            
+            <div class="col-md-5 mt-0"> 
+                <div class="input-group" style="display: none;">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="tx_quantity">CANTIDAD DE PERSONAS POR EMPRESA</span>
+                    </div>
+                    <input type="text" class="form-control ml-1" aria-label="Default" aria-describedby="tx_quantity" name="tx_quantity" id="tx_quantity" readonly>
+                </div>
+            </div>
+           
+        </div>
+        <div id="list_participantes">
+        <div class="bd-callout-no" id="bd-callout_participante_1" style="padding: 0.25rem!important;margin-top: 0.25rem!important;">
+            <form id="fm_participante_1" name="fm_participante_1" class="form-row ml-1" style="margin-bottom: 0.125rem!important;">
+                <div class="form-group  col-md-2 col-lg-2">  
+                    <label for="sel_company_1" class="bmd-label-static titleInput" id="lab_empresa">EMPRESA <span class="text-warning">*</span></label>                      
+                    <select  name="sel_company_1" class="form-control  external-company" id="sel_company_1" onChange="validateFieldMinForm()"  required>                        
+                    </select>
+                    <small id="small_button_add_company" class="form-text text-muted" ><button type="button" style="border-radius: 25px;" class="btn btn-raised btn-sx btn-green-lime btn-rounded " id="btAddCompany_1" name="btAddCompany" onclick="" data-toggle="modal" data-target="#modalAddCompany" >Agregar Empresa</button> </small>
+                </div>
+
+                <div class="form-group col-md-1 col-lg-1">
+                    <label for="add_correo_company_1" class="bmd-label-static titleInput">CORREO</label> 
+                    <input type="email" class="form-control" id="add_correo_company_1" onkeyup="validateFieldMinForm()">
+                    <small id="" class="form-text text-muted">Correo del Responsable</small>                                           
+                </div>
+
+                <div class="form-group col-md-1 bmd-form-group is-filled">
+                    <label for="tx_business_dni" class="bmd-label-static titleInput">TIPO<span class="text-warning">*</span></label>              
+                    <select class="form-control" id="sel_identity_document_type_1" name="sel_identity_document_type_1">
+                        <option value="DNI">DNI</option>
+                        <option value="CE">CE</option>
+                        <option value="PASAPORTE">PASAPORTE</option>
+                    </select>
+                </div>
+
+                <div class="form-group col-md-1 bmd-form-group">
+                    <label for="add_dni_1" class="bmd-label-static titleInput">DOCUMENTO<span class="text-warning">*</span></label>   
+                    <input type="text" class="form-control ui-autocomplete-input" maxlength="10" id="add_dni_1" autocomplete="off" onkeyup="validateFieldMinForm()" onblur="addDriverToVehicle('sel_person_vehicle_1')">
+                </div>
+
+                <div class="form-group  col-md-2 col-lg-2">  
+                    <label for="add_contacto_nombre_1"  class="bmd-label-static titleInput">PARTICIPANTE</label>                      
+                    <input type="text" class="form-control" id="add_contacto_nombre_1" onkeyup="validateFieldMinForm()" onblur="addDriverToVehicle('sel_person_vehicle_1')" >                    
+                    <small id="" class="form-text text-muted">Nombres</small>
+                </div>
+                <div class="form-group col-md-2 col-lg-2">
+                    <input type="text" class="form-control" id="add_contacto_apellido_1" onkeyup="validateFieldMinForm()" onblur="addDriverToVehicle('sel_person_vehicle_1')">
+                    <small id="" class="form-text text-muted">Apellidos</small>
+                </div>
+                <div class="form-group col-md-2 col-lg-2">
+                    <label for="add_correo_1" class="bmd-label-static titleInput">CORREO</label> 
+                    <input type="email" class="form-control" id="add_correo_1" onkeyup="validateFieldMinForm()" onblur="addDriverToVehicle('sel_person_vehicle_1')">                                           
+                    <small id="" class="form-text text-muted">Correo del Participante</small>
+                </div>
+                <input type="hidden" class="form-control" id="add_covid_test_1">
+                <!-- <div class="col-md-2 col-lg-2"></div>-->
+                <div class="form-group  col-md-1 col-lg-1 text-center align-middle pt-4 mt-3 mb-3 border-left">
+                    <div id="bt_delete_row_participante" style="cursor: pointer;">
+                        <img src="images/iconos/trash.svg" class="" >                    
+                        <small id="passwordHelpBlock" class="form-text text-muted">Eliminar</small>
+                    </div>
+                </div>                      
+            </form>
+        </div>
+        </div>
+    </div>
+</div>
+
+<div class="card card-radius border border-muted gp_no_programada" style="box-shadow: none;"  >
+    <div class="card-body" style="padding-bottom: 0.25rem!important;">  
+        <div class="row">
+            <div class="col-md-7 "><h6 class=" ml-2"><img src="images/iconos/tools.svg" height="24" class="mr-2"><span class="titleMain">Herramientas, equipos de protección y bienes</span> <span class="badge badge-while ml-2 border border-muted rounded-circle" id="cant_row_tool">0</span></h6></div>
+            <div class="col-md-5 text-right"> <button ty pe="button" class="btn btn-sm btn-green-lime btn-raised btn-rounded mt-3" style="border-radius: 25px;" id="bt_add_row_tool" name="bt_add_row_tool" onclick="">&nbsp; &nbsp;Agregar &nbsp; &nbsp;<i class="fas fa-plus"></i>&nbsp; &nbsp;</button></div>        
+        </div>    
+        <div id="list_tools">
+        </div>                                
+    </div>
+</div>
+<div class="separatorHor"></div>
+<div class="card" style="box-shadow: none;" >
+    <div class="card-body p-0" style="padding-bottom: 0.25rem!important;">         
+             <!-- titulo form -->
+            <ul class="list-unstyled">
+                <li class="media mb-2 p-2 titleFormSecond" id="blockvehicle" >
+                <img src="images/iconos/vehículowhite.svg" height="24" class="mr-3 mt-3">
+                <div class="media-body pt-1 ">
+                    <div class="row">
+                        <div class="col-auto"><h4 id="">Vehículos que entrarán a planta ( <span  id="cant_row_vehicle">0</span> )</h4></div>
+                    </div>  
+                    <small>Indique los datos de los hevículos que entrarán a planta</small> 
+                </div>                
+                <div class="col-md-4 text-right"> <button type="button" class="btn btn-sm btn-green-lime  btn-raised btn-rounded mt-3" id="bt_add_row_vehicle" name="bt_add_row_vehicle" style="border-radius: 25px;"> &nbsp; &nbsp; Agregar &nbsp; &nbsp;<i class="fas fa-plus"></i> &nbsp; &nbsp;</button></div>        
+                </li>                
+            </ul>                   
+        <div id="list_vehicles">
+
+        </div>                                
+    </div>
+</div>

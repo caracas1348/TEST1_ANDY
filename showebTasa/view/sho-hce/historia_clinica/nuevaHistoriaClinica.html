@@ -1,0 +1,547 @@
+<link rel="stylesheet" href="./view/sho-hce/historia_clinica/sho_hce.css">
+<link rel="stylesheet" href="css/sweetalert2.css">
+<div class="container main-content" id="HC_registrar">
+  <!-- DATOS DEL TRABAJADOR -->
+  <div class="row mb-5 align-items-center">
+    <div class="col-md-3 col-sm-12">
+      <span class="titulo">Datos del trabajador</span>
+    </div>
+    <div class="col-md-2 col-sm-6">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="dat_hc_externo_trabajador">
+        <label class="form-check-label" for="flexRadioDefault1"> Es paciente externo </label>
+      </div>
+    </div>
+    <div class="col-md-2 offset-md-1">
+      <button type="button" class="btn btn-link btn-block btn-lg shadow-none" id="fn_hc_limpiar_datos" onclick="hcSp3LimpiarDatos()">Limpiar datos</button>
+    </div>
+    <div class="col-md-2 col-sm-6">
+      <button onclick="hcSp3CancelarHistoria()" type="button" class="btn btn-danger btn-block btn-lg" id="fn_hc_cancelar"> Cancelar <img class="inject-svg" src="./images/sho/cancelar.svg" alt="" fill="#fff" width="18px">
+      </button>
+    </div>
+    <div class="col-md-2 col-sm-6">
+      <button type="button" class="btn btn-success btn-block btn-lg" id="fn_hc_guardar" onclick="hcSp3ConfirmGuardarHistoriaClinica()"> Guardar <img class="inject-svg" src="./images/sho/confirm.svg" alt="" fill="#fff" width="18px">
+      </button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3 col-sm-6">
+      <div class="input-box-secondary input_hc_sp3">
+        <span>Nro de documento</span>
+        <input type="text" id="dat_hc_dni_trabajador" data-mask="999999999">
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+      <div class="input-box-secondary input_hc_sp3">
+        <span>Nombres</span>
+        <input type="text" id="dat_hc_nombres_trabajador">
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+      <div class="input-box-secondary input_hc_sp3">
+        <span>Apellidos</span>
+        <input type="text" id="dat_hc_apellidos_trabajador">
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+      <div class="input-box-secondary input_hc_sp3">
+        <span>Fecha</span>
+        <input type="date" id="dat_hc_fecha_trabajador" readonly>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+      <div class="input-box-secondary input_hc_sp3">
+        <span>Código colaborador</span>
+        <input type="text" id="dat_hc_cod_colaborador">
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+      <div class="input-box-secondary input_hc_sp3">
+        <span>Teléfono</span>
+        <input type="text" id="dat_hc_telefono_trabajador" data-mask="000000000">
+      </div>
+    </div>
+    <div class="col-md-6 col-sm-12">
+      <div class="input-box-secondary input_hc_sp3">
+        <span>Dirección</span>
+        <input type="text" id="dat_hc_direccion_trabajador">
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+      <div class="input-box-secondary input_hc_sp3">
+        <span>Sexo</span>
+        <select name="" id="dat_hc_sexo_trabajador">
+          <option value="" selected disabled></option>
+          <option value="0">Femenino</option>
+          <option value="1">Masculino</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+      <div class="input-box-secondary input_hc_sp3">
+        <span>Lugar de nacimiento</span>
+        <input type="text" id="dat_hc_nacimiento_trabajador">
+      </div>
+    </div>
+    <div class="col-md-2 col-sm-4">
+      <div class="input-box-secondary input_hc_sp3">
+        <span>Edad</span>
+        <input type="text" id="dat_hc_edad_trabajador" data-mask="000">
+      </div>
+    </div>
+  </div>
+  <!-- FIN DATOS DEL TRABAJADOR -->
+  <hr />
+  <!-- DATOS DE LA EMPRESA -->
+  <div class="row mb-5 mt-4">
+    <div class="col-md-12">
+      <span class="titulo">Datos de la empresa</span>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3 col-sm-6">
+      <div class="input-box-secondary input_hc_sp3">
+        <span>Gerencia</span>
+        <select name="" id="dat_hc_gerencia_empresa">
+          <option value="" selected disabled></option>
+        </select>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+      <div class="input-box-secondary input_hc_sp3">
+        <span>Planta</span>
+        <select name="" id="dat_hc_planta_empresa">
+          <option value="" selected disabled></option>
+        </select>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+      <div class="input-box-secondary input_hc_sp3">
+        <span>Área</span>
+        <select name="" id="dat_hc_area_empresa">
+          <option value="" selected disabled></option>
+        </select>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+      <div class="input-box-secondary input_hc_sp3">
+        <span>Puesto de trabajo</span>
+        <input type="text" id="dat_hc_puesto_trabajo_empresa">
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+      <div class="input-box-secondary input_hc_sp3">
+        <span>Jefe inmediato</span>
+        <input type="text" id="dat_hc_jefe_inmediato_empresa">
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+      <div class="input-box-secondary input_hc_sp3">
+        <span>Celular</span>
+        <input type="text" id="dat_hc_celular_empresa" data-mask="000000000">
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+      <div class="input-box-secondary input_hc_sp3">
+        <span>Teléfono</span>
+        <input type="text" id="dat_hc_telefono_empresa" data-mask="00 0000000">
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+      <div class="input-box-secondary input_hc_sp3">
+        <span>Puesto del jefe inmediato</span>
+        <input type="text" id="dat_hc_puesto_jefe_empresa">
+      </div>
+    </div>
+  </div>
+  <!-- FIN DATOS DE LA EMPRESA -->
+  <hr />
+  <!-- ANTECEDENTES -->
+  <div class="row mb-5 mt-4">
+    <div class="col-md-12">
+      <span class="titulo">Antecedentes</span>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="accordion" id="sho_3_hc_ant">
+        <!-- ALERGIAS -->
+        <div class="card">
+          <div class="card-header" id="sho_3_hc_alerg" data-toggle="collapse" data-target="#sho_3_hc_alergias_content" aria-expanded="true" aria-controls="sho_3_hc_alerg">
+            <div class="d-flex align-items-center">
+              <img class="inject-svg card-header-icon" src="./images/sho/allergies.svg" />
+              <span class="ml-4">Alergias</span>
+            </div>
+            <div>
+              <span>Registros</span>
+              <span class="badge badge-light mx-3" id="cant_ant_1_header">00</span>
+              <img class="inject-svg card-header-icon-down" src="./images/sho/down.svg">
+            </div>
+          </div>
+          <div id="sho_3_hc_alergias_content" class="collapse show" aria-labelledby="sho_3_hc_alerg" data-parent="#sho_3_hc_ant">
+            <div class="card-body border-content">
+              <div class="row justify-content-between">
+                <div class="col-md-3 col-sm-6">
+                  <div class="input-box-secondary">
+                    <span>Nombre de la alergia</span>
+                    <input type="text" id="nombre_ant_1">
+                  </div>
+                </div>
+                <div class="col-md-2 col-sm-4">
+                  <button class="btn btn-success btn-block btn-lg" onclick="hcSp3GuardarAntecedentes(1)"> Agregar <img class="inject-svg" src="./images/sho/plus.svg" alt="" fill="#fff" />
+                  </button>
+                </div>
+              </div>
+              <div id="content_ant_1">
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- FIN ALERGIAS -->
+        <!-- PATOLOGICOS -->
+        <div class="card">
+          <div class="card-header" id="sho_3_hc_pato" data-toggle="collapse" data-target="#sho_3_hc_pato_content" aria-expanded="false" aria-controls="sho_3_hc_pato_content">
+            <div class="d-flex align-items-center">
+              <img class="inject-svg card-header-icon" src="./images/sho/pathological.svg" />
+              <span class="ml-4">Antecedentes patológicos</span>
+            </div>
+            <div>
+              <span>Registros</span>
+              <span class="badge badge-light mx-3" id="cant_ant_2_header">00</span>
+              <img class="inject-svg card-header-icon-down" src="./images/sho/down.svg">
+            </div>
+          </div>
+          <div id="sho_3_hc_pato_content" class="collapse" aria-labelledby="sho_3_hc_pato" data-parent="#sho_3_hc_ant">
+            <div class="card-body border-content">
+              <div class="row justify-content-between">
+                <div class="col-md-3 col-sm-6">
+                  <div class="input-box-secondary">
+                    <span>Nombre</span>
+                    <input type="text" id="nombre_ant_2">
+                  </div>
+                </div>
+                <div class="col-md-2 col-sm-4">
+                  <button class="btn btn-success btn-block btn-lg" onclick="hcSp3GuardarAntecedentes(2)"> Agregar <img class=" inject-svg" src="./images/sho/plus.svg" alt="" fill="#fff" />
+                  </button>
+                </div>
+              </div>
+              <div id="content_ant_2">
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- FIN PATOLOGICOS -->
+        <!-- OCUPACIONALES -->
+        <div class="card">
+          <div class="card-header" id="sho_3_hc_ocu" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+            <div class="d-flex align-items-center">
+              <img class="inject-svg card-header-icon" src="./images/sho/occupational.svg" />
+              <span class="ml-4">Antecedentes ocupacionales</span>
+            </div>
+            <div>
+              <span>Registros</span>
+              <span class="badge badge-light mx-3" id="cant_ant_3_header">00</span>
+              <img class="inject-svg card-header-icon-down" src="./images/sho/down.svg">
+            </div>
+          </div>
+          <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#sho_3_hc_ant">
+            <div class="card-body border-content">
+              <div class="row" id="form_dat_ant_oc">
+                <div class="col-md-3 col-sm-6">
+                  <div class="input-box-secondary">
+                    <span>Fecha inicio</span>
+                    <input type="date" id="fecha_inicio_ant_3">
+                  </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                  <div class="input-box-secondary">
+                    <span>Fecha fin</span>
+                    <input type="date" id="fecha_fin_ant_3">
+                  </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                  <div class="input-box-secondary">
+                    <span>Empresa</span>
+                    <input type="text" id="empresa_ant_3">
+                  </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                  <div class="input-box-secondary">
+                    <span>Actividad de la empresa</span>
+                    <input type="text" id="actividad_ant_3">
+                  </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                  <div class="input-box-secondary">
+                    <span>Área de trabajo</span>
+                    <input type="text" id="area_trabajo_ant_3">
+                  </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                  <div class="input-box-secondary">
+                    <span>Ocupación</span>
+                    <input type="text" id="ocupacion_ant_3">
+                  </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                  <div class="input-box-secondary">
+                    <span>Peligros/agentes ocupacionales</span>
+                    <input type="text" id="peligros_ant_3">
+                  </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                  <div class="input-box-secondary">
+                    <span>Uso de EPP/típo de EPP</span>
+                    <input type="text" id="epp_ant_3">
+                  </div>
+                </div>
+              </div>
+              <div class="row d-flex justify-content-end">
+                <div class="col-md-2 col-sm-4">
+                  <button class="btn btn-success btn-block btn-lg" onclick="hcSp3GuardarAntecedentes(3)"> Agregar a lista <img class="inject-svg" src="./images/sho/plus.svg" alt="" fill="#fff" />
+                  </button>
+                </div>
+              </div>
+              <div class="row mt-4">
+                <div class="col-md-12">
+                  <div class="d-flex align-items-center">
+                    <div id="cant_planes">
+                      <img src="images/iconos/copia-1.svg" style="width: 20px" />
+                    </div>
+                    <span class="cantidad ml-3" id="cant_ant_3_table" style="font-size: 15px">0 registros</span>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <table class="table-box table-responsive">
+                    <thead>
+                      <tr>
+                        <th>F.Inicio</th>
+                        <th>F.Fin</th>
+                        <th>Empresa</th>
+                        <th>Actividad de la empresa</th>
+                        <th>Área de trabajo</th>
+                        <th>Ocupación</th>
+                        <th>Peligro/agentes ocupacionales</th>
+                        <th>Uso de EPP/típo de EPP</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody id="content_ant_3">
+                      <tr>
+                        <td colspan="9" class="text-center">
+                          No existen registros
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div id="info_content_table_ant_oc">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- FIN OCUAPCIONALES -->
+        </div>
+        <!-- FAMILIARES -->
+        <div class="card">
+          <div class="card-header" id="sho_3_hc_fami" data-toggle="collapse" data-target="#sho_3_hc_fami_content" aria-expanded="false" aria-controls="sho_3_hc_fami_content">
+            <div class="d-flex align-items-center">
+              <img class="inject-svg card-header-icon" src="./images/sho/relatives.svg" />
+              <span class="ml-4">Antecedentes patológicos familiares</span>
+            </div>
+            <div>
+              <span>Registros</span>
+              <span class="badge badge-light mx-3" id="cant_ant_4_header">00</span>
+              <img class="inject-svg card-header-icon-down" src="./images/sho/down.svg">
+            </div>
+          </div>
+          <div id="sho_3_hc_fami_content" class="collapse" aria-labelledby="sho_3_hc_fami" data-parent="#sho_3_hc_ant">
+            <div class="card-body border-content">
+              <div class="row justify-content-between">
+                <div class="col-md-3 col-sm-6">
+                  <div class="input-box-secondary">
+                    <span>Nombre</span>
+                    <input type="text" id="nombre_ant_4">
+                  </div>
+                </div>
+                <div class="col-md-2 col-sm-4">
+                  <button class="btn btn-success btn-block btn-lg" onclick="hcSp3GuardarAntecedentes(4)"> Agregar <img class=" inject-svg" src="./images/sho/plus.svg" alt="" fill="#fff" />
+                  </button>
+                </div>
+              </div>
+              <div id="content_ant_4">
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- FIN FAMILIARES -->
+        <!-- FARMACOS -->
+        <div class="card">
+          <div class="card-header" id="sho_3_hc_farm" data-toggle="collapse" data-target="#sho_3_hc_farm_content" aria-expanded="false" aria-controls="sho_3_hc_farm_content">
+            <div class="d-flex align-items-center">
+              <img class="inject-svg card-header-icon" src="./images/sho/drugs.svg" />
+              <span class="ml-4">Uso de fármacos</span>
+            </div>
+            <div>
+              <span>Registros</span>
+              <span class="badge badge-light mx-3" id="cant_ant_5_header">00</span>
+              <img class="inject-svg card-header-icon-down" src="./images/sho/down.svg">
+            </div>
+          </div>
+          <div id="sho_3_hc_farm_content" class="collapse" aria-labelledby="sho_3_hc_farm" data-parent="#sho_3_hc_ant">
+            <div class="card-body border-content">
+              <div class="row justify-content-between">
+                <div class="col-md-3 col-sm-6">
+                  <div class="input-box-secondary">
+                    <span>Nombre</span>
+                    <input type="text" id="nombre_ant_5">
+                  </div>
+                </div>
+                <div class="col-md-2 col-sm-4">
+                  <button class="btn btn-success btn-block btn-lg" onclick="hcSp3GuardarAntecedentes(5)"> Agregar <img class=" inject-svg" src="./images/sho/plus.svg" alt="" fill="#fff" />
+                  </button>
+                </div>
+              </div>
+              <div id="content_ant_5">
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- FIN FARMACOS -->
+        <!-- NOCIVOS -->
+        <div class="card">
+          <div class="card-header" id="sho_3_hc_noc" data-toggle="collapse" data-target="#sho_3_hc_noc_content" aria-expanded="false" aria-controls="sho_3_hc_noc_content">
+            <div class="d-flex align-items-center">
+              <img class="inject-svg card-header-icon" src="./images/sho/harmful.svg" />
+              <span class="ml-4">Hábitos nocivos</span>
+            </div>
+            <div>
+              <span>Registros</span>
+              <span class="badge badge-light mx-3" id="cant_ant_6_header">00</span>
+              <img class="inject-svg card-header-icon-down" src="./images/sho/down.svg">
+            </div>
+          </div>
+          <div id="sho_3_hc_noc_content" class="collapse" aria-labelledby="sho_3_hc_noc" data-parent="#sho_3_hc_ant">
+            <div class="card-body border-content">
+              <div class="row justify-content-between">
+                <div class="col-md-3 col-sm-6">
+                  <div class="input-box-secondary">
+                    <span>Nombre</span>
+                    <input type="text" id="nombre_ant_6">
+                  </div>
+                </div>
+                <div class="col-md-2 col-sm-4">
+                  <button class="btn btn-success btn-block btn-lg" onclick="hcSp3GuardarAntecedentes(6)"> Agregar <img class=" inject-svg" src="./images/sho/plus.svg" alt="" fill="#fff" />
+                  </button>
+                </div>
+              </div>
+              <div id="content_ant_6">
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- FIN NOCIVOS -->
+      </div>
+    </div>
+  </div>
+  <hr>
+  <!-- SIGNOS VITALES -->
+  <div class="row mb-5 align-items-center">
+    <div class="col-md-12">
+      <span class="titulo">Signos vitales</span>
+    </div>
+  </div>
+  <div class="row mt-4">
+    <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">
+      <div class="d-flex">
+        <img class="inject-svg" src="./images/sho/arterial.svg" alt="" fill="#ff2e2e">
+        <span>Presión arterial</span>
+      </div>
+      <div class="input_hc_sp3">
+        <input class="form-control" type="number" value="0" id="dat_hc_presion_arterial_sv">
+      </div>
+    </div>
+    <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">
+      <div class="d-flex">
+        <img class="inject-svg" src="./images/sho/cardiaca.svg" alt="" fill="#ff2626">
+        <span>Frecuencia cardiaca</span>
+      </div>
+      <div class="input_hc_sp3">
+        <input class="form-control" type="number" value="0" id="dat_hc_frecuencia_cardiaca_sv">
+      </div>
+    </div>
+    <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">
+      <div class="d-flex">
+        <img class="inject-svg" src="./images/sho/respiratoria.svg" alt="" fill="#00baff">
+        <span>Frecuencia respiratoria</span>
+      </div>
+      <div class="input_hc_sp3">
+        <input class="form-control" type="number" value="0" id="dat_hc_frecuencia_respiratoria_sv">
+      </div>
+    </div>
+    <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">
+      <div class="d-flex">
+        <img class="inject-svg" src="./images/sho/temperatura.svg" alt="" fill="#34a9ff" style="left: 30px">
+        <span>Temperatura</span>
+      </div>
+      <div class="input_hc_sp3">
+        <input class="form-control" type="number" value="0" id="dat_hc_temperatura_sv">
+      </div>
+    </div>
+    <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">
+      <div class="d-flex">
+        <img class="inject-svg" src="./images/sho/peso.svg" alt="" fill="#004eff">
+        <span>Peso Kg</span>
+      </div>
+      <div class="input_hc_sp3">
+        <input class="form-control" type="number" value="0" id="dat_hc_peso_sv">
+      </div>
+    </div>
+    <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">
+      <div class="d-flex">
+        <img class="inject-svg" src="./images/sho/talla.svg" alt="" fill="#715fff" style="left: 30px">
+        <span>Talla</span>
+      </div>
+      <div class="input_hc_sp3">
+        <input class="form-control" type="number" value="0" id="dat_hc_talla_sv">
+      </div>
+    </div>
+    <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">
+      <div class="d-flex">
+        <img class="inject-svg" src="./images/sho/saturacion.svg" alt="" fill="#fc2a5a">
+        <span>Saturación</span>
+      </div>
+      <div class="input_hc_sp3">
+        <input class="form-control" type="number" value="0" id="dat_hc_saturacion_sv">
+      </div>
+    </div>
+    <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">
+      <div class="d-flex">
+        <img class="inject-svg" src="./images/sho/corporal.svg" alt="" fill="#ffc400">
+        <span>Índice de masa corporal</span>
+      </div>
+      <div class="input_hc_sp3">
+        <input class="form-control" type="number" value="0" id="dat_hc_masa_corporal_sv">
+      </div>
+    </div>
+    <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">
+      <div class="d-flex">
+        <img class="inject-svg" src="./images/sho/abdominal.svg" alt="" fill="#ff8b43">
+        <span>Perímetro abdominal</span>
+      </div>
+      <div class="input_hc_sp3">
+        <input class="form-control" type="number" value="0" id="dat_hc_perimetro_abdominal_sv">
+      </div>
+    </div>
+  </div>
+  <!-- FIN SIGNOS VITALES -->
+  <!-- HISTORIA CLINICA -->
+</div>
+<script src="js/sweetalert2.js"></script>
+<script src="js/jquery.mask.min.js"></script>
+<script type="text/javascript">
+if (idHC == 0) {
+  $("#dat_hc_fecha_trabajador").val(new Date().toISOString().split('T')[0]);
+}
+SVGInject($(".inject-svg"));
+</script>

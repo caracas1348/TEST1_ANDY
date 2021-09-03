@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Error in the endsWith Function\r\n\r\nopenXml.util.endsWith = function (str, mat) {\r\n            var m = str.match(mat + \"$\");\r\n            if (m) {\r\n                return m.join('') === mat;\r\n            }\r\n            return false;\r\n        };\r\n\r\nUnhandled exception at line 1370, column 13 in http://<server>/<site>/Scripts/openxml.js\r\n\r\n0x800a138f - JavaScript runtime error: Unable to get property 'match' of undefined or null reference",
+    "LastUpdatedDate": "2014-11-06T11:34:14.823-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "openxmlsdkjs",
+    "ReportedDate": "2014-11-06T11:33:28.493-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Error in the endsWith Function",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 3
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

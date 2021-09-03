@@ -1,0 +1,92 @@
+.Rectangle-trainnig-3 {
+    width: 100%;
+    height: 43px;
+    padding: 5px;
+    border-radius: 4.3px;
+    border: solid 1.1px #c8c8c8;
+    background-color: #ffffff;
+}
+.detalle-formauditor{
+    height: 30px;
+    font-family: ITCAvantGardeStdBk;
+    font-size: 1.125rem;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.37;
+    letter-spacing: 0.15px;
+    color: #000000;
+}
+.Rectangle-trainnig-2 {
+    width: 100%;
+    height: 75px;
+    padding: 5px;
+    border-radius: 4.3px;
+    border: solid 1.1px #c8c8c8;
+    background-color: #ffffff;
+}
+.titleInput3 {
+    color: #737373 !important;
+    /*font-weight: bold;*/
+    font-size: 15px !important;
+    text-align: left !important;
+    text-transform: uppercase;
+    margin-bottom: .3rem !important;
+}
+.form-control2{
+    border: 0px !important;
+    border-bottom: 1px ;
+    padding :0px !important;
+    font-size: 13px !important;
+    font-weight: bold;  
+}
+.card-body2{
+    flex: auto;
+    padding: 0.75rem;
+}
+.unborder{
+	border:none !important !important;
+	border: transparent !important;
+}
+.disabled2{
+    background-color: #efefef !important;
+}
+.btn-system-verde{
+    border-radius: 4px;
+  background-color: #58c25d;
+  color: #ffffff;
+  font-size: 12px;
+}
+.scroll-blue{
+    overflow-y: scroll;
+}
+.scroll-blue::-webkit-scrollbar{
+    width: 10px;
+}
+.scroll-blue::-webkit-scrollbar-thumb {
+    background-color: #34559c;
+}
+.btn-circle{
+    border: solid 1px #cbcbcb;
+    background-color: #ffffff;
+}
+.check{
+    background-image: url('../images/iconos/Vector.svg') !important;
+    background-repeat: no-repeat;
+    background-color: #d2d97b;
+    color: #ffffff;
+}
+.check-blue{
+    width: 43px;
+    height: 16px;
+    background-color: #05beee;
+    transform: rotate(-90deg);
+    color: #ffffff;
+    font-size: 10px;
+    border-radius: 2px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.15);
+    z-index: 2;
+    position: absolute;
+    margin-left: -30px;
+    margin-top: 12px;
+}

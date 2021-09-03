@@ -1,0 +1,51 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 1,
+    "Custom": null,
+    "Description": "Hi, \r\n\r\nI've been working creating an application for sharepoint where I need to do some document processing with the open xml library. Great piece of work. However one of the documents I was processing added the \"trash item\" because the computer shut down unexpectedly, after this, when the library tries to process this and starts iterating through the zip contents with the JsZip library it does not know what to do with the trash item generated in the document and starts an infinite loop.\r\n\r\ntake a look at attached screenshots \r\n",
+    "LastUpdatedDate": "2014-10-01T00:10:43.267-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "openxmlsdkjs",
+    "ReportedDate": "2013-11-18T11:09:44.27-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Library can't handle trash items",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 3,
+    "Id": 1
+  },
+  "FileAttachments": [
+    {
+      "FileId": 759346,
+      "FileName": "ProblemSS1.png",
+      "DownloadUrl": ".\\759346"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Hi, I also ran into this problem and created a quick workaround by replacing lines\n135 and 313 in openxml.js with \nif (part === \"[Content_Types].xml\" || (part.indexOf(\"[trash]\")!=-1) )\n\nit seems to work for now ",
+      "PostedDate": "2014-10-01T00:10:31.35-07:00",
+      "Id": 161157
+    }
+  ]
+}

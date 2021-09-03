@@ -1,0 +1,228 @@
+<div class="card " style="box-shadow: none;">
+    <div class="card-body p-0" style="padding-bottom: 0.25rem!important;">        
+         <!-- titulo form -->
+         <ul class="list-unstyled">
+           <!-- 
+            <li class="media mb-2 p-3 titleFormSecondAct" id="blockitinerario">
+              <img src="images/iconos/calendarwhite.svg" height="24" class="mr-3">
+              <div class="media-body pt-0 ">
+                <h6 id="">Itinerario</h6>
+              </div>
+            </li>-->
+
+            <li class="media mb-2 p-2 titleFormSecondAct" id="blockitinerario">
+              <img src="images/iconos/calendarwhite.svg" height="24" class="mr-3 mt-3">
+              <div class="media-body pt-1 ">
+                <h4 id="">Itinerario</h4>
+                <small>Indique la fecha y horas en las que estará en planta. Los datos (*) son obligatorios</small>
+              </div>
+            </li>
+          </ul> 
+        <div class="col-md-12 col-lg-12" >
+            <form id="fm_itinerary" name="fm_participante_1" class="form-row">
+                <div class="form-group   col-md-3">
+
+                    <label for="tx_date_start" class="bmd-label-static titleInput" onblur="autoCompleteDate(this.id,'tx_date_end')" >FECHA DE INICIO</label>                      
+                    <input type="text" class="form-control bg-white cabecera" id="tx_date_start" readonly value="Cargando..." name="tx_date_start" onkeyup="validateFieldMinForm()" onblur="autoCompleteDate(this.id,'tx_date_end');calculateDayCheck(this.id);validateFieldMinForm();enabledDaySel('tx_date_start','tx_time_start','tx_date_end','tx_time_end')">                    
+
+                    <small id="" class="form-text text-muted"></small>
+                </div>
+
+                <div class="form-group  col-md-3"> 
+                    <label for="tx_time_start" class="bmd-label-static titleInput">HORA DE INICIO</label>                       
+
+                    <input type="time" style="height: 41px;" class="form-control bg-white cabecera" value="Cargando..." readonly id="tx_time_start" name="tx_time_start" onkeyup="validateFieldMinForm()" onblur="autoCompleteDate(this.id,'tx_time_end');validateFieldMinForm();">                    
+                    <small id="" class="form-text text-muted"></small>
+                </div> 
+
+                <div class="form-group col-md-3"> 
+                    <label for="tx_date_end" class="bmd-label-static titleInput">FECHA DE FIN</label>                       
+                    <input type="text" class="form-control bg-white cabecera" autocomplete="off" id="tx_date_end" value="Cargando..." name="tx_date_end" onkeyup="validateFieldMinForm();" onBlur="enabledDaySel('tx_date_start','tx_time_start','tx_date_end','tx_time_end');validateFieldMinForm();" readonly >                    
+                    <small id="" class="form-text text-muted"></small>
+                </div>
+
+                <div class="form-group   col-md-3">    
+                    <label for="tx_time_end" class="bmd-label-static titleInput" >HORA FIN</label>                    
+                    <input type="time" style="height: 41px;" class="form-control bg-white cabecera" id="tx_time_end" value="Cargando..." onkeyup="validateFieldMinForm()" onBlur="validateFieldMinForm()" readonly name="tx_time_end"  >                   
+                    <small id="" class="form-text text-muted"></small>
+                </div>
+
+                <div class="form-group col-md-2 col-lg-2" style="display: none;">
+                    <label for="sel_frequency" class="bmd-label-static titleInput cabecera">FRECUENCIA</label>
+                    <select id="sel_frequency" mane="sel_frequency" class="form-control bg-white" >
+                        <option value=""> </option>
+                        <option value="1">Diario</option>
+                        <option value="2">Semanal</option>
+                        <option value="3">Mensual</option>
+                        <option value="4">Anual</option>
+                    </select>                   
+                    <small id="" class="form-text text-muted"></small>
+                </div>
+</div>
+                <div class="separatorHor"></div>
+                <div class="col-md-12 col-lg-12 pl-2" >
+                <div class="pl-1 pt-1 font-weight-bold h6">Indique los días de la semana en la que estará en planta</div> <br>                 
+                 <div class="btn-group-toggle p-1 text-center" data-toggle="" id=""  >
+                    <label class="btn tabInactive checkboxInac mr-3" name="label_status_list_1" id="label_ch_itinirary_lu"  >
+                      <input type="checkbox" name="" id="ch_itinirary_lu"  onclick="setActiveCheck('label_ch_itinirary_lu')"> L
+                    </label>
+                    <label class="btn tabInactive checkboxInac mr-3"  name="label_status_list_2" id="label_ch_itinirary_ma"  >
+                      <input type="checkbox" name="" id="ch_itinirary_ma" onclick="setActiveCheck('label_ch_itinirary_ma')" > M
+                    </label>
+                    <label class="btn tabInactive checkboxInac mr-3"  name="label_status_list_3" id="label_ch_itinirary_mi"  >
+                      <input type="checkbox" name="" id="ch_itinirary_mi"  onclick="setActiveCheck('label_ch_itinirary_mi')"> M
+                    </label>
+                    <label class="btn tabInactive checkboxInac mr-3"  name="label_status_list_4" id="label_ch_itinirary_ju"  >
+                      <input type="checkbox"  name="" id="ch_itinirary_ju"  onclick="setActiveCheck('label_ch_itinirary_ju')"> J
+                    </label>
+            
+                    <label class="btn tabInactive checkboxInac mr-3"  name="label_status_list_5" id="label_ch_itinirary_vi" >
+                      <input type="checkbox" name="" id="ch_itinirary_vi" onclick="setActiveCheck('label_ch_itinirary_vi')" > V
+                    </label>
+                    <label class="btn tabInactive checkboxInac mr-3"  name="label_status_list_6" id="label_ch_itinirary_sa"  >
+                      <input type="checkbox" name="" id="ch_itinirary_sa"  onclick="setActiveCheck('label_ch_itinirary_sa')"> S
+                    </label>
+
+                    <label class="btn tabInactive checkboxInac mr-3"  name="label_status_list_7" id="label_ch_itinirary_do"  >
+                      <input type="checkbox" name="" id="ch_itinirary_do"  onclick="setActiveCheck('label_ch_itinirary_do')"> D
+                    </label>
+                  </div>
+
+
+            </div>   
+            </form>
+        </div>               
+    </div>
+</div>
+
+<div class="card " style="box-shadow: none;">
+    <div class="card-body p-0" style="padding-bottom: 0.25rem!important;">
+         <!-- titulo form -->
+         <!-- 
+         <ul class="list-unstyled">
+            <li class="media mb-2 p-2 titleFormSecondAct" id="blockperson" >
+              <img src="images/iconos/organizadorwhite.svg" height="24" class="mr-3">
+              <div class="media-body pt-1 ">
+                  <h6 id="">Personas</h6>
+              </div>
+              <span class="badge badge-while ml-0 border border-muted rounded-circle" id="bp">0</span>
+              <div class="col-md-3 bmd-drawer-f-r text-right p-0"> <button type="button" class="btn btn-sm btn-green-lime btn-raised btn-rounded mt-3" style="border-radius: 25px;" id="bt_add_row_participante" name="bt_add_row_participante" > &nbsp; &nbsp;Agregar&nbsp; &nbsp;<i class="fas fa-plus"></i>&nbsp; &nbsp;</button></div>        
+            </li>
+            -->
+            <li class="media mb-2 p-2 titleFormSecondAct" id="blockperson" >
+              <img src="images/iconos/organizadorwhite.svg" height="24" class="mr-3 mt-3">
+              <div class="media-body pt-1 ">
+                  <div class="row">
+                      <div class="col-auto"><h4 id="">Personas que asistirán ( <span  id="cant_row_persona">0</span> )</h4></div>
+                  </div>                
+                  <small>Invitación para completar datos de los asistentes. Si no cuentan con empresa seleccione la opción “Sin empresa”</small>
+              </div>              
+              <div class="col-md-4 bmd-drawer-f-r text-right p-0 "> <button type="button" class="btn btn-sm btn-info btn-raised btn-rounded mt-3" style="border-radius: 25px;" id="bt_import_file" name="bt_import_file" > &nbsp; &nbsp;Importar archivo&nbsp; &nbsp;</button> <button type="button" class="btn btn-sm btn-green-lime btn-raised btn-rounded mt-3" style="border-radius: 25px;" id="bt_add_row_participante" name="bt_add_row_participante" > &nbsp; &nbsp;Agregar&nbsp; &nbsp;<i class="fas fa-plus"></i>&nbsp; &nbsp;</button></div>        
+            </li>
+        </ul>
+        <!--contenido del form  -->
+        <div class="row ">            
+            <div class="col-md-5 mt-0" style="display: none;"> 
+                <div class="input-group"  >
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="tx_quantity">CANTIDAD DE PERSONAS POR EMPRESA</span>
+                    </div>
+                    <input type="text" class="form-control ml-1" aria-label="Default" aria-describedby="tx_quantity" name="tx_quantity" id="tx_quantity" readonly>
+                </div>
+            </div>           
+        </div>
+        <div id="list_participantes">
+        </div>
+    </div>
+</div>
+
+<div class="separatorHor"></div>
+<div class="card " style="box-shadow: none;">
+    <div class="card-body p-0" style="padding-bottom: 0.25rem!important;"> 
+
+         <!-- titulo form -->
+         <ul class="list-unstyled">
+           <!-- 
+            <li class="media mb-2 p-2 titleFormSecondAct" id="blocktools" >
+            <img src="images/iconos/toolswhite.svg" height="24" class="mr-3">
+            <div class="media-body pt-1 ">
+                <h6 id="">Herramientas, equipos de protección y bienes</h6>
+            </div>
+            <span class="badge badge-while ml-0 border border-muted rounded-circle" id="bh">0</span>
+            <div class="col-md-5 text-right"> <button ty pe="button" class="btn btn-sm btn-green-lime btn-raised btn-rounded mt-3" style="border-radius: 25px;" id="bt_add_row_tool" name="bt_add_row_tool" onclick="">&nbsp; &nbsp;Agregar &nbsp; &nbsp;<i class="fas fa-plus"></i>&nbsp; &nbsp;</button></div>        
+            </li>
+            -->
+            <li class="media mb-2 p-2 titleFormSecondAct" id="blocktools" >
+              <img src="images/iconos/toolswhite.svg" height="24" class="mr-3 mt-3">
+              <div class="media-body pt-1 ">
+                  <div class="row">
+                      <div class="col-auto"><h4 id="">Agregar herramientas de la visita ( <span  id="cant_row_tool">0</span> )</h4></div>
+                  </div>
+                  <small>Coloque las herramientas con las que asistirán</small>
+              </div>
+              <!--<span class="badge badge-while ml-0 border border-muted rounded-circle" id="cant_row_tool">1</span>-->
+              <div class="col-md-4 text-right"> <button ty pe="button" class="btn btn-sm btn-green-lime btn-raised btn-rounded mt-3" style="border-radius: 25px;" id="bt_add_row_tool" name="bt_add_row_tool" onclick="">&nbsp; &nbsp;Agregar &nbsp; &nbsp;<i class="fas fa-plus"></i>&nbsp; &nbsp;</button></div>        
+            </li>            
+        </ul>
+
+        <div id="list_tools">            
+        </div>                                
+    </div>
+</div>
+<div class="separatorHor"></div>
+<div class="card " style="box-shadow: none;" >
+    <div class="card-body p-0" style="padding-bottom: 0.25rem!important;">
+        
+        <!-- titulo form -->
+        <!--
+        <ul class="list-unstyled">
+            <li class="media mb-2 p-2 titleFormSecondAct" id="blockvehicle" >
+            <img src="images/iconos/vehículowhite.svg" height="24" class="mr-3">
+            <div class="media-body pt-1 ">
+                <h6 id="">Vehículos</h6>
+            </div>
+            <span class="badge badge-while ml-0 border border-muted rounded-circle" id="bv">0</span>
+            <div class="col-md-9 text-right"> <button type="button" class="btn btn-sm btn-green-lime  btn-raised btn-rounded" id="bt_add_row_vehicle" name="bt_add_row_vehicle" style="border-radius: 25px;"> &nbsp; &nbsp; Agregar &nbsp; &nbsp;<i class="fas fa-plus"></i> &nbsp; &nbsp;</button></div>        
+            </li>            
+        </ul>-->
+        <li class="media mb-2 p-2 titleFormSecondAct" id="blockvehicle" >
+          <img src="images/iconos/vehículowhite.svg" height="24" class="mr-3 mt-3">
+          <div class="media-body pt-1 ">
+              <div class="row">
+                  <div class="col-auto"><h4 id="">Vehículos que entrarán a planta ( <span  id="cant_row_vehicle">0</span> )</h4></div>
+              </div>  
+              <small>Indique los datos de los hevículos que entrarán a planta</small>              
+          </div>
+          <!--<span class="badge badge-while ml-0 border border-muted rounded-circle" id="cant_row_vehicle">1</span>-->
+          <div class="col-md-4 text-right"> <button type="button" class="btn btn-sm btn-green-lime  btn-raised btn-rounded mt-3" id="bt_add_row_vehicle" name="bt_add_row_vehicle" style="border-radius: 25px;"> &nbsp; &nbsp; Agregar &nbsp; &nbsp;<i class="fas fa-plus"></i> &nbsp; &nbsp;</button></div>        
+          </li>
+        <!--contenido del form  -->
+        
+        <div id="list_vehicles">       
+        </div>                                
+    </div>
+</div>
+<div class="separatorHor"></div>
+<div class="card " style="box-shadow: none;">
+    <div class="card-body p-0" style="padding-bottom: 0.25rem!important;"> 
+         <!-- titulo form -->
+         <ul class="list-unstyled">
+            <li class="media mb-2 p-2 titleFormSecondAct" id="blockvehicle" >
+            <img src="images/iconos/attach.svg" height="24" class="mr-3 mt-3">
+            <div class="media-body pt-1 ">
+              <div class="row">
+                <div class="col-auto"><h4 id="">Documentos ( <span  id="cant_row_doc">0</span> )</h4></div>
+              </div>
+            </div>
+            <!--<span class="badge badge-while ml-0 border border-muted rounded-circle" id="bd">0</span>-->            
+            </li>            
+        </ul> 
+         <!--contenido del form  -->             
+       
+        <div id="list_documents" class="dropzone" style="height: auto;width: 100%; border:none; border-radius: 13px;">
+		  <div class="fallback">
+		    <input if="file" name="file" type="file" multiple class=" rounded border-muted" />
+		  </div>
+        </div>                                
+    </div>
+</div>
