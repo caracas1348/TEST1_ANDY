@@ -1,0 +1,36 @@
+[
+  {
+    "Id": "0",
+    "Name": "Release 1.0",
+    "DevelopmentStatus": "Stable",
+    "Description": "First release of the Open XML SDK for JavaScript",
+    "ReleasedDatge": "0001-01-01T00:00:00",
+    "ModifiedDate": "2013-06-25T21:30:35.543-07:00",
+    "Files": [
+      {
+        "Id": "d225296e-551c-4290-8ada-4c60cdf50c19",
+        "FileName": "OpenXmlSdkJs-1-0.zip",
+        "Url": "./0/d225296e-551c-4290-8ada-4c60cdf50c19",
+        "Type": "Source Code",
+        "UploadDate": "2013-06-25T21:30:35.387-07:00"
+      }
+    ]
+  },
+  {
+    "Id": "1",
+    "Name": "Release 1.01.02",
+    "DevelopmentStatus": "Stable",
+    "Description": "Release 1.01.02\n\n* Added new example, examp10-open-xlsx.html, which shows loading a spreadsheet from a template string, making a modification to it, and then enabling the user to save the generated spreadsheet locally.\n\nRelease 1.01.01\n\n* Fixed an issue where UTF8 characters were not serialized properly if the XDocument was not loaded.\n\nRelease 1.01\n\n* Perf improvement - opens and saves in 50% of the time.\n* Added support for loading and saving blobs.\n* In distribution, replaced jszip.js, jszip-load.js, jszip-inflate.js, jszip-deflate.js\n* Added support for asynchronous loading and saving of blobs, flatOpc, and base64\n* Added FileSaver.js to the zip.\n* Added four examples\n** examp06-template-documents.html shows how to create a template document in string literals\n** examp07-load-save-via-html5.html shows one approach to using HTML5 to open/save local documents\n** examp08-load-save-via-html5-b.html shows a second approach to using HTML5 to open/save local documents\n** examp09-open-base64-async.html shows asynchronous opening / saving of documents",
+    "ReleasedDatge": "0001-01-01T00:00:00",
+    "ModifiedDate": "2013-12-19T18:50:29.033-08:00",
+    "Files": [
+      {
+        "Id": "f8651718-cd06-44f6-acdb-bb2bbb182768",
+        "FileName": "OpenXmlSdkJs-01-01-02.zip",
+        "Url": "./1/f8651718-cd06-44f6-acdb-bb2bbb182768",
+        "Type": "Source Code",
+        "UploadDate": "2013-12-19T18:50:28.237-08:00"
+      }
+    ]
+  }
+]

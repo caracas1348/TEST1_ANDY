@@ -1,0 +1,46 @@
+.box-info{
+ 
+    &__select{
+        width: 100%;
+        height: 146px !important;
+        overflow-y: auto;
+        overflow-x: hidden;
+
+        li{
+            border: 1px solid lightgray;
+            padding: 7px 20px;
+            text-align: start;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            transition: 0.3s ease-in;
+
+            &:hover{
+                background: $lightgray !important;
+            }
+            
+        }
+
+        a{
+            color:black;
+            text-decoration: none !important;
+
+        }
+
+        ul{
+            list-style: none !important;
+        }
+    }
+
+}
+
+.question{
+    padding: 10px;
+
+    label{
+        text-align: start;
+    }
+
+    .question-input{
+        border:0px;
+    }
+}

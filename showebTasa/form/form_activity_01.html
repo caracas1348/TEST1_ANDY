@@ -1,0 +1,96 @@
+<div class="col">
+    <div class="card" >
+        <div class="card-body" style="padding-left:0rem!important">
+            <div class="d-flex justify-content-between bd-highlight mb-3">
+            <div class="p-2"><h5 class="card-title">Participantes</h5></div>                
+            <div class="p-2"><button type="button" class="btn btn-link btn-rounded" id="btRetorneList" name="btRetorneList"><i class="fa fa-arrow-left"></i>&nbsp; &nbsp;Regresar</button> <button type="button" class="btn btn-green-lime btn-rounded mt-3" id="bt_add_row_participante" name="bt_add_row_participante" >Agregar &nbsp; &nbsp;<i class="fas fa-plus"></i></button> </div>
+            </div>
+            <!--<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>-->
+            <div id="list_participantes">
+            <div class="bd-callout bd-callout-info" id="bd-callout_participante_1">
+                <form id="fm_participante_1" name="fm_participante_1" class="form-row">
+
+                <div class="form-group  input-material col-md-2 col-lg-2">                        
+                    <input type="text" class="form-control" id="add_contacto_nombre_1" >
+                    <label for="contacto" >Contacto</label>
+                    <small id="" class="form-text text-muted">Nombres</small>
+                </div>
+                <div class="form-group input-material col-md-2 col-lg-2">
+                    <input type="text" class="form-control" id="add_contacto_apellido_1" >
+                    <small id="" class="form-text text-muted">Apellidos</small>
+                </div>
+                <div class="form-group input-material col-md-2 col-lg-2 ">
+                    <input type="text" class="form-control" id="add_dni_1">
+                    <label for="dni" >DOCUMENTO DE IDENTIDAD</label>                       
+                </div>
+                <div class="form-group input-material col-md-3 col-lg-3">
+                    <input type="email" class="form-control" id="add_correo_1">
+                    <label for="correo">Correo</label>                        
+                </div>
+                <!-- <div class="col-md-2 col-lg-2"></div>-->
+                <div class="form-group  col-md-1 col-lg-1 d-flex align-items-center">
+                    <button type="button" class="btn btn-outline-danger" id="bt_delete_row_participante"><i class="fas fa-trash-alt" style="font-size: 20px;"></i> Eliminar</button>                       
+                </div>                      
+                </form>
+            </div>
+            </div>
+            
+            <!-- <table id="tb_participante" name="tb_participante" class="stripe" style="width:100%">
+            <thead>
+                <tr>
+                    <th width="3%">Nro</th>
+                    <th width="25%">Empresa</th>
+                    <th width="35%">Contacto</th>
+                    <th width="10%">DOCUMENTO DE IDENTIDAD</th>
+                    <th width="27%">Correo</th>
+                </tr>
+            </thead>
+            </table>
+        -->
+        </div>
+    </div>
+</div>
+
+
+<div class="col">
+    <div class="card" >
+        <div class="card-body" style="padding-left:0rem!important">             
+            <div class="d-flex justify-content-between bd-highlight mb-3">
+            <div class="p-2"><h5 class="card-title">Vehículo</h5></div>                
+            <div class="p-2"><button type="button" class="btn btn-green-lime btn-rounded mt-3" id="bt_add_row_vehicle" name="bt_add_row_participante" onclick="vw_principal.addvehicle()">Agregar &nbsp; &nbsp;<i class="fas fa-plus"></i></button> </div>
+            </div>
+            <!--<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>-->   
+            <div id="list_vehicles">
+            <div class="bd-callout bd-callout-info">
+                <form id="fm_vehicle_1" name="fm_vehicle_1" class="form-row">
+                <div class="form-group input-material col-md-2 col-lg-2">
+                    <input type="text" class="form-control " id="add_placa" >
+                    <label for="add_placa">Placa</label>
+                </div>
+                <div class="form-group  input-material col-md-2 col-lg-2">                        
+                    <input type="text" class="form-control" id="add_marca" >
+                    <label for="add_marca" >Marca</label>
+                </div>
+                <div class="form-group input-material col-md-2 col-lg-2">
+                    <input type="text" class="form-control" id="add_modelo" >
+                    <label for="add_modelo" >Modelo</label>
+                </div>
+                <div class="form-group input-material col-md-2 col-lg-2 ">
+                    <input type="text" class="form-control" id="add_brevete">
+                    <label for="add_brevete" >Brevete</label>                       
+                </div>
+                <div class="form-group input-material col-md-2 col-lg-3">
+                    <input type="email" class="form-control" id="add_categoria">
+                    <label for="add_categoria">Categoría</label>                        
+                </div>
+                <div class="form-group  col-md-1 col-lg-1 d-flex align-items-center">
+                    <button type="button" class="btn btn-outline-danger" id="bt_add_row_vehiculo"><i class="fas fa-trash-alt" style="font-size: 20px;"></i> Eliminar</button>                       
+                </div>                      
+                </form>
+            </div>
+            </div>                                
+        </div>
+    </div>
+</div>

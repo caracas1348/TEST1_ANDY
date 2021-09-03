@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96">
+    <defs>
+        <clipPath id="clip-path">
+            <path id="Rectángulo_10" fill="#b1b1b1" d="M0 0H96V96H0z" opacity="0.9" transform="translate(-0.5 0.166)"/>
+        </clipPath>
+        <style>
+            .cls-3{fill:#b1b1b1}
+        </style>
+    </defs>
+    <g id="Enmascarar_grupo_1" clip-path="url(#clip-path)" transform="translate(0.5 -0.166)">
+        <g id="virus_1_" transform="translate(5.57 0.028)">
+            <path id="Trazado_276" d="M653.538 13.246l-5.408 2.24a19.909 19.909 0 0 0-6.915-6.906l2.606-6.471L638.584 0 636 6.42a19.805 19.805 0 0 0-9.709 0L623.687 0l-5.232 2.121 2.62 6.461a19.91 19.91 0 0 0-6.91 6.9l-5.408-2.24-2.16 5.216L612 20.7a19.817 19.817 0 0 0 0 9.754l-5.4 2.237 2.16 5.216 5.408-2.24a19.906 19.906 0 0 0 6.912 6.9l-2.268 5.607 5.234 2.117 2.25-5.563a19.807 19.807 0 0 0 9.71 0l2.25 5.563 5.234-2.117-2.268-5.607a19.912 19.912 0 0 0 6.912-6.9l5.408 2.24 2.16-5.216-5.4-2.237a19.815 19.815 0 0 0 0-9.754l5.4-2.237zM631.147 39.69a14.114 14.114 0 1 1 14.114-14.114 14.13 14.13 0 0 1-14.114 14.114z" class="cls-3" transform="translate(-571.869)"/>
+            <path id="Trazado_277" d="M0 0h5.645v5.645H0z" class="cls-3" transform="translate(55.277 31.225) rotate(-45)"/>
+            <path id="Trazado_278" d="M0 0h5.645v5.645H0z" class="cls-3" transform="translate(49.633 19.934) rotate(-45)"/>
+            <path id="Trazado_279" d="M0 0h5.645v5.645H0z" class="cls-3" transform="translate(60.923 19.936) rotate(-45)"/>
+            <path id="Trazado_280" d="M199.811 523.551a14.114 14.114 0 1 0-14.111 14.113 14.266 14.266 0 0 0 14.111-14.113zm-14.111 8.468a8.478 8.478 0 0 1-8.468-8.468 8.47 8.47 0 1 1 16.937 0 8.478 8.478 0 0 1-8.469 8.468z" class="cls-3" transform="translate(-165.937 -475.204)"/>
+            <path id="Trazado_281" d="M87.134 875.263v14.114h39.519v-14.114a19.643 19.643 0 0 0-1.828-8.294l11.466-11.469h35.527v-5.645h-37.866L121.66 862.15a19.75 19.75 0 0 0-34.526 13.113zm19.759-14.114a14.13 14.13 0 0 1 14.114 14.114v8.468H92.78v-8.468a14.13 14.13 0 0 1 14.114-14.113z" class="cls-3" transform="translate(-87.134 -793.044)"/>
+            <path id="Trazado_282" d="M1016.071 1187.654h22.582v5.646h-22.582z" class="cls-3" transform="translate(-953.97 -1108.257)"/>
+            <path id="Trazado_283" d="M847.173 1187.654h5.646v5.646h-5.646z" class="cls-3" transform="translate(-796.363 -1108.257)"/>
+            <path id="Trazado_284" d="M1016.071 1356.551h22.582v5.646h-22.582z" class="cls-3" transform="translate(-953.97 -1265.863)"/>
+            <path id="Trazado_285" d="M847.173 1356.551h5.646v5.646h-5.646z" class="cls-3" transform="translate(-796.363 -1265.863)"/>
+            <path id="Trazado_286" d="M1016.071 1018.756h22.582v5.645h-22.582z" class="cls-3" transform="translate(-953.97 -950.651)"/>
+            <path id="Trazado_287" d="M847.173 1018.756h5.646v5.645h-5.646z" class="cls-3" transform="translate(-796.363 -950.651)"/>
+        </g>
+    </g>
+</svg>

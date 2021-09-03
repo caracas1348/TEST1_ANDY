@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="84.513" height="96.157" viewBox="0 0 84.513 96.157" fill="#b1b1b1">
+  <g id="health" transform="translate(-31)">
+    <path id="Trazado_298" d="M89.171 196.085a14.085 14.085 0 1 0-14.085 14.085 14.1 14.1 0 0 0 14.085-14.085zm-14.085 8.451a8.451 8.451 0 1 1 8.451-8.451 8.461 8.461 0 0 1-8.452 8.452z" class="cls-1" transform="translate(-24.366 -147.819)" />
+    <path id="Trazado_299" d="M31 327.354v14.085h39.439v-14.085a19.6 19.6 0 0 0-1.824-8.278l11.442-11.442h35.455V302H77.724l-12.267 12.267A19.71 19.71 0 0 0 31 327.354zm19.72-14.086a14.1 14.1 0 0 1 14.085 14.086v8.451H36.634v-8.451a14.1 14.1 0 0 1 14.086-14.086z" class="cls-1" transform="translate(0 -245.282)" />
+    <path id="Trazado_300" d="M361 422h22.537v5.634H361z" class="cls-1" transform="translate(-268.024 -342.746)" />
+    <path id="Trazado_301" d="M301 422h5.634v5.634H301z" class="cls-1" transform="translate(-219.292 -342.746)" />
+    <path id="Trazado_302" d="M361 482h22.537v5.634H361z" class="cls-1" transform="translate(-268.024 -391.477)" />
+    <path id="Trazado_303" d="M301 482h5.634v5.634H301z" class="cls-1" transform="translate(-219.292 -391.477)" />
+    <path id="Trazado_304" d="M361 362h22.537v5.634H361z" class="cls-1" transform="translate(-268.024 -294.014)" />
+    <path id="Trazado_305" d="M301 362h5.634v5.634H301z" class="cls-1" transform="translate(-219.292 -294.014)" />
+    <path id="Trazado_306" d="M310.439 51.083V0h-16.9v17.09h-11.271v11.269H271v22.724zM299.171 5.634h5.634v39.815h-5.634zM287.9 22.725h5.634v22.724H287.9zm-11.266 22.724V33.993h5.634v11.456z" class="cls-1" transform="translate(-194.926)" />
+  </g>
+</svg>

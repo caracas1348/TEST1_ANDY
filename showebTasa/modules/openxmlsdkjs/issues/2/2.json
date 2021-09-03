@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 1,
+    "Custom": null,
+    "Description": "To add a reference to this library in my web application, I will need a .js and a .min.js.\r\n\r\nA .zip file containing a Visual Studio project will not work.",
+    "LastUpdatedDate": "2013-12-12T16:41:49.73-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "openxmlsdkjs",
+    "ReportedDate": "2013-12-12T16:14:37.253-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Missing .js / .min.js",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 2
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I managed to create one myself by the following commands: \nprerequisite: install npm and uglify.js\n\ntype linq.js >> a.js\ntype ltxml.js >> a.js\ntype ltxml-extensions.js >> a.js\ntype jszip.js >> a.js\ntype jszip-load.js >> a.js\ntype jszip-inflate.js >> a.js\ntype jszip-deflate.js >> a.js\ntype openxml.js >> a.js\nuglifyjs a.js -o openxml.min.js\n\nopen a.js in a text editor.  for each complie error, add a newline before the /*\ntry again uglifyjs a.js -o openxml.min.js\nrepeat until it works\nnow you have a 350kb openxml.min.js you can include in your web project.\n",
+      "PostedDate": "2013-12-12T16:41:49.73-08:00",
+      "Id": 127293
+    }
+  ]
+}

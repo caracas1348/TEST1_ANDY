@@ -1,0 +1,326 @@
+{
+  "persona": [
+    {
+      "name" : "Marcos Gonzalez",
+      "cargo" : "Supervisor",
+      "sede" : "Pto. Malabrigo"
+    },
+    {
+      "name" : "Andy Vasquez",
+      "cargo" : "Coordinador de Calidad ",
+      "sede" : "Lima"
+    },
+    {
+      "name" : "Jesus Millan",
+      "cargo" : "Supervisor",
+      "sede" : "Chimbote"
+    }
+  ],
+    "data": [{
+
+      "_id" : 1,
+      "name" : "Erick Arrasco",
+      "rol"  : "Auditor",
+    "cargo": "Coordinador de Calidad Sur",
+    "sede" : "Matarani",
+    "estado" : "Activo",
+    "experiencias": [{
+      "rol": "Auditor",
+      "norma" :"ISO 14001 - 2015\nISO 9001",
+      "f_start" : "01/03/2019",
+      "f_end" : "05/07/2019"
+
+    },{
+      "rol": "Lider Auditor",
+      "norma" :"ISO 14001 - 2015\nISO 9001",
+      "f_start" : "01/02/2020",
+      "f_end" : "02/05/2020"
+
+    }],
+      "capacitaciones" : [{
+        "curso" : "Interpretacion de la norma",
+          "norma": "ISO 14001 - 2015",
+          "tipo": "Capacitacion",
+          "f_inicio": "01/02/2020",
+          "f_fin" : "01/08/2020",
+          "adjunto": ""
+
+      },{
+        "curso" : "Interpretacion de la norma",
+        "norma": "ISO 14001 - 2015",
+        "tipo": "Reentrenamiento",
+        "f_inicio": "01/02/2020",
+        "f_fin" : "01/08/2020",
+        "adjunto": ""
+
+      }
+      ],
+
+    "evaluaciones" : [{
+      "norma" : "",
+      "rol": "",
+      "f_inicio": "",
+      "f_fin" : "",
+      "adjunto": ""
+    }]
+    },
+    {
+      "_id" : 2,
+      "name" : "Manuel Torres",
+      "rol"  : "Observador",
+      "capacitaciones" : [{
+        "curso" : "Interpretacion de la norma",
+        "norma": "ISO 14001 - 2015",
+        "tipo": "Capacitacion",
+        "f_inicio": "01/02/2020",
+        "f_fin" : "01/08/2020",
+        "adjunto": ""
+
+      }
+      ],
+      "experiencias": [{
+        "rol": "Observador",
+        "norma" :"ISO 14001 - 2015\nISO 9001",
+        "f_start" : "05/07/2019",
+        "f_end" : "05/12/2019"
+
+      },{
+        "rol": "Lider Auditor",
+        "norma" :"ISO 14001 - 2015\nISO 9001",
+        "f_start" : "01/03/2020",
+        "f_end" : "02/08/2020"
+
+      }],"evaluaciones" : 1,
+      "estado" : "Activo"
+    },
+    {
+      "_id" : 3,
+      "name" : "Jacqueline Mendola",
+      "rol"  : "Auditor Lider",
+      "capacitaciones" : [{
+        "curso" : "Interpretacion de la norma",
+        "norma": "ISO 14001 - 2015",
+        "tipo": "Capacitacion",
+        "f_inicio": "01/02/2020",
+        "f_fin" : "01/08/2020",
+        "adjunto": ""
+
+      },{
+        "curso" : "Interpretacion de la norma",
+        "norma": "ISO 14001 - 2015",
+        "tipo": "Reentrenamiento",
+        "f_inicio": "01/02/2020",
+        "f_fin" : "01/08/2020",
+        "adjunto": ""
+
+      },{
+        "curso" : "Interpretacion de la norma",
+        "norma": "ISO 14001 - 2015",
+        "tipo": "Capacitacion",
+        "f_inicio": "01/02/2020",
+        "f_fin" : "01/08/2020",
+        "adjunto": ""
+
+      },{
+        "curso" : "Interpretacion de la norma",
+        "norma": "ISO 14001 - 2015",
+        "tipo": "Reentrenamiento",
+        "f_inicio": "01/02/2020",
+        "f_fin" : "01/08/2020",
+        "adjunto": ""
+
+      }
+      ],
+      "evaluaciones" : 4,
+      "estado" : "Activo"
+    },
+    {
+      "_id" : 4,
+      "name" : "Julian Casablancas",
+      "rol"  : "Observador",
+      "capacitaciones" : [{
+        "curso" : "Interpretacion de la norma",
+        "norma": "ISO 14001 - 2015",
+        "tipo": "Capacitacion",
+        "f_inicio": "01/02/2020",
+        "f_fin" : "01/08/2020",
+        "adjunto": ""
+
+      },{
+        "curso" : "Interpretacion de la norma",
+        "norma": "ISO 14001 - 2015",
+        "tipo": "Reentrenamiento",
+        "f_inicio": "01/02/2020",
+        "f_fin" : "01/08/2020",
+        "adjunto": ""
+
+      }],
+      "evaluaciones" : 2,
+      "estado" : "Activo"
+    },
+    {
+      "_id" : 5,
+      "name" : "Nick Valency Salas",
+      "rol"  : "Auditor Lider",
+      "capacitaciones" : [{
+        "curso" : "Interpretacion de la norma",
+        "norma": "ISO 14001 - 2015",
+        "tipo": "Capacitacion",
+        "f_inicio": "01/02/2020",
+        "f_fin" : "01/08/2020",
+        "adjunto": ""
+
+      },{
+        "curso" : "Interpretacion de la norma",
+        "norma": "ISO 14001 - 2015",
+        "tipo": "Reentrenamiento",
+        "f_inicio": "01/02/2020",
+        "f_fin" : "01/08/2020",
+        "adjunto": ""
+
+      },{
+        "curso" : "Interpretacion de la norma",
+        "norma": "ISO 14001 - 2015",
+        "tipo": "Capacitacion",
+        "f_inicio": "01/02/2020",
+        "f_fin" : "01/08/2020",
+        "adjunto": ""
+
+      },{
+        "curso" : "Interpretacion de la norma",
+        "norma": "ISO 14001 - 2015",
+        "tipo": "Reentrenamiento",
+        "f_inicio": "01/02/2020",
+        "f_fin" : "01/08/2020",
+        "adjunto": ""
+
+      },{
+        "curso" : "Interpretacion de la norma",
+        "norma": "ISO 14001 - 2015",
+        "tipo": "Capacitacion",
+        "f_inicio": "01/02/2020",
+        "f_fin" : "01/08/2020",
+        "adjunto": ""
+
+      }],      "evaluaciones" : 5,
+      "estado" : "Activo"
+    },
+    {
+      "_id" : 6,
+      "name" : "Andrés Paredes Arévalo",
+      "rol"  : "Observador",
+      "capacitaciones" :[{}],
+      "evaluaciones" : 0,
+      "estado" : "Activo"
+    },{
+
+      "_id" : 7,
+      "name" : "Erick Arrasco",
+      "rol"  : "Auditor",
+      "capacitaciones" : [{
+        "curso" : "Interpretacion de la norma",
+        "norma": "ISO 14001 - 2015",
+        "tipo": "Capacitacion",
+        "f_inicio": "01/02/2020",
+        "f_fin" : "01/08/2020",
+        "adjunto": ""
+
+      },{
+        "curso" : "Interpretacion de la norma",
+        "norma": "ISO 14001 - 2015",
+        "tipo": "Reentrenamiento",
+        "f_inicio": "01/02/2020",
+        "f_fin" : "01/08/2020",
+        "adjunto": ""
+
+      }
+      ],
+      "evaluaciones" : 3,
+      "estado" : "Activo"
+    },
+    {
+      "_id" : 8,
+      "name" : "Manuel Torres",
+      "rol"  : "Observador",
+      "capacitaciones" : [{
+        "curso" : "Interpretacion de la norma",
+        "norma": "ISO 14001 - 2015",
+        "tipo": "Capacitacion",
+        "f_inicio": "01/02/2020",
+        "f_fin" : "01/08/2020",
+        "adjunto": ""
+
+      }],
+      "evaluaciones" : 1,
+      "estado" : "Activo"
+    },
+    {
+      "_id" : 9,
+      "name" : "Jacqueline Mendola",
+      "rol"  : "Auditor Lider",
+      "capacitaciones" : [{
+        "curso" : "Interpretacion de la norma",
+        "norma": "ISO 14001 - 2015",
+        "tipo": "Capacitacion",
+        "f_inicio": "01/02/2020",
+        "f_fin" : "01/08/2020",
+        "adjunto": ""
+
+      },{
+        "curso" : "Interpretacion de la norma",
+        "norma": "ISO 14001 - 2015",
+        "tipo": "Reentrenamiento",
+        "f_inicio": "01/02/2020",
+        "f_fin" : "01/08/2020",
+        "adjunto": ""
+
+      },{
+        "curso" : "Interpretacion de la norma",
+        "norma": "ISO 14001 - 2015",
+        "tipo": "Capacitacion",
+        "f_inicio": "01/02/2020",
+        "f_fin" : "01/08/2020",
+        "adjunto": ""
+
+      },{
+        "curso" : "Interpretacion de la norma",
+        "norma": "ISO 14001 - 2015",
+        "tipo": "Reentrenamiento",
+        "f_inicio": "01/02/2020",
+        "f_fin" : "01/08/2020",
+        "adjunto": ""
+
+      }
+      ],
+      "evaluaciones" : 4,
+      "estado" : "Activo"
+    }],
+  "rol" : [{
+      "_id": 1,
+      "name" : "Auditor líder"
+    },
+    {
+      "_id": 2,
+      "name" : "Auditor"
+    },{
+      "_id": 3,
+      "name" : "Observador"
+    }],
+  "norma": [{
+    "_id" : 1,
+    "name" : "ISO 14001-2001"
+  },
+    {
+      "_id" : 2,
+      "name" : "ISO 9001"
+    },
+    {
+      "_id" : 3,
+      "name" : "IFFO"
+    }],
+  "full_data" : [
+    {
+
+    }
+  ]
+}

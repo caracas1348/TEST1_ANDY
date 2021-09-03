@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <link rel="shortcut icon" href="https://www.visualsatpe.com/visitasa/images/favicon.ico" type="image/x-icon"/> 
+        <meta name="author" content="Visualsat Peru">        
+        <title>Visitasa</title>
+        <!-- CSS -->
+        <link href="modules/bootstrap-4.4.1/dist/css/bootstrap.min.css" rel="stylesheet" >
+        <link href="css/visitasa.css" rel="stylesheet" >
+        <link rel="stylesheet" href="modules/bootstrap-sweetalert-master/dist/sweetalert.css" rel="stylesheet">
+        <link href="css/loadingEffect.css" rel="stylesheet" >
+         <!-- CSS -->
+         <style>
+             .padre {
+
+                    display: flex !important;
+                    justify-content: center !important;
+                    align-items: center !important;
+                    background:#fff url('images/fondologin.jpg') no-repeat center center  ; min-height:100%; background-size:cover;
+                    }
+
+         </style>
+    </head>
+    <body class="text-center">
+       <div class="padre"> 
+        <form class="form-signin form-row blur-in bg-blue" name="fm_login" id="fm_login" style="max-width: 423px;">
+            
+            <div class="card border-0 shadow-lg bg-white rounded  mb-5 " style="width: 445px; background-color: rgba(255, 255, 255, 0.5);" >
+                <div class="alert" role="alert" style="display: none;"></div>
+                
+                <h5 class="card-title text-center mt-5">Loguearse en <img class="" src="images/logo.svg" alt="" width="160" class="img-fluid" ></h5>
+                <div class="card-body text-left ml-5 mr-5 mt-0 mb-2" >
+                        
+                        <br>
+                        <div class="form-group  input-material m-0">
+                            <label for="tx_login_usuario " class="font-weight-bolder">USUARIO</label>
+                            <i class="fa fa-user icon"></i>
+                            <input type="text" class="form-control input iconUser " id="tx_login_usuario" required >
+                        </div>
+                        <br>
+                        <div class="form-group  input-material m-0">
+                            <label for="tx_login_password" class="font-weight-bold">CONTRASEÑA</label>
+                            <input type="password" class="form-control input iconPass" id="tx_login_password" required>
+                            
+                        </div>
+                        
+                        <div class="form-group  input-material mt-1 w-100 h-5" style="height: 60px;">
+                            <div class="g-recaptcha" style="width: 150px; transform: scale(0.85);  transform-origin: 0 0;"  data-sitekey="6LeXxNYUAAAAAIbyjKs16JSb1_uzRiG015RdilTm"></div>
+                        </div>
+
+                        <div class="w-100 mt-0">
+                            
+                            <button class="btn btn-lg buttonActive btn-block d-flex justify-content-center " style=" height: 52px; border-radius: 7px; width: 260px;" type="submit">
+                                <div class="d-flex justify-content-center">
+                                    <div class="spinner-grow spinner-border-sm text-white" role="status" aria-hidden="true" style="display: none;"></div>
+                                </div>
+                                Ingresar
+                            </button>
+                            <button class="btn btn-lg btn-danger btn-block d-flex justify-content-center " onclick="signIn()" style=" height: 52px; border-radius: 7px; width: 260px;" type="button">                                
+                                Ingresar usuario TASA
+                            </button>
+                        </div>
+                        
+                        <div class="form-group  input-material mt-2 w-100 text-center colorLight objectVinculo">
+                        ¿Olvidaste tu contraseña?
+                        </div>
+                        
+                        <div class="form-group  input-material mt-4 w-100 text-center">
+                        &reg;2020 Visitasa. All Rights reserved. </div>
+                </div>
+              </div>
+        </form>
+    </div>
+    </body>
+    <!-- JS -->
+    <script src="js/jquery-3.4.1.js" ></script>
+    <script src="modules/bootstrap-4.4.1/dist/js/bootstrap.min.js"  ></script>  
+    <script src="https://www.google.com/recaptcha/api.js" async defer ></script>
+    <script src="modules/bootstrap-sweetalert-master/dist/sweetalert.js"></script>
+    <script src="modules/bootstrap-4-floating-labels-material-inputs/materialize-inputs.jquery.js" ></script>
+    <script src="js/msal.js" ></script>
+    <script src="js/common.js" ></script>
+    <script src="js/loginlog.js" ></script>
+    <script src="js/login.js" ></script>
+    
+   
+</html>

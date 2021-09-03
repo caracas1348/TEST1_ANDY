@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="calendar_2_" width="97.595" height="97.595" viewBox="0 0 97.595 97.595" fill="#b1b1b1">
+  <g id="Grupo_81">
+    <g id="Grupo_80">
+      <path id="Trazado_321" d="M279 293.583a7.633 7.633 0 0 0 7.625 7.625h8.959a7.633 7.633 0 0 0 7.625-7.625v-8.959a7.633 7.633 0 0 0-7.626-7.624h-8.959a7.633 7.633 0 0 0-7.624 7.625zm7.625-8.959h8.959v8.959h-8.964z" class="cls-1" transform="translate(-225.819 -224.2)" />
+      <circle id="Elipse_28" cx="4" cy="4" r="4" class="cls-1" transform="translate(69 36.595)" />
+      <circle id="Elipse_29" cx="4" cy="4" r="4" class="cls-1" transform="translate(53 36.595)" />
+      <path id="Trazado_322" d="M93.782 67.1a3.812 3.812 0 0 0 3.812-3.812V22.874A15.266 15.266 0 0 0 82.346 7.625H77.39V3.812a3.812 3.812 0 1 0-7.625 0v3.813H52.419V3.812a3.812 3.812 0 0 0-7.625 0v3.813H27.639V3.812a3.812 3.812 0 0 0-7.625 0v3.813h-4.765A15.266 15.266 0 0 0 0 22.874v59.472a15.266 15.266 0 0 0 15.249 15.249h67.1a15.266 15.266 0 0 0 15.246-15.249 3.812 3.812 0 1 0-7.625 0 7.633 7.633 0 0 1-7.625 7.625h-67.1a7.633 7.633 0 0 1-7.625-7.625V22.874a7.633 7.633 0 0 1 7.625-7.625h4.765v3.812a3.812 3.812 0 0 0 7.625 0v-3.812h17.159v3.812a3.812 3.812 0 0 0 7.625 0v-3.812h17.346v3.812a3.812 3.812 0 0 0 7.625 0v-3.812h4.956a7.633 7.633 0 0 1 7.625 7.625v40.41a3.812 3.812 0 0 0 3.811 3.816z" class="cls-1" />
+      <circle id="Elipse_30" cx="4" cy="4" r="4" class="cls-1" transform="translate(20 69.595)" />
+      <circle id="Elipse_31" cx="4" cy="4" r="4" class="cls-1" transform="translate(20 36.595)" />
+      <circle id="Elipse_32" cx="4" cy="4" r="4" class="cls-1" transform="translate(20 52.595)" />
+      <circle id="Elipse_33" cx="4" cy="4" r="4" class="cls-1" transform="translate(36 52.595)" />
+      <circle id="Elipse_34" cx="4" cy="4" r="4" class="cls-1" transform="translate(36 36.595)" />
+      <circle id="Elipse_35" cx="4" cy="4" r="4" class="cls-1" transform="translate(36 69.595)" />
+    </g>
+  </g>
+</svg>

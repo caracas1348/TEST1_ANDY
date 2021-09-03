@@ -1,0 +1,484 @@
+
+<link rel="stylesheet" href="css/sweetalert2.css">
+<!--  ================================================ fin de estilo ===============================================-->
+
+<link rel="stylesheet" href="view/sho-hce/ssoma.css">
+<link rel="stylesheet" href="view/sho-hce/interconsultas_transferencias/sho.css">
+<link rel="stylesheet" href="css/pagination.css">
+<link rel="stylesheet" href="css/auditorLiderList.css">
+<link rel="stylesheet" href="css/sass/customize.css?v=3">
+<link href="css/crearAuditorias.css" rel="stylesheet" >
+<Link href="css/crearAuditorias.css" rel="stylesheet">
+<Link href="css/crearProgramas.css" rel="stylesheet">
+<link rel="stylesheet" href="js/daterangepicker-master/daterangepicker.css">
+
+
+
+
+<div class="container main-content">
+  <!-- DATOS DEL TRABAJADOR -->
+  <div>
+    <div class="row mb-5 align-items-center">
+      <div class="col-md-6 col-sm-6">
+        <span class="titulo">Datos del trabajador</span>
+      </div>
+      <div class="col-md-2 col-sm-6 offset-md-4 offset-sm-0">
+        <button onclick="" type="button" class="btn btn-info btn-block btn-lg float-right" id=""> Imprimir <img class="inject-svg" src="./images/sho/print.svg" alt="" fill="#fff" width="18px">
+        </button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Nro de documento</span>
+          <input type="text" id="dat_int_tran_codigo" disabled>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Nombres</span>
+          <input type="text" id="dat_int_tran_nombre" disabled>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Apellidos</span>
+          <input type="text" id="dat_int_tran_apellido" disabled>
+        </div>
+      </div>
+      <div class="col-md-2 col-sm-4">
+        <div class="input-box-secondary">
+          <span>Edad</span>
+          <input type="text" id="dat_int_tran_edad" disabled>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Gerencia</span>
+          <select name="" id="dat_int_tran_gerencia" disabled>
+            <option value="" selected disabled></option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Planta</span>
+          <select name="" id="dat_int_tran_planta" disabled>
+            <option value="" selected disabled></option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Área</span>
+          <select name="" id="dat_int_tran_area" disabled>
+            <option value="" selected disabled></option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Puesto de trabajo</span>
+          <input type="text" id="dat_int_tran_puesto" disabled>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- FIN DATOS DEL TRABAJADOR -->
+  <hr class="mb-5 mt-4" />
+  <!-- TRANSFERENCIA -->
+  <div>
+    <div class="row mb-5">
+      <div class="col-md-12">
+        <span class="titulo">Transferencia</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Empresa</span>
+          <input type="text" id="dat_int_tran_empresa" disabled>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Fecha de transferencia</span>
+          <input type="date" id="dat_int_tran_fe_transferencia" disabled>
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-12">
+        <div class="input-box-secondary">
+          <span>Direccion del trabajador</span>
+          <input type="text" id="dat_int_tran_direcciont" disabled>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 col-sm-4">
+        <div class="input-box-secondary">
+          <span>Telefono</span>
+          <input type="text" id="dat_int_tran_telefono" disabled>
+        </div>
+      </div>
+      <div class="col-md-9 col-sm-8">
+        <div class="input-box-secondary">
+          <span>Anamnesis</span>
+          <input type="text" id="dat_int_tran_anamesis" disabled>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- FIN TRANSFERENCIA -->
+  <hr class="mb-5 mt-4" />
+  <!-- FUNCIONES VITALES -->
+  <div>
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <span class="titulo">Funciones vitales</span>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">
+        <div class="d-flex">
+          <img class="inject-svg" src="./images/sho/arterial.svg" alt="" fill="#ff2e2e">
+          <span>Presión arterial</span>
+        </div>
+        <div class="input_hc_sp3">
+          <input class="form-control" type="number" id="dat_int_tran_sv1" disabled>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">
+        <div class="d-flex">
+          <img class="inject-svg" src="./images/sho/cardiaca.svg" alt="" fill="#ff2626">
+          <span>Frecuencia cardiaca</span>
+        </div>
+        <div class="input_hc_sp3">
+          <input class="form-control" type="number" id="dat_int_tran_sv2" disabled>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">
+        <div class="d-flex">
+          <img class="inject-svg" src="./images/sho/respiratoria.svg" alt="" fill="#00baff">
+          <span>Frecuencia respiratoria</span>
+        </div>
+        <div class="input_hc_sp3">
+          <input class="form-control" type="number" id="dat_int_tran_sv3" disabled>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">
+        <div class="d-flex">
+          <img class="inject-svg" src="./images/sho/temperatura.svg" alt="" fill="#34a9ff" style="left: 30px">
+          <span>Temperatura</span>
+        </div>
+        <div class="input_hc_sp3">
+          <input class="form-control" type="number" id="dat_int_tran_sv4" disabled>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">
+        <div class="d-flex">
+          <img class="inject-svg" src="./images/sho/peso.svg" alt="" fill="#004eff">
+          <span>Peso Kg</span>
+        </div>
+        <div class="input_hc_sp3">
+          <input class="form-control" type="number" id="dat_int_tran_sv5" disabled>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">
+        <div class="d-flex">
+          <img class="inject-svg" src="./images/sho/talla.svg" alt="" fill="#715fff" style="left: 30px">
+          <span>Talla</span>
+        </div>
+        <div class="input_hc_sp3">
+          <input class="form-control" type="number" id="dat_int_tran_sv6" disabled>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">
+        <div class="d-flex">
+          <img class="inject-svg" src="./images/sho/saturacion.svg" alt="" fill="#fc2a5a">
+          <span>Saturación</span>
+        </div>
+        <div class="input_hc_sp3">
+          <input class="form-control" type="number" id="dat_int_tran_sv7" disabled>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">
+        <div class="d-flex">
+          <img class="inject-svg" src="./images/sho/corporal.svg" alt="" fill="#ffc400">
+          <span>Índice de masa corporal</span>
+        </div>
+        <div class="input_hc_sp3">
+          <input class="form-control" type="number" id="dat_int_tran_sv8" disabled>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">
+        <div class="d-flex">
+          <img class="inject-svg" src="./images/sho/abdominal.svg" alt="" fill="#ff8b43">
+          <span>Perímetro abdominal</span>
+        </div>
+        <div class="input_hc_sp3">
+          <input class="form-control" type="number" id="dat_int_tran_sv9" disabled>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- FIN FUNCIONES VITALES -->
+  <hr class="mb-5 mt-4">
+  <!-- DIAGNOSTICO CIE 10 -->
+  <div>
+    <div class="row mb-5">
+      <div class="col-md-12">
+        <span class="titulo">Diagnóstico CIE 10</span>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-md-12">
+        <div class="d-flex align-items-center">
+          <div id="cant_planes">
+            <img src="images/iconos/copia-1.svg" style="width: 20px" />
+          </div>
+          <span class="cantidad ml-3" id='lb_diag_1_int' style="font-size: 15px">1 registrosss</span>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <table class="table-box table-responsive" id="">
+          <thead>
+            <tr>
+              <th style="width:20%">Diagnóstico</th>
+              <th style="width:15%">CIE 10</th>
+              <th style="width:15%">Fecha de registro</th>
+              <th style="width:20%">Especialidad</th>
+              <th style="width:20%">Sistema afectado</th>
+              <th style="width:20%">Sección afectada</th>
+            </tr>
+          </thead>
+          <tbody id="lb_diag_1_tabla">
+            <!-- <tr>
+              <td>Diagnóstico 1</td>
+              <td>Tipo 1</td>
+              <td>27/08/2021</td>
+              <td>Especialidad 1</td>
+              <td>Sistema 1</td>
+              <td>Sección 1</td> -->
+            <!-- </tr> --> 
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-md-12">
+        <div class="input-box-secondary">
+          <span>Tratamiento</span>
+          <input type="text" id="dat_int_tran_trata" disabled placeholder="Escribir...">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <div class="input-box-secondary">
+          <span>Motivo de transferencia</span>
+          <input type="text" id="dat_int_tran_motivo_trans" disabled>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Hora de atencion del D.S.O</span>
+          <input type="time" id="dat_int_tran_h_dso" disabled>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Hora de evaluación</span>
+          <input type="time" id="dat_int_tran_h_evol" disabled>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- FIN DIAGNOSTICO CIE 10 -->
+  <hr class="mb-5 mt-4">
+  <!-- DIAGNOSTICO CIE 10 -->
+  <div>
+    <div class="row mb-5">
+      <div class="col-md-12">
+        <span class="titulo">Diagnóstico CIE 10</span>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-md-12">
+        <div class="d-flex align-items-center">
+          <div id="cant_planes">
+            <img src="images/iconos/copia-1.svg" style="width: 20px" />
+          </div>
+          <span class="cantidad ml-3" id='lb_diag_2_int' style="font-size: 15px">1 registros</span>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <table class="table-box table-responsive" id="">
+          <thead>
+            <tr>
+              <th style="width:20%">Diagnóstico</th>
+              <th style="width:15%">CIE 10</th>
+              <th style="width:15%">Fecha de registro</th>
+              <th style="width:20%">Especialidad</th>
+              <th style="width:20%">Sistema afectado</th>
+              <th style="width:20%">Sección afectada</th>
+            </tr>
+          </thead>
+          <tbody  id="lb_diag_2_tabla" >
+            <tr>
+              <!-- <td>Diagnóstico 1</td>
+              <td>Tipo 1</td>
+              <td>27/08/2021</td>
+              <td>Especialidad 1</td>
+              <td>Sistema 1</td>
+              <td>Sección 1</td> -->
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-md-12">
+        <div class="input-box-secondary">
+          <span>Tratamiento</span>
+          <input type="text" id="dat_int_tran_trata2" disabled placeholder="Escribir...">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 col-sm-12">
+        <div class="input-box-secondary">
+          <span>Recibido por:</span>
+          <input type="text" id="dat_int_tran_h_dso" disabled>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Lugar de destino</span>
+          <input type="text" id="dat_int_tran_lugard" disabled>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Fecha</span>
+          <input type="date" id="dat_int_fecha2" disabled>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+    <div class="row mt-4">
+      <div class="col-md-12 d-flex align-items-center">
+        <span class="titulo"> Archivos adjuntados </span>
+      </div>
+    </div>
+
+  <!-- <div class="col-md-12">
+      <div class="table-box table-responsive">
+        <table  id="table_trans_adjunto_ciex" class="table-box table-responsive" >
+          <thead  >
+            <tr>
+              <th >Nombre del archivo</th>
+              <th >Fecha de carga</th>
+              <th >Descargar</th>
+            </tr>
+          </thead>
+          <tbody  id="lb_diag_3_tabla"  >
+            <tr>
+              <td width='30%'>Archivo 1</td>
+              <td width='30%'>27/08/2021</td>
+              <td  width='40%'>
+                <button type="button" class="btn btn-link shadow-none float-right">
+                  <img class="inject-svg" src="./images/sho/download.svg" alt="" fill="#8fbb02" width="16px">
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  </div> -->
+
+
+
+    <div class="row mt-3">
+      <div class="col-md-12">
+        <div class="d-flex align-items-center">
+          <div id="cant_planes">
+            <img src="images/iconos/copia-1.svg" id='iconAdjT' style="width: 20px" />
+          </div>
+          <span class="cantidad ml-3" style="font-size: 15px" id='lb_diag_3_int' >1 archivos</span>
+        </div>
+      </div>
+
+
+
+    <!-- aqui estaba -->
+
+
+    </div>
+
+
+    <div class="alert alert-danger" role="alert" id="noAdj_Trnas">
+      No hay archivos adjuntos
+      <span>
+        <img class="inject-svg" src="./images/sho/advertencia.svg" alt="" width="18px">
+      </span>
+    </div>
+   
+
+   <div class="col-md-12">
+        <table class="table-box" id="table_trans_adjunto_cie">
+          <thead>
+            <tr>
+              <th>Nombre del archivo</th>
+              <th>Fecha de carga</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody  id="lb_diag_3_tabla">
+            <!--  <tbody id="content_trans_adjunto_cie"  id="lb_diag_3_tabla"> -->
+            <tr>
+              <td>Archivo 1</td>
+              <td>27/08/2021</td>
+              <td>
+                <button type="button" class="btn btn-link shadow-none float-right">
+                  <img class="inject-svg" src="./images/sho/delete.svg" alt="" fill="#ff3636" width="16px">
+                </button>
+                <button type="button" class="btn btn-link shadow-none float-right">
+                  <img class="inject-svg" src="./images/sho/download.svg" alt="" fill="#8fbb02" width="16px">
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+
+
+  </div>
+  <!-- FIN DIAGNOSTICO CIE 10 -->
+</div>
+<script src="js/sweetalert2.js"></script>
+<script src="js/jquery.mask.min.js"></script>
+<script src="js/svg-inject.min.js"></script>
+<script src="view/sho-hce/interconsultas_transferencias/gestionInterconsultas.js"></script>
+<script type="text/javascript">
+
+
+$(document).ready(() => {
+  SVGInject($(".inject-svg"));
+});
+
+//alert('426 ya crgue');
+
+
+fnSp3CargaListadosTrnasferencia2();
+
+  
+
+
+</script>
+

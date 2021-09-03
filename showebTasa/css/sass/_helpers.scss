@@ -1,0 +1,42 @@
+.d-none{
+    display: none;
+}
+
+.clear{
+
+    &--row{
+        margin-left: 0px !important;
+        margin-right: 0px !important;
+    }
+
+    &--col{
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+
+    &--text-margin{
+        margin-bottom: 0px !important;
+    }
+}
+
+.d-column{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    &-l{
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.bt{
+    &-lightgray{
+        border-top: 1px solid $lightgray;
+    }
+
+    &-0{
+        border:0px;
+    }
+
+}

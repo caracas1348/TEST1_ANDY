@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1302866",
+    "ThreadId": "566893",
+    "Html": "Hi,\r<br />\n<br />\nI am trying to add text to custom controls (Rich text boxes) in a template and do this using the OpenXML JavaScript SDK.  Is this possible in the JavaScript and if so would it be possible to add some examples to the OpenXML JavaScript SDK package\r<br />\n<br />\nThe following link shows examples of what I am trying to achieve in C#\r<br />\n<a href=\"http://msdn.microsoft.com/en-us/library/cc197932%28v=office.12%29.aspx\" rel=\"nofollow\">http://msdn.microsoft.com/en-us/library/cc197932%28v=office.12%29.aspx</a>\r<br />\n<br />\nThanks\r<br />\n<br />\nAndrew<br />\n",
+    "PostedDate": "2014-09-09T07:01:12.25-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

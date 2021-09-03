@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1077434",
+    "ThreadId": "452607",
+    "Html": "Hi,\r<br />\n<br />\nI'm really excited to use the new JS APIs, and I've had good luck creating and editing documents without images.  However, if I try and simply re-save a document with images, it is way bigger on disk and fails to open in OSX Pages with an &quot;unknown error&quot; error.  (I'm running this in Node on v0.8.14 on Mountain Lion.)  When trying to open the created file in OSX Word, it displays a 98-page long document consisting of Base64.  (Which is possibly the incorrectly-encoded image?)\r<br />\n<br />\nThis is my first experience with OpenXML so maybe I'm missing something obvious.  The trick of renaming the file to &quot;.zip&quot; then opening it also fails with the created doc, throwing a &quot;Error 2 - No such file or directory&quot; error.\r<br />\n<br />\nThanks!\r<br />\n<br />\nBelow is the CoffeeScript I'm using, you can see that it's really simple.<br />\n<pre><code>fs = require 'fs'\nvm = require 'vm'\n_ = require 'underscore'\nargv = (require 'optimist').argv\nutil = require 'util'\n\ninclude = (path) -&gt;\n  code = fs.readFileSync path, 'utf8'\n  vm.runInThisContext code, path\n\ninclude(&quot;linq.js&quot;);\ninclude(&quot;ltxml.js&quot;);\ninclude(&quot;ltxml-extensions.js&quot;);\ninclude(&quot;jszip.js&quot;);\ninclude(&quot;jszip-load.js&quot;);\ninclude(&quot;jszip-inflate.js&quot;);\ninclude(&quot;jszip-deflate.js&quot;);\ninclude(&quot;openxml.js&quot;);\n\nDOMParser = require('xmldom').DOMParser;\nLtxml.DOMParser = DOMParser;\n\nXAttribute = Ltxml.XAttribute;\nXCData = Ltxml.XCData;\nXComment = Ltxml.XComment;\nXContainer = Ltxml.XContainer;\nXDeclaration = Ltxml.XDeclaration;\nXDocument = Ltxml.XDocument;\nXElement = Ltxml.XElement;\nXName = Ltxml.XName;\nXNamespace = Ltxml.XNamespace;\nXNode = Ltxml.XNode;\nXObject = Ltxml.XObject;\nXProcessingInstruction = Ltxml.XProcessingInstruction;\nXText = Ltxml.XText;\nXEntity = Ltxml.XEntity;\ncast = Ltxml.cast;\ncastInt = Ltxml.castInt;\n\nW = openXml.W;\nNN = openXml.NoNamespace;\nwNs = openXml.wNs;\n\nbuffer = fs.readFileSync argv.file\nb64 = buffer.toString 'base64'\n\ndoc = new openXml.OpenXmlPackage b64\n\ncontent = doc.saveToBase64()\noutBuffer = new Buffer content, 'base64'\nfs.writeFileSync argv.out, outBuffer</code></pre>\n\n",
+    "PostedDate": "2013-08-06T14:02:11.65-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1138532",
+    "ThreadId": "452607",
+    "Html": "So you tried this on a document without an image, and it worked, then you tried it on a document with an image, and it did not work?\r<br />\n<br />\nI am not seeing in this code where your input file is being converted from binary to base64, you will first need to perform that conversion.\r<br />\n<br />\nAlso I think a feature request I have is that a raw binary format is not accepted in the openXml.OpenXmlPackage() function.<br />\n\r<br />\nI should be able to do something like \r<br />\n<br />\n$.ajax(&quot;/myfile.xlsx&quot;).done(function(data){\r<br />\n  var doc = new openXml.OpenXmlPackage(data);\r<br />\n});\r<br />\n<br />\nBut that doesn't work since data is binary instead of base64.\r<br />\n<br />\nSo what I did is to use a converter like this:  <a href=\"http://www.motobit.com/util/base64-decoder-encoder.asp\" rel=\"nofollow\">http://www.motobit.com/util/base64-decoder-encoder.asp</a>\r<br />\nthat converted the document I wanted to load into base64, I saved that in a text file and used that instead.<br />\n",
+    "PostedDate": "2013-12-19T12:13:35.273-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1144822",
+    "ThreadId": "452607",
+    "Html": "\r\n<div dir=\"ltr\">Thanks for the info.<br>\r\n</div>\r\n<div><br>\r\n<br>\r\n<div></div>\r\n</div>\r\n",
+    "PostedDate": "2014-01-02T14:07:43.17-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

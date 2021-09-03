@@ -1,0 +1,60 @@
+<!--
+Description: The following is the example code to use recaptcha.
+Notice: The function backend_API_challenge is the concept and you should implement it on the backend.
+        Especially, you must keep your secret key in private all the time.
+Flow:
+1. Click the submit button.
+2. On the console, execute backend_API_challenge function.
+-->
+<html>
+<head>
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+  <!--<script src="https://www.google.com/recaptcha/api.js" async defer></script>-->
+
+ 
+
+  <script src="https://www.google.com/recaptcha/api.js?hl=es" async defer></script>
+  
+</head>
+<body>
+<form>
+  <input type="text"></input>
+  <div class="g-recaptcha" data-sitekey="6LeXxNYUAAAAAIbyjKs16JSb1_uzRiG015RdilTm"></div> 
+
+  <input type="button" onclick="backend_API_challenge();" value="submit"></input>
+</form>
+
+
+
+
+<script> 
+function checkRecaptcha() {
+  var response = grecaptcha.getResponse();
+  if(response.length == 0) { 
+    //reCaptcha not verified
+    alert("no pass"); 
+  }
+  else { 
+    //reCaptch verified
+    alert("pass"); 
+  }
+}
+
+// implement on the backend
+function backend_API_challenge() {
+    var response = grecaptcha.getResponse();
+    $.ajax({
+        type: "POST",
+        url: 'https://www.google.com/recaptcha/api/siteverify',
+        data: {"secret" : "6LeXxNYUAAAAAC8GX7AviM_cORuyn1vCugHRV88B", "response" : response, "remoteip":"localhost/visitasa/captcha.html"},//
+        contentType: 'application/x-www-form-urlencoded',
+        success: function(data) { console.log(data); }
+    });
+}
+
+
+</script>
+
+
+</body>
+</html>

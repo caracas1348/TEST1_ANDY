@@ -1,0 +1,2055 @@
+.headerNew {
+  background-color: #34559c;
+  padding: 10px 20px;
+  top: 20;
+  left: 0;
+  width: 100%;
+  z-index: 991;
+  height: 97px;
+}
+#selectableAU .ui-selecting { background: #fff; }
+#selectableAU .ui-selected { background: #c8c8c8 ; color: #000; }
+#selectableAU { list-style-type: none; margin: 0; padding: 0; width: 100%; }
+#selectableAU li { margin: 3px; padding: 0.8em 0.4em 0.4em; font-size: 0.9em; height: 35px; }
+
+#selectableAL .ui-selecting { background: #fff; }
+#selectableAL .ui-selected { background: #c8c8c8 ; color: #000; }
+#selectableAL { list-style-type: none; margin: 0; padding: 0; width: 100%; }
+#selectableAL li { margin: 3px; padding: 0.8em 0.4em 0.4em; font-size: 0.9em; height: 35px; }
+
+#selectableOB .ui-selecting { background: #fff; }
+#selectableOB .ui-selected { background: #c8c8c8 ; color: #000; }
+#selectableOB { list-style-type: none; margin: 0; padding: 0; width: 100%; }
+#selectableOB li { margin: 3px; padding: 0.8em 0.4em 0.4em; font-size: 0.9em; height: 35px; }
+
+      /* @@andy-------------------------------------------------------------------------------------------------------------------- */
+
+
+
+      .Rectangle {
+        width: 100%;
+        height: 77px;
+        background-color: #34559c;
+        overflow: hidden;
+      }
+
+      .multimedia-option {
+        width: 27px;
+        height: 22px;
+        object-fit: contain;
+      }
+
+      .Creacin-formularios {
+        width: 186px;
+        height: 22px;
+        font-family: ProductSans;
+        font-size: 18px;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        color: #ffffff;
+      }
+
+
+      .Group-619 {
+        width: 119px;
+        height: 41.2px;
+        object-fit: contain;
+      }
+
+      .user-1-1 {
+        width: 28px;
+        height: 28px;
+        object-fit: contain;
+      }
+
+      .name-user {
+        width: 144px;
+        height: 17px;
+        font-family: ProductSans;
+        font-size: 14px;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        color: #ffffff;
+      }
+
+      .date {
+        width: 129px;
+        height: 16px;
+        font-family: ProductSans;
+        font-size: 13px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        color: #ffffff;
+      }
+
+      .Ellipse-15 {
+        width: 37px;
+        height: 37px;
+        object-fit: contain;
+        background-color: #ffffff;
+      }
+
+      .logout-1 {
+        width: 21px;
+        height: 22px;
+        object-fit: contain;
+      }
+
+      .menu{
+        display:inline-block;
+        cursor: pointer;
+      }
+
+     /* @@andy --------------------------------------------------------------------------------------------------------------------*/
+
+.headerNew {
+    background-color: #34559c;
+    padding: 10px 20px;
+    top: 20;
+    left: 0;
+    width: 100%;
+    z-index: 991;
+    height: 97px;
+  }
+
+
+.BannerLoginTasa {
+    width: 100%;
+    height: 77px;
+    background-color: #34559c;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 991;
+    height: 58px;
+ }
+
+ .logoCompany{
+  position: absolute;
+  top: 25;
+  left:63;
+  width: 450;
+  height: 28;
+
+ }
+
+
+ .logoUser{
+  position: absolute;
+  top: 26;
+  right: 313px;
+  text-align: right;
+ }
+
+ #fondoLogout{
+  position: absolute;
+  top: 25;
+  right: 64px;
+  width: 37px;
+  height: 37px;
+
+  text-align: right;
+ }
+
+
+
+
+ #iconLogout{
+  position: absolute;
+  top: 33px;
+  right: 70px;
+  width: 21px;
+  height: 22px;
+  text-align: right;
+  cursor: pointer;
+ }
+
+ #secWelcomeAuditoria{
+  width: 100%;
+  text-align: center;
+  top: 161px;
+ }
+
+ #msgWelcomeAuditoria{
+      margin-left: auto;
+      margin-right: auto;
+      width:401px;
+      height:76px;
+      font-family:sans-serif;
+      font-size: 25px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.51;
+      letter-spacing: normal;
+      color: #000000;
+ }
+
+ #barraImg{
+  /*position: absolute;*/
+  width: 100%;
+  text-align: center;
+  /*top: 257px;*/
+  margin-top: 29px;
+ }
+
+ .modulosTasa {
+  width: 100%;
+  text-align: center;
+  }
+
+
+
+
+
+  .modulosTasaInt {
+  display: flex;
+  justify-content: center;
+  }
+  .moduloTasa {
+  padding: 0px;
+  margin:0px;
+  width: 222px;
+  height: 222px;
+  cursor: pointer;
+  height: auto;
+  position: relative;
+
+  }
+
+  .modulosTasax {
+    top:10%;
+    padding: 0px;
+    margin:auto;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    height: auto;
+    position: relative;
+    text-align:center;
+
+    }
+
+
+
+
+  .moduloSeparador {
+  padding: 0px;
+  margin: 0px;
+  width: 110px;
+  height: 222px;;
+  /*background-color:indigo;*/
+  }
+  .labelModulo {
+      position: relative;
+      padding: 0px;
+      margin-top: 29px;
+      height:30px;
+      text-align: center;
+      font-size: 18px;
+      font-style: normal;
+      letter-spacing: 0.15px;
+      color: #000000;
+  }
+
+
+  .iconModulo {
+      position: relative;
+      margin: 0 auto;
+      margin-top: -150px;
+      left: 10px;
+      width:  90px;
+      height: 90px;
+      /*background-color:indigo;*/
+  }
+
+  #moduloAuditoria{
+    background-image: url('../images/fondoBuscarAuditoriaOff.svg');
+    background-size:cover;
+    width:  222px;
+    height: 222px;
+  }
+  #moduloAuditoria:hover{
+    background-image: url('../images/fondoBuscarAuditoriaOn.svg');
+    background-size:cover;
+    width:  222px;
+    height: 222px;
+    cursor: pointer;
+  }
+
+  #moduloIndicadores{
+    background-image: url('../images/newsistema/iconos/IndicadoresOff.svg');
+    background-size:cover;
+
+    width:  127px;
+    height: 127px;
+  }
+  #moduloIndicadores:hover{
+    background-image: url('../images/newsistema/iconos/IndicadoresOn.svg');
+    background-size:cover;
+
+    width:  127px;
+    height: 127px;
+    cursor: pointer;
+  }
+
+
+  #moduloSsoma{
+    background-image: url('../images/fondoBuscarSsomaOff.svg');
+    background-size:cover;
+
+    width:  222px;
+    height: 222px;
+  }
+  #moduloSsoma:hover{
+    background-image: url('../images/fondoBuscarSsomaOn.svg');
+    background-size:cover;
+    width:  222px;
+    height: 222px;
+    cursor: pointer;
+  }
+
+  #moduloGestionarAuditoria{
+    background-image: url('../images/gestionarAuditoriaOff.svg');
+    background-size:cover;
+
+    width:  222px;
+    height: 222px;
+    transition: all .3s;
+  }
+  #moduloGestionarAuditoria:hover{
+    background-image: url('../images/gestionarAuditoriaOn.svg');
+    background-size:cover;
+
+    width:  222px;
+    height: 222px;
+    cursor: pointer;
+    transition: all .3s;
+  }
+
+
+
+  #moduloAccionesCorrectivas{
+    background-image: url('../images/accionesCorrectivasOff.svg');
+    background-size:cover;
+
+    width:  222px;
+    height: 222px;
+      transition: all .3s;
+  }
+  #moduloAccionesCorrectivas:hover{
+    background-image: url('../images/accionesCorrectivasOn.svg');
+    background-size:cover;
+
+    width:  222px;
+    height: 222px;
+      transition: all .3s;
+
+  }
+
+
+  #moduloConfiguraciones{
+    background-image: url('../images/configuracionesAuditoriasOff.svg');
+    background-size:cover;
+
+    width:  222px;
+    height: 222px;
+      transition: all .3s;
+  }
+  #moduloConfiguraciones:hover{
+    background-image: url('../images/configuracionesAuditoriasOn.svg');
+    background-size:cover;
+
+    width:  222px;
+    height: 222px;
+      transition: all .3s;
+
+  }
+
+  #msgWelcomeAuditoriaModal{
+
+    font-family:sans-serif;
+    font-size: 25px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.51;
+    letter-spacing: normal;
+    color: #000000;
+    text-align: center;
+  }
+
+  /*     --------------------------------------- ------------------------------- ----------------------------------- */
+  #moduloProgramaAuditoria{
+    background-image: url('../images/programaAuditoriaOff.svg');
+    background-size:cover;
+
+    width:  127px;
+    height: 127px;
+  }
+  #moduloProgramaAuditoria:hover{
+    background-image: url('../images/programaAuditoriaOn.svg');
+    background-size:cover;
+
+    width:  127px;
+    height: 127px;
+    cursor: pointer;
+  }
+
+
+
+  #moduloEvaluaPrograma{
+    background-image: url('../images/evaluaProgramasOff.svg');
+    background-size:cover;
+
+    width:  127px;
+    height: 127px;
+  }
+  #moduloEvaluaPrograma:hover{
+    background-image: url('../images/evaluaProgramasOn.svg');
+    background-size:cover;
+
+    width:  127px;
+    height: 127px;
+    cursor: pointer;
+  }
+
+
+  #moduloSegAuditoria{
+    background-image: url('../images/seguimientoAuditoriaOff.svg');
+    background-size:cover;
+
+    width:  127px;
+    height: 127px;
+  }
+  /* #moduloSegAuditoria:hover{
+    background-image: url('../images/seguimientoAuditoriaOn.svg');
+    background-size:cover;
+
+    width:  127px;
+    height: 127px;
+    cursor: pointer;
+
+  } */
+
+  #moduloListadoAsistentes{
+    background-image: url('../images/userssOff.svg');
+    background-size:cover;
+    width: 127px;
+    height: 127px;
+  }
+  #moduloListadoAsistentes:hover{
+    background-image: url('../images/userssOn.svg');
+    background-size:cover;
+    cursor: pointer;
+    width: 127px;
+    height: 127px;
+  }
+
+   #moduloListadoAuditoriaLider{
+    background-image: url('../images/calendar2.svg');
+    background-size:cover;
+
+    width:  127px;
+    height: 127px;
+  }
+  #moduloListadoAuditoriaLider:hover{
+    background-image: url('../images/calendar1.svg');
+    background-size:cover;
+    cursor: pointer;
+    width: 127px;
+    height: 127px;
+  }
+
+  #moduloListadoValidadorIperc{
+    background-image: url('../images/validar2.svg');
+    background-size:cover;
+
+    width:  127px;
+    height: 127px;
+  }
+  #moduloListadoValidadorIperc:hover{
+    background-image: url('../images/validar1.svg');
+    background-size:cover;
+    cursor: pointer;
+    width: 127px;
+    height: 127px;
+  }
+  #moduloListadoValidadorPericon{
+    background-image: url('../images/pericon2.svg');
+    background-size:cover;
+
+    width:  127px;
+    height: 127px;
+  }
+  #moduloListadoValidadorPericon:hover{
+    background-image: url('../images/pericon1.svg');
+    background-size:cover;
+    cursor: pointer;
+    width: 127px;
+    height: 127px;
+  }
+/*+++++++++++++++++++++++++++++++++++++++++++++ Sprint 3 @caracas1348 andy ++++++++++++++++++++++++++++++++++++++++++++++*/
+ #moduloEvaluacionAuditores{
+    background-image: url('../images/test1_off.svg');
+    background-size:cover;
+
+    width:  127px;
+    height: 127px;
+  }
+  #moduloEvaluacionAuditores:hover{
+    background-image: url('../images/test1_on.svg');
+    background-size:cover;
+
+    width:  127px;
+    height: 127px;
+    cursor: pointer;
+  }
+
+
+  #moduloGestionAuditores{
+    background-image: url('../images/users1_off.svg');
+    background-size:cover;
+
+    width:  127px;
+    height: 127px;
+  }
+  #moduloGestionAuditores:hover{
+    background-image: url('../images/users1_on.svg');
+    background-size:cover;
+
+    width:  127px;
+    height: 127px;
+    cursor: pointer;
+  }
+
+
+  #moduloHallazgo{
+    background-image: url('../images/programaAuditoriaOff.svg');
+    background-size:cover;
+
+    width:  127px;
+    height: 127px;
+  }
+  #moduloHallazgo:hover{
+    background-image: url('../images/programaAuditoriaOn.svg');
+    background-size:cover;
+
+    width:  127px;
+    height: 127px;
+    cursor: pointer;
+  }
+
+  .lbHallazgo{
+    font-size: 12.5px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.25;
+    letter-spacing: 0.09px;
+    text-align: center;
+    color: #3a3e16;
+    background-color: #c5cf55;
+  }
+  .divHallazgoTotal{
+    overflow-y: auto;
+    width:auto;
+    height: 31px;
+    margin-top: 4px;
+    border-radius: 4px;
+    border: solid 1.1px #c8c8c8;
+    background-color: #c5cf55;
+    text-align: center;
+  }
+
+  .divPreviewPdf{
+    background-color:#c1c1c1;
+    margin-left: 2%;
+    margin-top:2%;
+    width: 96%;
+    height: 86%;
+   padding: 10px  10px 10px 10px !important;
+   text-align: center;
+
+  }
+
+.divPreviewPdf::-webkit-scrollbar{
+    width: 10px;
+}
+.divPreviewPdf::-webkit-scrollbar-thumb {
+    background-color: #34559c;
+}
+
+
+.divPreviewEval{
+  background-color:#fff;
+  margin-left: 2%;
+  margin-top:2%;
+  width: 98%;
+  height:85%;
+ padding: 10px  10px 10px 10px !important;
+ text-align: center;
+ cursor: pointer;
+
+}
+
+.divPreviewEval::-webkit-scrollbar{
+
+  width: 13px;
+}
+.divPreviewEval::-webkit-scrollbar-thumb {
+  background-color:#34559c;
+
+}
+
+
+.lbEvalAud_01{
+  color: black;
+  font-size: 15px;
+  /* font-weight: bold; */
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.64;
+  letter-spacing: 0.55px;
+  text-align: left;
+
+}
+.lbEvalAud_02{
+  color: black;
+  font-size: 18px;
+  /* font-weight: bold; */
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.64;
+  letter-spacing: 0.55px;
+  text-align: left;
+
+}
+.lbEvalAud_03{
+
+  font-size: 13px;
+  font-weight: normal; /*bold;*/
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.89;
+  letter-spacing: 0.42px;
+  text-align: left;
+  color: #939393;
+
+}
+
+.logoTasaEvaluacion{
+
+  width: 136.3px;
+  height: 47.2px;
+  text-align: center;
+
+  margin-top: 0px;
+  margin-bottom: 45.8px;
+   /* margin: 0 0 45.8px 73px;  */
+  /* object-fit: contain; */
+
+}
+
+.ocultaDivSp3
+{
+  display:none;
+}
+
+/*+++++++++++++++++++++++++++++++++++++++++++   Sprint 3 @caracas1348 andy    ++++++++++++++++++++++++++++++++++++++++++++*/
+
+
+
+
+
+
+
+/*+++++++++++++++++++++++++++++++++++++++++++   Sprint $ IV @caracas1348 andy    ++++++++++++++++++++++++++++++++++++++++++++*/
+.lbCabezaTabla{
+  font-size: 14px !important;
+  color: #fff;
+  margin-left: 3px;
+}
+
+.lbCabezaTabla1{
+  font-size: 14px !important;
+  margin-left: 3px;
+}
+
+
+.tituloVentHallazgo{
+  /* padding: 5px 5px !important;  */
+  font-size: 18px;
+  font-weight: bold; text-align: center;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.45;
+  letter-spacing: 0.26px;
+  color: white;
+
+}
+/*+++++++++++++++++++++++++++++++++++++++++++   Sprint $ IV @caracas1348 andy    ++++++++++++++++++++++++++++++++++++++++++++*/
+
+/*+++++++++++++++++++++++++++++++++++++++++++   Sprint $ IV @millanqjesus    ++++++++++++++++++++++++++++++++++++++++++++*/
+  #moduloHallazgosAsignados{
+    background-image: url('../images/atenderHallazgoOff.svg');
+    background-size:cover;
+
+    width:  127px;
+    height: 127px;
+  }
+  #moduloHallazgosAsignados:hover{
+    background-image: url('../images/atenderHallazgoOn.svg');
+    background-size:cover;
+
+    width:  127px;
+    height: 127px;
+    cursor: pointer;
+  }
+
+  #moduloSeguimientoAccionesCorrectivas{
+    background-image: url('../images/SeguimientoHallazgoOff.svg');
+    background-size:cover;
+
+    width:  127px;
+    height: 127px;
+  }
+  #moduloSeguimientoAccionesCorrectivas:hover{
+    background-image: url('../images/SeguimientoHallazgoOn.svg');
+    background-size:cover;
+
+    width:  127px;
+    height: 127px;
+    cursor: pointer;
+  }
+/*+++++++++++++++++++++++++++++++++++++++++++   Sprint $ IV @millanqjesus    ++++++++++++++++++++++++++++++++++++++++++++*/
+
+/*+++++++++++++++++++++++++++++++++++++++++++   Sprint $ V @millanqjesus    ++++++++++++++++++++++++++++++++++++++++++++*/
+.obligatorio{
+  color: #ff6767;
+}
+/*+++++++++++++++++++++++++++++++++++++++++++   Sprint $ V @millanqjesus    ++++++++++++++++++++++++++++++++++++++++++++*/
+
+
+
+
+
+
+  #btCierraMenuAuditoria{
+    font-size: 16px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    letter-spacing: 0.4px;
+    color: #000000;
+    width: 150px;
+    text-align:center;
+    background-image: url('../images/iconos/close.svg');
+    background-position:100px;
+    background-repeat: no-repeat;
+
+
+  }
+  #btCierraMenuAuditoria:hover{
+    color:red;
+
+  }
+  /* #moduloAuditoria {
+    padding: 0px;
+    margin:0px;
+    width: 127px;
+    height: 127px;
+    cursor: pointer;
+    height: auto;
+    position: relative;
+    background-color: red;
+    cursor: pointer;
+
+    } */
+
+
+    /**********     @@ andy auditoria     *********/
+    input {
+      outline: 0 !important;
+      border-width: 0 0 2px !important;
+      border-color: #000
+    }
+    input:focus {
+      border-width: 0 0 2px !important;
+      border-color: green
+    }
+
+    .btn-new {
+      width: 184px;
+      height: 50px;
+      border-radius: 4px;
+      background-color: #05beee;
+      font-family: ITCAvantGardeStd-Demi;
+      font-size: 15px;
+      font-weight: bold;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.64;
+      letter-spacing: 0.15px;
+      color: #ffffff;
+    }
+
+    .btn-end {
+      /*width: 106px;*/
+      height: 50px;
+      border-radius: 4px;
+      background-color: #b2b2b2;
+      font-family: ITCAvantGardeStd-Demi;
+      font-size: 15px;
+      font-weight: bold;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.64;
+      letter-spacing: 0.15px;
+      color: #ffffff;
+    }
+
+    .Rectangle-198 {
+      /*width: 1314px;*/
+      height: 413px;
+      border-radius: 4px;
+      border: solid 1px #cbcbcb;
+      background-color: #ffffff;
+    }
+
+    .escritura-1 {
+      width: 125px;
+      height: 125px;
+      object-fit: contain;
+    }
+
+    .titulo-tabla{
+      border-radius: 4px;
+      background-color: #34559c;
+      font-family: ITCAvantGardeStd-Demi;
+      font-size: 15px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.64;
+      letter-spacing: 0.15px;
+      color: #ffffff;
+    }
+
+    .No-tienes-auditoras-ingresadas {
+      font-family: ITCAvantGardeStd-Demi;
+      font-size: 18px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.37;
+      letter-spacing: 0.15px;
+      color: #8b8b8b;
+    }
+
+    .usuario-1 {
+      /*width: 18px;*/
+      height: 18px;
+      object-fit: contain;
+    }
+
+    .hearder-modal{
+      background-color: #61b4f9;
+      height: 55px;
+      font-family: ITCAvantGardeStd-Demi;
+      font-size: 18px;
+      font-weight: bold;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.45;
+      letter-spacing: 0.26px;
+      color: #ffffff;
+    }
+
+    .btn-crear {
+      width: 198.9px;
+      height: 47px;
+      object-fit: contain;
+      border-radius: 4.4px;
+      background-color: #d2d97b;
+      font-family: ITCAvantGardeStd-Demi;
+      font-size: 16px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.39;
+      letter-spacing: 0.44px;
+      color: #565933;
+    }
+
+    .btn-close {
+      width: 198.9px;
+      height: 47px;
+      object-fit: contain;
+      border-radius: 4.4px;
+      border: solid 1.1px #000000;
+      background-color: #ffffff;
+       font-family: ITCAvantGardeStd-Demi;
+      font-size: 16px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.39;
+      letter-spacing: 0.44px;
+      color: #565933;
+    }
+
+    .btn-modificar
+    {
+      width: 198px;
+      height: 46px;
+      object-fit: contain;
+      border-radius: 4.4px;
+      background-color: #d2d97b;
+    }
+
+    .titulo-area-modal {
+      font-family: ITCAvantGardeStd-Demi !important;
+      font-size: 18px !important;
+      font-weight: bold !important;
+      font-stretch: normal !important;
+      font-style: normal !important;
+      line-height: 1.37 !important;
+      letter-spacing: 0.15px !important;
+      color: #000000 !important;
+    }
+
+    .label-modal {
+      font-family: ITCAvantGardeStd-Demi;
+      font-size: 15.1px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.14;
+      letter-spacing: 0.11px;
+      color: #737373;
+    }
+
+    .titulo-items-modal {
+      font-family: ITCAvantGardeStd-Demi;
+      font-size: 15.1px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.14;
+      letter-spacing: 0.11px;
+      color: #000000;
+    }
+
+    .titulos-table-modal {
+      width: 144px;
+      height: 26px;
+      font-family: ITCAvantGardeStd-Demi;
+      font-size: 15px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.64;
+      letter-spacing: 0.15px;
+      color: #ffffff;
+    }
+
+    .row-table-modal {
+      height: 10vh;
+      border-radius: 4px;
+      border: solid 1px #cbcbcb;
+      background-color: #f2f2f2;
+    }
+
+    input {
+      outline: 0 !important;
+      border-width: 0 0 2px !important;
+      border-color: #000
+    }
+    input:focus {
+      border-width: 0 0 2px !important;
+      border-color: green
+    }
+
+    .SEDE {
+      width: 95px;
+      height: 17px;
+      font-family: ITCAvantGardeStd-Demi;
+      font-size: 14px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      color: #000000;
+    }
+
+    .id-program{
+      width: 1440px;
+      height: 768px;
+      background-color: #ffffff;
+    }
+
+    .copia-1 {
+      width: 35px;
+      height: 35px;
+      object-fit: contain;
+    }
+
+    .Rectangle-206 {
+      width: 115px;
+      height: 50px;
+      border-radius: 4px;
+      background-color: #d2d97b !important;
+      color: #000 !important;
+    }
+
+    .Buscar {
+      width: 51px;
+      height: 26px;
+      font-family: ITCAvantGardeStd-Demi;
+      font-size: 15px;
+      font-weight: bold;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.64;
+      letter-spacing: 0.15px;
+      color: #565933;
+    }
+
+    .Rectangle-197 {
+      width: 1314px;
+      height: 57px;
+      border-radius: 4px;
+      background-color: #34559c;
+    }
+
+   /**********     @@ andy auditoria     *********/
+    input {
+      outline: 0 !important;
+      border-width: 0 0 2px !important;
+      border-color: #000
+    }
+    input:focus {
+      border-width: 0 0 2px !important;
+      border-color: green
+    }
+
+    .btn-new {
+      width: 184px;
+      height: 50px;
+      border-radius: 4px;
+      background-color: #05beee;
+      font-family: ITCAvantGardeStd-Demi;
+      font-size: 15px;
+      font-weight: bold;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.64;
+      letter-spacing: 0.15px;
+      color: #ffffff;
+    }
+
+    .btn-end {
+      /*width: 106px;*/
+      height: 50px;
+      border-radius: 4px;
+      background-color: #b2b2b2;
+      font-family: ITCAvantGardeStd-Demi;
+      font-size: 15px;
+      font-weight: bold;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.64;
+      letter-spacing: 0.15px;
+      color: #ffffff;
+    }
+
+    .Rectangle-198 {
+      /*width: 1314px;*/
+      height: 413px;
+      border-radius: 4px;
+      border: solid 1px #cbcbcb;
+      background-color: #ffffff;
+    }
+
+    .escritura-1 {
+      width: 125px;
+      height: 125px;
+      object-fit: contain;
+    }
+
+    .titulo-tabla{
+      border-radius: 4px;
+      background-color: #34559c;
+      font-family: ITCAvantGardeStd-Demi;
+      font-size: 15px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.64;
+      letter-spacing: 0.15px;
+      color: #ffffff;
+    }
+
+    .No-tienes-auditoras-ingresadas {
+      font-family: ITCAvantGardeStd-Demi;
+      font-size: 18px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.37;
+      letter-spacing: 0.15px;
+      color: #8b8b8b;
+    }
+
+    .usuario-1 {
+      /*width: 18px;*/
+      height: 18px;
+      object-fit: contain;
+    }
+
+    .hearder-modal{
+      height: 61px !important;
+      background-color: #61b4f9 !important;
+    }
+
+    .hearder-modal{
+      background-color: #61b4f9;
+      height: 55px;
+      font-family: ITCAvantGardeStd-Demi;
+      font-size: 18px;
+      font-weight: bold;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.45;
+      letter-spacing: 0.26px;
+      color: #ffffff;
+    }
+
+    .btn-crear {
+      width: 198.9px;
+      height: 47px;
+      object-fit: contain;
+      border-radius: 4.4px;
+      background-color: #d2d97b;
+      font-family: ITCAvantGardeStd-Demi;
+      font-size: 16px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.39;
+      letter-spacing: 0.44px;
+      color: #565933;
+    }
+
+    .btn-close {
+      width: 198.9px;
+      height: 47px;
+      object-fit: contain;
+      border-radius: 4.4px;
+      border: solid 1.1px #000000;
+      background-color: #ffffff;
+       font-family: ITCAvantGardeStd-Demi;
+      font-size: 16px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.39;
+      letter-spacing: 0.44px;
+      color: #565933;
+    }
+
+    .btn-modificar
+    {
+      width: 198px;
+      height: 46px;
+      object-fit: contain;
+      border-radius: 4.4px;
+      background-color: #d2d97b;
+    }
+
+    .titulo-area-modal {
+      font-family: ITCAvantGardeStd-Demi;
+      font-size: 18px;
+      font-weight: bold;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.37;
+      letter-spacing: 0.15px;
+      color: #000000;
+    }
+
+    .label-modal {
+      font-family: ITCAvantGardeStd-Demi;
+      font-size: 15.1px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.14;
+      letter-spacing: 0.11px;
+      color: #737373;
+    }
+
+    .titulo-items-modal {
+      font-family: ITCAvantGardeStd-Demi;
+      font-size: 15.1px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.14;
+      letter-spacing: 0.11px;
+      color: #000000;
+    }
+
+    .titulos-table-modal {
+      width: 144px;
+      height: 26px;
+      font-family: ITCAvantGardeStd-Demi;
+      font-size: 15px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.64;
+      letter-spacing: 0.15px;
+      color: #ffffff;
+    }
+
+    .row-table-modal {
+      height: 10vh;
+      border-radius: 4px;
+      border: solid 1px #cbcbcb;
+      background-color: #f2f2f2;
+    }
+
+    input {
+      outline: 0 !important;
+      border-width: 0 0 2px !important;
+      border-color: #000
+    }
+    input:focus {
+      border-width: 0 0 2px !important;
+      border-color: green
+    }
+
+    .SEDE {
+      width: 95px;
+      height: 17px;
+      font-family: ITCAvantGardeStd-Demi;
+      font-size: 14px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      color: #000000;
+    }
+
+    .id-program{
+      width: 1440px;
+      height: 768px;
+      background-color: #ffffff;
+    }
+
+    .copia-1 {
+      width: 35px;
+      height: 35px;
+      object-fit: contain;
+    }
+
+    .Rectangle-206 {
+      width: 115px;
+      height: 50px;
+      border-radius: 4px;
+      background-color: #d2d97b !important;
+      color: #000 !important;
+    }
+
+    .Buscar {
+      width: 51px;
+      height: 26px;
+      font-family: ITCAvantGardeStd-Demi;
+      font-size: 15px;
+      font-weight: bold;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.64;
+      letter-spacing: 0.15px;
+      color: #565933;
+    }
+
+    .Rectangle-197 {
+      width: 1314px;
+      height: 57px;
+      border-radius: 4px;
+      background-color: #34559c;
+    }
+
+    /**********     @@ andy auditoria     *********/
+
+    .hearder-modalCA{
+      background-color: #61b4f9 !important;
+      width: 100% !important;
+      height: 55px !important;
+      font-family: ITCAvantGardeStd-Demi !important;
+      font-size: 18px;
+      font-weight: bold;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.45;
+      letter-spacing: 0.26px;
+      color: #ffffff;
+    }
+
+    .btn-close-modal{
+      display: block !important;
+      padding: 15px 30px;
+      /*width: 106px;
+      height: 50px;*/
+      font-size: 15px;
+      max-height: initial;
+      color: #b2b2b2;
+      font-weight: bold;
+      /*transition: all 0.3s;//*/
+    }
+    .btn-close-modalCA {
+      width: 84px !important;
+      height: 20px !important;
+      font-family: ITCAvantGardeStd-Demi !important;
+      font-size: 16px !important;
+      font-weight: normal !important;
+      font-stretch: normal !important;
+      font-style: normal !important;
+      line-height: 1.25 !important;
+      letter-spacing: 0.4px !important;
+      color: #ffffff !important;
+    }
+
+    .titulo-area-modal {
+      font-family: ITCAvantGardeStd-Demi;
+      font-size: 18px;
+      font-weight: bold;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.37;
+      letter-spacing: 0.15px;
+      color: #000000;
+    }
+
+    .label-modal {
+      font-family: ITCAvantGardeStd-Demi;
+      font-size: 15.1px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.14;
+      letter-spacing: 0.11px;
+      color: #737373;
+    }
+
+    .titulo-modal-new-auditoriaCA {
+      padding-top: 7px;
+      height: 29px;
+      font-family: ITCAvantGardeStd-Demi;
+      font-size: 18px;
+      font-weight: bold;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.45;
+      letter-spacing: 0.26px;
+      color: #ffffff;
+    }
+
+    .select-form{
+      height: auto !important;
+      border: none !important;
+      /**padding-left: 20px !important;**/
+      font-weight: bold;
+      /**margin-left: 20px !important;**/
+    }
+
+    .select-fechas{
+      height: initial !important;
+    }
+
+    .espacioCA{
+        height:10px;
+    }
+
+    .btn-buscarCA {
+      width: 110px;
+      height: 50px;
+      border-radius: 4px;
+      border: none;
+      background-color: #d2d97b;
+    }
+
+    .btn-newCA{
+      width: 180px;
+      height: 50px;
+      border-radius: 4px;
+      border: none;
+      background-color: #05beee;
+    }
+
+    .btn-endCA {
+      display: block !important;
+      padding: 15px 30px;
+      margin: initial;
+      /*width: 106px;
+      height: 50px;*/
+      border: none;
+      background-color: #58c25d;
+      font-size: 15px;
+      max-height: initial;
+      line-height: 1.64;
+      letter-spacing: 0.15px;
+      color: #ffffff;
+      font-weight: bold;
+      transition: all 0.3s;
+    }
+
+    .btn-crearCA{
+      width: 198.9px;
+      height: 47px;
+      object-fit: contain;
+      border-radius: 4.4px;
+      border: none;
+      background-color: #d2d97b;
+    }
+
+    .btn-cerrarCA{
+      width: 198.9px;
+      height: 47px;
+      object-fit: contain;
+      border-radius: 4.4px;
+      border: solid 1.1px #000000;
+      background-color: #ffffff;
+    }
+
+    .text-filterCA {
+      font-size: 13px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      color: #000000;
+    }
+
+    .select-filtroCA{
+      border: 0 !important;
+      height: 40px;
+      outline: 0 !important;
+      border-width: 0 0 2px !important;
+      border-color: #000
+    }
+    .select-filtroCA:focus{
+      border-width: 0 0 2px !important;
+      border-color: green
+    }
+
+    .text-btn-newAuditoriaCA {
+      width: 121px;
+      height: 26px;
+      font-size: 15px;
+      font-weight: bold;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.64;
+      letter-spacing: 0.15px;
+      color: #ffffff;
+    }
+
+    .texto-titulo-tablaCA {
+      width: 114px;
+      height: 26px;
+      font-family: ITCAvantGardeStd-Demi;
+      font-size: 15px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.64;
+      letter-spacing: 0.15px;
+      color: #ffffff;
+    }
+
+    .titulo-confirmar-ingreso-auditoriaCA {
+      width: 241px;
+      height: 48px;
+      font-family: ITCAvantGardeStd-Demi;
+      font-size: 1.125rem;/*18px;*/
+      font-weight: bold;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.45;
+      letter-spacing: 0.26px;
+      color: #3a3a3a;
+    }
+    .pregunta-confirmar-ingreso-auditoriaCA {
+      width: 241px;
+      font-family: ITCAvantGardeStd-Demi;
+      font-size: 15px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      color: #000000;
+    }
+
+    .btn-confirmar-ingreso-auditoriaCA {
+      width: 112px;
+      height: 47px;
+      object-fit: contain;
+      border-radius: 4.4px;
+      border: none;
+      background-color: #05beee;
+      font-family: ITCAvantGardeStd-Demi;
+      font-size: 16px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.39;
+      letter-spacing: 0.44px;
+      color: #ffffff;
+    }
+
+    .btn-cerrar-ingreso-auditoriaCA {
+      width: 112px;
+      height: 47px;
+      border-radius: 4px;
+      background-color: #ffffff;
+      font-family: ITCAvantGardeStd-Demi;
+      font-size: 16px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.25;
+      letter-spacing: 0.4px;
+      color: #000000;
+    }
+
+    .titulo-exito-ingreso-auditoriaCA {
+      width: 241px;
+      font-family: ITCAvantGardeStd-Demi;
+      font-size: 1.125rem;/*18px;*/
+      font-weight: bold;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.45;
+      letter-spacing: 0.26px;
+      color: #3a3a3a;
+      text-align: center;
+    }
+    .pregunta-exito-ingreso-auditoriaCA {
+      width: 241px;
+      font-family: ITCAvantGardeStd-Demi;
+      font-size: 15px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      color: #000000;
+      text-align: center;
+    }
+
+    .btn-exito-ingreso-auditoriaCA {
+      width: 254px;
+      height: 47px;
+      object-fit: contain;
+      border-radius: 4.4px;
+      border: none;
+      background-color: #d2d97b;
+    }
+
+    /**********     @@ andy auditoria     *********/
+    .titulo-area-modalCA {
+      /*width: 154.4px !important;*/
+      height: 18.4px !important;
+      font-family: ITCAvantGardeStd-Demi !important;
+      font-size: 15.1px !important;
+      font-weight: normal !important;
+      font-stretch: normal !important;
+      font-style: normal !important;
+      line-height: 1.14 !important;
+      letter-spacing: 0.11px !important;
+      color: #737373 !important;
+    }
+
+    .titulo-items-modalCA {
+      /*width: 184.6px !important;*/
+      height: 18.4px !important;
+      font-family: ITCAvantGardeStd-Demi !important;
+      font-size: 15.1px !important;
+      font-weight: bold !important;
+      font-stretch: normal !important;
+      font-style: normal !important;
+      line-height: 1.14 !important;
+      letter-spacing: 0.11px !important;
+      color: #000000 !important;
+    }
+
+    .norma-ver-auditoriaCA {
+      width: 80px !important;
+      height: 30px !important;
+      object-fit: contain !important;
+      border-radius: 4px !important;
+      border: solid 1.1px #c8c8c8 !important;
+      background-color: #efefef !important;
+      font-family: ITCAvantGardeStd-Demi !important;
+      font-size: 12.5px !important;
+      font-weight: normal !important;
+      font-stretch: normal !important;
+      font-style: normal !important;
+      line-height: 1.25 !important;
+      letter-spacing: 0.09px !important;
+      color: #000000 !important;
+    }
+
+    .btn-circleCA {
+      border-radius: 100%;
+      width: 30px;
+      height: 30px;
+      padding: 5px;
+      margin-top: 5px;
+      line-height: 30px;
+    }
+
+  .btn-modificarCA{
+      width: 194px;
+      height: 47px;
+      object-fit: contain;
+      border-radius: 4.4px;
+      background-color: #d2d97b;
+  }
+
+  .btn-modificarCA:hover{
+      background-color: #bfc753 !important;
+      transition: all 0.3s !important;
+  }
+
+
+  .textoObservadaCA{
+      font-family: ITCAvantGardeStd-Demi !important;
+      font-size: 15px !important;
+      font-weight: normal !important;
+      font-stretch: normal !important;
+      font-style: normal !important;
+      line-height: 1.64 !important;
+      letter-spacing: 0.15px !important;
+      color: #ff5c00 !important;
+  }
+  .textoCorregidaCA{
+      font-family: ITCAvantGardeStd-Demi !important;
+      font-size: 15px !important;
+      font-weight: normal !important;
+      font-stretch: normal !important;
+      font-style: normal !important;
+      line-height: 1.64 !important;
+      letter-spacing: 0.15px !important;
+      color: #ffb800 !important;
+  }
+  .textoAprobadaCA{
+      font-family: ITCAvantGardeStd-Demi !important;
+      font-size: 15px !important;
+      font-weight: bold !important;
+      font-stretch: normal !important;
+      font-style: normal !important;
+      line-height: 1.64 !important;
+      letter-spacing: 0.15px !important;
+      color: #58c25d !important;
+  }
+
+  .divObservacionCA {
+      width: 404px;
+      height: 79px;
+      border-radius: 4px;
+      border: solid 1px #b8b8b8;
+      background-color: #f4f4f4;
+  }
+
+  .textoObservacionesCA {
+    /*width: 343px;
+    height: 47px;*/
+    font-family: ITCAvantGardeStd-Demi !important;
+    font-size: 15.1px !important;
+    font-weight: bold !important;
+    font-stretch: normal !important;
+    font-style: normal !important;
+    line-height: 1.49 !important;
+    letter-spacing: normal !important;
+    color: #000000 !important;
+  }
+
+  .textoObservacionesCA2{
+      /*width: 407px;
+      height: 31px;*/
+      font-family: ITCAvantGardeStd-Demi !important;
+      font-size: 15.1px !important;
+      font-stretch: normal !important;
+      font-weight: bold!important;
+      font-style: normal !important;
+      line-height: 1.49 !important;
+      letter-spacing: normal !important;
+      color: #ff5050 !important;
+  }
+
+  .textoLabelFiltrosCA{
+    font-weight: bold !important;
+    font-family: ITCAvantGardeStd-Demi !important;
+    font-size: 0.875rem !important;
+  }
+
+.scroll-observacion{
+    overflow-y: auto !important;
+}
+.scroll-observacion::-webkit-scrollbar{
+    width: 10px;
+}
+.scroll-observacion::-webkit-scrollbar-thumb {
+    background-color: #34559c;
+}
+
+
+    /**********     @@ andy auditoria     *********/
+
+    /* PRUEBAS PARA FORMULARIO */
+    /* #tb_black_list{
+      table-layout: fixed;
+      width: 100%;
+      border-collapse: collapse;
+      }
+
+      table#tb_black_list thead th:nth-child(1) {
+      width: 13%;
+      }
+
+      table#tb_black_list thead th:nth-child(2) {
+      width: 13%;
+      }
+
+      table#tb_black_list thead th:nth-child(3) {
+      width: 13%;
+      }
+
+      table#tb_black_list thead th:nth-child(4) {
+      width: 13%;
+      }
+      table#tb_black_list thead th:nth-child(5) {
+      width: 13%;
+      }
+
+      table#tb_black_list thead th:nth-child(6) {
+      width: 13%;
+      }
+
+      table#tb_black_list thead th:nth-child(7) {
+      width: 13%;
+      }
+
+      table#tb_black_list th, td {
+      padding: 18px;
+      }
+
+      table#tb_black_list thead th, tfoot th {
+      font-family:'Lucida Sans';
+
+      }
+
+      table#tb_black_list th {
+      letter-spacing: 2px;
+      }
+
+      table#tb_black_list td {
+      letter-spacing: 1px;
+      }
+
+      table#tb_black_list tbody td {
+      text-align: center;
+      }
+
+      table#tb_black_list tfoot th {
+      text-align: right;
+      }
+
+
+*/
+       thead, tfoot {
+          /* background:#34559c; */
+          background-color:#34559c;
+          font-family:'Lucida Sans';
+          font-size: 15px;
+          font-weight: normal;
+          font-stretch: normal;
+          font-style: normal;
+          line-height: 1.64;
+          letter-spacing: 0.15px;
+          color: #ffffff;
+
+      }
+
+      table#tb_black_list tbody tr:nth-child(odd) {
+      background-color:#f2f2f2;
+      }
+      /* table#tb_black_list tbody tr:nth-child:hover {
+        background-color:cyan;
+      } */
+
+      table#tb_black_list tbody tr:nth-child(even) {
+
+      background-color: #f4f4f4
+      }
+
+      table#tb_black_list tbody tr:hover{
+
+        background-color:white;
+        cursor: pointer;
+      }
+      /* table#tb_black_list tbody tr:nth-child:hover {
+        background-color:magenta;
+        }  */
+
+
+
+    .dnp{
+      position: absolute;
+      width: 19px;
+      height: 48px;
+      left: 0px;
+      top: 2px;
+
+    }
+
+
+    table#tb_black_list thead tr:nth-child(odd) {
+      /* background-color:#f2f2f2; */
+      color:#fff;
+      }
+
+
+        table.table tbody td.details-control::before {
+          content: "+";
+          font-size: 32px;
+          font-weight: bolder;
+          cursor: pointer;
+        }
+        table.table tbody tr.shown td.details-control::before {
+          content: "-";
+          font-size: 32px;
+          font-weight: bolder;
+          /*background: url('../resources/details_close.png') no-repeat center center;*/
+        }
+
+          .headerNew {
+            background-color: #34559c;
+            padding: 10px 20px;
+            top: 20;
+            left: 0;
+            width: 100%;
+            z-index: 991;
+            height: 97px;
+          }
+        .BannerLoginTasa {
+            width: 100%;
+            height: 77px;
+            background-color: #34559c;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 991;
+            height: 58px;
+         }
+         .logoCompany{
+              position: absolute;
+              top: 25;
+              left:95;
+              /* width: 349; */
+              height: 28;
+              color: #fff;
+             font-size: 18px;
+             /* background-color:black; */
+         }
+
+        #emergenteDivMenu,#emergenteDivMenuResponsableAuditorias,#emergenteDivMenuAuditorLider, #emergenteDivMenu1, #emergenteDivMenu2, #emergenteDivMenuRolEvaluadorLocalAC, #emergenteDivMenuRolResponsableAsignado {
+          position: absolute;
+          bottom: 0;
+          width: 100%;
+          height:120%;
+          padding: 0px;
+          z-index: 10000;
+          background-color: #fff;
+          opacity: 94%;
+          visibility: hidden;
+        }
+        #textTilteModule{
+
+            /* position: absolute; */
+            top: 6;
+            right: 40px;
+            /* width: 300px; */
+            height: 15px;
+            text-align: left;
+            font-size: 16px;
+            font-weight: bold;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: normal;
+            letter-spacing: normal;
+            color: #ffffff;
+            /* background-color: red; */
+
+            }
+        #prevSystem{
+
+          position: absolute;
+          top: 29;
+          left:20;
+          width: 24;
+          height: 24;
+          cursor: pointer;
+
+         }
+
+            #dateSystem{
+            position: absolute;
+            top: 44;
+            right: 91px;
+            width: 200px;
+            height: 17px;
+            text-align: left;
+            font-size: 13px;
+            font-weight: normal;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: normal;
+            letter-spacing: normal;
+            color: #ffffff;
+            }
+            #timeSystem{
+            position: absolute;
+            top: 44;
+            right: -42px;
+            width: 200px;
+            height: 17px;
+            text-align: left;
+            font-size: 13px;
+            font-weight: normal;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: normal;
+            letter-spacing: normal;
+            color: #ffffff;
+            }
+
+            #sesUserName{
+              position: absolute;
+              top: 26;
+              right: 91px;
+              width: 200px;
+              height: 17px;
+              text-align: left;
+              font-size: 13px;
+              font-weight: bold;
+              font-stretch: normal;
+              font-style: normal;
+              line-height: normal;
+              letter-spacing: normal;
+              color: #ffffff;
+              font-family: ITCAvantGardeStd-Demi !important;
+            }
+
+
+            #dateSystem{
+              position: absolute;
+              top: 44;
+              right: 91px;
+              width: 200px;
+              height: 17px;
+              text-align: left;
+              font-size: 13px;
+              font-weight: normal;
+              font-stretch: normal;
+              font-style: normal;
+              line-height: normal;
+              letter-spacing: normal;
+              color: #fff;
+              font-family: ITCAvantGardeStdBk !important;
+         }
+
+         .modulosTasa {
+              width: 100%;
+              text-align: center;
+          }
+
+          .modulosTasaInt {
+          display: flex;
+          justify-content: center;
+          }
+          .moduloTasa {
+          padding: 0px;
+          margin:0px;
+          width: 222px;
+          height: 222px;
+          cursor: pointer;
+          height: auto;
+          position: relative;
+
+          }
+
+
+
+          .bloqueaSelect
+          {
+             -moz-user-select: none; /* Firefox */
+             -ms-user-select: none; /* Internet Explorer */
+             -khtml-user-select: none; /* KHTML browsers (e.g. Konqueror) */
+             -webkit-user-select: none; /* Chrome, Safari, and Opera */
+             -webkit-touch-callout: none; /* Disable Android and iOS callouts*/
+       }
+
+
+
+
+       .lbaud0
+       {
+        font-family: ITCAvantGardeStd-Demi;
+        font: ITCAvantGardeStd-Demi;
+        font-size: 15.1px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.14;
+        letter-spacing: 0.11px;
+        text-align: left;
+        color: #000000;
+       }
+
+
+       .lbaud1
+       {
+        font-family: ITCAvantGardeStd-Demi;
+        font: ITCAvantGardeStd-Demi;
+        font-size: 15.1px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.14;
+        letter-spacing: 0.11px;
+        text-align: left;
+        color: #737373;
+       }
+
+
