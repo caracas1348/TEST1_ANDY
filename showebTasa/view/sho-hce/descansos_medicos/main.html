@@ -1,22 +1,23 @@
 <link rel="stylesheet" href="./view/sho-hce/descansos_medicos/css/sho.css">
 <link rel="stylesheet" href="css/sweetalert2.css">
+
 <div class="container main-content">
-  <!-- HSO FORM -->
+  <!-- SAP FORM -->
   <div>
     <div class="row mb-5 d-flex align-items-center">
       <div class="col-md-6 col-sm-6 mr-auto p-2">
-        <span class="titulo">Datos del trabajador</span>
+        <span class="titulo">Datos del DM - SAP</span>
       </div>
       <div class=" col-md-2 col-sm-6  p-2">
         <button onclick="" type="button" class="btn btn-danger btn-block btn-lg" id="fn_hc_cancelar"> Cancelar <img class="inject-svg" src="./images/sho/cancelar.svg" alt="" fill="#fff" width="18px">
         </button>
       </div>
       <div class="col-md-2 col-sm-6  p-2">
-        <button type="button" class="btn btn-success btn-block btn-lg" onclick="intSp3ConfirmGuardarHSO()"> Guardar <img class="inject-svg" src="./images/sho/confirm.svg" alt="" fill="#fff" width="18px">
+        <button type="button" class="btn btn-success btn-block btn-lg" onclick="desSp3ConfirmGuardarSAP()"> Guardar <img class="inject-svg" src="./images/sho/confirm.svg" alt="" fill="#fff" width="18px">
         </button>
       </div>
     </div>
-    <!-- Datos del trabajador -->
+
     <div class="row">
       <div class="col-md-3 col-sm-6">
         <div class="input-box-secondary">
@@ -36,284 +37,87 @@
           <input type="text" id="dat_des_apellidos_trabajador" disabled>
         </div>
       </div>
-      <div class="col-md-3 col-sm-4">
+      <div class="col-md-3 col-sm-6">
         <div class="input-box-secondary">
-          <span>Fecha de registro</span>
-          <input type="text" id="dat_des_fr" disabled>
+          <span>Ocupación</span>
+          <input type="text" id="dat_des_ocupacion" disabled>
         </div>
-      </div>     
+      </div>      
     </div>
 
     <div class="row">
       <div class="col-md-3 col-sm-4">
         <div class="input-box-secondary">
-          <span>ID descanso medico</span>
+          <span>Fecha de inicio</span>
           <input type="text" id="dat_des_fi" disabled>
         </div>
       </div>
-      <div class="col-md-3 col-sm-4">
-        <div class="input-box-secondary">
-          <span>Empresa</span>
-          <input type="text" id="dat_des_empresa" disabled>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-6">
-        <div class="input-box-secondary">
-          <span>Origen</span>
-          <select name=""id="dat_des_origen" disabled></select>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-4">
-        <div class="input-box-secondary">
-          <span>ID descanso medico</span>
-          <input type="text" id="dat_des_id_descanso_med" disabled>
-        </div>
-      </div>
-    </div>
 
-    <div class="row">
-      <div class="col-md-3 col-sm-6">
-        <div class="input-box-secondary">
-          <span>Gerencia</span>
-          <select name="" id="dat_des_gerencia" disabled>
-          </select>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-6">
-        <div class="input-box-secondary">
-          <span>Planta</span>
-          <select name="" id="dat_des_planta" disabled>
-          </select>
-        </div>
-      </div>      
-      <div class="col-md-3 col-sm-6">
-        <div class="input-box-secondary">
-          <span>Área</span>
-          <select name="" id="dat_des_area" disabled>
-          </select>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-6">
-        <div class="input-box-secondary">
-          <span>ID de atención médica</span>
-          <input name="" id="dat_des_id_atencion_med" disabled>          
-        </div>
-      </div>
-    </div>
-
-    <div class="row mb-5">
-      <div class="col-md-3 col-sm-6">
-        <div class="input-box-secondary">
-          <span>Estado</span>
-          <select name="" id="dat_des_estado" disabled>
-          </select>
-        </div>
-      </div>      
-    </div>
-    <hr class="mb-5 mt-4" />  
-    <!-- Fin Datos del trabajador -->
-
-    <!-- Adjuntar -->
-<!--     <div class="row mb-5">
-      <div class="col-md-12">
-        <span class="titulo">Adjuntar archivos</span>
-      </div>
-      <div class="col-md-12 border d-flex justify-content-center">
-        <div class="col-md-6 m-5">
-          <button type="button" class="btn btn-success btn-lg btn-block"> 
-            Subir archivo
-            <img class="inject-svg" src="./images/sho/upload.svg" alt="" fill="#fff" width="18px">
-          </button>            
-        </div>
-      
-      </div>
-    </div> -->
-    <!-- Adjuntar fin -->
-
-    <!-- Adjuntar error-->
-    <div class="row mb-5">
-      <div class="col-md-12">
-        <span class="titulo">Adjuntar archivos</span>
-      </div>
-      <div class="col-md-12 border rounded d-flex justify-content-center border-danger table-danger m-3">        
-        <div class="col-md-3 m-3">
-          <p class="font-weight-bold text-danger">
-            No hay archivos adjuntos
-            <img class="inject-svg" src="./images/sho/advertencia.svg" alt="" fill="#ff4040" width="18px">
-          </p>            
-        </div>      
-  
-      </div>
-    </div>
-    <!-- Adjuntar error fin -->
-
-
-    <!-- Datos del descanso -->
-    <div class="row mb-5 d-flex justify-content-between">
-      <div class="col-md-6 col-sm-6 p-2">
-        <span class="titulo">Datos del descanso</span>
-      </div>
-      <div class=" col-md-3 col-sm-6  p-2">
-        <button onclick="" type="button" class="btn btn-info btn-block btn-lg" id=""> 
-          Imprimir descanso
-          <img class="inject-svg" src="./images/sho/print.svg" alt="" fill="#fff" width="18px">
-        </button>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-md-3 col-sm-6">
-        <div class="input-box-secondary">
-          <span>Personal de salud</span>
-          <input type="text" id="dat_des_personal_salud" disabled>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-6">
-        <div class="input-box-secondary">
-          <span>Tipo de contingencia</span>
-          <select id="dat_des_tipo_contingencia" disabled=""></select>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-6">
-        <div class="input-box-secondary">
-          <span>¿Descanso por enfermedad?</span>
-          <select id="dat_des_descanso_enfermedad" disabled=""></select>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-4">
-        <div class="input-box-secondary">
-          <span>CMP</span>
-          <input type="text" id="dat_des_" disabled>
-        </div>
-      </div>     
-    </div>
-
-    <div class="row">
-      <div class="col-md-3 col-sm-4">
-        <div class="input-box-secondary">
-          <span>Cantidad de días</span>
-          <input type="text" id="" disabled>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-4">
-        <div class="input-box-secondary">
-          <span>Días acumulados</span>
-          <input type="text" id="" disabled>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-6">
-        <div class="input-box-secondary">
-          <span>Fecha de inicio</span>
-          <input type="date" id="dat_des_fi" disabled>
-        </div>
-      </div>
       <div class="col-md-3 col-sm-4">
         <div class="input-box-secondary">
           <span>Fecha fin</span>
-          <input type="date" id="dat_des_ff" disabled>
+          <input type="text" id="dat_des_ff" disabled>
         </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Dias</span>
+          <input type="text" id="dat_des_dias" disabled>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Acumulado</span>
+          <input type="text" id="dat_des_acumulado" disabled>
+        </div>
+      </div>
       </div>
     </div>
 
     <div class="row">
       <div class="col-md-3 col-sm-6">
         <div class="input-box-secondary">
-          <span>¿Hubo alta médica?</span>
-          <select name="" id="dat_des_alta_med" disabled>
-          </select>
+          <span>Puesto de trabajo</span>
+          <input type="text" id="dat_des_puesto" disabled>
         </div>
       </div>
-      <div class="col-md-6 col-sm-6">
-        <div class="input-box-secondary">
-          <span>Establecimiento de emisión del descanso</span>
-          <select name="" id="dat_des_establecimiento_emisión" disabled>
-          </select>
-        </div>
-      </div>      
+
       <div class="col-md-3 col-sm-6">
         <div class="input-box-secondary">
-          <span>Particular</span>
-          <input name="" id="dat_des_particular" disabled>          
+          <span>Tipo de contingencia</span>
+          <select name="" id="dat_des_contingenci" disabled>
+          </select>
         </div>
       </div>
     </div>
-    <hr class="mb-5 mt-4" />  
-    <!-- Fin Datos del descanso -->
+    <hr class="mb-5 mt-4" />
 
-    <!-- Adjuntar 2-->
-<!--     <div class="row mb-5">
-      <div class="col-md-12">
-        <span class="titulo">Adjuntar archivos</span>
-      </div>
-      <div class="col-md-12 border d-flex justify-content-center">
-        <div class="col-md-6 m-5">
-          <button type="button" class="btn btn-success btn-lg btn-block"> 
-            Subir archivo
-            <img class="inject-svg" src="./images/sho/upload.svg" alt="" fill="#fff" width="18px">
-          </button>            
-        </div>
-      
-      </div>
-    </div> -->
-    <!-- Adjuntar 2 fin -->
-
-    <!-- Adjuntar error-->
+    <!-- Asginación -->
     <div class="row mb-5">
-      <div class="col-md-12">
-        <span class="titulo">Adjuntar archivos</span>
-      </div>
-      <div class="col-md-12 border rounded d-flex justify-content-center border-danger table-danger m-3">        
-        <div class="col-md-3 m-3">
-          <p class="font-weight-bold text-danger">
-            No hay archivos adjuntos
-            <img class="inject-svg" src="./images/sho/advertencia.svg" alt="" fill="#ff4040" width="18px">
-          </p>            
-        </div>      
-  
+      <div class="col-md-12 box">
+        <span class="titulo">Asignación de DM-SHO</span>
       </div>
     </div>
-    <!-- Adjuntar error fin -->
 
-    <!-- Diagnostico CIE 10 -->  
+    <div class="row d-flex justify-content-between">
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Nro de documento</span>
+          <input type="text" id="dat_des_nro_doc" disabled>
+        </div>
+      </div>
+
+      <div class="col-md-3 col-sm-6">
+        <button class="btn btn-success btn-lg btn-block" id="dat_des_buscar">Buscar</button>
+      </div>
+    </div>
+    <hr class="mb-5 mt-4" />
+    <!-- FIN Asginación -->
+
+    <!-- DIAGNOSTICO CIE 10 -->  
     <div class="row mb-5">
       <div class="col-md-12">
         <span class="titulo">Diagnóstico CIE 10</span>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-md-3 col-sm-6">
-        <div class="input-box-secondary">
-          <span>Diagnostico</span>
-          <input type="text" id="dat_des_diagnostico" disabled>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-6">
-        <div class="input-box-secondary">
-          <span>CIE 10</span>
-          <select id="dat_des_cie10" disabled></select> 
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-6">
-        <div class="input-box-secondary">
-          <span>Sistema afectado</span>
-          <select id="dat_des_sis_afectado" disabled></select>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-4">
-        <div class="input-box-secondary">
-          <span>Sección afectada</span>
-          <select id="dat_des_sec_afectada" disabled></select>
-        </div>
-      </div>     
-    </div>
-
-    <div class="row mb-5 d-flex flex-row-reverse">
-      <div class=" col-md-2 col-sm-6 p-2">
-        <button onclick="" type="button" class="btn btn-success btn-block btn-lg" id=""> 
-          Agregar a la lista 
-          <img class="inject-svg" src="./images/sho/plus.svg" alt="" fill="#fff" width="18px">
-        </button>
       </div>
     </div>
 
@@ -326,42 +130,41 @@
           <span class="cantidad ml-3" style="font-size: 15px">1 registros</span>
         </div>
       </div>
-
       <div class="col-md-12">
         <div class="table-responsive">
-          <table class="table-box" id="table_hso">
+          <table class="table-box" id="table_sap">
             <thead>
               <tr>
+                <th>Codigo descanso</th>
+                <th>Nro de documento</th>
+                <th>Fecha de inicio</th>
+                <th>Fecha fin</th>
+                <th>Días</th>
+                <th>Tipo de contingencia</th>
                 <th>Diagnostico</th>
-                <th>CIE 10</th>
-                <th>Fecha de registro</th>
-                <th>Especialidad</th>
-                <th>Sistema afectado</th>
-                <th>Sección afectada</th>
                 <th></th>
               </tr>
             </thead>
-            <tbody id="content_hso_diagnostico">
-              <tr>
-                <td>Diagnostico 1</td>
-                <td>Tipo 1</td>
-                <td>10/02/2021</td>
-                <td>Especialidad 1</td>
-                <td>Sistema 1</td>
-                <td>Seccion 1</td>
-                <td>
-                  <img class="inject-svg" src="./images/sho/delete.svg" alt="" fill="#ff3636" width="18px">
-                </td>
-              </tr>  
+            <tbody id="content_sap_diagnostico">
+              <td>COD0001</td>
+              <td>13123241</td>
+              <td>10/02/2021</td>
+              <td>20/02/2021</td>
+              <td>10</td>
+              <td>Tipo 1</td>
+              <td>Diagnostico 1</td>
+              <td>
+                <img class="inject-svg" src="./images/sho/confirm.svg" alt="" fill="#8fbb02" width="18px">
+              </td>
             </tbody>
           </table>
         </div>
-
       </div>
     </div>
-    <!-- FIN DIAGNOSTICO CIE 10 -->
+  
+  <!-- FIN DIAGNOSTICO CIE 10 -->
   </div>
-  <!-- FIN HSO Forms -->
+  <!-- FIN SAP Forms -->
 </div>
 
 <script src="./view/sho-hce/descansos_medicos/js/main.js"></script>
