@@ -773,6 +773,10 @@ select:disabled {
     margin-bottom: 20px;
 }
 
+.multiselect-container{
+  width: 100%;
+}
+
 .multiselect_label{
   posisition: absolute;
   top: 5px;
@@ -785,4 +789,3 @@ select:disabled {
 .btn-group{
   width: 100%;
 }
-/*Multiselect class personalizadas fin*/

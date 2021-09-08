@@ -1,0 +1,201 @@
+<!-- Boostrap multiselect -->
+<link rel="stylesheet" href="./view/sho-hce/accidentes_trabajo/css/bootstrap-multiselect.css" type="text/css"/>
+<link rel="stylesheet" href="./view/sho-hce/accidentes_trabajo/css/sho.css">
+<!-- <link rel="stylesheet" href="css/sweetalert2.css"> -->
+
+<div class="container main-content">
+  <!-- Formulario  -->
+  <div>
+    <div class="row mb-5 d-flex align-items-center">
+      <div class="col-md-6 col-sm-6 mr-auto p-2">
+        <span class="titulo">Prevalencia de enfermedades de atenciones de DSO</span>
+      </div>
+      <!--       <div class=" col-md-2 col-sm-6  p-2">
+        <button onclick="" type="button" class="btn btn-danger btn-block btn-lg" id="fn_hc_cancelar"> Cancelar <img class="inject-svg" src="./images/sho/cancelar.svg" alt="" fill="#fff" width="18px">
+        </button>
+      </div>
+      <div class="col-md-2 col-sm-6  p-2">
+        <button type="button" class="btn btn-success btn-block btn-lg" onclick="intSp3ConfirmGuardarHSO()"> Guardar <img class="inject-svg" src="./images/sho/confirm.svg" alt="" fill="#fff" width="18px">
+        </button>
+      </div> -->
+    </div>
+    <!-- Fila 1  -->
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Año</span>
+          <input type="date" id="dat_prevalenciaDSO_ano" disabled>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Mes desde</span>
+          <input type="date" id="dat_prevalenciaDSO_mesd" disabled>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Mes hasta</span>
+          <input type="date" id="dat_prevalenciaDSO_mesh" disabled>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-4">
+        <div class="input-box-secondary">
+          <span>Gerencia</span>
+          <select name="" id="dat_prevalenciaDSO_gerencia"></select>
+        </div>
+      </div>     
+    </div>
+    <!-- FIN Fila 1 -->
+    <!-- Fila 2 -->
+    <div class="row">
+      <div class="col-md-3 col-sm-4">
+        <div class="input-box-secondary">
+          <span>Sede</span>
+          <select name="" id="dat_prevalenciaDSO_sede"></select>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Área</span>
+          <select name="" id=""></select>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-4">
+        <div class="input-box-secondary">
+          <span>Puesto de trabajo</span>
+          <select name="" id="dat_prevalenciaDSO_Ptrab" ></select>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+          <select id="dat_prevalenciaDSO_especialidades" multiple="multiple">
+              <option value="especialidades1">especialidades 1</option>
+              <option value="especialidades2">especialidades 2</option>
+              <option value="especialidades3">especialidades 3</option>
+              <option value="especialidades4">especialidades 4</option>
+              <option value="especialidades5">especialidades 5</option>
+          </select>
+      </div>      
+    </div>
+    <!-- FIN Fila 2 -->
+
+    <!-- Fila 3 -->
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Diagnóstico</span>
+          <select name="" id="dat_prevalenciaDSO_diag">
+          </select>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>DNI Paciente</span>
+          <select name="" id="dat_prevalenciaDSO_dni">
+          </select>
+        </div>
+      </div>      
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Edad</span>
+          <input type="number" name="" id="dat_prevalenciaDSO_edad">          
+        </div>
+      </div>      
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Sexo</span>
+          <select name="" id="dat_prevalenciaDSO_sex">
+          </select>
+        </div>
+      </div>
+    </div>
+    <!-- FIN Fila 3 -->
+    <!-- Fila 4 -->    
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Sistema afectado</span>
+          <select name="" id="dat_prevalenciaDSO_sisa">
+          </select>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Sección afectada</span>
+          <select name="" id="dat_prevalenciaDSO_seca">
+          </select>
+        </div>
+      </div>      
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>TASA/ tercero</span>
+          <input type="" name="" id="dat_prevalenciaDSO_tasater">          
+        </div>
+      </div>      
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>TASA/ empresa</span>
+          <select name="" id="dat_prevalenciaDSO_tasaemp">
+          </select>
+        </div>
+      </div>
+    </div>
+    <!-- FIN Fila 4 -->
+    <!-- Fila 5 -->    
+    <div class="row mb-5">
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Tipo de contingencia</span>
+          <select name="" id="dat_prevalenciaDSO_contingencia">
+          </select>
+        </div>
+      </div>
+    </div>
+    <!-- FIN Fila 5 -->
+    <!-- <hr class="mb-5 mt-4" /> -->  
+    <!-- Fin Formulario -->
+
+    <!-- Grafica 1 -->
+    <div class="row mb-5">
+      <div class="col-md-12">
+        <span class="titulo">Resultado de indicadores</span>
+      </div>
+      <div class="col-md-12 d-flex justify-content-center" id="dat_prevalenciaDSO_graphic1">
+      
+      </div>
+    </div>
+    <!-- Grafica 1 fin -->
+
+    <!-- Grafica 2 -->
+    <div class="row mb-5">
+      <div class="col-md-12">
+        <span class="titulo">Resultado de indicadores</span>
+      </div>
+      <div class="col-md-12 d-flex justify-content-center" id="dat_prevalenciaDSO_graphic2">
+      
+      </div>
+    </div>
+    <!-- Grafica 2 fin -->
+
+</div>
+
+<script src="./view/sho-hce/accidentes_trabajo/js/main.js"></script>
+<!-- Boostrap multiselect -->
+<script type="text/javascript" src="./view/sho-hce/accidentes_trabajo/js/bootstrap-multiselect.js"></script>
+
+<script type="text/javascript">
+$(document).ready(() => {
+  SVGInject($(".inject-svg"));
+});
+
+$(document).ready(function() {
+    $('#dat_prevalenciaDSO_especialidades').multiselect();
+    $('.multiselect').append(`
+      <span class="multiselect_label">Especialidades</span>
+    `)
+});
+</script>
+
+<script src="js/sweetalert2.js"></script>
+<script src="js/jquery.mask.min.js"></script>
+<script src="js/svg-inject.min.js"></script>
