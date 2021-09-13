@@ -1,0 +1,797 @@
+<!-- Boostrap multiselect -->
+<link rel="stylesheet" href="./view/sho-hce/sp4_accidentes_trabajo/css/bootstrap-multiselect.css" type="text/css"/>
+<link rel="stylesheet" href="./view/sho-hce/sp4_accidentes_trabajo/css/sho.css">
+<!-- <link rel="stylesheet" href="css/sweetalert2.css"> -->
+
+<div class="container main-content">
+  <div>
+    <!-- Titulos  -->
+    <div class="row mb-5 d-flex justify-content-between align-items-center">
+      <div class="p-2 mr-auto">
+        <span class="titulo">Datos del trabajador</span>
+      </div>
+
+      <div class=" col-md-4 col-sm-6  p-2">
+        <button onclick="" type="button" class="btn btn-info btn-block btn-lg" id=""> Cerrar accidente de Trabajo <img class="inject-svg" src="./images/sho/confirm.svg" alt="" fill="#fff" width="18px">
+        </button>
+      </div>
+
+      <div class=" col-md-2 col-sm-6  p-2">
+        <button onclick="" type="button" class="btn btn-danger btn-block btn-lg" id=""> Cancelar <img class="inject-svg" src="./images/sho/cancelar.svg" alt="" fill="#fff" width="18px">
+        </button>
+      </div>
+
+      <div class="col-md-2 col-sm-6  p-2">
+        <button type="button" class="btn btn-success btn-block btn-lg" onclick="intSp3ConfirmGuardarHSO()"> Guardar <img class="inject-svg" src="./images/sho/confirm.svg" alt="" fill="#fff" width="18px">
+        </button>
+      </div>
+    </div>
+    <!-- Titulos  -->
+    <!-- Fila 1 -->
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Nro de documento</span>
+          <input type="" id="dat_actrab_sp4_nro_doc">
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Nombres</span>
+          <input type="date" id="dat_actrab_sp4_nom">
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Apellidos</span>
+          <input type="date" id="dat_actrab_sp4_ape">
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Fecha de nacimiento</span>
+          <input type="date" id="dat_actrab_sp4_fecnac">
+        </div>
+      </div>
+    </div>                    
+    <!-- Fila 1 fin -->
+    <!-- Fila 2 -->
+    <div class="row">
+      <div class="col-md-2 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Edad</span>
+          <input type="" id="dat_actrab_sp4_edad">
+        </div>
+      </div>
+      <!-- <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Nombres</span>
+          <input type="date" id="">
+        </div>
+      </div> -->
+      <div class="col-md-3 col-sm-6 offset-md-4">
+        <div class="input-box-secondary">
+          <span>Fecha de ingreso a TASA</span>
+          <input type="date" id="dat_actrab_sp4_fi_tasa">
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Fecha de retiro</span>
+          <input type="date" id="dat_actrab_sp4_fr_tasa">
+        </div>
+      </div>
+    </div>                    
+    <!-- Fila 2 fin -->
+    <!-- Fila 3 -->
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Gerencia</span>
+          <select name="" id="dat_actrab_sp4_gerencia"></select>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Planta</span>
+          <select name="" id="dat_actrab_sp4_planta"></select>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Área</span>
+          <select name="" id="dat_actrab_sp4_area"></select>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Puesto de trabajo</span>
+          <select name="" id="dat_actrab_sp4_ptrab"></select>
+        </div>
+      </div>
+    </div>                    
+    <!-- Fila 3 fin -->
+
+    <!-- Adjuntar -->
+    <div class="row mb-5">
+      <div class="col-md-12 mb-5">
+        <span class="titulo">Adjuntar AIT</span>
+      </div>
+      <div class="col-md-12 border d-flex justify-content-center">
+        <div class="col-md-6 m-5">
+          <button type="button" class="btn btn-success btn-lg btn-block" id="dat_des_ad_1"> 
+            Subir archivo
+            <img class="inject-svg" src="./images/sho/upload.svg" alt="" fill="#fff" width="18px">
+          </button>            
+        </div>      
+      </div>
+    </div>
+    <hr class="mb-5 mt-4" />
+    <!-- Adjuntar fin -->
+
+    <!-- Datos del accidente -->
+    <div class="row mb-5">
+      <div class="col-md-12">
+        <span class="titulo"> Datos del accidente</span>
+      </div>
+    </div>
+    <!-- Fila 1 -->
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Accidente de trabajo</span>
+          <select name="" id="dat_actrab_sp4_actrab"></select>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Fecha de registro</span>
+          <input type="date" id="dat_actrab_sp4_actrab_fr">
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Fecha de accidente</span>
+          <input type="date" id="dat_actrab_sp4_actrab_fa">
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>hora de accidente</span>
+          <input type="date" id="dat_actrab_sp4_actrab_ha">
+        </div>
+      </div>
+    </div>                    
+    <!-- Fila 1 fin-->
+    <!-- Fila 2 -->
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Lugar de accidente</span>
+          <input type="" id="dat_actrab_sp4_actrab_la">
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Estado</span>
+          <select name="" id="dat_actrab_sp4_actrab_estado"></select>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Jefe directo de TASA</span>
+          <input type="" id="dat_actrab_sp4_actrab_jefe_tasa">
+        </div>
+      </div>
+    </div>                    
+    <!-- Fila 2 fin-->
+    <!-- Fila 3 -->
+    <div class="row">
+      <div class="col-md-12">
+        <div class="input-box-secondary">
+          <span>Anamnesis</span>
+          <input name="" id="dat_actrab_sp4_actrab_anem"></select>
+        </div>
+      </div>
+    </div>
+    <hr class="mb-5 mt-4" />                    
+    <!-- Fila 3 fin -->
+    <!-- Datos del accidente fin-->
+
+    <!-- Examen físico -->
+    <div class="row mb-5">
+      <div class="col-md-12">
+        <span class="titulo"> Datos del accidente</span>
+      </div>
+    </div>
+    <!-- Fila 1 -->
+    <div class="row">
+      <div class="col-md-2 col-sm-6">
+        <img class="inject-svg" src="./images/sho/arterial.svg" alt="" fill="#ff2e2e" width="18px">
+        <span>Presion arterial</span>
+      </div>
+      <div class="col-md-1 col-sm-6">
+        <div class="input-box-secondary">
+          <input type="" name="" id="dat_actrab_sp4_datac_pa"></select>
+        </div>
+      </div>
+      <div class="col-md-2 col-sm-6">
+        <img class="inject-svg" src="./images/sho/cardiaca.svg" alt="" fill="#ff2e2e" width="18px">
+        <span>Frecuencia cardiaca</span>
+      </div>
+      <div class="col-md-1 col-sm-6">
+        <div class="input-box-secondary">
+          <input type="" name="" id="dat_actrab_sp4_datac_fc"></select>
+        </div>
+      </div>
+      <div class="col-md-2 col-sm-6">
+        <img class="inject-svg" src="./images/sho/respiratoria.svg" alt="" fill="#00baff" width="18px">
+        <span>Frecuencia respiratoria</span>
+      </div>
+      <div class="col-md-1 col-sm-6">
+        <div class="input-box-secondary">
+          <input type="" name="" id="dat_actrab_sp4_datac_fr"></select>
+        </div>
+      </div>
+      <div class="col-md-2 col-sm-6">
+        <img class="inject-svg" src="./images/sho/saturacion.svg" alt="" fill="#ff2e2e" width="18px">
+        <span>Saturación O2 </span>
+      </div>
+      <div class="col-md-1 col-sm-6">
+        <div class="input-box-secondary">
+          <input type="" name="" id="dat_actrab_sp4_datac_sat"></select>
+        </div>
+      </div>  
+    </div>                    
+    <!-- Fila 1 fin-->
+    <!-- Fila 2 -->
+    <div class="row">
+      <div class="col-md-6">
+        <div class="input-box-secondary">
+          <span>LOTEP</span>
+          <input name="" id="dat_actrab_sp4_datac_lotep"></select>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="input-box-secondary">
+          <span>AREN</span>
+          <input name="" id="dat_actrab_sp4_datac_aren"></select>
+        </div>
+      </div>
+    </div>                    
+    <!-- Fila 2 fin -->
+    <!-- Fila 3 -->
+    <div class="row">
+      <div class="col-md-6">
+        <div class="input-box-secondary">
+          <span>AREG</span>
+          <input name="" id="dat_actrab_sp4_datac_areg"></select>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="input-box-secondary">
+          <span>AREH</span>
+          <input name="" id="dat_actrab_sp4_datac_areh"></select>
+        </div>
+      </div>
+    </div>                    
+    <!-- Fila 3  fin-->
+    <!-- Examen físico fin -->
+
+    <!-- Zona afectada  -->
+    <div class="row mb-5 d-flex align-items-center">
+      <div class="col-md-12">
+        <span class="titulo">Zona afectada</span>
+      </div>
+    </div>
+    <div class="row mb-5 d-flex align-items-center">
+      <div class="col-md-3">
+        <div class="input-box-secondary">
+          <span>Zona afetada</span>
+          <input name="" id="dat_actrab_sp4_zonafect">
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="input-box-secondary">
+          <span>Descripción</span>
+          <input name="" id="dat_actrab_sp4_zonafect_dsc">
+        </div>
+      </div>
+
+      <div class="col-md-3 col-sm-6">
+        <button type="button" class="btn btn-success btn-block btn-lg"> 
+          Agregar a la lista 
+          <img class="inject-svg" src="./images/sho/plus.svg" alt="" fill="#fff" width="18px">
+        </button>
+      </div>
+
+      <!-- Nro de registros -->
+      <div class="col-md-12">
+        <div class="d-flex justify-content-end">
+          <div id="cant_planes">
+            <img src="images/iconos/copia-1.svg" style="width: 20px" />
+          </div>
+          <span class="cantidad ml-3" style="font-size: 15px">1 registros</span>
+        </div>
+      </div>             
+
+      <div class="table-responsive">
+        <table class="table-box" id="table_dat_actrab_sp4_zonafect">
+          <thead>
+            <tr>
+              <th>Zona afectada</th>
+              <th>Descripción</th>
+              <th width="500px"></th>
+              <th></th>
+            </tr>
+          </thead>
+            <tbody id="content_dat_actrab_sp4_zonafect">
+              <tr>
+                <td>Zona afectada 1</td>
+                <td>Descripción 1</td>
+                <td width="500px"></td>
+                <td><img class="inject-svg" src="./images/sho/delete.svg" alt="" fill="#ff3636" width="18px"></td>
+            </tr>  
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <hr class="mb-5 mt-4" />
+    <!-- Zona afectada  fin -->
+
+    <!-- Diagnostico CIE10 -->
+    <div class="row mb-5 d-flex align-items-center">
+      <div class="col-md-12">
+        <span class="titulo">Diagnostico CIE10</span>
+      </div>
+    </div>
+    <div class="row mb-5 d-flex align-items-center">
+      <div class="col-md-3">
+        <div class="input-box-secondary">
+          <span>Diagnóstico</span>
+          <select name="" id="dat_actrab_sp4_diagCIE10_diag"></select>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="input-box-secondary">
+          <span>CIE10</span>
+          <select name="" id="dat_actrab_sp4_diagCIE10_cie10"></select>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="input-box-secondary">
+          <span>Sistema afectado</span>
+          <select name="" id="dat_actrab_sp4_diagCIE10_sisa"></select>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="input-box-secondary">
+          <span>Sección afectada</span>
+          <select name="" id="dat_actrab_sp4_diagCIE10_seca"></select>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row mb-5 d-flex justify-content-end ">
+      <div class="col-md-3 col-sm-6">
+          <button type="button" class="btn btn-success btn-block btn-lg"> 
+            Agregar a la lista 
+            <img class="inject-svg" src="./images/sho/plus.svg" alt="" fill="#fff" width="18px">
+        </button>
+      </div>
+    </div>
+
+    <div class="row mb-5">
+      <!-- Nro de registros -->
+      <div class="col-md-12">
+        <div class="d-flex align-items-center">
+          <div id="cant_planes">
+            <img src="images/iconos/copia-1.svg" style="width: 20px" />
+          </div>
+          <span class="cantidad ml-3" style="font-size: 15px">1 registros</span>
+        </div>
+      </div>             
+
+      <div class="table-responsive">
+        <table class="table-box" id="table_dat_actrab_sp4_diagCIE10">
+          <thead>
+            <tr>
+              <th>Diagnóstico </th>
+              <th>CI10</th>
+              <th>Fecha de registro</th>
+              <th>Especialidad</th>
+              <th>Sistema afectado</th>
+              <th width="500px">Seccion afectada</th>
+              <th></th>
+            </tr>
+          </thead>
+            <tbody id="content_dat_actrab_sp4_diagCIE10">
+              <tr>
+                <td>Diagnóstico 1</td>
+                <td>Tipo 1</td>
+                <td>12/7/2021</td>
+                <td>Especialidad </td>
+                <td>Sistema 1</td>
+                <td width="500px">Seccion 1</td>
+                <td><img class="inject-svg" src="./images/sho/delete.svg" alt="" fill="#ff3636" width="18px"></td>
+            </tr>  
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <hr class="mb-5 mt-4" />
+    <!-- Diagnostico CIE10 fin -->
+    <!-- Atencion en DSO  -->
+    <div class="row mb-5 d-flex align-items-center">
+      <div class="col-md-12">
+        <span class="titulo">Atencion en DSO</span>
+      </div>
+    </div>
+    <div class="row mb-5 d-flex align-items-center">
+      <div class="col-md-3">
+        <div class="input-box-secondary">
+          <span>Registro de atencion</span>
+          <input name="" id="dat_actrab_sp4_atDSO"></select>
+        </div>
+      </div>
+
+      <div class="col-md-3 col-sm-6 offset-md-6">
+        <button type="button" class="btn btn-success btn-block btn-lg"> 
+          Agregar a la lista 
+          <img class="inject-svg" src="./images/sho/plus.svg" alt="" fill="#fff" width="18px">
+        </button>
+      </div>
+
+      <!-- Nro de registros -->
+      <div class="col-md-12">
+        <div class="d-flex justify-content-end">
+          <div id="cant_planes">
+            <img src="images/iconos/copia-1.svg" style="width: 20px" />
+          </div>
+          <span class="cantidad ml-3" style="font-size: 15px">1 registros</span>
+        </div>
+      </div>             
+
+      <div class="table-responsive">
+        <table class="table-box" id="table_dat_actrab_sp4_AtDSO">
+          <thead>
+            <tr>
+              <th>Detalle de atención</th>
+              <th>Fecha de registro</th>
+              <th width="500px">Hora de registro</th>
+              <th></th>
+            </tr>
+          </thead>
+            <tbody id="content_dat_actrab_sp4_AtDSO">
+              <tr>
+                <td>Zona afectada 1</td>
+                <td>21/12/2021</td>
+                <td width="500px">1:00</td>
+                <td><img class="inject-svg" src="./images/sho/delete.svg" alt="" fill="#ff3636" width="18px"></td>
+            </tr>  
+          </tbody>
+        </table>
+      </div>
+    </div>        
+    <hr class="mb-5 mt-4" />
+    <!-- Atencion en DSO  fin -->
+
+    <!-- Transferencia -->
+    <!-- Titulo   -->
+    <div class="row mb-5 d-flex justify-content-between align-items-center">
+      <div class="p-2 mr-auto">
+        <span class="titulo">Transferencia</span>
+      </div>
+
+      <div class=" col-md-4 col-sm-6  p-2">
+        <button onclick="" type="button" class="btn btn-info btn-block btn-lg" id=""> Imprimir descanso <img class="inject-svg" src="./images/sho/print.svg" alt="" fill="#fff" width="18px">
+        </button>
+      </div>      
+    </div>
+    <!-- Titulo  Fin -->
+
+    <!-- Fila 1 -->
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Motivio de transferencia</span>
+          <select name="" id="dat_actrab_sp4_transf_motivo"></select>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Recepción</span>
+          <select name="" id="dat_actrab_sp4_transf_recepcion"></select>
+        </div>
+      </div>
+    </div>                    
+    <!-- Fila 1 fin -->
+    <!-- Adjuntar -->
+    <div class="row mb-5">
+      <div class="col-md-12 mb-5">
+        <span class="titulo">Adjuntar Archivos</span>
+      </div>
+      <div class="col-md-12 border d-flex justify-content-center">
+        <div class="col-md-6 m-5">
+          <button type="button" class="btn btn-success btn-lg btn-block" id="dat_des_ad_1"> 
+            Subir archivo
+            <img class="inject-svg" src="./images/sho/upload.svg" alt="" fill="#fff" width="18px">
+          </button>            
+        </div>      
+      </div>
+    </div>
+    <!-- Adjuntar fin -->
+    <!-- Transferencia fin-->
+
+    <!-- Diagnostico CIE10 2 -->
+    <div class="row mb-5 d-flex align-items-center">
+      <div class="col-md-12">
+        <span class="titulo">Diagnostico CIE10</span>
+      </div>
+    </div>
+    <div class="row mb-5 d-flex align-items-center">
+      <div class="col-md-3">
+        <div class="input-box-secondary">
+          <span>Diagnóstico</span>
+          <select name="" id="dat_actrab_sp4_diagCIE10_diag2"></select>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">  
+      <div class="col-md-3">
+        <div class="input-box-secondary">
+          <span>CIE10</span>
+          <select name="" id="dat_actrab_sp4_diagCIE10_cie102"></select>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="input-box-secondary">
+          <span>Sistema afectado</span>
+          <select name="" id="dat_actrab_sp4_diagCIE10_sisa2"></select>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="input-box-secondary">
+          <span>Sección afectada</span>
+          <select name="" id="dat_actrab_sp4_diagCIE10_seca2"></select>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row mb-5 d-flex justify-content-end ">
+      <div class="col-md-3 col-sm-6">
+          <button type="button" class="btn btn-success btn-block btn-lg"> 
+            Agregar a la lista 
+            <img class="inject-svg" src="./images/sho/plus.svg" alt="" fill="#fff" width="18px">
+        </button>
+      </div>
+    </div>
+
+    <div class="row mb-5">
+      <!-- Nro de registros -->
+      <div class="col-md-12">
+        <div class="d-flex align-items-center">
+          <div id="cant_planes">
+            <img src="images/iconos/copia-1.svg" style="width: 20px" />
+          </div>
+          <span class="cantidad ml-3" style="font-size: 15px">1 registros</span>
+        </div>
+      </div>             
+
+      <div class="table-responsive">
+        <table class="table-box" id="table_dat_actrab_sp4_diagCIE10_2">
+          <thead>
+            <tr>
+              <th>Diagnóstico </th>
+              <th>CI10</th>
+              <th>Fecha de registro</th>
+              <th>Especialidad</th>
+              <th>Sistema afectado</th>
+              <th width="500px">Seccion afectada</th>
+              <th></th>
+            </tr>
+          </thead>
+            <tbody id="content_dat_actrab_sp4_diagCIE10_2">
+              <tr>
+                <td>Diagnóstico 1</td>
+                <td>Tipo 1</td>
+                <td>12/7/2021</td>
+                <td>Especialidad </td>
+                <td>Sistema 1</td>
+                <td width="500px">Seccion 1</td>
+                <td><img class="inject-svg" src="./images/sho/delete.svg" alt="" fill="#ff3636" width="18px"></td>
+            </tr>  
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="input-box-secondary">
+          <span>Tratamiento</span>
+          <input type="" name="" id="dat_actrab_sp4_tratamiento_t">
+        </div>
+      </div>  
+
+      <div class="col-md-3">
+        <div class="input-box-secondary">
+          <span>Recibido por:</span>
+          <input type="" name="" id="dat_actrab_sp4_tratamiento_recibido">
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="input-box-secondary">
+          <span>Lugar de destino</span>
+          <input type="" name="" id="dat_actrab_sp4_tratamiento_lugarD">
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="input-box-secondary">
+          <span>Fecha</span>
+          <input type="date" name="" id="dat_actrab_sp4_tratamiento_fecha">
+        </div>
+      </div>
+    </div>
+    <hr class="mb-5 mt-4" />
+    <!-- Diagnostico CIE10 2 fin -->
+
+    <!-- Información -->
+    <div class="row mb-5 d-flex align-items-center">
+      <div class="col-md-6 col-sm-6 mr-auto p-2">
+        <span class="titulo">Información</span>
+      </div>
+    </div>
+
+    <!-- Nav-tabs -->
+    <div class="row mb-5">
+      <div class="col-md-12">
+        <ul class="nav nav-pills mb-5" id="myTab" role="tablist">
+          <li class="nav-item  mb-3">
+            <a class="nav-link active" id="des_med-tab" data-toggle="tab" href="#des_med" role="tab" aria-controls="des_med" aria-selected="true">Descanso médico</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="transf-tab" data-toggle="tab" href="#transf" role="tab" aria-controls="transf" aria-selected="false">Transferencias</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="reg_seg-tab" data-toggle="tab" href="#reg_seg" role="tab" aria-controls="reg_seg" aria-selected="false">Registro de seguimiento</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="alt_esp-tab" data-toggle="tab" href="#alt_esp" role="tab" aria-controls="alt_esp" aria-selected="false">Altas de especialidades</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="infor_med-tab" data-toggle="tab" href="#infor_med" role="tab" aria-controls="infor_med" aria-selected="false">Informes médicos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="exam_aux-tab" data-toggle="tab" href="#exam_aux" role="tab" aria-controls="exam_aux" aria-selected="false">Examenes auxiliares</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="eval_post-tab" data-toggle="tab" href="#eval_post" role="tab" aria-controls="eval_post" aria-selected="false">Evaluaciones post alta médica</a>
+          </li>
+        </ul>
+        <div class="tab-content mt-5" id="myTabContent">
+          <!-- Descanso medico -->    
+          <div class="tab-pane fade show active" id="des_med" role="tabpanel" aria-labelledby="des_med-tab">
+            <div class="col-md-12 border d-flex justify-content-center">
+              <div class="col-md-6 m-5">
+                <button type="button" class="btn btn-success btn-lg btn-block" id="dat_des_ad_1"> 
+                  Nuevo descanso médico
+                  <img class="inject-svg" src="./images/sho/plus.svg" alt="" fill="#fff" width="18px">
+                </button>            
+              </div>
+            </div>                         
+          </div>
+          <!-- Descanso medico fin-->
+
+          <!-- Transferencias -->    
+          <div class="tab-pane fade" id="transf" role="tabpanel" aria-labelledby="transf-tab">
+            <div class="col-md-12 border d-flex justify-content-center">
+              <div class="col-md-6 m-5">
+                <button type="button" class="btn btn-success btn-lg btn-block" id="dat_des_ad_1"> 
+                  Nuevo descanso médico
+                  <img class="inject-svg" src="./images/sho/plus.svg" alt="" fill="#fff" width="18px">
+                </button>            
+              </div>
+            </div>                      
+          </div>
+          <!-- Transferencias fin -->
+
+          <!-- Registro de seguimiento -->    
+          <div class="tab-pane fade" id="reg_seg" role="tabpanel" aria-labelledby="reg_seg-tab">
+            <div class="col-md-12 border d-flex justify-content-center">
+              <div class="col-md-6 m-5">
+                <button type="button" class="btn btn-success btn-lg btn-block" id="dat_des_ad_1"> 
+                  Nuevo descanso médico
+                  <img class="inject-svg" src="./images/sho/plus.svg" alt="" fill="#fff" width="18px">
+                </button>            
+              </div>
+            </div>             
+          </div> 
+          <!-- Registro de seguimiento fin -->
+
+          <!-- Alta de especialidades -->
+          <div class="tab-pane fade" id="alt_esp" role="tabpanel" aria-labelledby="alt_esp-tab">
+            <div class="col-md-12 border d-flex justify-content-center">
+              <div class="col-md-6 m-5">
+                <button type="button" class="btn btn-success btn-lg btn-block" id="dat_des_ad_1"> 
+                  Nuevo descanso médico
+                  <img class="inject-svg" src="./images/sho/plus.svg" alt="" fill="#fff" width="18px">
+                </button>            
+              </div>
+            </div>            
+          </div>
+          <!-- Alta de especialidades fin -->
+
+          <!-- Informes medicos -->
+          <div class="tab-pane fade" id="infor_med" role="tabpanel" aria-labelledby="infor_med-tab">
+            <div class="col-md-12 border d-flex justify-content-center">
+              <div class="col-md-6 m-5">
+                <button type="button" class="btn btn-success btn-lg btn-block" id="dat_des_ad_1"> 
+                  Nuevo descanso médico
+                  <img class="inject-svg" src="./images/sho/plus.svg" alt="" fill="#fff" width="18px">
+                </button>            
+              </div>
+            </div>
+          </div>
+          <!-- Informes medicos fin -->
+
+          <!-- Examenes auxiliares -->
+          <div class="tab-pane fade" id="exam_aux" role="tabpanel" aria-labelledby="exam_aux-tab">
+            <div class="col-md-12 border d-flex justify-content-center">
+              <div class="col-md-6 m-5">
+                <button type="button" class="btn btn-success btn-lg btn-block" id="dat_des_ad_1"> 
+                  Nuevo descanso médico
+                  <img class="inject-svg" src="./images/sho/plus.svg" alt="" fill="#fff" width="18px">
+                </button>            
+              </div>
+            </div>
+          </div>
+          <!-- Examenes auxiliares fin -->
+
+          <!-- Evaluaciones post alta médica -->
+          <div class="tab-pane fade" id="eval_post" role="tabpanel" aria-labelledby="eval_post-tab">
+            <div class="col-md-12 border d-flex justify-content-center">
+              <div class="col-md-6 m-5">
+                <button type="button" class="btn btn-success btn-lg btn-block" id="dat_des_ad_1"> 
+                  Nuevo descanso médico
+                  <img class="inject-svg" src="./images/sho/plus.svg" alt="" fill="#fff" width="18px">
+                </button>            
+              </div>
+            </div>
+          </div>
+          <!--Evaluaciones post alta médica fin -->
+        </div>    
+                
+      </div>
+    </div>
+    <!-- Nav-tabs --> 
+    <!-- Información fin -->   
+  </div>
+</div> 
+ 
+<script src="./view/sho-hce/sp4_accidentes_trabajo/js/main.js"></script>
+<!-- Boostrap multiselect -->
+<script type="text/javascript" src="./view/sho-hce/sp4_accidentes_trabajo/js/bootstrap-multiselect.js"></script>
+
+<script type="text/javascript">
+$(document).ready(() => {
+  SVGInject($(".inject-svg"));
+});
+
+$(document).ready(function() {
+    $('#dat_impactDM_especialidades').multiselect();
+    $('.multiselect').append(`
+      <span class="multiselect_label">Especialidades</span>
+    `)
+});
+</script>
+
+<script src="js/sweetalert2.js"></script>
+<script src="js/jquery.mask.min.js"></script>
+<script src="js/svg-inject.min.js"></script>
