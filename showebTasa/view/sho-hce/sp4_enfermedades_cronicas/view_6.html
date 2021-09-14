@@ -1,0 +1,420 @@
+<!-- Boostrap multiselect -->
+<link rel="stylesheet" href="./view/sho-hce/sp4_enfermedades_cronicas/css/bootstrap-multiselect.css" type="text/css"/>
+<link rel="stylesheet" href="./view/sho-hce/sp4_enfermedades_cronicas/css/sho.css">
+<!-- <link rel="stylesheet" href="css/sweetalert2.css"> -->
+
+<div class="container main-content">
+  <div>
+    <!-- Titulos  -->
+    <div class="row mb-5 d-flex justify-content-between align-items-center">
+      <div class="p-2 mr-auto">
+        <span class="titulo">Datos del trabajador</span>
+      </div>
+
+      <!-- <div class=" col-md-4 col-sm-6  p-2">
+        <button onclick="" type="button" class="btn btn-info btn-block btn-lg" id=""> Cerrar accidente de Trabajo <img class="inject-svg" src="./images/sho/confirm.svg" alt="" fill="#fff" width="18px">
+        </button>
+      </div> -->
+
+      <div class=" col-md-2 col-sm-6  p-2">
+        <button onclick="" type="button" class="btn btn-danger btn-block btn-lg" id=""> Cancelar <img class="inject-svg" src="./images/sho/cancelar.svg" alt="" fill="#fff" width="18px">
+        </button>
+      </div>
+
+      <div class="col-md-2 col-sm-6  p-2">
+        <button type="button" class="btn btn-success btn-block btn-lg" onclick="intSp3ConfirmGuardarHSO()"> Guardar <img class="inject-svg" src="./images/sho/confirm.svg" alt="" fill="#fff" width="18px">
+        </button>
+      </div>
+    </div>
+    <!-- Titulos  -->
+    <!-- Fila 1 -->
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Nro de documento</span>
+          <input type="" id="sp4EnferCron_dat_trab_nro">
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Nombres</span>
+          <input type="date" id="sp4EnferCron_dat_trab_nombre">
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Apellidos</span>
+          <input type="date" id="sp4EnferCron_dat_trab_apellido">
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Fecha de registro</span>
+          <input type="date" id="sp4EnferCron_dat_trab_fecha_reg">
+        </div>
+      </div>
+    </div>                    
+    <!-- Fila 1 fin -->
+    <!-- Fila 2 -->
+    <div class="row">
+      <div class="col-md-2 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Edad</span>
+          <input type="" id="sp4EnferCron_dat_trab_edad">
+        </div>
+      </div>
+      <!-- <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Nombres</span>
+          <input type="date" id="">
+        </div>
+      </div> -->
+      <div class="col-md-3 col-sm-6 offset-md-4">
+        <div class="input-box-secondary">
+          <span>Fecha de ingreso a TASA</span>
+          <input type="date" id="sp4EnferCron_dat_trab_fi_tasa">
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Fecha de retiro</span>
+          <input type="date" id="sp4EnferCron_dat_trab_fr_tasa">
+        </div>
+      </div>
+    </div>                    
+    <!-- Fila 2 fin -->
+    <!-- Fila 3 -->
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Gerencia</span>
+          <select name="" id="sp4EnferCron_dat_trab_gerencia"></select>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Planta</span>
+          <select name="" id="sp4EnferCron_dat_trab_planta"></select>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Área</span>
+          <select name="" id="sp4EnferCron_dat_trab_area"></select>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Puesto de trabajo</span>
+          <select name="" id="sp4EnferCron_dat_trab_ptrab"></select>
+        </div>
+      </div>
+    </div>
+    <hr class="mb-5 mt-4" />                     
+    <!-- Fila 3 fin -->
+
+    <!-- Enfermedades crónicas  -->
+    <div class="row mb-5 d-flex align-items-center">
+      <div class="col-md-12">
+        <span class="titulo">Enfermedades crónicas</span>
+      </div>
+    </div>
+    <div class="row mb-5 d-flex align-items-center">
+      <div class="col-md-3">
+        <div class="input-box-secondary">
+          <span>Nombre de la enfermedad</span>
+          <input name="" id="sp4EnferCron_enfercro_nombre_enfermedad">
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="input-box-secondary">
+          <span>Fecha de registro</span>
+          <input type="date" name="" id="sp4EnferCron_enfercro_fecha_reg">
+        </div>
+      </div>
+    </div>
+    <hr class="mb-5 mt-4" />
+    <!-- Enfermedades crónicas fin -->
+
+    <!-- Descansos médicos -->
+    <div class="row mb-5 d-flex justify-content-between align-items-center">
+      <div class="p-2 mr-auto">
+        <span class="titulo">Descansos médicos</span>
+      </div>
+
+      <div class="col-md-2 col-sm-6  p-2">
+        <button type="button" class="btn btn-success btn-block btn-lg"> 
+          Agregar <img class="inject-svg" src="./images/sho/plus.svg" alt="" fill="#fff" width="18px">
+        </button>
+      </div>
+    </div>
+
+    <div class="row mb-5">
+      <!-- Nro de registros -->
+      <div class="col-md-12">
+        <div class="d-flex align-items-center">
+          <div id="cant_planes">
+            <img src="images/iconos/copia-1.svg" style="width: 20px" />
+          </div>
+          <span class="cantidad ml-3" style="font-size: 15px">1 registros</span>
+        </div>
+      </div>             
+
+      <div class="table-responsive">
+        <table class="table-box" id="table_sp4EnferCron_des_med">
+          <thead>
+            <tr>
+              <th>F. Inicio</th>
+              <th>F. Fin</th>
+              <th>Dias </th>
+              <th>Dias acumulados</th>
+              <th width="500px">Dias restantes</th>
+              <th></th>
+            </tr>
+          </thead>
+            <tbody id="content_sp4EnferCron_des_med">
+              <tr>
+                <td>21/10/2021</td>
+                <td>21/10/2021</td>
+                <td>20</td>
+                <td>20</td>
+                <td width="500px">20</td>
+                <td>
+                  <div class="dropdown dropleft">
+                    <a class="nav-link text-vertical" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">...</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                      <a class="dropdown-item">
+                        <img src="./images/sho/eyeIcon.svg" alt="" fill="#01719d">
+                        &nbsp;&nbsp; Ver detalle
+                      </a>
+                      <a class="dropdown-item">
+                        <img src="./images/sho/delete.svg" alt="" fill="#ff3636"> 
+                        &nbsp;&nbsp; Eliminar
+                      </a>
+                    </div>
+                  </div>                      
+                </td>
+            </tr>  
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <hr class="mb-5 mt-4" />
+    <!-- Descansos médicos fin -->
+
+    <!-- Interconsulta -->
+    <div class="row mb-5 d-flex justify-content-between align-items-center">
+      <div class="p-2 mr-auto">
+        <span class="titulo">Interconsulta</span>
+      </div>
+
+      <div class="col-md-2 col-sm-6  p-2">
+        <button type="button" class="btn btn-success btn-block btn-lg"> 
+          Agregar <img class="inject-svg" src="./images/sho/plus.svg" alt="" fill="#fff" width="18px">
+        </button>
+      </div>
+    </div>
+
+    <div class="row mb-5">
+      <!-- Nro de registros -->
+      <div class="col-md-12">
+        <div class="d-flex align-items-center">
+          <div id="cant_planes">
+            <img src="images/iconos/copia-1.svg" style="width: 20px" />
+          </div>
+          <span class="cantidad ml-3" style="font-size: 15px">1 registros</span>
+        </div>
+      </div>             
+
+      <div class="table-responsive">
+        <table class="table-box" id="table_sp4EnferCron_intercon">
+          <thead>
+            <tr>
+              <th>Codigo de interconsulta</th>
+              <th>F. de emision</th>
+              <th>Especialidad </th>
+              <th>Recepcion de puestos</th>
+              <th width="500px">Aptituds</th>
+              <th></th>
+            </tr>
+          </thead>
+            <tbody id="content_sp4EnferCron_intercon">
+              <tr>
+                <td>COD21102021</td>
+                <td>21/10/2021</td>
+                <td>Especialidad 1</td>
+                <td>Si</td>
+                <td width="500px">Apto</td>
+                <td>
+                  <div class="dropdown dropleft">
+                    <a class="nav-link text-vertical" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">...</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                      <a class="dropdown-item">
+                        <img src="./images/sho/eyeIcon.svg" alt="" fill="#01719d">
+                        &nbsp;&nbsp; Ver detalle
+                      </a>
+                      <a class="dropdown-item">
+                        <img src="./images/sho/delete.svg" alt="" fill="#ff3636"> 
+                        &nbsp;&nbsp; Eliminar
+                      </a>
+                    </div>
+                  </div>                      
+                </td>
+            </tr>  
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <hr class="mb-5 mt-4" />
+    <!-- Interconsulta fin -->
+
+    <!-- Transferencia -->
+    <div class="row mb-5 d-flex justify-content-between align-items-center">
+      <div class="p-2 mr-auto">
+        <span class="titulo">Transferencia</span>
+      </div>
+
+      <div class="col-md-2 col-sm-6  p-2">
+        <button type="button" class="btn btn-success btn-block btn-lg"> 
+          Agregar <img class="inject-svg" src="./images/sho/plus.svg" alt="" fill="#fff" width="18px">
+        </button>
+      </div>
+    </div>
+
+    <div class="row mb-5">
+      <!-- Nro de registros -->
+      <div class="col-md-12">
+        <div class="d-flex align-items-center">
+          <div id="cant_planes">
+            <img src="images/iconos/copia-1.svg" style="width: 20px" />
+          </div>
+          <span class="cantidad ml-3" style="font-size: 15px">1 registros</span>
+        </div>
+      </div>             
+
+      <div class="table-responsive">
+        <table class="table-box" id="table_sp4EnferCron_intercon">
+          <thead>
+            <tr>
+              <th>Codigo de Transferencia</th>
+              <th>F. de emision</th>
+              <th>Especialidad </th>
+              <th>Recepcion de puestos</th>
+              <th width="500px">Aptituds</th>
+              <th></th>
+            </tr>
+          </thead>
+            <tbody id="content_sp4EnferCron_intercon">
+              <tr>
+                <td>COD21102021</td>
+                <td>21/10/2021</td>
+                <td>Especialidad 1</td>
+                <td>Si</td>
+                <td width="500px">Apto</td>
+                <td>
+                  <div class="dropdown dropleft">
+                    <a class="nav-link text-vertical" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">...</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                      <a class="dropdown-item">
+                        <img src="./images/sho/eyeIcon.svg" alt="" fill="#01719d">
+                        &nbsp;&nbsp; Ver detalle
+                      </a>
+                      <a class="dropdown-item">
+                        <img src="./images/sho/delete.svg" alt="" fill="#ff3636"> 
+                        &nbsp;&nbsp; Eliminar
+                      </a>
+                    </div>
+                  </div>                      
+                </td>
+            </tr>  
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <hr class="mb-5 mt-4" />
+    <!-- Transferencia fin -->
+
+    <!-- Comentarios -->
+    <div class="row mb-5">
+      <div class="p-2 mr-auto">
+        <span class="titulo">Comentarios</span>
+      </div>
+    </div>
+      
+    <div class="row mb-5 d-flex justify-content-between align-items-center">
+      <div class="col-md-6 col-sm-6 p-2 mr-auto">
+        <div class="input-box-secondary">
+          <span>Comentario</span>
+          <input type="" id="sp4EnferCron_comentario_com">
+        </div>
+      </div>
+
+      <div class="col-md-2 col-sm-6  p-2">
+        <button type="button" class="btn btn-success btn-block btn-lg"> 
+          Agregar <img class="inject-svg" src="./images/sho/plus.svg" alt="" fill="#fff" width="18px">
+        </button>
+      </div>
+    </div>
+
+    <div class="row mb-5">
+      <!-- Nro de registros -->
+      <div class="col-md-12">
+        <div class="d-flex align-items-center">
+          <div id="cant_planes">
+            <img src="images/iconos/copia-1.svg" style="width: 20px" />
+          </div>
+          <span class="cantidad ml-3" style="font-size: 15px">1 registros</span>
+        </div>
+      </div>             
+
+      <div class="table-responsive">
+        <table class="table-box" id="table_sp4EnferCron_comentario">
+          <thead>
+            <tr>
+              <th>Comentario</th>
+              <th width="500px">Fecha de registro</th>
+              <th></th>
+            </tr>
+          </thead>
+            <tbody id="content_sp4EnferCron_comentario">
+              <tr>
+                <td>COD21102021</td>
+                <td width="700px">21/10/2021</td>
+                <td>
+                  <a class="dropdown-item">
+                    <img src="./images/sho/delete.svg" alt="" fill="#ff3636"> 
+                    <!-- &nbsp;&nbsp; Eliminar -->
+                  </a>                      
+                </td>
+            </tr>  
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
+    <!-- Comentarios fin -->  
+  </div>
+</div> 
+
+<script src="./view/sho-hce/sp4_enfermedades_cronicas/js/main.js"></script>
+
+<!-- Boostrap multiselect -->
+<script type="text/javascript" src="./view/sho-hce/sp4_enfermedades_cronicas/js/bootstrap-multiselect.js"></script>
+
+<script type="text/javascript">
+$(document).ready(() => {
+  SVGInject($(".inject-svg"));
+});
+
+$(document).ready(function() {
+    $('#dat_impactDM_especialidades').multiselect();
+    $('.multiselect').append(`
+      <span class="multiselect_label">Especialidades</span>
+    `)
+});
+</script>
+
+<script src="js/sweetalert2.js"></script>
+<script src="js/jquery.mask.min.js"></script>
+<script src="js/svg-inject.min.js"></script>
