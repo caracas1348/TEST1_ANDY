@@ -1,10 +1,10 @@
-function intSp3ConfirmGuardarHSO() {
-  let nombres = $("#dat_des_nombres_trabajador").val();
-  let apellidos = $("#dat_des_apellidos_trabajador").val();
+function sp4EnferCronConfirmGuardarDatosTrab() {
+  let nombres = $("#sp4EnferCron_dat_trab_nombre").val();
+  let apellidos = $("#sp4EnferCron_dat_trab_apellido").val();
   Swal.fire({
-    title: "Guardar nueva interconsulta.",
+    title: "Guardar Enfermedad crónica",
     html: `
-    <p>Está por guardar la interconsulta de</p>
+    <p>Está por guardar la enfermedad crónica de</p>
     <p>${nombres} ${apellidos}</p>
     <p class="mt-5">¿Desea confirmar la acción?</p>`,
     icon: "info",
@@ -17,7 +17,7 @@ function intSp3ConfirmGuardarHSO() {
   }).then((result) => {
     if (result.isConfirmed) {
       Swal.fire({
-        title: "Se terminó con éxito el registro",
+        title: "Se guardó el registro con éxito",
         iconColor: "#8fbb02",
         iconHtml: '<img src="./images/sho/check.svg" width="28px">',
         showConfirmButton: false,
