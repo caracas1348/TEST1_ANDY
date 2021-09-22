@@ -18,7 +18,7 @@
       </div> -->
 
       <div class=" col-md-2 col-sm-6  p-2">
-        <button type="button" class="btn btn-danger btn-block btn-lg" id=""> Cancelar <img class="inject-svg" src="./images/sho/cancelar.svg" alt="" fill="#fff" width="18px">
+        <button onclick="showIndexEC();" type="button" class="btn btn-danger btn-block btn-lg" id=""> Cancelar <img class="inject-svg" src="./images/sho/cancelar.svg" alt="" fill="#fff" width="18px">
         </button>
       </div>
 
@@ -206,7 +206,7 @@
     
     <div class="row mb-5 d-flex justify-content-end ">
       <div class="col-md-3 col-sm-6">
-          <button type="button" class="btn btn-success btn-block btn-lg"> 
+          <button type="button" class="btn btn-success btn-block btn-lg" onclick="addDiagnosticoCIE10();"> 
             Agregar a la lista 
             <img class="inject-svg" src="./images/sho/plus.svg" alt="" fill="#fff" width="18px">
         </button>
@@ -220,7 +220,8 @@
           <div id="cant_planes">
             <img src="images/iconos/copia-1.svg" style="width: 20px" />
           </div>
-          <span class="cantidad ml-3" style="font-size: 15px">1 registros</span>
+          <span class="cantidad ml-3" style="font-size: 15px">
+            <span id="table_sp4EnferCron_transf_diagCIE10-count-row">1</span> registros</span>
         </div>
       </div>             
 
@@ -245,9 +246,14 @@
                 <td>Especialidad </td>
                 <td>Sistema 1</td>
                 <td width="500px">Seccion 1</td>
-                <td>
+                <td class="btn-delete">
                   <img class="inject-svg" src="./images/sho/delete.svg" alt="" fill="#ff3636" width="18px">
                 </td>
+            </tr> 
+            <tr id="table_sp4EnferCron_transf_diagCIE10-empty">            
+              <td colspan="7" class="text-center text-uppercase">
+                No hay informacion registrada
+              </td>
             </tr>  
           </tbody>
         </table>
@@ -325,7 +331,7 @@
     
     <div class="row mb-5 d-flex justify-content-end ">
       <div class="col-md-3 col-sm-6">
-          <button type="button" class="btn btn-success btn-block btn-lg"> 
+          <button type="button" class="btn btn-success btn-block btn-lg" onclick="addDiagnosticoCIE102();"> 
             Agregar a la lista 
             <img class="inject-svg" src="./images/sho/plus.svg" alt="" fill="#fff" width="18px">
         </button>
@@ -339,7 +345,8 @@
           <div id="cant_planes">
             <img src="images/iconos/copia-1.svg" style="width: 20px" />
           </div>
-          <span class="cantidad ml-3" style="font-size: 15px">1 registros</span>
+          <span class="cantidad ml-3" style="font-size: 15px">
+            <span id="table_sp4EnferCron_transf_diagCIE102-count-row">2</span> registros</span>
         </div>
       </div>             
 
@@ -364,10 +371,27 @@
                 <td>Especialidad </td>
                 <td>Sistema 1</td>
                 <td width="500px">Seccion 1</td>
-                <td>
+                <td class="btn-delete">
                   <img class="inject-svg" src="./images/sho/delete.svg" alt="" fill="#ff3636" width="18px">
                 </td>
-            </tr>  
+            </tr> 
+            <tr>
+                <td>Diagnóstico 2</td>
+                <td>Tipo 2</td>
+                <td>12/7/2021</td>
+                <td>Especialidad </td>
+                <td>Sistema 2</td>
+                <td width="500px">Seccion 2</td>
+                <td class="btn-delete">
+                  <img class="inject-svg" src="./images/sho/delete.svg" alt="" fill="#ff3636" width="18px">
+                </td>
+            </tr>
+            <tr id="table_sp4EnferCron_transf_diagCIE102-empty">            
+              <td colspan="7" class="text-center text-uppercase">
+                No hay informacion registrada
+              </td>
+            </tr> 
+
           </tbody>
         </table>
       </div>
@@ -428,18 +452,99 @@
 <!-- Boostrap multiselect -->
 <script type="text/javascript" src="./view/sho-hce/sp4_enfermedades_cronicas/js/bootstrap-multiselect.js"></script>
 
+<!-- archivo de todos los modulos y vistas a ser presentadas dentro del visor del archivo main -->
+<!-- <script src="js/covidList.js?3.1.4.0"></script> -->
+<script src="js/common.js"></script>
+
 <script type="text/javascript">
 $(document).ready(() => {
   SVGInject($(".inject-svg"));
 });
 
+
+
+// ################################################################# FUNCIONES DE JAVIER GALINDO ##########################################################
+function showIndexEC() { //------------------------ ini showNuevaEC  ------------------------------
+  /*idHC = 0;
+  idSV = 0;
+  estadoHC = 0;*/
+  handlerUrlhtml('contentGlobal', 'view/sho-hce/sp4_enfermedades_cronicas/view_1-5.html', 'sss');
+  //cargarAreasSedesGerencia();
+  //hcSp3GuardarHistoriaClinica();
+} //------------------------ fin  showNuevaHC  ------------------------------
 $(document).ready(function() {
     $('#dat_impactDM_especialidades').multiselect();
-    $('.multiselect').append(`
-      <span class="multiselect_label">Especialidades</span>
-    `)
+    $('.multiselect').append('<span class="multiselect_label">Especialidades</span>');
+
+    if($("#table_sp4EnferCron_transf_diagCIE10 tbody tr").length > 1 ){
+      $('#table_sp4EnferCron_transf_diagCIE10-empty').addClass('d-none');
+    }
+
+    if($("#table_sp4EnferCron_transf_diagCIE102 tbody tr").length > 1 ){
+      $('#table_sp4EnferCron_transf_diagCIE102-empty').addClass('d-none');
+    }
+
+    $('#table_sp4EnferCron_transf_diagCIE10').on('click',".btn-delete", onBtnDeleteRow);
+    $('#table_sp4EnferCron_transf_diagCIE102').on('click',".btn-delete", onBtnDeleteRow);
+
+
 });
+
+
+
+function addDiagnosticoCIE10(){
+
+    Numero_Filas = $("#table_sp4EnferCron_transf_diagCIE10 tbody tr").length;
+
+    if(Numero_Filas == 1 ){
+      $('#table_sp4EnferCron_transf_diagCIE10-empty').addClass('d-none');
+    }
+
+    html_tbody = "<tr>";
+    html_tbody += "<td>Diagnóstico 1</td>";
+    html_tbody += "<td>Tipo 1</td>";
+    html_tbody += "<td>12/7/2021</td>";
+    html_tbody += "<td>Especialidad</td>";
+    html_tbody += "<td>Sistema 1</td>";
+    html_tbody += "<td width='500px'>Seccion 1</td>";
+    html_tbody += "<td class='btn-delete'>";
+    html_tbody += "<img class='inject-svg' src='./images/sho/delete.svg' alt='' fill='#ff3636' width='18px'>";
+    html_tbody += "</td>";
+    html_tbody += "</tr>";
+
+    $("#table_sp4EnferCron_transf_diagCIE10 tbody").append(html_tbody);
+    $("#table_sp4EnferCron_transf_diagCIE10-count-row").text(Numero_Filas);
+
+  }
+
+function addDiagnosticoCIE102(){
+
+    Numero_Filas = $("#table_sp4EnferCron_transf_diagCIE102 tbody tr").length;
+
+    if(Numero_Filas == 1 ){
+      $('#table_sp4EnferCron_transf_diagCIE102-empty').addClass('d-none');
+    }
+
+    html_tbody = "<tr>";
+    html_tbody += "<td>Diagnóstico 1</td>";
+    html_tbody += "<td>Tipo 1</td>";
+    html_tbody += "<td>12/7/2021</td>";
+    html_tbody += "<td>Especialidad</td>";
+    html_tbody += "<td>Sistema 1</td>";
+    html_tbody += "<td width='500px'>Seccion 1</td>";
+    html_tbody += "<td class='btn-delete'>";
+    html_tbody += "<img class='inject-svg' src='./images/sho/delete.svg' alt='' fill='#ff3636' width='18px'>";
+    html_tbody += "</td>";
+    html_tbody += "</tr>";
+
+    $("#table_sp4EnferCron_transf_diagCIE102 tbody").append(html_tbody);
+    $("#table_sp4EnferCron_transf_diagCIE102-count-row").text(Numero_Filas);
+
+  }
+
 </script>
+
+<script src="view/sho-hce/sp4_enfermedades_cronicas/js/enfermedades_cronicas.js"></script>
 
 <script src="js/sweetalert2.js"></script>
 <script src="js/jquery.mask.min.js"></script>

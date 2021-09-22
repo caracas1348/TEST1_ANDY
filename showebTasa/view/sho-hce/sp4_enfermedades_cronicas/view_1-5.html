@@ -24,7 +24,7 @@
         <span class="titulo">Erick Brian Arrasco Guevara</span>
       </div>
       <div class="col-md-3 pl-5">
-        <span class="subtitulo">Ver datos completos</span>
+        <span class="subtitulo" onclick="fnSp3MostrarModalVerDatosCompletos();">Ver datos completos</span>
       </div>
       <div class="col-md-3">
         <button class="btn btn-success btn-block btn-lg" type="button">
@@ -41,8 +41,8 @@
         <span class="titulo"> Registros </span>
       </div>
       <div class="col-md-2 col-sm-6  p-2">
-        <button type="button" class="btn btn-success btn-block btn-lg"> 
-          Nuevo registro 
+        <button type="button" class="btn btn-success btn-block btn-lg" onclick="showNuevaEC()"> 
+          Nuevo registro
           <img class="inject-svg" src="./images/sho/plus.svg" alt="" fill="#fff" width="18px">
         </button>
       </div>
@@ -560,21 +560,92 @@
   </div>
 </div>
 
+
+
+
+
+
+<div class="modal fade " id="modalVerDatosCompletos" tabindex="-1" data-backdrop="static" data-keyboard="false" aria-hidden="true" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-centered rounded" role="document" style="max-width: 860px; z-index: 1030;   ">
+    <div class="modal-content rounded border-0" style="background:#ffffff; height: 1620px !important; ">
+      <div style="overflow: hidden; height: 1592px; overflow-x: hidden; /*background-color: red;*/ ">
+        <! START MODAL-HEADER >
+        <div class="modal-header fix-header-modal">
+          <div class="card-header text-center text-white modal-dialog-centered  card-header-FormAuditor" id="red-head" style="width: 100%; padding: 0px 0px !important;">
+            <div class="row align-items-center" style="width: 100%;">
+              <div class="col-1">
+                <img src="./images/prev.svg" style="cursor:pointer; display: none" title="Salir" onclick=" $('#modalVerDatosCompletos').modal('hide').removeClass('fade');">
+              </div>
+              <div class="col-10">
+                <span id="titleModalVerDatosCompletos">
+                  <h5 class="m-0">Ver Datos Completos</h5>
+                </span>
+              </div>
+              <div class="col-1">
+                <img src="./images/iconos/delete.svg" style="cursor:pointer;" title='Salir' onclick="$('#modalVerDatosCompletos').modal('hide').removeClass('fade');">
+              </div>
+            </div>
+          </div>
+        </div>
+        <! END MODAL-HEADER >
+        <! START MODAL-BODY >
+        <div class="modal-body dialog-position" id="bodymodalShowAuditor" style="  justify-content:space-around; align-content:center; padding: 10px 0px 0px !important;">
+          sdfsdf
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--  END  MODAL VER PLAN ANUAL SP3 -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <script src="./view/sho-hce/sp4_enfermedades_cronicas/js/main.js"></script>
 
 <!-- Boostrap multiselect -->
 <script type="text/javascript" src="./view/sho-hce/sp4_enfermedades_cronicas/js/bootstrap-multiselect.js"></script>
+
+<!-- archivo de todos los modulos y vistas a ser presentadas dentro del visor del archivo main -->
+<!-- <script src="js/covidList.js?3.1.4.0"></script> -->
+<script src="js/common.js"></script>
 
 <script type="text/javascript">
 $(document).ready(() => {
   SVGInject($(".inject-svg"));
 });
 
+// ################################################################# FUNCIONES DE JAVIER GALINDO ##########################################################
+function showNuevaEC() { //------------------------ ini showNuevaEC  ------------------------------
+  /*idHC = 0;
+  idSV = 0;
+  estadoHC = 0;*/
+  handlerUrlhtml('contentGlobal', 'view/sho-hce/sp4_enfermedades_cronicas/view_6.html', 'Registrar nueva E.C.');
+  //cargarAreasSedesGerencia();
+  //hcSp3GuardarHistoriaClinica();
+} //------------------------ fin  showNuevaHC  ------------------------------
+
+function fnSp3MostrarModalVerDatosCompletos() {
+
+  $('#modalVerDatosCompletos').modal('show').addClass('fade');
+
+}
+
 $(document).ready(function() {
     $('#dat_impactDM_especialidades').multiselect();
-    $('.multiselect').append(`
-      <span class="multiselect_label">Especialidades</span>
-    `)
+    $('.multiselect').append('<span class="multiselect_label">Especialidades</span>');
+
+    
 });
 </script>
 
