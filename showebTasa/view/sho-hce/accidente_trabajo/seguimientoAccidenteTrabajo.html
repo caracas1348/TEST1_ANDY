@@ -1,0 +1,223 @@
+<link rel="stylesheet" href="css/sho.css">
+<link rel="stylesheet" type="text/css" href="view/sho-hce/accidente_trabajo/styles.css">
+<style type="text/css">
+  .table-seguimiento thead{
+    background-color: transparent;
+  }
+  .table-seguimiento th{
+    color: #254373;
+    padding: .5rem;
+    white-space: nowrap;
+  }
+  .table-seguimiento td{
+    padding: .5rem;
+    vertical-align: top;
+    border-top: 1px solid var(--semi-light-grey);
+    white-space: nowrap;
+  }
+  .text-blue-light{
+    color: #4798c7!important;
+  }
+  .text-green{
+    color: #8fbb02!important;
+  }
+  .text-red{
+    color: #ff4b4b!important;
+  }
+  .nav-date{
+    display: flex;
+    align-items: center;
+  }
+  .nav-date-list{
+    list-style: none;
+    display: flex;
+    margin: 0;
+  }
+  .nav-date-list li{
+    cursor: pointer;
+    padding: 0 12px;
+    font-size: 25px;
+    color: #a7a7a7;
+    border-bottom: 4px solid transparent;
+  }
+  .nav-date button{
+    padding: 0 12px;
+    color: #01719d;
+    border: none;
+    font-size: 14px;
+    outline: 0;
+  }
+</style>
+<div class="container main-content">
+    <div class="row mb-5">
+        <div class="col-md-12">
+          <h2 class="title-section">Accidentes de trabajo</h2>
+        </div>
+    </div>
+    <div class="row mb-5">
+      <div class="col-md-12">
+        <ul class="tabs">
+          <li class="tabs-item active" id="seguimiento-mes">Accidente de trabajo del mes</li>
+          <li class="tabs-item" id="seguimiento-anterior">Accidentes anteriores</li>
+        </ul>
+      </div>
+    </div>
+    <div class="row mb-5 tab-section" id="section-seguimiento-mes" >
+      <div class="col-md-12">
+        <div class="table-responsive">
+          <table class="table-seguimiento">
+            <thead>
+              <tr>
+                <th colspan="3"></th>
+                <th colspan="4" class="text-blue-light">Tipo de accidente</th>
+                <th colspan="2" class="text-green">Descanso médico</th>
+                <th colspan="3" class="">Días perdidos</th>
+                <th colspan="3">Transferencia</th>
+              </tr>
+              <tr>
+                <th>Nombres y Apellidos</th>
+                <th>Ocupación</th>
+                <th>Fecha de accidente</th>
+                <th class="text-blue-light">P.Aux</th>
+                <th class="text-blue-light">Leve</th>
+                <th class="text-blue-light">Incap.</th>
+                <th class="text-blue-light">Fatal</th>
+                <th class="text-green">Inicio</th>
+                <th class="text-red">Término</th>
+                <th>Mes</th>
+                <th>Total real</th>
+                <th>Total estimado</th>
+                <th>No</th>
+                <th>IAT</th>
+                <th>Si</th>
+                <th>Transferido a establecimiento</th>
+                <th>Diagnóstico de especialista</th>
+                <th>Descanso médico</th>
+                <th>Mes</th>
+                <th>Comentario</th>
+                <th>Área/EP</th>
+                <th>Empresa</th>
+                <th>Gerencia</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="row mb-5 tab-section" id="section-seguimiento-anterior" style="display:none">
+      <div class="col-md-12 mb-5">
+        <div class="nav-date">
+          <button> < Anterior</button>
+          <ul class="nav-date-list">
+            <li>Ene</li>
+            <li>Febr</li>
+            <li>Mar</li>
+            <li>Abr</li>
+            <li>May</li>
+            <li>Jun</li>
+            <li>Ago</li>
+            <li>Sep</li>
+          </ul>
+          <button>Siguiente > </button>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="table-responsive">
+          <table class="table-seguimiento">
+            <thead>
+              <tr>
+                <th colspan="3"></th>
+                <th colspan="4" class="text-blue-light">Tipo de accidente</th>
+                <th colspan="2" class="text-green">Descanso médico</th>
+                <th colspan="3" class="">Días perdidos</th>
+                <th colspan="3">Transferencia</th>
+              </tr>
+              <tr>
+                <th>Nombres y Apellidos</th>
+                <th>Ocupación</th>
+                <th>Fecha de accidente</th>
+                <th class="text-blue-light">P.Aux</th>
+                <th class="text-blue-light">Leve</th>
+                <th class="text-blue-light">Incap.</th>
+                <th class="text-blue-light">Fatal</th>
+                <th class="text-green">Inicio</th>
+                <th class="text-red">Término</th>
+                <th>Mes</th>
+                <th>Total real</th>
+                <th>Total estimado</th>
+                <th>No</th>
+                <th>IAT</th>
+                <th>Si</th>
+                <th>Transferido a establecimiento</th>
+                <th>Diagnóstico de especialista</th>
+                <th>Descanso médico</th>
+                <th>Mes</th>
+                <th>Comentario</th>
+                <th>Área/EP</th>
+                <th>Empresa</th>
+                <th>Gerencia</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+</div>
+<script type="text/javascript" src="view/sho-hce/accidente_trabajo/gestionAccidenteTrabajo.js"></script>
+<script type="text/javascript">
+  
+</script>

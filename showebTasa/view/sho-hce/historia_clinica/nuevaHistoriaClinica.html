@@ -1,4 +1,31 @@
-<link rel="stylesheet" href="./view/sho-hce/historia_clinica/sho_hce.css">
+<!-- /****************************************************************************************
+ * VISUAL SAT - [2021]
+ * PROYECTO : SIGTASA
+ * ESQUEMA : SSOMA
+ * SPRINT  : 3
+ * MODULO : HISTORIA CLINICA
+ * OPERADORES_________________________________________________________________________
+ * | # | PROGRAMADOR     |  |      FECHA   |  |   HORA   |           CORREO           |
+ * | 1 | Carlos Rivas    |  |   08/09/2021 |  | 04:26:50 |       crivascyt@gmail.com  |
+ * | 2 | Andy Vàsquez    |  |   06/09/2021 |  | 11:16:00 |     caracas1348@gmail.com  |
+ * |___|_________________|__|______________|__|__________|____________________________|
+ *
+ * DESCRIPCION: ARCHIVO VISTA DE LAS OPCIONES DE REGISTRO DE UNA NUEVA HISTORIA CLINICA
+ * EN EL FRONT END ACCIDENTES- (LISTADO, FILTRADO, VER)
+ *
+ * ARCHIVOS DE SERVICIOS   _________________________________________
+ * | # |     MODULO             |  |         NOMBRE                 |
+ * | 1 |   SALUD OCUPACIONAL    |  |                                |
+ * |________________________________________________________________|
+ *
+ *
+ * VERSION: 0.1 Beta
+ *********************************************************************************************************************************************************************************
+ * NOTA IMPORTANTE:  EN FECHA  *** 06/09/2021 Andy  **** Vasquez: Procede a realizar un ajuste general  de funcionamiento y orden del modulo de historia clinica para optimizarlo
+ *********************************************************************************************************************************************************************************
+
+ *******************************************************************************************/ -->
+<link rel="stylesheet" href="css/sho.css">
 <link rel="stylesheet" href="css/sweetalert2.css">
 <div class="container main-content" id="HC_registrar">
   <!-- DATOS DEL TRABAJADOR -->
@@ -13,14 +40,15 @@
       </div>
     </div>
     <div class="col-md-2 offset-md-1">
-      <button type="button" class="btn btn-link btn-block btn-lg shadow-none" id="fn_hc_limpiar_datos" onclick="hcSp3LimpiarDatos()">Limpiar datos</button>
+      <button type="button" class="btn btn-link btn-block btn-lg shadow-none" id="fn_hc_limpiar_datos" onclick="hcSp3ConfirmLimpiarHistoriaClinica()" style="font-weight: bold; color:#254373">Limpiar
+        datos</button>
     </div>
     <div class="col-md-2 col-sm-6">
-      <button onclick="hcSp3CancelarHistoria()" type="button" class="btn btn-danger btn-block btn-lg" id="fn_hc_cancelar"> Cancelar <img class="inject-svg" src="./images/sho/cancelar.svg" alt="" fill="#fff" width="18px">
+      <button onclick="hcSp3ConfirmCancelarHistoriaClinica()" type="button" class="btn btn-danger btn-block btn-lg" id="fn_hc_cancelar"> Cancelar <img src="./images/sho/cancelar.svg" fill="#fff" width="18px">
       </button>
     </div>
     <div class="col-md-2 col-sm-6">
-      <button type="button" class="btn btn-success btn-block btn-lg" id="fn_hc_guardar" onclick="hcSp3ConfirmGuardarHistoriaClinica()"> Guardar <img class="inject-svg" src="./images/sho/confirm.svg" alt="" fill="#fff" width="18px">
+      <button type="button" class="btn btn-success btn-block btn-lg" id="fn_hc_guardar" onclick="hcSp3ConfirmGuardarHistoriaClinica()"> Guardar <img src="./images/sho/confirm.svg" fill="#fff" width="18px">
       </button>
     </div>
   </div>
@@ -44,9 +72,9 @@
       </div>
     </div>
     <div class="col-md-3 col-sm-6">
-      <div class="input-box-secondary input_hc_sp3">
+      <div class="input-box-secondary">
         <span>Fecha</span>
-        <input type="date" id="dat_hc_fecha_trabajador" readonly>
+        <input type="date" id="dat_hc_fecha_trabajador" disabled>
       </div>
     </div>
     <div class="col-md-3 col-sm-6">
@@ -83,10 +111,23 @@
         <input type="text" id="dat_hc_nacimiento_trabajador">
       </div>
     </div>
+    <div class="col-md-3 col-sm-6">
+      <div class="input-box-secondary">
+        <span>Fecha de nacimiento</span>
+        <input type="date" id="dat_hc_fecha_nacimiento_trabajador" onchange="hcSp3CalcularEdad()">
+      </div>
+    </div>
     <div class="col-md-2 col-sm-4">
       <div class="input-box-secondary input_hc_sp3">
         <span>Edad</span>
-        <input type="text" id="dat_hc_edad_trabajador" data-mask="000">
+        <input type="text" id="dat_hc_edad_trabajador" data-mask="000" disabled>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+      <div class="input-box-secondary input_hc_sp3">
+        <span>Grupo sanguineo</span>
+        <select name="" id="dat_hc_grupo_sanguineo_trabajador">
+        </select>
       </div>
     </div>
   </div>
@@ -99,6 +140,12 @@
     </div>
   </div>
   <div class="row">
+    <div class="col-md-3 col-sm-6">
+      <div class="input-box-secondary input_hc_sp3">
+        <span>Empresa</span>
+        <input type="text" id="dat_hc_empresa_empresa">
+      </div>
+    </div>
     <div class="col-md-3 col-sm-6">
       <div class="input-box-secondary input_hc_sp3">
         <span>Gerencia</span>
@@ -188,7 +235,7 @@
                   </div>
                 </div>
                 <div class="col-md-2 col-sm-4">
-                  <button class="btn btn-success btn-block btn-lg" onclick="hcSp3GuardarAntecedentes(1)"> Agregar <img class="inject-svg" src="./images/sho/plus.svg" alt="" fill="#fff" />
+                  <button class="btn btn-success btn-block btn-lg" onclick="hcSp3GuardarAntecedentes(1)"> Agregar <img src="./images/sho/plus.svg" fill="#fff" />
                   </button>
                 </div>
               </div>
@@ -221,7 +268,7 @@
                   </div>
                 </div>
                 <div class="col-md-2 col-sm-4">
-                  <button class="btn btn-success btn-block btn-lg" onclick="hcSp3GuardarAntecedentes(2)"> Agregar <img class=" inject-svg" src="./images/sho/plus.svg" alt="" fill="#fff" />
+                  <button class="btn btn-success btn-block btn-lg" onclick="hcSp3GuardarAntecedentes(2)"> Agregar <img src="./images/sho/plus.svg" fill="#fff" />
                   </button>
                 </div>
               </div>
@@ -298,7 +345,7 @@
               </div>
               <div class="row d-flex justify-content-end">
                 <div class="col-md-2 col-sm-4">
-                  <button class="btn btn-success btn-block btn-lg" onclick="hcSp3GuardarAntecedentes(3)"> Agregar a lista <img class="inject-svg" src="./images/sho/plus.svg" alt="" fill="#fff" />
+                  <button class="btn btn-success btn-block btn-lg" onclick="hcSp3GuardarAntecedentes(3)"> Agregar a lista <img src="./images/sho/plus.svg" fill="#fff" />
                   </button>
                 </div>
               </div>
@@ -328,9 +375,7 @@
                     </thead>
                     <tbody id="content_ant_3">
                       <tr>
-                        <td colspan="9" class="text-center">
-                          No existen registros
-                        </td>
+                        <td colspan="9" class="text-center"> No existen registros </td>
                       </tr>
                     </tbody>
                   </table>
@@ -365,7 +410,7 @@
                   </div>
                 </div>
                 <div class="col-md-2 col-sm-4">
-                  <button class="btn btn-success btn-block btn-lg" onclick="hcSp3GuardarAntecedentes(4)"> Agregar <img class=" inject-svg" src="./images/sho/plus.svg" alt="" fill="#fff" />
+                  <button class="btn btn-success btn-block btn-lg" onclick="hcSp3GuardarAntecedentes(4)"> Agregar <img src="./images/sho/plus.svg" fill="#fff" />
                   </button>
                 </div>
               </div>
@@ -398,7 +443,7 @@
                   </div>
                 </div>
                 <div class="col-md-2 col-sm-4">
-                  <button class="btn btn-success btn-block btn-lg" onclick="hcSp3GuardarAntecedentes(5)"> Agregar <img class=" inject-svg" src="./images/sho/plus.svg" alt="" fill="#fff" />
+                  <button class="btn btn-success btn-block btn-lg" onclick="hcSp3GuardarAntecedentes(5)"> Agregar <img src="./images/sho/plus.svg" fill="#fff" />
                   </button>
                 </div>
               </div>
@@ -431,7 +476,7 @@
                   </div>
                 </div>
                 <div class="col-md-2 col-sm-4">
-                  <button class="btn btn-success btn-block btn-lg" onclick="hcSp3GuardarAntecedentes(6)"> Agregar <img class=" inject-svg" src="./images/sho/plus.svg" alt="" fill="#fff" />
+                  <button class="btn btn-success btn-block btn-lg" onclick="hcSp3GuardarAntecedentes(6)"> Agregar <img src="./images/sho/plus.svg" />
                   </button>
                 </div>
               </div>
@@ -454,83 +499,83 @@
   <div class="row mt-4">
     <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">
       <div class="d-flex">
-        <img class="inject-svg" src="./images/sho/arterial.svg" alt="" fill="#ff2e2e">
-        <span>Presión arterial</span>
+        <img src="./images/sho/arterial.svg">
+         <span>Presión arterial (mmHg)</span>
       </div>
       <div class="input_hc_sp3">
-        <input class="form-control" type="number" value="0" id="dat_hc_presion_arterial_sv">
+        <input class="form-control" type="number" value="0" min="0" id="dat_hc_presion_arterial_sv">
       </div>
     </div>
     <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">
       <div class="d-flex">
-        <img class="inject-svg" src="./images/sho/cardiaca.svg" alt="" fill="#ff2626">
-        <span>Frecuencia cardiaca</span>
+        <img src="./images/sho/cardiaca.svg">
+         <span>Frecuencia cardiaca  (LPM)</span>
       </div>
       <div class="input_hc_sp3">
-        <input class="form-control" type="number" value="0" id="dat_hc_frecuencia_cardiaca_sv">
+        <input class="form-control" type="number" value="0" min="0" id="dat_hc_frecuencia_cardiaca_sv">
       </div>
     </div>
     <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">
       <div class="d-flex">
-        <img class="inject-svg" src="./images/sho/respiratoria.svg" alt="" fill="#00baff">
-        <span>Frecuencia respiratoria</span>
+        <img src="./images/sho/respiratoria.svg">
+        <span>Frecuencia respiratoria (RPM)</span>
       </div>
       <div class="input_hc_sp3">
-        <input class="form-control" type="number" value="0" id="dat_hc_frecuencia_respiratoria_sv">
+        <input class="form-control" type="number" value="0" min="0" id="dat_hc_frecuencia_respiratoria_sv">
       </div>
     </div>
     <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">
       <div class="d-flex">
-        <img class="inject-svg" src="./images/sho/temperatura.svg" alt="" fill="#34a9ff" style="left: 30px">
-        <span>Temperatura</span>
+        <img src="./images/sho/temperatura.svg" style="left: 30px">
+        <span>Temperatura (°C)</span>
       </div>
       <div class="input_hc_sp3">
-        <input class="form-control" type="number" value="0" id="dat_hc_temperatura_sv">
+        <input class="form-control" type="number" value="0" min="0" id="dat_hc_temperatura_sv">
       </div>
     </div>
     <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">
       <div class="d-flex">
-        <img class="inject-svg" src="./images/sho/peso.svg" alt="" fill="#004eff">
-        <span>Peso Kg</span>
+        <img src="./images/sho/peso.svg">
+        <span>Peso (Kg)</span>
       </div>
       <div class="input_hc_sp3">
-        <input class="form-control" type="number" value="0" id="dat_hc_peso_sv">
+        <input class="form-control" type="number" value="0" min="0" id="dat_hc_peso_sv" onchange="imc('dat_hc_peso_sv', 'dat_hc_talla_sv', 'dat_hc_masa_corporal_sv')" >
       </div>
     </div>
     <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">
       <div class="d-flex">
-        <img class="inject-svg" src="./images/sho/talla.svg" alt="" fill="#715fff" style="left: 30px">
-        <span>Talla</span>
+        <img src="./images/sho/talla.svg" style="left: 30px">
+       <span>Talla (m)</span>
       </div>
       <div class="input_hc_sp3">
-        <input class="form-control" type="number" value="0" id="dat_hc_talla_sv">
+        <input class="form-control" type="number" value="0" min="0" id="dat_hc_talla_sv" onchange="imc('dat_hc_peso_sv', 'dat_hc_talla_sv', 'dat_hc_masa_corporal_sv')">
       </div>
     </div>
     <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">
       <div class="d-flex">
-        <img class="inject-svg" src="./images/sho/saturacion.svg" alt="" fill="#fc2a5a">
-        <span>Saturación</span>
+        <img src="./images/sho/saturacion.svg">
+        <span>Saturación (%)</span>
       </div>
       <div class="input_hc_sp3">
-        <input class="form-control" type="number" value="0" id="dat_hc_saturacion_sv">
+        <input class="form-control" type="number" value="0" min="0" id="dat_hc_saturacion_sv">
       </div>
     </div>
     <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">
       <div class="d-flex">
-        <img class="inject-svg" src="./images/sho/corporal.svg" alt="" fill="#ffc400">
-        <span>Índice de masa corporal</span>
+        <img src="./images/sho/corporal.svg">
+        <span>Índice de masa corporal <br/> (Peso/Talla&#178;)</span>
       </div>
       <div class="input_hc_sp3">
-        <input class="form-control" type="number" value="0" id="dat_hc_masa_corporal_sv">
+        <input class="form-control"  value="0" min="0" id="dat_hc_masa_corporal_sv" disabled>
       </div>
     </div>
     <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">
       <div class="d-flex">
-        <img class="inject-svg" src="./images/sho/abdominal.svg" alt="" fill="#ff8b43">
-        <span>Perímetro abdominal</span>
+        <img src="./images/sho/abdominal.svg">
+        <span>Perímetro abdominal (cm)</span>
       </div>
       <div class="input_hc_sp3">
-        <input class="form-control" type="number" value="0" id="dat_hc_perimetro_abdominal_sv">
+        <input class="form-control" type="number" value="0" min="0" id="dat_hc_perimetro_abdominal_sv">
       </div>
     </div>
   </div>
@@ -540,8 +585,15 @@
 <script src="js/sweetalert2.js"></script>
 <script src="js/jquery.mask.min.js"></script>
 <script type="text/javascript">
+
+  showLoading();
+  //console.clear();
+
+
+SVGInject($(".inject-svg"));
 if (idHC == 0) {
   $("#dat_hc_fecha_trabajador").val(new Date().toISOString().split('T')[0]);
 }
-SVGInject($(".inject-svg"));
+
+
 </script>

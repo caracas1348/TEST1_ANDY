@@ -1,0 +1,351 @@
+<!-- Boostrap multiselect -->
+<link rel="stylesheet" href="./view/sho-hce/enfermedades_cronicas/css/bootstrap-multiselect.css" type="text/css"/>
+<link rel="stylesheet" href="./view/sho-hce/enfermedades_cronicas/css/sho.css">
+
+<div class="container main-content">
+  <div>
+    <!-- Detalles del descanso  -->
+    <div class="row mb-5 d-flex justify-content-between align-items-center">
+      <div class="p-2 mr-auto">
+        <span class="titulo">Detalles del descanso</span>
+      </div>
+      <div class=" col-md-4 col-sm-6  p-2">
+        <button onclick="" type="button" class="btn btn-info btn-block btn-lg" id="">
+          Imprimir descanso<img class="inject-svg" src="./images/sho/print.svg" alt="" fill="#fff" width="18px">
+        </button>
+      </div>
+      <div class=" col-md-2 col-sm-6  p-2">
+        <button onclick="showIndexEC();" type="button" class="btn btn-danger btn-block btn-lg" id=""> Cancelar <img class="inject-svg" src="./images/sho/cancelar.svg" alt="" fill="#fff" width="18px">
+        </button>
+      </div>
+      <div class="col-md-2 col-sm-6  p-2">
+        <button type="button" class="btn btn-success btn-block btn-lg" onclick="amSp4ConfirmarCRUDDescansoMedicoEC(1);"> Guardar <img class="inject-svg" src="./images/sho/confirm.svg" alt="" fill="#fff" width="18px">
+        </button>
+      </div>
+    </div>
+    <!-- Fila 1 -->
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Personal de salud</span>
+          <input type="" id="dat_personal_salud" class="submit">
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Tipo de contingencia</span>
+          <select id="dat_tipo_contingencia" class="submit">
+          </select>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Descanso por enfermedad</span>
+          <select id="dat_descanso_enfermedad" class="submit">
+            <option value="0" selected>No</option>
+            <option value="1">Si</option>            
+          </select>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>CMP</span>
+          <input type="" id="dat_cmp" class="submit">
+        </div>
+      </div>
+    </div>                    
+    <!-- Fila 1 fin -->
+    <!-- Fila 2 -->
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Cantidad de días</span>
+          <input type="" id="dat_cantidad_dias" class="submit numero">
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Días acumulados</span>
+          <input type="" id="dat_dias_acumulados" class="submit" readonly="true">
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Fecha de inicio</span>
+          <input type="date" id="dat_fecha_inicio" class="submit">
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Fecha fin</span>
+          <input id="dat_fecha_fin" class="submit" readonly="true">
+        </div>
+      </div>
+    </div>                    
+    <!-- Fila 2 fin -->
+    <!-- Fila 3 -->
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>¿Hubo alta médica?</span>
+          <select name="" id="dat_alta_medica" class="submit">
+            <option value="0" selected>No</option>
+            <option value="1">Si</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Establicimiento de emision del descanso</span>
+          <select name="" id="dat_establecimiento" class="submit">
+          </select>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Particular</span>
+          <input id="dat_particular" class="" disabled="true">
+        </div>
+      </div>
+    </div>
+    <!-- Fila 3 fin -->
+    <div class="row mb-5">
+      <div class="col-md-12 mb-5">
+        <span class="titulo">Adjuntar archivos</span>
+      </div>
+      <div class="col-md-12 border d-flex justify-content-center">
+        <div class="col-md-6 m-5">
+          <button type="button" class="btn btn-success btn-lg btn-block" id=""> 
+            Subir archivo
+            <img class="inject-svg" src="./images/sho/upload.svg" alt="" fill="#fff" width="18px">
+          </button>            
+        </div>      
+      </div>
+    </div>
+    <hr class="mb-5 mt-4" />
+    <!-- Detalles del descanso  -->
+    <!-- Diagnostico CIE10 -->
+    <div class="row mb-5 d-flex align-items-center">
+      <div class="col-md-12">
+        <span class="titulo">Diagnostico CIE10</span>
+      </div>
+    </div>
+    <div class="row mb-5 d-flex align-items-center">
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary ">
+          <span>Diagnóstico</span>
+            <div class="dropdown" id='listaResultado_INT'>
+              <input autocomplete="off" style="font-size: 13px !important;" class="dropbtn input_am_diagnostico check-diagnosticocie10" placeholder="Diagnóstico" type="text" id="sp4EnferCron_det_des_diagCIE10_diag"
+               onkeyup="_newDiagnosticoCIE10('sp4EnferCron_det_des_diagCIE10_diag', 'listaResultadoHijos_TRAN', 'sp4EnferCron_det_des_diagCIE10_cie10', 'dat_amT_cie_diagnostico1');" 
+               style='background:white; border:1px solid; color:black;'>              
+              <div class="dropdown-menu show" id='listaResultadoHijos_TRAN' style="display:none; ">                
+              </div>
+            </div> 
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary ">
+          <span>CIE 10</span>
+          <div class="dropdown" id='listaResultado_ii_INT'>
+            <input autocomplete="off" placeholder="CIE 10" class="dropbtn input_am_diagnostico check-diagnosticocie10" style=" font-size: 13px;" type="text" id="sp4EnferCron_det_des_diagCIE10_cie10"
+             onkeyup="_newDiagnosticoCIE102('sp4EnferCron_det_des_diagCIE10_cie10', 'listaResultadoHijos2_TRAN', 'sp4EnferCron_det_des_diagCIE10_diag', 'dat_amT_cie_diagnostico1');" 
+             style='background:white; border:1px solid; color:black;'>
+            <div class="dropdown-menu show" id='listaResultadoHijos2_TRAN' style="display:none; ">              
+            </div>
+          </div> 
+          <input class="input_am_diagnostico" type="hidden" id="dat_amT_cie_diagnostico1">
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="input-box-secondary">
+          <span>Sistema afectado</span>
+          <select name="" id="dat_sistema_afectado" class="check-diagnosticocie10">
+          </select>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="input-box-secondary">
+          <span>Sección afectada</span>
+          <select name="" id="dat_seccion_afectada" class="check-diagnosticocie10">
+          </select>
+        </div>
+      </div>
+    </div>    
+    <div class="row mb-5 d-flex justify-content-end ">
+      <div class="col-md-3 col-sm-6">
+        <button type="button" class="btn btn-success btn-block btn-lg" onclick="addDiagnosticoCIE10();"> 
+          Agregar a la lista 
+          <img class="inject-svg" src="./images/sho/plus.svg" alt="" fill="#fff" width="18px">
+        </button>
+      </div>
+    </div>
+    <div class="row mb-5">
+      <!-- Nro de registros -->
+      <div class="col-md-12">
+        <div class="d-flex align-items-center">
+          <div id="cant_planes">
+            <img src="images/iconos/copia-1.svg" style="width: 20px" />
+          </div>
+          <span class="cantidad ml-3" style="font-size: 15px">
+            <span id="table_sp4EnferCron_det_des_diagCIE10-count-row">2</span> registros</span>
+        </div>
+      </div>           
+      <div class="table-responsive">
+        <table class="table-box table-container" id="table_sp4EnferCron_det_des_diagCIE10">
+          <thead>
+            <tr>
+              <th>Diagnóstico </th>
+              <th>CI10</th>
+              <th>Fecha de registro</th>
+              <th>Especialidad</th>
+              <th>Sistema afectado</th>
+              <th width="500px">Seccion afectada</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="content_sp4EnferCron_det_des_diagCIE10">
+            <tr class="table-empty">            
+              <td colspan="7" class="text-center text-uppercase">
+                No hay informacion registrada
+              </td>
+            </tr>  
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <!-- Diagnostico CIE10 fin -->
+  </div>
+</div>
+
+<script src="./view/sho-hce/enfermedades_cronicas/js/main.js"></script>
+
+<!-- Boostrap multiselect -->
+<script type="text/javascript" src="./view/sho-hce/enfermedades_cronicas/js/bootstrap-multiselect.js"></script>
+
+<script type="text/javascript">
+
+$(document).ready(() => {
+
+  SVGInject($(".inject-svg"));
+
+});
+
+
+function ecSp4cargarSelectDescansoMedicoEnfermedadesCronicas(){
+
+  let contenido = '';
+
+  //Cargando Select de sistemas afectados
+  contenido = $('#dat_sistema_afectado');
+  contenido.append(`<option value="" selected></option>`);
+
+  pluck_ec["SistemaAfectado"].forEach((Item) => {
+    contenido.append(`<option value="${Item.Id}">${Item.Descripcion}</option>`)
+  });
+
+  //Cargando Select de seccion afectada
+  contenido = $('#dat_seccion_afectada');
+  contenido.append(`<option value="" selected></option>`);
+
+  pluck_ec["SeccionAfectada"].forEach((Item) => {
+    contenido.append(`<option value="${Item.Id}">${Item.Descripcion}</option>`)
+  });
+
+  //Cargando Select de TiposContingencia
+  contenido = $('#dat_tipo_contingencia');
+  contenido.append(`<option value="" selected></option>`);
+
+  pluck_ec["TiposContingencia"].forEach((Item) => {
+    contenido.append(`<option value="${Item.Id}">${Item.Descripcion}</option>`)
+  });
+
+  //Cargando Select de EstablecimientosEmision
+  contenido = $('#dat_establecimiento');
+  contenido.append(`<option value="" selected></option>`);
+
+  pluck_ec["EstablecimientosEmision"].forEach((Item) => {
+    contenido.append(`<option value="${Item.Id}">${Item.Descripcion}</option>`)
+  });
+
+}
+
+async function _init_ecSp4DescansoMedicoEnfermedadesCronicas() {
+
+  //Se inicia el Cargando
+  showLoading();
+
+  await ecSp4cargarSistemaAfectado();
+  await ecSp4cargarSeccionAfectada();
+  await ecSp4cargarTiposContingencia();
+  await ecSp4cargarEstablecimientosEmision();
+  await ecSp4cargarSelectDescansoMedicoEnfermedadesCronicas(); 
+  await amSp4GuardarEditarDescansoMedicoEnfermedadCronica(0);
+
+  //Se apaga el Cargando
+  hideLoading();
+
+}
+
+$(document).ready(function() { 
+
+  _init_ecSp4DescansoMedicoEnfermedadesCronicas();
+
+  $('.table-container').on('click',".btn-delete", onBtnDeleteRow);
+  $('#dat_establecimiento').on('change',onSelectEstablecimientoEmisionChange);
+  $('#dat_cantidad_dias').on('change',onFechaInicioDiasChange);
+  $('#dat_fecha_inicio').on('change',onFechaInicioDiasChange);
+
+});
+
+// Funcion fechafinDescanso
+//Funcion para el calculo de la fecha final del descanso médico
+function onFechaInicioDiasChange()
+{
+
+  var dias = $('#dat_cantidad_dias').val();
+  var fecha = new Date($('#dat_fecha_inicio').val()+" 12:00:00");
+
+  if(isNaN(parseInt(dias)) || fecha == "Invalid Date" || parseInt(dias) == 0){
+
+    $('#dat_dias_acumulados').val('');
+    $('#dat_fecha_fin').val('');
+
+  }
+  else{
+
+    fecha.setDate(fecha.getDate() + parseInt(dias));
+    $('#dat_fecha_fin').val(fecha.toLocaleDateString('en-GB').split('T')[0]);
+    $('#dat_dias_acumulados').val(dias)
+
+  }
+
+}
+
+function onSelectEstablecimientoEmisionChange(){  
+
+  if($(this).val() === 'particular'){
+
+    $("#dat_particular").addClass('submit');
+    $("#dat_particular").attr("disabled",false); 
+
+  }
+  else
+  {
+
+    $("#dat_particular").removeClass('submit');
+    $("#dat_particular").attr("disabled",true); 
+    $("#dat_particular").val(''); 
+
+  }
+
+}
+
+</script>
+
+<!-- JS Enfermedades Cronicas -->
+<script src="view/sho-hce/enfermedades_cronicas/js/JSEnfermedades_Cronicas.js"></script>
+
+<!-- Otras Librerias JS -->
+<script src="js/sweetalert2.js"></script>
+<script src="js/jquery.mask.min.js"></script>
+<script src="js/svg-inject.min.js"></script>

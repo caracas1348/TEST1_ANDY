@@ -193,7 +193,11 @@ var ambiente = 'dev';
  ******************************************************************************************************************/
 
 var apiUrlsho = 'https://5h0-dev-salud.azurewebsites.net';
+//var apiUrlsho = 'https://5h0-qa-salud.azurewebsites.net';
+//var apiUrlsho = 'https://5h0-prd-salud.azurewebsites.net';
+
 //var ambiente='prod';
+//var ambiente='qa';
 var ambiente = 'dev';
 
 

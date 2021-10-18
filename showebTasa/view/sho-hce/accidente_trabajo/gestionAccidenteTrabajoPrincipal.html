@@ -1,0 +1,258 @@
+<link rel="stylesheet" href="css/sho.css">
+<link rel="stylesheet" type="text/css" href="view/sho-hce/accidente_trabajo/styles.css">
+<style type="text/css">
+  .textVertical {
+    writing-mode: vertical-lr;
+    transform: rotate(180deg);
+    font-size: 30px;
+    color: #01719d;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+  }
+
+  .textVertical:hover {
+    color: #8fbb02;
+  }
+
+</style>
+<div class="container main-content">
+    <div class="row mb-5">
+        <div class="col-md-12">
+            <h2 class="title-section">Búsqueda de registros</h2>
+        </div>
+    </div>
+    <div class="row mb-5">
+      <div class="col-md-2 mb-4">
+        <div class="form-box">
+          <span>Gerencia</span>
+          <select class="form-control" name="" id="">
+            <option value="1">option 1</option>
+            <option value="2">option 2</option>
+            <option value="3">option 3</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-2 mb-4">
+        <div class="form-box">
+          <span>Planta</span>
+          <select class="form-control" name="" id="">
+            <option value="1">option 1</option>
+            <option value="2">option 2</option>
+            <option value="3">option 3</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-2 mb-4">
+        <div class="form-box">
+          <span>Área</span>
+          <select class="form-control" name="" id="">
+            <option value="1">option 1</option>
+            <option value="2">option 2</option>
+            <option value="3">option 3</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-2 mb-4">
+        <div class="form-box">
+          <span>Documento</span>
+          <input id="" type="text" class="form-control" data-mask="999999999" />
+        </div>
+      </div>
+      <div class="col-md-2 mb-4">
+        <div class="form-box">
+          <span>Nombres</span>
+          <input id="" type="text" class="form-control"/>
+        </div>
+      </div>
+      <div class="col-md-2 mb-4">
+        <div class="form-box">
+          <span>Apellidos</span>
+          <input id="" type="text" class="form-control"/>
+        </div>
+      </div>
+      <div class="col-md-2 mb-4">
+        <div class="form-box">
+          <span>Puesto de trabajo</span>
+          <input id="" type="text" class="form-control"/>
+        </div>
+      </div>
+      <div class="col-md-2 mb-4">
+        <div class="form-box">
+          <span>Empresa</span>
+          <input id="" type="text" class="form-control"/>
+        </div>
+      </div>
+      <div class="col-md-2 mb-4">
+        <div class="form-box">
+          <span>F. Accidente</span>
+          <input id="" type="date" class="form-control"/>
+        </div>
+      </div>
+      <div class="col-md-2 mb-4">
+        <div class="form-box">
+          <span>Hora de accidente</span>
+          <input id="" type="time" class="form-control"/>
+        </div>
+      </div>
+      <div class="col-md-2 mb-4">
+        <div class="form-box">
+          <span>F. registro</span>
+          <input id="" type="date" class="form-control"/>
+        </div>
+      </div>
+      <div class="col-md-2 mb-4">
+        <div class="form-box">
+          <span>Tipo de accidente</span>
+          <select></select>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="form-box">
+          <span>Buscar</span>
+          <input id="" type="text" class="form-control"/>
+        </div>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-md-12 d-flex justify-content-between">
+        <div class="d-flex align-items-center">
+          <div id="cant_planes">
+            <img src="images/iconos/copia-1.svg" style="width: 20px" />
+          </div>
+          <span class="cantidad ml-3" id="" style="font-size: 15px">0 registros</span>
+        </div>
+        <div class="d-flex align-items-center">
+          <button class="btn btn-info btn-lg text-center mr-2" onclick="atSp4SeguimientoAccidenteTrabajo()">
+            <span class="ml-3">Seg. de accidentes</span>
+            <img src="./images/sho/plus.svg" alt="">
+          </button>
+          <div class="dropdown">
+              <a class="btn btn-drop btn-lg" href="#" role="button" id="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 50px; height: 50px;">
+                <img id="icon" src="./images/iconos/boton-de-expansion.svg" alt="" style="width: 14px">
+              </a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="" x-placement="bottom-end" style="position: absolute; top: 50px; left: 50px; will-change: top, left;">
+                <a class="dropdown-item" onclick="exportarExcelBandeja();" style="cursor: pointer">
+                  <img src="./images/iconos/download3.svg" style="width: 17px; " alt="">
+                  <span>Exportar a excel</span>
+                </a>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mb-5">
+        <div class="col-sm-12">
+          <div class="table-responsive tablaBox">
+            <table class="table-box">
+                <thead>
+                    <th>Documento</th>
+                    <th>Nombres</th>
+                    <th>Apellidos</th>
+                    <th>Gerencia</th>
+                    <th>Planta</th>
+                    <th>Área</th>
+                    <th>Puesto</th>
+                    <th>Empresa</th>
+                    <th>Fecha de accidente</th>
+                    <th>Hora de accidente</th>
+                    <th>Tipo de accidente</th>
+                    <th>Cantidad de descansos médicos</th>
+                    <th>Estadod del último descanso médico</th>
+                    <th>Días de descanso médico acumulado</th>
+                    <th>Transferencia</th>
+                    <th>Diagnóstico DSO 1</th>
+                    <th>Diagnóstico DSO 2</th>
+                    <th>Diagnóstico especialista 1</th>
+                    <th>Diagnóstico especialista 2</th>
+                    <th></th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>46212876</td>
+                        <td>Erick Brian</td>
+                        <td>Arrasco Guevara</td>
+                        <td>Gerencia 1</td>
+                        <td>Planta 1</td>
+                        <td>Mantenimiento</td>
+                        <td>Puesto 1</td>
+                        <td>Empresa 1</td>
+                        <td>21/10/2021</td>
+                        <td>12:00</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td  style="color:#1C1C1C!important">
+                              <div class="dropdown">
+                                <button class=" btn-link dropdown textVertical" style='outline:none !important;' id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  <label class='textVertical'>...</label>
+                                </button>
+                                <div class="dropdown-menu" style="padding: 8px 0px;">  
+                                    <a class="dropdown-item d-flex align-items-center"><img src="./images/sho/eyeIcon.svg" alt="" />&nbsp;&nbsp; Ver detalle</a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+          </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="view/sho-hce/accidente_trabajo/gestionAccidenteTrabajo.js"></script>
+<script type="text/javascript">
+
+let at_SedeAreaGerencia = {}
+
+async function _init_atSp4BuscarAccidenteTrabajo() {
+
+  //Se inicia el Cargando
+  showLoading();
+
+  await atSp4CargaSedesAreasGerencias();
+  //await ecSp4cargarSelectEnfermedadesCronicas();
+  //await ecSp4BuscarTodasEnfermedadesCronicas();
+
+  //Se apaga el Cargando
+  hideLoading();
+}
+
+function atSp4CargaSedesAreasGerencias() {
+
+  var url = apiUrlssoma + "/api/a_get_lista_sedes_areas_gerencia?code=5sz/nIVDXtW7t97kzgfOyzuN4yYq6FEfuJoZSlk3DzGQ9AMLu7k6WQ==&IdSede=0&IdArea=0&IdGerencia=0"
+  
+  var headers = {
+    "apikey": constantes.apiKey
+  }
+
+  var settings = {
+    "url": url,
+    "method": "GET",
+    "timeout": 0,
+    "crossDomain": true,
+    "dataType": "json",
+    "headers": headers,
+  };
+
+  //Se consulta mediante el metodo Ajax
+  return $.ajax(settings).done(function (response) {
+
+    at_SedeAreaGerencia["Areas"] = response.Area;
+    at_SedeAreaGerencia["Gerencias"] = response.Gerencia;
+    at_SedeAreaGerencia["Sedes"] = response.Sedes;
+    console.log(at_SedeAreaGerencia)
+
+  });
+}
+
+$(document).ready(()=>{
+   _init_atSp4BuscarAccidenteTrabajo()
+})
+
+</script>

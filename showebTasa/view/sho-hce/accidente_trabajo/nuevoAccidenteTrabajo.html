@@ -1,0 +1,962 @@
+<link rel="stylesheet" href="css/sho.css">
+<link rel="stylesheet" type="text/css" href="view/sho-hce/accidente_trabajo/styles.css">
+<div class="container main-content">
+    <div class="row mb-5 align-items-center">
+      <div class="col-md-6 col-sm-12">
+        <span class="titulo">Datos del trabajador</span>
+      </div>
+      <div class="col-md-2 col-sm-6">
+        <button type="button" class="btn btn-info btn-block btn-lg shadow-none" onclick="">
+          Cerrar accidente de trabajo
+           <img src="./images/sho/confirm.svg" alt="">
+        </button>
+      </div>
+      <div class="col-md-2 col-sm-6">
+        <button type="button" class="btn btn-danger btn-block btn-lg">Cancelar<img src="./images/sho/cancelar.svg" alt="">
+        </button>
+      </div>
+      <div class="col-md-2 col-sm-6">
+        <button type="button" class="btn btn-success btn-block btn-lg" onclick="atSp4ConfirmGuardarAccidenteTrabajo()"> Terminar atención <img src="./images/sho/confirm.svg" alt="">
+        </button>
+      </div>
+    </div>
+    <div class="row mb-5">
+        <div class="col-md-3">
+            <div class="form-group m-0">
+                <div class="input-box-secondary">
+                    <span>Nro de documento</span>
+                    <input type="text" id="dat_at_dni_trabajador" disabled>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group m-0">
+                <div class="input-box-secondary">
+                    <span>Nombres</span>
+                    <input type="text" id="dat_at_nombres_trabajador" disabled>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group m-0">
+                <div class="input-box-secondary">
+                    <span>Apellidos</span>
+                    <input type="text" id="dat_at_apellidos_trabajador" disabled>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group m-0">
+                <div class="input-box-secondary">
+                    <span>Fecha de nacimiento</span>
+                    <input type="date" id="dat_at_fecha_trabajador" disabled>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group m-0">
+                <div class="input-box-secondary">
+                    <span>Edad</span>
+                    <input type="text" id="dat_at_edad_trabajador" disabled>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+
+        </div>
+        <div class="col-md-3">
+            <div class="form-group m-0">
+                <div class="input-box-secondary">
+                    <span>Fecha de ingreso a tasa</span>
+                    <input type="date" id="dat_at_fecha_ingreso" disabled>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group m-0">
+                <div class="input-box-secondary">
+                    <span>Fecha de retiro</span>
+                    <input type="date" id="dat_at_fecha_retiro" disabled>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group m-0">
+                <div class="input-box-secondary">
+                    <span>Gerencia</span>
+                    <select disabled id="dat_at_gerencia_trabajador">
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group m-0">
+                <div class="input-box-secondary">
+                    <span>Planta</span>
+                    <select id="dat_at_planta_trabajador" disabled>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group m-0">
+                <div class="input-box-secondary">
+                    <span>Área</span>
+                    <select id="dat_at_area_trabajador" disabled>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group m-0">
+                <div class="input-box-secondary">
+                    <span>Puesto de trabajo</span>
+                    <input id="dat_at_puesto_trabajo_trabajador" disabled />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-5">
+        <div class="col-md-12 d-flex">
+            <h2 class="title-section">
+                Adjuntar IAT
+            </h2>
+        </div>
+    </div>
+    <div class="row mb-5">
+        <div class="col-md-12">
+            <div class="input_file_upload border-content">
+              <label class="btn btn-success btn-lg" for="file_upload_descanso">
+                <span> Subir archivo </span>
+                <img src="./images/sho/upload.svg" style="width:14px !important">
+              </label>
+              <input type="file" id="file_upload_descanso" accept="application/pdf, .pdf, .doc, docx, .odf" onchange="">
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="row mb-5">
+        <div class="col-md-12 d-flex">
+            <h2 class="title-section">
+                Datos del accidente
+            </h2>
+        </div>
+    </div>
+    <div class="row mb-5">
+        <div class="col-md-3">
+            <div class="form-group m-0">
+                <div class="input-box-secondary">
+                    <span>Accidente de trabajo</span>
+                    <select></select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group m-0">
+                <div class="input-box-secondary">
+                    <span>Fecha de registro</span>
+                    <input type="date" name="">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group m-0">
+                <div class="input-box-secondary">
+                    <span>Fecha de accidente</span>
+                    <input type="date">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group m-0">
+                <div class="input-box-secondary">
+                    <span>Hora de accidente</span>
+                    <input type="time">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group m-0">
+                <div class="input-box-secondary">
+                    <span>Lugar de accidente</span>
+                    <input type="text">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group m-0">
+                <div class="input-box-secondary">
+                    <span>Estado</span>
+                    <select></select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group m-0">
+                <div class="input-box-secondary">
+                    <span>Jefe directo de TASA</span>
+                    <input type="text">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group m-0">
+                <div class="input-box-secondary">
+                    <span>Nro de teléfono de Jefe directo</span>
+                    <input type="text">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group m-0">
+                <div class="input-box-secondary">
+                    <span>Anamnesis</span>
+                    <input type="text">
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="row mb-5 align-items-center">
+        <div class="col-md-12">
+          <span class="titulo">Signos vitales</span>
+        </div>
+      </div>
+      <div class="row mt-4">
+        <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">
+          <div class="d-flex">
+            <img src="./images/sho/arterial.svg">
+             <span>Presión arterial (mmHg)</span>
+          </div>
+          <div class="input_hc_sp3">
+            <input class="form-control" type="number" value="0" min="0" id="dat_hc_presion_arterial_sv">
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">
+          <div class="d-flex">
+            <img src="./images/sho/cardiaca.svg">
+             <span>Frecuencia cardiaca  (LPM)</span>
+          </div>
+          <div class="input_hc_sp3">
+            <input class="form-control" type="number" value="0" min="0" id="dat_hc_frecuencia_cardiaca_sv">
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">
+          <div class="d-flex">
+            <img src="./images/sho/respiratoria.svg">
+            <span>Frecuencia respiratoria (RPM)</span>
+          </div>
+          <div class="input_hc_sp3">
+            <input class="form-control" type="number" value="0" min="0" id="dat_hc_frecuencia_respiratoria_sv">
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">
+          <div class="d-flex">
+            <img src="./images/sho/saturacion.svg">
+            <span>Saturación (%)</span>
+          </div>
+          <div class="input_hc_sp3">
+            <input class="form-control" type="number" value="0" min="0" id="dat_hc_saturacion_sv">
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">
+          <div class="d-flex">
+            <img src="./images/sho/temperatura.svg" style="left: 30px">
+            <span>Temperatura (°C)</span>
+          </div>
+          <div class="input_hc_sp3">
+            <input class="form-control" type="number" value="0" min="0" id="dat_hc_temperatura_sv">
+          </div>
+        </div>
+      </div>
+    <hr/>
+    <div class="row mb-5">
+        <div class="col-md-12 d-flex">
+            <h2 class="title-section">
+                Examen físico - Estado general
+            </h2>
+        </div>
+    </div>
+    <div class="row mb-5">
+        <div class="col-md-3">
+            <div class="form-group m-0">
+                <div class="input-box-secondary">
+                    <span>Estado de conciencia</span>
+                    <input type="text">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group m-0">
+                <div class="input-box-secondary">
+                    <span>Estado de Nutrición</span>
+                    <select name="" id="dat_at_nutricion_examen">
+                      <option value="" selected></option>
+                      <option value="1">Bueno</option>
+                      <option value="2">Regular</option>
+                      <option value="3">Malo</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group m-0">
+                <div class="input-box-secondary">
+                    <span>Estado general</span>
+                    <select name="" id="dat_at_general_examen">
+                      <option value="" selected></option>
+                      <option value="1">Bueno</option>
+                      <option value="2">Regular</option>
+                      <option value="3">Malo</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group m-0">
+                <div class="input-box-secondary">
+                    <span>Estado de hidratación</span>
+                    <select name="" id="dat_at_hidratacion_examen">
+                      <option value="" selected></option>
+                      <option value="1">Bueno</option>
+                      <option value="2">Regular</option>
+                      <option value="3">Malo</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group m-0">
+                <div class="input-box-secondary">
+                    <span>Orofaringe</span>
+                    <input type="text">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group m-0">
+                <div class="input-box-secondary">
+                    <span>Tórax y pulmones</span>
+                    <input type="text">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group m-0">
+                <div class="input-box-secondary">
+                    <span>Cardio vascular</span>
+                    <input type="text">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group m-0">
+                <div class="input-box-secondary">
+                    <span>SOMA</span>
+                    <input type="text">
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="row mb-3">
+        <div class="col-md-12 d-flex">
+            <h2 class="title-section">
+               Otros
+            </h2>
+        </div>
+    </div>
+    <div class="row mb3">
+        <div class="col-md-3">
+            <div class="form-group m-0">
+                <div class="input-box-secondary">
+                    <span>Tipo de evaluación</span>
+                    <select></select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group m-0">
+                <div class="input-box-secondary">
+                    <span>Escribir detalle</span>
+                    <input type="text">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <button class="btn btn-block btn-lg btn-success" 
+                style="width: 200px; float:right;">Agregar a la lista
+            </button>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-md-12">
+        <div class="d-flex align-items-center">
+          <div id="">
+            <img src="images/iconos/copia-1.svg" style="width: 20px" />
+          </div>
+          <span class="cantidad ml-3" id="dat_am_cantidad_medicamentos" style="font-size: 15px">0 archivos</span>
+        </div>
+      </div>
+    </div>
+    <div class="row mb-5">
+        <div class="col-sm-12">
+              <table class="table-box">
+                  <thead>
+                      <th>Tipo de evaluación</th>
+                      <th>Detalle</th>
+                  </thead>
+                  <tbody>
+                      <tr>
+                          <td>Tipo de evaluación</td>
+                          <td>Detalle</td>
+                      </tr>
+                  </tbody>
+              </table>
+        </div>
+    </div>
+    <hr/>
+    <div class="row mb-5">
+        <div class="col-md-12 d-flex">
+          <h2 class="title-section">
+            Diagnósticos
+          </h2>
+        </div>
+    </div>
+    <div class="row mb-5">
+      <div class="col-md-3">
+          <div class="form-group m-0">
+              <div class="input-box-secondary">
+                  <span>Diagnóstico</span>
+                  <select></select>
+              </div>
+          </div>
+      </div>
+      <div class="col-md-3">
+          <div class="form-group m-0">
+              <div class="input-box-secondary">
+                  <span>CIE 10</span>
+                  <select></select>
+              </div>
+          </div>
+      </div>
+      <div class="col-md-3">
+          <div class="form-group m-0">
+              <div class="input-box-secondary">
+                  <span>Sistema afectado</span>
+                  <select></select>
+              </div>
+          </div>
+      </div>
+      <div class="col-md-3">
+          <div class="form-group m-0">
+              <div class="input-box-secondary">
+                  <span>Sección afectada</span>
+                  <select></select>
+              </div>
+          </div>
+      </div>
+      <div class="col-md-12">
+          <button type="button" class="btn btn-success btn-block btn-lg"
+           style="width:200px; float:right;"> Agregar a la lista <img src="./images/sho/plus.svg" alt="" />
+          </button>
+      </div>
+    </div>
+    <hr/>
+    <div class="row mb-5">
+        <div class="col-md-12 d-flex">
+            <h2 class="title-section">
+               Atención en DSO
+            </h2>
+        </div>
+    </div>
+    <div class="row mb-5">
+        <div class="col-md-4">
+            <div class="form-group m-0">
+                <div class="input-box-secondary">
+                    <span>Registro de atención</span>
+                    <input type="text">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+          <button type="button" class="btn btn-success btn-block btn-lg"
+             style="width:200px; float:right;"> Agregar a la lista <img src="./images/sho/plus.svg" alt="" />
+          </button>
+        </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-md-12">
+        <div class="d-flex align-items-center">
+          <div id="">
+            <img src="images/iconos/copia-1.svg" style="width: 20px" />
+          </div>
+          <span class="cantidad ml-3" id="dat_am_cantidad_medicamentos" style="font-size: 15px">0 archivos</span>
+        </div>
+      </div>
+    </div>
+    <div class="row mb-5">
+        <div class="col-sm-12">
+            <table class="table-box">
+                <thead>
+                    <th>Detalle de atención</th>
+                    <th>Feca de registro</th>
+                    <th>Hora de registro</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Detalle 1</td>
+                        <td>21/10/2021</td>
+                        <td>13:00</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <hr/>
+    <div class="row mb-3">
+        <div class="col-md-12 d-flex">
+            <h2 class="title-section">
+               Atención en centro de salud
+            </h2>
+        </div>
+    </div>
+    <div class="row mb-5">
+        <div class="col-md-4">
+            <div class="form-group m-0">
+                <div class="input-box-secondary">
+                    <span>Ingresar detalle</span>
+                    <input type="text">
+                </div>
+            </div>
+        </div>
+       <div class="col-md-4">
+            <div class="form-group m-0">
+                <div class="input-box-secondary">
+                    <span>Ingresar centro de salud</span>
+                    <input type="text">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <button type="button" class="btn btn-success btn-block btn-lg"
+             style="width:200px; float:right;"> Agregar a la lista <img src="./images/sho/plus.svg" alt="" />
+            </button>
+        </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-md-12">
+        <div class="d-flex align-items-center">
+          <div id="">
+            <img src="images/iconos/copia-1.svg" style="width: 20px" />
+          </div>
+          <span class="cantidad ml-3" id="dat_am_cantidad_medicamentos" style="font-size: 15px">0 archivos</span>
+        </div>
+      </div>
+    </div>
+    <div class="row mb-5">
+        <div class="col-sm-12">
+            <table class="table-box">
+                <thead>
+                    <th>Detalle</th>
+                    <th>Fecha de registro</th>
+                    <th>Hora de registro</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Detalle 1</td>
+                        <td>21/10/2021</td>
+                        <td>13:00</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-md-12 d-flex">
+            <h2 class="title-section">
+               Adjuntar archivo
+            </h2>
+        </div>
+    </div>
+    <div class="row mb-5">
+        <div class="col-md-12">
+            <div class="input_file_upload border-content">
+              <label class="btn btn-success btn-lg" for="file_upload_descanso">
+                <span> Subir archivo </span>
+                <img src="./images/sho/upload.svg" style="width:14px !important">
+              </label>
+              <input type="file" id="file_upload_descanso" accept="application/pdf, .pdf, .doc, docx, .odf" onchange="">
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="row mb-3">
+        <div class="col-md-12 d-flex">
+            <h2 class="title-section">
+               Información
+            </h2>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-md-12">
+            <ul class="tabs">
+                <li class="tabs-item active" id="descansos">Descanso médico</li>
+                <li class="tabs-item" id="transferencias">Transferencias</li>
+                <li class="tabs-item" id="seguimientos">Registro de seguimiento</li>
+                <li class="tabs-item" id="alta-especialistas">Altas de especialistas</li>
+                <li class="tabs-item" id="informes">Informe médicos</li>
+                <li class="tabs-item" id="examenes-auxiliares">Exámenes auxiliares</li>
+                <li class="tabs-item" id="evaluaciones">Evaluaciones post alta médica</li>
+            </ul>
+        </div>
+    </div>
+    <div class="row mb-5 tab-section" id="section-descansos">
+        <div class="col-md-12 mb-3">
+            <button class="btn btn-block btn-lg btn-success" 
+                onclick="atsp4ShowModal('nuevo-descanso')"
+                style="width: 200px; float: right;">Nuevo descanso
+                <img src="./images/sho/plus.svg" alt="" />
+            </button>
+        </div>
+      <div class="col-md-12 mt-3">
+        <div class="d-flex align-items-center">
+          <div id="">
+            <img src="images/iconos/copia-1.svg" style="width: 20px" />
+          </div>
+          <span class="cantidad ml-3" id="dat_am_cantidad_medicamentos" style="font-size: 15px">0 archivos</span>
+        </div>
+      </div>
+        <div class="col-sm-12">
+          <table class="table-box">
+              <thead>
+                  <th>F. Inicio</th>
+                  <th>F. Fin</th>
+                  <th>Días</th>
+                  <th>Días acumulados</th>
+                  <th>Dias restantes</th>
+                  <th>Diagnóstico</th>
+                  <th>Tipo de contingencia</th>
+                  <th>Establecimiento de emisión</th>
+              </thead>
+              <tbody>
+                  <tr>
+                      <td>21/10/2021</td>
+                      <td>21/10/2021</td>
+                      <td>30</td>
+                      <td>45</td>
+                      <td>5</td>
+                      <td>Enfermedad común</td>
+                      <td>Establecimiento 1<td>
+                  </tr>
+              </tbody>
+          </table>
+        </div>
+    </div>
+    <div class="row mb-5 tab-section" id="section-transferencias" style="display:none">
+        <div class="col-md-12 mb-3">
+            <div class="input_file_upload border-content">
+              <button class="btn btn-block btn-lg btn-success" 
+                  onclick="atsp4ShowModal('nueva-transferencia')"
+                  style="width: 200px; float: right;">Nueva transferencia
+                  <img src="./images/sho/plus.svg" alt="" />
+              </button>
+            </div>
+        </div>
+        <div class="col-md-12 mb-3">
+            <button class="btn btn-block btn-lg btn-success" 
+                onclick="atsp4ShowModal('nueva-transferencia')"
+                style="width: 200px; float: right;">Nueva transferencia
+                <img src="./images/sho/plus.svg" alt="" />
+            </button>
+        </div>
+      <div class="col-md-12 mt-3">
+        <div class="d-flex align-items-center">
+          <div id="">
+            <img src="images/iconos/copia-1.svg" style="width: 20px" />
+          </div>
+          <span class="cantidad ml-3" id="dat_am_cantidad_medicamentos" style="font-size: 15px">0 archivos</span>
+        </div>
+      </div>
+        <div class="col-sm-12">
+            <table class="table-box">
+                <thead>
+                    <th>Informe</th>
+                    <th>Establecimiento</th>
+                    <th>Fecha de Transferencia</th>
+                    <th>Diagnóstico Especialista</th>
+                    <th></th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Informe 1</td>
+                        <td>Establecimiento 1</td>
+                        <td>Diagnóstico 1</td>
+                        <td>21/10/2021</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row mb-5 tab-section" id="section-seguimientos" style="display:none">
+      <div class="col-md-12 mb-3">
+          <div class="input_file_upload border-content">
+            <button class="btn btn-block btn-lg btn-success" 
+                onclick="atsp4ShowModal('nuevo-seguimiento')"
+                style="width: 200px; float: right;">Nuevo seguimiento
+                <img src="./images/sho/plus.svg" alt="" />
+            </button>
+          </div>
+      </div>
+      <div class="col-md-12 mb-3">
+          <button class="btn btn-block btn-lg btn-success" 
+              onclick="atsp4ShowModal('nuevo-seguimiento')"
+              style="width: 200px; float: right;">Nuevo seguimiento
+              <img src="./images/sho/plus.svg" alt="" />
+          </button>
+      </div>
+      <div class="col-md-12 mt-3">
+        <div class="d-flex align-items-center">
+          <div id="">
+            <img src="images/iconos/copia-1.svg" style="width: 20px" />
+          </div>
+          <span class="cantidad ml-3" id="dat_am_cantidad_medicamentos" style="font-size: 15px">0 archivos</span>
+        </div>
+      </div>
+      <div class="col-sm-12">
+          <table class="table-box">
+              <thead>
+                  <th>Informe</th>
+                  <th>Establecimiento</th>
+                  <th>Fecha de Transferencia</th>
+                  <th>Diagnóstico Especialista</th>
+                  <th></th>
+              </thead>
+              <tbody>
+                  <tr>
+                      <td>Informe 1</td>
+                      <td>Establecimiento 1</td>
+                      <td>Diagnóstico 1</td>
+                      <td>21/10/2021</td>
+                      <td></td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
+    </div>
+    <div class="row mb-5 tab-section" id="section-alta-especialistas" style="display:none">
+      <div class="col-md-12 mb-3">
+          <div class="input_file_upload border-content">
+            <button class="btn btn-block btn-lg btn-success" 
+                onclick="atsp4ShowModal('nueva-alta-especialidad')"
+                style="width: 200px; float: right;">Crear alta
+                <img src="./images/sho/plus.svg" alt="" />
+            </button>
+          </div>
+      </div>
+      <div class="col-md-12 mt-3">
+        <div class="d-flex align-items-center">
+          <div id="">
+            <img src="images/iconos/copia-1.svg" style="width: 20px" />
+          </div>
+          <span class="cantidad ml-3" id="dat_am_cantidad_medicamentos" style="font-size: 15px">0 archivos</span>
+        </div>
+      </div>
+      <div class="col-sm-12">
+          <table class="table-box">
+              <thead>
+                  <th>Diagnóstico</th>
+                  <th>Documentos escaneados</th>
+                  <th>F. alta</th>
+                  <th>RNE especialista</th>
+                  <th>Nombre de especialista</th>
+                  <th></th>
+              </thead>
+              <tbody>
+                  <tr>
+                      <td>Diagnóstico 1</td>
+                      <td>Documento 1</td>
+                      <td>21/10/2021</td>
+                      <td>Especialista 1</td>
+                      <td>Erick Arrasco Guevara</td>
+                      <td></td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
+    </div>
+    <div class="row mb-5 tab-section" id="section-informes" style="display:none">
+        <div class="col-md-12 mb-3">
+          <div class="input_file_upload border-content">
+            <button class="btn btn-block btn-lg btn-success" 
+                onclick="atsp4ShowModal('nuevo-informe')"
+                style="width: 200px; float: right;">Nuevo informe
+                <img src="./images/sho/plus.svg" alt="" />
+            </button>
+          </div>
+        </div>
+        <div class="col-md-12 mb-3">
+            <button class="btn btn-block btn-lg btn-success" 
+                onclick="atsp4ShowModal('nuevo-informe')"
+                style="width: 200px; float: right;">Nuevo informe
+                <img src="./images/sho/plus.svg" alt="" />
+            </button>
+        </div>
+        <div class="col-md-12">
+          <div class="d-flex align-items-center">
+            <div id="">
+              <img src="images/iconos/copia-1.svg" style="width: 20px" />
+            </div>
+            <span class="cantidad ml-3" id="dat_am_cantidad_medicamentos" style="font-size: 15px">0 archivos</span>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <table class="table-box">
+              <thead>
+                  <th>Fecha de informe</th>
+                  <th>Especialidad</th>
+                  <th>Diagnóstico</th>
+                  <th>Resultados escaneados</th>
+                  <th></th>
+              </thead>
+              <tbody>
+                  <tr>
+                      <td>21/10/2021</td>
+                      <td>Especialidad 1</td>
+                      <td>Diagnóstico 1</td>
+                      <td>1</td>
+                      <td></td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
+    </div>
+    <div class="row mb-5 tab-section" id="section-examenes-auxiliares" style="display:none">
+       <div class="col-md-12 mb-3">
+          <div class="input_file_upload border-content">
+            <button class="btn btn-block btn-lg btn-success" 
+                onclick="atsp4ShowModal('nuevo-examen-auxiliar')"
+                style="width: 200px; float: right;">Nuevo examen
+                <img src="./images/sho/plus.svg" alt="" />
+            </button>
+          </div>
+        </div>
+        <div class="col-md-12 mb-3">
+            <button class="btn btn-block btn-lg btn-success" 
+                onclick="atsp4ShowModal('nuevo-examen-auxiliar')"
+                style="width: 200px; float: right;">Nuevo examen
+                <img src="./images/sho/plus.svg" alt="" />
+            </button>
+        </div>
+      <div class="col-md-12">
+        <div class="d-flex align-items-center">
+          <div id="">
+            <img src="images/iconos/copia-1.svg" style="width: 20px" />
+          </div>
+          <span class="cantidad ml-3" id="dat_am_cantidad_medicamentos" style="font-size: 15px">0 archivos</span>
+        </div>
+      </div>
+        <div class="col-sm-12">
+            <table class="table-box">
+                <thead>
+                    <th>F. Exámenes</th>
+                    <th>Tipo de examen</th>
+                    <th>Conclusión</th>
+                    <th>Resultados escaneados</th>
+                    <th></th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>21/10/2021</td>
+                        <td>Tipo 1</td>
+                        <td>Conclusión 1</td>
+                        <td>Resultados escaneados</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row mb-5 tab-section" id="section-evaluaciones" style="display:none">
+        <div class="col-md-12 mb-3">
+          <div class="input_file_upload border-content">
+            <button class="btn btn-block btn-lg btn-success" 
+                onclick="atsp4ShowModal('nueva-evaluacion')"
+                style="width: 200px; float: right;">Nueva atención
+                <img src="./images/sho/plus.svg" alt="" />
+            </button>
+          </div>
+        </div>
+        <div class="col-md-12 mb-3">
+            <button class="btn btn-block btn-lg btn-success" 
+                onclick="atsp4ShowModal('nueva-evaluacion')"
+                style="width: 200px; float: right;">Nueva atención
+                <img src="./images/sho/plus.svg" alt="" />
+            </button>
+        </div>
+        <div class="col-md-12">
+          <div class="d-flex align-items-center">
+            <div id="">
+              <img src="images/iconos/copia-1.svg" style="width: 20px" />
+            </div>
+            <span class="cantidad ml-3" id="dat_am_cantidad_medicamentos" style="font-size: 15px">0 archivos</span>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <table class="table-box">
+              <thead>
+                  <th>Fecha de atención</th>
+                  <th>Diagnóstico</th>
+                  <th>Aptitud</th>
+                  <th></th>
+              </thead>
+              <tbody>
+                  <tr>
+                      <td>21/10/2021</td>
+                      <td>Diagnóstico 1</td>
+                      <td>Apto</td>
+                      <td></td>
+                  </tr>
+              </tbody>
+          </table>
+        </div>
+    </div>
+</div>
+<div class="modal fade " id="modalAccidenteTrabajo" tabindex="-1" data-backdrop="static" data-keyboard="false" aria-hidden="true" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered rounded" role="document" style="max-width: 1366px; z-index: 1030;   ">
+      <div class="modal-content rounded border-0" style="background:#ffffff; min-height: 300px !important; ">
+        <div style="overflow: hidden; min-height: 1500px; overflow-x: hidden;">
+          <! START MODAL-HEADER>
+            <div class="modal-header fix-header-modal">
+              <div class="card-header text-white modal-dialog-centered card-header-FormAuditor" id="red-head"
+                   style="width: 100%; padding: 0px 0px !important; background-color:#254373 !important;">
+                <div class="row align-items-center" style="width: 100%;">
+                  <div class="col-1">
+                    <img src="./images/prev.svg" style="cursor:pointer; display: block" title="Salir" onclick=" $('#modalAccidenteTrabajo').modal('hide').removeClass('fade');">
+                  </div>
+                  <div class="col-10">
+                    <span>
+                      <h5 id="titleModalAccidenteTrabajo" class="m-0" style="margin-right: 2px !important;"></h5>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <! END MODAL-HEADER>
+            <! START MODAL-BODY>
+            <div class="modal-body dialog-position" id="bodymodalAccidenteTrabajo" style="padding: 10px 0px 0px !important;">
+            </div>
+            <! END MODAL-BODY>
+        </div>
+      </div>
+    </div>
+</div>
+<script type="text/javascript" src="view/sho-hce/accidente_trabajo/gestionAccidenteTrabajo.js"></script>
+<script type="text/javascript">
+
+  $(document).ready(()=>{
+    _init_atSp4NuevoAccidenteTrabajo()
+  })
+
+</script>

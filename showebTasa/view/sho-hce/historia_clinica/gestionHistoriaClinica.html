@@ -1,22 +1,46 @@
+<!-- /****************************************************************************************
+ * VISUAL SAT - [2021]
+ * PROYECTO : SIGTASA
+ * ESQUEMA : SSOMA
+ * SPRINT  : 3
+ * MODULO : HISTORIA CLINICA
+ * OPERADORES_________________________________________________________________________
+ * | # | PROGRAMADOR     |  |      FECHA   |  |   HORA   |           CORREO           |
+ * | 1 | Carlos Rivas    |  |   08/09/2021 |  | 09:28:00 |       crivascyt@gmail.com  |
+ * | 2 | Andy Vàsquez    |  |   06/09/2021 |  | 11:16:00 |     caracas1348@gmail.com  |
+ * |___|_________________|__|______________|__|__________|____________________________|
+ *
+ * DESCRIPCION: ARCHIVO VISTA DE LAS OPCIONES DE HISTORIA CLINICA
+ * EN EL FRONT END ACCIDENTES- (LISTADO, FILTRADO, VER)
+ *
+ * ARCHIVOS DE SERVICIOS   _________________________________________
+ * | # |     MODULO             |  |         NOMBRE                 |
+ * | 1 |   SALUD OCUPACIONAL    |  |                                |
+ * |________________________________________________________________|
+ *
+ *
+ * VERSION: 0.1 Beta
+ *********************************************************************************************************************************************************************************
+ * NOTA IMPORTANTE:  EN FECHA  *** 06/09/2021 Andy  **** Vasquez: Procede a realizar un ajuste general  de funcionamiento y orden del modulo de historia clinica para optimizarlo
+ *********************************************************************************************************************************************************************************
+
+ *******************************************************************************************/ -->
 <link rel="stylesheet" href="css/sweetalert2.css">
 <!--  ================================================ fin de estilo ===============================================-->
-
 <link rel="stylesheet" href="view/sho-hce/ssoma.css">
 <link rel="stylesheet" href="css/pagination.css">
 <link rel="stylesheet" href="css/auditorLiderList.css">
 <link rel="stylesheet" href="css/sass/customize.css?v=3">
-<link href="css/crearAuditorias.css" rel="stylesheet" >
+<link href="css/crearAuditorias.css" rel="stylesheet">
 <Link href="css/crearAuditorias.css" rel="stylesheet">
 <Link href="css/crearProgramas.css" rel="stylesheet">
 <link rel="stylesheet" href="js/daterangepicker-master/daterangepicker.css">
-
 <style>
   /*#regresar {
     position: absolute;
     top: 27px;
     left: 50px;
   }*/
-
   body::-webkit-scrollbar {
     width: 10px;
   }
@@ -268,7 +292,7 @@
     font-size: 14px;
   }
 
-    .btn-drop-content2 {
+  .btn-drop-content2 {
     display: none;
     position: absolute;
     background-color: #fff;
@@ -312,10 +336,11 @@
   .btn-drop-content li {
     list-style: none;
   }
-  
+
   .btn-drop-content2 li {
     list-style: none;
   }
+
   .more-info-content ul {
     margin: 0 !important;
   }
@@ -358,10 +383,12 @@
     background-color: #f5f5f5;
     border-color: rgba(153, 153, 153, 0.2);
   }
-.btn-drop-content2:hover {
+
+  .btn-drop-content2:hover {
     background-color: #f5f5f5;
     border-color: rgba(153, 153, 153, 0.2);
   }
+
   .btn-registro-ex img {
     position: absolute;
     right: 8%;
@@ -643,28 +670,22 @@
     padding: 0.9em;
   }
 
-
-
-
-
-  .lb_row_sho
-  {
-    font-size:14px !important;
-    color:#000000 !important;
-    margin: 0px 0px 0px 13px !important; 
-    font-family: ITCAvantGardeStd-Bk  !important;
-    font-weight: normal  !important;
-    font-stretch: normal  !important;
-    font-style: normal  !important;
-    line-height: 2  !important;
-    letter-spacing: normal  !important;
+  .lb_row_sho {
+    font-size: 14px !important;
+    color: #000000 !important;
+    margin: 0px 0px 0px 13px !important;
+    font-family: ITCAvantGardeStd-Bk !important;
+    font-weight: normal !important;
+    font-stretch: normal !important;
+    font-style: normal !important;
+    line-height: 2 !important;
+    letter-spacing: normal !important;
   }
 
- .tablaBox{
+  .tablaBox {
     width: 100%;
-    
-    overflow-x: auto; 
-    overflow-y: auto; 
+    overflow-x: auto;
+    overflow-y: auto;
     border-collapse: separate;
     border-spacing: 0px 10px;
   }
@@ -686,31 +707,30 @@
     background-color: #f8f8f8;
   }
 
-  .filaBandeja
-  {
-     margin-left: -8px !important;  
-     margin-top: 8px !important;
-     margin-bottom: 8px !important;
-     border: solid 1px #C8C8C8 !important;
-     background-color: #f2f2f2 !important; 
-     color:#1C1C1C  !important; 
-     /*height:53px !important;*/
+  .filaBandeja {
+    margin-left: -8px !important;
+    margin-top: 8px !important;
+    margin-bottom: 8px !important;
+    border: solid 1px #C8C8C8 !important;
+    background-color: #f2f2f2 !important;
+    color: #1C1C1C !important;
+    /*height:53px !important;*/
   }
-.textVertical {
+
+  .textVertical {
     writing-mode: vertical-lr;
     transform: rotate(180deg);
     font-size: 30px;
     color: #01719d;
     font-weight: bold;
     cursor: pointer;
-}
-.textVertical:hover {
+  }
 
+  .textVertical:hover {
     color: #8fbb02;
-}
+  }
 
-.menupop2
-{
+  .menupop2 {
     display: block;
     position: absolute;
     background-color: #fff;
@@ -721,1790 +741,263 @@
     border: solid 1px #c8c8c8;
     right: 20px;
     transform: translate(-100%, 0);
-}
+  }
 </style>
-
-
 <!--  ================================================ fin de estilo ===============================================-->
-
-
-
-
-
 <!--  ================================================  vista bandeja inicial =======================================-->
 <div class="container main-content" id="HC_registros" style="display: block;">
-<a href="#" id="link" style="display:none"></a>
-   <table border="0" width = '100%'>
-           <tr >
-               <td  width = '100%' >
-                   <div class="titulo">Búsqueda de registros</div>
-               </td>
-           </tr>
-           <tr >
-               <td  width = '100%' >&nbsp;
-                   <table border="0" width = '100%'>
-                       <tr >
-                           <td  width = '18%' >
-                               <div class="form-box">
-                                   <span>Documento</span>
-                                   <input id='dat_hc_a_doc' type="number" min="0" type="text" class="form-control" />
-                               </div>
-                           </td>
-                           <td  width = '2%' ></td>
-                           <td  width = '18%' >
-                               <div class="form-box">
-                                   <span>Sede</span>
-                                   <select class="form-control" name="" id="dat_hc_a_sede">
-                                       <option value="1">option 1</option>
-                                       <option value="2">option 2</option>
-                                       <option value="3">option 3</option>
-                                   </select>
-                               </div>
-                           </td>
-                           <td  width = '2%' ></td>
-                           <td  width = '18%' >
-                               <div class="form-box">
-                                   <span>Area de trabajo</span>
-                                   <select class="form-control" name="" id="dat_hc_a_area">
-                                       <option value="1">option 1</option>
-                                       <option value="2">option 2</option>
-                                       <option value="3">option 3</option>
-                                   </select>
-                               </div>
-                           </td>
-                           <td  width = '2%' ></td>
-                           <td  width = '18%' >
-                               <div class="form-box">
-                                   <span>Buscar</span>
-                                   <input type="text"  id="dat_hc_a_buscar" class="form-control" />
-                               </div>
-                           </td>
-       <td  width = '2%'  > 
-      <img class="inject-svg" onclick="fnSp3CargaFiltroEstadoInicialSaludOcupacional();" style="cursor:pointer;" style="margin-top: 36px !important;" src="images/iconos/search5.svg" title="Buscar"/>
+  <a href="#" id="link" style="display:none"></a>
+  <table border="0" width='100%'>
+    <tr>
+      <td width='100%'>
+        <div class="titulo">Búsqueda de registros</div>
       </td>
-                           <td  width = '18%' ></td>
-                           <td  width = '2%' ></td>
-                       </tr >
-                   </table>
-               </td>
-           </tr>
-            <tr >
-               <td  width = '100%' >
-                   <div class="titulo"><div style="height:80px; background-color:white;">&nbsp;</div>
-               </td>
-           </tr>
-       <tr >
-           <td  width = '100%' >&nbsp;
-               <table border="0" width = '100%'>
-                   <tr >
-                       <td  width = '18%' >
-                           <div class="d-flex align-items-center">
-                               <div id="cant_planes">
-                                   <img src="images/iconos/copia-1.svg" style="width: 20px" />
-                               </div>
-                               <span class="cantidad ml-3" id="cant_hist_cli" style="font-size: 15px">0 registros</span>
-                           </div>
-                       </td>
-                       <td  width = '2%'></td>
-                       <td  width = '18%' >
-                           &nbsp;
-                       </td>
-                       <td  width = '2%' ></td>
-                       <td  width = '18%' >
-                           &nbsp;
-                       </td>
-                       <td  width = '2%' ></td>
-                       <td  width = '18%' >
-                           &nbsp;
-                       </td>
-                       <td  width = '2%' > &nbsp;</td>
-
-
-                       <td  width = '20%' colspan="2" >
-                           <table border="0" width = '100%'>
-                               <tr >
-
-                                   <td  width = '77%' align="right" >
-                                       <button class="btn btn-success btn-lg text-center" onclick="showNuevaHC()">
-                                           <span class="ml-3">Nueva H.C</span>
-                                           <img src="./images/sho/plus.svg" alt="" />
-                                       </button>
-                                   </td>
-                                   <td  width = '6%' >&nbsp;</td>
-                                   <td  width = '20%' >
-                                       <button class="btn btn-drop btn-lg"> &nbsp;
-                                           <div class="d-flex justify-content-center">
-                                               <img id="icon" src="./images/iconos/boton-de-expansion.svg" alt="" style="width: 14px" />
-                                           </div>
-                                           <ul class="btn-drop-content" onclick="exportarExcelBandeja();">
-                                            <table width='100%' border='0' style="cursor: pointer;" >
-                                                     <tr>
-                                                          <td width='10%' > <img src="./images/iconos/download3.svg" style="width: 17px; cursor: pointer;" alt="" /></td>
-
-                                                          <td width='5%' > &nbsp;</td>
-                                                          <td width='85%' ><label style="margin-top:10px; cursor: pointer;" >Exportar a excel</label></td>
-                                                          
-                                                     </tr>
-                                                </table>
-                                           </ul>
-                                       </button>
-                                   </td>
-                               </tr >
-                           </table>
-
-
-                       </td>
-
-                   </tr >
-               </table>
-           </td>
-       </tr>
-
-       
-    </table>
-  <!-- <div class="row">
-    <div class="col-md-12">
-      <div class="titulo">Búsqueda de registros</div>
-    </div>
-  </div>
-  <div class="row mt-5">
-
-    <div class="col-md-2 col-sm-6">
-      <div class="form-box">
-        <span>Sede</span>
-        <select class="form-control" name="" id="dat_hc_a_sede">
-          <option value="1">option 1</option>
-          <option value="2">option 2</option>
-          <option value="3">option 3</option>
-        </select>
-      </div>
-    </div>
-
-    <div class="col-md-2 col-sm-6">
-      <div class="form-box">
-        <span>Area de trabajo</span>
-        <select class="form-control" name="" id="dat_hc_a_area">
-          <option value="1">option 1</option>
-          <option value="2">option 2</option>
-          <option value="3">option 3</option>
-        </select>
-      </div>
-    </div>
-
-    <div class="col-md-3 col-sm-12">
-      <div class="form-box">
-        <span>Buscar</span>
-        <input type="text" class="form-control" />
-        <img class="inject-svg" src="images/iconos/search5.svg" alt="" />
-      </div>
-    </div>
-  </div>
+    </tr>
+    <tr>
+      <td width='100%'>&nbsp; <table border="0" width='100%'>
+          <tr>
+            <td width='18%'>
+              <div class="form-box">
+                <span>Documento</span>
+                <input id='dat_hc_a_doc' type="text" class="form-control" data-mask="999999999" />
+              </div>
+            </td>
+            <td width='2%'></td>
+            <td width='18%'>
+              <div class="form-box">
+                <span>Sede</span>
+                <select class="form-control" name="" id="dat_hc_a_sede">
+                  <option value="1">option 1</option>
+                  <option value="2">option 2</option>
+                  <option value="3">option 3</option>
+                </select>
+              </div>
+            </td>
+            <td width='2%'></td>
+            <td width='18%'>
+              <div class="form-box">
+                <span>Area de trabajo</span>
+                <select class="form-control" name="" id="dat_hc_a_area">
+                  <option value="1">option 1</option>
+                  <option value="2">option 2</option>
+                  <option value="3">option 3</option>
+                </select>
+              </div>
+            </td>
+            <td width='2%'></td>
+            <td width='18%'>
+              <div class="form-box">
+                <span>Buscar</span>
+                <input type="text" id="dat_hc_a_buscar" class="form-control" />
+              </div>
+            </td>
+            <td width='2%'>
+              <img class="inject-svg" onclick="fnSp3CargaFiltroEstadoInicialSaludOcupacional();" style="cursor:pointer;" style="margin-top: 36px !important;" src="images/iconos/search5.svg"
+                   title="Buscar" />
+            </td>
+            <td width='18%'></td>
+            <td width='2%'></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td width='100%'>
+        <div class="titulo">
+          <div style="height:80px; background-color:white;">&nbsp;</div>
+      </td>
+    </tr>
+    <tr>
+      <td width='100%'>&nbsp; <table border="0" width='100%'>
+          <tr>
+            <td width='18%'>
+              <div class="d-flex align-items-center">
+                <div id="cant_planes">
+                  <img src="images/iconos/copia-1.svg" style="width: 20px" />
+                </div>
+                <span class="cantidad ml-3" id="cant_hist_cli" style="font-size: 15px">0 registros</span>
+              </div>
+              <!--  <button class="btn btn-success btn-lg text-center" onclick="verVariablesTemp()">ver Variables</button> -->
+            </td>
+            <td width='2%'></td>
+            <td width='18%'> &nbsp; </td>
+            <td width='2%'></td>
+            <td width='18%'> &nbsp; </td>
+            <td width='2%'></td>
+            <td width='18%'> &nbsp; </td>
+            <td width='2%'> &nbsp;</td>
+            <td width='20%' colspan="2">
 
 
 
-  <div class="row d-flex justify-content-between" style="margin-top: 100px">
-    <div class="d-flex align-items-center">
-      <div id="cant_planes">
-        <img src="images/iconos/copia-1.svg" style="width: 20px" />
-      </div>
-      <span class="cantidad ml-3" id="cant_hist_cli" style="font-size: 15px">0 registros</span>
-    </div>
-    <div style="z-index: 3">
-      <button class="btn btn-success btn-lg" onclick="showNuevaHC()">
-        <span class="ml-3">Nueva H.C</span>
-        <img src="./images/sho/plus.svg" alt="" />
-      </button>
-      <button class="btn btn-drop btn-lg"> &nbsp; <div class="d-flex justify-content-center">
-          <img id="icon" src="./images/iconos/boton-de-expansion.svg" alt="" style="width: 14px" />
-        </div>
-        <ul class="btn-drop-content">
-          <li>
-            <img src="./images/iconos/download3.svg" style="width: 14px" alt="" />
-            <p>Exportar a excel</p>
-          </li>
-        </ul>
-      </button>
-    </div>
-  </div> -->
+              <table border="0" width='100%'>
+                <tr>
+
+                  <!-- <td width='20%'>
+                   <div class="dropdown">
+                      <a class="btn btn-drop btn-lg" href="#" role="button" id="exportarExcelBandejaHC" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                         style="width: 50px; height: 50px;">
+                        <img id="icon" src="./images/iconos/boton-de-expansion.svg" alt="" style="width: 14px" />
+                      </a>
+                      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="exportarExcelBandejaHC">
+                        <a class="dropdown-item" onclick="exportarExcelBandeja();" style="cursor: pointer">
+                          <img src="./images/iconos/download3.svg" style="width: 17px; " alt="" />
+                          <span>Exportar a excel</span>
+                        </a>
+                      </div>
+                    </div>
 
 
-
-
-
-
-
+                  </td>
+ -->
+                  <td width='77%' align="right">
+                    <button class="btn btn-success btn-lg text-center" onclick="showNuevaHC()">
+                      <span class="ml-3">Nueva H.C</span>
+                      <img src="./images/sho/plus.svg" alt="" />
+                    </button>
+                  </td>
+                  <td width='6%'>&nbsp;</td>
+                  <td width='20%'>
+                    <!-- <button class="btn btn-drop btn-lg"> &nbsp; <div class="d-flex justify-content-center">
+                        <img id="icon" src="./images/iconos/boton-de-expansion.svg" alt="" style="width: 14px" />
+                      </a>
+                      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="exportarExcelBandejaHC">
+                        <a class="dropdown-item" onclick="exportarExcelBandeja();" style="cursor: pointer">
+                          <img src="./images/iconos/download3.svg" style="width: 17px; " alt="" />
+                          <span>Exportar a excel</span>
+                        </a>
+                      </div>
+                      <ul class="btn-drop-content" onclick="exportarExcelBandeja();">
+                        <table width='100%' border='0' style="cursor: pointer;">
+                          <tr>
+                            <td width='10%'> <img src="./images/iconos/download3.svg" style="width: 17px; cursor: pointer;" alt="" /></td>
+                            <td width='5%'> &nbsp;</td>
+                            <td width='85%'><label style="margin-top:10px; cursor: pointer;">Exportar a excel</label></td>
+                          </tr>
+                        </table>
+                      </ul>
+                    </button> -->
+                    <div class="dropdown">
+                      <a class="btn btn-drop btn-lg" href="#" role="button" id="exportarExcelBandejaHC" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                         style="width: 50px; height: 50px;">
+                        <img id="icon" src="./images/iconos/boton-de-expansion.svg" alt="" style="width: 14px" />
+                      </a>
+                      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="exportarExcelBandejaHC">
+                        <a class="dropdown-item" onclick="exportarExcelBandeja();" style="cursor: pointer">
+                          <img src="./images/iconos/download3.svg" style="width: 17px; " alt="" />
+                          <span>Exportar a excel</span>
+                        </a>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
   <div class="row justify-content-center mt-3">
-     <div class="table-responsive tablaBox"  id="tablaBox" style="background-color: white; height:100% !important; cursor:pointer; ">
-                 <div class="col-md-12" style=" width:2630px;"  >
-                        <div class="header-tabla px-2 py-3 " style="width:2420px !important; mmargin-rigth:30px !important;">
+    <div class="table-responsive tablaBox" id="tablaBox" style="background-color: white; height:100% !important; cursor:pointer; ">
+      <div class="col-md-12" style=" width:2630px;">
+        <div class="header-tabla px-2 py-3 " style="width:2420px !important; mmargin-rigth:30px !important;">
+          <table border="0" style=" width:2410px !important; mmargin-rigth:30px !important;">
+            <!-- <style=" width:1754px !important; -->
+            <tr>
+              <td style='width: 200px;' align="center">
+                <div id="c1TabGenyx" class="text-left lbCabezaTabla">Codigo Colaborador </div>
+              </td>
+              <td style='width: 200px;' align="center">
+                <div id="c2TabGenyx" class="text-left lbCabezaTabla">Documento</div>
+              </td>
+              <td style='width: 200px;' align="center">
+                <div id="c9TabGenyx" class="text-left lbCabezaTabla">Nombres</div>
+              </td>
+              <td style='width: 200px;' align="center">
+                <div id="c3TabGenyx" class="text-left lbCabezaTabla">Apellidos</div>
+              </td>
+              <td style='width: 200px;' align="center">
+                <div id="c4TabGenyx" class="text-left lbCabezaTabla">Áreas</div>
+              </td>
+              <td style='width: 200px;' align="center">
+                <div id="c5TabGenyx" class="text-left lbCabezaTabla">Sede</div>
+              </td>
+              <td style='width: 200px;' align="center">
+                <div id="c6TabGenyx" class="text-left lbCabezaTabla">Teléfono</div>
+              </td>
+              <td style='width: 200px;' align="center">
+                <div id="c7TabGenyx" class="text-left lbCabezaTabla">F.Ultima atención médica</div>
+              </td>
+              <td style='width: 200px;' align="center">
+                <div id="c8TabGenyx" class="text-left lbCabezaTabla">Diagnóstico</div>
+              </td>
+              <td style='width: 200px;' align="center">
+                <div id="c9TabGenyx" class="text-left lbCabezaTabla">&nbsp;&nbsp;&nbsp;Aptitud</div>
+              </td>
+              <td style='width: 200px;' align="center">
+                <div id="c9TabGenyx" class="text-left lbCabezaTabla">F.Ultimo EMO</div>
+              </td>
+              <td style='width: 200px;' align="center">
+                <div id="c9TabGenyx" class="text-left lbCabezaTabla">F.Ultimo VMO</div>
+              </td>
+              <td style='width: 10px;' align="center">
+                <div id="c9TabGenyx" class="text-left lbCabezaTabla">&nbsp;</div>
+              </td>
+            </tr>
+          </table>
 
-                            <table border="0" style=" width:2410px !important; mmargin-rigth:30px !important;" >   <!-- <style=" width:1754px !important; -->
-                     
-                               <tr >
-                                  <td  style = 'width: 200px;'  align="center"><div id="c1TabGenyx" class="text-left lbCabezaTabla"  >Codigo Colaborador</div></td> 
-                                  <td  style = 'width: 200px;'  align="center"><div id="c2TabGenyx" class="text-left lbCabezaTabla"  >Documento</div></td>
-                                  <td  style = 'width: 200px;'  align="center"><div id="c9TabGenyx" class="text-left lbCabezaTabla"  >Nombres</div></td> 
-                                  <td  style = 'width: 200px;'  align="center"><div id="c3TabGenyx" class="text-left lbCabezaTabla"  >Apellidos</div></td>
-                                  <td  style = 'width: 200px;'  align="center"><div id="c4TabGenyx" class="text-left lbCabezaTabla"  >Áreas</div></td>
-                                  <td  style = 'width: 200px;'  align="center"><div id="c5TabGenyx" class="text-left lbCabezaTabla"  >Sede</div></td>
-
-                                  <td  style = 'width: 200px;'  align="center"><div id="c6TabGenyx" class="text-left lbCabezaTabla"  >Teléfono</div></td>
-                                  <td  style = 'width: 200px;'  align="center"><div id="c7TabGenyx" class="text-left lbCabezaTabla"  >F.Ultima atención médica</div></td>
-                                  <td  style = 'width: 200px;'  align="center"><div id="c8TabGenyx" class="text-left lbCabezaTabla"  >Diagnóstico</div></td>
-                                  <td  style = 'width: 200px;'  align="center"><div id="c9TabGenyx" class="text-left lbCabezaTabla"  >&nbsp;&nbsp;&nbsp;Aptitud</div></td>  
-
-                                  <td  style = 'width: 200px;'   align="center"><div id="c9TabGenyx" class="text-left lbCabezaTabla"  >F.Ultimo EMO</div></td>  
-                                  <td  style = 'width: 200px;'   align="center"><div id="c9TabGenyx" class="text-left lbCabezaTabla"  >F.Ultimo VMO</div></td>  
-                                  <td  style = 'width: 10px;'    align="center"><div id="c9TabGenyx" class="text-left lbCabezaTabla"  >&nbsp;</div></td>            
-                              </tr>
-                               
-                            </table>
-                             
-
-                       </div>
 
 
 
 
-                            <div class="body-tabla mt-4" id="bodyTablaSinAuditorias" style="display: block; font-weight: bold; width:1600px !important;" >
-                                <div class="content-registros-no-encontrados">
-                                    <div>
-                                        <!-- <img src="./images/newsistema/iconos/smartWatch2.svg" style="width:128px; height: 128px;" alt="">
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </div>
+        <div class="body-tabla mt-4" id="bodyTablaSinAuditorias" style="display: block; font-weight: bold; width:1600px !important;">
+          <div class="content-registros-no-encontrados">
+            <div>
+              <!-- <img src="./images/newsistema/iconos/smartWatch2.svg" style="width:128px; height: 128px;" alt="">
                                         <p class="mt-4">No Existen Incidentes/ Accidentes</p>
                                         <img src="./images/iconos/loadingAdj.gif" style="visibility: hidden;" > -->
-                                    </div>
-                                </div>
-                            </div>
-
-                           
-                                <div class="body-tabla-list-EvalAud" id="body-tabla-list-EvalAud" ></div>
-
-                               
-
-              <!--   </td>
+            </div>
+          </div>
+        </div>
+        <div class="body-tabla-list-EvalAud" id="body-tabla-list-EvalAud"></div>
+        <!--   </td>
             </tr>
         </table> -->
-
-
-
-</div>
-</div>
-<!-- aqui ciolocamos el paginador de la bandeja -->
-<table width='100%' border='0'>
-     <tr>
-          <td width='100%' style="text-align:right;" >
-                   <div id="pagination-container-EvalAud" class="mt-3"></div>
+      </div>
+    </div>
+    <!-- aqui ciolocamos el paginador de la bandeja -->
+    <table width='100%' border='0'>
+      <tr>
+        <td width='100%' style="text-align:right;">
+          <div id="pagination-container-EvalAud" class="mt-3"></div>
         </td>
-     </tr>
-</table>
- 
+      </tr>
+    </table>
+    <!--  ==========================================  vista resumen del trabajador =======================================-->
+    <!-- <script src="js/svg-inject.min.js"></script> -->
+    <script src="js/paginator/pagination.js"></script>
+    <script src="view/sho-hce/historia_clinica/gestionHistoriaClinica.js"></script>
+    <script src="js/sweetalert2.js"></script>
+    <script src="js/proccessExcell.js"></script>
+    <script src="js/riskList.js"></script>
+    <script src="js/jquery.mask.min.js"></script>
+    <script>
+      //--------------- llamado inicial que carga toda la data inicial de la bandeja de historia clinica ----------------------
 
-<!--  ================================================  vista bandeja inicial =======================================-->
-
-
-
-
-<!--  =================================  vista bandeja nueva historia clinica =======================================-->
-
-<!--<div class="container main-content" id="HC_registrar" style="display: none;">-->
-<!--  &lt;!&ndash; DATOS DEL TRABAJADOR &ndash;&gt;-->
-<!--  <div class="row mb-5 align-items-center">-->
-<!--    <div class="col-md-3 col-sm-12">-->
-<!--      <span class="titulo">Datos del trabajador</span>-->
-<!--    </div>-->
-<!--    <div class="col-md-2 col-sm-6">-->
-<!--      <div class="form-check">-->
-<!--        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">-->
-<!--        <label class="form-check-label" for="flexRadioDefault1"> Es paciente externo </label>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="col-md-2 offset-md-1">-->
-<!--      <button type="button" class="btn btn-link btn-block btn-lg shadow-none">Limpiar datos</button>-->
-<!--    </div>-->
-<!--    <div class="col-md-2 col-sm-6">-->
-<!--      <button type="button" class="btn btn-danger btn-block btn-lg"> Cancelar <img class="inject-svg" src="./images/sho/cancelar.svg" alt="" fill="#fff" width="18px">-->
-<!--      </button>-->
-<!--    </div>-->
-<!--    <div class="col-md-2 col-sm-6">-->
-<!--      <button type="button" onclick="saveHC()" class="btn btn-success btn-block btn-lg"> Guardar <img class="inject-svg" src="./images/sho/confirm.svg" alt="" fill="#fff" width="18px">-->
-<!--      </button>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--  <div class="row">-->
-<!--    <div class="col-md-3 col-sm-6">-->
-<!--      <div class="input-box-secondary">-->
-<!--        <span>Nro de documento</span>-->
-<!--        <input type="text" />-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="col-md-3 col-sm-6">-->
-<!--      <div class="input-box-secondary">-->
-<!--        <span>Nombres</span>-->
-<!--        <input type="text" id="nombres">-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="col-md-3 col-sm-6">-->
-<!--      <div class="input-box-secondary">-->
-<!--        <span>Apellidos</span>-->
-<!--        <input type="text" id="apellidos">-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="col-md-3 col-sm-6">-->
-<!--      <div class="input-box-secondary">-->
-<!--        <span>Fecha</span>-->
-<!--        <input type="date" />-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="col-md-3 col-sm-6">-->
-<!--      <div class="input-box-secondary">-->
-<!--        <span>Código colaborador</span>-->
-<!--        <input type="text" />-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="col-md-3 col-sm-6">-->
-<!--      <div class="input-box-secondary">-->
-<!--        <span>Teléfono</span>-->
-<!--        <input type="text" />-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="col-md-6 col-sm-12">-->
-<!--      <div class="input-box-secondary">-->
-<!--        <span>Dirección</span>-->
-<!--        <input type="text" />-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="col-md-3 col-sm-6">-->
-<!--      <div class="input-box-secondary">-->
-<!--        <span>Sexo</span>-->
-<!--        <select name="" id="">-->
-<!--          <option value="1">seleccion</option>-->
-<!--          <option value="2">seleccion</option>-->
-<!--        </select>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="col-md-3 col-sm-6">-->
-<!--      <div class="input-box-secondary">-->
-<!--        <span>Lugar de nacimiento</span>-->
-<!--        <select name="" id="">-->
-<!--          <option value="1">seleccion</option>-->
-<!--          <option value="2">seleccion</option>-->
-<!--        </select>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="col-md-2 col-sm-4">-->
-<!--      <div class="input-box-secondary">-->
-<!--        <span>Edad</span>-->
-<!--        <input type="text" />-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--  &lt;!&ndash; FIN DATOS DEL TRABAJADOR &ndash;&gt;-->
-<!--  <hr />-->
-<!--  &lt;!&ndash; DATOS DE LA EMPRESA &ndash;&gt;-->
-<!--  <div class="row mb-5 mt-4">-->
-<!--    <div class="col-md-12">-->
-<!--      <span class="titulo">Datos de la empresa</span>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--  <div class="row">-->
-<!--    <div class="col-md-3 col-sm-6">-->
-<!--      <div class="input-box-secondary">-->
-<!--        <span>Gerencia</span>-->
-<!--        <input type="text" />-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="col-md-3 col-sm-6">-->
-<!--      <div class="input-box-secondary">-->
-<!--        <span>Planta</span>-->
-<!--        <input type="text" />-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="col-md-3 col-sm-6">-->
-<!--      <div class="input-box-secondary">-->
-<!--        <span>Área</span>-->
-<!--        <input type="text" />-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="col-md-3 col-sm-6">-->
-<!--      <div class="input-box-secondary">-->
-<!--        <span>Puesto de trabajo</span>-->
-<!--        <input type="text" />-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="col-md-3 col-sm-6">-->
-<!--      <div class="input-box-secondary">-->
-<!--        <span>Jefe inmediato</span>-->
-<!--        <input type="text" />-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="col-md-3 col-sm-6">-->
-<!--      <div class="input-box-secondary">-->
-<!--        <span>Celular</span>-->
-<!--        <input type="text" />-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="col-md-3 col-sm-6">-->
-<!--      <div class="input-box-secondary">-->
-<!--        <span>Teléfono</span>-->
-<!--        <input type="text" />-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="col-md-3 col-sm-6">-->
-<!--      <div class="input-box-secondary">-->
-<!--        <span>Puesto del jefe inmediato</span>-->
-<!--        <input type="text" />-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--  &lt;!&ndash; FIN DATOS DE LA EMPRESA &ndash;&gt;-->
-<!--  <hr />-->
-<!--  &lt;!&ndash; ANTECEDENTES &ndash;&gt;-->
-<!--  <div class="row mb-5 mt-4">-->
-<!--    <div class="col-md-12">-->
-<!--      <span class="titulo">Antecedentes</span>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--  <div class="row">-->
-<!--    <div class="col-md-12">-->
-<!--      <div class="accordion" id="sho_3_hc_ant">-->
-<!--        &lt;!&ndash; ALERGIAS &ndash;&gt;-->
-<!--        <div class="card">-->
-<!--          <div class="card-header" id="sho_3_hc_alerg" data-toggle="collapse" data-target="#sho_3_hc_alergias_content" aria-expanded="true" aria-controls="sho_3_hc_alerg">-->
-<!--            <div class="d-flex align-items-center">-->
-<!--              <img class="inject-svg card-header-icon" src="./images/sho/allergies.svg" />-->
-<!--              <span class="ml-4">Alergias</span>-->
-<!--            </div>-->
-<!--            <div>-->
-<!--              <span>Registros</span>-->
-<!--              <span class="badge badge-light mx-3" id="cant_ant_alerg_header"></span>-->
-<!--              <img class="inject-svg card-header-icon-down" src="./images/sho/down.svg">-->
-<!--            </div>-->
-<!--          </div>-->
-<!--          <div id="sho_3_hc_alergias_content" class="collapse show" aria-labelledby="sho_3_hc_alerg" data-parent="#sho_3_hc_ant">-->
-<!--            <div class="card-body border-content">-->
-<!--              <div class="row justify-content-between">-->
-<!--                <div class="col-md-3 col-sm-6">-->
-<!--                  <div class="input-box-secondary">-->
-<!--                    <span>Nombre de la alergia</span>-->
-<!--                    <input type="text" />-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--                <div class="col-md-2 col-sm-4">-->
-<!--                  <button class="btn btn-success btn-block btn-lg"> Agregar <img class="inject-svg" src="./images/sho/plus.svg" alt="" fill="#fff" />-->
-<!--                  </button>-->
-<!--                </div>-->
-<!--              </div>-->
-<!--              <div class="row item-ant" id="sho_3_hc_alergias_items">-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--        &lt;!&ndash; FIN ALERGIAS &ndash;&gt;-->
-<!--        &lt;!&ndash; PATOLOGICOS &ndash;&gt;-->
-<!--        <div class="card">-->
-<!--          <div class="card-header" id="sho_3_hc_pato" data-toggle="collapse" data-target="#sho_3_hc_pato_content" aria-expanded="false" aria-controls="sho_3_hc_pato_content">-->
-<!--            <div class="d-flex align-items-center">-->
-<!--              <img class="inject-svg card-header-icon" src="./images/sho/pathological.svg" />-->
-<!--              <span class="ml-4">Antecedentes patológicos</span>-->
-<!--            </div>-->
-<!--            <div>-->
-<!--              <span>Registros</span>-->
-<!--              <span class="badge badge-light mx-3">03</span>-->
-<!--              <img class="inject-svg card-header-icon-down" src="./images/sho/down.svg">-->
-<!--            </div>-->
-<!--          </div>-->
-<!--          <div id="sho_3_hc_pato_content" class="collapse" aria-labelledby="sho_3_hc_pato" data-parent="#sho_3_hc_ant">-->
-<!--            <div class="card-body border-content">-->
-<!--              <div class="row justify-content-between">-->
-<!--                <div class="col-md-3 col-sm-6">-->
-<!--                  <div class="input-box-secondary">-->
-<!--                    <span>Nombre</span>-->
-<!--                    <input type="text" />-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--                <div class="col-md-2 col-sm-4">-->
-<!--                  <button class="btn btn-success btn-block btn-lg"> Agregar <img class="inject-svg" src="./images/sho/plus.svg" alt="" fill="#fff" />-->
-<!--                  </button>-->
-<!--                </div>-->
-<!--              </div>-->
-<!--              <div class="row item-ant" id="sho_3_hc_alergias_items">-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--        &lt;!&ndash; FIN PATOLOGICOS &ndash;&gt;-->
-<!--        &lt;!&ndash; OCUPACIONALES &ndash;&gt;-->
-<!--        <div class="card">-->
-<!--          <div class="card-header" id="sho_3_hc_ocu" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">-->
-<!--            <div class="d-flex align-items-center">-->
-<!--              <img class="inject-svg card-header-icon" src="./images/sho/occupational.svg" />-->
-<!--              <span class="ml-4">Antecedentes ocupacionales</span>-->
-<!--            </div>-->
-<!--            <div>-->
-<!--              <span>Registros</span>-->
-<!--              <span class="badge badge-light mx-3" id="cant_ant_ocu_header">03</span>-->
-<!--              <img class="inject-svg card-header-icon-down" src="./images/sho/down.svg">-->
-<!--            </div>-->
-<!--          </div>-->
-<!--          <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#sho_3_hc_ant">-->
-<!--            <div class="card-body border-content">-->
-<!--              <div class="row">-->
-<!--                <div class="col-md-3 col-sm-6">-->
-<!--                  <div class="input-box-secondary">-->
-<!--                    <span>Fecha de inicio y término</span>-->
-<!--                    <input type="date">-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--                <div class="col-md-3 col-sm-6">-->
-<!--                  <div class="input-box-secondary">-->
-<!--                    <span>Empresa</span>-->
-<!--                    <input type="text">-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--                <div class="col-md-3 col-sm-6">-->
-<!--                  <div class="input-box-secondary">-->
-<!--                    <span>Actividad de la empresa</span>-->
-<!--                    <input type="text">-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--                <div class="col-md-3 col-sm-6">-->
-<!--                  <div class="input-box-secondary">-->
-<!--                    <span>Área de trabajo</span>-->
-<!--                    <select name="" id="">-->
-<!--                      <option value="">item 1</option>-->
-<!--                      <option value="">item 2</option>-->
-<!--                    </select>-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--                <div class="col-md-3 col-sm-6">-->
-<!--                  <div class="input-box-secondary">-->
-<!--                    <span>Ocupación</span>-->
-<!--                    <input type="text">-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--                <div class="col-md-3 col-sm-6">-->
-<!--                  <div class="input-box-secondary">-->
-<!--                    <span>Peligros/agentes ocupacionales</span>-->
-<!--                    <input type="text">-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--                <div class="col-md-3 col-sm-6">-->
-<!--                  <div class="input-box-secondary">-->
-<!--                    <span>Uso de EPP/típo de EPP</span>-->
-<!--                    <input type="text">-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--              </div>-->
-<!--              <div class="row d-flex justify-content-end">-->
-<!--                <div class="col-md-2 col-sm-4">-->
-<!--                  <button class="btn btn-success btn-block btn-lg"> Agregar a lista <img class="inject-svg" src="./images/sho/plus.svg" alt="" fill="#fff" />-->
-<!--                  </button>-->
-<!--                </div>-->
-<!--              </div>-->
-<!--              <div class="row mt-4">-->
-<!--                <div class="col-md-12">-->
-<!--                  <div class="d-flex align-items-center">-->
-<!--                    <div id="cant_planes">-->
-<!--                      <img src="images/iconos/copia-1.svg" style="width: 20px" />-->
-<!--                    </div>-->
-<!--                    <span class="cantidad ml-3" id="cant_ant_ocu" style="font-size: 15px">0 registros</span>-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--                <div class="col-md-12">-->
-<!--                  <table class="table-box table-responsive" id="OC-table">-->
-<!--                    <thead>-->
-<!--                      <tr>-->
-<!--                        <th>F.Inicio y término</th>-->
-<!--                        <th>Empresa</th>-->
-<!--                        <th>Actividad de la empresa</th>-->
-<!--                        <th>Área de trabajo</th>-->
-<!--                        <th>Ocupación</th>-->
-<!--                        <th>Peligro/agentes ocupacionales</th>-->
-<!--                        <th>Uso de EPP/típo de EPP</th>-->
-<!--                        <th></th>-->
-<!--                      </tr>-->
-<!--                    </thead>-->
-<!--                    <tbody></tbody>-->
-<!--                  </table>-->
-<!--                  <div class="more-info-content oc-info-content">-->
-<!--                    <ul>-->
-<!--                      <li>-->
-<!--                        <img class="inject-svg" src="./images/sho/edit.svg" fill="#5daf57" style="width:16px !important" />-->
-<!--                        <span>Editar</span>-->
-<!--                      </li>-->
-<!--                      <li>-->
-<!--                        <img class="inject-svg" src="./images/sho/delete.svg" fill="#ff3636" style="width:16px !important" />-->
-<!--                        <span>Eliminar</span>-->
-<!--                      </li>-->
-<!--                    </ul>-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--          &lt;!&ndash; FIN OCUAPCIONALES &ndash;&gt;-->
-<!--        </div>-->
-<!--        &lt;!&ndash; FAMILIARES &ndash;&gt;-->
-<!--        <div class="card">-->
-<!--          <div class="card-header" id="sho_3_hc_fami" data-toggle="collapse" data-target="#sho_3_hc_fami_content" aria-expanded="false" aria-controls="sho_3_hc_fami_content">-->
-<!--            <div class="d-flex align-items-center">-->
-<!--              <img class="inject-svg card-header-icon" src="./images/sho/relatives.svg" />-->
-<!--              <span class="ml-4">Antecedentes patológicos familiares</span>-->
-<!--            </div>-->
-<!--            <div>-->
-<!--              <span>Registros</span>-->
-<!--              <span class="badge badge-light mx-3">03</span>-->
-<!--              <img class="inject-svg card-header-icon-down" src="./images/sho/down.svg">-->
-<!--            </div>-->
-<!--          </div>-->
-<!--          <div id="sho_3_hc_fami_content" class="collapse" aria-labelledby="sho_3_hc_fami" data-parent="#sho_3_hc_ant">-->
-<!--            <div class="card-body border-content">-->
-<!--              <div class="row justify-content-between">-->
-<!--                <div class="col-md-3 col-sm-6">-->
-<!--                  <div class="input-box-secondary">-->
-<!--                    <span>Nombre</span>-->
-<!--                    <input type="text" />-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--                <div class="col-md-2 col-sm-4">-->
-<!--                  <button class="btn btn-success btn-block btn-lg"> Agregar <img class="inject-svg" src="./images/sho/plus.svg" alt="" fill="#fff" />-->
-<!--                  </button>-->
-<!--                </div>-->
-<!--              </div>-->
-<!--              <div class="row item-ant" id="sho_3_hc_alergias_items">-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--        &lt;!&ndash; FIN FAMILIARES &ndash;&gt;-->
-<!--        &lt;!&ndash; FARMACOS &ndash;&gt;-->
-<!--        <div class="card">-->
-<!--          <div class="card-header" id="sho_3_hc_farm" data-toggle="collapse" data-target="#sho_3_hc_farm_content" aria-expanded="false" aria-controls="sho_3_hc_farm_content">-->
-<!--            <div class="d-flex align-items-center">-->
-<!--              <img class="inject-svg card-header-icon" src="./images/sho/drugs.svg" />-->
-<!--              <span class="ml-4">Uso de fármacos</span>-->
-<!--            </div>-->
-<!--            <div>-->
-<!--              <span>Registros</span>-->
-<!--              <span class="badge badge-light mx-3">03</span>-->
-<!--              <img class="inject-svg card-header-icon-down" src="./images/sho/down.svg">-->
-<!--            </div>-->
-<!--          </div>-->
-<!--          <div id="sho_3_hc_farm_content" class="collapse" aria-labelledby="sho_3_hc_farm" data-parent="#sho_3_hc_ant">-->
-<!--            <div class="card-body border-content">-->
-<!--              <div class="row justify-content-between">-->
-<!--                <div class="col-md-3 col-sm-6">-->
-<!--                  <div class="input-box-secondary">-->
-<!--                    <span>Nombre</span>-->
-<!--                    <input type="text" />-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--                <div class="col-md-2 col-sm-4">-->
-<!--                  <button class="btn btn-success btn-block btn-lg"> Agregar <img class="inject-svg" src="./images/sho/plus.svg" alt="" fill="#fff" />-->
-<!--                  </button>-->
-<!--                </div>-->
-<!--              </div>-->
-<!--              <div class="row item-ant" id="sho_3_hc_alergias_items">-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--        &lt;!&ndash; FIN FARMACOS &ndash;&gt;-->
-<!--        &lt;!&ndash; NOCIVOS &ndash;&gt;-->
-<!--        <div class="card">-->
-<!--          <div class="card-header" id="sho_3_hc_noc" data-toggle="collapse" data-target="#sho_3_hc_noc_content" aria-expanded="false" aria-controls="sho_3_hc_noc_content">-->
-<!--            <div class="d-flex align-items-center">-->
-<!--              <img class="inject-svg card-header-icon" src="./images/sho/harmful.svg" />-->
-<!--              <span class="ml-4">Hábitos nocivos</span>-->
-<!--            </div>-->
-<!--            <div>-->
-<!--              <span>Registros</span>-->
-<!--              <span class="badge badge-light mx-3">03</span>-->
-<!--              <img class="inject-svg card-header-icon-down" src="./images/sho/down.svg">-->
-<!--            </div>-->
-<!--          </div>-->
-<!--          <div id="sho_3_hc_noc_content" class="collapse" aria-labelledby="sho_3_hc_noc" data-parent="#sho_3_hc_ant">-->
-<!--            <div class="card-body border-content">-->
-<!--              <div class="row justify-content-between">-->
-<!--                <div class="col-md-3 col-sm-6">-->
-<!--                  <div class="input-box-secondary">-->
-<!--                    <span>Nombre</span>-->
-<!--                    <input type="text" />-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--                <div class="col-md-2 col-sm-4">-->
-<!--                  <button class="btn btn-success btn-block btn-lg"> Agregar <img class="inject-svg" src="./images/sho/plus.svg" alt="" fill="#fff" />-->
-<!--                  </button>-->
-<!--                </div>-->
-<!--              </div>-->
-<!--              <div class="row item-ant" id="sho_3_hc_alergias_items">-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--        &lt;!&ndash; FIN NOCIVOS &ndash;&gt;-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--  <hr>-->
-<!--  &lt;!&ndash; SIGNOS VITALES &ndash;&gt;-->
-<!--  <div class="row mb-5 align-items-center">-->
-<!--    <div class="col-md-12">-->
-<!--      <span class="titulo">Signos vitales</span>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--  <div class="row mt-4">-->
-<!--    <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">-->
-<!--      <div class="d-flex">-->
-<!--        <img class="inject-svg" src="./images/sho/arterial.svg" alt="" fill="#ff2e2e">-->
-<!--        <span>Presión arterial</span>-->
-<!--      </div>-->
-<!--      <div>-->
-<!--        <input class="form-control" type="text">-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">-->
-<!--      <div class="d-flex">-->
-<!--        <img class="inject-svg" src="./images/sho/cardiaca.svg" alt="" fill="#ff2626">-->
-<!--        <span>Frecuencia cardiaca</span>-->
-<!--      </div>-->
-<!--      <div>-->
-<!--        <input class="form-control" type="text">-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">-->
-<!--      <div class="d-flex">-->
-<!--        <img class="inject-svg" src="./images/sho/respiratoria.svg" alt="" fill="#00baff">-->
-<!--        <span>Frecuencia respiratoria</span>-->
-<!--      </div>-->
-<!--      <div>-->
-<!--        <input class="form-control" type="text">-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">-->
-<!--      <div class="d-flex">-->
-<!--        <img class="inject-svg" src="./images/sho/temperatura.svg" alt="" fill="#34a9ff" style="left: 30px">-->
-<!--        <span>Temperatura</span>-->
-<!--      </div>-->
-<!--      <div>-->
-<!--        <input class="form-control" type="text">-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">-->
-<!--      <div class="d-flex">-->
-<!--        <img class="inject-svg" src="./images/sho/peso.svg" alt="" fill="#004eff">-->
-<!--        <span>Peso Kg</span>-->
-<!--      </div>-->
-<!--      <div>-->
-<!--        <input class="form-control" type="text">-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">-->
-<!--      <div class="d-flex">-->
-<!--        <img class="inject-svg" src="./images/sho/talla.svg" alt="" fill="#715fff" style="left: 30px">-->
-<!--        <span>Talla</span>-->
-<!--      </div>-->
-<!--      <div>-->
-<!--        <input class="form-control" type="text">-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">-->
-<!--      <div class="d-flex">-->
-<!--        <img class="inject-svg" src="./images/sho/saturacion.svg" alt="" fill="#fc2a5a">-->
-<!--        <span>Saturación</span>-->
-<!--      </div>-->
-<!--      <div>-->
-<!--        <input class="form-control" type="text">-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">-->
-<!--      <div class="d-flex">-->
-<!--        <img class="inject-svg" src="./images/sho/corporal.svg" alt="" fill="#ffc400">-->
-<!--        <span>Índice de masa corporal</span>-->
-<!--      </div>-->
-<!--      <div>-->
-<!--        <input class="form-control" type="text">-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">-->
-<!--      <div class="d-flex">-->
-<!--        <img class="inject-svg" src="./images/sho/abdominal.svg" alt="" fill="#ff8b43">-->
-<!--        <span>Perímetro abdominal</span>-->
-<!--      </div>-->
-<!--      <div>-->
-<!--        <input class="form-control" type="text">-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--  &lt;!&ndash; FIN SIGNOS VITALES &ndash;&gt;-->
-<!--  <button onclick="$('#HC_registros').show(); $('#HC_registrar').hide()" style="display: none"> Atras </button>-->
-<!--  &lt;!&ndash; HISTORIA CLINICA &ndash;&gt;-->
-<!--  <div class="content-sidebar">-->
-<!--  </div>-->
-<!--</div>-->
-
-<!--  =================================  vista bandeja nueva historia clinica =======================================-->
-
-
-
-<!--  ==========================================  vista resumen del trabajador =======================================-->
-<!--<div id="HC_datos_generales" style="display: none;">-->
-<!--  &lt;!&ndash; DATOS DEL TRABAJADOR &ndash;&gt;-->
-<!--  <div class="row mb-5 align-items-center">-->
-<!--    <div class="col-md-3 col-sm-12">-->
-<!--      <span class="titulo">Datos del trabajador</span>-->
-<!--    </div>-->
-<!--    <div class="col-md-2 col-sm-6">-->
-<!--      <div class="form-check">-->
-<!--        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">-->
-<!--        <label class="form-check-label" for="flexRadioDefault1"> Es paciente externo </label>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="col-md-2 offset-md-1">-->
-<!--      <button type="button" class="btn btn-link btn-block btn-lg shadow-none">Limpiar datos</button>-->
-<!--    </div>-->
-<!--    <div class="col-md-2 col-sm-6">-->
-<!--      <button type="button" class="btn btn-danger btn-block btn-lg"> Cancelar <img class="inject-svg" src="./images/sho/cancelar.svg" alt="" fill="#fff" width="18px">-->
-<!--      </button>-->
-<!--    </div>-->
-<!--    <div class="col-md-2 col-sm-6">-->
-<!--      <button type="button" onclick="saveHC()" class="btn btn-success btn-block btn-lg"> Guardar <img class="inject-svg" src="./images/sho/confirm.svg" alt="" fill="#fff" width="18px">-->
-<!--      </button>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--  <div class="row">-->
-<!--    <div class="col-md-3 col-sm-6">-->
-<!--      <div class="input-box-secondary">-->
-<!--        <span>Nro de documento</span>-->
-<!--        <input type="text" />-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="col-md-3 col-sm-6">-->
-<!--      <div class="input-box-secondary">-->
-<!--        <span>Nombres</span>-->
-<!--        <input type="text" id="nombres">-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="col-md-3 col-sm-6">-->
-<!--      <div class="input-box-secondary">-->
-<!--        <span>Apellidos</span>-->
-<!--        <input type="text" id="apellidos">-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="col-md-3 col-sm-6">-->
-<!--      <div class="input-box-secondary">-->
-<!--        <span>Fecha</span>-->
-<!--        <input type="date" />-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="col-md-3 col-sm-6">-->
-<!--      <div class="input-box-secondary">-->
-<!--        <span>Código colaborador</span>-->
-<!--        <input type="text" />-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="col-md-3 col-sm-6">-->
-<!--      <div class="input-box-secondary">-->
-<!--        <span>Teléfono</span>-->
-<!--        <input type="text" />-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="col-md-6 col-sm-12">-->
-<!--      <div class="input-box-secondary">-->
-<!--        <span>Dirección</span>-->
-<!--        <input type="text" />-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="col-md-3 col-sm-6">-->
-<!--      <div class="input-box-secondary">-->
-<!--        <span>Sexo</span>-->
-<!--        <select name="" id="">-->
-<!--          <option value="1">seleccion</option>-->
-<!--          <option value="2">seleccion</option>-->
-<!--        </select>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="col-md-3 col-sm-6">-->
-<!--      <div class="input-box-secondary">-->
-<!--        <span>Lugar de nacimiento</span>-->
-<!--        <select name="" id="">-->
-<!--          <option value="1">seleccion</option>-->
-<!--          <option value="2">seleccion</option>-->
-<!--        </select>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="col-md-2 col-sm-4">-->
-<!--      <div class="input-box-secondary">-->
-<!--        <span>Edad</span>-->
-<!--        <input type="text" />-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--  &lt;!&ndash; FIN DATOS DEL TRABAJADOR &ndash;&gt;-->
-<!--  <hr />-->
-<!--  &lt;!&ndash; DATOS DE LA EMPRESA &ndash;&gt;-->
-<!--  <div class="row mb-5 mt-4">-->
-<!--    <div class="col-md-12">-->
-<!--      <span class="titulo">Datos de la empresa</span>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--  <div class="row">-->
-<!--    <div class="col-md-3 col-sm-6">-->
-<!--      <div class="input-box-secondary">-->
-<!--        <span>Gerencia</span>-->
-<!--        <input type="text" />-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="col-md-3 col-sm-6">-->
-<!--      <div class="input-box-secondary">-->
-<!--        <span>Planta</span>-->
-<!--        <input type="text" />-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="col-md-3 col-sm-6">-->
-<!--      <div class="input-box-secondary">-->
-<!--        <span>Área</span>-->
-<!--        <input type="text" />-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="col-md-3 col-sm-6">-->
-<!--      <div class="input-box-secondary">-->
-<!--        <span>Puesto de trabajo</span>-->
-<!--        <input type="text" />-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="col-md-3 col-sm-6">-->
-<!--      <div class="input-box-secondary">-->
-<!--        <span>Jefe inmediato</span>-->
-<!--        <input type="text" />-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="col-md-3 col-sm-6">-->
-<!--      <div class="input-box-secondary">-->
-<!--        <span>Celular</span>-->
-<!--        <input type="text" />-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="col-md-3 col-sm-6">-->
-<!--      <div class="input-box-secondary">-->
-<!--        <span>Teléfono</span>-->
-<!--        <input type="text" />-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="col-md-3 col-sm-6">-->
-<!--      <div class="input-box-secondary">-->
-<!--        <span>Puesto del jefe inmediato</span>-->
-<!--        <input type="text" />-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--  &lt;!&ndash; FIN DATOS DE LA EMPRESA &ndash;&gt;-->
-<!--  <hr />-->
-<!--  &lt;!&ndash; ANTECEDENTES &ndash;&gt;-->
-<!--  <div class="row mb-5 mt-4">-->
-<!--    <div class="col-md-12">-->
-<!--      <span class="titulo">Antecedentes</span>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--  <div class="row">-->
-<!--    <div class="col-md-12">-->
-<!--      <div class="accordion" id="sho_3_hc_ant">-->
-<!--        &lt;!&ndash; ALERGIAS &ndash;&gt;-->
-<!--        <div class="card">-->
-<!--          <div class="card-header" id="sho_3_hc_alerg" data-toggle="collapse" data-target="#sho_3_hc_alergias_content" aria-expanded="true" aria-controls="sho_3_hc_alerg">-->
-<!--            <div class="d-flex align-items-center">-->
-<!--              <img class="inject-svg card-header-icon" src="./images/sho/allergies.svg" />-->
-<!--              <span class="ml-4">Alergias</span>-->
-<!--            </div>-->
-<!--            <div>-->
-<!--              <span>Registros</span>-->
-<!--              <span class="badge badge-light mx-3" id="cant_ant_alerg_header"></span>-->
-<!--              <img class="inject-svg card-header-icon-down" src="./images/sho/down.svg">-->
-<!--            </div>-->
-<!--          </div>-->
-<!--          <div id="sho_3_hc_alergias_content" class="collapse show" aria-labelledby="sho_3_hc_alerg" data-parent="#sho_3_hc_ant">-->
-<!--            <div class="card-body border-content">-->
-<!--              <div class="row justify-content-between">-->
-<!--                <div class="col-md-3 col-sm-6">-->
-<!--                  <div class="input-box-secondary">-->
-<!--                    <span>Nombre de la alergia</span>-->
-<!--                    <input type="text" />-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--                <div class="col-md-2 col-sm-4">-->
-<!--                  <button class="btn btn-success btn-block btn-lg"> Agregar <img class="inject-svg" src="./images/sho/plus.svg" alt="" fill="#fff" />-->
-<!--                  </button>-->
-<!--                </div>-->
-<!--              </div>-->
-<!--              <div class="row item-ant" id="sho_3_hc_alergias_items">-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--        &lt;!&ndash; FIN ALERGIAS &ndash;&gt;-->
-<!--        &lt;!&ndash; PATOLOGICOS &ndash;&gt;-->
-<!--        <div class="card">-->
-<!--          <div class="card-header" id="sho_3_hc_pato" data-toggle="collapse" data-target="#sho_3_hc_pato_content" aria-expanded="false" aria-controls="sho_3_hc_pato_content">-->
-<!--            <div class="d-flex align-items-center">-->
-<!--              <img class="inject-svg card-header-icon" src="./images/sho/pathological.svg" />-->
-<!--              <span class="ml-4">Antecedentes patológicos</span>-->
-<!--            </div>-->
-<!--            <div>-->
-<!--              <span>Registros</span>-->
-<!--              <span class="badge badge-light mx-3">03</span>-->
-<!--              <img class="inject-svg card-header-icon-down" src="./images/sho/down.svg">-->
-<!--            </div>-->
-<!--          </div>-->
-<!--          <div id="sho_3_hc_pato_content" class="collapse" aria-labelledby="sho_3_hc_pato" data-parent="#sho_3_hc_ant">-->
-<!--            <div class="card-body border-content">-->
-<!--              <div class="row justify-content-between">-->
-<!--                <div class="col-md-3 col-sm-6">-->
-<!--                  <div class="input-box-secondary">-->
-<!--                    <span>Nombre</span>-->
-<!--                    <input type="text" />-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--                <div class="col-md-2 col-sm-4">-->
-<!--                  <button class="btn btn-success btn-block btn-lg"> Agregar <img class="inject-svg" src="./images/sho/plus.svg" alt="" fill="#fff" />-->
-<!--                  </button>-->
-<!--                </div>-->
-<!--              </div>-->
-<!--              <div class="row item-ant" id="sho_3_hc_alergias_items">-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--        &lt;!&ndash; FIN PATOLOGICOS &ndash;&gt;-->
-<!--        &lt;!&ndash; OCUPACIONALES &ndash;&gt;-->
-<!--        <div class="card">-->
-<!--          <div class="card-header" id="sho_3_hc_ocu" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">-->
-<!--            <div class="d-flex align-items-center">-->
-<!--              <img class="inject-svg card-header-icon" src="./images/sho/occupational.svg" />-->
-<!--              <span class="ml-4">Antecedentes ocupacionales</span>-->
-<!--            </div>-->
-<!--            <div>-->
-<!--              <span>Registros</span>-->
-<!--              <span class="badge badge-light mx-3" id="cant_ant_ocu_header">03</span>-->
-<!--              <img class="inject-svg card-header-icon-down" src="./images/sho/down.svg">-->
-<!--            </div>-->
-<!--          </div>-->
-<!--          <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#sho_3_hc_ant">-->
-<!--            <div class="card-body border-content">-->
-<!--              <div class="row">-->
-<!--                <div class="col-md-3 col-sm-6">-->
-<!--                  <div class="input-box-secondary">-->
-<!--                    <span>Fecha de inicio y término</span>-->
-<!--                    <input type="date">-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--                <div class="col-md-3 col-sm-6">-->
-<!--                  <div class="input-box-secondary">-->
-<!--                    <span>Empresa</span>-->
-<!--                    <input type="text">-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--                <div class="col-md-3 col-sm-6">-->
-<!--                  <div class="input-box-secondary">-->
-<!--                    <span>Actividad de la empresa</span>-->
-<!--                    <input type="text">-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--                <div class="col-md-3 col-sm-6">-->
-<!--                  <div class="input-box-secondary">-->
-<!--                    <span>Área de trabajo</span>-->
-<!--                    <select name="" id="">-->
-<!--                      <option value="">item 1</option>-->
-<!--                      <option value="">item 2</option>-->
-<!--                    </select>-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--                <div class="col-md-3 col-sm-6">-->
-<!--                  <div class="input-box-secondary">-->
-<!--                    <span>Ocupación</span>-->
-<!--                    <input type="text">-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--                <div class="col-md-3 col-sm-6">-->
-<!--                  <div class="input-box-secondary">-->
-<!--                    <span>Peligros/agentes ocupacionales</span>-->
-<!--                    <input type="text">-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--                <div class="col-md-3 col-sm-6">-->
-<!--                  <div class="input-box-secondary">-->
-<!--                    <span>Uso de EPP/típo de EPP</span>-->
-<!--                    <input type="text">-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--              </div>-->
-<!--              <div class="row d-flex justify-content-end">-->
-<!--                <div class="col-md-2 col-sm-4">-->
-<!--                  <button class="btn btn-success btn-block btn-lg"> Agregar a lista <img class="inject-svg" src="./images/sho/plus.svg" alt="" fill="#fff" />-->
-<!--                  </button>-->
-<!--                </div>-->
-<!--              </div>-->
-<!--              <div class="row mt-4">-->
-<!--                <div class="col-md-12">-->
-<!--                  <div class="d-flex align-items-center">-->
-<!--                    <div id="cant_planes">-->
-<!--                      <img src="images/iconos/copia-1.svg" style="width: 20px" />-->
-<!--                    </div>-->
-<!--                    <span class="cantidad ml-3" id="cant_ant_ocu" style="font-size: 15px">0 registros</span>-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--                <div class="col-md-12">-->
-<!--                  <table class="table-box table-responsive" id="OC-table">-->
-<!--                    <thead>-->
-<!--                    <tr>-->
-<!--                      <th>F.Inicio y término</th>-->
-<!--                      <th>Empresa</th>-->
-<!--                      <th>Actividad de la empresa</th>-->
-<!--                      <th>Área de trabajo</th>-->
-<!--                      <th>Ocupación</th>-->
-<!--                      <th>Peligro/agentes ocupacionales</th>-->
-<!--                      <th>Uso de EPP/típo de EPP</th>-->
-<!--                      <th></th>-->
-<!--                    </tr>-->
-<!--                    </thead>-->
-<!--                    <tbody></tbody>-->
-<!--                  </table>-->
-<!--                  <div class="more-info-content oc-info-content">-->
-<!--                    <ul>-->
-<!--                      <li>-->
-<!--                        <img class="inject-svg" src="./images/sho/edit.svg" fill="#5daf57" style="width:16px !important" />-->
-<!--                        <span>Editar</span>-->
-<!--                      </li>-->
-<!--                      <li>-->
-<!--                        <img class="inject-svg" src="./images/sho/delete.svg" fill="#ff3636" style="width:16px !important" />-->
-<!--                        <span>Eliminar</span>-->
-<!--                      </li>-->
-<!--                    </ul>-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--          &lt;!&ndash; FIN OCUAPCIONALES &ndash;&gt;-->
-<!--        </div>-->
-<!--        &lt;!&ndash; FAMILIARES &ndash;&gt;-->
-<!--        <div class="card">-->
-<!--          <div class="card-header" id="sho_3_hc_fami" data-toggle="collapse" data-target="#sho_3_hc_fami_content" aria-expanded="false" aria-controls="sho_3_hc_fami_content">-->
-<!--            <div class="d-flex align-items-center">-->
-<!--              <img class="inject-svg card-header-icon" src="./images/sho/relatives.svg" />-->
-<!--              <span class="ml-4">Antecedentes patológicos familiares</span>-->
-<!--            </div>-->
-<!--            <div>-->
-<!--              <span>Registros</span>-->
-<!--              <span class="badge badge-light mx-3">03</span>-->
-<!--              <img class="inject-svg card-header-icon-down" src="./images/sho/down.svg">-->
-<!--            </div>-->
-<!--          </div>-->
-<!--          <div id="sho_3_hc_fami_content" class="collapse" aria-labelledby="sho_3_hc_fami" data-parent="#sho_3_hc_ant">-->
-<!--            <div class="card-body border-content">-->
-<!--              <div class="row justify-content-between">-->
-<!--                <div class="col-md-3 col-sm-6">-->
-<!--                  <div class="input-box-secondary">-->
-<!--                    <span>Nombre</span>-->
-<!--                    <input type="text" />-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--                <div class="col-md-2 col-sm-4">-->
-<!--                  <button class="btn btn-success btn-block btn-lg"> Agregar <img class="inject-svg" src="./images/sho/plus.svg" alt="" fill="#fff" />-->
-<!--                  </button>-->
-<!--                </div>-->
-<!--              </div>-->
-<!--              <div class="row item-ant" id="sho_3_hc_alergias_items">-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--        &lt;!&ndash; FIN FAMILIARES &ndash;&gt;-->
-<!--        &lt;!&ndash; FARMACOS &ndash;&gt;-->
-<!--        <div class="card">-->
-<!--          <div class="card-header" id="sho_3_hc_farm" data-toggle="collapse" data-target="#sho_3_hc_farm_content" aria-expanded="false" aria-controls="sho_3_hc_farm_content">-->
-<!--            <div class="d-flex align-items-center">-->
-<!--              <img class="inject-svg card-header-icon" src="./images/sho/drugs.svg" />-->
-<!--              <span class="ml-4">Uso de fármacos</span>-->
-<!--            </div>-->
-<!--            <div>-->
-<!--              <span>Registros</span>-->
-<!--              <span class="badge badge-light mx-3">03</span>-->
-<!--              <img class="inject-svg card-header-icon-down" src="./images/sho/down.svg">-->
-<!--            </div>-->
-<!--          </div>-->
-<!--          <div id="sho_3_hc_farm_content" class="collapse" aria-labelledby="sho_3_hc_farm" data-parent="#sho_3_hc_ant">-->
-<!--            <div class="card-body border-content">-->
-<!--              <div class="row justify-content-between">-->
-<!--                <div class="col-md-3 col-sm-6">-->
-<!--                  <div class="input-box-secondary">-->
-<!--                    <span>Nombre</span>-->
-<!--                    <input type="text" />-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--                <div class="col-md-2 col-sm-4">-->
-<!--                  <button class="btn btn-success btn-block btn-lg"> Agregar <img class="inject-svg" src="./images/sho/plus.svg" alt="" fill="#fff" />-->
-<!--                  </button>-->
-<!--                </div>-->
-<!--              </div>-->
-<!--              <div class="row item-ant" id="sho_3_hc_alergias_items">-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--        &lt;!&ndash; FIN FARMACOS &ndash;&gt;-->
-<!--        &lt;!&ndash; NOCIVOS &ndash;&gt;-->
-<!--        <div class="card">-->
-<!--          <div class="card-header" id="sho_3_hc_noc" data-toggle="collapse" data-target="#sho_3_hc_noc_content" aria-expanded="false" aria-controls="sho_3_hc_noc_content">-->
-<!--            <div class="d-flex align-items-center">-->
-<!--              <img class="inject-svg card-header-icon" src="./images/sho/harmful.svg" />-->
-<!--              <span class="ml-4">Hábitos nocivos</span>-->
-<!--            </div>-->
-<!--            <div>-->
-<!--              <span>Registros</span>-->
-<!--              <span class="badge badge-light mx-3">03</span>-->
-<!--              <img class="inject-svg card-header-icon-down" src="./images/sho/down.svg">-->
-<!--            </div>-->
-<!--          </div>-->
-<!--          <div id="sho_3_hc_noc_content" class="collapse" aria-labelledby="sho_3_hc_noc" data-parent="#sho_3_hc_ant">-->
-<!--            <div class="card-body border-content">-->
-<!--              <div class="row justify-content-between">-->
-<!--                <div class="col-md-3 col-sm-6">-->
-<!--                  <div class="input-box-secondary">-->
-<!--                    <span>Nombre</span>-->
-<!--                    <input type="text" />-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--                <div class="col-md-2 col-sm-4">-->
-<!--                  <button class="btn btn-success btn-block btn-lg"> Agregar <img class="inject-svg" src="./images/sho/plus.svg" alt="" fill="#fff" />-->
-<!--                  </button>-->
-<!--                </div>-->
-<!--              </div>-->
-<!--              <div class="row item-ant" id="sho_3_hc_alergias_items">-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--        &lt;!&ndash; FIN NOCIVOS &ndash;&gt;-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--  <hr>-->
-<!--  &lt;!&ndash; SIGNOS VITALES &ndash;&gt;-->
-<!--  <div class="row mb-5 align-items-center">-->
-<!--    <div class="col-md-12">-->
-<!--      <span class="titulo">Signos vitales</span>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--  <div class="row mt-4">-->
-<!--    <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">-->
-<!--      <div class="d-flex">-->
-<!--        <img class="inject-svg" src="./images/sho/arterial.svg" alt="" fill="#ff2e2e">-->
-<!--        <span>Presión arterial</span>-->
-<!--      </div>-->
-<!--      <div>-->
-<!--        <input class="form-control" type="text">-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">-->
-<!--      <div class="d-flex">-->
-<!--        <img class="inject-svg" src="./images/sho/cardiaca.svg" alt="" fill="#ff2626">-->
-<!--        <span>Frecuencia cardiaca</span>-->
-<!--      </div>-->
-<!--      <div>-->
-<!--        <input class="form-control" type="text">-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">-->
-<!--      <div class="d-flex">-->
-<!--        <img class="inject-svg" src="./images/sho/respiratoria.svg" alt="" fill="#00baff">-->
-<!--        <span>Frecuencia respiratoria</span>-->
-<!--      </div>-->
-<!--      <div>-->
-<!--        <input class="form-control" type="text">-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">-->
-<!--      <div class="d-flex">-->
-<!--        <img class="inject-svg" src="./images/sho/temperatura.svg" alt="" fill="#34a9ff" style="left: 30px">-->
-<!--        <span>Temperatura</span>-->
-<!--      </div>-->
-<!--      <div>-->
-<!--        <input class="form-control" type="text">-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">-->
-<!--      <div class="d-flex">-->
-<!--        <img class="inject-svg" src="./images/sho/peso.svg" alt="" fill="#004eff">-->
-<!--        <span>Peso Kg</span>-->
-<!--      </div>-->
-<!--      <div>-->
-<!--        <input class="form-control" type="text">-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">-->
-<!--      <div class="d-flex">-->
-<!--        <img class="inject-svg" src="./images/sho/talla.svg" alt="" fill="#715fff" style="left: 30px">-->
-<!--        <span>Talla</span>-->
-<!--      </div>-->
-<!--      <div>-->
-<!--        <input class="form-control" type="text">-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">-->
-<!--      <div class="d-flex">-->
-<!--        <img class="inject-svg" src="./images/sho/saturacion.svg" alt="" fill="#fc2a5a">-->
-<!--        <span>Saturación</span>-->
-<!--      </div>-->
-<!--      <div>-->
-<!--        <input class="form-control" type="text">-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">-->
-<!--      <div class="d-flex">-->
-<!--        <img class="inject-svg" src="./images/sho/corporal.svg" alt="" fill="#ffc400">-->
-<!--        <span>Índice de masa corporal</span>-->
-<!--      </div>-->
-<!--      <div>-->
-<!--        <input class="form-control" type="text">-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">-->
-<!--      <div class="d-flex">-->
-<!--        <img class="inject-svg" src="./images/sho/abdominal.svg" alt="" fill="#ff8b43">-->
-<!--        <span>Perímetro abdominal</span>-->
-<!--      </div>-->
-<!--      <div>-->
-<!--        <input class="form-control" type="text">-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--  &lt;!&ndash; FIN SIGNOS VITALES &ndash;&gt;-->
-<!--  <button onclick="$('#HC_registros').show(); $('#HC_registrar').hide()" style="display: none"> Atras </button>-->
-<!--  &lt;!&ndash; HISTORIA CLINICA &ndash;&gt;-->
-<!--  <div class="content-sidebar">-->
-<!--  </div>-->
-<!--</div>-->
-<!--  <div id="sidebar" style="visibility: hidden !important;">-->
-<!--    <div id="toggle-btn">-->
-<!--      <img class="inject-svg" src="./images/sho/down.svg" alt="" fill="#fff">-->
-<!--    </div>-->
-<!--    <span class="titulo">Menú principal</span>-->
-<!--    <ul id="main-menu">-->
-<!--      <li class="item-list active">-->
-<!--        <img class="inject-svg" src="./images/sho/hospital.svg" alt="" />-->
-<!--        <span>Datos generales</span>-->
-<!--      </li>-->
-<!--      <li class="item-list">-->
-<!--        <img class="inject-svg" src="./images/sho/centrosmedicos.svg" alt="" />-->
-<!--        <span>Antecedentes</span>-->
-<!--      </li>-->
-<!--      <li class="item-list">-->
-<!--        <img class="inject-svg" src="./images/sho/antidepressant.svg" alt="" />-->
-<!--        <span>Medicamentos activos</span>-->
-<!--      </li>-->
-<!--      <li class="item-list">-->
-<!--        <img class="inject-svg" src="./images/sho/health-report.svg" alt="" />-->
-<!--        <span>Mi último EMO</span>-->
-<!--      </li>-->
-<!--      <li class="item-list">-->
-<!--        <img class="inject-svg" src="./images/sho/vmo.svg" alt="" />-->
-<!--        <span>Mi VMO</span>-->
-<!--      </li>-->
-<!--      <li class="item-list">-->
-<!--        <img class="inject-svg" src="./images/sho/descansos.svg" alt="" />-->
-<!--        <span>Descansos médicos</span>-->
-<!--      </li>-->
-<!--      <li class="item-list">-->
-<!--        <img class="inject-svg" src="./images/sho/cronicas.svg" alt="" />-->
-<!--        <span>Enfermedades crónicas</span>-->
-<!--      </li>-->
-<!--      <li class="item-list">-->
-<!--        <img class="inject-svg" src="./images/sho/toxicologicos.svg" alt="" />-->
-<!--        <span>Examenes toxicológicos</span>-->
-<!--      </li>-->
-<!--      <li class="item-list">-->
-<!--        <img class="inject-svg" src="./images/sho/vacunas.svg" alt="" />-->
-<!--        <span>Vacunas</span>-->
-<!--      </li>-->
-<!--      <li class="item-list">-->
-<!--        <img class="inject-svg" src="./images/sho/accidentes.svg" alt="" />-->
-<!--        <span>Accidentes de trabajo</span>-->
-<!--      </li>-->
-<!--      <li class="item-list">-->
-<!--        <img class="inject-svg" src="./images/sho/iperc.svg" alt="" />-->
-<!--        <span>IPERC</span>-->
-<!--      </li>-->
-<!--      <li class="item-list">-->
-<!--        <img class="inject-svg" src="./images/sho/reubicados.svg" alt="" />-->
-<!--        <span>Reubicación</span>-->
-<!--      </li>-->
-<!--      <li class="item-list">-->
-<!--        <img class="inject-svg" src="./images/sho/levantamiento.svg" alt="" />-->
-<!--        <span>Enfermedad ocupacional</span>-->
-<!--      </li>-->
-<!--      <li class="item-list">-->
-<!--        <img class="inject-svg" src="./images/sho/discapacitados.svg" alt="" />-->
-<!--        <span>Discapacidad</span>-->
-<!--      </li>-->
-<!--      <li class="item-list">-->
-<!--        <img class="inject-svg" src="./images/sho/fertil.svg" alt="" />-->
-<!--        <span>Mujeres en edad fértil gestante</span>-->
-<!--      </li>-->
-<!--      <li class="item-list">-->
-<!--        <img class="inject-svg" src="./images/sho/salud.svg" alt="" />-->
-<!--        <span>Seguimiento COVID</span>-->
-<!--      </li>-->
-<!--      <li class="item-list">-->
-<!--        <img class="inject-svg" src="./images/sho/interconsultas.svg" alt="" />-->
-<!--        <span>Interconsultas y trasnferencias</span>-->
-<!--      </li>-->
-<!--      <li class="item-list">-->
-<!--        <img class="inject-svg" src="./images/sho/inf_ocupacional.svg" alt="" />-->
-<!--        <span>Informe médico ocupacional</span>-->
-<!--      </li>-->
-<!--    </ul>-->
-<!--  </div>-->
-<!--  <div id="page-content-sidebar" style="display:none;">-->
-<!--    &lt;!&ndash; DATOS GENERALES &ndash;&gt;-->
-<!--    <div class="row">-->
-<!--      <div class="col-md-6 d-flex align-items-center">-->
-<!--        <span class="titulo"> Datos generales </span>-->
-<!--      </div>-->
-<!--      <div class="col-md-6 d-flex justify-content-end align-items-center">-->
-<!--        <span style="font-weight: 600; color: #01719d;"> Ocultar datos </span>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="row mt-5 d-flex align-items-center">-->
-<!--      <div class="col-md-2">-->
-<!--        <div class="img-perfil">-->
-<!--          <img src="./images/sho/perfil.jpg" alt="">-->
-<!--        </div>-->
-<!--      </div>-->
-<!--      <div class="col-md-7">-->
-<!--        <div class="row">-->
-<!--          <div class="col-12">-->
-<!--            <span style="font-size: 20px; font-weight: 600; color: #254373;">Erick Brian Arrasco Guevara</span>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--        <div class="row mt-3">-->
-<!--          <div class="col-4 my-1">-->
-<!--            <b>DNI:</b> 46212876-->
-<!--          </div>-->
-<!--          <div class="col-4 my-1">-->
-<!--            <b>Sexo:</b> Masculino-->
-<!--          </div>-->
-<!--          <div class="col-4 my-1">-->
-<!--            <b>Edad:</b> 32 años-->
-<!--          </div>-->
-<!--          <div class="col-4 my-1">-->
-<!--            <b>Puesto:</b> Mecánico-->
-<!--          </div>-->
-<!--          <div class="col-4 my-1">-->
-<!--            <b>Área:</b> Mantenimiento-->
-<!--          </div>-->
-<!--          <div class="col-4 my-1">-->
-<!--            <b>Gerencia:</b> Gerencia 1-->
-<!--          </div>-->
-<!--          <div class="col-4 my-1">-->
-<!--            <b>Planta:</b> Planta 1-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--      <div class="col-md-3">-->
-<!--        <div class="row">-->
-<!--          <div class="col-12">-->
-<!--            <button class="btn btn-success btn-block btn-lg" style="width: 200px; float: right;">Nueva atención <img class="inject-svg" src="./images/sho/plus.svg" fill="#fff" />-->
-<!--            </button>-->
-<!--          </div>-->
-<!--          <div class="col-12">-->
-<!--            <button class="btn btn-link shadow-none btn-block btn-lg" style="width: 200px; float: right;">Ver datos completos <img class="inject-svg" src="./images/sho/plus.svg" fill="#fff" />-->
-<!--            </button>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    &lt;!&ndash; FIN DATOS GENERALES &ndash;&gt;-->
-<!--    <hr class="mt-4">-->
-<!--    &lt;!&ndash; SIGNOS VITALES &ndash;&gt;-->
-<!--    <div class="row mt-4">-->
-<!--      <div class="col-md-6 d-flex align-items-center">-->
-<!--        <span class="titulo"> Signos vitales </span>-->
-<!--      </div>-->
-<!--      <div class="col-md-6 d-flex justify-content-end align-items-center">-->
-<!--        <span style="font-weight: 600; color: #01719d;"> Último registro: 21/10/2021 </span>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="row mt-4">-->
-<!--      <div class="col-md-6 col-sm-12 item-sig-vital mb-3 px-4">-->
-<!--        <div class="d-flex">-->
-<!--          <img class="inject-svg" src="./images/sho/arterial.svg" alt="" fill="#ff2e2e">-->
-<!--          <span>Presión arterial</span>-->
-<!--        </div>-->
-<!--        <div>-->
-<!--          <input class="form-control" type="text" readonly>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--      <div class="col-md-6 col-sm-12 item-sig-vital mb-3 px-4">-->
-<!--        <div class="d-flex">-->
-<!--          <img class="inject-svg" src="./images/sho/cardiaca.svg" alt="" fill="#ff2626">-->
-<!--          <span>Frecuencia cardiaca</span>-->
-<!--        </div>-->
-<!--        <div>-->
-<!--          <input class="form-control" type="text" readonly>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--      <div class="col-md-6 col-sm-12 item-sig-vital mb-3 px-4">-->
-<!--        <div class="d-flex">-->
-<!--          <img class="inject-svg" src="./images/sho/respiratoria.svg" alt="" fill="#00baff">-->
-<!--          <span>Frecuencia respiratoria</span>-->
-<!--        </div>-->
-<!--        <div>-->
-<!--          <input class="form-control" type="text" readonly>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--      <div class="col-md-6 col-sm-12 item-sig-vital mb-3 px-4">-->
-<!--        <div class="d-flex">-->
-<!--          <img class="inject-svg" src="./images/sho/temperatura.svg" alt="" fill="#34a9ff" style="left: 30px">-->
-<!--          <span>Temperatura</span>-->
-<!--        </div>-->
-<!--        <div>-->
-<!--          <input class="form-control" type="text" readonly>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--      <div class="col-md-6 col-sm-12 item-sig-vital mb-3 px-4">-->
-<!--        <div class="d-flex">-->
-<!--          <img class="inject-svg" src="./images/sho/peso.svg" alt="" fill="#004eff">-->
-<!--          <span>Peso Kg</span>-->
-<!--        </div>-->
-<!--        <div>-->
-<!--          <input class="form-control" type="text" readonly>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--      <div class="col-md-6 col-sm-12 item-sig-vital mb-3 px-4">-->
-<!--        <div class="d-flex">-->
-<!--          <img class="inject-svg" src="./images/sho/talla.svg" alt="" fill="#715fff" style="left: 30px">-->
-<!--          <span>Talla</span>-->
-<!--        </div>-->
-<!--        <div>-->
-<!--          <input class="form-control" type="text" readonly>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--      <div class="col-md-6 col-sm-12 item-sig-vital mb-3 px-4">-->
-<!--        <div class="d-flex">-->
-<!--          <img class="inject-svg" src="./images/sho/saturacion.svg" alt="" fill="#fc2a5a">-->
-<!--          <span>Saturación</span>-->
-<!--        </div>-->
-<!--        <div>-->
-<!--          <input class="form-control" type="text" readonly>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--      <div class="col-md-6 col-sm-12 item-sig-vital mb-3 px-4">-->
-<!--        <div class="d-flex">-->
-<!--          <img class="inject-svg" src="./images/sho/corporal.svg" alt="" fill="#ffc400">-->
-<!--          <span>Índice de masa corporal</span>-->
-<!--        </div>-->
-<!--        <div>-->
-<!--          <input class="form-control" type="text" readonly>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--      <div class="col-md-6 col-sm-12 item-sig-vital mb-3 px-4">-->
-<!--        <div class="d-flex">-->
-<!--          <img class="inject-svg" src="./images/sho/abdominal.svg" alt="" fill="#ff8b43">-->
-<!--          <span>Perímetro abdominal</span>-->
-<!--        </div>-->
-<!--        <div>-->
-<!--          <input class="form-control" type="text" readonly>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    &lt;!&ndash; FIN SIGNOS VITALES &ndash;&gt;-->
-<!--    &lt;!&ndash; ATENCIONES MEDICAS &ndash;&gt;-->
-<!--    <hr class="mt-4">-->
-<!--    <div class="row mt-4">-->
-<!--      <div class="col-md-6 d-flex align-items-center">-->
-<!--        <span class="titulo"> Atenciones médicas realizadas </span>-->
-<!--      </div>-->
-<!--      <div class="col-md-6 d-flex justify-content-end align-items-center">-->
-<!--        <span style="font-weight: 600; color: #01719d;"> Ver todas las atenciones </span>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="row mt-4">-->
-<!--      <div class="col-md-6">-->
-<!--        <div class="card card-border">-->
-<!--          <div class="card-body">-->
-<!--            <span style="color: #01719d;"><b>Motivo:</b> Dolor de espalda</span>-->
-<!--            <br>-->
-<!--            <span><b>Atendido por:</b> Erick Arrasco Guevara</span>-->
-<!--            <span class="mt-3" style="color: #d8801f; float: right;">Jun 03, 2021 - 11:07 AM</span>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--      <div class="col-md-6">-->
-<!--        <div class="card card-border">-->
-<!--          <div class="card-body">-->
-<!--            <span style="color: #01719d;"><b>Motivo:</b> Dolor de espalda</span>-->
-<!--            <br>-->
-<!--            <span><b>Atendido por:</b> Erick Arrasco Guevara</span>-->
-<!--            <span class="mt-3" style="color: #d8801f; float: right;">Jun 03, 2021 - 11:07 AM</span>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    &lt;!&ndash; FIN ATENCIONES MEDICAS &ndash;&gt;-->
-<!--    &lt;!&ndash; ADJUNTAR EVIDENCIA &ndash;&gt;-->
-<!--    <hr class="mt-4">-->
-<!--    <div class="row mt-4">-->
-<!--      <div class="col-md-12 d-flex align-items-center">-->
-<!--        <span class="titulo"> Adjuntar evidencia </span>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="row mt-4">-->
-<!--      <div class="col-md-12">-->
-<!--        <input type="file">-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    &lt;!&ndash; FIN ADJUNTAR EVIDENCIA &ndash;&gt;-->
-<!--    &lt;!&ndash; EXAMEN AUXILIAR &ndash;&gt;-->
-<!--    <hr class="mt-4">-->
-<!--    <div class="row mt-4">-->
-<!--      <div class="col-md-12 d-flex align-items-center">-->
-<!--        <span class="titulo"> Datos del examen auxiliar </span>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="row mt-4">-->
-<!--      <div class="col-md-4 col-sm-6">-->
-<!--        <div class="input-box-secondary">-->
-<!--          <span>Fecha de exámenes</span>-->
-<!--          <input type="date" />-->
-<!--        </div>-->
-<!--      </div>-->
-<!--      <div class="col-md-4 col-sm-6">-->
-<!--        <div class="input-box-secondary">-->
-<!--          <span>Tipo de examen</span>-->
-<!--          <select name="" id="">-->
-<!--            <option value="">item 1</option>-->
-<!--            <option value="">item 2</option>-->
-<!--          </select>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--      <div class="col-md-12 col-sm-12">-->
-<!--        <div class="input-box-secondary">-->
-<!--          <span>Conlusión</span>-->
-<!--          <input type="text" />-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="row mt-3">-->
-<!--      <div class="col-md-3 offset-md-9 col-sm-4">-->
-<!--        <button class="btn btn-success btn-block btn-lg float-right" style="width:200px"> Agregar a lista <img class="inject-svg" src="./images/sho/plus.svg" alt="" fill="#fff" />-->
-<!--        </button>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="row mt-3">-->
-<!--      <div class="col-md-12">-->
-<!--        <div class="d-flex align-items-center">-->
-<!--          <div id="cant_planes">-->
-<!--            <img src="images/iconos/copia-1.svg" style="width: 20px" />-->
-<!--          </div>-->
-<!--          <span class="cantidad ml-3" id="cant_ant_ocu" style="font-size: 15px">0 registros</span>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--      <div class="col-md-12">-->
-<!--        <table class="table-box" id="EA-table">-->
-<!--          <thead>-->
-<!--            <tr>-->
-<!--              <th>Fecha del examen</th>-->
-<!--              <th>Tipo de examen</th>-->
-<!--              <th>Fecha de registro</th>-->
-<!--              <th>Conclusion</th>-->
-<!--              <th>Documento</th>-->
-<!--              <th></th>-->
-<!--            </tr>-->
-<!--          </thead>-->
-<!--          <tbody></tbody>-->
-<!--        </table>-->
-<!--        <div class="more-info-content oc-info-content">-->
-<!--          <ul>-->
-<!--            <li>-->
-<!--              <img class="inject-svg" src="./images/sho/edit.svg" fill="#5daf57" style="width:16px !important" />-->
-<!--              <span>Editar</span>-->
-<!--            </li>-->
-<!--            <li>-->
-<!--              <img class="inject-svg" src="./images/sho/delete.svg" fill="#ff3636" style="width:16px !important" />-->
-<!--              <span>Eliminar</span>-->
-<!--            </li>-->
-<!--          </ul>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    &lt;!&ndash; FIN EXAMEN AUXILIAR &ndash;&gt;-->
-<!--    <hr class="mt-4">-->
-<!--    <div class="row mt-4">-->
-<!--      <div class="col-md-12 d-flex align-items-center">-->
-<!--        <span class="titulo"> Historial de actualizaciones </span>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="row mt-3">-->
-<!--      <div class="col-md-12">-->
-<!--        <div class="d-flex align-items-center">-->
-<!--          <div id="cant_planes">-->
-<!--            <img src="images/iconos/copia-1.svg" style="width: 20px" />-->
-<!--          </div>-->
-<!--          <span class="cantidad ml-3" id="cant_ant_ocu" style="font-size: 15px">0 registros</span>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--      <div class="col-md-12">-->
-<!--        <table class="table-box" id="HA-table">-->
-<!--          <thead>-->
-<!--            <tr>-->
-<!--              <th>Fecha de registro</th>-->
-<!--              <th>Hora de registro</th>-->
-<!--              <th>Motivo</th>-->
-<!--              <th>Medico responsable</th>-->
-<!--              <th></th>-->
-<!--            </tr>-->
-<!--          </thead>-->
-<!--          <tbody></tbody>-->
-<!--        </table>-->
-<!--        <div class="more-info-content oc-info-content">-->
-<!--          <ul>-->
-<!--            <li>-->
-<!--              <img class="inject-svg" src="./images/sho/edit.svg" fill="#5daf57" style="width:16px !important" />-->
-<!--              <span>Editar</span>-->
-<!--            </li>-->
-<!--            <li>-->
-<!--              <img class="inject-svg" src="./images/sho/delete.svg" fill="#ff3636" style="width:16px !important" />-->
-<!--              <span>Eliminar</span>-->
-<!--            </li>-->
-<!--          </ul>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->
-<!--  ==========================================  vista resumen del trabajador =======================================-->
-
-
-<script src="js/svg-inject.min.js"></script>
-<script src="js/paginator/pagination.js"></script>
-<script src="view/sho-hce/historia_clinica/gestionHistoriaClinica.js"></script>
-<script src="js/sweetalert2.js"></script>
-<script src="js/proccessExcell.js"></script>
-<script src="js/riskList.js"></script>
-
-
-<!-- <script src="js/svg-inject.min.js"></script>
-<script src="../js/paginator/pagination.js"></script>
-<script src="./js/sweetalert2.js"></script>
-<script src="view/sho-hce/historia_clinica/gestionHistoriaClinica.js"></script> -->
-
-<!-- <script src="../js/paginator/pagination.js"></script>
-<script src="../js/jsPDF/jspdf_1.5.3.js"></script>
-<script src="../js/jsPDF/jspdf_autotable.js"></script> -->
-
-
-<script>
-
-  _init_fnSp3SaludOcupacionalEstadoInicial();
-
-</script>
+      _init_fnSp3SaludOcupacionalEstadoInicial();
+    </script>

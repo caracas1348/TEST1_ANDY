@@ -172,3 +172,8 @@ SeguimientoDeInspeccion = function SeguimientoDeInspeccion(){
     handlerUrlhtml('contentGlobal','view/ssoma/seguimiento-de-inspeccion/index.html','Seguimiento de Inspección');
 }
 
+
+
+
+
+

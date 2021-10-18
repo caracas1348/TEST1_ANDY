@@ -1,0 +1,310 @@
+<link rel="stylesheet" href="css/sho.css">
+<link rel="stylesheet" type="text/css" href="view/sho-hce/accidente_trabajo/styles.css">
+<div>
+    <div class="row mb-5">
+        <div class="col-md-12 d-flex justify-content-between align-content-center">
+            <h2 class="title-section d-flex">
+                <span class="m-auto">Accidentes de trabajo</span>
+            </h2>
+            <span class="text-section" id="mostrar_datos_at" style="display:none;">Mostrar datos</span>
+            <span class="text-section" id="ocultar_datos_at">Ocultar datos</span>
+        </div>
+    </div>
+    <div class="row mb-5">
+        <div class="col-md-2 show-more">
+          <div class="img-perfil" style="display: flex;justify-content: center;align-items: center;">
+            <label for="img_input_file_perfil" style="cursor:pointer; margin: 0">
+              <img id="img_file_perfil" name="img_file_perfil">
+            </label>
+            <input id="img_input_file_perfil" type="file" onchange="" style="display: none">
+          </div>
+        </div>
+        <div class="col-md-9 show-less" style="display:none">
+          <div class="row">
+            <div class="col-md-2 mr-2">
+              <div class="img-perfil" 
+                style="display: flex;justify-content: center;align-items: center; width:80px ;height: 80px;">
+                <label for="img_input_file_perfil" style="cursor:pointer; margin: 0">
+                  <img name="img_file_perfil" name="img_file_perfil">
+                </label>
+                <input id="img_input_file_perfil" type="file" onchange="" style="display: none">
+              </div>
+            </div>
+            <div class="d-flex align-items-center">
+              <span style="font-size: 18px; font-weight: 600; color: #254373;" name="dat_at_nombres"></span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-7 show-more">
+          <div class="row">
+            <div class="col-12">
+              <span style="font-size: 20px; font-weight: 600; color: #254373;" name="dat_at_nombres"></span>
+            </div>
+          </div>
+          <div class="row mt-3 show-more">
+            <div class="col-4 my-1">
+              <b>DNI:</b> <span id="dat_at_dni_trabajador"></span>
+            </div>
+            <div class="col-4 my-1">
+              <b>Sexo:</b> <span id="dat_at_sexo_trabajador"></span>
+            </div>
+            <div class="col-4 my-1">
+              <b>Edad:</b> <span id="dat_at_edad_trabajador"></span>
+            </div>
+            <div class="col-4 my-1">
+              <b>Puesto:</b> <span id="dat_at_puesto_trabajador"></span>
+            </div>
+            <div class="col-4 my-1">
+              <b>Área:</b> <span id="dat_at_area_trabajador"></span>
+            </div>
+            <div class="col-4 my-1">
+              <b>Gerencia:</b> <span id="dat_at_gerencia_trabajador"></span>
+            </div>
+            <div class="col-4 my-1">
+              <b>Planta:</b> <span id="dat_at_planta_trabajador"></span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+            <span class="text-section mb-3" style="float: right;">Ver datos completos</span>
+            <button class="btn btn-block btn-lg btn-success" 
+                onclick="atSp4NuevoAccidenteTrabajo()"
+                style="width: 200px; float: right;">Nuevo Registro
+                <img src="./images/sho/plus.svg" alt="" />
+            </button>
+        </div>
+    </div>
+    <div class="row mb-5">
+        <div class="col-sm-12">
+            <table class="table-box">
+                <thead>
+                    <th>Accidente de trabajo</th>
+                    <th>F. Registro</th>
+                    <th>F. Accidente</th>
+                    <th>Hora accidente</th>
+                    <th>Diagnóstico</th>
+                    <th>Estado</th>
+                    <th></th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Accidente 1</td>
+                        <td>21/10/2021</td>
+                        <td>21/10/2021</td>
+                        <td>12:00</td>
+                        <td>Diagnóstico 1</td>
+                        <td>Abierto</td>   
+                        <td>
+                            <div class="dropdown">
+                              <button class=" btn-link dropdown textVertical" style='outline:none !important;' id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <label class='textVertical'>...</label>
+                              </button>
+                              <div class="dropdown-menu" style="padding: 8px 0px;">  
+                                  <a class="dropdown-item d-flex align-items-center"><img src="./images/sho/eyeIcon.svg" alt="" />&nbsp;&nbsp; Ver detalle</a>
+                              </div>
+                          </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <ul class="tabs">
+                <li class="tabs-item active" id="descansos">Descanso médico</li>
+                <li class="tabs-item" id="transferencias">Transferencias</li>
+                <li class="tabs-item" id="seguimientos">Registro de seguimiento</li>
+                <li class="tabs-item" id="alta-especialistas">Altas de especialistas</li>
+                <li class="tabs-item" id="informes">Informe médicos</li>
+                <li class="tabs-item" id="examenes-auxiliares">Exámenes auxiliares</li>
+                <li class="tabs-item" id="evaluaciones">Evaluaciones post alta médica</li>
+            </ul>
+        </div>
+    </div>
+    <div class="row mb-5 tab-section" id="section-descansos">
+        <div class="col-sm-12">
+            <div class="table-responsive tablaBox">
+                <table class="table-box">
+                    <thead>
+                        <th>F. Inicio</th>
+                        <th>F. Fin</th>
+                        <th>Días</th>
+                        <th>Días acumulados</th>
+                        <th>Dias restantes</th>
+                        <th>Diagnóstico</th>
+                        <th>Tipo de contingencia</th>
+                        <th>Establecimiento de emisión</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>21/10/2021</td>
+                            <td>21/10/2021</td>
+                            <td>30</td>
+                            <td>45</td>
+                            <td>5</td>
+                            <td>Enfermedad común</td>
+                            <td>Establecimiento 1<td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-5 tab-section" id="section-transferencias" style="display:none;">
+        <div class="col-sm-12">
+            <table class="table-box">
+                <thead>
+                    <th>Accidente de trabajo</th>
+                    <th>F. Registro</th>
+                    <th>F. Accidente</th>
+                    <th>Hora accidente</th>
+                    <th>Diagnóstico</th>
+                    <th>Estado</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Accidente 1</td>
+                        <td>21/10/2021</td>
+                        <td>21/10/2021</td>
+                        <td>12:00</td>
+                        <td>Diagnóstico 1</td>
+                        <td>Abierto</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row mb-5 tab-section" id="section-seguimientos" style="display:none;">
+        <div class="col-sm-12">
+            <table class="table-box">
+                <thead>
+                    <th>Informe</th>
+                    <th>Establecimiento</th>
+                    <th>F. transferencia</th>
+                    <th>Diagnósticon Especialista</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Informe 1</td>
+                        <td>Establecimiento</td>
+                        <td>21/10/2021</td>
+                        <td>Diagnóstico 1</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row mb-5 tab-section" id="section-alta-especialistas" style="display:none;">
+        <div class="col-sm-12">
+            <table class="table-box">
+                <thead>
+                    <th>F. Seguimiento</th>
+                    <th>Hora de seguimiento</th>
+                    <th>Comentario</th>
+                    <th></th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>21/10/2021</td>
+                        <td>12:00</td>
+                        <td colspan="2">Comentario 1</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row mb-5 tab-section" id="section-informes" style="display:none;">
+        <div class="col-sm-12">
+            <table class="table-box">
+                <thead>
+                    <th>Diagnóstico</th>
+                    <th>Documentos escanaeados</th>
+                    <th>F. Alta</th>
+                    <th>RNE especialista</th>
+                    <th>Nombre del especialista</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Diagnóstico 1</td>
+                        <td>Documento 1</td>
+                        <td>21/10/2021</td>
+                        <td>Especialista 1</td>
+                        <td>Nombre del especialista</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row mb-5 tab-section" id="section-examenes-auxiliares" style="display:none;">
+        <div class="col-sm-12">
+            <table class="table-box">
+                <thead>
+                    <th>F. Exámenes</th>
+                    <th>Tipo de examen</th>
+                    <th>Conclusión</th>
+                    <th>Resultados escaneados</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>21/10/2021</td>
+                        <td>Tipo 1</td>
+                        <td>Conclusión 1</td>
+                        <td>Resultados escaneados</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row mb-5 tab-section" id="section-evaluaciones" style="display:none;">
+        <div class="col-sm-12">
+            <table class="table-box">
+                <thead>
+                    <th>F. Evaluación</th>
+                    <th>Anamnesis</th>
+                    <th>Plan</th>
+                    <th>Aptitud</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>21/10/2021</td>
+                        <td>Anamnesis 1</td>
+                        <td>Plan 1</td>
+                        <td>Apto</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="view/sho-hce/accidente_trabajo/gestionAccidenteTrabajo.js"></script>
+<script type="text/javascript">
+  
+$(document).ready(()=>{
+  console.log(paObj_hc)
+  console.log(idHC)
+  console.log(sedeAreaGerencia)
+  _init_atSp4GestionAccidenteTrabajo()
+  $('#mostrar_datos_at').on('click',onClickMostrarDatos);
+  $('#ocultar_datos_at').on('click',onClickOcultarDatos);
+})
+
+function _init_atSp4GestionAccidenteTrabajo() {
+  atSp4CargarDatosTrabajador();  
+}
+
+function onClickMostrarDatos(){
+  $('#mostrar_datos_at').hide()
+  $('#ocultar_datos_at').show()
+  $('.show-less').hide()
+  $('.show-more').show()
+}
+
+function onClickOcultarDatos(){
+  $('#ocultar_datos_at').hide()
+  $('#mostrar_datos_at').show()
+  $('.show-less').show()
+  $('.show-more').hide()
+}
+</script>

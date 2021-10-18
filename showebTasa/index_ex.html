@@ -210,7 +210,7 @@
 
 
         <!------------------------------**  Inicio Formulario Logeo **  ----------------------------->
-        <form class="form-signin form-row ld ld-blur-in bg-blue " name="fm_login" id="fm_login" style="max-width: 475px; margin-top: 55px;  ">
+        <form class="form-signin form-row ld ld-blur-in bg-blue " name="fm_login"  id="fm_login"   style="max-width: 475px; margin-top: 55px;  ">
 
             <div class=" " id="cardlogin" style="width: 445px;">
                 <div class="alert" role="alert" style="display: none;"></div>
@@ -251,6 +251,8 @@
                                 <div class="form-control" style="width: 360px; border-right:0; height: 58px; background-color: #D9D9D9;">
                                     <div style="height:56px; margin-top:-11px; margin-left: -12px; width: 353px;">
                                         <div class="g-recaptcha" style=" transform: scale(0.75);  transform-origin: 0 0;" data-sitekey="6LeXxNYUAAAAAIbyjKs16JSb1_uzRiG015RdilTm"></div>
+
+
                                     </div>
 
                                 </div>
@@ -267,19 +269,8 @@
                     <h2 class="card-title text-center " style="height: 3px;">&nbsp;</h2>
 
                     <div class="container" style="text-align:center; background-color:white; width: 390px;">
-                        <div class="form-group   m-0" style=" width: 360px; background-color:white;">
-                            <div class="input-group mb-3">
-                                <!-- id="bt_login_tokens" -->
-                                <button id="fm_login" name="fm_login" class="btn btn-lg buttonActive btn-block d-flex justify-content-center " onclick="enviarTokenUserClave()" style=" height: 52px; border-radius: 7px; width: 360px; background: #8fbb02 !important; " type="submit">
-                                            <div class="d-flex justify-content-center">
-                                                <div class="spinner-grow spinner-border-sm text-white" role="status" aria-hidden="true" style="display: none;">
-                                                </div>
-                                            </div>
-                                            Solicitar token
-                                        </button>
-                            </div>
 
-                             <div class="input-group mb-3" style="width:360px; ">
+                        <div class="input-group mb-3" style="width:360px; ">
                                         <div class="form-control"  style="width: 360px; border-right:0; height: 66px; background-color: #D9D9D9;">
                                              
                                               <div class="text-center" style="text-align: left !important; padding-left: 0px; margin-top: -10px !important;  margin-left: -10px !important; ">
@@ -292,6 +283,20 @@
                                         </div>
                               </div>
 
+
+                        <div class="form-group   m-0" style=" width: 360px; background-color:white;">
+                            <div class="input-group mb-3">
+                                <!-- id="bt_login_tokens" -->
+                                <button id="fm_login" name="fm_login" class="btn btn-lg buttonActive btn-block d-flex justify-content-center " onclick=" /*enviarTokenUserClave()*/" style=" height: 52px; border-radius: 7px; width: 360px; background: #8fbb02 !important; " type="submit">
+                                            <div class="d-flex justify-content-center">
+                                                <div class="spinner-grow spinner-border-sm text-white" role="status" aria-hidden="true" style="display: none;">
+                                                </div>
+                                            </div>
+                                            Solicitar token
+                                        </button>
+                            </div>
+
+                             
 
                         </div>
                     </div>
@@ -322,7 +327,7 @@
 
 
 
-                   </form>
+        </form>
 
                     <h2 class="card-title text-center " style="height: 7px;">&nbsp;</h2>
                     <div class="form-group   m-0 ">
@@ -332,7 +337,7 @@
                     <h2 class="card-title text-center " style="height: 4px;">&nbsp;</h2>
 
                     <div class="form-group   m-0 ">
-                        <input type="text" placeholder="000123786" class="form border" onkeyup="/*activaTokens()*/" id="tx_tokens" style="" >
+                        <input type="text" class="form border" onkeyup="/*activaTokens()*/" id="tx_tokens" style="" >
                     </div>
 
                     <h2 class="card-title text-center " style="height: 14px;">&nbsp;</h2>
@@ -466,8 +471,11 @@
 
 <script src="js/apiRoute.js"></script>
 <script src="js/msal.js"></script>
+<script src="https://www.google.com/recaptcha/api.js" async defer ></script>
+
 <script src="js/login.js"></script>
 <script src="js/loginlog.js"></script>
+
 <script src="js/collaboratorApprover.js"></script>
 <script src="js/proccessExcell.js"></script>
 <script src="js/riskList.js"></script>
@@ -583,7 +591,7 @@
 function validaTokens() {
         console.log('validando el tokes.............');
         //var tokensServer = '0123456789'; //aqui vamos a poner el valor que nos traiga el servicio
-        // if ($('#tx_tokens').val() == tokensServer) {
+        if ($('#tx_tokens').val() == document.getElementById('tx_tokens').value) {
         //     //activamos el boton ingresar y le cambiamos el titulo
             $("#bt_login_tokens").attr("disabled", false);
             $("#bt_login_tokens").html('Enviar token');
@@ -638,34 +646,34 @@ function validaTokens() {
 
 
 
-        // }
+         }
     }
 
 
 
+/*
+function  () codeverify() {
 
-// function  () codeverify() {
+        console.log("Validando codigo...")
+        var code = document.getElementById('tx_tokens').value;
+        confirmationResult.confirm(code).then(function(result) {
 
-//         console.log("Validando codigo...")
-//         var code = document.getElementById('tx_tokens').value;
-//         confirmationResult.confirm(code).then(function(result) {
+            var user = result.user;
+            messagealert("Acceso autorizado", 'success', 5000);
+            console.log("Devolviando data autorizada...")
+            window.opener.postMessage({ sucessSapTasa: 1, data: responseData }, '*')
+            window.close();
 
-//             var user = result.user;
-//             messagealert("Acceso autorizado", 'success', 5000);
-//             console.log("Devolviando data autorizada...")
-//             window.opener.postMessage({ sucessSapTasa: 1, data: responseData }, '*')
-//             window.close();
+        }).catch(function(error) {
 
-//         }).catch(function(error) {
+            console.log("Firebase codeverify: " + error.message);
 
-//             console.log("Firebase codeverify: " + error.message);
-
-//             messagealert("Acceso no autorizado", 'success', 5000);
-//             console.log("Close windows")
-//             window.opener.postMessage({ sucessSapTasa: 0 }, '*')
-//             window.close();
-//         })
-//     }
+            messagealert("Acceso no autorizado", 'success', 5000);
+            console.log("Close windows")
+            window.opener.postMessage({ sucessSapTasa: 0 }, '*')
+            window.close();
+        })
+    }*/
 </script>
 
 </html>

@@ -1,0 +1,773 @@
+<link rel="stylesheet" href="./view/sho-hce/descansos_medicos/css/sho.css">
+<link rel="stylesheet" href="css/sweetalert2.css">
+<div class="container main-content">
+  <!-- HSO FORM -->
+  <div>
+    <div class="row mb-5 d-flex align-items-center">
+      <div class="col-md-6 col-sm-6 mr-auto p-2">
+        <span class="titulo">Datos del trabajador</span>
+      </div>
+    </div>
+    <!-- Datos del trabajador -->
+
+
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Nro de documento</span>
+          <input type="text" id="dat_tra_codigo" disabled>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Nombres</span>
+          <input type="text" id="dat_nombres_trabajador" disabled>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Apellidos</span>
+          <input type="text" id="dat_apellidos_trabajador" disabled>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-4">
+        <div class="input-box-secondary">
+          <span>Fecha de registro</span>
+          <input type="text" id="dat_fr" disabled>
+        </div>
+      </div>     
+    </div>
+
+    <div class="row">
+      <div class="col-md-3 col-sm-4">
+        <div class="input-box-secondary">
+          <span>ID descanso medico</span>
+          <input type="text" id="dat_iddescanso" disabled>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-4">
+        <div class="input-box-secondary">
+          <span>Empresa</span>
+          <input type="text" id="dat_empresa" disabled>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Origen</span>
+          <select name="" id="dat_origen" disabled>
+            <option selected="" value="0">          </option>
+            <option value="1" title="Registro a Demanda" style="font-weight: bold;">Registro a Demanda</option>
+            <option value="2" title="Registro a Demanda" style="font-weight: bold;">Atenciones Medicas</option>
+            <option value="3" title="Registro a Demanda" style="font-weight: bold;">Accidente de Trabajo</option>
+            <option value="4" title="Registro a Demanda" style="font-weight: bold;">Gestionate</option>
+            <option value="5" title="Registro a Demanda" style="font-weight: bold;">Enfermedades Crónicas</option>
+
+          </select>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-4">
+        <div class="input-box-secondary">
+          <span>ID de atención médica</span>
+          <input type="text" id="dat_idatencionmedica" disabled>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Gerencia</span>
+          <select name="" id="dat_gerencia" disabled>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Planta</span>
+          <select name="" id="dat_planta" disabled>
+          </select>
+        </div>
+      </div>      
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Área</span>
+          <select name="" id="dat_area" disabled>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Puesto de Trabajo</span>
+          <input name="" id="dat_trab_ptrab" disabled>          
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-5">
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Estado</span>
+          <select name="" id="dat_estado" disabled>
+
+             <option value="0"  style="font-weight: bold;">Pendiente aprobacion</option>
+             <option value="1"  style="font-weight: bold;">Aprobado</option>
+
+          </select>
+        </div>
+      </div>      
+    </div>
+    <hr class="mb-5 mt-4" />  
+    <!-- Fin Datos del trabajador -->
+
+    <!-- Adjuntar error-->
+
+
+    <div class="row mt-4">
+      <div class="col-md-12 d-flex align-items-center">
+        <span class="titulo"> Archivos adjuntos </span>
+      </div>
+    </div>
+    <div class="row mt-3 mb-5">
+      <div class="col-md-12">
+        <div class="d-flex align-items-center">
+          <div id="cant_planes">
+            <img src="images/iconos/copia-1.svg" style="width: 20px" />
+          </div>
+          <span class="cantidad ml-3" style="font-size: 15px">
+            <span id="tabla_primeradjunto-count-row"></span> registros</span>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="table-responsive">
+          <table class="table-box" id="tabla_primeradjunto">
+          <thead>
+            <tr>
+              <th>Nombre del archivo</th>
+              <th>Fecha de carga</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+    <!-- Adjuntar error fin -->
+
+
+    <!-- Datos del descanso -->
+    <div class="row mb-5 d-flex justify-content-between">
+      <div class="col-md-6 col-sm-6 p-2">
+        <span class="titulo">Datos del descanso</span>
+      </div>
+      <div class=" col-md-3 col-sm-6  p-2">
+        <button onclick="fnSp3ImprimirDescanso()" type="button" class="btn btn-info btn-block btn-lg" id=""> 
+          Imprimir descanso
+          <img class="inject-svg" src="./images/sho/print.svg" alt="" fill="#fff" width="18px">
+        </button>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Personal de salud</span>
+          <input type="text" id="dat_personal_salud" disabled>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Tipo de contingencia</span>
+          <select id="dat_tipo_contingencia" disabled="">
+          </select>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>¿Descanso por enfermedad?</span>
+          <select id="dat_por_enfermedad" disabled="">
+            <option value="0"  style="font-weight: bold;"> Si</option>
+            <option value="1"  style="font-weight: bold;"> No</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-4">
+        <div class="input-box-secondary">
+          <span>CMP</span>
+          <input type="text" id="dat_cmp" disabled>
+        </div>
+      </div>     
+    </div>
+
+    <div class="row">
+      <div class="col-md-3 col-sm-4">
+        <div class="input-box-secondary">
+          <span>Cantidad de días</span>
+          <input type="text" id="dat_cantidad_dias" disabled>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-4">
+        <div class="input-box-secondary">
+          <span>Días acumulados</span>
+          <input type="text" id="dat_dias_acumulados" disabled>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Fecha de inicio</span>
+          <input type="text"  id="dat_fi"  disabled>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-4">
+        <div class="input-box-secondary">
+          <span>Fecha fin</span>
+          <input type="text"  id="dat_ff" disabled>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>¿Hubo alta médica?</span>
+          <select name="" id="dat_alta_medica" disabled>
+               <option value="0"  style="font-weight: bold;"> Si</option>
+               <option value="1"  style="font-weight: bold;"> No</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Establecimiento de emisión del descanso</span>
+          <select name="" id="dat_establecimiento" disabled>
+          </select>
+        </div>
+      </div>      
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Particular</span>
+          <input name="" id="dat_des_particular_v" disabled>          
+        </div>
+      </div>
+    </div>
+    <hr class="mb-5 mt-4" />  
+    <!-- Fin Datos del descanso -->
+
+    <div class="row mt-3">
+      <div class="col-md-12">
+          <div class="d-flex align-items-center">
+            <div id="cant_planes">
+              <img src="images/iconos/copia-1.svg" style="width: 20px" />
+            </div>
+            <span class="cantidad ml-3" style="font-size: 15px">
+              <span id="tabla_segundoadjunto-count-row"></span> registros</span>
+          </div>
+        </div>
+      <div class="col-md-12">
+        <div class="table-responsive">
+          <table class="table-box" id="tabla_segundoadjunto">
+          <thead>
+            <tr>
+              <th>Nombre del archivo</th>
+              <th>Fecha de carga</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+        </div>
+      </div>
+    </div>
+
+
+
+   <br/>
+   <br/>
+
+
+
+
+
+    <!-- Diagnostico CIE 10 -->  
+    <div class="row mb-5">
+      <div class="col-md-12">
+        <span class="titulo">Diagnóstico CIE 10</span>
+      </div>
+    </div> 
+   
+
+    <div class="row mt-3">
+      <div class="col-md-12">
+        <div class="d-flex align-items-center">
+          <div id="cant_planes">
+            <img src="images/iconos/copia-1.svg" style="width: 20px" />
+          </div>
+          <span class="cantidad ml-3" style="font-size: 15px">
+            <span id="tabla_diagnosticocie10-count-row"></span> registros</span>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <table class="table-box table-responsive" id="tabla_diagnosticocie10">
+          <thead>
+            <tr>
+              <th style="width:20%">Diagnóstico</th>
+              <th style="width:15%">CIE 10</th>
+              <th style="width:15%">Fecha de registro</th>
+              <th style="width:20%">Especialidad</th>
+              <th style="width:20%">Sistema afectado</th>
+              <th style="width:20%">Sección afectada</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
+
+
+
+    </div>
+    <!-- FIN DIAGNOSTICO CIE 10 -->
+  </div>
+  <!-- FIN HSO Forms -->
+</div>
+
+<script src="./view/sho-hce/descansos_medicos/js/main.js"></script>
+
+<script src="js/sweetalert2.js"></script>
+<script src="js/jquery.mask.min.js"></script>
+<script src="js/svg-inject.min.js"></script>
+<script src="js/jsPDF/dist/jspdf.debug.js"></script>
+<script src="js/jsPDF/libs/html2pdf.js"></script>
+<script src="./js/jsPDF/jspdf_1.5.3.js"></script>
+<script src="./js/jsPDF/jspdf_autotable.js"></script>
+
+<script type="text/javascript">
+
+function downloadBlob(blob, filename){
+
+  if(window.navigator.msSaveOrOpenBlob) {
+      window.navigator.msSaveBlob(blob, filename);
+  } else {
+      var elem = window.document.createElement('a');
+      elem.href = window.URL.createObjectURL(blob);
+      elem.download = filename;
+      document.body.appendChild(elem);
+      elem.click();
+      document.body.removeChild(elem);
+  }
+
+}
+
+function fnSp4descargarPrimerAdjuntoDescansoMedicoEC(IndexObjeto)
+{
+  
+  url = paObj_detalleDescanso[idDetalle].PrimerAdjunto[IndexObjeto].ArchivoBase64;
+  fetch(url)
+  .then(res => res.blob())
+  .then(function(blob) {
+    downloadBlob(blob, paObj_detalleDescanso[idDetalle].PrimerAdjunto[IndexObjeto].NombreArchivo);
+  });
+    
+}
+
+function fnSp4descargarSegundoAdjuntoDescansoMedicoEC(IndexObjeto)
+{
+  
+  url = paObj_detalleDescanso[idDetalle].SegundoAdjunto[IndexObjeto].ArchivoBase64;
+  fetch(url)
+  .then(res => res.blob())
+  .then(function(blob) {
+    downloadBlob(blob, paObj_detalleDescanso[idDetalle].SegundoAdjunto[IndexObjeto].NombreArchivo);
+  });
+    
+}
+
+//Crear servicio para para traer TiposContingencia
+function ecSp4cargarTiposContingencia() {
+  
+  let url = apiUrlsho+`/api/hce_Get_036_tipo_contingencia?code=qxzLdYMhlxbAmteTiNVtSqqs0VqD1l/53yjs2wAuLJU0PnvfEHFaZA==`;
+
+  let headers = {
+    "apikey": constantes.apiKey,
+    "Content-Type": "application/json"
+  }
+
+  let settings = {
+    "url": url,
+    "method": "get",
+    "timeout": 0,
+    "crossDomain": true,
+    "dataType": 'json',
+    "headers": headers,
+  };
+
+  return $.ajax(settings).done((response) => {
+    pluck_ec["TiposContingencia"] = response.TipoContingencia;
+  });
+}
+
+//Crear servicio para para traer EstablecimientosEmision
+function ecSp4cargarEstablecimientosEmision() {
+  
+  let url = apiUrlsho+`/api/hce_Get_037_establece_emision_descanso?code=4kCBKuJhd1xTQrt0jLk0S8gm1GPB6I9kh9XsoMulVbs9vD9iF/Fu8Q==`;
+
+  let headers = {
+    "apikey": constantes.apiKey,
+    "Content-Type": "application/json"
+  }
+
+  let settings = {
+    "url": url,
+    "method": "get",
+    "timeout": 0,
+    "crossDomain": true,
+    "dataType": 'json',
+    "headers": headers,
+  };
+
+  return $.ajax(settings).done((response) => {
+    pluck_ec["EstablecimientosEmision"] = response.EstableceEmisionDescanso;
+  });
+}
+
+function ecSp4cargarSelectEnfermedadesCronicas(){
+
+  let contenido = '';
+
+  //Cargando Select de Áreas
+  contenido = $('#dat_area');
+  contenido.append(`<option value=""></option>`);
+
+  pluck_ec["Areas"].forEach((Item) => {
+    contenido.append(`<option value="${Item.Id}">${Item.Description}</option>`)
+  });
+
+  //Cargando Select de Gerencias
+  contenido = $('#dat_gerencia');
+  contenido.append(`<option value=""></option>`);
+
+  pluck_ec["Gerencias"].forEach((Item) => {
+    contenido.append(`<option value="${Item.Id}">${Item.Description}</option>`)
+  });
+
+  //Cargando Select de Sedes
+  contenido = $('#dat_planta');
+  contenido.append(`<option value=""></option>`);
+
+  pluck_ec["Sedes"].forEach((Item) => {
+    contenido.append(`<option value="${Item.Id}">${Item.Description}</option>`)
+  });
+
+  //Cargando Select de TiposContingencia
+  contenido = $('#dat_tipo_contingencia');
+  contenido.append(`<option value=""></option>`);
+
+  pluck_ec["TiposContingencia"].forEach((Item) => {
+    contenido.append(`<option value="${Item.Id}">${Item.Descripcion}</option>`)
+  });
+
+  //Cargando Select de EstablecimientosEmision
+  contenido = $('#dat_establecimiento');
+  contenido.append(`<option value=""></option>`);
+
+  pluck_ec["EstablecimientosEmision"].forEach((Item) => {
+    contenido.append(`<option value="${Item.Id}">${Item.Descripcion}</option>`)
+  });
+
+}
+
+function ecSp4cargarElementosDetalleDatosGeneralesEC(){  
+
+  //Elementos de la vista
+  $('#dat_tra_codigo').val(paObj_ec[idHC].NroDocumento_Trabajador_H);
+  $('#dat_nombres_trabajador').val(paObj_ec[idHC].Nombres_Trabajador_H);
+  $('#dat_apellidos_trabajador').val(paObj_ec[idHC].Apellidos_Trabajador_H);
+  $('#dat_fr').val(new Date(paObj_ec[idHC].FechaRegistro_Trabajador_H).toLocaleDateString('en-GB').split('T')[0]);
+  $('#dat_trab_ptrab').val(paObj_ec[idHC].PuestoTrabajo_Empresa_H); 
+  $("#dat_gerencia option[value='"+paObj_ec[idHC].GerenciaId_Empresa_H+"']").prop("selected",true);
+  $("#dat_planta option[value='"+paObj_ec[idHC].PlantaId_Empresa_H+"']").prop("selected",true);
+  $("#dat_area option[value='"+paObj_ec[idHC].AreaId_Empresa_H+"']").prop("selected",true);
+  $("#dat_origen option[value='"+paObj_detalleDescanso[idDetalle].A_Origen+"']").prop("selected",true);
+  $('#dat_iddescanso').val(paObj_detalleDescanso[idDetalle].A_IdDescansoMedico); 
+  $('#dat_empresa').val(paObj_detalleDescanso[idDetalle].A_Empresa); 
+  $('#dat_idatencionmedica').val(paObj_detalleDescanso[idDetalle].A_IdAtencionMedica); 
+  $("#dat_tipo_contingencia option[value='"+paObj_detalleDescanso[idDetalle].B_TipoContingencia+"']").prop("selected",true);
+  $("#dat_por_enfermedad option[value='"+paObj_detalleDescanso[idDetalle].B_DescansoPorEnfermedad+"']").prop("selected",true);
+  $("#dat_alta_medica option[value='"+paObj_detalleDescanso[idDetalle].B_HuboAltaMedica+"']").prop("selected",true);
+  $("#dat_establecimiento option[value='"+paObj_detalleDescanso[idDetalle].B_EstableceDescanso+"']").prop("selected",true);
+  $('#dat_ff').val(new Date(paObj_detalleDescanso[idDetalle].B_FechaFin).toLocaleDateString('en-GB').split('T')[0]);
+  $('#dat_fi').val(new Date(paObj_detalleDescanso[idDetalle].B_FechaIni).toLocaleDateString('en-GB').split('T')[0]);
+
+  $('#dat_personal_salud').val(paObj_detalleDescanso[idDetalle].B_PersonalSolicitud); 
+  $('#dat_cmp').val(paObj_detalleDescanso[idDetalle].B_CMP); 
+  $('#dat_cantidad_dias').val(paObj_detalleDescanso[idDetalle].B_CantidadDias); 
+  $('#dat_dias_acumulados').val(paObj_detalleDescanso[idDetalle].B_DiasAcumulados); 
+
+  if( paObj_detalleDescanso[idDetalle].A_Estado == "Aprobado" ){
+    $("#dat_estado option[value='1']").prop("selected",true);
+  }else{
+    $("#dat_estado option[value='0']").prop("selected",true);
+  }
+
+  var html_tbody = '';
+  
+  if(Object.keys(paObj_detalleDescanso[idDetalle].DiagnosticoCIE).length > 0){  
+
+    $.each(paObj_detalleDescanso[idDetalle].DiagnosticoCIE, function(index,accountObj){
+
+      html_tbody = "<tr class='table-row'>";
+      html_tbody += "<td>";
+      html_tbody += accountObj.Diagnostico;
+      html_tbody += "</td>";
+      html_tbody += "<td>";
+      html_tbody += accountObj.Code;
+      html_tbody += "</td>";
+      html_tbody += "<td>";
+      html_tbody += new Date(accountObj.CreadoFecha).toLocaleDateString('en-GB').split('T')[0];
+      html_tbody += "</td>";
+      html_tbody += "<td>";
+      html_tbody += accountObj.Especilidades;
+      html_tbody += "</td>";
+      html_tbody += "<td>";
+      html_tbody += accountObj.SistemaAfectado_D;
+      html_tbody += "</td>";
+      html_tbody += "<td>"; 
+      html_tbody += accountObj.SeccionAfectada_D;                  
+      html_tbody += "</td>";
+      html_tbody += "</tr>";
+
+      $("#tabla_diagnosticocie10 tbody").append(html_tbody);
+
+    });
+
+  }
+  else{
+
+    html_tbody =
+    "<tr class='table-empty'>"+            
+      "<td colspan='6' class='text-center text-uppercase'>"+
+        "No hay informacion registrada"+
+      "</td>"+
+    "</tr> ";
+
+    $("#tabla_diagnosticocie10 tbody").append(html_tbody);
+
+  }  
+
+  if(Object.keys(paObj_detalleDescanso[idDetalle].PrimerAdjunto).length > 0){  
+
+    $.each(paObj_detalleDescanso[idDetalle].PrimerAdjunto, function(index,accountObj){
+
+      html_tbody = "<tr class='table-row'>";
+      html_tbody += "<td>";
+      html_tbody += accountObj.NombreArchivo;
+      html_tbody += "</td>";
+      html_tbody += "<td>";
+      html_tbody += new Date(accountObj.CreadoFecha).toLocaleDateString('en-GB').split('T')[0];
+      html_tbody += "</td>";
+      html_tbody += "<td>";
+      html_tbody += "<button type='button' class='btn btn-link shadow-none float-right'>";
+      html_tbody += "<img class='inject-svg' src='./images/sho/download.svg' alt='' fill='#8fbb02' width='16px' onclick = 'fnSp4descargarPrimerAdjuntoDescansoMedicoEC("+index+");' title='Descargar Adjunto'>";
+      html_tbody += "</button>";     
+      html_tbody += "</td>";
+      html_tbody += "</tr>";
+
+      $("#tabla_primeradjunto tbody").append(html_tbody);
+
+    });
+
+  }
+  else{
+
+    html_tbody =
+    "<tr class='table-empty'>"+            
+      "<td colspan='3' class='text-center text-uppercase'>"+
+        "No hay informacion registrada"+
+      "</td>"+
+    "</tr> ";
+
+    $("#tabla_primeradjunto tbody").append(html_tbody);
+
+  }
+
+  if(Object.keys(paObj_detalleDescanso[idDetalle].SegundoAdjunto).length > 0){  
+
+    $.each(paObj_detalleDescanso[idDetalle].SegundoAdjunto, function(index,accountObj){
+
+      html_tbody = "<tr class='table-row'>";
+      html_tbody += "<td>";
+      html_tbody += accountObj.NombreArchivo;
+      html_tbody += "</td>";
+      html_tbody += "<td>";
+      html_tbody += new Date(accountObj.CreadoFecha).toLocaleDateString('en-GB').split('T')[0];
+      html_tbody += "</td>";
+      html_tbody += "<td>";
+      html_tbody += "<button type='button' class='btn btn-link shadow-none float-right'>";
+      html_tbody += "<img class='inject-svg' src='./images/sho/download.svg' alt='' fill='#8fbb02' width='16px' onclick = 'fnSp4descargarSegundoAdjuntoDescansoMedicoEC("+index+");' title='Descargar Adjunto'>";
+      html_tbody += "</button>";  
+      html_tbody += "</td>";
+      html_tbody += "</tr>";
+
+      $("#tabla_segundoadjunto tbody").append(html_tbody);
+
+    });
+
+  }
+  else{
+
+    html_tbody =
+    "<tr class='table-empty'>"+            
+      "<td colspan='3' class='text-center text-uppercase'>"+
+        "No hay informacion registrada"+
+      "</td>"+
+    "</tr> ";
+
+    $("#tabla_segundoadjunto tbody").append(html_tbody);
+
+  }
+
+  $("#tabla_diagnosticocie10-count-row").text($("#tabla_diagnosticocie10 tr.table-row").length);
+  $("#tabla_primeradjunto-count-row").text($("#tabla_primeradjunto tr.table-row").length);
+  $("#tabla_segundoadjunto-count-row").text($("#tabla_segundoadjunto tr.table-row").length);
+  
+}
+
+function ecSp4cargarDiagnosticoDescansoMedicoEC(IdDescansoMedico){  
+
+  //Se especifican los parametros para la consulta
+  let url =  apiUrlsho+`/api/hce_Get_014_descanso_medico_diagnosticoCIE10?code=/J44W6Q4iAAgb6cxLiqZKMLhKa6QAOFNoNsOlVU0KHWXrK3n053ELQ==`;
+
+  let headers = {
+    "apikey": constantes.apiKey,
+    "Content-Type": "application/json"
+  }
+
+  let settings = {
+    "url": url,
+    "method": "get",
+    "timeout": 0,
+    "crossDomain": true,
+    "dataType": 'json',
+    "headers": headers,
+    "data": { "IdDescansoMedico": IdDescansoMedico }
+  };
+
+  //Se consulta mediante el metodo Ajax
+  return $.ajax(settings).done((response) => {
+
+    //Se cargan los elementos de la vista con la data obtenida
+    paObj_detalleDescanso[idDetalle].DiagnosticoCIE = response.DiagnosticoCIE;
+    console.log('Para chequear Objeto Diagnóstico DM: '+ JSON.stringify(response));
+
+  });
+
+}
+
+function ecSp4cargarPrimerAdjuntoDescansoMedicoEC(IdDescansoMedico){  
+
+  //Se especifican los parametros para la consulta
+  let url =  apiUrlsho+`/api/hce_Get_015_descanso_medico_adjunto?code=i6xazENYmFYc1heRmEL16CXddl7WG6y3B63xt3/ZkBZnAjfjYJpJJw==`;
+
+  let headers = {
+    "apikey": constantes.apiKey,
+    "Content-Type": "application/json"
+  }
+
+  let settings = {
+    "url": url,
+    "method": "get",
+    "timeout": 0,
+    "crossDomain": true,
+    "dataType": 'json',
+    "headers": headers,
+    "data": { "IdDescandoMedico": IdDescansoMedico }
+  };
+
+  //Se consulta mediante el metodo Ajax
+  return $.ajax(settings).done((response) => {
+
+    //Se cargan los elementos de la vista con la data obtenida
+    paObj_detalleDescanso[idDetalle].PrimerAdjunto = response.AdjuntoInterconsult;
+    console.log('Para chequear Objeto Primer Adjunto DM: '+ JSON.stringify(response));
+
+  });
+
+}
+
+function ecSp4cargarSegundoAdjuntoDescansoMedicoEC(IdDescansoMedico){  
+
+  //Se especifican los parametros para la consulta
+  let url =  apiUrlsho+`/api/hce_Get_016_descanso_medico_adjunto_detalles?code=oCoKIX4/1gPQWX1a0/aCCaSenrFTUHbkpWYMAaamJddXbcEy3kgDeA==`;
+
+  let headers = {
+    "apikey": constantes.apiKey,
+    "Content-Type": "application/json"
+  }
+
+  let settings = {
+    "url": url,
+    "method": "get",
+    "timeout": 0,
+    "crossDomain": true,
+    "dataType": 'json',
+    "headers": headers,
+    "data": { "IdDescandoMedico": IdDescansoMedico }
+  };
+
+  //Se consulta mediante el metodo Ajax
+  return $.ajax(settings).done((response) => {
+
+    //Se cargan los elementos de la vista con la data obtenida
+    paObj_detalleDescanso[idDetalle].SegundoAdjunto = response.AdjuntoInterconsult;
+    console.log('Objeto Segundo Adjunto DM: '+ JSON.stringify(response));
+
+  });
+
+}
+
+async function _init_ecSp4DetalleDescansoEnfermedadesCronicas(IdDescansoMedico) {
+
+  //Se inicia el Cargando
+  showLoading();
+
+  await ecSp4cargarDiagnosticoDescansoMedicoEC(IdDescansoMedico);
+  await ecSp4cargarPrimerAdjuntoDescansoMedicoEC(IdDescansoMedico);
+  await ecSp4cargarSegundoAdjuntoDescansoMedicoEC(IdDescansoMedico);
+  await ecSp4cargarTiposContingencia();
+  await ecSp4cargarEstablecimientosEmision();
+  await ecSp4cargarSelectEnfermedadesCronicas();
+  await ecSp4cargarElementosDetalleDatosGeneralesEC();  
+
+  //Se apaga el Cargando
+  hideLoading();
+  
+}
+
+$(document).ready(() => {
+
+  SVGInject($(".inject-svg"));
+
+});
+
+$(document).ready(function() {
+
+  //console.log('Detalle CON HISTORIA: '+ JSON.stringify(paObj_ec[idHC]));
+
+  //console.log('Detalle DESCANSO: '+ JSON.stringify(paObj_detalleDescanso[idDetalle]));
+
+  _init_ecSp4DetalleDescansoEnfermedadesCronicas(idDetalle);
+
+});
+
+</script>

@@ -1,427 +1,126 @@
-<link rel="stylesheet" href="./view/sho-hce/historia_clinica/sho_hce.css">
+<!-- /****************************************************************************************
+ * VISUAL SAT - [2021]
+ * PROYECTO : SIGTASA
+ * ESQUEMA : SSOMA
+ * SPRINT  : 3
+ * MODULO : HISTORIA CLINICA
+ * OPERADORES_________________________________________________________________________
+ * | # | PROGRAMADOR     |  |      FECHA   |  |   HORA   |           CORREO           |
+ * | 1 | Carlos Rivas    |  |   26/08/2021 |  | 07:28:50 |       crivascyt@gmail.com  |
+ * | 2 | Andy Vàsquez    |  |   06/09/2021 |  | 11:16:00 |     caracas1348@gmail.com  |
+ * |___|_________________|__|______________|__|__________|____________________________|
+ *
+ * DESCRIPCION: ARCHIVO VISTA DE LAS OPCIONES DE DATOS GENERALES DE LA HISTORIA CLINICA
+ * EN EL FRONT END ACCIDENTES- (LISTADO, FILTRADO, VER)
+ *
+ * ARCHIVOS DE SERVICIOS   _________________________________________
+ * | # |     MODULO             |  |         NOMBRE                 |
+ * | 1 |   SALUD OCUPACIONAL    |  |                                |
+ * |________________________________________________________________|
+ *
+ *
+ * VERSION: 0.1 Beta
+ *********************************************************************************************************************************************************************************
+ * NOTA IMPORTANTE:  EN FECHA  *** 06/09/2021 Andy  **** Vasquez: Procede a realizar un ajuste general  de funcionamiento y orden del modulo de historia clinica para optimizarlo
+ *********************************************************************************************************************************************************************************
+
+ *******************************************************************************************/ -->
+<link rel="stylesheet" href="css/sho.css">
 <link rel="stylesheet" href="css/sweetalert2.css">
 <div id="HC_datos_generales">
   <div id="sidebar">
     <div id="toggle-btn">
       <img class="inject-svg" src="./images/sho/down.svg" alt="" fill="#fff">
     </div>
+    <!--  <button class="btn btn-success btn-lg text-center" onclick="verVariablesTemp()">ver Variables</button> -->
     <span class="titulo">Menú principal</span>
     <ul id="main-menu">
-      <li class="item-list active">
+      <li class="item-list active" id="menu_lateral1" onclick="sp3HcMenuGenaralIzquierdoEventos(1)">
         <img class="inject-svg" src="./images/sho/hospital.svg" alt="" />
         <span>Datos generales</span>
       </li>
-      <li class="item-list">
+      <li class="item-list" id="menu_lateral2" onclick="sp3HcMenuGenaralIzquierdoEventos(2)">
         <img class="inject-svg" src="./images/sho/centrosmedicos.svg" alt="" />
         <span>Antecedentes</span>
       </li>
-      <li class="item-list">
+      <li class="item-list" id="menu_lateral3" onclick="sp3HcMenuGenaralIzquierdoEventos(3)">
         <img class="inject-svg" src="./images/sho/antidepressant.svg" alt="" />
         <span>Medicamentos activos</span>
       </li>
-      <li class="item-list">
+      <li class="item-list" id="menu_lateral4" onclick="sp3HcMenuGenaralIzquierdoEventos(4)">
         <img class="inject-svg" src="./images/sho/health-report.svg" alt="" />
         <span>Mi último EMO</span>
       </li>
-      <li class="item-list">
+      <li class="item-list" id="menu_lateral5" onclick="sp3HcMenuGenaralIzquierdoEventos(5)">
         <img class="inject-svg" src="./images/sho/vmo.svg" alt="" />
         <span>Mi VMO</span>
       </li>
-      <li class="item-list">
+      <li class="item-list" id="menu_lateral6" onclick="sp3HcMenuGenaralIzquierdoEventos(6)">
         <img class="inject-svg" src="./images/sho/descansos.svg" alt="" />
         <span>Descansos médicos</span>
       </li>
-      <li class="item-list">
+      <li class="item-list" id="menu_lateral7" onclick="sp3HcMenuGenaralIzquierdoEventos(7)">
         <img class="inject-svg" src="./images/sho/cronicas.svg" alt="" />
         <span>Enfermedades crónicas</span>
       </li>
-      <li class="item-list">
+      <li class="item-list" id="menu_lateral7" onclick="sp3HcMenuGenaralIzquierdoEventos(8)">
         <img class="inject-svg" src="./images/sho/toxicologicos.svg" alt="" />
         <span>Examenes toxicológicos</span>
       </li>
-      <li class="item-list">
+      <li class="item-list" id="menu_lateral9" onclick="sp3HcMenuGenaralIzquierdoEventos(9)">
         <img class="inject-svg" src="./images/sho/vacunas.svg" alt="" />
         <span>Vacunas</span>
       </li>
-      <li class="item-list">
+      <li class="item-list" id="menu_lateral10" onclick="sp3HcMenuGenaralIzquierdoEventos(10)">
         <img class="inject-svg" src="./images/sho/accidentes.svg" alt="" />
         <span>Accidentes de trabajo</span>
       </li>
-      <li class="item-list">
+      <li class="item-list" id="menu_lateral11" onclick="sp3HcMenuGenaralIzquierdoEventos(11)">
         <img class="inject-svg" src="./images/sho/iperc.svg" alt="" />
         <span>IPERC</span>
       </li>
-      <li class="item-list">
+      <li class="item-list" id="menu_lateral12" onclick="sp3HcMenuGenaralIzquierdoEventos(12)">
         <img class="inject-svg" src="./images/sho/reubicados.svg" alt="" />
         <span>Reubicación</span>
       </li>
-      <li class="item-list">
+      <li class="item-list" id="menu_lateral13" onclick="sp3HcMenuGenaralIzquierdoEventos(13)">
         <img class="inject-svg" src="./images/sho/levantamiento.svg" alt="" />
         <span>Enfermedad ocupacional</span>
       </li>
-      <li class="item-list">
+      <li class="item-list" id="menu_lateral14" onclick="sp3HcMenuGenaralIzquierdoEventos(14)">
         <img class="inject-svg" src="./images/sho/discapacitados.svg" alt="" />
         <span>Discapacidad</span>
       </li>
-      <li class="item-list">
+      <li class="item-list" id="menu_lateral15" onclick="sp3HcMenuGenaralIzquierdoEventos(15)">
         <img class="inject-svg" src="./images/sho/fertil.svg" alt="" />
         <span>Mujeres en edad fértil gestante</span>
       </li>
-      <li class="item-list">
+      <li class="item-list" id="menu_lateral16" onclick="sp3HcMenuGenaralIzquierdoEventos(16)">
         <img class="inject-svg" src="./images/sho/salud.svg" alt="" />
         <span>Seguimiento COVID</span>
       </li>
-      <li class="item-list">
+      <li class="item-list" id="menu_lateral17" onclick="sp3HcMenuGenaralIzquierdoEventos(17) /* handlerUrlhtml('contentGlobal', 'view/sho-hce/interconsultas_transferencias/datosInterconsultasTransferencias.html', 'Historia clínica');*/">
         <img class="inject-svg" src="./images/sho/interconsultas.svg" alt="" />
         <span>Interconsultas y trasnferencias</span>
       </li>
-      <li class="item-list">
+      <li class="item-list" id="menu_lateral18" onclick="sp3HcMenuGenaralIzquierdoEventos(18)">
         <img class="inject-svg" src="./images/sho/inf_ocupacional.svg" alt="" />
         <span>Informe médico ocupacional</span>
       </li>
     </ul>
   </div>
-  <div id="page-content-sidebar">
-    <!-- DATOS GENERALES -->
-    <div class="row">
-      <div class="col-md-6 d-flex align-items-center">
-        <span class="titulo"> Datos generales </span>
-      </div>
-      <div class="col-md-6 d-flex justify-content-end align-items-center">
-        <span style="font-weight: 600; color: #01719d; cursor: pointer;" id="ocultar_datos_dg"> Ocultar datos </span>
-        <span style="font-weight: 600; color: #01719d; cursor: pointer; display: none;" id="mostrar_datos_dg"> Mostrar datos </span>
-      </div>
-    </div>
-    <div class="row mt-5 d-flex align-items-center" id="datos_generales_content">
-      <div class="col-md-2" id="content_img_datos_generales">
-        <div class="img-perfil" style="display: flex;justify-content: center;align-items: center;">
-          <div class="spinner-border text-light" id="hc_spin_adjuntar_imagen" role="status" style="position: absolute; display:none">
-            <span class="sr-only">Loading...</span>
-          </div>
-          <label for="img_input_file_perfil" style="cursor:pointer; margin: 0">
-            <img id="img_file_perfil" alt="" style="display: block;">
-          </label>
-          <input id="img_input_file_perfil" type="file" onchange="encodeImgtoBase64(this)" style="display: none">
-        </div>
-      </div>
-      <div class="col-md-7">
-        <div class="row">
-          <div class="col-12">
-            <span style="font-size: 20px; font-weight: 600; color: #254373;" id="dat_dg_nombres"></span>
-            <span style="font-size: 20px; font-weight: 600; color: #254373;" id="dat_dg_apellidos"></span>
-          </div>
-        </div>
-        <div class="row mt-3" id="datos_hc_general_trabajador">
-          <div class="col-4 my-1">
-            <b>DNI:</b> <span id="dat_dg_dni_trabajador"></span>
-          </div>
-          <div class="col-4 my-1">
-            <b>Sexo:</b> <span id="dat_dg_sexo_trabajador"></span>
-          </div>
-          <div class="col-4 my-1">
-            <b>Edad:</b> <span id="dat_dg_edad_trabajador"></span>
-          </div>
-          <div class="col-4 my-1">
-            <b>Puesto:</b> <span id="dat_dg_puesto_trabajador"></span>
-          </div>
-          <div class="col-4 my-1">
-            <b>Área:</b> <span id="dat_dg_area_trabajador"></span>
-          </div>
-          <div class="col-4 my-1">
-            <b>Gerencia:</b> <span id="dat_dg_gerencia_trabajador"></span>
-          </div>
-          <div class="col-4 my-1">
-            <b>Planta:</b> <span id="dat_dg_planta_trabajador"></span>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3" id="botones_datos_generales">
-        <div class="row">
-          <div class="col-12 btn_interacciones_datos_generales">
-            <button class="btn btn-success btn-block btn-lg" style="width: 200px; float: right;">Nueva atención <img class="inject-svg" src="./images/sho/plus.svg" fill="#fff" />
-            </button>
-          </div>
-          <div class="col-12 btn_interacciones_datos_generales">
-            <button onclick="divEditaHistoria(`${idHC}`)" class="btn btn-link shadow-none btn-block btn-lg" style="width: 200px; float: right;">Ver datos completos
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- FIN DATOS GENERALES -->
-    <hr class="mt-4">
-    <!-- SIGNOS VITALES -->
-    <div class="row mt-4">
-      <div class="col-md-6 d-flex align-items-center">
-        <span class="titulo"> Signos vitales </span>
-      </div>
-      <div class="col-md-6 d-flex justify-content-end align-items-center">
-        <span style="font-weight: 600; color: #01719d;"> Último registro: <span id="dat_dg_ultimo_registro_sv"></span></span>
-      </div>
-    </div>
-    <div class="row mt-4">
-      <div class="col-md-6 col-sm-12 item-sig-vital mb-3 px-4">
-        <div class="d-flex">
-          <img class="inject-svg" src="./images/sho/arterial.svg" alt="" fill="#ff2e2e">
-          <span>Presión arterial</span>
-        </div>
-        <div>
-          <input class="form-control" type="text" readonly id="dat_dg_presion_arterial_sv">
-        </div>
-      </div>
-      <div class="col-md-6 col-sm-12 item-sig-vital mb-3 px-4">
-        <div class="d-flex">
-          <img class="inject-svg" src="./images/sho/peso.svg" alt="" fill="#004eff">
-          <span>Peso Kg</span>
-        </div>
-        <div>
-          <input class="form-control" type="text" readonly id="dat_dg_peso_sv">
-        </div>
-      </div>
-      <div class="col-md-6 col-sm-12 item-sig-vital mb-3 px-4">
-        <div class="d-flex">
-          <img class="inject-svg" src="./images/sho/temperatura.svg" alt="" fill="#34a9ff" style="left: 30px">
-          <span>Temperatura</span>
-        </div>
-        <div>
-          <input class="form-control" type="text" readonly id="dat_dg_temperatura_sv">
-        </div>
-      </div>
-      <div class="col-md-6 col-sm-12 item-sig-vital mb-3 px-4">
-        <div class="d-flex">
-          <img class="inject-svg" src="./images/sho/corporal.svg" alt="" fill="#ffc400">
-          <span>Índice de masa corporal</span>
-        </div>
-        <div>
-          <input class="form-control" type="text" readonly id="dat_dg_masa_corporal_sv">
-        </div>
-      </div>
-      <div class="col-md-6 col-sm-12 item-sig-vital mb-3 px-4">
-        <div class="d-flex">
-          <img class="inject-svg" src="./images/sho/saturacion.svg" alt="" fill="#fc2a5a">
-          <span>Saturación</span>
-        </div>
-        <div>
-          <input class="form-control" type="text" readonly id="dat_dg_saturacion_sv">
-        </div>
-      </div>
-      <div class="col-md-6 col-sm-12 item-sig-vital mb-3 px-4">
-        <div class="d-flex">
-          <img class="inject-svg" src="./images/sho/respiratoria.svg" alt="" fill="#00baff">
-          <span>Frecuencia respiratoria</span>
-        </div>
-        <div>
-          <input class="form-control" type="text" readonly id="dat_dg_frecuencia_respiratoria_sv">
-        </div>
-      </div>
-      <div class="col-md-6 col-sm-12 item-sig-vital mb-3 px-4">
-        <div class="d-flex">
-          <img class="inject-svg" src="./images/sho/cardiaca.svg" alt="" fill="#ff2626">
-          <span>Frecuencia cardiaca</span>
-        </div>
-        <div>
-          <input class="form-control" type="text" readonly id="dat_dg_frecuencia_cardiaca_sv">
-        </div>
-      </div>
-      <div class="col-md-6 col-sm-12 item-sig-vital mb-3 px-4">
-        <div class="d-flex">
-          <img class="inject-svg" src="./images/sho/talla.svg" alt="" fill="#715fff" style="left: 30px">
-          <span>Talla</span>
-        </div>
-        <div>
-          <input class="form-control" type="text" readonly id="dat_dg_talla_sv">
-        </div>
-      </div>
-      <div class="col-md-6 col-sm-12 item-sig-vital mb-3 px-4">
-        <div class="d-flex">
-          <img class="inject-svg" src="./images/sho/abdominal.svg" alt="" fill="#ff8b43">
-          <span>Perímetro abdominal</span>
-        </div>
-        <div>
-          <input class="form-control" type="text" readonly id="dat_dg_perimetro_abdominal_sv">
-        </div>
-      </div>
-    </div>
-    <!-- FIN SIGNOS VITALES -->
-    <!-- ATENCIONES MEDICAS -->
-    <hr class="mt-4">
-    <div class="row mt-4">
-      <div class="col-md-6 d-flex align-items-center">
-        <span class="titulo"> Atenciones médicas realizadas </span>
-      </div>
-      <div class="col-md-6 d-flex justify-content-end align-items-center">
-        <span style="font-weight: 600; color: #01719d;"> Ver todas las atenciones </span>
-      </div>
-    </div>
-    <div class="row mt-4" id="dg_atenciones_content">
-    </div>
-    <!-- FIN ATENCIONES MEDICAS -->
-    <!-- ADJUNTAR EVIDENCIA -->
-    <hr class="mt-4">
-    <div class="row mt-4">
-      <div class="col-md-12 d-flex align-items-center">
-        <span class="titulo"> Adjuntar evidencia </span>
-      </div>
-    </div>
-    <div class="row mt-4">
-      <div class="col-md-12">
-        <div class="input_file_upload border-content">
-          <label class="btn btn-success btn-lg" for="dg_hc_file_upload_evidencias">
-            <div class="spinner-border spinner-border-sm" id="hc_spin_guardar_evidencia" role="status" style="display: none">
-              <span class="sr-only">Loading...</span>
-            </div>
-            <span>
-              Subir archivo
-            </span>
-            <img class="inject-svg" src="./images/sho/upload.svg" fill="#fff" style="width:16px !important" />
-          </label>
-          <input type="file" id="dg_hc_file_upload_evidencias" onchange="dgSp3GuardarEvidencias(this)">
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div id="dg_hc_adjunto_evidencia_cantidad" style="display: none;">
-        <div class="col-md-12">
-          <div class="d-flex align-items-center">
-            <div id="cant_planes">
-              <img src="images/iconos/copia-1.svg" style="width: 20px;" />
-            </div>
-            <span class="cantidad ml-3" style="font-size: 15px;"></span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-        <table class="table-box" id="dg_hc_adjunto_evidencia_table" style="display: none;">
-          <thead>
-            <tr>
-              <th style="width: 300px">Nombre del archivo</th>
-              <th>Fecha de carga</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody id="dg_hc_adjunto_evidencia_content">
-          </tbody>
-        </table>
-      </div>
-    </div>
-    <!-- FIN ADJUNTAR EVIDENCIA -->
-    <!-- EXAMEN AUXILIAR -->
-    <hr class="mt-4">
-    <div class="row mt-4">
-      <div class="col-md-12 d-flex align-items-center">
-        <span class="titulo"> Datos del examen auxiliar </span>
-      </div>
-    </div>
-    <div class="row mt-4">
-      <div class="col-md-4 col-sm-6">
-        <div class="input-box-secondary input_examen_hc">
-          <span>Fecha de exámenes</span>
-          <input type="date" id="dat_dg_fecha_examen">
-        </div>
-      </div>
-      <div class="col-md-4 col-sm-6">
-        <div class="input-box-secondary input_examen_hc">
-          <span>Tipo de examen</span>
-          <select name="" id="dat_dg_tipo_examen">
-            <option value=""></option>
-          </select>
-        </div>
-      </div>
-      <div class="col-md-12 col-sm-12">
-        <div class="input-box-secondary input_examen_hc">
-          <span>Conlusión</span>
-          <input type="text" id="dat_dg_conclusion_examen">
-        </div>
-      </div>
-    </div>
-    <div class="row mt-3">
-      <div class="col-md-3 offset-md-9 col-sm-4">
-        <button class="btn btn-success btn-block btn-lg float-right" id="btn_examen_agregar" style="width:200px" onclick="dgSp3GuardarExamen(0)">
-          Agregar a lista
-          <img class="inject-svg" src="./images/sho/plus.svg" alt="" fill="#fff" width="18px">
-        </button>
-      </div>
-    </div>
-    <div class="row mt-3">
-      <div class="col-md-12">
-        <div class="d-flex align-items-center">
-          <div id="cant_planes">
-            <img src="images/iconos/copia-1.svg" style="width: 20px" />
-          </div>
-          <span class="cantidad ml-3" id="cant_dg_examen" style="font-size: 15px">0 registros</span>
-        </div>
-      </div>
-      <div class="col-md-12">
-        <table class="table-box" id="EA-table">
-          <thead>
-            <tr>
-              <th>Fecha del examen</th>
-              <th>Tipo de examen</th>
-              <th>Fecha de registro</th>
-              <th>Conclusion</th>
-              <th>Documento</th>
-              <th>
-                <div class="spinner-border spinner-border-sm float-right" id="hc_spin_examen" role="status" style="display: none;">
-                  <span class="sr-only">Loading...</span>
-                </div>
-              </th>
-            </tr>
-          </thead>
-          <tbody id="content_axamen_auxiliar">
-            <tr>
-              <td colspan="6" class="text-center">
-                No existen registros
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <div id="info_content_table_examen">
-        </div>
-      </div>
-    </div>
-    <!-- FIN EXAMEN AUXILIAR -->
-    <hr class="mt-4">
-    <div class="row mt-4">
-      <div class="col-md-12 d-flex align-items-center">
-        <span class="titulo"> Historial de actualizaciones </span>
-      </div>
-    </div>
-    <div class="row mt-3">
-      <div class="col-md-12">
-        <div class="d-flex align-items-center">
-          <div id="cant_planes">
-            <img src="images/iconos/copia-1.svg" style="width: 20px" />
-          </div>
-          <span class="cantidad ml-3" id="" style="font-size: 15px">0 registros</span>
-        </div>
-      </div>
-      <div class="col-md-12">
-        <table class="table-box" id="HA-table">
-          <thead>
-            <tr>
-              <th>Fecha de registro</th>
-              <th>Hora de registro</th>
-              <th>Motivo</th>
-              <th>Medico responsable</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td colspan="6" class="text-center">
-                No existen registros
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
+  <div id="page-content-sidebar" style="display:none">
   </div>
 </div>
 <script type="text/javascript">
 // objetos del DOM
+
+
+//$(document).ready(handlerUrlhtmlHC("page-content-sidebar", "view/sho-hce/historia_clinica/FormHC_DatosGenerales.html", " Historia Clínicaaa"));
+
+$(document).ready($('#page-content-sidebar').load('view/sho-hce/historia_clinica/FormHC_DatosGenerales.html'))
+
+
 $('#ocultar_datos_dg').click(() => {
   $('#datos_hc_general_trabajador').children().hide();
   $('.img-perfil').css('height', '75px');
@@ -450,6 +149,7 @@ $('#mostrar_datos_dg').click(() => {
   $('#ocultar_datos_dg').show();
   $('#mostrar_datos_dg').hide();
 })
+SVGInject($(".inject-svg"));
 
 btnToggle = $("#toggle-btn");
 sidebar = $("#sidebar");
@@ -472,6 +172,9 @@ btnToggle.on("click", function() {
 });
 
 // set menu
+
+
+
 function setMenu() {
   if (!sidebar.attr("class")) {
     $("#sidebar .titulo").text(tituloMenuCorto);
@@ -481,6 +184,4 @@ function setMenu() {
     $(".item-list span").css("display", "flex");
   }
 }
-
-SVGInject($(".inject-svg"));
 </script>

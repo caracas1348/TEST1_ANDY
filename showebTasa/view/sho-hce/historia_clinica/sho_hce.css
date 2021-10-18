@@ -502,6 +502,32 @@ hr {
   width: fit-content;
 }
 
+.item-list:hover {
+  display: flex;
+  background-color: #44b5ff;
+  color: #254373;
+  padding: 1rem 1rem;
+  border-radius: 5px;
+  text-decoration: none;
+  position: relative;
+  font-weight: bold;
+  width: fit-content;
+}
+
+.item-list:clic {
+  display: flex;
+  background-color: #01719d;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+  color: #fff;
+  color: #254373;
+  padding: 1rem 1rem;
+  border-radius: 5px;
+  text-decoration: none;
+  position: relative;
+  font-weight: bold;
+  width: fit-content;
+}
+
 .item-list.active {
   background-color: #01719d;
   box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);

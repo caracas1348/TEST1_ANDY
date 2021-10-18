@@ -1,0 +1,492 @@
+<link rel="stylesheet" href="css/sweetalert2.css">
+<!--  ================================================ fin de estilo ===============================================-->
+<link rel="stylesheet" href="view/sho-hce/ssoma.css">
+<link rel="stylesheet" href="css/pagination.css">
+<link rel="stylesheet" href="css/auditorLiderList.css">
+<link rel="stylesheet" href="css/sass/customize.css?v=3">
+<link href="css/crearAuditorias.css" rel="stylesheet">
+<Link href="css/crearAuditorias.css" rel="stylesheet">
+<Link href="css/crearProgramas.css" rel="stylesheet">
+<link rel="stylesheet" href="js/daterangepicker-master/daterangepicker.css">
+<link rel="stylesheet" href="view/sho-hce/ssoma.css">
+<link rel="stylesheet" href="css/sho.css">
+<link rel="stylesheet" href="css/sweetalert2.css">
+<style>
+  .lb_row_sho
+  {
+    font-size:14px !important;
+    color:#000000 !important;
+    margin: 0px 0px 0px 13px !important; 
+    font-family: ITCAvantGardeStd-Bk  !important;
+    font-weight: normal  !important;
+    font-stretch: normal  !important;
+    font-style: normal  !important;
+    line-height: 2  !important;
+    letter-spacing: normal  !important;
+  }
+
+ .tablaBox{
+    width: 100%;
+    
+    overflow-x: auto; 
+    overflow-y: auto; 
+    border-collapse: separate;
+    border-spacing: 0px 10px;
+  }
+
+  .tablaBox::-webkit-scrollbar {
+    width: 10px;
+    height: 12px;
+  }
+
+  .tablaBox::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background-color: #44b5ff;
+  }
+
+  .tablaBox::-webkit-scrollbar-track {
+    border-radius: 3px;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+    border: solid 1px #ededed;
+    background-color: #f8f8f8;
+  }
+
+  .filaBandeja
+  {
+     margin-left: -8px !important;  
+     margin-top: 8px !important;
+     margin-bottom: 8px !important;
+     border: solid 1px #C8C8C8 !important;
+     background-color: #f2f2f2 !important; 
+     color:#1C1C1C  !important; 
+     /*height:53px !important;*/
+  }
+.textVertical {
+    writing-mode: vertical-lr;
+    transform: rotate(180deg);
+    font-size: 30px;
+    color: #01719d;
+    font-weight: bold;
+    cursor: pointer;
+}
+.textVertical:hover {
+
+    color: #8fbb02;
+}
+
+.menupop2
+{
+    display: block;
+    position: absolute;
+    background-color: #fff;
+    color: #000;
+    min-width: 255px;
+    border-radius: 5px;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+    border: solid 1px #c8c8c8;
+    right: 20px;
+    transform: translate(-100%, 0);
+}
+
+.barra_int_tr{
+     width: 108px; 
+     height: 7px; 
+     margin-left: 1px;
+     margin-top: 15px;
+     object-fit: contain;
+     border-radius: 2px; 
+     /*box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);  */
+     background-color: #44b5ff;
+     cursor: pointer;
+
+}
+
+.lb_ho_it_interc
+{
+  font-weight: bold !important; 
+  color: #44b5ff !important;
+  font-size: 14px !important;  
+  cursor: pointer;
+}
+
+
+
+.barra_int_tr_off{
+     width: 108px; 
+     height: 7px; 
+     margin-left: 1px;
+     margin-top: 15px;
+     object-fit: contain;
+     border-radius: 2px; 
+     /*box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);  */
+     background-color: #ffffff;
+     cursor: pointer;
+
+}
+
+.lb_ho_it_interc_off
+{
+  font-weight: bold !important; 
+  color: #a7a7a7 !important;
+  font-size: 14px !important;  
+  cursor: pointer;
+}
+
+
+
+
+</style>
+<!-- DATOS GENERALES -->
+<div class="row">
+  <div class="col-md-6 d-flex align-items-center">
+    <span class="titulo"> Descansos médicos </span>
+  </div>
+  <div class="col-md-6 d-flex justify-content-end align-items-center">
+    <span style="font-weight: 600; color: #01719d; cursor: pointer;" id="ocultar_datos_dg"> Ocultar datos </span>
+    <span style="font-weight: 600; color: #01719d; cursor: pointer; display: none;" id="mostrar_datos_dg"> Mostrar datos </span>
+  </div>
+</div>
+<div class="row mt-5 d-flex align-items-center" id="datos_generales_content2">
+  <div class="col-md-2" id="content_img_datos_generales">
+    <div class="img-perfil" style="display: flex;justify-content: center;align-items: center;">
+      <div class="spinner-border text-light" id="hc_spin_adjuntar_imagen" role="status" style="position: absolute; display:none">
+        <span class="sr-only">Loading...</span>
+      </div>
+      <!-- 
+          <label for="img_input_file_perfil" style="cursor:pointer; margin: 0">
+            <img id="img_file_perfil" alt="" style="display: block;" src = "images/sho/profile.png">
+          </label>
+          <input id="img_input_file_perfil" type="file" onchange="encodeImgtoBase64(this)" style="display: none">
+ -->
+      <label for="img_input_file_perfil_it" style="cursor:pointer; margin: 0">
+        <img id="img_file_perfil_it" name="img_file_perfil_it">
+      </label>
+      <input id="img_input_file_perfil_it" type="file" onchange="encodeImgtoBase64(this)" style="display: none">
+    </div>
+  </div>
+  <div class="col-md-7">
+    <div class="row">
+      <div class="col-12">
+        <span style="font-size: 20px; font-weight: 600; color: #254373;" id="dat_int_nombres"></span>
+        <span style="font-size: 20px; font-weight: 600; color: #254373;" id="dat_int_apellidos"></span>
+      </div>
+    </div>
+    <div class="row mt-3" id="datos_hc_general_trabajador">
+      <div class="col-4 my-1">
+        <b>DNI:</b> <span id="dat_int_dni_trabajador"></span>
+      </div>
+      <div class="col-4 my-1">
+        <b>Sexo:</b> <span id="dat_int_sexo_trabajador"></span>
+      </div>
+      <div class="col-4 my-1">
+        <b>Edad:</b> <span id="dat_int_edad_trabajador"></span>
+      </div>
+      <div class="col-4 my-1">
+        <b>Puesto:</b> <span id="dat_int_puesto_trabajador"></span>
+      </div>
+      <div class="col-4 my-1">
+        <b>Área:</b> <span id="dat_int_area_trabajador"></span>
+      </div>
+      <div class="col-4 my-1">
+        <b>Gerencia:</b> <span id="dat_int_gerencia_trabajador"></span>
+      </div>
+      <div class="col-4 my-1">
+        <b>Planta:</b> <span id="dat_int_planta_trabajador"></span>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3" id="botones_datos_generales">
+    <div class="row">
+      <div class="col-12 btn_interacciones_datos_generales">
+        <button class="btn btn-success btn-block btn-lg" onclick="fnNuevaAtencionMedica();" style="width: 200px; float: right;">Nueva atención <img class="inject-svg" src="./images/sho/plus.svg" fill="#fff" />
+        </button>
+      </div>
+      <div class="col-12 btn_interacciones_datos_generales">
+        <button onclick="divEditaHistoria(idHC)" class="btn btn-link shadow-none btn-block btn-lg" style="width: 200px; float: right;">Ver datos completos
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+
+
+
+<!-- FIN DATOS GENERALES -->
+<hr class="mt-4">
+<!-- SIGNOS VITALES -->
+
+  <div class="col-12" id="botones_datos_generales">
+
+     <table width="100%" border="0">
+       <tr>
+          <td width="30%"> <span class="titulo"> Mis descansos </span></td>
+          <td width="40%"> <span class="titulo">&nbsp;</span></td>
+          <td width="30%"> 
+                <button class="btn btn-success btn-block btn-lg" onclick="fnNuevoDescanzoMedico_HC();" style="width: 200px; float: right;">Nuevo Registro <img class="inject-svg" src="./images/sho/plus.svg" fill="#fff" />
+                 </button>
+          </td>
+       </tr>
+    
+     </table>
+
+  </div>
+
+
+<div style="display:block ;">
+  <table border="0" width='100%' border="1">
+    <tr>
+      <td width='100%'>
+        <div class="titulo" style="display: none;">Búsqueda de registros </div>
+      </td>
+    </tr>
+    <tr>
+      <td width='100%'>&nbsp;
+        <table border="0" width='100%' style="display: none; height: 50px !important;  ">
+          <tr>
+            <td width='13%'>
+              <div class="form-box">
+                <span>Gerencia</span>
+                <select class="form-control" name="" id="dat_hc_it_a_gerencia">
+                  <option value="1">gerencia 1</option>
+                  <option value="2">gerencia 2</option>
+                  <option value="3">gerencia 3</option>
+                </select>
+              </div>
+            </td>
+            <td width='2%'>&nbsp;</td>
+            <td width='13%'>
+              <div class="form-box">
+                <span>Planta</span>
+                <select class="form-control" name="" id="dat_hc_it_a_planta_sede">
+                  <option value="1">planta 1</option>
+                  <option value="2">planta 2</option>
+                  <option value="3">planta 3</option>
+                </select>
+              </div>
+            </td>
+            <td width='2%'>&nbsp;</td>
+            <td width='13%'>
+              <div class="form-box">
+                <span>Área</span>
+                <select class="form-control" name="" id="dat_hc_it_a_area">
+                  <option value="1">Área 1</option>
+                  <option value="2">Área 2</option>
+                  <option value="3">Área 3</option>
+                </select>
+              </div>
+            </td>
+            <td width='2%'>&nbsp;</td>
+            <td width='13%'>
+              <div class="form-box">
+                <span>Documento</span>
+                <input id='dat_hc_it_a_doc' type="number" min="0" type="text" class="form-control" />
+              </div>
+            </td>
+            <td width='2%'>&nbsp;</td>
+            <td width='13%'>
+              <div class="form-box">
+                <span>Nombres</span>
+                <input id='dat_hc_it_a_nombre' type="text" min="0" type="text" class="form-control" />
+              </div>
+            </td>
+            <td width='2%'>&nbsp;</td>
+            <td width='13%'>
+              <div class="form-box">
+                <span>Apellidos</span>
+                <input id='dat_hc_it_a_apellido' type="text" min="0" type="text" class="form-control" />
+              </div>
+            </td>
+            <td width='12%'>&nbsp;</td>
+          </tr>
+          <tr>
+            <td colspan="12">
+              <div style="height: 40px; background-color: white;">&nbsp;</div>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3">
+              <div class="form-box">
+                <span>Cód interconsulta/ Transferencia</span>
+                <input id='dat_hc_it_a_cod_interc' type="number" min="0" type="text" class="form-control" />
+              </div>
+            </td>
+            <td width='2%'>&nbsp;</td>
+            <td>
+              <div class="form-box">
+                <span>F. Registro desde</span>
+                <input id='dat_hc_it_a_fe_desde' value="" type="date" class="form-control" />
+              </div>
+            </td>
+            <td width='2%'>&nbsp;</td>
+            <td>
+              <div class="form-box">
+                <span>F. Registro hasta</span>
+                <input id='dat_hc_it_a_fe_hasta' value="" type="date" class="form-control" />
+              </div>
+            </td>
+            <td width='2%'>&nbsp;</td>
+            <td colspan="3">
+              <div class="form-box">
+                <span>Buscar</span>
+                <input id='dat_hc_it_a_busca' type="text" min="0" type="text" class="form-control" />
+              </div>
+            </td>
+            <td width='2%'><img class="inject-svg" onclick="fnSp3CargaFiltroEstadoInicialSaludOcupacional();" style="cursor:pointer;" style="margin-top: 40px !important;" src="images/iconos/search5.svg" title="Buscar" /></td>
+            <td width='12%'>&nbsp;</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td width='100%'>
+        <div class="titulo">
+          <div style="height:40px; background-color:white;">&nbsp;</div>
+      </td>
+    </tr>
+    <tr>
+      <td width='100%'>&nbsp;
+        <table border="0" width='100%'>
+          <tr>
+            <td width='38%' colspan="3">
+              <table border="0" width='100%'>
+                <tr>
+                  <td width='25%'>
+                    
+                     <div class="d-flex align-items-center">
+                      <div id="cant_planes">
+                        <img src="images/iconos/copia-1.svg" style="width: 20px" />
+                      </div>
+                      <span class="cantidad ml-3" id="cant_interc" style="font-size: 15px; display:block;">0 registros</span>
+                      
+                    </div>
+                      
+                      
+                  </td>
+                  <td width='6%'></td>
+                  <td width='25%'>
+                    <!-- <div>
+                      <span id="lb_ho_it_trans" class="lb_ho_it_interc" style="" title="Ver Bandeja de Transferencias" onclick="fnSp3verLista('trans')">Transferencias</span>
+                      <div id="barra_ho_int_tr" class="barra_int_tr">
+                        <div>&nbsp;</div>
+                      </div> -->
+                  </td>
+                  <td width='44%'>&nbsp;</td>
+                </tr>
+              </table>
+            </td>
+            <td width='2%'></td>
+            <td width='18%'>
+              &nbsp;
+            </td>
+            <td width='2%'></td>
+            <td width='18%'>
+              &nbsp;
+            </td>
+            <td width='2%'> &nbsp;</td>
+            <td width='20%' colspan="2">
+              <table border="0" width='100%'>
+                <tr>
+                  <td width='35%' align="right">
+                    &nbsp;
+                  </td>
+                  
+                  <td width='65%' align="right">
+                       <span class="cantidad ml-3 " id="cant_acumulados" style="font-size: 15px; text-align: right; color:#01719d !important; display:block;">0 días acumulados</span> 
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</div>
+<!-- ############################################################################  DIV DE INTERCONSULTA ###################################################################### -->
+<div id="contieneInterc" style="background-color: white;display: block; ">
+  <div class="row justify-content-center mt-3">
+    <div class="table-responsive tablaBox" id="tablaBox" style="background-color: white; height:100% !important; cursor:pointer; ">
+      <div class="col-md-12" style=" /*width:1250px;*/">
+        <div class="header-tabla px-2 py-3 " style="/*width:1220px !important;*/ mmargin-rigth:30px !important;">
+          <table border="0" width="100%" style=" /*width:1210px !important;*/ mmargin-rigth:30px !important;">
+            <tr>
+              <td style='width: 200px;' align="center">
+                <div id="c9TabGenyx" class="text-left lbCabezaTabla">Fecha inicio</div>
+              </td>
+              <td style='width: 200px;' align="center">
+                <div id="c9TabGenyx" class="text-left lbCabezaTabla">Fecha fin</div>
+              </td>
+              <td style='width: 200px;' align="center">
+                <div id="c9TabGenyx" class="text-left lbCabezaTabla">Días de descanso</div>
+              </td>
+              <td style='width: 200px;' align="center">
+                <div id="c9TabGenyx" class="text-left lbCabezaTabla">Días de acumulados</div>
+              </td>
+              <td style='width: 200px;' align="center">
+                <div id="c9TabGenyx" class="text-left lbCabezaTabla">Estado</div>
+              </td>
+             <!--  <td style='width: 200px;' align="center">
+                <div id="c9TabGenyx" class="text-left lbCabezaTabla">cel col</div>
+              </td> -->
+              <td style='width: 10px;' align="center">
+                <div id="c9TabGenyx" class="text-left lbCabezaTabla">&nbsp;</div>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="body-tabla mt-4" id="bodyTablaSinAuditorias_int" style="display: block; font-weight: bold; width:1600px !important;">
+          <div class="content-registros-no-encontrados">
+            <div>
+              <!-- <img src="./images/newsistema/iconos/smartWatch2.svg" style="width:128px; height: 128px;" alt="">
+                                                        <p class="mt-4">No Existen Incidentes/ Accidentes</p>
+                                                        <img src="./images/iconos/loadingAdj.gif" style="visibility: hidden;" > -->
+            </div>
+          </div>
+        </div>
+        <div class="body-tabla-list-EvalAud" id="body-tabla-list-EvalAud_int"></div>
+      </div>
+    </div>
+    <!-- aqui ciolocamos el paginador de la bandeja -->
+    <table width='100%' border='0'>
+      <tr>
+        <td width='100%' style="text-align:right;">
+          <div id="pagination-container-EvalAud_int" class="mt-3"></div>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<!-- ############################################################################  DIV DE TRANSFERENCIA ###################################################################### -->
+<script src="js/svg-inject.min.js"></script>
+<script src="js/paginator/pagination.js"></script>
+<!-- <script src="view/sho-hce/interconsultas_transferencias/gestionInterconsultasTransferencia.js"></script> -->
+
+<script src="view/sho-hce/descansos_medicos/gestionDescansoMedico.js"></script>
+<script src="js/sweetalert2.js"></script>
+<script src="js/proccessExcell.js"></script>
+<script src="js/riskList.js"></script>
+<script>
+
+// cargarAreasSedesGerenciaHC()
+
+// cargarDatosGenerales_IT(idHC);
+// _init_fnSp3SaludOcupacionalEstadoInicial_inter_HC();
+
+ 
+ fnSp3CargaFiltroEstadoInicialSaludOcupacional_Bandeja_DM();
+ $("#datos_generales_content2").html(ddgHtml);
+ 
+
+</script>
+
+
+
+
+<script type="text/javascript">
+
+SVGInject($(".inject-svg"));
+</script>

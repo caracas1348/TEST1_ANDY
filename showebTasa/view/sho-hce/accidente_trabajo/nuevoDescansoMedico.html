@@ -1,0 +1,148 @@
+<link rel="stylesheet" href="css/sho.css">
+<link rel="stylesheet" type="text/css" href="view/sho-hce/accidente_trabajo/styles.css">
+<div class="container main-content">
+    <div class="row mb-5 align-items-center">
+      <div class="col-md-6 col-sm-12">
+        <span class="titulo">Datos del descanso</span>
+      </div>
+      <div class="col-md-2 col-sm-6">
+        <button type="button" class="btn btn-danger btn-block btn-lg"> Cancelar <img src="./images/sho/cancelar.svg" alt="">
+        </button>
+      </div>
+      <div class="col-md-2 col-sm-6">
+        <button type="button" class="btn btn-success btn-block btn-lg"> Guardar <img src="./images/sho/confirm.svg" alt="">
+        </button>
+      </div>
+    </div>
+    <div class="row mb-5">
+        <div class="col-md-3">
+            <div class="form-group m-0">
+                <div class="input-box-secondary">
+                    <span>Fecha de inicio</span>
+                    <input type="text">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group m-0">
+                <div class="input-box-secondary">
+                    <span>Fecha Fin</span>
+                    <input type="text">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group m-0">
+                <div class="input-box-secondary">
+                    <span>Días</span>
+                    <input type="text">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group m-0">
+                <div class="input-box-secondary">
+                    <span>Días acumulados</span>
+                    <input type="text">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group m-0">
+                <div class="input-box-secondary">
+                    <span>Días restantes</span>
+                    <input type="text">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group m-0">
+                <div class="input-box-secondary">
+                    <span>Tipo de contingencia</span>
+                    <input type="text">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group m-0">
+                <div class="input-box-secondary">
+                    <span>Fecha de ingreso</span>
+                    <input type="text">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group m-0">
+                <div class="input-box-secondary">
+                    <span>Establecimiento de emisión</span>
+                    <input type="text">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-5">
+        <div class="col-md-12 d-flex">
+          <h2 class="title-section">
+            Diagnósticos
+          </h2>
+        </div>
+    </div>
+    <div class="row mb-5">
+      <div class="col-md-3">
+          <div class="form-group m-0">
+              <div class="input-box-secondary">
+                  <span>Diagnóstico</span>
+                  <select></select>
+              </div>
+          </div>
+      </div>
+      <div class="col-md-3">
+          <div class="form-group m-0">
+              <div class="input-box-secondary">
+                  <span>CIE 10</span>
+                  <select></select>
+              </div>
+          </div>
+      </div>
+      <div class="col-md-3">
+          <div class="form-group m-0">
+              <div class="input-box-secondary">
+                  <span>Sistema afectado</span>
+                  <select></select>
+              </div>
+          </div>
+      </div>
+      <div class="col-md-3">
+          <div class="form-group m-0">
+              <div class="input-box-secondary">
+                  <span>Sección afectada</span>
+                  <select></select>
+              </div>
+          </div>
+      </div>
+      <div class="col-md-12">
+          <button type="button" class="btn btn-success btn-block btn-lg"
+           style="width:200px; float:right;"> Agregar a la lista <img src="./images/sho/plus.svg" alt="" />
+          </button>
+      </div>
+    </div>
+    <div class="row mb-5">
+        <div class="col-md-12 d-flex">
+            <h2 class="title-section">
+                Adjuntar descanso médico
+            </h2>
+        </div>
+    </div>
+    <div class="row mb-5">
+        <div class="col-md-12">
+            <div class="input_file_upload border-content">
+              <label class="btn btn-success btn-lg" for="file_upload_descanso">
+                <span> Subir archivo </span>
+                <img src="./images/sho/upload.svg" style="width:14px !important">
+              </label>
+              <input type="file" id="file_upload_descanso" accept="application/pdf, .pdf, .doc, docx, .odf" onchange="">
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="view/sho-hce/accidente_trabajo/gestionAccidenteTrabajo.js"></script>

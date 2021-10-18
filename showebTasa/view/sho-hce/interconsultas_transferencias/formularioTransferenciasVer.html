@@ -1,4 +1,4 @@
-
+<link rel="stylesheet" href="css/sho.css">
 <link rel="stylesheet" href="css/sweetalert2.css">
 <!--  ================================================ fin de estilo ===============================================-->
 
@@ -23,7 +23,7 @@
         <span class="titulo">Datos del trabajador</span>
       </div>
       <div class="col-md-2 col-sm-6 offset-md-4 offset-sm-0">
-        <button onclick="" type="button" class="btn btn-info btn-block btn-lg float-right" id=""> Imprimir <img class="inject-svg" src="./images/sho/print.svg" alt="" fill="#fff" width="18px">
+        <button onclick="fnSp3mostrarAdjuntoSHO(5,0)" type="button" class="btn btn-info btn-block btn-lg float-right" id=""> Imprimir <img class="inject-svg" src="./images/sho/print.svg" alt="" fill="#fff" width="18px">
         </button>
       </div>
     </div>
@@ -142,83 +142,83 @@
     <div class="row mt-4">
       <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">
         <div class="d-flex">
-          <img class="inject-svg" src="./images/sho/arterial.svg" alt="" fill="#ff2e2e">
-          <span>Presión arterial</span>
+          <img class=" " src="./images/sho/arterial.svg" alt="" fill="#ff2e2e">
+           <span>Presión arterial (mmHg)</span>
         </div>
         <div class="input_hc_sp3">
-          <input class="form-control" type="number" id="dat_int_tran_sv1" disabled>
+          <input class="form-control" type="number" min="0" id="dat_int_tran_sv1" disabled>
         </div>
       </div>
       <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">
         <div class="d-flex">
-          <img class="inject-svg" src="./images/sho/cardiaca.svg" alt="" fill="#ff2626">
-          <span>Frecuencia cardiaca</span>
+          <img class=" " src="./images/sho/cardiaca.svg" alt="" fill="#ff2626">
+           <span>Frecuencia cardiaca  (LPM)</span>
         </div>
         <div class="input_hc_sp3">
-          <input class="form-control" type="number" id="dat_int_tran_sv2" disabled>
+          <input class="form-control" type="number"  min="0"  id="dat_int_tran_sv2" disabled>
         </div>
       </div>
       <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">
         <div class="d-flex">
-          <img class="inject-svg" src="./images/sho/respiratoria.svg" alt="" fill="#00baff">
-          <span>Frecuencia respiratoria</span>
+          <img class=" " src="./images/sho/respiratoria.svg" alt="" fill="#00baff">
+          <span>Frecuencia respiratoria (RPM)</span>
         </div>
         <div class="input_hc_sp3">
-          <input class="form-control" type="number" id="dat_int_tran_sv3" disabled>
+          <input class="form-control" type="number"  min="0" id="dat_int_tran_sv3" disabled>
         </div>
       </div>
       <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">
         <div class="d-flex">
-          <img class="inject-svg" src="./images/sho/temperatura.svg" alt="" fill="#34a9ff" style="left: 30px">
-          <span>Temperatura</span>
+          <img class=" " src="./images/sho/temperatura.svg" alt="" fill="#34a9ff" style="left: 30px">
+          <span>Temperatura (°C)</span>
         </div>
         <div class="input_hc_sp3">
-          <input class="form-control" type="number" id="dat_int_tran_sv4" disabled>
+          <input class="form-control" type="number"  min="0" id="dat_int_tran_sv4" disabled>
         </div>
       </div>
       <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">
         <div class="d-flex">
-          <img class="inject-svg" src="./images/sho/peso.svg" alt="" fill="#004eff">
-          <span>Peso Kg</span>
+          <img class=" " src="./images/sho/peso.svg" alt="" fill="#004eff">
+          <span>Peso (Kg)</span>
         </div>
         <div class="input_hc_sp3">
-          <input class="form-control" type="number" id="dat_int_tran_sv5" disabled>
+          <input class="form-control" type="number"  min="0"  id="dat_int_tran_sv5" disabled>
         </div>
       </div>
       <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">
         <div class="d-flex">
-          <img class="inject-svg" src="./images/sho/talla.svg" alt="" fill="#715fff" style="left: 30px">
-          <span>Talla</span>
+          <img class=" " src="./images/sho/talla.svg" alt="" fill="#715fff" style="left: 30px">
+         <span>Talla (m)</span>
         </div>
         <div class="input_hc_sp3">
-          <input class="form-control" type="number" id="dat_int_tran_sv6" disabled>
+          <input class="form-control" type="number"  min="0"  id="dat_int_tran_sv6" disabled>
         </div>
       </div>
       <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">
         <div class="d-flex">
-          <img class="inject-svg" src="./images/sho/saturacion.svg" alt="" fill="#fc2a5a">
-          <span>Saturación</span>
+          <img class=" " src="./images/sho/saturacion.svg" alt="" fill="#fc2a5a">
+          <span>Saturación (%)</span>
         </div>
         <div class="input_hc_sp3">
-          <input class="form-control" type="number" id="dat_int_tran_sv7" disabled>
+          <input class="form-control" type="number"  min="0" id="dat_int_tran_sv7" disabled>
         </div>
       </div>
       <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">
         <div class="d-flex">
-          <img class="inject-svg" src="./images/sho/corporal.svg" alt="" fill="#ffc400">
-          <span>Índice de masa corporal</span>
+          <img class=" " src="./images/sho/corporal.svg" alt="" fill="#ffc400">
+          <span>Índice de masa corporal <br/> (Peso/Talla&#178;)</span>
         </div>
         <div class="input_hc_sp3">
-          <input class="form-control" type="number" id="dat_int_tran_sv8" disabled>
+          <input class="form-control" type="number"  min="0" id="dat_int_tran_sv8" disabled>
         </div>
       </div>
       <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">
         <div class="d-flex">
-          <img class="inject-svg" src="./images/sho/abdominal.svg" alt="" fill="#ff8b43">
-          <span>Perímetro abdominal</span>
+          <img class=" " src="./images/sho/abdominal.svg" alt="" fill="#ff8b43">
+          <span>Perímetro abdominal (cm)</span>
         </div>
         <div class="input_hc_sp3">
-          <input class="form-control" type="number" id="dat_int_tran_sv9" disabled>
+          <input class="form-control" type="number"  min="0" id="dat_int_tran_sv9" disabled>
         </div>
       </div>
     </div>
@@ -310,7 +310,7 @@
           <div id="cant_planes">
             <img src="images/iconos/copia-1.svg" style="width: 20px" />
           </div>
-          <span class="cantidad ml-3" id='lb_diag_2_int' style="font-size: 15px">1 registros</span>
+          <span class="cantidad ml-3" id='lb_diag_2_int' style="font-size: 15px">0 registros</span>
         </div>
       </div>
       <div class="col-md-12">
@@ -350,13 +350,13 @@
       <div class="col-md-3 col-sm-12">
         <div class="input-box-secondary">
           <span>Recibido por:</span>
-          <input type="text" id="dat_int_tran_h_dso" disabled>
+          <input type="text" id="dat_int_tran_h_dso2" disabled>
         </div>
       </div>
       <div class="col-md-3 col-sm-6">
         <div class="input-box-secondary">
           <span>Lugar de destino</span>
-          <input type="text" id="dat_int_tran_lugard" disabled>
+          <input type="text" id="dat_int_tran_lugard2" disabled>
         </div>
       </div>
       <div class="col-md-3 col-sm-6">
@@ -410,7 +410,7 @@
           <div id="cant_planes">
             <img src="images/iconos/copia-1.svg" id='iconAdjT' style="width: 20px" />
           </div>
-          <span class="cantidad ml-3" style="font-size: 15px" id='lb_diag_3_int' >1 archivos</span>
+          <span class="cantidad ml-3" style="font-size: 15px" id='lb_diag_3_int' >0 archivos</span>
         </div>
       </div>
 
@@ -441,7 +441,7 @@
           </thead>
           <tbody  id="lb_diag_3_tabla">
             <!--  <tbody id="content_trans_adjunto_cie"  id="lb_diag_3_tabla"> -->
-            <tr>
+           <!--  <tr>
               <td>Archivo 1</td>
               <td>27/08/2021</td>
               <td>
@@ -452,7 +452,7 @@
                   <img class="inject-svg" src="./images/sho/download.svg" alt="" fill="#8fbb02" width="16px">
                 </button>
               </td>
-            </tr>
+            </tr> -->
           </tbody>
         </table>
     </div>
@@ -464,7 +464,12 @@
 <script src="js/sweetalert2.js"></script>
 <script src="js/jquery.mask.min.js"></script>
 <script src="js/svg-inject.min.js"></script>
-<script src="view/sho-hce/interconsultas_transferencias/gestionInterconsultas.js"></script>
+<script src="js/jsPDF/dist/jspdf.debug.js"></script>
+<script src="js/jsPDF/libs/html2pdf.js"></script>
+<script src="./js/jsPDF/jspdf_1.5.3.js"></script>
+<script src="./js/jsPDF/jspdf_autotable.js"></script>
+
+<script src="view/sho-hce/interconsultas_transferencias/gestionTransferencia.js"></script>
 <script type="text/javascript">
 
 
@@ -472,10 +477,22 @@ $(document).ready(() => {
   SVGInject($(".inject-svg"));
 });
 
-//alert('426 ya crgue');
+
+   // console.log(" 100000000 *************************** idHistoriaC = ", idHistoriaC);
+    //console.log(" 2000000000 *************************** idTransferencia = ", idTransferencia);
 
 
-fnSp3CargaListadosTrnasferencia2();
+    //console.log("#############################################_hc_#######", idHistoriaC, "###################################################################")
+
+    //console.log("paObj_ht[Item.Id].a.DiagnosticoCIE10 = ", paObj_ht);
+    //console.log("paObj_ht[Item.Id].a.SignosVitales = ", paObj_ht);
+
+    //console.log("###############################################_idTransferencia_#####",idTransferencia, "#######################################################################")
+
+
+
+fnSp3CargaListaFormTransferencia4_2(istAud)
+
 
   
 

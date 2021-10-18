@@ -1,0 +1,764 @@
+<link rel="stylesheet" href="css/sho.css">
+<link rel="stylesheet" href="css/sweetalert2.css">
+<style>
+  #titulo_exportable {
+    text-align: center;
+  }
+</style>
+<div class="container main-content">
+  <!-- DATOS DEL TRABAJADOR -->
+  <div>
+    <div class="row mb-5 align-items-center">
+      <div class="col-md-6 col-sm-6">
+        <span class="titulo">Datos del trabajador</span>
+      </div>
+      <div class="col-md-2 col-sm-6 offset-md-4 offset-sm-0">
+        <a href="#" onclick="interSp3ImprimirInterconsulta()" class="btn btn-info btn-block btn-lg"> Imprimir <img src="./images/sho/print.svg">
+        </a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Nro de documento</span>
+          <input type="text" id="dat_tra_codigo" disabled>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Nombres</span>
+          <input type="text" id="dat_nombres_trabajador" disabled>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Apellidos</span>
+          <input type="text" id="dat_apellidos_trabajador" disabled>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-4">
+        <div class="input-box-secondary">
+          <span>Edad</span>
+          <input type="text" id="dat_edad_trabajador" disabled>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Gerencia</span>
+          <select name="" id="dat_gerencia" disabled>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Planta</span>
+          <select name="" id="dat_planta" disabled>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Área</span>
+          <select name="" id="dat_area" disabled>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Puesto de trabajo</span>
+          <input type="text" id="dat_trab_ptrab" disabled>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- FIN DATOS DEL TRABAJADOR -->
+  <hr class="mb-5 mt-4" />
+  <!-- INTERCONSULTA -->
+  <div>
+    <div class="row mb-5">
+      <div class="col-md-12">
+        <span class="titulo">Interconsulta</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Empresa</span>
+          <input type="text" id="dat_empresa" class="input_int_sp3" disabled>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Fecha de interconsulta</span>
+          <input id="dat_fecha_interconsulta" disabled>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Interconsulta a la especialidad de</span>
+          <select name="" id="dat_especialidad" class="input_int_sp3" disabled>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 col-sm-12">
+        <div class="input-box-secondary">
+          <span>Motivo de interconsulta</span>
+          <input type="text" id="dat_motivo" class="input_int_sp3" disabled>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <div class="input-box-secondary">
+          <span>Se solicita</span>
+          <input type="text" id="dat_se_solicita" disabled>
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-12">
+        <div class="input-box-secondary">
+          <span>Otros</span>
+          <input type="text" id="dat_otros" disabled>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Médico a cargo</span>
+          <input type="text" id="dat_medico_cargo" disabled>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>C.M.P</span>
+          <input type="text" id="dat_cmp" disabled>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-md-12 d-flex align-items-center">
+        <span class="titulo"> Archivos adjuntos </span>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-md-12">
+        <div class="d-flex align-items-center">
+          <div id="cant_planes">
+            <img src="images/iconos/copia-1.svg" style="width: 20px" />
+          </div>
+          <span class="cantidad ml-3" style="font-size: 15px">
+            <span id="tabla_primeradjunto-count-row"></span> registros</span>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="table-responsive">
+          <table class="table-box" id="tabla_primeradjunto">
+            <thead>
+              <tr>
+                <th>Documento</th>
+                <th>Fecha de subida</th>
+                <th>Nombre de archivo</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- FIN INTERCONSULTA -->
+  <hr class="mb-5 mt-4" />
+  <!-- RESPUESTA A INTERCONSULTA -->
+  <div>
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <span class="titulo">Respuesta a interconsulta</span>
+      </div>
+      <div class="col-md-2 offset-md-7 offset-sm-0 col-sm-6">
+        <div class="row">
+          <div class="col-12">
+            <span style="font-size: 14px;">
+              <b>¿Recibió respuesta?</b>
+            </span>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="px-4">
+            <input type="radio" name="recibio_respuesta_int" id="dat_resp_recibio_si" value="1" disabled>
+            <label for="dat_int_recibio_respuesta_si">Si</label>
+          </div>
+          <div class="px-4">
+            <input type="radio" name="recibio_respuesta_int" id="dat_resp_recibio_no" value="0" disabled>
+            <label for="dat_int_recibio_respuesta_no">No</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Institución de salud</span>
+          <input type="text" id="dat_resp_institucion" disabled>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Fecha de respuesta</span>
+          <input id="dat_resp_fecha" disabled>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 col-sm-12">
+        <div class="input-box-secondary">
+          <span>Hallazgos de evaluación</span>
+          <input type="text" id="dat_resp_hallazgo" disabled>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 col-sm-12">
+        <div class="input-box-secondary">
+          <span>Examenes auxiliares</span>
+          <input type="text" id="dat_resp_examenes_auxiliares" disabled>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- FIN RESPUESTA A INTERCONSULTA -->
+  <hr class="mb-5 mt-4">
+  <!-- DIAGNOSTICO CIE 10 -->
+  <div>
+    <div class="row mb-5">
+      <div class="col-md-12">
+        <span class="titulo">Diagnóstico CIE 10</span>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-md-12">
+        <div class="d-flex align-items-center">
+          <div id="cant_planes">
+            <img src="images/iconos/copia-1.svg" style="width: 20px" />
+          </div>
+          <span class="cantidad ml-3" style="font-size: 15px">
+            <span id="tabla_diagnosticocie10-count-row"></span> registros</span>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="table-responsive">
+          <table class="table-box" id="tabla_diagnosticocie10">
+            <thead>
+              <tr>
+                <th>Diagnóstico</th>
+                <th>CIE 10</th>
+                <th>Fecha de registro</th>
+                <th>Especialidad</th>
+                <th>Sistema afectado</th>
+                <th>Sección afectada</th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-md-12">
+        <div class="input-box-secondary">
+          <span>Tratamiento</span>
+          <input type="text" id="dat_diag_tratamiento" disabled>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- FIN DIAGNOSTICO CIE 10 -->
+  <hr class="mb-5 mt-4">
+  <!-- RECOMENDACIONES -->
+  <div>
+    <div class="row mb-5">
+      <div class="col-md-12">
+        <span class="titulo">Recomendaciones</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="input-box-secondary">
+          <span>Recomendaciones</span>
+          <input type="text" id="dat_reco_recomendaciones" disabled>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <div class="row">
+          <div class="col-12">
+            <span style="font-size: 14px;">
+              <b>¿Requiere de controles posteriores?</b>
+            </span>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="px-4">
+            <input type="radio" name="posteriores_int" value="1" id="dat_reco_control_si" disabled>
+            <label for="dat_int_controles_recomendaciones_si">Si</label>
+          </div>
+          <div class="px-4">
+            <input type="radio" name="posteriores_int" value="0" id="dat_reco_control_no" disabled>
+            <label for="dat_int_controles_recomendaciones_no">No</label>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-12">
+        <div class="row">
+          <div class="col-12">
+            <span style="font-size: 14px;">
+              <b>Aptitud para laborar en ocupación y aptitud indicada (Sólo para Médicos)</b>
+            </span>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="px-4">
+            <input type="radio" name="aptitud_int" value="1" id="dat_reco_apto_si" disabled>
+            <label for="dat_int_aptitud_recomendaciones_si">Si</label>
+          </div>
+          <div class="px-4">
+            <input type="radio" name="aptitud_int" value="0" id="dat_reco_apto_no" disabled>
+            <label for="dat_int_aptitud_recomendaciones_no">No</label>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Fecha de proximo control</span>
+          <input id="dat_reco_fecha_control" disabled>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Médico/ Evaluador</span>
+          <input type="text" id="dat_reco_medico" disabled>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>C.M.P.</span>
+          <input type="text" id="dat_reco_cmp" disabled>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>R.N.E.</span>
+          <input type="text" id="dat_reco_rne" disabled>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Otro</span>
+          <input type="text" id="dat_reco_otros" disabled>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-md-12 d-flex align-items-center">
+        <span class="titulo"> Archivos adjuntos </span>
+      </div>
+    </div>
+    <div class="row mt-3">
+    	<div class="col-md-12">
+	        <div class="d-flex align-items-center">
+	          <div id="cant_planes">
+	            <img src="images/iconos/copia-1.svg" style="width: 20px" />
+	          </div>
+	          <span class="cantidad ml-3" style="font-size: 15px">
+	            <span id="tabla_segundoadjunto-count-row"></span> registros</span>
+	        </div>
+	      </div>
+      <div class="col-md-12">
+        <div class="table-responsive">
+          <table class="table-box" id="tabla_segundoadjunto">
+            <thead>
+              <tr>
+                <th>Documento</th>
+                <th>Fecha de subida</th>
+                <th>Nombre de archivo</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- FIN RECOMENDACIONES -->
+</div>
+<div id="documento_exportable">
+</div>
+<script src="js/sweetalert2.js"></script>
+<script src="js/jquery.mask.min.js"></script>
+<script src="js/svg-inject.min.js"></script>
+<script src="js/jsPDF/dist/jspdf.debug.js"></script>
+<script src="js/jsPDF/libs/html2pdf.js"></script>
+
+<script type="text/javascript">
+
+function downloadBlob(blob, filename){
+
+  if(window.navigator.msSaveOrOpenBlob) {
+      window.navigator.msSaveBlob(blob, filename);
+  } else {
+      var elem = window.document.createElement('a');
+      elem.href = window.URL.createObjectURL(blob);
+      elem.download = filename;
+      document.body.appendChild(elem);
+      elem.click();
+      document.body.removeChild(elem);
+  }
+
+}
+
+function fnSp4descargarAdjuntoInterconsultaEC(IndexObjeto)
+{
+  
+  url = paObj_detalleInterconsulta[idDetalle].PrimerAdjunto[IndexObjeto].ArchivoBase64;
+  fetch(url)
+  .then(res => res.blob())
+  .then(function(blob) {
+    downloadBlob(blob, paObj_detalleInterconsulta[idDetalle].PrimerAdjunto[IndexObjeto].NombreArchivo);
+  });
+    
+}
+
+//Crear servicio para para traer especialidades
+function ecSp4cargarEspecialidades() {
+  
+  let url = apiUrlsho+`/api/hce_Get_005_interconsulta?code=5apeYFqxMjc7U4gRbZFs/mBepNwlDkPcUymNTlP7kzOsv5AN3DYecg==`;
+
+  let headers = {
+    "apikey": constantes.apiKey,
+    "Content-Type": "application/json"
+  }
+
+  let settings = {
+    "url": url,
+    "method": "get",
+    "timeout": 0,
+    "crossDomain": true,
+    "dataType": 'json',
+    "headers": headers,
+  };
+
+  return $.ajax(settings).done((response) => {
+    pluck_ec['Especialidades'] = response.IntercExpecialidad;
+  });
+}
+
+function ecSp4cargarSelectEnfermedadesCronicas(){
+
+  let contenido = '';
+
+  //Cargando Select de Áreas
+  contenido = $('#dat_area');
+  contenido.append(`<option value=""></option>`);
+
+  pluck_ec["Areas"].forEach((Item) => {
+    contenido.append(`<option value="${Item.Id}">${Item.Description}</option>`)
+  });
+
+  //Cargando Select de Gerencias
+  contenido = $('#dat_gerencia');
+  contenido.append(`<option value=""></option>`);
+
+  pluck_ec["Gerencias"].forEach((Item) => {
+    contenido.append(`<option value="${Item.Id}">${Item.Description}</option>`)
+  });
+
+  //Cargando Select de Sedes
+  contenido = $('#dat_planta');
+  contenido.append(`<option value=""></option>`);
+
+  pluck_ec["Sedes"].forEach((Item) => {
+    contenido.append(`<option value="${Item.Id}">${Item.Description}</option>`)
+  });
+
+  //Cargando Select de especialidades
+  contenido = $('#dat_especialidad');
+  contenido.append(`<option value=""></option>`);
+
+  pluck_ec["Especialidades"].forEach((Item) => {
+    contenido.append(`<option value="${Item.Id}">${Item.Descripcion}</option>`)
+  });
+
+}
+
+function ecSp4cargarElementosDetalleDatosGeneralesEC(){  
+
+  //Elementos de la vista
+  $('#dat_tra_codigo').val(paObj_ec[idHC].NroDocumento_Trabajador_H);
+  $('#dat_nombres_trabajador').val(paObj_ec[idHC].Nombres_Trabajador_H);
+  $('#dat_apellidos_trabajador').val(paObj_ec[idHC].Apellidos_Trabajador_H);
+  $('#dat_edad_trabajador').val(paObj_ec[idHC].Edad_Trabajador_H);
+  $('#dat_trab_ptrab').val(paObj_ec[idHC].PuestoTrabajo_Empresa_H); 
+  $("#dat_gerencia option[value='"+paObj_ec[idHC].GerenciaId_Empresa_H+"']").prop("selected",true);
+  $("#dat_planta option[value='"+paObj_ec[idHC].PlantaId_Empresa_H+"']").prop("selected",true);
+  $("#dat_area option[value='"+paObj_ec[idHC].AreaId_Empresa_H+"']").prop("selected",true);
+  $('#dat_empresa').val(paObj_detalleInterconsulta[idDetalle].A_Empresa);
+  $('#dat_fecha_interconsulta').val(new Date(paObj_detalleInterconsulta[idDetalle].A_FechaInterconsulta).toLocaleDateString('en-GB').split('T')[0]);
+  $("#dat_especialidad option[value='"+paObj_detalleInterconsulta[idDetalle].A_InterEspecialidad+"']").prop("selected",true);
+  $('#dat_motivo').val(paObj_detalleInterconsulta[idDetalle].A_InterMotivo); 
+  $('#dat_se_solicita').val(paObj_detalleInterconsulta[idDetalle].A_SeSolicita); 
+  $('#dat_otros').val(paObj_detalleInterconsulta[idDetalle].A_Otros); 
+  $('#dat_medico_cargo').val(paObj_detalleInterconsulta[idDetalle].A_MedicoCargo); 
+  $('#dat_cmp').val(paObj_detalleInterconsulta[idDetalle].A_CMP); 
+
+  if( paObj_detalleInterconsulta[idDetalle].B_RecibioRespuesta == "1" ){
+    $("#dat_resp_recibio_si").prop("checked",true);
+  }else{
+    $("#dat_resp_recibio_no").prop("checked",true);
+  }
+
+  $('#dat_resp_institucion').val(paObj_detalleInterconsulta[idDetalle].B_InstitucionSalud); 
+  $('#dat_resp_fecha').val(new Date(paObj_detalleInterconsulta[idDetalle].B_FechaRespuesta).toLocaleDateString('en-GB').split('T')[0]); 
+  $('#dat_resp_hallazgo').val(paObj_detalleInterconsulta[idDetalle].B_HallazgoEval); 
+  $('#dat_resp_examenes_auxiliares').val(paObj_detalleInterconsulta[idDetalle].B_ExamenesAuxiliarers); 
+  $('#dat_diag_tratamiento').val(paObj_detalleInterconsulta[idDetalle].Tratamiento); 
+  $('#dat_reco_recomendaciones').val(paObj_detalleInterconsulta[idDetalle].C_Recomendaciones);
+
+  if( paObj_detalleInterconsulta[idDetalle].C_RequiereControles == "1" ){
+    $("#dat_reco_control_si").prop("checked",true);
+  }else{
+    $("#dat_reco_control_no").prop("checked",true);
+  }
+
+  if( paObj_detalleInterconsulta[idDetalle].C_ActitupParaLaboral == "1" ){
+    $("#dat_reco_apto_si").prop("checked",true);
+  }else{
+    $("#dat_reco_apto_no").prop("checked",true);
+  }
+
+  $('#dat_reco_fecha_control').val(new Date(paObj_detalleInterconsulta[idDetalle].C_FechaProximoControl).toLocaleDateString('en-GB').split('T')[0]); 
+  $('#dat_reco_medico').val(paObj_detalleInterconsulta[idDetalle].C_MedicoEvaluador); 
+  $('#dat_reco_cmp').val(paObj_detalleInterconsulta[idDetalle].C_CMP); 
+  $('#dat_reco_rne').val(paObj_detalleInterconsulta[idDetalle].C_RNE); 
+  $('#dat_reco_otros').val(paObj_detalleInterconsulta[idDetalle].C_Otros); 
+
+  var html_tbody = '';
+  
+  if(Object.keys(paObj_detalleInterconsulta[idDetalle].DiagnosticoCIE).length > 0){  
+
+    $.each(paObj_detalleInterconsulta[idDetalle].DiagnosticoCIE, function(index,accountObj){
+
+      html_tbody = "<tr class='table-row'>";
+      html_tbody += "<td>";
+      html_tbody += accountObj.Diagnostico;
+      html_tbody += "</td>";
+      html_tbody += "<td>";
+      html_tbody += accountObj.Code;
+      html_tbody += "</td>";
+      html_tbody += "<td>";
+      html_tbody += new Date(accountObj.CreadoFecha).toLocaleDateString('en-GB').split('T')[0];
+      html_tbody += "</td>";
+      html_tbody += "<td>";
+      html_tbody += accountObj.Especilidades;
+      html_tbody += "</td>";
+      html_tbody += "<td>";
+      html_tbody += accountObj.SistemaAfectado_D;
+      html_tbody += "</td>";
+      html_tbody += "<td>"; 
+      html_tbody += accountObj.SeccionAfectada_D;                  
+      html_tbody += "</td>";
+      html_tbody += "</tr>";
+
+      $("#tabla_diagnosticocie10 tbody").append(html_tbody);
+
+    });
+
+  }
+  else{
+
+    html_tbody =
+    "<tr class='table-empty'>"+            
+      "<td colspan='6' class='text-center text-uppercase'>"+
+        "No hay informacion registrada"+
+      "</td>"+
+    "</tr> ";
+
+    $("#tabla_diagnosticocie10 tbody").append(html_tbody);
+
+  } 
+
+  if(Object.keys(paObj_detalleInterconsulta[idDetalle].PrimerAdjunto).length > 0){  
+
+    $.each(paObj_detalleInterconsulta[idDetalle].PrimerAdjunto, function(index,accountObj){
+
+      html_tbody = "<tr class='table-row'>";
+      html_tbody += "<td>";
+      html_tbody += accountObj.NombreArchivo;
+      html_tbody += "</td>";
+      html_tbody += "<td>";
+      html_tbody += new Date(accountObj.CreadoFecha).toLocaleDateString('en-GB').split('T')[0];
+      html_tbody += "</td>";
+      html_tbody += "<td>";
+      html_tbody += accountObj.NombreArchivo;
+      html_tbody += "</td>";      
+      html_tbody += "<td>";
+      html_tbody += "<button type='button' class='btn btn-link shadow-none float-right'>";
+      html_tbody += "<img class='inject-svg' src='./images/sho/download.svg' alt='' fill='#8fbb02' width='16px' onclick = 'fnSp4descargarAdjuntoInterconsultaEC("+index+");' title='Descargar Adjunto'>";      
+      html_tbody += "</button>";  
+      html_tbody += "</td>";
+      html_tbody += "</tr>";
+
+      if( parseInt(accountObj.parteFormulario) == 0 ){
+
+        $("#tabla_primeradjunto tbody").append(html_tbody);
+
+      }else{
+
+        $("#tabla_segundoadjunto tbody").append(html_tbody);
+
+      }      
+
+    });
+
+  }
+
+  $("#tabla_diagnosticocie10-count-row").text($("#tabla_diagnosticocie10 tr.table-row").length);
+  $("#tabla_primeradjunto-count-row").text($("#tabla_primeradjunto tr.table-row").length);
+  $("#tabla_segundoadjunto-count-row").text($("#tabla_segundoadjunto tr.table-row").length);
+
+  if( $("#tabla_primeradjunto tr.table-row").length == 0 ){
+
+    html_tbody =
+    "<tr class='table-empty'>"+            
+      "<td colspan='4' class='text-center text-uppercase'>"+
+        "No hay informacion registrada"+
+      "</td>"+
+    "</tr> ";
+
+    $("#tabla_primeradjunto tbody").append(html_tbody);
+
+  }
+
+  if( $("#tabla_segundoadjunto tr.table-row").length == 0 ){
+
+    html_tbody =
+    "<tr class='table-empty'>"+            
+      "<td colspan='4' class='text-center text-uppercase'>"+
+        "No hay informacion registrada"+
+      "</td>"+
+    "</tr> ";
+
+    $("#tabla_segundoadjunto tbody").append(html_tbody);
+
+  }
+   
+}
+
+function ecSp4cargarDiagnosticoInterconsultaEC(IdInterconsulta){  
+
+  //Se especifican los parametros para la consulta
+  let url =  apiUrlsho+`/api/hce_Get_008_interconsulta_diagnosticoCIE10?code=mPgaeW14i/taia4aCEaauWCIBcSohTnpYgXAi9fY6mHp0OFyqV4rfQ==`;
+
+  let headers = {
+    "apikey": constantes.apiKey,
+    "Content-Type": "application/json"
+  }
+
+  let settings = {
+    "url": url,
+    "method": "get",
+    "timeout": 0,
+    "crossDomain": true,
+    "dataType": 'json',
+    "headers": headers,
+    "data": { "InterConsultaId": IdInterconsulta }
+  };
+
+  //Se consulta mediante el metodo Ajax
+  return $.ajax(settings).done((response) => {
+
+    //Se cargan los elementos de la vista con la data obtenida
+    //ecSp4cargarElementosDatosGeneralesEC();
+    paObj_detalleInterconsulta[idDetalle].DiagnosticoCIE = response.DiagnosticoCIE;
+    console.log('Para chequear Objeto Diagnóstico INTERCONSULTA: '+ JSON.stringify(response));
+
+  });
+
+}
+
+function ecSp4cargarPrimerAdjuntoInterconsultaEC(IdInterconsulta){  
+
+  //Se especifican los parametros para la consulta
+  let url =  apiUrlsho+`/api/hce_Get_007_interconsulta_adjunto?code=VW1N50nYYj56xAlct5Jbn8Isl6loYB7pCaMEvYb3dB8aPBr/NMcgGg==`;
+
+  let headers = {
+    "apikey": constantes.apiKey,
+    "Content-Type": "application/json"
+  }
+
+  let settings = {
+    "url": url,
+    "method": "get",
+    "timeout": 0,
+    "crossDomain": true,
+    "dataType": 'json',
+    "headers": headers,
+    "data": { "InterConsultaId": IdInterconsulta }
+  };
+
+  //Se consulta mediante el metodo Ajax
+  return $.ajax(settings).done((response) => {
+
+    //Se cargan los elementos de la vista con la data obtenida
+    //ecSp4cargarElementosDatosGeneralesEC();
+    paObj_detalleInterconsulta[idDetalle].PrimerAdjunto = response.AdjuntoInterconsult;
+    console.log('Para chequear Objeto Primer Adjunto INTERCONSULTA: '+ JSON.stringify(response));
+
+  });
+
+}
+
+async function _init_ecSp4DetalleInterconsultaEnfermedadesCronicas(IdInterconsulta) {
+
+  //Se inicia el Cargando
+  showLoading();
+
+  await ecSp4cargarDiagnosticoInterconsultaEC(IdInterconsulta);
+  await ecSp4cargarPrimerAdjuntoInterconsultaEC(IdInterconsulta);
+  await ecSp4cargarEspecialidades();
+  await ecSp4cargarSelectEnfermedadesCronicas();
+  await ecSp4cargarElementosDetalleDatosGeneralesEC();
+  //await ecSp4cargarSegundoAdjuntoDescansoMedicoEC(1);
+
+  //Se apaga el Cargando
+  hideLoading();
+
+}
+
+$(document).ready(() => {
+
+  SVGInject($(".inject-svg"));
+
+});
+
+$(document).ready(function() {
+
+  //console.log('Detalle CON HISTORIA: '+ JSON.stringify(paObj_ec[idHC]));
+
+  //console.log('Detalle INTERCONSULTA: '+ JSON.stringify(paObj_detalleInterconsulta[idDetalle]));
+
+  _init_ecSp4DetalleInterconsultaEnfermedadesCronicas(idDetalle);
+
+});
+
+</script>

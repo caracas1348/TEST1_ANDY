@@ -1,0 +1,413 @@
+<link rel="stylesheet" href="css/sho.css">
+<link rel="stylesheet" href="css/sweetalert2.css">
+<style>
+  #titulo_exportable {
+    text-align: center;
+  }
+</style>
+<div class="container main-content">
+  <!-- DATOS DEL TRABAJADOR -->
+  <div>
+    <div class="row mb-5 align-items-center">
+      <div class="col-md-6 col-sm-6">
+        <span class="titulo">Datos del trabajador</span>
+      </div>
+      <div class="col-md-2 col-sm-6 offset-md-4 offset-sm-0">
+        <a href="#" onclick="interSp3ImprimirInterconsulta()" class="btn btn-info btn-block btn-lg"> Imprimir <img src="./images/sho/print.svg">
+        </a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Nro de documento</span>
+          <input type="text" id="dat_int_dni_trabajador_ver" disabled>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Nombres</span>
+          <input type="text" id="dat_int_nombres_trabajador_ver" disabled>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Apellidos</span>
+          <input type="text" id="dat_int_apellidos_trabajador_ver" disabled>
+        </div>
+      </div>
+      <div class="col-md-2 col-sm-4">
+        <div class="input-box-secondary">
+          <span>Edad</span>
+          <input type="text" id="dat_int_edad_trabajador_ver" disabled>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Gerencia</span>
+          <select name="" id="dat_int_gerencia_trabajador_ver" disabled>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Planta</span>
+          <select name="" id="dat_int_planta_trabajador_ver" disabled>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Área</span>
+          <select name="" id="dat_int_area_trabajador_ver" disabled>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Puesto de trabajo</span>
+          <input type="text" id="dat_int_puesto_trabajo_trabajador_ver" disabled>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- FIN DATOS DEL TRABAJADOR -->
+  <hr class="mb-5 mt-4" />
+  <!-- INTERCONSULTA -->
+  <div>
+    <div class="row mb-5">
+      <div class="col-md-12">
+        <span class="titulo">Interconsulta</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Empresa</span>
+          <input type="text" id="dat_int_empresa_interconsulta" class="input_int_sp3" disabled>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Fecha de interconsulta</span>
+          <input type="date" id="dat_int_fecha_interconsulta" class="input_int_sp3" disabled>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Interconsulta a la especialidad de</span>
+          <select name="" id="dat_int_especialidad_interconsulta" class="input_int_sp3" disabled>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 col-sm-12">
+        <div class="input-box-secondary">
+          <span>Motivo de interconsulta</span>
+          <input type="text" id="dat_int_motivo_interconsulta" class="input_int_sp3" disabled>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <div class="input-box-secondary">
+          <span>Se solicita</span>
+          <input type="text" id="dat_int_solicita_interconsulta" class="input_int_sp3" disabled>
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-12">
+        <div class="input-box-secondary">
+          <span>Otros</span>
+          <input type="text" id="dat_int_otros_interconsulta" class="input_int_sp3" disabled>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Médico a cargo</span>
+          <input type="text" id="dat_int_medico_cargo_interconsulta" class="input_int_sp3" disabled>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>C.M.P</span>
+          <input type="text" id="dat_int_cmp_interconsulta" class="input_int_sp3" disabled>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-md-12 d-flex align-items-center">
+        <span class="titulo"> Archivos adjuntos </span>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-md-12">
+        <div class="d-flex align-items-center">
+          <div id="cant_planes">
+            <img src="images/iconos/copia-1.svg" style="width: 20px" />
+          </div>
+          <span class="cantidad ml-3" style="font-size: 15px">1 archivos</span>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="table-responsive">
+          <table class="table-box" id="table_int_adjunto_interconsulta_0">
+            <thead>
+              <tr>
+                <th>Documento</th>
+                <th>Fecha de subida</th>
+                <th>Nombre de archivo</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="content_int_adjunto_interconsulta_0">
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- FIN INTERCONSULTA -->
+  <hr class="mb-5 mt-4" />
+  <!-- RESPUESTA A INTERCONSULTA -->
+  <div>
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <span class="titulo">Respuesta a interconsulta</span>
+      </div>
+      <div class="col-md-2 offset-md-7 offset-sm-0 col-sm-6">
+        <div class="row">
+          <div class="col-12">
+            <span style="font-size: 14px;">
+              <b>¿Recibió respuesta?</b>
+            </span>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="px-4">
+            <input type="radio" name="recibio_respuesta_int" id="dat_int_recibio_respuesta_si" value="1" disabled>
+            <label for="dat_int_recibio_respuesta_si">Si</label>
+          </div>
+          <div class="px-4">
+            <input type="radio" name="recibio_respuesta_int" id="dat_int_recibio_respuesta_no" value="0" disabled>
+            <label for="dat_int_recibio_respuesta_no">No</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Institución de salud</span>
+          <input type="text" id="dat_int_institucion_respuesta" class="input_int_sp3" disabled>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Fecha de respuesta</span>
+          <input type="date" id="dat_int_fecha_respuesta" class="input_int_sp3" disabled>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 col-sm-12">
+        <div class="input-box-secondary">
+          <span>Hallazgos de evaluación</span>
+          <input type="text" id="dat_int_hallazgos_respuesta" class="input_int_sp3" disabled>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 col-sm-12">
+        <div class="input-box-secondary">
+          <span>Examenes auxiliares</span>
+          <input type="text" id="dat_int_examenes_respuesta" class="input_int_sp3" disabled>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- FIN RESPUESTA A INTERCONSULTA -->
+  <hr class="mb-5 mt-4">
+  <!-- DIAGNOSTICO CIE 10 -->
+  <div>
+    <div class="row mb-5">
+      <div class="col-md-12">
+        <span class="titulo">Diagnóstico CIE 10</span>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-md-12">
+        <div class="d-flex align-items-center">
+          <div id="cant_planes">
+            <img src="images/iconos/copia-1.svg" style="width: 20px" />
+          </div>
+          <span class="cantidad ml-3" style="font-size: 15px">0 registros</span>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="table-responsive">
+          <table class="table-box" id="table_int_diagnostico">
+            <thead>
+              <tr>
+                <th>Diagnóstico</th>
+                <th>CIE 10</th>
+                <th>Fecha de registro</th>
+                <th>Especialidad</th>
+                <th>Sistema afectado</th>
+                <th>Sección afectada</th>
+              </tr>
+            </thead>
+            <tbody id="content_int_diagnostico">
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-md-12">
+        <div class="input-box-secondary">
+          <span>Tratamiento</span>
+          <input type="text" class="input_int_sp3" id="dat_int_tratamiento_diagnostico" disabled>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- FIN DIAGNOSTICO CIE 10 -->
+  <hr class="mb-5 mt-4">
+  <!-- RECOMENDACIONES -->
+  <div>
+    <div class="row mb-5">
+      <div class="col-md-12">
+        <span class="titulo">Recomendaciones</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="input-box-secondary">
+          <span>Recomendaciones</span>
+          <input type="text" id="dat_int_recomendaciones_recomendaciones" class="input_int_sp3" disabled>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <div class="row">
+          <div class="col-12">
+            <span style="font-size: 14px;">
+              <b>¿Requiere de controles posteriores?</b>
+            </span>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="px-4">
+            <input type="radio" name="posteriores_int" value="1" id="dat_int_controles_recomendaciones_si" disabled>
+            <label for="dat_int_controles_recomendaciones_si">Si</label>
+          </div>
+          <div class="px-4">
+            <input type="radio" name="posteriores_int" value="0" id="dat_int_controles_recomendaciones_no" disabled>
+            <label for="dat_int_controles_recomendaciones_no">No</label>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-12">
+        <div class="row">
+          <div class="col-12">
+            <span style="font-size: 14px;">
+              <b>Aptitud para laborar en ocupación y aptitud indicada (Sólo para Médicos)</b>
+            </span>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="px-4">
+            <input type="radio" name="aptitud_int" value="1" id="dat_int_aptitud_recomendaciones_si" disabled>
+            <label for="dat_int_aptitud_recomendaciones_si">Si</label>
+          </div>
+          <div class="px-4">
+            <input type="radio" name="aptitud_int" value="0" id="dat_int_aptitud_recomendaciones_no" disabled>
+            <label for="dat_int_aptitud_recomendaciones_no">No</label>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Fecha de proximo control</span>
+          <input type="date" id="dat_int_fecha_proximo_recomendaciones" class="input_int_sp3" disabled>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Médico/ Evaluador</span>
+          <input type="text" id="dat_int_medico_evaluador_recomendaciones" class="input_int_sp3" disabled>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>C.M.P.</span>
+          <input type="text" id="dat_int_cmp_recomendaciones" class="input_int_sp3" disabled>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>R.N.E.</span>
+          <input type="text" id="dat_int_rne_recomendaciones" class="input_int_sp3" disabled>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Otro</span>
+          <input type="text" id="dat_int_otros_recomendaciones" class="input_int_sp3" disabled>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-md-12 d-flex align-items-center">
+        <span class="titulo"> Archivos adjuntos </span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="table-responsive">
+          <table class="table-box" id="table_int_adjunto_interconsulta_1">
+            <thead>
+              <tr>
+                <th>Documento</th>
+                <th>Fecha de subida</th>
+                <th>Nombre de archivo</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="content_int_adjunto_interconsulta_1">
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- FIN RECOMENDACIONES -->
+</div>
+<div id="documento_exportable">
+</div>
+<script src="js/sweetalert2.js"></script>
+<script src="js/jquery.mask.min.js"></script>
+<script src="js/svg-inject.min.js"></script>
+<script src="js/jsPDF/dist/jspdf.debug.js"></script>
+<script src="js/jsPDF/libs/html2pdf.js"></script>
+<script type="text/javascript">
+
+  console.log('################################################### OBJETO DE HISTORIA CLINICA ######################################')
+  //console.log('################################################### ', paObj_hc[idHC].a, '      ######################################')
+
+  console.log('################################################### OBJETO DE HISTORIA CLINICA ######################################')
+  showLoading();
+
+
+  $(document).ready(() => {
+    SVGInject($(".inject-svg"));
+  });
+</script>

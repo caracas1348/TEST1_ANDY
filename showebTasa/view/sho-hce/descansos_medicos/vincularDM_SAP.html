@@ -1,0 +1,248 @@
+<link rel="stylesheet" href="./view/sho-hce/descansos_medicos/css/sho.css">
+<link rel="stylesheet" href="css/sweetalert2.css">
+
+<div class="container main-content">
+  <!-- SAP FORM -->
+  <div>
+    <div class="row mb-5 d-flex align-items-center">
+      <div class="col-md-6 col-sm-6 mr-auto p-2">
+        <span class="titulo">Datos del DM - SAP</span>
+      </div>
+      <div class=" col-md-2 col-sm-6  p-2">
+        <button type="button" class="btn btn-danger btn-block btn-lg" onclick="hcSp3ConfirmCancelarVinculacion()" id="fn_hc_cancelar"> Cancelar <img class="inject-svg" src="./images/sho/cancelar.svg" alt="" fill="#fff" width="18px">
+        </button>
+      </div>
+      <div class="col-md-2 col-sm-6  p-2">
+        <button type="button" class="btn btn-success btn-block btn-lg" onclick="desSp3ConfirmGuardarSAP()"> Guardar <img class="inject-svg" src="./images/sho/confirm.svg" alt="" fill="#fff" width="18px">
+        </button>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Nro de documento</span>
+          <input type="text" id="dat_des_dni_trabajador" disabled>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Nombres</span>
+          <input type="text" id="dat_des_nombres_trabajador" disabled>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Apellidos</span>
+          <input type="text" id="dat_des_apellidos_trabajador" disabled>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Ocupación</span>
+          <input type="text" id="dat_des_ocupacion" disabled>
+        </div>
+      </div>      
+    </div>
+
+    <div class="row">
+      <div class="col-md-3 col-sm-4">
+        <div class="input-box-secondary">
+          <span>Fecha de inicio</span>
+          <input type="text" id="dat_des_fi" disabled>
+        </div>
+      </div>
+
+      <div class="col-md-3 col-sm-4">
+        <div class="input-box-secondary">
+          <span>Fecha fin</span>
+          <input type="text" id="dat_des_ff" disabled>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Dias</span>
+          <input type="text" id="dat_des_dias" disabled>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Acumulado</span>
+          <input type="text" id="dat_des_acumulado" disabled>
+        </div>
+      </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Puesto de trabajo</span>
+          <input type="text" id="dat_des_puesto" disabled>
+        </div>
+      </div>
+
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Tipo de contingencia</span>
+          <select name="" id="dat_des_contingenci" disabled>
+          </select>
+        </div>
+      </div>
+    </div>
+    <hr class="mb-5 mt-4" />
+
+    <!-- Asginación -->
+    <div class="row mb-5">
+      <div class="col-md-12 box">
+        <span class="titulo">Asignación de DM-SHO</span>
+      </div>
+    </div>
+
+    <div class="row d-flex justify-content-between">
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Nro de documento</span>
+          <input type="text" id="dat_des_nro_doc" >
+        </div>
+      </div>
+
+      <div class="col-md-3 col-sm-6">
+        <button class="btn btn-success btn-lg btn-block" onclick="buscadorVinculados()" id="dat_des_buscar">Buscar 
+          <i class="fa fa-search"></i>
+        </button>
+      </div>
+    </div>
+    <hr class="mb-5 mt-4" />
+    <!-- FIN Asginación -->
+
+    <!-- DIAGNOSTICO CIE 10 -->  
+    <div class="row mb-5">
+      <div class="col-md-12">
+        <span class="titulo">Asignación de DM - SHO</span>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-md-12">
+        <div class="d-flex align-items-center">
+          <div id="cant_planes">
+            <img src="images/iconos/copia-1.svg" style="width: 20px" />
+          </div>
+          <span class="cantidad ml-3" id = 'lb_num_reg' style="font-size: 15px">1 registros</span>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="table-responsive" style=" height: 400px; background-color: white; overflow-y: auto; scrollbar-width: 10px; ">
+          <table class="table-box" id="table_sap" border='0'  >
+            <thead>
+              <tr>
+                <th>Codigo descanso</th>
+                <th>Nro de documento</th>
+                <th>Fecha de inicio</th>
+                <th>Fecha fin</th>
+                <th>Días</th>
+                <th>Tipo de contingencia</th>
+                <th>Diagnostico</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="bodyTablaSinAuditorias_int" >
+              <td>COD0001</td>
+              <td>13123241</td>
+              <td>10/02/2021</td>
+              <td>20/02/2021</td>
+              <td>10</td>
+              <td>Tipo 1</td>
+              <td>Diagnostico 1</td>
+              <td>
+                <img  src="images/sho/confirm3_on.svg" alt="" style = "width: 22px; ">
+              </td>
+            </tbody>
+          </table>
+        </div>
+      </div>
+       <!-- <div class="body-tabla-list-EvalAud" id="body-tabla-list-EvalAud_int"></div> -->
+      </div>
+
+      <table width='100%' border='0'>
+      <tr>
+        <td width='100%' style="text-align:right;">
+          <!-- <div id="pagination-container-EvalAud_int" class="mt-3"></div> -->
+        </td>
+      </tr>
+    </table>
+
+    </div>
+  
+  <!-- FIN DIAGNOSTICO CIE 10 -->
+  </div>
+  <!-- FIN SAP Forms -->
+</div>
+
+<script src="./view/sho-hce/descansos_medicos/js/main.js"></script>
+
+<script src="js/sweetalert2.js"></script>
+<script src="js/jquery.mask.min.js"></script>
+<script src="js/svg-inject.min.js"></script>
+<script type="text/javascript">
+$(document).ready(() => {
+  SVGInject($(".inject-svg"));
+});
+
+
+
+
+ console.log('########################_LINEA_185_############__5890__############################################################', paObj_DM_SAP[id_DM_SAP])
+fnSp3Carga_Listas_Contingencia_SAP();
+
+fnSp3CargaFiltroEstadoInicialSaludOcupacional_Bandeja_DM_SAP();
+
+
+jQuery("#dat_des_nro_doc").on('input', function (evt) 
+  {
+        // Allow only numbers.
+        jQuery(this).val(jQuery(this).val().replace(/[^0-9]/g, ''));
+  });
+
+
+
+
+
+
+
+
+/*
+
+Adjuntos: []
+AltaMedica: 1
+Apellidos: "delgago"
+BD: 0
+B_PersonalIdHash: null
+B_PersonalSolicitud: null
+CantidadDeDias: 5
+CreadoFecha: "2021-09-29T00:00:00"
+DescripcionContigencia: "Enfermedad Común"
+DescripcionEstabDescanso: "DSO"
+DiagnosticoCIE10: []
+DiasAcumulados: 5
+Documento: "14427747"
+EstableceDescanso: 1
+ExisteEnSHO: 1
+FechaFin: "2021-09-12T00:00:00"
+FechaIni: "2021-09-08T00:00:00"
+Id: 1
+IdEstEmisDesc: 1
+IdRegistro: "SAP-235687"
+IdRelacionarSHO: 1
+IdTipCont: 1
+Nombre: "juan"
+Ocupacion: "trabador de "
+TipoContingencia: 1
+UnidadOrganizativa: 43
+
+*/
+
+
+
+</script>

@@ -9,7 +9,8 @@ var login = function()
         $(".form-rememberPassword").show();
         $("#spinner-rememberPassword").hide();
 
-        $('#fm_login').submit(function() {
+        $('#fm_login').submit(function() 
+        {
 
             //alert("antes del location");
             // location.href = "main.html";// linea de codigo temporal solo para desarollo inicial @andy
@@ -17,33 +18,63 @@ var login = function()
 
 
             event.preventDefault();
-           // var response    = grecaptcha.getResponse();  //-------sin conexion a internet no va a funcionar -- en ese caso comentar//
+            //var response    = grecaptcha.getResponse();  //-------sin conexion a internet no va a funcionar -- en ese caso comentar//
+
+            //alert(grecaptcha.getResponse());
             var response    = 'pass';//
 
             //var emergencia = "03AGdBq263MEiFUtHRnhDlZW5z3aTn-g8nBc8bRI_i989iA774YLyoGenGv0eillNKbJsWLqk_ncPrS770Lh4CEBDX3vPWcptnU5EJVUa2y_t5yyQSIa66IR4XciLS8wy8n5xE-HTmBQ4y5HgMXkmcNaIus9Gz3Mh5miWAwPkxmQPVohf8JEHLk-S6gk6TNeJi5kDTlKOv8xMC-lsTjNfFRvZyqe_ovPUJu4UKYB0tKXZsEGXismb7xi-UYOooa_GbJD69FM9h17xBJ8hcWEIsd4lS4Rhh9CUMRoaB27mlUAW97qjfT_rWWoHUirv2sCm0VeXkTxk_JjRMoO2BHjZAkz-GkoE39lCw07zd61Sr1E3ycA8iusf7kHYPDkkrJWjgjNHidFstMGcLZVukcAv9zCiTJKNsu_rawW8xuSCoqLN-uRPXio_uYpg";
-            //alert(response);
+            //alert($('.recaptcha-anchor').attr('checked'));
 
             var usuario     = $("#tx_login_usuario").val();
             var password    = $("#tx_login_password").val();
             if(usuario.trim().length==0){
                 //alert("Debes introducir tu usuario o correo");
-                swal("Error", "Debes introducir tu usuario o correo", "error");
+                //swal("Error", "Debes introducir tu usuario o correo", "error");
+                 Swal.fire({
+                  imageUrl: "images/sho/advertencia.svg",
+                  imageWidth: 48,
+                  imageHeight: 48,
+                  title: 'Debes introducir tu usuario o correo',
+                  showConfirmButton: false,
+                  timer: 1500
+                })
                 $("#tx_login_user").focus();
                 return;
             }
             else if(password.trim().length==0){
                 //alert("Debes introducir la clave clave");
-                swal("Error", "Debes introducir la clave clave", "error");
+                //swal("Error", "Debes introducir la clave clave", "error");
+                 Swal.fire({
+                  imageUrl: "images/sho/advertencia.svg",
+                  imageWidth: 48,
+                  imageHeight: 48,
+                  title: 'Debes introducir la clave clave',
+                  showConfirmButton: false,
+                  timer: 1500
+                })
+
                 $("#tx_login_password").focus();
                 return;
             }
             else if(response.trim().length==0){
-                swal("Error", "Debes realizar la autenticación Captcha", "error");
+                //swal("Error", "Debes realizar la autenticación Captcha", "error");
+                  Swal.fire({
+                  imageUrl: "images/sho/advertencia.svg",
+                  imageWidth: 48,
+                  imageHeight: 48,
+                  title: 'Debes realizar la autenticación Captcha',
+                  showConfirmButton: false,
+                  timer: 1500
+                })
+
                 $(".spinner-grow").hide();
                 return;
 
             }
             else{
+
+                 //alert('entre aqui')
                 $(".spinner-grow").show();
                 var url = apiurlsecurity+"/api/AuthUserSystem?httpmethod=auth&system_code="+constantes.sysCode+"&code="+AuthUserSystem+"";//system_code  system_code
                 var headers ={
@@ -60,19 +91,19 @@ var login = function()
                 }).done(function( data)
                 {
 
-                    //alert('Despues de esto q pasa');
+                    //alert('Despues de esto q pasa = '+data.validatepassword);
                     if(data.validatepassword==0)
                     {
                        // swal("Error", "data.messagetext", "error");
 
-                        swal({
-                            title: "Error",
-                            text: data.messagetext,
-                            timer: 5000,
-                            type: "error",
-                            showConfirmButton: true
-                            });
-                        //showAlert('danger',data.messagetext,3000);
+                         Swal.fire({
+                          imageUrl: "images/sho/advertencia.svg",
+                          imageWidth: 48,
+                          imageHeight: 48,
+                          title: data.messagetext,
+                          showConfirmButton: true,
+                          //timer: 1500
+                        })
                         $(".spinner-grow").hide();
                     }
                     else{
@@ -94,7 +125,8 @@ var login = function()
                         //alert(data.health_code_cmp);
                         console.warn("data,",data)
                         //console.warn('getCookie("vtas_job"+sessionStorage.tabVisitasa)',getCookie("vtas_job"+sessionStorage.tabVisitasa))
-
+                          
+                          //alert("checkDevice = "+checkDevice());
                             if(checkDevice()=="Mobile")
                             {
                                 location.href = "maindevice.html";
@@ -103,18 +135,31 @@ var login = function()
                             {
 
 
-                                //alert('aqui redirecciono')
+                                console.log('aqui redirecciono = ', window.recaptchaVerifier.verificationId)
 
                                 //----------------------------------------------------------------------------------------------------------------- acceso permitido ahora debe solicitar el codigo ----------------
-                                //data.results[0].Celular; 985471432
+                                 // data.results[0].Celular; 985471432
                                 // location.href = "main.html";
-                                //firebase.auth().signInWithPhoneNumber('+584141894629', window.recaptchaVerifier).then(function(confirmationResult) {
+                                // firebase.auth().signInWithPhoneNumber('+584141894629', window.recaptchaVerifier).then(function(confirmationResult) 
+                                // {
                                 //console.log('er telefono es:: +584165825659', );
                                                          
-                                                            /*
-                                                            firebase.auth().signInWithPhoneNumber('+584165825659', window.recaptchaVerifier).then(
+                                                      //location.href = "main.html";
+
+                                                            firebase.auth().signInWithPhoneNumber('+584268861460', window.recaptchaVerifier).then(
                                                             function(confirmationResult) 
                                                                {
+                                                                   Swal.fire({
+                                                                 // position: 'top-end',
+                                                                  imageUrl: "images/sho/confirm3_on.svg",
+                                                                  imageWidth: 48,
+                                                                  imageHeight: 48,
+                                                                  title: 'Se ha enviado un código a su teléfono',
+                                                                  showConfirmButton: false,
+                                                                  timer: 1500
+                                                                })
+
+                                                                    //location.href = "main.html";
                                                                     window.confirmationResult = confirmationResult;
                                                                     coderesult = confirmationResult;
                                                                     console.log(coderesult);
@@ -125,14 +170,27 @@ var login = function()
 
                                                                 }).catch(function(error) 
                                                                    {
-                                                                        alert("Firebase signInWithPhoneNumber: " + error.message, 'danger xxx', 8000);
+                                                                        //alert("Firebase signInWithPhoneNumber: " + error.message, 'danger ', 8000);
+                                                                         Swal.fire({
+                                                                              imageUrl: "images/sho/advertencia.svg",
+                                                                              imageWidth: 48,
+                                                                              imageHeight: 48,
+                                                                              title: "Firebase, inicio de sesión con número de teléfono: " + error.message,
+                                                                              showConfirmButton: true
+                                                                            })
+
                                                                    })
-                                                            */
+                                                            
+
+
+                                                            //584165825659  //ana1
+                                                            //584268861460 //ana 2
+                                                            //+51992506453 //daniel
 
                                 //----------------------------------------------------------------------------------------------------------------- acceso permitido ahora debe solicitar el codigo ----------------
 
 
-                                location.href = "main.html";
+                                //location.href = "main.html";
                             }
 
                     
@@ -420,7 +478,7 @@ var getRolesFuntions=function(type)
                                         $(".keep").show();
                                         //handlerUrlhtml('contentGlobal','view/selectTypeRequest.html');
                                         handlerUrlhtml('contentGlobal','view/covidListColaborador.html');  //------------------bloque codigo-----#@andy------*****hara falta??--------------------------------//
-										 alert("covidListColaborador.html");
+                                         alert("covidListColaborador.html");
 
 
                                         $("article").css("margin-left","62px!important")
@@ -450,7 +508,7 @@ var getRolesFuntions=function(type)
                                         $("#menuAccessPersonCovidListColaborador").hide();
                                         $("#menuAccessEventList").hide();
 
-										//------------------bloque codigo-----------------------#@andy------*****hara falta??--------------------------------//
+                                        //------------------bloque codigo-----------------------#@andy------*****hara falta??--------------------------------//
                                         handlerUrlhtml('contentGlobal','view/externalAccessRequestList.html','externalAccessRequestList');
 
 
@@ -666,6 +724,7 @@ var logoutSystem = function ()
         location.href='./';
     });
 }
+
 
 
 

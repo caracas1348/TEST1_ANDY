@@ -1,0 +1,213 @@
+<link rel="stylesheet" href="css/sho.css">
+<link rel="stylesheet" type="text/css" href="view/sho-hce/accidente_trabajo/styles.css">
+<div class="container main-content">
+    <div class="row mb-5 align-items-center">
+      <div class="col-md-6 col-sm-12">
+        <span class="titulo">Datos de la transferencia</span>
+      </div>
+      <div class="col-md-2 col-sm-6">
+        <button type="button" class="btn btn-danger btn-block btn-lg"> Cancelar <img src="./images/sho/cancelar.svg" alt="">
+        </button>
+      </div>
+      <div class="col-md-2 col-sm-6">
+        <button type="button" class="btn btn-success btn-block btn-lg"> Guardar <img src="./images/sho/confirm.svg" alt="">
+        </button>
+      </div>
+    </div>
+    <div class="row mb-5">
+        <div class="col-md-3">
+            <div class="form-group m-0">
+                <div class="input-box-secondary">
+                    <span>Empresa</span>
+                    <input type="text">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group m-0">
+                <div class="input-box-secondary">
+                    <span>Fecha de transferencia</span>
+                    <input type="text">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group m-0">
+                <div class="input-box-secondary">
+                    <span>Dirección del trabajador</span>
+                    <input type="text">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group m-0">
+                <div class="input-box-secondary">
+                    <span>Teléfono</span>
+                    <input type="text">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="form-group m-0">
+                <div class="input-box-secondary">
+                    <span>Anamnesis</span>
+                    <input type="text">
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="row mb-5 align-items-center">
+        <div class="col-md-12">
+          <span class="titulo">Signos vitales</span>
+        </div>
+      </div>
+      <div class="row mt-4">
+        <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">
+          <div class="d-flex">
+            <img src="./images/sho/arterial.svg">
+             <span>Presión arterial (mmHg)</span>
+          </div>
+          <div class="input_hc_sp3">
+            <input class="form-control" type="number" value="0" min="0" id="dat_hc_presion_arterial_sv">
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">
+          <div class="d-flex">
+            <img src="./images/sho/cardiaca.svg">
+             <span>Frecuencia cardiaca  (LPM)</span>
+          </div>
+          <div class="input_hc_sp3">
+            <input class="form-control" type="number" value="0" min="0" id="dat_hc_frecuencia_cardiaca_sv">
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">
+          <div class="d-flex">
+            <img src="./images/sho/respiratoria.svg">
+            <span>Frecuencia respiratoria (RPM)</span>
+          </div>
+          <div class="input_hc_sp3">
+            <input class="form-control" type="number" value="0" min="0" id="dat_hc_frecuencia_respiratoria_sv">
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">
+          <div class="d-flex">
+            <img src="./images/sho/temperatura.svg" style="left: 30px">
+            <span>Temperatura (°C)</span>
+          </div>
+          <div class="input_hc_sp3">
+            <input class="form-control" type="number" value="0" min="0" id="dat_hc_temperatura_sv">
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">
+          <div class="d-flex">
+            <img src="./images/sho/peso.svg">
+            <span>Peso (Kg)</span>
+          </div>
+          <div class="input_hc_sp3">
+            <input class="form-control" type="number" value="0" min="0" id="dat_hc_peso_sv" onchange="imc('dat_hc_peso_sv', 'dat_hc_talla_sv', 'dat_hc_masa_corporal_sv')" >
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">
+          <div class="d-flex">
+            <img src="./images/sho/talla.svg" style="left: 30px">
+           <span>Talla (m)</span>
+          </div>
+          <div class="input_hc_sp3">
+            <input class="form-control" type="number" value="0" min="0" id="dat_hc_talla_sv" onchange="imc('dat_hc_peso_sv', 'dat_hc_talla_sv', 'dat_hc_masa_corporal_sv')">
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">
+          <div class="d-flex">
+            <img src="./images/sho/saturacion.svg">
+            <span>Saturación (%)</span>
+          </div>
+          <div class="input_hc_sp3">
+            <input class="form-control" type="number" value="0" min="0" id="dat_hc_saturacion_sv">
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">
+          <div class="d-flex">
+            <img src="./images/sho/corporal.svg">
+            <span>Índice de masa corporal <br/> (Peso/Talla&#178;)</span>
+          </div>
+          <div class="input_hc_sp3">
+            <input class="form-control" type="number" value="0" min="0" id="dat_hc_masa_corporal_sv">
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">
+          <div class="d-flex">
+            <img src="./images/sho/abdominal.svg">
+            <span>Perímetro abdominal (cm)</span>
+          </div>
+          <div class="input_hc_sp3">
+            <input class="form-control" type="number" value="0" min="0" id="dat_hc_perimetro_abdominal_sv">
+          </div>
+        </div>
+      </div>
+    <div class="row mb-5">
+        <div class="col-md-12 d-flex">
+          <h2 class="title-section">
+            Diagnósticos
+          </h2>
+        </div>
+    </div>
+    <div class="row mb-5">
+      <div class="col-md-3">
+          <div class="form-group m-0">
+              <div class="input-box-secondary">
+                  <span>Diagnóstico</span>
+                  <select></select>
+              </div>
+          </div>
+      </div>
+      <div class="col-md-3">
+          <div class="form-group m-0">
+              <div class="input-box-secondary">
+                  <span>CIE 10</span>
+                  <select></select>
+              </div>
+          </div>
+      </div>
+      <div class="col-md-3">
+          <div class="form-group m-0">
+              <div class="input-box-secondary">
+                  <span>Sistema afectado</span>
+                  <select></select>
+              </div>
+          </div>
+      </div>
+      <div class="col-md-3">
+          <div class="form-group m-0">
+              <div class="input-box-secondary">
+                  <span>Sección afectada</span>
+                  <select></select>
+              </div>
+          </div>
+      </div>
+      <div class="col-md-12">
+          <button type="button" class="btn btn-success btn-block btn-lg"
+           style="width:200px; float:right;"> Agregar a la lista <img src="./images/sho/plus.svg" alt="" />
+          </button>
+      </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-md-12 d-flex">
+            <h2 class="title-section">
+               Adjuntar archivo
+            </h2>
+        </div>
+    </div>
+    <div class="row mb-5">
+        <div class="col-md-12">
+            <div class="input_file_upload border-content">
+              <label class="btn btn-success btn-lg" for="file_upload_descanso">
+                <span> Subir archivo </span>
+                <img src="./images/sho/upload.svg" style="width:14px !important">
+              </label>
+              <input type="file" id="file_upload_descanso" accept="application/pdf, .pdf, .doc, docx, .odf" onchange="">
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="view/sho-hce/accidente_trabajo/gestionAccidenteTrabajo.js"></script>

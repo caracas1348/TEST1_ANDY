@@ -1,0 +1,1692 @@
+<!-- /****************************************************************************************
+* VISUAL SAT - [2021]
+* PROYECTO : SIGTASA
+* ESQUEMA : SSOMA
+* SPRINT : 3
+* MODULO : ATENCIONES MEDICAS
+* OPERADORES_____________________________________________________________
+* | # | PROGRAMADOR  | |    FECHA   | |   HORA   | CORREO                |
+* | 1 | Carlos Rivas | | 10/09/2021 | | 10:42:00 | crivascyt@gmail.com   |
+* |___|______________|_|____________|_|__________|_______________________|
+*
+* DESCRIPCION: ARCHIVO FRONT DE FUNCIONALIDAD EN CLIENTE DE LAS OPCIONES DE:
+* - CREAR Y EDITAR LAS ATENCIONES MEDICAS
+* - CREACION DE INTERCONSULTAS
+* - CREACION DE TRANSFERENCIAS
+
+*******************************************************************************************/
+//########################################################################################################### -->
+<link rel="stylesheet" href="css/sho.css">
+<link rel="stylesheet" href="css/sweetalert2.css">
+<link rel="stylesheet" href="css/pagination.css">
+<link href="css/select2.min.css" rel="stylesheet" />
+
+<style>
+  .filaBandeja {
+    margin-left: -8px !important;
+    margin-top: 8px !important;
+    margin-bottom: 8px !important;
+    border: solid 1px #C8C8C8 !important;
+    background-color: #f2f2f2 !important;
+    color: #1C1C1C !important;
+  }
+
+
+  
+
+    .filaBandejaAm {
+    margin-left: -8px !important;
+    margin-top: 8px !important;
+    margin-bottom: 8px !important;
+    border: solid 1px #C8C8C8 !important;
+    background-color: #f2f2f2 !important;
+    color: #1C1C1C !important;
+  }
+
+</style>
+
+
+
+<div class="container main-content">
+  <!-- DATOS DEL TRABAJADOR -->
+  <div>
+    <div class="row mb-5 align-items-center">
+      <div class="col-md-6 col-sm-12">
+        <span class="titulo">Datos del trabajador</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Nro de documento</span>
+          <input class="input_am_datos_trabajador" type="text" id="dat_am_dni_trabajador" disabled>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Nombres</span>
+          <input class="input_am_datos_trabajador" type="text" id="dat_am_nombres_trabajador" disabled>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Apellidos</span>
+          <input class="input_am_datos_trabajador" type="text" id="dat_am_apellidos_trabajador" disabled>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Fecha de nacimiento</span>
+          <input class="input_am_datos_trabajador" type="date" id="dat_am_fecha_trabajador" disabled>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2 col-sm-4">
+        <div class="input-box-secondary">
+          <span>Edad</span>
+          <input class="input_am_datos_trabajador" type="text" id="dat_am_edad_trabajador" disabled>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6 offset-md-1">
+        <div class="input-box-secondary">
+          <span>Grupo sanguineo</span>
+          <select class="input_am_datos_trabajador" name="" id="dat_am_grupo_sanguineo" disabled>
+            <option value="1" selected>O Positivo</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Fecha de ingreso a TASA</span>
+          <input class="input_am_datos_trabajador" type="date" id="dat_am_fecha_ingreso" disabled>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Fecha de retiro</span>
+          <input class="input_am_datos_trabajador" type="date" id="dat_am_fecha_retiro" disabled>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Gerencia</span>
+          <select class="input_am_datos_trabajador" name="" id="dat_am_gerencia_trabajador" disabled>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Planta</span>
+          <select class="input_am_datos_trabajador" name="" id="dat_am_planta_trabajador" disabled>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Área</span>
+          <select class="input_am_datos_trabajador" name="" id="dat_am_area_trabajador" disabled>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Puesto de trabajo</span>
+          <input class="input_am_datos_trabajador" type="text" id="dat_am_puesto_trabajo_trabajador" disabled>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2 offset-md-10 offset-sm-0">
+        <button onclick="amSp3VerDatosCompletoTrabajador()" class="btn btn-link shadow-none btn-block btn-lg" style="font-weight: bold; color: #01719d;">Ver datos completos
+        </button>
+      </div>
+    </div>
+  </div>
+  <!-- FIN DATOS DEL TRABAJADOR -->
+  <hr class=" mb-5 mt-4" />
+  <!-- INCIDENCIA -->
+  <div>
+    <div class="row mb-5">
+      <div class="col-md-12">
+        <span class="titulo">Incidencia</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <span style="font-size: 14px;">
+          <b>¿Esta atenciòn esta relacionada a un riesgo de salud ocupacional?</b>
+        </span>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="px-4">
+        <input type="radio" name="relacion_ocupacional_am" id="dat_am_relacion_ocupacional_si" value="1" onchange="amSp3RelacionOcupacionalIncidencia()" disabled>
+        <label for="dat_am_relacion_ocupacional_si">Si</label>
+      </div>
+      <div class="px-4">
+        <input type="radio" name="relacion_ocupacional_am" id="dat_am_relacion_ocupacional_no" value="0" checked="true" onchange="amSp3RelacionOcupacionalIncidencia()" disabled>
+        <label for="dat_am_relacion_ocupacional_no">No</label>
+      </div>
+    </div>
+    <div id="am_incidencia_content" style="display: none; opacity: 0; transition: all 0.7s linear">
+      <div class="row mt-3">
+        <div class="col-md-12">
+          <div class="d-flex align-items-center">
+            <div id="cant_planes">
+              <img src="images/iconos/copia-1.svg" style="width: 20px" />
+            </div>
+            <span class="cantidad ml-3" id="dat_am_cantidad_incidencia" style="font-size: 15px">0 registros</span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="table-responsive">
+            <table class="table-box" id="table_am_incidencia">
+              <thead>
+                <tr>
+                  <th style="width: 300px;">Fecha de registro</th>
+                  <th>Comentario</th>
+                  <th>
+                    <div class="spinner-border spinner-border-sm float-right" id="am_spin_incidencia" role="status" style="display: none">
+                      <span class="sr-only">Loading...</span>
+                    </div>
+                  </th>
+                </tr>
+              </thead>
+              <tbody id="table_content_am_incidencia">
+              </tbody>
+            </table>
+          </div>
+          <div id="info_table_content_am_incidencia">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- FIN INCIDENCIA -->
+  <hr class="mb-5 mt-4" />
+  <!-- CONSULTA -->
+  <div>
+    <div class="row">
+      <div class="col-md-6 col-sm-6 py-3">
+        <span class="titulo">Datos de consulta</span>
+        <span class="titulo" style="display:none;"> - Atención médica anexada <img src="./images/sho/confirm2.svg" alt=""></span>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Motivo de consulta</span>
+          <select class="input_am_consulta" name="" id="dat_am_motivo_consulta" onchange="amSp3MostrarAnexarAtencion()" disabled>
+            <option value="" selected disabled></option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6 dat_am_atencion_anexada" style="display: none;">
+        <div class="input-box-secondary">
+          <span>Código de atención</span>
+          <input type="text" id="dat_am_codigo_consulta" disabled>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6 dat_am_atencion_anexada" style="display: none;">
+        <div class="input-box-secondary">
+          <span>Fecha de atención</span>
+          <input type="text" id="dat_am_fecha_consulta" disabled>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="input-box-secondary">
+          <span>Anamnesis</span>
+          <input class="input_am_consulta" type="text" id="dat_am_anamnesis_consulta" disabled>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- FIN CONSULTA -->
+  <hr class="mb-5 mt-4">
+  <!-- SIGNOS VITALES -->
+  <div>
+    <div class="row mt-4">
+      <div class="col-md-6 d-flex align-items-center">
+        <span class="titulo"> Signos vitales </span>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">
+        <div class="d-flex">
+          <img src="./images/sho/arterial.svg" alt="">
+           <span>Presión arterial (mmHg)</span>
+        </div>
+        <div class="input_hc_sp3">
+          <input class="form-control" type="number" value="0" min="0" id="dat_am_presion_arterial_sv" disabled>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">
+        <div class="d-flex">
+          <img src="./images/sho/cardiaca.svg" alt="">
+           <span>Frecuencia cardiaca  (LPM)</span>
+        </div>
+        <div class="input_hc_sp3">
+          <input class="form-control" type="number" value="0" min="0" id="dat_am_frecuencia_cardiaca_sv" disabled>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">
+        <div class="d-flex">
+          <img src="./images/sho/respiratoria.svg" alt="">
+          <span>Frecuencia respiratoria (RPM)</span>
+        </div>
+        <div class="input_hc_sp3">
+          <input class="form-control" type="number" value="0" min="0" id="dat_am_frecuencia_respiratoria_sv" disabled>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">
+        <div class="d-flex">
+          <img src="./images/sho/temperatura.svg" alt="" style="left: 30px">
+          <span>Temperatura (°C)</span>
+        </div>
+        <div class="input_hc_sp3">
+          <input class="form-control" type="number" value="0" min="0" id="dat_am_temperatura_sv" disabled>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">
+        <div class="d-flex">
+          <img src="./images/sho/peso.svg" alt="">
+          <span>Peso (Kg)</span>
+        </div>
+        <div class="input_hc_sp3">
+          <input class="form-control" type="number" value="0" min="0" id="dat_am_peso_sv" disabled>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">
+        <div class="d-flex">
+          <img src="./images/sho/talla.svg" alt="" style="left: 30px">
+         <span>Talla (m)</span>
+        </div>
+        <div class="input_hc_sp3">
+          <input class="form-control" type="number" value="0" min="0" id="dat_am_talla_sv" disabled>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">
+        <div class="d-flex">
+          <img src="./images/sho/saturacion.svg" alt="">
+          <span>Saturación (%)</span>
+        </div>
+        <div class="input_hc_sp3">
+          <input class="form-control" type="number" value="0" min="0" id="dat_am_saturacion_sv" disabled>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">
+        <div class="d-flex">
+          <img src="./images/sho/corporal.svg" alt="">
+          <span>Índice de masa corporal <br/> (Peso/Talla&#178;)</span>
+        </div>
+        <div class="input_hc_sp3">
+          <input class="form-control" type="number" value="0" min="0" id="dat_am_masa_corporal_sv" disabled>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">
+        <div class="d-flex">
+          <img src="./images/sho/abdominal.svg" alt="">
+          <span>Perímetro abdominal (cm)</span>
+        </div>
+        <div class="input_hc_sp3">
+          <input class="form-control" type="number" value="0" min="0" id="dat_am_perimetro_abdominal_sv" disabled>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- FIN SIGNOS VETALES -->
+  <hr class="mb-5 mt-4">
+  <!-- EXAMEN FISICO -->
+  <div>
+    <div class="row mt-4">
+      <div class="col-md-6 mb-5">
+        <span class="titulo">Examen físico - Estado general</span>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Estado de conciencia</span>
+          <input class="input_am_examen_fisico" type="text" id="dat_am_conciencia_examen" disabled>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Estado de Nutrición</span>
+          <select class="input_am_examen_fisico" name="" id="dat_am_nutricion_examen" disabled>
+            <option value="" selected></option>
+            <option value="1">Bueno</option>
+            <option value="2">Regular</option>
+            <option value="3">Malo</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Estado general</span>
+          <select class="input_am_examen_fisico" name="" id="dat_am_general_examen" disabled>
+            <option value="" selected></option>
+            <option value="1">Bueno</option>
+            <option value="2">Regular</option>
+            <option value="3">Malo</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Estado de hidratación</span>
+          <select class="input_am_examen_fisico" name="" id="dat_am_hidratacion_examen" disabled>
+            <option value="" selected></option>
+            <option value="1">Bueno</option>
+            <option value="2">Regular</option>
+            <option value="3">Malo</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="input-box-secondary">
+          <span>Orofaringe</span>
+          <input class="input_am_examen_fisico" type="text" id="dat_am_orofaringe_examen" disabled>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="input-box-secondary">
+          <span>Torax y pulmones</span>
+          <input class="input_am_examen_fisico" type="text" id="dat_am_torax_pulmones_examen" disabled>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="input-box-secondary">
+          <span>Cardio vascular</span>
+          <input class="input_am_examen_fisico" type="text" id="dat_am_vascular_examen" disabled>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="input-box-secondary">
+          <span>SOMA</span>
+          <input class="input_am_examen_fisico" type="text" id="dat_am_soma_examen" disabled>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- FIN EXAMEN FISICO -->
+  <hr class="mb-5 mt-4">
+  <!-- OTROS -->
+  <div>
+    <div class="row mt-4">
+      <div class="col-md-6 mb-5">
+        <span class="titulo">Otros</span>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-md-12">
+        <div class="d-flex align-items-center">
+          <div id="cant_planes">
+            <img src="images/iconos/copia-1.svg" style="width: 20px" />
+          </div>
+          <span class="cantidad ml-3" id="dat_am_cantidad_otros" style="font-size: 15px">0 registros</span>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="table-responsive">
+          <table class="table-box" id="table_am_otros">
+            <thead>
+              <tr>
+                <th style="width: 300px;">Tipo de evaluación</th>
+                <th>Detalle</th>
+                <th>
+                  <div class="spinner-border spinner-border-sm float-right" id="am_spin_otros" role="status" style="display: none;">
+                    <span class="sr-only">Loading...</span>
+                  </div>
+                </th>
+              </tr>
+            </thead>
+            <tbody id="table_content_am_otros">
+            </tbody>
+          </table>
+          <div id="info_table_content_am_otros">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- FIN OTROS -->
+  <hr class="mb-5 mt-4">
+  <!-- DIAGNOSTO CIE10 -->
+  <div>
+    <div class="row mb-5">
+      <div class="col-md-12">
+        <span class="titulo">Diagnóstico CIE 10</span>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-md-12">
+        <div class="d-flex align-items-center">
+          <div id="cant_planes">
+            <img src="images/iconos/copia-1.svg" style="width: 20px" />
+          </div>
+          <span class="cantidad ml-3" id="dat_am_cantidad_diagnostico" style="font-size: 15px">0 registros</span>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="table-responsive">
+          <table class="table-box" id="table_am_diagnostico">
+            <thead>
+              <tr>
+                <th>Diagnóstico</th>
+                <th>CIE 10</th>
+                <th>Fecha de registro</th>
+                <th>Especialidad</th>
+                <th>Sistema afectado</th>
+                <th>Sección afectada</th>
+                <th>
+                  <div class="spinner-border spinner-border-sm float-right" id="int_spin_diagnostico" role="status" style="display: none;">
+                    <span class="sr-only">Loading...</span>
+                  </div>
+                </th>
+              </tr>
+            </thead>
+            <tbody id="table_content_am_diagnostico">
+            </tbody>
+          </table>
+        </div>
+        <div id="info_table_content_am_diagnostico">
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- FIN DIAGNOSTICO CIE10 -->
+  <hr class="mb-5 mt-4">
+  <!-- DETALLE DEL DESCANSO -->
+  <div>
+    <div class="row mb-5">
+      <div class="col-md-6">
+        <span class="titulo">Detalle del descanso</span>
+      </div>
+      <div class="col-md-3 offset-md-3 offset-sm-0">
+        <button type="button" class="btn btn-info btn-block btn-lg" onclick="desSp3ImprimirDescanso_NATM()"> Imprimir descanso <img src="./images/sho/print.svg" alt="">
+        </button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Personal de salud</span>
+          <input class="input_am_descanso" type="text" id="dat_am_personal_descanso" disabled>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Tipo de contingencia</span>
+          <select class="input_am_descanso" name="" id="dat_am_contingencia_descanso" disabled>
+            <option value="" selected></option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>¿Descanso por enfermedad?</span>
+          <select class="input_am_descanso" name="" id="dat_am_enfermedad_descanso" disabled>
+            <option value="0">No</option>
+            <option value="1">Si</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>CMP</span>
+          <input class="input_am_descanso" type="text" id="dat_am_cmp_descanso" disabled>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Cantidad de días</span>
+          <input class="input_am_descanso" type="number" id="dat_am_cantidad_dias_descanso" onchange="amSp3CalcularDiasAcumulados()" disabled>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Días acumulados</span>
+          <input class="input_am_descanso" type="text" id="dat_am_dias_acumulados_descanso" disabled>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Fecha de inicio</span>
+          <input class="input_am_descanso" type="date" id="dat_am_fecha_inicio_descanso" onchange="amSp3CalcularDiasAcumulados()" disabled>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Fecha fin</span>
+          <input class="input_am_descanso" type="date" id="dat_am_fecha_fin_descanso" disabled>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>¿Hubo alta médica?</span>
+          <select class="input_am_descanso" name="" id="dat_am_alta_medica_descanso" disabled>
+            <option value="0">No</option>
+            <option value="1">Si</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-12">
+        <div class="input-box-secondary">
+          <span>Establecimiento de emisión del descanso</span>
+          <select class="input_am_descanso" name="" id="dat_am_establecimineto_descanso" onchange="amSp3MostrarParticular()" disabled>
+            <option value="" selected></option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Particular</span>
+          <input type="text" id="dat_am_particular_descanso" disabled>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-md-12 d-flex align-items-center">
+        <span class="titulo"> Descanso médico adjuntado</span>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-md-12">
+        <div class="d-flex align-items-center">
+          <div id="cant_planes">
+            <img src="images/iconos/copia-1.svg" style="width: 20px" />
+          </div>
+          <span class="cantidad ml-3" id="dat_am_cantidad_adjunto_descanso" style="font-size: 15px">0 archivos</span>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="table-responsive">
+          <table class="table-box" id="table_am_adjunto_descanso">
+            <thead>
+              <tr>
+                <th style="width: 300px">Nombre del archivo</th>
+                <th>Fecha de carga</th>
+                <th>
+                  <div class="spinner-border spinner-border-sm float-right" id="am_spin_descanso" role="status" style="display: none;">
+                    <span class="sr-only">Loading...</span>
+                  </div>
+                </th>
+              </tr>
+            </thead>
+            <tbody id="content_am_adjunto_descanso">
+            </tbody>
+          </table>
+        </div>
+        <div id="info_table_content_am_descanso">
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- FIN DETALLE DESCANSO -->
+  <hr class="mb-5 mt-4">
+  <!-- TRATAMIENTO -->
+  <div>
+    <div class="row mb-5">
+      <div class="col-md-6">
+        <span class="titulo">Tratamiento</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 col-sm-12">
+        <div class="input-box-secondary">
+          <span>Escribir tratamiento</span>
+          <input type="text" id="dat_am_escribir_tratamiento" disabled>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- FIN TRATAMIENTO -->
+  <hr class="mb-5 mt-4">
+  <!-- MEDICAMENTOS/INSUMOS -->
+  <div>
+    <div class="row mb-5">
+      <div class="col-md-6 my-3">
+        <span class="titulo">Medicamento/ Insumos</span>
+      </div>
+      <div class="col-md-2 offset-md-4 offset-sm-0">
+        <button type="button" class="btn btn-info btn-block btn-lg" id="btn_am_receta_medicamento" onclick="" style="display:none"> Emitir receta <img src="./images/sho/emit.svg" alt="">
+        </button>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-md-12">
+        <div class="d-flex align-items-center">
+          <div id="cant_planes">
+            <img src="images/iconos/copia-1.svg" style="width: 20px" />
+          </div>
+          <span class="cantidad ml-3" id="dat_am_cantidad_medicamentos" style="font-size: 15px">0 archivos</span>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="table-responsive">
+          <table class="table-box" id="table_am_medicamentos">
+            <thead>
+              <tr>
+                <th>Cobertura</th>
+                <th>Medicamento</th>
+                <th>Presentación</th>
+                <th>Dosis requerida</th>
+                <th>Dosis administrada por DSO</th>
+                <th>Frecuencia</th>
+                <th>Tiempo de uso</th>
+                <th>Emitir receta</th>
+                <th>
+                  <div class="spinner-border spinner-border-sm float-right" id="am_spin_medicamentos" role="status" style="display: none;">
+                    <span class="sr-only">Loading...</span>
+                  </div>
+                </th>
+              </tr>
+            </thead>
+            <tbody id="content_am_medicamentos">
+            </tbody>
+          </table>
+        </div>
+        <div id="info_table_content_am_medicamentos">
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- FIN MEDICAMENTOS/INSUMOS -->
+  <hr class="mb-5 mt-4">
+  <!-- CONCLUSIONES -->
+  <div>
+    <div class="row mb-5">
+      <div class="col-md-6">
+        <span class="titulo">Conclusiones</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Origen</span>
+          <input type="text" id="dat_am_origen_conclusiones" class="input_am_conclusiones" disabled>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Aptitud</span>
+          <select name="" id="dat_am_aptitud_conclusiones" class="input_am_conclusiones" disabled>
+            <option value=""></option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Fecha inicio de restricción</span>
+          <input type="date" id="dat_am_fecha_inicio_conclusiones" class="input_am_conclusiones" disabled>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Fecha fin de restricción</span>
+          <input type="date" id="dat_am_fecha_fin_conclusiones" class="input_am_conclusiones" disabled>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Tipo de restricción</span>
+          <input type="text" id="dat_am_tipo_restricciones_conclusiones" class="input_am_conclusiones" disabled>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Personal de salud</span>
+          <input type="text" id="dat_am_personal_salud_conclusiones" class="input_am_conclusiones" disabled>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Fecha de reevaluación por DSO</span>
+          <input type="date" id="dat_am_fecha_reevaluacion_conclusiones" class="input_am_conclusiones" disabled>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="input-box-secondary">
+          <span>Observaciones</span>
+          <input type="text" id="dat_am_Observaciones_conclusiones" class="input_am_conclusiones" disabled>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- FIN CONCLUSION -->
+  <hr class="mb-5 mt-4">
+  <!-- SUBIR ARCHIVOS -->
+  <div>
+    <div class="row mb-5">
+      <div class="col-md-6">
+        <span class="titulo">Archivos Subidos</span>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-md-12">
+        <div class="d-flex align-items-center">
+          <div id="cant_planes">
+            <img src="images/iconos/copia-1.svg" style="width: 20px" />
+          </div>
+          <span class="cantidad ml-3" id="dat_am_cantidad_adjunto" style="font-size: 15px">0 archivos</span>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="table-responsive">
+          <table class="table-box" id="table_am_adjunto">
+            <thead>
+              <tr>
+                <th style="width: 300px">Documento</th>
+                <th>Fecha de subida</th>
+                <th>
+                  <div class="spinner-border spinner-border-sm float-right" id="am_spin_adjunto" role="status" style="display: none;">
+                    <span class="sr-only">Loading...</span>
+                  </div>
+                </th>
+              </tr>
+            </thead>
+            <tbody id="content_am_adjunto">
+            </tbody>
+          </table>
+        </div>
+        <div id="info_table_content_am_adjunto">
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- FIN SUBIR ARCHIVO -->
+  <hr class="mb-5 mt-4">
+
+
+
+
+
+  <!-- INTERCONSULTAS Y TRANSFERENCIAS -->
+ <!--  <div>
+    <div class="row mb-5">
+      <div class="col-md-6">
+        <span class="titulo">Interconsulta y transferencias</span>
+      </div>
+    </div>
+    <div class="mt-4">
+      <ul class="nav nav-pills" id="pills-tab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" id="am_interconsulta_tab" data-toggle="pill" href="#am_interconsulta" role="tab" aria-controls="am_interconsulta" aria-selected="true" onclick="amSp3ValidarAccionInterconsulta()">Interconsultas</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="am_transferencia_tab" data-toggle="pill" href="#am_transferencia" role="tab" aria-controls="am_transferencia" aria-selected="false" onclick="amSp3ValidarAccionTransferencia()">Transferencias</a>
+        </li>
+      </ul>
+      <div class="tab-content" id="pills-tabContent">
+        <div class="tab-pane fade show active" id="am_interconsulta" role="tabpanel" aria-labelledby="am_interconsulta_tab">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="d-flex align-items-center float-right">
+                <div id="cant_planes">
+                  <img src="images/iconos/copia-1.svg" style="width: 20px" />
+                </div>
+                <span class="cantidad ml-3" id="dat_int_cantidad" style="font-size: 15px">0 registros</span>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="table-responsive">
+                <table class="table-box" id="HA-table">
+                  <thead>
+                    <tr>
+                      <th>Código de interconsulta</th>
+                      <th>Fecha de emisión</th>
+                      <th>Especialidad</th>
+                      <th>Recepción de respuesta</th>
+                      <th>Aptitud</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody id="content_inter_datos_table">
+                  </tbody>
+                </table>
+              </div>
+              <div id="info_content_table_interconsulta">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="am_transferencia" role="tabpanel" aria-labelledby="am_transferencia_tab">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="d-flex align-items-center float-right">
+                <div id="cant_planes">
+                  <img src="images/iconos/copia-1.svg" style="width: 20px" />
+                </div>
+                <span class="cantidad ml-3" id="" style="font-size: 15px">0 registros</span>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="table-responsive">
+                <table class="table-box" id="HA-table">
+                  <thead>
+                    <tr>
+                      <th>Código de transferencia</th>
+                      <th>Establecimiento</th>
+                      <th>F.Transferencia</th>
+                      <th>Recepción de respuesta</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody id="content_trans_datos_table">
+                  </tbody>
+                </table>
+              </div>
+              <div id="info_content_table_trans">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+
+
+    <!-- INTERCONSULTAS Y TRANSFERENCIAS -->
+  <div>
+    <div class="row mb-5">
+      <div class="col-md-6">
+        <span class="titulo">Interconsulta y transferencias</span>
+      </div>
+      <div class="col-md-2 offset-md-4 offset-sm-0">
+      <!--   <button type="button" class="btn btn-success btn-block btn-lg" id="btn_am_interconsulta_transferencia" onclick=" callNewIntercTransferencia_AT(); "> Nuevo registro <img
+               src="./images/sho/plus.svg" alt="">
+        </button> -->
+      </div>
+    </div>
+    <div class="mt-4">
+      <ul class="nav nav-pills" id="pills-tab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" id="am_interconsulta_tab" data-toggle="pill" href="#am_interconsulta" role="tab" aria-controls="am_interconsulta" aria-selected="true"
+             onclick=" intTransAM = 0; amSp3ValidarAccionInterconsulta()">Interconsultas</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="am_transferencia_tab" data-toggle="pill" href="#am_transferencia" role="tab" aria-controls="am_transferencia" aria-selected="false"
+             onclick=" intTransAM = 1;  amSp3ValidarAccionTransferencia()">Transferencias</a>
+        </li>
+      </ul>
+      <div class="tab-content" id="pills-tabContent">
+        <div class="tab-pane fade show active" id="am_interconsulta" role="tabpanel" aria-labelledby="am_interconsulta_tab">
+          <!-- ###################################################################### tabla interconsult  ############################################################# -->
+          <div class="row">
+            <div class="col-md-12">
+              <table width='100%' border='0' style="margin-bottom: 15px;">
+                <tr>
+                  <td width='88%'></td>
+                  <td width='2%'><img src="images/iconos/copia-1.svg" style="width: 20px" /></td>
+                  <td width='10%'><span class="cantidad ml-3" id="dat_int_cantidad_am" style="font-size: 15px; margin-bottom: 7px; margin-right: -20px;">0 registros_int</span></td>
+                </tr>
+              </table>
+              <!-- <div class="d-flex align-items-center float-right">
+                <div id="cant_planes">
+                  <img src="images/iconos/copia-1.svg" style="width: 20px" />
+                </div>
+                <span class="cantidad ml-3" id="dat_int_cantidad" style="font-size: 15px; margin-bottom: 7px; margin-right: -20px;">0 registros_int</span>
+              </div> -->
+            </div>
+            <div class="col-md-12">
+              <div class="table-responsive tablaBox" id="tablaBox" style="background-color: white; height:100% !important; cursor:pointer; ">
+                <div class="col-md-12">
+                  <div class="header-tabla px-2 py-3 " style=" mmargin-rigth:30px !important;">
+                    <table border="0" width="100%" style=" mmargin-rigth:30px !important;">
+                      <tr>
+                        <td width="16%" align="center">
+                          <div class="text-left lbCabezaTabla">Código del origen</div>
+                        </td>
+                        <td width="16%" align="center">
+                          <div class="text-left lbCabezaTabla">Fecha de emisión</div>
+                        </td>
+                        <td width="16%" align="center">
+                          <div class="text-left lbCabezaTabla">Especialidad</div>
+                        </td>
+                        <td width="16%" align="center">
+                          <div class="text-left lbCabezaTabla">Recepción de respuesta</div>
+                        </td>
+                        <td width="16%" align="center">
+                          <div class="text-left lbCabezaTabla">Aptitud</div>
+                        </td>
+                        <td width="16%" align="center">
+                          <div class="text-left lbCabezaTabla">Diagnóstico</div>
+                        </td>
+                        <td width="4%" align="center">
+                          <div id="c9TabGenyx" class="text-left lbCabezaTabla">&nbsp;</div>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                  <div class="body-tabla-list-EvalAud" id="body-tabla-list-EvalAud_int_am"></div>
+                  <table width='100%' border='0'>
+                    <tr>
+                      <td width='100%' style="text-align:right;">
+                        <div id="pagination-container-EvalAud_int_am" class="mt-3"></div>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+              <!-- aqui ciolocamos el paginador de la bandeja -->
+              <div id="info_content_table_interconsulta">
+              </div>
+            </div>
+          </div>
+          <!-- ###################################################################### tabla interconsult  ############################################################# -->
+
+
+        </div>
+        <div class="tab-pane fade" id="am_transferencia" role="tabpanel" aria-labelledby="am_transferencia_tab">
+
+
+          <!-- ###################################################################### tabla transferencia  ############################################################# -->
+          <div class="row">
+            <div class="col-md-12">
+              <table width='100%' border='0' style="margin-bottom: 15px;">
+                <tr>
+                  <td width='88%'></td>
+                  <td width='2%'><img src="images/iconos/copia-1.svg" style="width: 20px" /></td>
+                  <td width='10%'><span class="cantidad ml-3" id="dat_int_cantidad_am2" style="font-size: 15px; margin-bottom: 7px; margin-right: -20px;">0 registros_int</span></td>
+                </tr>
+              </table>
+              <!-- <div class="d-flex align-items-center float-right"> -->
+              <!-- <div id="cant_planes2"></div> -->
+              <!--     <img src="images/iconos/copia-1.svg" style="width: 20px" />
+                </div>
+                <span class="cantidad ml-3" id="dat_int_cantidad2" style="font-size: 15px; margin-bottom: 7px; margin-right: -20px;">0 registros_int</span>
+                  -->
+              <!-- </div> -->
+              <div class="col-md-12">
+                <div class="table-responsive tablaBox" id="tablaBox2" style="background-color: white; height:100% !important; cursor:pointer; ">
+                  <div class="col-md-12">
+                    <div class="header-tabla px-2 py-3 " style=" mmargin-rigth:30px !important;">
+                      <table border="0" width="100%" style=" mmargin-rigth:30px !important;">
+                        <tr>
+                          <td width="23%" align="center">
+                            <div class="text-left lbCabezaTabla">Código de trasnferencia</div>
+                          </td>
+                          <td width="23%" align="center">
+                            <div class="text-left lbCabezaTabla">Establecimento</div>
+                          </td>
+                          <td width="23%" align="center">
+                            <div class="text-left lbCabezaTabla">F. Trasferencia</div>
+                          </td>
+                          <td width="23%" align="center">
+                            <div class="text-left lbCabezaTabla">Recepción de respuesta</div>
+                          </td>
+                          <!-- <td  width="32%" align="center">
+                          <div  class="text-left lbCabezaTabla">Aptitud</div>
+                        </td>
+                         <td  width="16%" align="center">
+                          <div  class="text-left lbCabezaTabla">Diagnóstico</div>
+                        </td> -->
+                          <td width="4%" align="center">
+                            <div id="c9TabGenyx" class="text-left lbCabezaTabla">&nbsp;</div>
+                          </td>
+                        </tr>
+                      </table>
+                    </div>
+                    <div class="body-tabla-list-EvalAud" id="body-tabla-list-EvalAud_int_am2"></div>
+                    <table width='100%' border='0'>
+                      <tr>
+                        <td width='100%' style="text-align:right;">
+                          <div id="pagination-container-EvalAud_int_am2" class="mt-3"></div>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <!-- aqui ciolocamos el paginador de la bandeja -->
+                <div id="info_content_table_interconsulta2">
+                </div>
+              </div>
+              <!-- ###################################################################### tabla transferencia  ############################################################# -->
+
+
+            </div>
+            <!-- ###################################################################### tabla transferencia  ############################################################# -->
+          </div>
+
+
+
+        </div>
+      </div>
+      <!-- FIN INTERCONSULTAS Y TRANSFERENCIAS -->
+
+
+
+
+
+  <!-- FIN INTERCONSULTAS Y TRANSFERENCIAS -->
+
+
+
+
+  <hr class="mb-5 mt-4">
+  <!-- EXAMEN AUXILIAR -->
+  <div>
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Fecha de exámenes</span>
+          <input class="input_am_examen" type="date" id="dat_am_fecha_examen" disabled>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Tipo de examen</span>
+          <select class="input_am_examen" name="" id="dat_am_tipo_examen" disabled>
+            <option value=""></option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-12">
+        <div class="input-box-secondary">
+          <span>Conlusión</span>
+          <input class="input_am_examen" type="text" id="dat_am_conclusion_examen" disabled>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-md-12">
+        <div class="d-flex align-items-center">
+          <div id="cant_planes">
+            <img src="images/iconos/copia-1.svg" style="width: 20px" />
+          </div>
+          <span class="cantidad ml-3" id="dat_am_cantidad_examen_auxiliar" style="font-size: 15px">0 archivos</span>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="table-responsive">
+          <table class="table-box" id="table_am_examen_auxiliar">
+            <thead>
+              <tr>
+                <th>Fecha del examen</th>
+                <th>Tipo de examen</th>
+                <th>Fecha de registro</th>
+                <th>Conclusion</th>
+                <th>Documento</th>
+                <th>
+                  <div class="spinner-border spinner-border-sm float-right" id="am_spin_examen_auxiliar" role="status" style="display: none;">
+                    <span class="sr-only">Loading...</span>
+                  </div>
+                </th>
+              </tr>
+            </thead>
+            <tbody id="content_am_examen_auxiliar">
+            </tbody>
+          </table>
+        </div>
+        <div id="info_table_content_am_examen_auxiliar">
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- FIN EXAMEN AUXILIAR -->
+</div>
+<script src="js/sweetalert2.js"></script>
+<script src="js/jquery.mask.min.js"></script>
+<script src="js/svg-inject.min.js"></script>
+<script src="js/jsPDF/dist/jspdf.debug.js"></script>
+<script src="js/jsPDF/libs/html2pdf.js"></script>
+<script src="./js/jsPDF/jspdf_1.5.3.js"></script>
+<script src="./js/jsPDF/jspdf_autotable.js"></script>
+<script src="view/sho-hce/atenciones_medicas/gestionAtencionesMedicas.js"></script>
+
+
+  <script src="view/sho-hce/interconsultas_transferencias/gestionInterconsultasTransferencia.js"></script>
+ <!--  <script src="view/sho-hce/atenciones_medicas/gestionAtencionesMedicas.js"></script>
+  <script src="view/sho-hce/atenciones_medicas/gestionAtencionesMedicas_Bandejas.js"></script> -->
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script type="text/javascript">
+$('#dat_am_cie_diagnostico').select2();
+$('#dat_am_buscar_medicamento').select2();
+$('.select2-container').css('width', '100%');
+
+
+ID_ORIGEN = idAM;
+
+  cargarDatosGenerales_IT(idHC);
+  fnSp3CargaFiltroEstadoInicialSaludOcupacional_inc_HC2();
+  fnSp3CargaFiltroEstadoInicialSaludOcupacional_trans_HC2();
+  // cargarAreasSedesGerenciaHC();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function fnSp3CargaFiltroEstadoInicialSaludOcupacional_inc_HC2() 
+{ //------------------------------------- ini   fnSp3CargaFiltroEstadoInicialSaludOcupacional() -------------------------------------
+  showLoading();
+ 
+  var a = 0;
+  var b = 0;
+  var c = 0;
+  var d = '';
+  var e = '';
+  var f = '';
+  var g = '';
+  var h = '';
+  var i = '';
+  var j = '';
+
+
+  var url = apiUrlsho + "/api/hce_Get_009_interconsulta_busqueda?code=mlLAeNuPAvTC057apNoiFLG/H/j36XcKY8vYElXN1st3CaLy2eeQ1A==&Gerencia=" + a + "&Planta=" + b + "&Area=" + c + "&Documento=" + d + "&Nombres=" + e + "&Apellidos=" + f + "&CodeInterconsultaTraferencia=" + g + "&FechaDesde=" + h + "&FechaHasta=" + i + "&Buscar="+j;
+
+
+
+  console.log("248 URL", url);
+  var headers = { "apiKey": constantes.apiKey, "Content-Type": "application/json" }
+
+  var settings = {
+    "url": url,
+    "method": "GET",
+    "timeout": 0,
+    "crossDomain": true,
+    "dataType": "json",
+    "headers": headers,
+    // "data": { "NroDocumento_Trabajador_H": a, "AreaId_Empresa_H": c, "SedeId_Empresa_H": b, "Buscador": d } //JSON.stringify(body)
+  };
+
+
+
+  $.ajax(settings).done(function(response) 
+  {
+    console.log("**todos interc 269**", response);
+
+
+
+    if (response.DiagnosticoCIE10.length > 0) { //---------------------------------------------------------------
+
+      response.DiagnosticoCIE10.map(function(itemx) {
+        //D_IT[itemx.InterconsultaId] = D_IT[itemx.InterconsultaId].itemx.Descripcion_TipCie10;
+
+        console.log("diagnostico", itemx.Descripcion_TipCie10);
+
+        if (itemx.Descripcion_TipCie10 == 'null' || itemx.Descripcion_TipCie10 == null || itemx.Descripcion_TipCie10 == '') { D_IT[itemx.InterconsultaId] = '-----'; } else { D_IT[itemx.InterconsultaId] = itemx.Descripcion_TipCie10 }
+
+      });
+      console.log("302 D_IT[]", D_IT);
+
+
+
+
+
+    } //---------------------------------------------------------------
+
+
+console.clear();
+
+              var intercAM = [];
+               if (response.Interconsult.length > 0) 
+               {
+                  var ih = 0;
+                   response.Interconsult.map(function(itemx) {
+                       console.log('##################################################################################################################')
+                       console.log('interconsulta =', itemx.IdInter)
+                       console.log('itemx.IdOrigen =', itemx.IdOrigen_Inter)
+                       console.log('ID_ORIGEN =', ID_ORIGEN)
+                       console.log('##################################################################################################################');
+
+                       
+                       if(itemx.IdOrigen_Inter == ID_ORIGEN)
+                       {   intercAM[ih] = itemx; ih++;}
+                        
+                    });
+
+                }
+
+                  if (response.Interconsult.length > 0) {
+
+                   // $('#bodyTablaSinAuditorias_int_am').css('display', 'none');
+
+                    $('#pagination-container-EvalAud_int_am').pagination({
+                      dataSource: intercAM,
+                      pageSize: 2,
+                      callback: function(data, pagination) {
+                        // let obj = [];
+                        // data.forEach((e) => {
+                        //   if (e.IdHC == idHC) {
+                        //     obj.push(e)
+                        //   }
+                        // })
+                        var html = fnSp3ListarTablaGeneralH_int_HC2(data);
+
+                        $('#dat_int_cantidad_am').html(`${intercAM.length} Registros`);
+                        $('#body-tabla-list-EvalAud_int_am').html(html);//body-tabla-list-EvalAud_int
+                      }
+                    })
+
+
+
+                  } else {
+
+                    hideLoading();
+                  }
+
+
+
+                });
+
+
+
+
+} //------------------------------------- fin   fnSp3CargaFiltroEstadoInicialSaludOcupacional() -------------------------------------
+
+
+
+
+
+
+function fnSp3ListarTablaGeneralH_int_HC2(data) { //------------------------------------------------------- ini   fnSp3ListarTablaGeneralH() -----------------------------------
+
+  var html = '';
+  var btNew = '';
+  var width = 2450; //
+  var width1 = 2430; //
+  var width1 = 2420; //
+
+ // alert('aqiooooooooooooooooooo 315');
+  data.forEach((Item) => {
+
+    paObj_hi[Item.IdInter] = new Interconsulta();
+    paObj_hi[Item.IdInter].cargarData(Item);
+    //${Item.CodigoPaciente_H != null ? Item.CodigoPaciente_H : "---"}
+
+    $('#dat_hc_it_a_gerencia').val(Item.GerenciaId_Empresa_H)
+    var GerenciaId_Empresa_H = $('#dat_hc_it_a_gerencia option:selected').text();
+
+
+    $('#dat_hc_it_a_area').val(Item.AreaId_Empresa_H)
+    var AreaId_Empresa_H_S = $('#dat_hc_it_a_area option:selected').text();
+
+    $('#dat_hc_it_a_planta_sede').val(Item.SedeId_Empresa_H)
+    var SedeId_Empresa_H_S = $('#dat_hc_it_a_planta_sede option:selected').text();
+
+
+    var f1 = date_AAAA_MM_DD_T_HH_MM_S_to_DD_MM_AAAA(Item.A_FechaInterconsulta);
+
+    var menupop = `                  
+      <div class="dropdown float-right dropleft">
+        <div class="more-info" id="item_am_diagnostico_1" data-toggle="dropdown">
+          <img src="images/iconos/menu_responsive.svg" style="width: 18px; margin-right: 12px" />
+        </div>
+        <div class="dropdown-menu" aria-labelledby="item_am_diagnostico_1">
+          <ul>
+            <li onclick="interSp3VerInterconsulta(${idHC}, ${Item.IdInter})">
+              <img src="./images/sho/eyeIcon.svg"/>
+              <span>Ver registro</span>
+            </li>
+
+
+             <li onclick=" callaEditarInterconsulta_amx(${Item.IdInter},${idHC});  ">
+              <img src="./images/sho/edit.svg"/>
+              <span>Editar</span>
+            </li>
+
+
+          </ul>
+        </div>
+      </div>
+      `;
+
+
+
+    html += `
+                
+                 <div class="col-md-12"   style=" /*width:1250px !important;*/"   >
+
+                                                    <div class="px-2 py-3 filaBandejaAm" style=" width:101% !important; mmargin-rigth:30px !important; " > 
+
+                                                        <table border="0"  width = '102%'  style=" /*width:1240px !important;*/  "  >   
+                                                            <tr >
+                                                                  <td width = '16%'  align="center"><div id="c9TabGenyx" class="text-left lbCabezaTabla" style = 'color:#1C1C1C  !important; '  > ${Item.CodigoOrigen_Inter != null ? Item.CodigoOrigen_Inter : "---"}</div></td>  
+                                                                  <td width = '16%'  align="center"><div id="c9TabGenyx" class="text-left lbCabezaTabla" style = 'color:#1C1C1C  !important; '  > ${f1 != null ? f1 : "---"}</div></td>  
+                                                                  <td width = '16%'  align="center"><div id="c9TabGenyx" class="text-left lbCabezaTabla" style = 'color:#1C1C1C  !important; '  > ${Item.Descripcion_InterExpec != null ? Item.Descripcion_InterExpec : "---"}</div></td>  
+                                                                  <td width = '16%'  align="center"><div id="c9TabGenyx" class="text-center lbCabezaTabla" style = 'color:#1C1C1C  !important; '  > ${Item.B_RecibioRespuesta_Inter == 1 ? 'Si' : "No"}</div></td>  
+                                                                  <td width = '16%'  align="center"><div id="c9TabGenyx" class="text-left lbCabezaTabla" style = 'color:#1C1C1C  !important; '  >&nbsp;&nbsp;&nbsp;&nbsp;${Item.C_ActitupParaLaboral_Inter == 1 ? 'Apto' : "No Apto"}</div></td>
+                                                                  <td width = '16%'  align="center"><div id="c1TabGenyx" class="text-left lbCabezaTabla" style = 'color:#1C1C1C  !important; '  > ${D_IT[Item.IdInter] != null ? D_IT[Item.IdInter] : "---"} </div></td>  
+
+                                                                  <td   width = '6%'   align="left"><div id="c9TabGenyx" class="text-left lbCabezaTabla" style = 'color:#1C1C1C  !important; '  ></td>  
+                                                                  <td   width = '2%'   align="center"><div id="c9TabGenyx" class="text-left lbCabezaTabla" style = 'color:#1C1C1C  !important; '  >&nbsp;</td>  
+
+                                                        </table>
+                                                    </div>
+                                  </div>    
+
+                              `;
+
+
+
+
+  });
+
+
+
+
+
+
+
+
+  hideLoading();
+  //console.log(html);
+
+  // $('#dat_hc_a_area').val(0)
+  // $('#dat_hc_a_sede').val(0)
+
+
+
+  return html;
+
+
+}
+
+
+
+function fnSp3CargaFiltroEstadoInicialSaludOcupacional_trans_HC2() 
+{ //------------------------------------- ini   fnSp3CargaFiltroEstadoInicialSaludOcupacional() -------------------------------------
+        showLoading();
+       
+        var a = 0;
+        var b = 0;
+        var c = 0;
+        var d = '';
+        var e = '';
+        var f = '';
+        var g = '';
+        var h = '';
+        var i = '';
+        var j = '';
+
+
+        var url = apiUrlsho + "/api/hce_Get_010_transferencia_busqueda?code=Ma57zVWN/hVKiVbpbiaBFuwa3iEiVrtFLv6X0qATPa1taStnyUvlPw==&Gerencia=0&Planta=0&Area=0&Documento=0&Nombres&Apellidos&CodeInterconsultaTraferencia&FechaDesde&FechaHasta&Buscar";
+
+
+
+        console.log("248 URL", url);
+        var headers = { "apiKey": constantes.apiKey, "Content-Type": "application/json" }
+
+        var settings = {
+          "url": url,
+          "method": "GET",
+          "timeout": 0,
+          "crossDomain": true,
+          "dataType": "json",
+          "headers": headers,
+          // "data": { "NroDocumento_Trabajador_H": a, "AreaId_Empresa_H": c, "SedeId_Empresa_H": b, "Buscador": d } //JSON.stringify(body)
+        };
+
+
+
+        $.ajax(settings).done(function(response) 
+        {
+          console.log("**todos interc 269**", response);
+
+          
+
+           if (response.DiagnosticoCIE10.length > 0) { //---------------------------------------------------------------
+
+            response.DiagnosticoCIE10.map(function(itemx) {
+              //D_IT[itemx.InterconsultaId] = D_IT[itemx.InterconsultaId].itemx.Descripcion_TipCie10;
+
+              D_IT2[itemx.TransferenciaId] = itemx;
+
+              // console.log("diagnostico", itemx.Descripcion_TipCie10);
+
+              // if(itemx.Descripcion_TipCie10 == 'null' || itemx.Descripcion_TipCie10 == null || itemx.Descripcion_TipCie10 == '')
+              // {  D_IT2[itemx.TransferenciaId2] = '-----';}
+              // else
+              // { D_IT2[itemx.TransferenciaId2] = itemx.Descripcion_TipCie10}
+
+            });
+            console.log("596 D_IT[]", D_IT2);
+
+
+          } //---------------------------------------------------------------
+
+
+          response.SignosVitales.map(function(itemx) {
+
+            D_IT3[itemx.TransferenciaId] = itemx;
+
+
+          });
+          console.log("302 D_IT3[]", D_IT3);
+
+
+
+
+
+
+          /*if (response.DiagnosticoCIE10.length > 0) { //---------------------------------------------------------------
+
+            response.DiagnosticoCIE10.map(function(itemx) {
+              //D_IT[itemx.InterconsultaId] = D_IT[itemx.InterconsultaId].itemx.Descripcion_TipCie10;
+
+              console.log("diagnostico", itemx.Descripcion_TipCie10);
+
+              if (itemx.Descripcion_TipCie10 == 'null' || itemx.Descripcion_TipCie10 == null || itemx.Descripcion_TipCie10 == '') { D_IT[itemx.InterconsultaId] = '-----'; } else { D_IT[itemx.InterconsultaId] = itemx.Descripcion_TipCie10 }
+
+            });
+            console.log("302 D_IT[]", D_IT);
+
+
+
+
+                var 
+                    } //---------------------------------------------------------------*/
+
+                var tranfAM = [];
+                 if (response.transferencias.length > 0) 
+                 {
+                    var ih = 0;
+                     response.transferencias.map(function(itemx) {
+                         if(itemx.IdOrigen == ID_ORIGEN)
+                         {   tranfAM[ih] = itemx; ih++;}
+                          
+                      });
+                }
+
+
+                    if (response.transferencias.length > 0) {
+
+                      //$('#bodyTablaSinAuditorias_int2').css('display', 'none');
+
+                      $('#pagination-container-EvalAud_int_am2').pagination({
+                        dataSource: tranfAM,
+                        pageSize: 2,
+                        callback: function(data, pagination) {
+                          // let obj = [];
+                          // data.forEach((e) => {
+                          //   if (e.IdHC == idHC) {
+                          //     obj.push(e)
+                          //   }
+                          // })
+                          var html = fnSp3ListarTablaGeneralH_trans_HC2(data);
+                          $('#dat_int_cantidad_am2').html(`${tranfAM.length} Registros`);
+                          $('#body-tabla-list-EvalAud_int_am2').html(html);//body-tabla-list-EvalAud_int
+                        }
+                      })
+
+
+
+                    } else {
+
+                      hideLoading();
+                    }
+
+
+
+                  });
+
+
+
+
+} //------------------------------------- fin   fnSp3CargaFiltroEstadoInicialSaludOcupacional() -------------------------------------
+
+
+function fnSp3ListarTablaGeneralH_trans_HC2(data)
+ { //------------------------------------------------------- ini   fnSp3ListarTablaGeneralH() -----------------------------------
+
+  var html = '';
+  var btNew = '';
+  var width = 2450; //
+  var width1 = 2430; //
+  var width1 = 2420; //
+
+ // alert('aqiooooooooooooooooooo 315');
+  data.forEach((Item) => {
+
+    // paObj_ht[Item.Id] = new Interconsulta();
+    // paObj_ht[Item.Id].cargarData(Item);
+
+                    paObj_ht[Item.Id] = new Transferencia();
+                    paObj_ht[Item.Id].cargarData(Item);
+
+
+                    var i = paObj_ht[Item.Id].a.DiagnosticoCIE10.length;
+                    paObj_ht[Item.Id].a.DiagnosticoCIE10 = D_IT2[Item.Id];
+                    paObj_ht[Item.Id].a.SignosVitales = D_IT3[Item.Id];
+
+
+
+    //${Item.CodigoPaciente_H != null ? Item.CodigoPaciente_H : "---"}
+
+/*
+
+    $('#dat_hc_it_a_gerencia').val(Item.GerenciaId_Empresa_H)
+    var GerenciaId_Empresa_H = $('#dat_hc_it_a_gerencia option:selected').text();
+
+
+    $('#dat_hc_it_a_area').val(Item.AreaId_Empresa_H)
+    var AreaId_Empresa_H_S = $('#dat_hc_it_a_area option:selected').text();
+
+    $('#dat_hc_it_a_planta_sede').val(Item.SedeId_Empresa_H)
+    var SedeId_Empresa_H_S = $('#dat_hc_it_a_planta_sede option:selected').text();
+
+
+  
+        */
+
+
+          var f1 = date_AAAA_MM_DD_T_HH_MM_S_to_DD_MM_AAAA(Item.A_FechaTransferencia);
+          var f2 = date_AAAA_MM_DD_T_HH_MM_S_to_DD_MM_AAAA(Item.C_Fecha); 
+
+            var menupop = `                  
+              <div class="dropdown float-right dropleft">
+                <div class="more-info" id="item_am_diagnostico_2" data-toggle="dropdown">
+                  <img src="images/iconos/menu_responsive.svg" style="width: 18px; margin-right: 12px" />
+                </div>
+                <div class="dropdown-menu" aria-labelledby="item_am_diagnostico_1">
+                  <ul>
+
+                    <li onclick="llamadoVerTransferencia_AT(${Item.IdHC}, ${Item.Id},0);">
+                      <img src="./images/sho/eyeIcon.svg"/>
+                      <span>Ver registro</span>
+                    </li>
+                     <li onclick=" istAud = ${Item.Id}; istAud2 = ${idHC}; llamadoEditarTransferencia_AT(${Item.IdHC}, ${Item.Id},1); ">
+                      <img src="./images/sho/edit.svg"/>
+                      <span>Editar</span>
+                    </li>
+
+
+                  </ul>
+                </div>
+              </div>
+              `;
+
+            html += `
+                        
+                         <div class="col-md-12"   style=" /*width:1250px !important;*/"   >
+                                                            <div class="px-2 py-3 filaBandejaAm" style=" width:101% !important; mmargin-rigth:30px !important; " > 
+
+                                                                <table border="0"  width = '102%'  style=" /*width:1240px !important;*/  "  >   
+                                                                    <tr >
+                                                                          <td width = '23%'  align="center"><div id="c9TabGenyx" class="text-left lbCabezaTabla" style = 'color:#1C1C1C  !important; '  > ${Item.A_CodeTransferencia != null ? Item.A_CodeTransferencia : "---"}</div></td>  
+                                                                          <td width = '23%'  align="center"><div id="c9TabGenyx" class="text-left lbCabezaTabla" style = 'color:#1C1C1C  !important; '  >${Item.C_Lugar != null ? Item.C_Lugar : "---"}  </div></td>  
+                                                                          <td width = '23%'  align="center"><div id="c9TabGenyx" class="text-left lbCabezaTabla" style = 'color:#1C1C1C  !important; '  > ${f1 != null ? f1 : "---"} </div></td>  
+                                                                          <td width = '23%'  align="center"><div id="c9TabGenyx" class="text-center lbCabezaTabla" style = 'color:#1C1C1C  !important;' > &nbsp;&nbsp;&nbsp; ${f2 != null ? f2 : "---"}</div></td>  
+                                                                           <!--   <td width = '16%'  align="center"><div id="c9TabGenyx" class="text-left lbCabezaTabla" style = 'color:#1C1C1C  !important; '  >&nbsp;&nbsp;&nbsp;&nbsp;${Item.C_ActitupParaLaboral_Inter == 1 ? 'Apto' : "No Apto"}</div></td>
+                                                                          <td width = '16%'  align="center"><div id="c1TabGenyx" class="text-left lbCabezaTabla" style = 'color:#1C1C1C  !important; '  > ${Item.PuestoTrabajo_Empresa_H} </div></td>   -->
+
+                                                                          <td   width = '6%'   align="left"><div id="c9TabGenyx" class="text-left lbCabezaTabla" style = 'color:#1C1C1C  !important; '  ></td>  
+                                                                          <td   width = '2%'   align="center"><div id="c9TabGenyx" class="text-left lbCabezaTabla" style = 'color:#1C1C1C  !important; '  >&nbsp;</td>  
+
+                                                                </table>
+                                                            </div>
+                                          </div>    
+
+                                      `;
+
+
+
+
+          });
+
+
+
+
+
+
+
+
+          hideLoading();
+          //console.log(html);
+
+          // $('#dat_hc_a_area').val(0)
+          // $('#dat_hc_a_sede').val(0)
+
+
+
+          return html;
+
+
+}
+
+//------------------------------------- fin   fnSp3ListarTablaGeneralH() -------------------------------------
+
+
+
+</script>

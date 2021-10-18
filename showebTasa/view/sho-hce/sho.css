@@ -900,3 +900,69 @@
     color: #798d2c;
 }
 /*----------------------------------- SP4 SALUD @andy --------------------------*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*------------------------------------     SP3 AJUSTE BUSCADOR CIE10  -----------------------------------
+
+.dropdown-contentX {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-contentX a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-contentX a:hover {
+  background-color: #ddd;
+}
+
+.itemBD
+{
+
+ background-color: white !important; 
+ width:800px !important; 
+ border-right:1px solid; 
+ cursor: pointer;
+ color: black;
+}
+
+.itemBD:hover
+{
+
+ background-color: #c1c1c1 !important; 
+ width:1200px !important; 
+ border-right:1px solid; 
+ cursor: pointer;
+ color: red;
+}
+
+
+/*
+.dropdown:hover .dropdown-content {
+  display: block;
+}*/
+/*------------------------------------     SP3 AJUSTE BUSCADOR CIE10  -----------------------------------*/

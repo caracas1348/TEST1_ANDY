@@ -1,0 +1,767 @@
+<link rel="stylesheet" href="css/sho.css">
+<link rel="stylesheet" href="css/sweetalert2.css">
+<!--  ================================================ fin de estilo ===============================================-->
+
+<link rel="stylesheet" href="view/sho-hce/ssoma.css">
+<link rel="stylesheet" href="view/sho-hce/interconsultas_transferencias/sho.css">
+<link rel="stylesheet" href="css/pagination.css">
+<link rel="stylesheet" href="css/auditorLiderList.css">
+<link rel="stylesheet" href="css/sass/customize.css?v=3">
+<link href="css/crearAuditorias.css" rel="stylesheet" >
+<Link href="css/crearAuditorias.css" rel="stylesheet">
+<Link href="css/crearProgramas.css" rel="stylesheet">
+<link rel="stylesheet" href="js/daterangepicker-master/daterangepicker.css">
+
+
+
+
+<div class="container main-content">
+  <!-- DATOS DEL TRABAJADOR -->
+  <div>
+    <div class="row mb-5 align-items-center">
+      <div class="col-md-6 col-sm-6">
+        <span class="titulo">Datos del trabajador</span>
+      </div>
+      <div class="col-md-2 col-sm-6 offset-md-4 offset-sm-0">
+        <button onclick="fnSp3mostrarAdjuntoSHO(5,0)" type="button" class="btn btn-info btn-block btn-lg float-right" id=""> Imprimir <img class="inject-svg" src="./images/sho/print.svg" alt="" fill="#fff" width="18px">
+        </button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Nro de documento</span>
+          <input type="text" id="dat_tra_codigo" disabled>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Nombres</span>
+          <input type="text" id="dat_nombres_trabajador" disabled>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Apellidos</span>
+          <input type="text" id="dat_apellidos_trabajador" disabled>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-4">
+        <div class="input-box-secondary">
+          <span>Edad</span>
+          <input type="text" id="dat_edad_trabajador" disabled>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Gerencia</span>
+          <select name="" id="dat_gerencia" disabled>
+            <option value="" selected disabled></option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Planta</span>
+          <select name="" id="dat_planta" disabled>
+            <option value="" selected disabled></option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Área</span>
+          <select name="" id="dat_area" disabled>
+            <option value="" selected disabled></option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Puesto de trabajo</span>
+          <input type="text" id="dat_trab_ptrab" disabled>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- FIN DATOS DEL TRABAJADOR -->
+  <hr class="mb-5 mt-4" />
+  <!-- TRANSFERENCIA -->
+  <div>
+    <div class="row mb-5">
+      <div class="col-md-12">
+        <span class="titulo">Transferencia</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Empresa</span>
+          <input type="text" id="dat_empresa" disabled>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Fecha de transferencia</span>
+          <input id="dat_fecha_transferencia" disabled>
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-12">
+        <div class="input-box-secondary">
+          <span>Direccion del trabajador</span>
+          <input type="text" id="dat_direccion" disabled>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 col-sm-4">
+        <div class="input-box-secondary">
+          <span>Telefono</span>
+          <input type="text" id="dat_telefono" disabled>
+        </div>
+      </div>
+      <div class="col-md-9 col-sm-8">
+        <div class="input-box-secondary">
+          <span>Anamnesis</span>
+          <input type="text" id="dat_anamesis" disabled>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- FIN TRANSFERENCIA -->
+  <hr class="mb-5 mt-4" />
+  <!-- FUNCIONES VITALES -->
+  <div>
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <span class="titulo">Funciones vitales</span>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">
+        <div class="d-flex">
+          <img class=" " src="./images/sho/arterial.svg" alt="" fill="#ff2e2e">
+           <span>Presión arterial (mmHg)</span>
+        </div>
+        <div class="input_hc_sp3">
+          <input class="form-control" type="number" id="dat_presion_arterial" disabled>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">
+        <div class="d-flex">
+          <img class=" " src="./images/sho/cardiaca.svg" alt="" fill="#ff2626">
+           <span>Frecuencia cardiaca  (LPM)</span>
+        </div>
+        <div class="input_hc_sp3">
+          <input class="form-control" type="number" id="dat_frecuencia_cardiaca" disabled>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">
+        <div class="d-flex">
+          <img class=" " src="./images/sho/respiratoria.svg" alt="" fill="#00baff">
+          <span>Frecuencia respiratoria (RPM)</span>
+        </div>
+        <div class="input_hc_sp3">
+          <input class="form-control" type="number" id="dat_frecuencia_respiratoria" disabled>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">
+        <div class="d-flex">
+          <img class=" " src="./images/sho/temperatura.svg" alt="" fill="#34a9ff" style="left: 30px">
+          <span>Temperatura (°C)</span>
+        </div>
+        <div class="input_hc_sp3">
+          <input class="form-control" type="number" id="dat_temperatura" disabled>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">
+        <div class="d-flex">
+          <img class=" " src="./images/sho/peso.svg" alt="" fill="#004eff">
+          <span>Peso (Kg)</span>
+        </div>
+        <div class="input_hc_sp3">
+          <input class="form-control" type="number" id="dat_peso"  disabled>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">
+        <div class="d-flex">
+          <img class=" " src="./images/sho/talla.svg" alt="" fill="#715fff" style="left: 30px">
+         <span>Talla (m)</span>
+        </div>
+        <div class="input_hc_sp3">
+          <input class="form-control" type="number" id="dat_talla" disabled>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">
+        <div class="d-flex">
+          <img class=" " src="./images/sho/saturacion.svg" alt="" fill="#fc2a5a">
+          <span>Saturación (%)</span>
+        </div>
+        <div class="input_hc_sp3">
+          <input class="form-control" type="number" id="dat_saturacion" disabled>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">
+        <div class="d-flex">
+          <img class=" " src="./images/sho/corporal.svg" alt="" fill="#ffc400">
+          <span>Índice de masa corporal  (Peso/Talla&#178;)</span>
+        </div>
+        <div class="input_hc_sp3">
+          <input class="form-control" type="number" id="dat_indice_masa" disabled>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">
+        <div class="d-flex">
+          <img class=" " src="./images/sho/abdominal.svg" alt="" fill="#ff8b43">
+          <span>Perímetro abdominal (cm)</span>
+        </div>
+        <div class="input_hc_sp3">
+          <input class="form-control" type="number" id="dat_perimetro_abdominal" disabled>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- FIN FUNCIONES VITALES -->
+  <hr class="mb-5 mt-4">
+  <!-- DIAGNOSTICO CIE 10 -->
+  <div>
+    <div class="row mb-5">
+      <div class="col-md-12">
+        <span class="titulo">Diagnóstico CIE 10</span>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-md-12">
+        <div class="d-flex align-items-center">
+          <div id="cant_planes">
+            <img src="images/iconos/copia-1.svg" style="width: 20px" />
+          </div>
+          <span class="cantidad ml-3" style="font-size: 15px">
+            <span id="tabla_primerdiagnosticocie10-count-row"></span> registros</span>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <table class="table-box table-responsive" id="tabla_primerdiagnosticocie10">
+          <thead>
+            <tr>
+              <th style="width:20%">Diagnóstico</th>
+              <th style="width:15%">CIE 10</th>
+              <th style="width:15%">Fecha de registro</th>
+              <th style="width:20%">Especialidad</th>
+              <th style="width:20%">Sistema afectado</th>
+              <th style="width:20%">Sección afectada</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-md-12">
+        <div class="input-box-secondary">
+          <span>Tratamiento</span>
+          <input type="text" id="dat_diag_tratamiento" disabled>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <div class="input-box-secondary">
+          <span>Motivo de transferencia</span>
+          <input type="text" id="dat_diag_motivo_transferencia" disabled>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Hora de atencion del D.S.O</span>
+          <input id="dat_diag_hora_atencion" disabled>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Hora de evaluación</span>
+          <input id="dat_diag_hora_evaluacion" disabled>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- FIN DIAGNOSTICO CIE 10 -->
+  <hr class="mb-5 mt-4">
+  <!-- DIAGNOSTICO CIE 10 -->
+  <div>
+    <div class="row mb-5">
+      <div class="col-md-12">
+        <span class="titulo">Diagnóstico CIE 10</span>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-md-12">
+        <div class="d-flex align-items-center">
+          <div id="cant_planes">
+            <img src="images/iconos/copia-1.svg" style="width: 20px" />
+          </div>
+          <span class="cantidad ml-3" style="font-size: 15px">
+            <span id="tabla_segundodiagnosticocie10-count-row"></span> registros</span>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <table class="table-box table-responsive" id="tabla_segundodiagnosticocie10">
+          <thead>
+            <tr>
+              <th style="width:20%">Diagnóstico</th>
+              <th style="width:15%">CIE 10</th>
+              <th style="width:15%">Fecha de registro</th>
+              <th style="width:20%">Especialidad</th>
+              <th style="width:20%">Sistema afectado</th>
+              <th style="width:20%">Sección afectada</th>
+            </tr>
+          </thead>
+          <tbody >
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-md-12">
+        <div class="input-box-secondary">
+          <span>Tratamiento</span>
+          <input type="text" id="dat_diag_2_tratamiento" disabled>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 col-sm-12">
+        <div class="input-box-secondary">
+          <span>Recibido por:</span>
+          <input type="text" id="dat_diag_2_recibido" disabled>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Lugar de destino</span>
+          <input type="text" id="dat_diag_2_lugar" disabled>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Fecha</span>
+          <input id="dat_diag_2_fecha" disabled>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+    <div class="row mt-4">
+      <div class="col-md-12 d-flex align-items-center">
+        <span class="titulo"> Archivos adjuntos </span>
+      </div>
+    </div>
+    <div class="row mt-3 mb-5">
+      <div class="col-md-12">
+        <div class="d-flex align-items-center">
+          <div id="cant_planes">
+            <img src="images/iconos/copia-1.svg" style="width: 20px" />
+          </div>
+          <span class="cantidad ml-3" style="font-size: 15px">
+            <span id="tabla_primeradjunto-count-row"></span> registros</span>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="table-responsive">
+          <table class="table-box" id="tabla_primeradjunto">
+          <thead>
+            <tr>
+              <th>Nombre del archivo</th>
+              <th>Fecha de carga</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+  <!-- FIN DIAGNOSTICO CIE 10 -->
+</div>
+<script src="js/sweetalert2.js"></script>
+<script src="js/jquery.mask.min.js"></script>
+<script src="js/svg-inject.min.js"></script>
+<script src="view/sho-hce/interconsultas_transferencias/gestionInterconsultasTransferencia.js"></script>
+<script src="view/sho-hce/interconsultas_transferencias/gestionTransferencia.js"></script>
+
+<script type="text/javascript">
+
+function ecSp4cargarSelectEnfermedadesCronicas(){
+
+  let contenido = '';
+
+  //Cargando Select de Áreas
+  contenido = $('#dat_area');
+  contenido.append(`<option value=""></option>`);
+
+  pluck_ec["Areas"].forEach((Item) => {
+    contenido.append(`<option value="${Item.Id}">${Item.Description}</option>`)
+  });
+
+  //Cargando Select de Gerencias
+  contenido = $('#dat_gerencia');
+  contenido.append(`<option value=""></option>`);
+
+  pluck_ec["Gerencias"].forEach((Item) => {
+    contenido.append(`<option value="${Item.Id}">${Item.Description}</option>`)
+  });
+
+  //Cargando Select de Sedes
+  contenido = $('#dat_planta');
+  contenido.append(`<option value=""></option>`);
+
+  pluck_ec["Sedes"].forEach((Item) => {
+    contenido.append(`<option value="${Item.Id}">${Item.Description}</option>`)
+  });
+
+}
+
+function downloadBlob(blob, filename){
+
+  if(window.navigator.msSaveOrOpenBlob) {
+      window.navigator.msSaveBlob(blob, filename);
+  } else {
+      var elem = window.document.createElement('a');
+      elem.href = window.URL.createObjectURL(blob);
+      elem.download = filename;
+      document.body.appendChild(elem);
+      elem.click();
+      document.body.removeChild(elem);
+  }
+
+}
+
+function fnSp4descargarPrimerAdjuntoTransferenciaEC(IndexObjeto)
+{
+  
+  url = paObj_detalleTransferencia[idDetalle].PrimerAdjunto[IndexObjeto].ArchivoBase64;
+  fetch(url)
+  .then(res => res.blob())
+  .then(function(blob) {
+    downloadBlob(blob, paObj_detalleTransferencia[idDetalle].PrimerAdjunto[IndexObjeto].NombreArchivo);
+  });
+    
+}
+
+function ecSp4cargarElementosDetalleDatosGeneralesEC(){  
+
+  //Elementos de la vista
+  $('#dat_tra_codigo').val(paObj_ec[idHC].NroDocumento_Trabajador_H);
+  $('#dat_nombres_trabajador').val(paObj_ec[idHC].Nombres_Trabajador_H);
+  $('#dat_apellidos_trabajador').val(paObj_ec[idHC].Apellidos_Trabajador_H);
+  $('#dat_edad_trabajador').val(paObj_ec[idHC].Edad_Trabajador_H);
+  $('#dat_trab_ptrab').val(paObj_ec[idHC].PuestoTrabajo_Empresa_H); 
+  $("#dat_gerencia option[value='"+paObj_ec[idHC].GerenciaId_Empresa_H+"']").prop("selected",true);
+  $("#dat_planta option[value='"+paObj_ec[idHC].PlantaId_Empresa_H+"']").prop("selected",true);
+  $("#dat_area option[value='"+paObj_ec[idHC].AreaId_Empresa_H+"']").prop("selected",true);
+
+  $('#dat_empresa').val(paObj_detalleTransferencia[idDetalle].A_Empresa); 
+  $('#dat_fecha_transferencia').val(new Date(paObj_detalleTransferencia[idDetalle].A_FechaTransferencia).toLocaleDateString('en-GB').split('T')[0]); 
+  $('#dat_direccion').val(paObj_detalleTransferencia[idDetalle].A_DireccionTrabajador); 
+  $('#dat_telefono').val(paObj_detalleTransferencia[idDetalle].A_Telefono); 
+  $('#dat_anamesis').val(paObj_detalleTransferencia[idDetalle].A_Anamnesis); 
+
+  $('#dat_diag_tratamiento').val(paObj_detalleTransferencia[idDetalle].B_Tratamiento); 
+  $('#dat_diag_motivo_transferencia').val(paObj_detalleTransferencia[idDetalle].B_MotivoTrasferencia); 
+  $('#dat_diag_hora_atencion').val(paObj_detalleTransferencia[idDetalle].B_HoraAtencionDSO); 
+  $('#dat_diag_hora_evaluacion').val(paObj_detalleTransferencia[idDetalle].B_HoraEvaluacion); 
+
+  $('#dat_diag_2_tratamiento').val(paObj_detalleTransferencia[idDetalle].C_Tratamiento); 
+  $('#dat_diag_2_recibido').val(paObj_detalleTransferencia[idDetalle].C_RecibidoPor); 
+  $('#dat_diag_2_lugar').val(paObj_detalleTransferencia[idDetalle].C_Lugar); 
+  $('#dat_diag_2_fecha').val(new Date(paObj_detalleTransferencia[idDetalle].C_Fecha).toLocaleDateString('en-GB').split('T')[0]);
+
+  if( Object.keys(paObj_detalleTransferencia[idDetalle].SignosVitales).length > 0 ){
+
+    $('#dat_presion_arterial').val(paObj_detalleTransferencia[idDetalle].SignosVitales.PresionArterial_SV); 
+    $('#dat_frecuencia_cardiaca').val(paObj_detalleTransferencia[idDetalle].SignosVitales.FrecuenciaCardiaca_SV); 
+    $('#dat_frecuencia_respiratoria').val(paObj_detalleTransferencia[idDetalle].SignosVitales.FrecuenciaRespiratoria_SV); 
+    $('#dat_temperatura').val(paObj_detalleTransferencia[idDetalle].SignosVitales.Temperatura_SV); 
+    $('#dat_peso').val(paObj_detalleTransferencia[idDetalle].SignosVitales.PesoKg_SV); 
+    $('#dat_talla').val(paObj_detalleTransferencia[idDetalle].SignosVitales.Talla_SV); 
+    $('#dat_saturacion').val(paObj_detalleTransferencia[idDetalle].SignosVitales.Saturacion_SV); 
+    $('#dat_indice_masa').val(paObj_detalleTransferencia[idDetalle].SignosVitales.IndiceMasaCorporal_SV); 
+    $('#dat_perimetro_abdominal').val(paObj_detalleTransferencia[idDetalle].SignosVitales.PerimetroAbdominal_SV);
+
+  }
+  else
+  {
+
+    $('#dat_presion_arterial').val("-"); 
+    $('#dat_frecuencia_cardiaca').val("-"); 
+    $('#dat_frecuencia_respiratoria').val("-"); 
+    $('#dat_temperatura').val("-"); 
+    $('#dat_peso').val("-"); 
+    $('#dat_talla').val("-"); 
+    $('#dat_saturacion').val("-"); 
+    $('#dat_indice_masa').val("-"); 
+    $('#dat_perimetro_abdominal').val("-"); 
+
+  }
+   
+
+  if(Object.keys(paObj_detalleTransferencia[idDetalle].PrimerAdjunto).length > 0){  
+
+    $.each(paObj_detalleTransferencia[idDetalle].PrimerAdjunto, function(index,accountObj){
+
+      html_tbody = "<tr class='table-row'>";
+      html_tbody += "<td>";
+      html_tbody += accountObj.NombreArchivo;
+      html_tbody += "</td>";
+      html_tbody += "<td>";
+      html_tbody += new Date(accountObj.CreadoFecha).toLocaleDateString('en-GB').split('T')[0];
+      html_tbody += "</td>";
+      html_tbody += "<td>";
+      html_tbody += "<button type='button' class='btn btn-link shadow-none float-right'>";
+      html_tbody += "<img class='inject-svg' src='./images/sho/download.svg' alt='' fill='#8fbb02' width='16px' onclick = 'fnSp4descargarPrimerAdjuntoTransferenciaEC("+index+");' title='Descargar Adjunto'>";
+      html_tbody += "</button>";     
+      html_tbody += "</td>";
+      html_tbody += "</tr>";
+
+      $("#tabla_primeradjunto tbody").append(html_tbody);
+
+    });
+
+  }
+  else{
+
+    html_tbody =
+    "<tr class='table-empty'>"+            
+      "<td colspan='3' class='text-center text-uppercase'>"+
+        "No hay informacion registrada"+
+      "</td>"+
+    "</tr> ";
+
+    $("#tabla_primeradjunto tbody").append(html_tbody);
+
+  }
+
+  if(Object.keys(paObj_detalleTransferencia[idDetalle].DiagnosticoCIE).length > 0){  
+
+    $.each(paObj_detalleTransferencia[idDetalle].DiagnosticoCIE, function(index,accountObj){
+
+      html_tbody = "<tr class='table-row'>";
+      html_tbody += "<td>";
+      html_tbody += accountObj.Diagnostico;
+      html_tbody += "</td>";
+      html_tbody += "<td>";
+      html_tbody += accountObj.Code;
+      html_tbody += "</td>";
+      html_tbody += "<td>";
+      html_tbody += new Date(accountObj.CreadoFecha).toLocaleDateString('en-GB').split('T')[0];
+      html_tbody += "</td>";
+      html_tbody += "<td>";
+      html_tbody += accountObj.Especilidades;
+      html_tbody += "</td>";
+      html_tbody += "<td>";
+      html_tbody += accountObj.SistemaAfectado_D;
+      html_tbody += "</td>";
+      html_tbody += "<td>"; 
+      html_tbody += accountObj.SeccionAfectada_D;                  
+      html_tbody += "</td>";
+      html_tbody += "</tr>";
+
+      if( parseInt(accountObj.TransferenciaId) == 0 ){
+
+        $("#tabla_segundodiagnosticocie10 tbody").append(html_tbody);
+
+      }else{
+
+        $("#tabla_primerdiagnosticocie10 tbody").append(html_tbody);
+
+      }      
+
+    });
+
+  }
+
+  $("#tabla_primeradjunto-count-row").text($("#tabla_primeradjunto tr.table-row").length);
+  $("#tabla_primerdiagnosticocie10-count-row").text($("#tabla_primerdiagnosticocie10 tr.table-row").length);
+  $("#tabla_segundodiagnosticocie10-count-row").text($("#tabla_segundodiagnosticocie10 tr.table-row").length);
+
+  if( $("#tabla_primerdiagnosticocie10 tr.table-row").length == 0 ){
+
+    html_tbody =
+    "<tr class='table-empty'>"+            
+      "<td colspan='6' class='text-center text-uppercase'>"+
+        "No hay informacion registrada"+
+      "</td>"+
+    "</tr> ";
+
+    $("#tabla_primerdiagnosticocie10 tbody").append(html_tbody);
+
+  }
+
+  if( $("#tabla_segundodiagnosticocie10 tr.table-row").length == 0 ){
+
+    html_tbody =
+    "<tr class='table-empty'>"+            
+      "<td colspan='6' class='text-center text-uppercase'>"+
+        "No hay informacion registrada"+
+      "</td>"+
+    "</tr> ";
+
+    $("#tabla_segundodiagnosticocie10 tbody").append(html_tbody);
+
+  }
+   
+}
+
+function ecSp4cargarDiagnosticoTransferenciaEC(IdTransferencia){  
+
+  //Se especifican los parametros para la consulta
+  let url =  apiUrlsho+`/api/hce_Get_012_transferencias_diagnosticoCIE10?code=jA5JxNQ5TLOIh7XVO2LxA/NGHkYdJlDHhus6r44G4oy208ouX1y7UA==`;
+
+  let headers = {
+    "apikey": constantes.apiKey,
+    "Content-Type": "application/json"
+  }
+
+  let settings = {
+    "url": url,
+    "method": "get",
+    "timeout": 0,
+    "crossDomain": true,
+    "dataType": 'json',
+    "headers": headers,
+    "data": { "TransferenciaId": IdTransferencia }
+  };
+
+  //Se consulta mediante el metodo Ajax
+  return $.ajax(settings).done((response) => {
+
+    //Se cargan los elementos de la vista con la data obtenida
+    //ecSp4cargarElementosDatosGeneralesEC();
+    paObj_detalleTransferencia[idDetalle].DiagnosticoCIE = response.DiagnosticoCIE;
+    console.log('Para chequear Objeto Diagnóstico TRANSFERENCIA: '+ JSON.stringify(response));
+
+  });
+
+}
+
+function ecSp4cargarPrimerAdjuntoTransferenciaEC(IdTransferencia){  
+
+  //Se especifican los parametros para la consulta
+  let url =  apiUrlsho+`/api/hce_Get_011_transferencias_adjunto?code=sRis0xUMFlJMZaBlT/ivHAzwTAjZtvY4ToxBzbY/qhTmFqj6eAV0bA==`;
+
+  let headers = {
+    "apikey": constantes.apiKey,
+    "Content-Type": "application/json"
+  }
+
+  let settings = {
+    "url": url,
+    "method": "get",
+    "timeout": 0,
+    "crossDomain": true,
+    "dataType": 'json',
+    "headers": headers,
+    "data": { "IdTransferencias": IdTransferencia }
+  };
+
+  //Se consulta mediante el metodo Ajax
+  return $.ajax(settings).done((response) => {
+
+    //Se cargan los elementos de la vista con la data obtenida
+    //ecSp4cargarElementosDatosGeneralesEC();
+    paObj_detalleTransferencia[idDetalle].PrimerAdjunto = response.AdjuntoTransferencia;
+    console.log('Para chequear Objeto Primer Adjunto TRANSFERENCIA: '+ JSON.stringify(paObj_detalleTransferencia[idDetalle].PrimerAdjunto));
+
+  });
+
+}
+
+function ecSp4cargarTransferenciasId(CodTransferencia){  
+
+  //Se especifican los parametros para la consulta
+  let url =  apiUrlsho+`/api/hce_Get_010_transferencia_busqueda?code=Ma57zVWN/hVKiVbpbiaBFuwa3iEiVrtFLv6X0qATPa1taStnyUvlPw==&Gerencia=0&Planta=0&Area=0&Documento&Nombres&Apellidos&FechaDesde&FechaHasta&Buscar`;
+
+  let headers = {
+    "apikey": constantes.apiKey,
+    "Content-Type": "application/json"
+  }
+
+  let settings = {
+    "url": url,
+    "method": "get",
+    "timeout": 0,
+    "crossDomain": true,
+    "dataType": 'json',
+    "headers": headers,
+    "data": { "CodeInterconsultaTraferencia": CodTransferencia }
+  };
+
+  //Se consulta mediante el metodo Ajax
+  return $.ajax(settings).done((response) => {
+
+    //Se cargan los elementos de la vista con la data obtenida
+    //ecSp4cargarElementosDatosGeneralesEC();
+    //paObj_detalleTransferencia[idDetalle].DiagnosticoCIE = response.DiagnosticoCIE;
+    //console.log('BUSQUEDA TRANSFERENCIA SignosVitales: '+ JSON.stringify(response.SignosVitales));
+
+    let CantidadRegistros = Object.keys(response.SignosVitales).length;
+    
+    if( CantidadRegistros >= 1 ){
+
+      paObj_detalleTransferencia[idDetalle].SignosVitales = response.SignosVitales[CantidadRegistros-1];
+
+    }
+    else{
+
+      paObj_detalleTransferencia[idDetalle].SignosVitales = response.SignosVitales;
+
+    }    
+
+  });
+
+}
+
+async function _init_ecSp4DetalleTransferenciaEnfermedadesCronicas(IdTransferencia) {
+
+  //Se inicia el Cargando
+  showLoading();
+
+  await ecSp4cargarDiagnosticoTransferenciaEC(IdTransferencia);
+  await ecSp4cargarPrimerAdjuntoTransferenciaEC(IdTransferencia);
+  await ecSp4cargarTransferenciasId(paObj_detalleTransferencia[idDetalle].A_CodeTransferencia); 
+  await ecSp4cargarSelectEnfermedadesCronicas();
+  await ecSp4cargarElementosDetalleDatosGeneralesEC();   
+  //await ecSp4cargarSegundoAdjuntoTransferenciaEC(1);
+
+  //Se apaga el Cargando
+  hideLoading();
+
+}
+
+$(document).ready(() => {
+
+  SVGInject($(".inject-svg"));
+
+});
+
+$(document).ready(function() {
+
+  //console.log('Detalle CON HISTORIA: '+ JSON.stringify(paObj_ec[idHC]));
+
+  //console.log('Detalle TRANSFERENCIA: '+ JSON.stringify(paObj_detalleTransferencia[idDetalle]));
+
+  _init_ecSp4DetalleTransferenciaEnfermedadesCronicas(idDetalle);
+
+});
+
+</script>

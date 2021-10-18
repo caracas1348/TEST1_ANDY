@@ -1,0 +1,315 @@
+<link rel="stylesheet" href="./view/sho-hce/interconsultas_transferencias/sho.css">
+<link rel="stylesheet" href="css/sweetalert2.css">
+<div id="int_trans_datos_generales">
+  <div id="sidebar">
+    <div id="toggle-btn">
+      <img class="inject-svg" src="./images/sho/down.svg" alt="" fill="#fff">
+    </div>
+    <span class="titulo">Menú principal</span>
+    <ul id="main-menu">
+      <li class="item-list" onclick="handlerUrlhtml('contentGlobal', 'view/sho-hce/historia_clinica/datosGenerales.html', 'Historia Clinica'); ">
+        <img class="inject-svg" src="./images/sho/hospital.svg" alt="" />
+        <span>Datos generales</span>
+      </li>
+      <li class="item-list">
+        <img class="inject-svg" src="./images/sho/centrosmedicos.svg" alt="" />
+        <span>Antecedentes</span>
+      </li>
+      <li class="item-list">
+        <img class="inject-svg" src="./images/sho/antidepressant.svg" alt="" />
+        <span>Medicamentos activos</span>
+      </li>
+      <li class="item-list">
+        <img class="inject-svg" src="./images/sho/health-report.svg" alt="" />
+        <span>Mi último EMO</span>
+      </li>
+      <li class="item-list">
+        <img class="inject-svg" src="./images/sho/vmo.svg" alt="" />
+        <span>Mi VMO</span>
+      </li>
+      <li class="item-list">
+        <img class="inject-svg" src="./images/sho/descansos.svg" alt="" />
+        <span>Descansos médicos</span>
+      </li>
+      <li class="item-list">
+        <img class="inject-svg" src="./images/sho/cronicas.svg" alt="" />
+        <span>Enfermedades crónicas</span>
+      </li>
+      <li class="item-list">
+        <img class="inject-svg" src="./images/sho/toxicologicos.svg" alt="" />
+        <span>Examenes toxicológicos</span>
+      </li>
+      <li class="item-list">
+        <img class="inject-svg" src="./images/sho/vacunas.svg" alt="" />
+        <span>Vacunas</span>
+      </li>
+      <li class="item-list">
+        <img class="inject-svg" src="./images/sho/accidentes.svg" alt="" />
+        <span>Accidentes de trabajo</span>
+      </li>
+      <li class="item-list">
+        <img class="inject-svg" src="./images/sho/iperc.svg" alt="" />
+        <span>IPERC</span>
+      </li>
+      <li class="item-list">
+        <img class="inject-svg" src="./images/sho/reubicados.svg" alt="" />
+        <span>Reubicación</span>
+      </li>
+      <li class="item-list">
+        <img class="inject-svg" src="./images/sho/levantamiento.svg" alt="" />
+        <span>Enfermedad ocupacional</span>
+      </li>
+      <li class="item-list">
+        <img class="inject-svg" src="./images/sho/discapacitados.svg" alt="" />
+        <span>Discapacidad</span>
+      </li>
+      <li class="item-list">
+        <img class="inject-svg" src="./images/sho/fertil.svg" alt="" />
+        <span>Mujeres en edad fértil gestante</span>
+      </li>
+      <li class="item-list">
+        <img class="inject-svg" src="./images/sho/salud.svg" alt="" />
+        <span>Seguimiento COVID</span>
+      </li>
+      <li class="item-list active">
+        <img class="inject-svg" src="./images/sho/interconsultas.svg" alt="" />
+        <span>Interconsultas y trasnferencias</span>
+      </li>
+      <li class="item-list">
+        <img class="inject-svg" src="./images/sho/inf_ocupacional.svg" alt="" />
+        <span>Informe médico ocupacional</span>
+      </li>
+    </ul>
+  </div>
+  <div id="page-content-sidebar">
+    <!-- DATOS GENERALES -->
+    <div class="row">
+      <div class="col-md-6 d-flex align-items-center">
+        <span class="titulo"> Interconsultas y trasnferencias </span>
+      </div>
+      <div class="col-md-6 d-flex justify-content-end align-items-center">
+        <span style="font-weight: 600; color: #01719d; cursor: pointer;" id="ocultar_datos_dg"> Ocultar datos </span>
+        <span style="font-weight: 600; color: #01719d; cursor: pointer; display: none;" id="mostrar_datos_dg"> Mostrar datos </span>
+      </div>
+    </div>
+    <div class="row mt-5 d-flex align-items-center" id="datos_generales_content">
+      <div class="col-md-2" id="content_img_datos_generales">
+        <div class="img-perfil" style="display: flex;justify-content: center;align-items: center;">
+          <div class="spinner-border text-light" id="hc_spin_adjuntar_imagen" role="status" style="position: absolute; display:none">
+            <span class="sr-only">Loading...</span>
+          </div>
+          <label for="img_input_file_perfil" style="cursor:pointer; margin: 0">
+            <img id="img_file_perfil" alt="" style="display: block;">
+          </label>
+          <input id="img_input_file_perfil" type="file" onchange="encodeImgtoBase64(this)" style="display: none">
+        </div>
+      </div>
+      <div class="col-md-7">
+        <div class="row">
+          <div class="col-12">
+            <span style="font-size: 20px; font-weight: 600; color: #254373;" id="dat_int_nombres"></span>
+            <span style="font-size: 20px; font-weight: 600; color: #254373;" id="dat_int_apellidos"></span>
+          </div>
+        </div>
+        <div class="row mt-3" id="datos_hc_general_trabajador">
+          <div class="col-4 my-1">
+            <b>DNI:</b> <span id="dat_int_dni_trabajador"></span>
+          </div>
+          <div class="col-4 my-1">
+            <b>Sexo:</b> <span id="dat_int_sexo_trabajador"></span>
+          </div>
+          <div class="col-4 my-1">
+            <b>Edad:</b> <span id="dat_int_edad_trabajador"></span>
+          </div>
+          <div class="col-4 my-1">
+            <b>Puesto:</b> <span id="dat_int_puesto_trabajador"></span>
+          </div>
+          <div class="col-4 my-1">
+            <b>Área:</b> <span id="dat_int_area_trabajador"></span>
+          </div>
+          <div class="col-4 my-1">
+            <b>Gerencia:</b> <span id="dat_int_gerencia_trabajador"></span>
+          </div>
+          <div class="col-4 my-1">
+            <b>Planta:</b> <span id="dat_int_planta_trabajador"></span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3" id="botones_datos_generales">
+        <div class="row">
+          <div class="col-12 btn_interacciones_datos_generales">
+            <button class="btn btn-success btn-block btn-lg" style="width: 200px; float: right;">Nueva atención <img class="inject-svg" src="./images/sho/plus.svg" fill="#fff" />
+            </button>
+          </div>
+          <div class="col-12 btn_interacciones_datos_generales">
+            <button onclick="divEditaHistoria(idHC)" class="btn btn-link shadow-none btn-block btn-lg" style="width: 200px; float: right;">Ver datos completos
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- FIN DATOS GENERALES -->
+    <hr class="mt-4">
+    <!-- SIGNOS VITALES -->
+    <div class="row mt-4">
+      <div class="col-md-6 d-flex align-items-center">
+        <span class="titulo"> Registros </span>
+      </div>
+    </div>
+    <!-- FIN EXAMEN AUXILIAR -->
+    <div class="mt-4">
+      <ul class="nav nav-pills" id="pills-tab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Interconsultas</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Transferencias</a>
+        </li>
+      </ul>
+      <div class="tab-content" id="pills-tabContent">
+        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="d-flex align-items-center float-right">
+                <div id="cant_planes">
+                  <img src="images/iconos/copia-1.svg" style="width: 20px" />
+                </div>
+                <span class="cantidad ml-3" id="dat_int_cantidad" style="font-size: 15px">0 registros</span>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="table-responsive">
+                <table class="table-box" id="HA-table">
+                  <thead>
+                    <tr>
+                      <th>Código de interconsulta</th>
+                      <th>Origen de interconsulta</th>
+                      <th>Código del origen</th>
+                      <th>Fecha de emisión</th>
+                      <th>Especialidad</th>
+                      <th>Recepción de respuesta</th>
+                      <th>Aptitud</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody id="content_inter_datos_table">
+                  </tbody>
+                </table>
+              </div>
+              <div id="info_content_table_interconsulta">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="d-flex align-items-center float-right">
+                <div id="cant_planes">
+                  <img src="images/iconos/copia-1.svg" style="width: 20px" />
+                </div>
+                <span class="cantidad ml-3" id="" style="font-size: 15px">0 registros</span>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="table-responsive">
+                <table class="table-box" id="HA-table">
+                  <thead>
+                    <tr>
+                      <th>Código de transferencia</th>
+                      <th>Origen de transferencia</th>
+                      <th>Código del origen</th>
+                      <th>Establecimiento</th>
+                      <th>F.Transferencia</th>
+                      <th>Recepción de respuesta</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody id="content_trans_datos_table">
+                  </tbody>
+                </table>
+              </div>
+              <div id="info_content_table_trans">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="view/sho-hce/interconsultas_transferencias/gestionInterconsultasTransferencia.js"></script>
+<script>
+_init_fnSp3SaludOcupacionalEstadoInicial_inter();
+</script>
+<script type="text/javascript">
+cargarAreasSedesGerencia();
+setTimeout(() => {
+  cargarDatosPersonales();
+  interSp3cargarDatosInterconsulta();
+  interSp3cargarDatosTransferencia();
+})
+</script>
+<script type="text/javascript">
+// objetos del DOM
+$('#ocultar_datos_dg').click(() => {
+  $('#datos_hc_general_trabajador').children().hide();
+  $('.img-perfil').css('height', '75px');
+  $('.img-perfil').css('width', '75px');
+  $('#content_img_datos_generales').removeClass('col-md-2');
+  $('#botones_datos_generales').removeClass('col-md-3');
+  $('#content_img_datos_generales').addClass('col-md-1');
+  $('#botones_datos_generales').addClass('col-md-4');
+  $('.btn_interacciones_datos_generales').removeClass('col-md-12');
+  $('.btn_interacciones_datos_generales').addClass('col-md-6');
+  $('#botones_datos_generales .row').addClass('flex-row-reverse')
+  $('#ocultar_datos_dg').hide();
+  $('#mostrar_datos_dg').show();
+})
+$('#mostrar_datos_dg').click(() => {
+  $('#datos_hc_general_trabajador').children().show();
+  $('.img-perfil').css('height', '148px');
+  $('.img-perfil').css('width', '148px');
+  $('#content_img_datos_generales').removeClass('col-md-1');
+  $('#botones_datos_generales').removeClass('col-md-4');
+  $('#content_img_datos_generales').addClass('col-md-2');
+  $('#botones_datos_generales').addClass('col-md-3');
+  $('.btn_interacciones_datos_generales').removeClass('col-md-6');
+  $('.btn_interacciones_datos_generales').addClass('col-md-12');
+  $('#botones_datos_generales .row').removeClass('flex-row-reverse')
+  $('#ocultar_datos_dg').show();
+  $('#mostrar_datos_dg').hide();
+})
+
+btnToggle = $("#toggle-btn");
+sidebar = $("#sidebar");
+tituloMenu = $("#sidebar .titulo").text();
+
+// Acortando el titulo del menu
+tituloMenuCorto = tituloMenu
+  .split(" ")
+  .map((e) => e[0])
+  .join("");
+
+setMenu();
+
+// Escuchando el evento del click del toggle
+btnToggle.on("click", function() {
+  sidebar.toggleClass("active");
+  $("#toggle-btn svg").toggleClass("active");
+  $("#page-content-sidebar").toggleClass("active");
+  setMenu(); // Seteando el contenido del menu
+});
+
+// set menu
+function setMenu() {
+  if (!sidebar.attr("class")) {
+    $("#sidebar .titulo").text(tituloMenuCorto);
+    $(".item-list span").css("display", "none");
+  } else {
+    $("#sidebar .titulo").text(tituloMenu);
+    $(".item-list span").css("display", "flex");
+  }
+}
+SVGInject($(".inject-svg"));
+</script>

@@ -1,0 +1,959 @@
+
+<div class="main-content-ec">
+  <!-- Enfermedades crónicas -->
+  <!-- Titulos  -->
+  <div class="row mb-5 d-flex justify-content-between align-items-center">
+    <div class="p-2 mr-auto">
+      <span class="titulo">Enfermedades crónicas</span>
+    </div>
+    <div class="p-2">
+      <span class="subtitulo" style="font-weight: 600; color: #01719d; cursor: pointer; display: none;" id="ver-datos"> Mostrar datos </span>
+      <span class="subtitulo" style="font-weight: 600; color: #01719d; cursor: pointer;" id="ocultar-datos"> Ocultar datos </span>
+    </div>
+  </div>
+  <!-- Titulos  -->
+  <!-- Datos -->
+  <div class="row d-flex align-items-center">
+    <div class="col-md-6 contenedor-minimo" style="display: none;">
+      <img class="img-perfil mr-4" src="images/1-thumb.png">
+      <span class="titulo" id="nombre-trabajador"></span>
+    </div>
+    <div class="col-md-3 pl-5 contenedor-minimo" style="display: none;">
+      <span class="subtitulo" onclick="ecSp4VerDatosCompletoTrabajador();" style="font-weight: 600; color: #01719d; cursor: pointer;">Ver datos completos</span>
+    </div>
+    <div class="col-md-2 contenedor-maximo">
+      <img class="img-perfil mr-4" src="images/1-thumb.png">
+    </div>
+    <div class="col-md-7 contenedor-maximo">
+      <div class="row">
+        <div class="col-12">
+          <span class="titulo" id="nombre-trabajador-maximo"></span>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-4 my-1">
+          <b>DNI:</b> <span id="dni-trabajador-maximo"></span>
+        </div>
+        <div class="col-4 my-1">
+          <b>Sexo:</b> <span id="sexo-trabajador-maximo"></span>
+        </div>
+        <div class="col-4 my-1">
+          <b>Edad:</b> <span id="edad-trabajador-maximo"></span>
+        </div>
+        <div class="col-4 my-1">
+          <b>Puesto:</b> <span id="puesto-trabajador-maximo"></span>
+        </div>
+        <div class="col-4 my-1">
+          <b>Área:</b> <span id="area-trabajador-maximo"></span>
+        </div>
+        <div class="col-4 my-1">
+          <b>Gerencia:</b> <span id="gerencia-trabajador-maximo"></span>
+        </div>
+        <div class="col-4 my-1">
+          <b>Planta:</b> <span id="planta-trabajador-maximo"></span>
+        </div>       
+      </div>
+    </div>
+    <div class="col-md-3 text-center">
+      <button class="btn btn-success btn-block btn-lg" type="button" onclick="amSp3NuevaAtencionMedica(idHC,2)">
+        Nueva atención 
+        <img class="inject-svg" src="./images/sho/plus.svg" alt="" fill="#fff" width="18px">
+      </button>
+      <div class="contenedor-maximo" style="margin-top: 20px;">
+        <span class="subtitulo" onclick="ecSp4VerDatosCompletoTrabajador();" style="font-weight: 600; color: #01719d; cursor: pointer;">Ver datos completos</span>
+      </div>      
+    </div>
+  </div>
+  <hr class="mt-4">
+  <!-- Datos -->
+  <!-- Registros button -->
+  <div class="row mb-5 d-flex align-items-center">
+    <div class="col-md-6 col-sm-6 mr-auto p-2">
+      <span class="titulo"> Registros </span>
+    </div>
+    <div class="col-md-2 col-sm-6  p-2">
+      <button type="button" class="btn btn-success btn-block btn-lg" onclick="showGestionEC();"> 
+        Nuevo registro
+        <img class="inject-svg" src="./images/sho/plus.svg" alt="" fill="#fff" width="18px">
+      </button>
+    </div>
+    <div class="col-md-6 col-sm-6 mr-auto p-2 d-none" id="enfermedades-cronicas-empty">
+      <span class="titulo" style="font-size: 17px !important;"> No se han registrado enfermedades crónicas </span>
+    </div>
+  </div>
+  <!-- Registros button -->
+
+  <!-- Enfermedad crónica 1 fin-->
+  <hr class="mt-4 row-enfermedad-cronica"> 
+
+</div>
+
+<script src="./view/sho-hce/enfermedades_cronicas/js/main.js"></script>
+
+<!-- JS Enfermedades Cronicas -->
+<script src="view/sho-hce/enfermedades_cronicas/js/JSEnfermedades_Cronicas.js"></script>
+
+<script type="text/javascript">
+
+$(document).ready(() => {
+
+  SVGInject($(".inject-svg"));
+
+});
+
+
+//--------------------------VARIABLES GLOBALES------------------------------//
+
+var idHC_EC = 0;
+
+//--------------------------FUNCIONES A TENER EN CUENTA------------------------------//
+//--------------------------LLEVARAN MUCHA REVISION------------------------------//
+
+function ecSp4CalcularDiasRestantesDescansoMedicoEC( FechaInicio, FechaFin ) {
+
+  var FechaInicio_Control = new Date(FechaInicio);
+  var FechaFin_Control = new Date(FechaFin);
+  var FechaHoy_Control = new Date();
+  var DiasDiferencia_InicioFin;
+  var CantidadDias_InicioFin;
+  var DiasDiferencia_InicioHoy;
+  var CantidadDias_InicioHoy;
+  var DiasRestante = 0;
+
+  DiasDiferencia_InicioFin= FechaFin_Control.getTime()-FechaInicio_Control.getTime();
+  CantidadDias_InicioFin = Math.round(DiasDiferencia_InicioFin/(1000*60*60*24));
+
+  DiasDiferencia_InicioHoy= FechaHoy_Control.getTime()-FechaInicio_Control.getTime();
+  CantidadDias_InicioHoy = Math.round(DiasDiferencia_InicioHoy/(1000*60*60*24));
+
+  DiasRestantes = CantidadDias_InicioFin - CantidadDias_InicioHoy;
+
+  if( DiasRestantes <= 0 ){
+
+    return 0;
+
+  }
+  else{
+
+    return DiasRestantes; 
+
+  }
+
+}
+
+function ecSp4cargarSelectEnfermedadesCronicas(){
+
+  let contenido = '';
+
+  //Cargando Select de Áreas
+  contenido = $('#sp4EnferCron_dat_trab_area');
+  contenido.append(`<option value=""></option>`);
+
+  pluck_ec["Areas"].forEach((Item) => {
+    contenido.append(`<option value="${Item.Id}">${Item.Description}</option>`)
+  });
+
+  //Cargando Select de Gerencias
+  contenido = $('#sp4EnferCron_dat_trab_gerencia');
+  contenido.append(`<option value=""></option>`);
+
+  pluck_ec["Gerencias"].forEach((Item) => {
+    contenido.append(`<option value="${Item.Id}">${Item.Description}</option>`)
+  });
+
+  //Cargando Select de Sedes
+  contenido = $('#sp4EnferCron_dat_trab_planta');
+  contenido.append(`<option value=""></option>`);
+
+  pluck_ec["Sedes"].forEach((Item) => {
+    contenido.append(`<option value="${Item.Id}">${Item.Description}</option>`)
+  });
+
+  //Cargando Select de Grupos Sanguineo
+  contenido = $('#sp4EnferCron_dat_trab_grupo_sanguineo');
+  contenido.append(`<option value=""></option>`);
+
+  pluck_ec["GrupoSanguineo"].forEach((Item) => {
+    contenido.append(`<option value="${Item.Id}">${Item.Descripcion}</option>`)
+  });
+
+}
+
+function ecSp4cargarElementosDatosGeneralesEC(){  
+
+  //Elementos de la vista gestionEnfermedadCronica
+  $('#sp4EnferCron_dat_trab_nro').val(paObj_ec[idHC_EC].NroDocumento_Trabajador_H);
+  $('#sp4EnferCron_dat_trab_nombre').val(paObj_ec[idHC_EC].Nombres_Trabajador_H);
+  $('#sp4EnferCron_dat_trab_apellido').val(paObj_ec[idHC_EC].Apellidos_Trabajador_H);
+  $('#sp4EnferCron_dat_trab_edad').val(paObj_ec[idHC_EC].Edad_Trabajador_H);
+  $('#sp4EnferCron_dat_trab_fecha_reg').val(new Date(paObj_ec[idHC_EC].FechaRegistro_Trabajador_H).toLocaleDateString('en-GB').split('T')[0]);
+  $('#sp4EnferCron_dat_trab_fi_tasa').val(new Date(paObj_ec[idHC_EC].FechaIngresoTasa_H).toLocaleDateString('en-GB').split('T')[0]);
+  $("#sp4EnferCron_dat_trab_gerencia option[value='"+paObj_ec[idHC_EC].GerenciaId_Empresa_H+"']").prop("selected",true);
+  $("#sp4EnferCron_dat_trab_planta option[value='"+paObj_ec[idHC_EC].PlantaId_Empresa_H+"']").prop("selected",true);
+  $("#sp4EnferCron_dat_trab_area option[value='"+paObj_ec[idHC_EC].AreaId_Empresa_H+"']").prop("selected",true);
+  $('#sp4EnferCron_dat_trab_ptrab_des').val(paObj_ec[idHC_EC].PuestoTrabajo_Empresa_H);
+  
+  //$('#sp4EnferCron_dat_trab_grupo_sanguineo').val(paObj_ec[idHC].GrupoSanguineoDescripcion);PENDIENTE
+  
+  if(paObj_ec[idHC_EC].FechaRetiroTasa_H === undefined){
+    $('#sp4EnferCron_dat_trab_fr_tasa').val('Sin fecha de registro');
+  }
+  else
+  {
+    $('#sp4EnferCron_dat_trab_fr_tasa').val(new Date(paObj_ec[idHC_EC].FechaRetiroTasa_H).toLocaleDateString('en-GB').split('T')[0]);
+  }
+
+  //Elementos de la vista indexEC
+  $('#nombre-trabajador').text(paObj_ec[idHC_EC].Nombres_Trabajador_H+" "+paObj_ec[idHC_EC].Apellidos_Trabajador_H);
+  $('#nombre-trabajador-maximo').text(paObj_ec[idHC_EC].Nombres_Trabajador_H+" "+paObj_ec[idHC_EC].Apellidos_Trabajador_H);
+  $('#dni-trabajador-maximo').text(paObj_ec[idHC_EC].NroDocumento_Trabajador_H);
+  $('#puesto-trabajador-maximo').text(paObj_ec[idHC_EC].PuestoTrabajo_Empresa_H);
+  $('#planta-trabajador-maximo').text(paObj_ec[idHC_EC].SedeDescripcion);
+  $('#gerencia-trabajador-maximo').text(paObj_ec[idHC_EC].GerenciaDescripcion);
+  $('#area-trabajador-maximo').text(paObj_ec[idHC_EC].AreaDescripcion);
+  $('#edad-trabajador-maximo').text(paObj_ec[idHC_EC].Edad_Trabajador_H);
+  $('#sexo-trabajador-maximo').text(paObj_ec[idHC_EC].Sexo_Trabajador_H == 1 ? 'Masculino' : 'Femenino');
+  
+}
+
+
+function ecSp4VerDatosCompletoTrabajador() {
+  //let datos = paObj_ec[IdHC].a;
+
+  //Se carga el modal con los datos completos del trabajador
+  let datos = paObj_ec[idHC_EC];
+  Swal.fire({
+    title: "Datos del trabajador",
+    html: `
+      <div class="text-left">
+        <div class="row my-3">
+          <div class="col-12">
+            <span class="float-left" style="font-size: 20px; font-weight: 600; color: #254373">Datos Principales</span>
+          </div>
+        </div>
+        <div class="row my-3" style="font-size: 15px">
+          <div class="col-4">
+            <span style="color: #254373"><b>Documento: </b></span>
+            <span>${datos.NroDocumento_Trabajador_H}</span>
+          </div>
+          <div class="col-4">
+            <span style="color: #254373"><b>Nombres: </b></span>
+            <span>${datos.Nombres_Trabajador_H}</span>
+          </div>
+          <div class="col-4">
+            <span style="color: #254373"><b>Apellidos: </b></span>
+            <span>${datos.Apellidos_Trabajador_H}</span>
+          </div>
+        </div>
+        <div class="row my-3" style="font-size: 15px">
+          <div class="col-4">
+            <span style="color: #254373"><b>C.Colaborador: </b></span>
+            <span>${datos.CodigoColaborador_Trabajador_H}</span>
+          </div>
+          <div class="col-4">
+            <span style="color: #254373"><b>Telefono: </b></span>
+            <span>${datos.Telefono_Trabajador_H}</span>
+          </div>
+          <div class="col-4">
+            <span style="color: #254373"><b>Sexo: </b></span>
+            <span>${(datos.Sexo_Trabajador_H == 1) ? 'Masculino' : 'Femenino'}</span>
+          </div>
+        </div>
+        <div class="row my-3" style="font-size: 15px">
+          <div class="col-12">
+            <span style="color: #254373"><b>Dirección: </b></span>
+            <span>${datos.Direccion_Trabajador_H}</span>
+          </div>
+        </div>
+        <div class="row my-3" style="font-size: 15px">
+          <div class="col-4">
+            <span style="color: #254373"><b>F.Nacimiento: </b></span>
+            <span>${datos.fecha_nacimiento}</span>
+          </div>
+          <div class="col-4">
+            <span style="color: #254373"><b>Edad: </b></span>
+            <span>${datos.Edad_Trabajador_H}</span>
+          </div>
+        </div>
+        <hr class="my-4">
+        <div class="row my-3">
+          <div class="col-12">
+            <span class="float-left" style="font-size: 20px; font-weight: 600; color: #254373">Datos de la empresa</span>
+          </div>
+        </div>
+        <div class="row my-3" style="font-size: 15px">
+          <div class="col-4">
+            <span style="color: #254373"><b>Sede: </b></span>
+            <span>${datos.SedeDescripcion}</span>
+          </div>
+          <div class="col-4">
+            <span style="color: #254373"><b>Área: </b></span>
+            <span>${datos.AreaDescripcion}</span>
+          </div>
+          <div class="col-4">
+            <span style="color: #254373"><b>Cargo: </b></span>
+            <span>${datos.CargoJefe_Empresa_H}</span>
+          </div>
+        </div>
+        <div class="row my-3" style="font-size: 15px">
+          <div class="col-4">
+            <span style="color: #254373"><b>Jefe inmediato: </b></span>
+            <span>${datos.JefeInmediato_Empresa_H}</span>
+          </div>
+          <div class="col-4">
+            <span style="color: #254373"><b>Celular: </b></span>
+            <span>${datos.Celular_Empresa_H}</span>
+          </div>
+          <div class="col-4">
+            <span style="color: #254373"><b>Telefono: </b></span>
+            <span>${datos.Telefono_Empresa_H}</span>
+          </div>
+        </div>
+      </div>            
+    `,
+    iconHtml: '<img src="./images/sho/perfil.svg">',
+    width: 800,
+    showCancelButton: true,
+    showConfirmButton: false,
+    cancelButtonColor: "#ff3636",
+    cancelButtonText: `Cancelar <img src="./images/sho/cancelar.svg">`,
+  })
+  $('.swal2-cancel').css('width', '200px');
+  $('.swal2-html-container').css('overflow', 'visible');
+
+}
+
+function ecSp4cargarDatosGeneralesEC(Id_HC) {
+  
+  //Variable a consultar en la BD. Se consulta con el ID de la Historia Clínica
+  idHC_EC = Id_HC;
+  
+  //Se especifican los parametros para la consulta
+  let url = `https://5h0-dev-salud.azurewebsites.net/api/hce_Get_003_historia_clinica_datos_generales?code=EGqLSsRdXVPm7TSRIZ6/MGieka3md/u1gwzEwWcGhOjMZqDNK1jjRw==`;
+  let headers = {
+    "apikey": constantes.apiKey,
+    "Content-Type": "application/json"
+  }
+  let settings = {
+    "url": url,
+    "method": "get",
+    "timeout": 0,
+    "crossDomain": true,
+    "dataType": 'json',
+    "headers": headers,
+    "data": { "IdHC": idHC_EC }
+  };
+
+  //Se consulta mediante el metodo Ajax
+  return $.ajax(settings).done((response) => {
+
+    //Se asiga la respuesta de la Historia al Obj paObj_ec
+    paObj_ec[idHC_EC] = response.HistoriaClin[0];
+
+    //Se recorre el listado Áreas y se compara con el AreaId_Empresa_H del paObj_ec y se añade la descripción del área al objeto paObj_ec
+    pluck_ec["Areas"].forEach((Item) => {
+
+      if (Item.Id == paObj_ec[idHC_EC].AreaId_Empresa_H) {
+        paObj_ec[idHC_EC].AreaDescripcion = Item.Description;
+      }
+
+    });
+
+    //Se recorre el listado Gerencias y se compara con el GerenciaId_Empresa_H del paObj_ec y se añade la descripción de la gerencia al objeto paObj_ec
+    pluck_ec["Gerencias"].forEach((Item) => {
+
+      if (Item.Id == paObj_ec[idHC_EC].GerenciaId_Empresa_H) {
+        paObj_ec[idHC_EC].GerenciaDescripcion = Item.Description;
+      }
+
+    });
+
+    //Se recorre el listado Sedes y se compara con el SedeId_Empresa_H del paObj_ec y se añade la descripción de la sede al objeto paObj_ec
+    pluck_ec["Sedes"].forEach((Item) => {
+
+      if (Item.Id == paObj_ec[idHC_EC].SedeId_Empresa_H) {
+        paObj_ec[idHC_EC].SedeDescripcion = Item.Description;
+      }
+
+    });
+
+    //Se recorre el listado Sedes y se compara con el SedeId_Empresa_H del paObj_ec y se añade la descripción de la sede al objeto paObj_ec
+    //PENDIENTE
+    /*pluck_ec["GrupoSanguineo"].forEach((Item) => {
+
+      if (Item.Id == paObj_ec[idHC].A_GrupoSanguineo) {
+        paObj_ec[idHC].GrupoSanguineoDescripcion = Item.Descripcion;alert(paObj_ec[idHC].GrupoSanguineoDescripcion);
+      }
+
+    });*/
+
+    //Se cargan los elementos de la vista con la data obtenida
+    ecSp4cargarElementosDatosGeneralesEC();
+
+  });
+
+}
+
+
+function ecSp4CargarEnfermedadesCronicasIdHistoriaClinica() {
+  
+  //Se especifican los parametros para la consulta
+  let url =  apiUrlsho+`/api/hce_enfermedades_cronicas?code=noDt5LQMV9CC2oM2x9LajYZaZw6Bvss3KqqWzg7wr4JQSgfh0RAPTg==&AccionBackend=Lista_EC_Historia_Clinica`;
+
+  let headers = {
+    "apikey": constantes.apiKey,
+    "Content-Type": "application/json"
+  }
+
+  let settings = {
+    "url": url,
+    "method": "get",
+    //"timeout": 0,
+    //"crossDomain": true,
+    "dataType": 'json',
+    "headers": headers,
+    "data": { "IdHC": idHC }
+  };
+
+  //Se consulta mediante el metodo Ajax
+  return $.ajax(settings).done((response) => {
+ 
+    paObj_ec["EnfermedadesCronica"] = response.EnfermedadesC;
+
+    ecSp4CargarDetalleEnfermedadesCronicasIdHistoriaClinica()
+
+  });
+
+}
+
+function ecSp4VerDetalleInterconsulta(IdInterconsulta){
+
+  idDetalle = IdInterconsulta;
+
+  handlerUrlhtml('contentGlobal', 'view/sho-hce/enfermedades_cronicas/verInterconsulta.html', 'Ver Datos de la Transferencia ');
+
+}
+
+function ecSp4CargarDetalleEnfermedadesCronicasIdHistoriaClinica(){
+
+  $(".row-enfermedad-cronica").remove();
+
+  let control_contador = 0;
+
+  if(Object.keys(paObj_ec["EnfermedadesCronica"]).length > 0){
+
+    $.each(paObj_ec["EnfermedadesCronica"], function(index,accountObjEnfermedadesCronica){
+        
+      html_tbody = "<div class='row mb-5 d-flex align-items-center row-enfermedad-cronica'>";
+      html_tbody += "<div class='col-md-6 col-sm-6 mr-auto p-2'>";
+      html_tbody += "<span class='titulo'>";
+      html_tbody += accountObjEnfermedadesCronica.NombreEnfermedad;
+      html_tbody += "</span>";
+      html_tbody += "</div>";      
+      html_tbody += "<div class='p-2'>";
+      html_tbody += "<span class='subtitulo' style='font-weight: 600; color: #01719d; cursor: pointer;' onclick='ecSp4editarEnfermedadCronica("+accountObjEnfermedadesCronica.Id+");'> Editar registro </span>";
+      html_tbody += "</div>"
+      html_tbody += "</div>";
+      html_tbody += 
+      "<div class='row mb-5 row-enfermedad-cronica'>"+
+        "<div class='col-md-12'>"+
+          "<ul class='nav nav-pills mb-5' id='myTab-"+(index+1)+"' role='tablist'>"+
+            "<li class='nav-item  mb-3'>"+
+              "<a class='nav-link active' id='des_med-tab-"+(index+1)+"' data-toggle='tab' href='#des_med-"+(index+1)+"' role='tab' aria-controls='des_med-"+(index+1)+"' aria-selected='true'>Descanso médico</a>"+
+            "</li>"+
+            "<li class='nav-item'>"+
+              "<a class='nav-link' id='transf-tab-"+(index+1)+"' data-toggle='tab' href='#transf-"+(index+1)+"' role='tab' aria-controls='transf-"+(index+1)+"' aria-selected='false'>Transferencias</a>"+
+            "</li>"+
+            "<li class='nav-item'>"+
+              "<a class='nav-link' id='inter_consul-tab-"+(index+1)+"' data-toggle='tab' href='#inter_consul-"+(index+1)+"' role='tab' aria-controls='inter_consul-"+(index+1)+"' aria-selected='false'>Interconsulta</a>"+
+            "</li>"+
+            "<li class='nav-item'>"+
+              "<a class='nav-link' id='hist_coment-tab-"+(index+1)+"' data-toggle='tab' href='#hist_coment-"+(index+1)+"' role='tab' aria-controls='hist_coment-"+(index+1)+"' aria-selected='false'>Historial de conmentarios</a>"+
+            "</li>"+
+          "</ul>"+
+          "<div class='tab-content mt-5' id='myTabContent-"+(index+1)+"'>"+  
+            "<div class='tab-pane fade show active' id='des_med-"+(index+1)+"' role='tabpanel' aria-labelledby='des_med-tab-"+(index+1)+"'>"+
+              "<div class='col-md-12'>"+
+                "<div class='d-flex justify-content-end'>"+
+                  "<div id='cant_planes-"+(index+1)+"'>"+
+                    "<img src='images/iconos/copia-1.svg' style='width: 20px' />"+
+                  "</div>"+
+                  "<span class='cantidad ml-3' style='font-size: 15px'>"+
+                    "<span id='table_sp4EnferCron_des_med-count-row-"+(index+1)+"'></span> registros</span>"+
+                "</div>"+
+              "</div>"+
+              "<div class='table-responsive'>"+
+                "<table class='table-box' id='table_sp4EnferCron_des_med-"+(index+1)+"'>"+
+                  "<thead>"+
+                    "<tr>"+
+                      "<th>F. Inicio</th>"+
+                      "<th>F. Fin</th>"+
+                      "<th>Días</th>"+
+                      "<th>Días acumulados</th>"+
+                      "<th>Días restantes</th>"+
+                      "<th>Diagnóstico</th>"+
+                      "<th>Tipo de contingencia</th>"+
+                      "<th></th>"+
+                    "</tr>"+
+                  "</thead>"+
+                  "<tbody id='content_sp4EnferCron_des_med-"+(index+1)+"'>";
+                  
+                  control_contador = 0;                  
+
+                  $.each(accountObjEnfermedadesCronica.DescansoEC, function(indexDescanso,accountObjDescanso){
+                    
+                    if(parseInt(accountObjDescanso.EnfermedadCronicaId) == parseInt(accountObjEnfermedadesCronica.Id)){
+
+                      control_contador++;
+                      paObj_detalleDescanso[accountObjDescanso.DescansoMedicoId] = accountObjDescanso;
+                      
+                      html_tbody += 
+                      "<tr class='table-row'>"+
+                        "<td>"+new Date(accountObjDescanso.B_FechaIni).toLocaleDateString('en-GB').split('T')[0]+"</td>"+
+                        "<td>"+new Date(accountObjDescanso.B_FechaFin).toLocaleDateString('en-GB').split('T')[0]+"</td>"+
+                        "<td>"+accountObjDescanso.B_CantidadDias+"</td>"+
+                        "<td>"+accountObjDescanso.B_DiasAcumulados+"</td>"+ 
+                        "<td>"+ecSp4CalcularDiasRestantesDescansoMedicoEC( accountObjDescanso.B_FechaIni, accountObjDescanso.B_FechaFin )+"</td>"+                 
+                        "<td>"+accountObjDescanso.Diagnostico+"</td>"+
+                        "<td>"+accountObjDescanso.TipoContingenciaName+"</td>"+
+                        "<td>"+
+                          "<div class='dropdown float-right dropleft'>"+
+                            "<div class='more-info' id='item_descanso_"+(index+1)+"' data-toggle='dropdown'>"+
+                              "<img src='images/iconos/menu_responsive.svg' style='width: 18px; margin-right: 12px'/>"+
+                            "</div>"+
+                            "<div class='dropdown-menu' aria-labelledby='item_descanso_"+(index+1)+"'>"+
+                              "<ul>"+
+                                "<li onclick='escaneadoDescanso();'>"+
+                                  "<img src='./images/sho/eyeIcon.svg'/>"+
+                                  "<span>Descanso escaneado</span>"+
+                                "</li>"+
+                              "</ul>"+
+                            "</div>"+
+                          "</div>"+                     
+                        "</td>"+
+                      "</tr>";
+
+                    }                      
+
+                  });                  
+                  
+                  if(control_contador == 0){
+
+                    html_tbody +=
+                    "<tr class='table-empty'>"+            
+                      "<td colspan='8' class='text-center text-uppercase'>"+
+                        "No hay informacion registrada"+
+                      "</td>"+
+                    "</tr> ";
+
+                  }                  
+
+                  html_tbody +=
+                  "</tbody>"+
+                "</table>"+
+              "</div>"+                        
+            "</div>"+
+            "<div class='tab-pane fade' id='transf-"+(index+1)+"' role='tabpanel' aria-labelledby='transf-tab-"+(index+1)+"'>"+
+              "<div class='col-md-12'>"+
+                "<div class='d-flex justify-content-end'>"+
+                  "<div id='cant_planes-"+(index+1)+"'>"+
+                    "<img src='images/iconos/copia-1.svg' style='width: 20px' />"+
+                  "</div>"+
+                  "<span class='cantidad ml-3' style='font-size: 15px'>"+
+                    "<span id='table_sp4EnferCron_transf-count-row-"+(index+1)+"'></span> registros</span>"+
+                "</div>"+
+              "</div>"+            
+              "<div class='table-responsive'>"+
+                "<table class='table-box' id='table_sp4EnferCron_transf-"+(index+1)+"'>"+
+                  "<thead>"+
+                    "<tr>"+
+                      "<th>Código de transferencia</th>"+
+                      "<th>Establecimiento</th>"+
+                      "<th>Fecha de transferencia</th>"+
+                      "<th>Recepción de constancia </th>"+
+                    "</tr>"+
+                  "</thead>"+
+                  "<tbody id='content_sp4EnferCron_transf-"+(index+1)+"'>";
+
+                  control_contador = 0; 
+
+                  $.each(accountObjEnfermedadesCronica.TransferenciaEC, function(indexTransferenciaEC,accountObjTransferenciaEC){
+
+                    if(parseInt(accountObjTransferenciaEC.EnfermedadCronicaId) == parseInt(accountObjEnfermedadesCronica.Id)){
+
+                      control_contador++;
+                      paObj_detalleTransferencia[accountObjTransferenciaEC.TransferenciaId] = accountObjTransferenciaEC;
+
+                      html_tbody +=
+                      "<tr class='table-row'>"+
+                        "<td>"+accountObjTransferenciaEC.A_CodeTransferencia+"</td>"+
+                        "<td>"+accountObjTransferenciaEC.A_Empresa+"</td>"+
+                        "<td>"+new Date(accountObjTransferenciaEC.A_FechaTransferencia).toLocaleDateString('en-GB').split('T')[0]+"</td>"+
+                        "<td>PENDIENTE</td>"+                  
+                      "</tr>";
+
+                    }
+
+                  });
+
+                  if(control_contador == 0){
+
+                    html_tbody +=
+                    "<tr class='table-empty'>"+            
+                      "<td colspan='4' class='text-center text-uppercase'>"+
+                        "No hay informacion registrada"+
+                      "</td>"+
+                    "</tr> ";
+
+                  }                     
+                    
+                  html_tbody += 
+                  "</tbody>"+
+                "</table>"+
+              "</div>"+            
+            "</div>"+  
+            "<div class='tab-pane fade' id='inter_consul-"+(index+1)+"' role='tabpanel' aria-labelledby='inter_consul-tab-"+(index+1)+"'>"+
+              "<div class='col-md-12'>"+
+                "<div class='d-flex justify-content-end'>"+
+                  "<div id='cant_planes'>"+
+                    "<img src='images/iconos/copia-1.svg' style='width: 20px' />"+
+                  "</div>"+
+                  "<span class='cantidad ml-3' style='font-size: 15px'>"+
+                    "<span id='table_sp4EnferCron_inter_consul-count-row-"+(index+1)+"'></span> registros</span>"+
+                "</div>"+
+              "</div>"+
+              "<div class='table-responsive'>"+
+                "<table class='table-box' id='table_sp4EnferCron_inter_consul-"+(index+1)+"'>"+
+                  "<thead>"+
+                    "<tr>"+
+                      "<th>Código de interconsulta</th>"+
+                      "<th>F.  Emisión</th>"+
+                      "<th>Especialidad </th>"+
+                      "<th>Recepcion de respuesta</th>"+
+                      "<th>Aptitud</th>"+
+                      "<th></th>"+
+                    "</tr>"+
+                  "</thead>"+
+                  "<tbody id='content_sp4EnferCron_inter_consul-"+(index+1)+"'>";
+
+                  control_contador = 0; 
+
+                  $.each(accountObjEnfermedadesCronica.InterconsultaEC, function(indexInterconsultaEC,accountObjInterconsultaEC){
+
+                    if(parseInt(accountObjInterconsultaEC.EnfermedadCronicaId) == parseInt(accountObjEnfermedadesCronica.Id)){
+
+                      control_contador++;
+                      paObj_detalleInterconsulta[accountObjInterconsultaEC.InterconsultaId] = accountObjInterconsultaEC;
+
+                      html_tbody +=
+                      "<tr class='table-row'>"+
+                        "<td>"+accountObjInterconsultaEC.A_CodeInterconsulta+"</td>"+
+                        "<td>"+new Date(accountObjInterconsultaEC.A_FechaInterconsulta).toLocaleDateString('en-GB').split('T')[0]+"</td>";
+                        
+                        $.each(pluck_ec["Especialidades"], function(index,accountObjEspecialidades){
+
+                          if( parseInt(accountObjEspecialidades.Id) == parseInt(accountObjInterconsultaEC.A_InterEspecialidad) ){
+
+                            html_tbody +=
+                            "<td>"+accountObjEspecialidades.Descripcion+"</td>";
+
+                          }
+
+                        });  
+
+                        if(parseInt(accountObjInterconsultaEC.A_InterEspecialidad) == 0){
+
+                          html_tbody +=
+                          "<td>--</td>";  
+
+                        }                    
+                        
+                        html_tbody +=
+                        "<td>"+(parseInt(accountObjInterconsultaEC.B_RecibioRespuesta) == 1 ? "Si" : "No")+"</td>";
+
+                        html_tbody +=
+                        "<td>"+(parseInt(accountObjInterconsultaEC.C_ActitupParaLaboral) == 1 ? "Apto" : "No Apto")+"</td>";
+
+                        /*$.each(pluck_ec["Aptitud"], function(index,accountObjAptitud){
+
+                          if( parseInt(accountObjAptitud.Id) == parseInt(accountObjInterconsultaEC.C_ActitupParaLaboral) ){
+
+                            html_tbody +=
+                            "<td>"+accountObjAptitud.Descripcion+"</td>";
+
+                          }
+
+                        });  
+
+                        if(parseInt(accountObjInterconsultaEC.C_ActitupParaLaboral) == 0){
+
+                          html_tbody +=
+                          "<td>No Apto</td>";  
+
+                        }*/  
+
+                        html_tbody +=
+                        "<td>"+
+                          "<div class='dropdown float-right dropleft'>"+
+                            "<div class='more-info' id='item_transferencia_"+(index+1)+"' data-toggle='dropdown'>"+
+                              "<img src='images/iconos/menu_responsive.svg' style='width: 18px; margin-right: 12px'/>"+
+                            "</div>"+
+                            "<div class='dropdown-menu' aria-labelledby='item_transferencia_"+(index+1)+"'>"+
+                              "<ul>"+
+                                "<li onclick='ecSp4VerDetalleInterconsulta("+accountObjInterconsultaEC.InterconsultaId+");'>"+
+                                  "<img src='./images/sho/eyeIcon.svg'/>"+
+                                  "<span>Ver detalle</span>"+
+                                "</li>"+
+                              "</ul>"+
+                            "</div>"+
+                          "</div>"+
+                        "</td>"+
+                      "</tr>";
+
+                    }
+
+                  });  
+
+                  if(control_contador == 0){
+
+                    html_tbody +=
+                    "<tr class='table-empty'>"+            
+                      "<td colspan='6' class='text-center text-uppercase'>"+
+                        "No hay informacion registrada"+
+                      "</td>"+
+                    "</tr> ";
+
+                  } 
+                    
+                  html_tbody +=
+                  "</tbody>"+
+                "</table>"+
+              "</div>"+
+            "</div>"+
+            "<div class='tab-pane fade' id='hist_coment-"+(index+1)+"' role='tabpanel' aria-labelledby='hist_coment-tab-"+(index+1)+"'>"+
+              "<div class='col-md-12'>"+
+                "<div class='d-flex justify-content-end'>"+
+                  "<div id='cant_planes-"+(index+1)+"'>"+
+                    "<img src='images/iconos/copia-1.svg' style='width: 20px' />"+
+                  "</div>"+
+                  "<span class='cantidad ml-3' style='font-size: 15px'>"+
+                    "<span id='table_sp4EnferCron_hist_coment-count-row-"+(index+1)+"'></span> registros</span>"+
+                "</div>"+
+              "</div>"+           
+              "<div class='table-responsive'>"+
+                "<table class='table-box' id='table_sp4EnferCron_hist_coment-"+(index+1)+"'>"+
+                  "<thead>"+
+                    "<tr>"+
+                      "<th>Fecha de registro</th>"+
+                      "<th width='700px'>Comentarios</th>"+
+                    "</tr>"+
+                  "</thead>"+
+                  "<tbody id='content_sp4EnferCron_hist_coment-"+(index+1)+"'>";
+
+                  control_contador = 0; 
+
+                  $.each(accountObjEnfermedadesCronica.ComentarioEC, function(index2,accountObjComentarioEC){
+
+                    if(parseInt(accountObjComentarioEC.EnfermedadCronicaId) == parseInt(accountObjEnfermedadesCronica.Id)){
+
+                      control_contador++;
+
+                      html_tbody +=
+                      "<tr class='table-row'>"+
+                        "<td>"+new Date(accountObjComentarioEC.CreadoFecha).toLocaleDateString('en-GB').split('T')[0]+"</td>"+
+                        "<td width='700px'>"+accountObjComentarioEC.Comentarios+"</td>"+
+                      "</tr>"; 
+
+                    } 
+
+                  }); 
+
+                  if(control_contador == 0){
+
+                    html_tbody +=
+                    "<tr class='table-empty'>"+            
+                      "<td colspan='2' class='text-center text-uppercase'>"+
+                        "No hay informacion registrada"+
+                      "</td>"+
+                    "</tr> ";
+
+                  }              
+
+                  html_tbody +=  
+                  "</tbody>"+
+                "</table>"+
+              "</div>"+             
+            "</div>"+
+          "</div>"+              
+        "</div>"+
+      "</div>";
+
+      if((Object.keys(paObj_ec["EnfermedadesCronica"])).length != (index+1)){
+        html_tbody += "<hr class='mt-4 row-enfermedad-cronica'>";
+      }
+      
+      $(".main-content-ec").append(html_tbody);
+
+    }); 
+
+  }
+  else{
+
+    $("#enfermedades-cronicas-empty").removeClass('d-none');
+
+  }
+
+  $.each(paObj_ec["EnfermedadesCronica"], function(index,accountObjEnfermedadesCronica){
+
+    $("#table_sp4EnferCron_des_med-count-row-"+(index+1)).text($("#table_sp4EnferCron_des_med-"+(index+1)+" tr.table-row").length);
+    $("#table_sp4EnferCron_transf-count-row-"+(index+1)).text($("#table_sp4EnferCron_transf-"+(index+1)+" tr.table-row").length);
+    $("#table_sp4EnferCron_inter_consul-count-row-"+(index+1)).text($("#table_sp4EnferCron_inter_consul-"+(index+1)+" tr.table-row").length);
+    $("#table_sp4EnferCron_hist_coment-count-row-"+(index+1)).text($("#table_sp4EnferCron_hist_coment-"+(index+1)+" tr.table-row").length);
+
+  });
+
+}
+
+//Crear servicio para para traer especialidades
+function ecSp4cargarEspecialidades() {
+  
+  let url = apiUrlsho+`/api/hce_Get_005_interconsulta?code=5apeYFqxMjc7U4gRbZFs/mBepNwlDkPcUymNTlP7kzOsv5AN3DYecg==`;
+
+  let headers = {
+    "apikey": constantes.apiKey,
+    "Content-Type": "application/json"
+  }
+
+  let settings = {
+    "url": url,
+    "method": "get",
+    "timeout": 0,
+    "crossDomain": true,
+    "dataType": 'json',
+    "headers": headers,
+  };
+
+  return $.ajax(settings).done((response) => {
+    pluck_ec['Especialidades'] = response.IntercExpecialidad;
+  });
+}
+
+//Crear servicio para para traer aptituds
+function ecSp4cargarAptituds() {
+  
+  let url = apiUrlsho+`/api/hce_Get_040_aptitud?code=naSFtYAO8RHbK08dOfi93Vja7Cc9iCHjz6o7ldn9EW0dzFu3aU3jZg==`;
+
+  let headers = {
+    "apikey": constantes.apiKey,
+    "Content-Type": "application/json"
+  }
+
+  let settings = {
+    "url": url,
+    "method": "get",
+    "timeout": 0,
+    "crossDomain": true,
+    "dataType": 'json',
+    "headers": headers,
+  };
+
+  return $.ajax(settings).done((response) => {
+    pluck_ec['Aptitud'] = response.Aptitud;
+  });
+}
+
+async function _init_ecSp4EnfermedadesCronicas(Id_HC) {
+
+  //Se inicia el Cargando
+  showLoading();
+
+  await ecSp4CargaSedesAreasGerenciasEnfermedadesCronicas();
+  await ecSp4CargarGruposSanguineoEnfermedadesCronicas();
+  await ecSp4cargarSelectEnfermedadesCronicas();
+  await ecSp4cargarDatosGeneralesEC(Id_HC);
+  await ecSp4cargarEspecialidades();
+  await ecSp4cargarAptituds(); 
+  await ecSp4CargarEnfermedadesCronicasIdHistoriaClinica();
+
+  //Se apaga el Cargando
+  hideLoading();
+
+}
+
+function ecSp4editarEnfermedadCronica(Id_EC){
+
+  idEC = Id_EC;
+
+  handlerUrlhtml('contentGlobal', 'view/sho-hce/enfermedades_cronicas/editarEnfermedadCronica.html', 'Editar Enfermedades Crónicas');
+
+}
+
+$(document).ready(function() {
+
+  //Se inicializan las variables de control y temporales
+  controlNavHistoria = true;
+  idTemporalEC = 0;
+  ingresoControl = false;
+  campoControl = '';
+
+  //Se inicializa la vista  
+  _init_ecSp4EnfermedadesCronicas(idHC);
+
+  //amSp4GuardarComentarioEnfermedadCronica();  
+
+  //sp3HcMenuGenaralIzquierdoEventos(7);
+
+  //console.log("objeto sin el index: "+JSON.stringify(paObj_hc));
+  //console.log("objeto con el index: "+JSON.stringify(paObj_hc[idHC]));
+
+
+  $('#ver-datos').on('click',onVerDatosClick);
+  $('#ocultar-datos').on('click',onOcultarDatosClick);
+
+});
+
+
+function onVerDatosClick(){
+
+  $('#ver-datos').hide();
+  $('#ocultar-datos').show();
+
+  $('.contenedor-minimo').hide();
+  $('.contenedor-maximo').show();
+
+}
+
+function onOcultarDatosClick(){
+
+  $('#ocultar-datos').hide();
+  $('#ver-datos').show();
+
+  $('.contenedor-maximo').hide();
+  $('.contenedor-minimo').show();
+
+}
+
+function escaneadoDescanso(){
+
+  alert("Descanso Escaneado");
+
+}
+
+function detalleInterconsulta(){
+
+  alert("Detalle Interconsulta");
+
+}
+
+function editarEnfermedadCronica(){
+
+  alert("Editar Enfermedad Crónica");
+
+}
+
+</script>
+
+<!-- Otras Librerias JS -->
+<script src="js/sweetalert2.js"></script>
+<script src="js/jquery.mask.min.js"></script>
+<script src="js/svg-inject.min.js"></script>

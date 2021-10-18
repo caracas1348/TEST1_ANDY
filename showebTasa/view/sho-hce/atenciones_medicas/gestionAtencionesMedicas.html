@@ -1,0 +1,875 @@
+<link rel="stylesheet" href="./view/sho-hce/interconsultas_transferencias/sho.css">
+<link rel="stylesheet" href="css/sweetalert2.css">
+<!-- <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" /> -->
+<div class="container main-content">
+  <!-- DATOS DEL TRABAJADOR -->
+  <div>
+    <div class="row mb-5 align-items-center">
+      <div class="col-md-6 col-sm-12">
+        <span class="titulo">Datos del trabajador</span>
+      </div>
+      <div class="col-md-2">
+        <button type="button" class="btn btn-link btn-block btn-lg shadow-none" style="font-weight: bold; color: #01719d;" id="fn_hc_limpiar_datos" onclick="">Limpiar datos</button>
+      </div>
+      <div class="col-md-2 col-sm-6">
+        <button onclick="" type="button" class="btn btn-danger btn-block btn-lg" id="fn_hc_cancelar"> Cancelar <img src="./images/sho/cancelar.svg" alt="">
+        </button>
+      </div>
+      <div class="col-md-2 col-sm-6">
+        <button type="button" class="btn btn-success btn-block btn-lg" id="fn_hc_guardar" onclick=""> Guardar <img src="./images/sho/confirm.svg" alt="">
+        </button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Nro de documento</span>
+          <input type="text" id="dat_am_dni_trabajador" disabled>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Nombres</span>
+          <input type="text" id="dat_am_nombres_trabajador_editar" disabled>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Apellidos</span>
+          <input type="text" id="dat_am_apellidos_trabajador_editar" disabled>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Fecha de nacimiento</span>
+          <input type="text" id="dat_am_apellidos_trabajador_editar" disabled>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2 col-sm-4">
+        <div class="input-box-secondary">
+          <span>Edad</span>
+          <input type="text" id="dat_am_edad_trabajador_editar" disabled>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6 offset-md-1">
+        <div class="input-box-secondary">
+          <span>Grupo sanguineo</span>
+          <input type="text" id="dat_am_grupo_sanguineo" disabled>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Fecha de ingreso a TASA</span>
+          <input type="date" id="dat_am_fecha_ingreso" disabled>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Fecha de retiro</span>
+          <input type="date" id="dat_am_fecha_retiro" disabled>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Gerencia</span>
+          <select name="" id="dat_am_area_trabajador" disabled>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Planta</span>
+          <select name="" id="dat_am_planta_trabajador" disabled>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Área</span>
+          <select name="" id="dat_am_gerencia_trabajador" disabled>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Puesto de trabajo</span>
+          <input type="text" id="dat_am_puesto_trabajo_trabajador" disabled>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2 offset-md-10 offset-sm-0">
+        <button onclick="" class="btn btn-link shadow-none btn-block btn-lg" style="font-weight: bold; color: #01719d;">Ver datos completos
+        </button>
+      </div>
+    </div>
+  </div>
+  <!-- FIN DATOS DEL TRABAJADOR -->
+  <hr class=" mb-5 mt-4" />
+  <!-- INTERCONSULTA -->
+  <div>
+    <div class="row mb-5">
+      <div class="col-md-12">
+        <span class="titulo">Incidencia</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <span style="font-size: 14px;">
+          <b>¿Esta atenciòn esta relacionada a un riesgo de salud ocupacional?</b>
+        </span>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="px-4">
+        <input type="radio" name="recibio_respuesta_am" id="dat_am_recibio_respuesta_si" value="1">
+        <label for="dat_am_recibio_respuesta_si">Si</label>
+      </div>
+      <div class="px-4">
+        <input type="radio" name="recibio_respuesta_am" id="dat_am_recibio_respuesta_no" value="0">
+        <label for="dat_am_recibio_respuesta_no">No</label>
+      </div>
+    </div>
+  </div>
+  <!-- FIN INTERCONSULTA -->
+  <hr class="mb-5 mt-4" />
+  <!-- CONSULTA -->
+  <div>
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <span class="titulo">Datos de consulta</span>
+      </div>
+      <div class="col-md-3 offset-md-6 offset-sm-0 col-sm-6">
+        <button type="button" class="btn btn-info btn-block btn-lg" onclick=""> Anexar atención médica <img src="./images/sho/confirm.svg" alt="">
+        </button>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Motivo de consulta</span>
+          <select name="" id="dat_am_motivo_consulta">
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="input-box-secondary">
+          <span>Anamnesis</span>
+          <input type="text" id="dat_am_anamnesis_consulta">
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- FIN CONSULTA -->
+  <hr class="mb-5 mt-4">
+  <!-- SIGNOS VITALES -->
+  <div>
+    <div class="row mt-4">
+      <div class="col-md-6 d-flex align-items-center">
+        <span class="titulo"> Signos vitales </span>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">
+        <div class="d-flex">
+          <img src="./images/sho/arterial.svg" alt="">
+           <span>Presión arterial (mmHg)</span>
+        </div>
+        <div class="input_hc_sp3">
+          <input class="form-control" type="number" value="0" min="0" id="dat_hc_presion_arterial_sv">
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">
+        <div class="d-flex">
+          <img src="./images/sho/cardiaca.svg" alt="">
+           <span>Frecuencia cardiaca  (LPM)</span>
+        </div>
+        <div class="input_hc_sp3">
+          <input class="form-control" type="number" value="0" min="0" id="dat_hc_frecuencia_cardiaca_sv">
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">
+        <div class="d-flex">
+          <img src="./images/sho/respiratoria.svg" alt="">
+          <span>Frecuencia respiratoria (RPM)</span>
+        </div>
+        <div class="input_hc_sp3">
+          <input class="form-control" type="number" value="0" min="0" id="dat_hc_frecuencia_respiratoria_sv">
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">
+        <div class="d-flex">
+          <img src="./images/sho/temperatura.svg" alt="" style="left: 30px">
+          <span>Temperatura (°C)</span>
+        </div>
+        <div class="input_hc_sp3">
+          <input class="form-control" type="number" value="0" min="0" id="dat_hc_temperatura_sv">
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">
+        <div class="d-flex">
+          <img src="./images/sho/peso.svg" alt="">
+          <span>Peso (Kg)</span>
+        </div>
+        <div class="input_hc_sp3">
+          <input class="form-control" type="number" value="0" min="0" id="dat_hc_peso_sv" onchange="imc('dat_hc_peso_sv', 'dat_hc_talla_sv', 'dat_hc_masa_corporal_sv')">
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">
+        <div class="d-flex">
+          <img src="./images/sho/talla.svg" alt="" style="left: 30px">
+         <span>Talla (m)</span>
+        </div>
+        <div class="input_hc_sp3">
+          <input class="form-control" type="number" value="0" min="0" id="dat_hc_talla_sv" onchange="imc('dat_hc_peso_sv', 'dat_hc_talla_sv', 'dat_hc_masa_corporal_sv')">
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">
+        <div class="d-flex">
+          <img src="./images/sho/saturacion.svg" alt="">
+          <span>Saturación (%)</span>
+        </div>
+        <div class="input_hc_sp3">
+          <input class="form-control" type="number" value="0" min="0" id="dat_hc_saturacion_sv">
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">
+        <div class="d-flex">
+          <img src="./images/sho/corporal.svg" alt="">
+          <span>Índice de masa corporal <br/> (Peso/Talla&#178;)</span>
+        </div>
+        <div class="input_hc_sp3">
+          <input class="form-control" type="number" value="0" min="0" id="dat_hc_masa_corporal_sv" disabled>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 item-sig-vital mb-3 px-4">
+        <div class="d-flex">
+          <img src="./images/sho/abdominal.svg" alt="">
+          <span>Perímetro abdominal (cm)</span>
+        </div>
+        <div class="input_hc_sp3">
+          <input class="form-control" type="number" value="0" min="0" id="dat_hc_perimetro_abdominal_sv">
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- FIN SIGNOS VETALES -->
+  <hr class="mb-5 mt-4">
+  <!-- EXAMEN FISICO -->
+  <div>
+    <div class="row mt-4">
+      <div class="col-md-6 mb-5">
+        <span class="titulo">Examen físico - Estado general</span>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Estado de conciencia</span>
+          <input type="text" id="dat_am_conciencia_examen">
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Estado de Nutrición</span>
+          <select name="" id="dat_am_nutricion_examen">
+          </select>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Estado general</span>
+          <select name="" id="dat_am_general_examen">
+          </select>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Estado de hidratación</span>
+          <select name="" id="dat_am_hidratacion_examen">
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="input-box-secondary">
+          <span>Orofaringe</span>
+          <input type="text" id="dat_am_orofaringe_examen">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="input-box-secondary">
+          <span>Torax y pulmones</span>
+          <input type="text" id="dat_am_torax_pulmones_examen">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="input-box-secondary">
+          <span>Cardio vascular</span>
+          <input type="text" id="dat_am_vascular_examen">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="input-box-secondary">
+          <span>SOMA</span>
+          <input type="text" id="dat_am_soma_examen">
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- FIN EXAMEN FISICO -->
+  <hr class="mb-5 mt-4">
+  <!-- OTROS -->
+  <div>
+    <div class="row mt-4">
+      <div class="col-md-6 mb-5">
+        <span class="titulo">Otros</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Tipo de evaluación</span>
+          <select name="" id="dat_am_tipo_evaluacion_otros">
+          </select>
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-12">
+        <div class="input-box-secondary">
+          <span>Escribir detalle</span>
+          <input type="text" id="dat_am_datalle_otros">
+        </div>
+      </div>
+      <div class="col-md-2 offset-md-1 col-sm-12">
+        <button class="btn btn-success btn-block btn-lg mt-2" onclick=""> Agregar a lista <img src="./images/sho/plus.svg" alt="" />
+        </button>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-md-12">
+        <div class="d-flex align-items-center">
+          <div id="cant_planes">
+            <img src="images/iconos/copia-1.svg" style="width: 20px" />
+          </div>
+          <span class="cantidad ml-3" id="dat_am_cantidad_otros" style="font-size: 15px">0 registros</span>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="table-responsive">
+          <table class="table-box" id="table_am_otros">
+            <thead>
+              <tr>
+                <th style="width: 300px;">Tipo de evaluación</th>
+                <th>Detalle</th>
+                <th>
+                  <div class="spinner-border spinner-border-sm float-right" id="am_spin_otros" role="status" style="display: none;">
+                    <span class="sr-only">Loading...</span>
+                  </div>
+                </th>
+              </tr>
+            </thead>
+            <tbody id="table_content_am_otros">
+              <tr>
+                <td>
+                  <span>Aparato digestivo</span>
+                </td>
+                <td>
+                  <span>Detalle 1</span>
+                </td>
+                <td>
+                  <!-- colocar display none al spiner -->
+                  <button type="button" class="btn btn-link shadow-none float-right">
+                    <div class="spinner-border text-danger spinner-border-sm" role="status">
+                      <span class="sr-only">Loading...</span>
+                    </div>
+                  </button>
+                  <button type="button" class="btn btn-link shadow-none float-right">
+                    <img src="./images/sho/delete.svg" alt="">
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- FIN OTROS -->
+  <hr class="mb-5 mt-4">
+  <!-- DIAGNOSTO CIE10 -->
+  <div>
+    <div class="row mb-5">
+      <div class="col-md-12">
+        <span class="titulo">Diagnóstico CIE 10</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Diagnóstico</span>
+          <input type="text" id="dat_am_diagnostico_diagnostico">
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>CIE 10</span>
+          <select name="" id="dat_am_cie_diagnostico">
+            <option value="" selected disabled></option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Sistema afectado</span>
+          <select name="" id="dat_am_sistema_diagnostico">
+            <option value="" selected disabled></option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Sección afectada</span>
+          <select name="" id="dat_am_seccion_diagnostico">
+            <option value="" selected disabled></option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-md-3 offset-md-9 col-sm-4">
+        <button class="btn btn-success btn-block btn-lg float-right" onclick="interSp3GuardarDiagnosticoEditarInterconsulta()" id="btn_am_diagnostico_agregar" style="width:200px"> Agregar a lista <img class="inject-svg" src="./images/sho/plus.svg" alt="" fill="#fff" width="18px">
+        </button>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-md-12">
+        <div class="d-flex align-items-center">
+          <div id="cant_planes">
+            <img src="images/iconos/copia-1.svg" style="width: 20px" />
+          </div>
+          <span class="cantidad ml-3" id="dat_am_cantidad_diagnostico" style="font-size: 15px">0 registros</span>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="table-responsive">
+          <table class="table-box" id="table_am_diagnostico">
+            <thead>
+              <tr>
+                <th>Diagnóstico</th>
+                <th>CIE 10</th>
+                <th>Fecha de registro</th>
+                <th>Especialidad</th>
+                <th>Sistema afectado</th>
+                <th>Sección afectada</th>
+                <th>
+                  <div class="spinner-border spinner-border-sm float-right" id="int_spin_diagnostico" role="status" style="display: none;">
+                    <span class="sr-only">Loading...</span>
+                  </div>
+                </th>
+              </tr>
+            </thead>
+            <tbody id="content_am_diagnostico">
+              <tr>
+                <td>Dianostico 1</td>
+                <td>Tipo 1</td>
+                <td>21/10/2021</td>
+                <td>Especialidad</td>
+                <td>Sistema 1</td>
+                <td>Seccion 1</td>
+                <td>
+                  <div class="dropdown float-right dropleft">
+                    <div class="more-info" id="item_am_diagnostico_1" data-toggle="dropdown">
+                      <img src="images/iconos/menu_responsive.svg" alt="" />
+                    </div>
+                    <div class="dropdown-menu" aria-labelledby="item_am_diagnostico_1">
+                      <ul>
+                        <li>
+                          <span>Validar diagnostico anterior</span>
+                        </li>
+                        <li>
+                          <img src="./images/sho/delete.svg" alt="">
+                          <span>Eliminar</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Dianostico 2</td>
+                <td>Tipo 2</td>
+                <td>21/10/2021</td>
+                <td>Especialidad</td>
+                <td>Sistema 2</td>
+                <td>Seccion 2</td>
+                <td>
+                  <div class="dropdown float-right dropleft">
+                    <div class="more-info" id="item_am_diagnostico_2" data-toggle="dropdown">
+                      <img src="images/iconos/menu_responsive.svg" alt="" />
+                    </div>
+                    <div class="dropdown-menu" aria-labelledby="item_am_diagnostico_2">
+                      <ul>
+                        <li>
+                          <span>Validar diagnostico anterior</span>
+                        </li>
+                        <li>
+                          <img src="./images/sho/delete.svg" alt="">
+                          <span>Eliminar</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- FIN DIAGNOSTICO CIE10 -->
+  <hr class="mb-5 mt-4">
+  <!-- DETALLE DEL DESCANSO -->
+  <div>
+    <div class="row mb-5">
+      <div class="col-md-6">
+        <span class="titulo">Detalle del descanso</span>
+      </div>
+      <div class="col-md-3 offset-md-3 offset-sm-0">
+        <button type="button" class="btn btn-info btn-block btn-lg" onclick=""> Imprimir descanso <img src="./images/sho/print.svg" alt="">
+        </button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Personal de salud</span>
+          <input type="text" id="dat_am_personal_descanso">
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Tipo de contingencia</span>
+          <select name="" id="dat_am_contingencia_descanso">
+          </select>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>¿Descanso por enfermedad?</span>
+          <select name="" id="dat_am_enfermedad_descanso">
+            <option value="0">No</option>
+            <option value="1">Si</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>CMP</span>
+          <input type="text" id="dat_am_cmp_descanso">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Cantidad de días</span>
+          <input type="text" id="dat_am_cantidad_dias_descanso">
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Días acumulados</span>
+          <input type="text" id="dat_am_dias_acumulados_descanso">
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Fecha de inicio</span>
+          <input type="date" id="dat_am_fecha_inicio_descanso">
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Fecha fin</span>
+          <input type="date" id="dat_am_fecha_fin_descanso">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>¿Hubo alta médica?</span>
+          <select name="" id="dat_am_alta_medica_descanso">
+            <option value="0">No</option>
+            <option value="1">Si</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-12">
+        <div class="input-box-secondary">
+          <span>Establecimiento de emisión del descanso</span>
+          <select name="" id="dat_am_establecimineto_descanso">
+            <option value=""></option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Particular</span>
+          <input type="text" id="dat_am_particular_descanso">
+        </div>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-md-12 d-flex align-items-center">
+        <span class="titulo"> Adjuntar archivos </span>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-md-12">
+        <div class="input_file_upload border-content">
+          <label class="btn btn-success btn-lg" for="file_upload_descanso">
+            <div class="spinner-border spinner-border-sm" id="am_spin_guardar_adjunto" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+            <span>
+              Subir archivo
+            </span>
+            <img src="./images/sho/upload.svg" style="width:14px !important" />
+          </label>
+          <input type="file" id="file_upload_descanso" accept="application/pdf, .pdf, .doc, docx, .odf" onchange="">
+        </div>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-md-12">
+        <div class="d-flex align-items-center">
+          <div id="cant_planes">
+            <img src="images/iconos/copia-1.svg" style="width: 20px" />
+          </div>
+          <span class="cantidad ml-3" id="dat_am_cantidad_adjunto" style="font-size: 15px">0 archivos</span>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="table-responsive">
+          <table class="table-box" id="table_am_adjunto_descanso">
+            <thead>
+              <tr>
+                <th style="width: 300px">Nombre del archivo</th>
+                <th>Fecha de carga</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="content_am_adjunto_descanso">
+              <tr>
+                <td>Archivo 1</td>
+                <td>20/09/2021</td>
+                <td>
+                  <button type="button" class="btn btn-link shadow-none float-right">
+                    <div class="spinner-border text-danger spinner-border-sm" role="status">
+                      <span class="sr-only">Loading...</span>
+                    </div>
+                  </button>
+                  <button type="button" class="btn btn-link shadow-none float-right">
+                    <img src="./images/sho/delete.svg" alt="">
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- FIN DETALLE DESCANSO -->
+  <hr class="mb-5 mt-4">
+  <!-- TRATAMIENTO -->
+  <div>
+    <div class="row mb-5">
+      <div class="col-md-6">
+        <span class="titulo">Tratamiento</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 col-sm-12">
+        <div class="input-box-secondary">
+          <span>Escribir tratamiento</span>
+          <input type="text" id="dat_am_escribir_tratamiento">
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- FIN TRATAMIENTO -->
+  <hr class="mb-5 mt-4">
+  <!-- MEDICAMENTOS/INSUMOS -->
+  <div>
+    <div class="row mb-5">
+      <div class="col-md-6">
+        <span class="titulo">Medicamento/ Insumos</span>
+      </div>
+      <div class="col-md-2 offset-md-4 offset-sm-0">
+        <button type="button" class="btn btn-info btn-block btn-lg" onclick=""> Emitir receta <img src="./images/sho/emit.svg" alt="">
+        </button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Cobertura</span>
+          <select name="" id="dat_am_cobertura_medicamento">
+            <option value=""></option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Buscar medicamento</span>
+          <select name="" id="dat_am_buscar_medicamento">
+            <option value=""></option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Presentación</span>
+          <input type="text" id="dat_am_presentacion_medicamento">
+        </div>
+      </div>
+      <div class="col-md-2 offset-md-1 col-sm-6 offset-sm-0">
+        <button class="btn btn-success btn-block btn-lg float-right mt-1"> Agregar a lista <img src="./images/sho/plus.svg">
+        </button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Dosis requerida</span>
+          <input type="text" id="dat_am_dosis_requerida_medicamento">
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Dosis administrada por DSO</span>
+          <select name="" id="dat_am_buscar_dosis_administrada_medicamento">
+            <option value=""></option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Frecuencia</span>
+          <input type="text" id="dat_am_frecuencia_medicamento">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <div class="input-box-secondary">
+          <span>Tiempo de uso</span>
+          <input type="date" id="dat_am_dosis_requerida_medicamento">
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="row">
+          <div class="col-12">
+            <span style="font-size: 14px;">
+              <b>Se requiere emitir receta</b>
+            </span>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="px-4">
+            <input type="radio" name="emitir_receta_am" id="dat_am_emitir_receta_si" value="1">
+            <label for="dat_am_emitir_receta_si">Si</label>
+          </div>
+          <div class="px-4">
+            <input type="radio" name="emitir_receta_am" id="dat_am_emitir_receta_no" value="0">
+            <label for="dat_am_emitir_receta_no">No</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-md-12">
+        <div class="d-flex align-items-center">
+          <div id="cant_planes">
+            <img src="images/iconos/copia-1.svg" style="width: 20px" />
+          </div>
+          <span class="cantidad ml-3" id="dat_am_cantidad_medicamentos" style="font-size: 15px">0 archivos</span>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="table-responsive">
+          <table class="table-box" id="table_am_medicamentos">
+            <thead>
+              <tr>
+                <th>Cobertura</th>
+                <th>Medicamento</th>
+                <th>Presentación</th>
+                <th>Dosis requerida</th>
+                <th>Dosis administrada por DSO</th>
+                <th>Frecuencia</th>
+                <th>Tiempo de uso</th>
+                <th>Emitir receta</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="content_am_medicamentos">
+              <tr>
+                <td>Cobertura 1</td>
+                <td>Medicamento 1</td>
+                <td>Presentación 1</td>
+                <td>Dosis 1</td>
+                <td>Dosis 1</td>
+                <td>Cada 6 horas</td>
+                <td>1 Mes</td>
+                <td>Si</td>
+                <td>
+                  <button type="button" class="btn btn-link shadow-none float-right" style="display: none;">
+                    <div class="spinner-border text-danger spinner-border-sm" role="status">
+                      <span class="sr-only">Loading...</span>
+                    </div>
+                  </button>
+                  <button type="button" class="btn btn-link shadow-none float-right">
+                    <img src="./images/sho/delete.svg" alt="">
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- FIN MEDICAMENTOS/INSUMOS -->
+  <hr class="mb-5 mt-4">
+  <!-- CONCLUSIONES -->
+</div>
+<script src="js/sweetalert2.js"></script>
+<script src="js/jquery.mask.min.js"></script>
+<script src="js/svg-inject.min.js"></script>
+<script type="text/javascript">
+$(document).ready(() => {
+  SVGInject($(".inject-svg"));
+
+  // $('#dat_am_cie_diagnostico').select2();
+});
+</script>

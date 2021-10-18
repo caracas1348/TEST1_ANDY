@@ -1,0 +1,542 @@
+<!-- Boostrap multiselect -->
+<link rel="stylesheet" href="./view/sho-hce/enfermedades_cronicas/css/bootstrap-multiselect.css" type="text/css"/>
+<link rel="stylesheet" href="./view/sho-hce/enfermedades_cronicas/css/sho.css">
+<!-- <link rel="stylesheet" href="css/sweetalert2.css"> -->
+
+<link rel="stylesheet" href="./view/sho-hce/enfermedades_cronicas/css/dataTable.css">
+
+<!-- Page JS Plugins BOTONES -->
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.1/js/dataTables.buttons.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.1/js/buttons.flash.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.1/js/buttons.html5.min.js"></script>
+<!-- FIN Page JS Plugins BOTONES -->
+
+<style type="text/css">
+
+  .btn-table {
+    justify-content: flex-end;
+    padding-right:5px;
+  }
+
+  .dataTables_wrapper
+  {
+    padding-bottom: 15px !important;
+  }
+
+  .scrollbar::-webkit-scrollbar
+{
+    width: 2px !important;
+    background-color: #ffffff !important;
+    height: 12px !important;
+}
+ 
+.scrollbar::-webkit-scrollbar-thumb
+{
+    border-radius: 3px !important;
+    background-color: #44b5ff !important;
+}
+
+.scrollbar::-webkit-scrollbar-track{
+  border-radius: 3px !important;
+  box-shadow: 0 3px 6px 0 rgb(0 0 0 / 16%) !important;
+  border: solid 1px #ededed !important;
+  background-color: #f8f8f8 !important;
+
+}
+
+.dataTables_wrapper.no-footer .dataTables_scrollBody{
+
+  border-bottom: 0px !important;
+}
+
+table.dataTable {
+
+  border-spacing: 0px 5px !important;
+
+}
+
+</style>
+
+<div class="container main-content">
+  <div>
+    <!-- Busqueda de registro  -->
+    <div class="row mb-5 d-flex justify-content-between align-items-center">
+      <div class="p-2 mr-auto">
+        <span class="titulo">Busqueda de registro </span>
+      </div>
+    </div>
+    <!-- Fila 1 -->
+    <div class="row mb-5">
+      <div class="col-md-2">
+        <div class="form-box">
+          <span>Gerencia</span>
+          <select class="form-control data-filtro-select" id="sp4EnferCron_busq_reg_gerencia" data-filtro-select='3'>
+          </select> 
+        </div>
+      </div>
+      
+      <div class="col-md-1">
+        <div class="form-box">
+          <span>Unidad</span>
+          <select class="form-control data-filtro-select" id="sp4EnferCron_busq_reg_unidad" data-filtro-select='4'>
+          </select> 
+        </div>
+      </div>
+      
+      <div class="col-md-1">
+        <div class="form-box">
+          <span>Área</span>
+          <select class="form-control data-filtro-select" id="sp4EnferCron_busq_reg_area" data-filtro-select='5'>
+          </select> 
+        </div>
+      </div>      
+      
+      <div class="col-md-2">
+        <div class="form-box">
+          <span>Puesto de trabajo</span>
+          <input class="form-control data-filtro" type="" id="sp4EnferCron_busq_reg_puesto_trab" data-filtro='6'> 
+        </div>
+      </div>
+      
+      <div class="col-md-2">
+        <div class="form-box">
+          <span>Documento</span>
+          <input class="form-control numero data-filtro" type="" id="sp4EnferCron_busq_reg_documento" data-filtro='0'> 
+        </div>
+      </div>
+      
+      <div class="col-md-2">
+        <div class="form-box">
+          <span>Nombres</span>
+          <input class="form-control data-filtro" type="" id="sp4EnferCron_busq_reg_nombre" data-filtro='1'> 
+        </div>
+      </div>
+      
+      <div class="col-md-2">
+        <div class="form-box">
+          <span>Apellidos</span>
+          <input class="form-control data-filtro" type="" id="sp4EnferCron_busq_reg_apellido" data-filtro='2'> 
+        </div>
+      </div>
+    </div>                    
+    <!-- Fila 1 fin -->
+    
+    <!-- Fila 2 -->
+    <div class="row mb-5">          
+      <div class="col-md-2">
+        <div class="form-box">
+          <span>Enfermedad crónica</span>
+          <select class="form-control" id="sp4EnferCron_busq_reg_enfermedad_cronica" data-column='7'>            
+          </select> 
+        </div>
+      </div>
+      
+      <div class="col-md-3">
+        <div class="form-box">
+          <span>F. registro desde</span>
+          <input class="form-control" type="date" id="min"> 
+        </div>
+      </div>
+      
+      <div class="col-md-3">
+        <div class="form-box">
+          <span>F. registro hasta</span>
+          <input class="form-control" type="date" id="max"> 
+        </div>
+      </div>
+      
+      <div class="col-md-4">
+        <div class="form-box">
+          <span>Buscar</span>
+          <input class="form-control" type="" id="sp4EnferCron_busq_reg_general"> 
+        </div>
+      </div>
+    </div>
+    <!-- Fila 2 fin -->
+    <!-- Busqueda de registro  -->
+    
+    <!-- Table -->
+    <div class="row justify-content-between">
+      <!-- Nro de registros -->
+      <div class="col-md-6 p-2 mr-auto">
+        <div class="d-flex align-items-center">
+          <div id="cant_planes">
+            <img src="images/iconos/copia-1.svg" style="width: 20px" />
+          </div>
+          <span class="cantidad ml-3" style="font-size: 15px">
+            <span id="table_sp4EnferCron_transf_diagCIE102-count-row"></span> registros</span>
+        </div>
+      </div>
+    </div>  
+
+    <div class="row mb-2">
+      <div class="table-responsive" style="overflow-y:hidden!important;">
+        <table class="table-box" id="table_sp4EnferCron_transf_diagCIE102" style="margin-top: 0px !important;">
+          <thead>
+            <tr>
+              <th>Documento</th>
+              <th>Nombres</th>
+              <th>Apellidos</th>
+              <th>Gerencia</th>
+              <th>Planta</th>
+              <th>Área</th>
+              <th>Puesto de trabajo </th>
+              <th>Enfermedad crónica</th>
+              <th>F. registro</th>
+              <th>Cantidad de descansos médicos</th>
+              <th>Cantidad de trasnferencias</th>
+              <th>Cantidad de interconsultas</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="content_table_all_enfermedades_cronicas">
+               
+          </tbody>
+        </table>
+      </div>
+    </div>    
+    <!-- Table fin -->
+  </div>
+</div>
+
+<script src="./view/sho-hce/enfermedades_cronicas/js/main.js"></script>
+
+<!-- Boostrap multiselect -->
+<script type="text/javascript" src="./view/sho-hce/enfermedades_cronicas/js/bootstrap-multiselect.js"></script>
+
+
+<script type="text/javascript">
+$(document).ready(() => {
+  SVGInject($(".inject-svg"));
+});
+
+//--------------------------VARIABLES GLOBALES------------------------------//
+
+var ObjTabla = '';
+
+function ecSp4VerDetalleEnfermedadesCronicas(IdEnfermedad_Cronica) {
+
+  idEC = IdEnfermedad_Cronica;
+
+  handlerUrlhtml('contentGlobal','view/sho-hce/enfermedades_cronicas/detalleEnfermedadCronica.html','Detalle del registro enfermedades crónicas');
+
+}
+
+function ecSp4CargarTablaEnfermedadesCronicas(){
+
+  let contenido = '';
+  let html_tbody = '';
+
+  //Cargando Select de Áreas
+  contenido = $('#content_table_all_enfermedades_cronicas');
+  contenido.empty();
+
+  paObj_ec["EnfermedadCronicas"].forEach((Item) => {
+ 
+    //paObj_detalle[Item.Id] = Item;
+
+    html_tbody =  "<tr>";
+    html_tbody += "<td>"+Item.NroDocumento_Trabajador_H+"</td>";
+    html_tbody += "<td>"+Item.Nombres_Trabajador_H+"</td>";
+    html_tbody += "<td>"+Item.Apellidos_Trabajador_H+"</td>";
+    html_tbody += "<td>"+Item.GerenciaDescripcion+"</td>";
+    html_tbody += "<td>"+Item.SedeDescripcion+"</td>";
+    html_tbody += "<td>"+Item.AreaDescripcion+"</td>";
+    html_tbody += "<td>"+Item.PuestoTrabajo_Empresa_H+"</td>";
+    html_tbody += "<td>"+Item.NombreEnfermedad+"</td>";
+    html_tbody += "<td>"+new Date(Item.FechaRegistro).toLocaleDateString('en-GB').split('T')[0]+"</td>";
+    html_tbody += "<td>"+Item.Total_TDE+"</td>";
+    html_tbody += "<td>"+Item.Total_TTR+"</td>";
+    html_tbody += "<td>"+Item.Total_TIN+"</td>";
+    html_tbody += "<td>";
+    html_tbody += "<div class='dropdown dropleft'>";
+    html_tbody += "<a class='nav-link text-vertical' id='dropdownMenuButton' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>";
+    html_tbody += "...";
+    html_tbody += "</a>";
+    html_tbody += "<div class='dropdown-menu' aria-labelledby='dropdownMenuButton'>";
+    html_tbody += "<a class='dropdown-item' onclick='ecSp4VerDetalleEnfermedadesCronicas("+Item.Id+");' style='cursor: pointer;'>";
+    html_tbody += "<img src='./images/sho/eyeIcon.svg' alt='' fill='#01719d'>";
+    html_tbody += "&nbsp;&nbsp; Ver detalle";
+    html_tbody += "</a>";
+    html_tbody += "</div>";
+    html_tbody += "</div>"; 
+    html_tbody += "</td>";
+    html_tbody += "</tr>";
+
+    contenido.append(html_tbody);
+
+  });
+
+  ObjTabla = $('#table_sp4EnferCron_transf_diagCIE102').DataTable({
+    "pageLength": 10,
+    "ordering": false,
+    "scrollX": true,
+    "language": {
+      "paginate": {
+        "next": "»",
+        "previous": "«"
+      },
+      "loadingRecords":"Cargando registros...",
+      "processing":"Procesando...",
+      "infoPostFix":"",
+      "zeroRecords": "No se encontraron registros"
+    },
+    buttons:[
+      {extend:"excel",messageTop: 'MENSAJE SUPERIOR', title:'TITULO DEL EXCEL', className:"btn btn-info btn-lg", text:'<i class="fa fa-file-excel fa-1x"></i>',
+          exportOptions: {
+          columns: [ 0, 1, 2, 3, 4, 5, 6 ]
+      }},
+      {extend:"print",messageTop: 'MENSAJE SUPERIOR', title:'TITULO DEL EXCEL',className:"btn btn-info btn-lg", text:'<i class="fa fa-print fa-1x"></i>',
+          exportOptions: {
+          columns: [ 0, 1, 2, 3, 4, 5, 6 ]
+      }},
+      {extend:"pdf",messageTop: 'MENSAJE SUPERIOR', title:'TITULO DEL EXCEL',className:"btn btn-info btn-lg", text:'<i class="fa fa-file-pdf fa-1x"></i>',
+          exportOptions: {
+          columns: [ 0, 1, 2, 3, 4, 5, 6 ]
+      }}
+    ],
+    initComplete: function() {
+        this.api().columns([7]).every(function() {
+            var column = this;
+            var columnIndex = column.index();
+
+            var selects = $('select[data-column='+columnIndex+']').append('<option value=""></option>')
+            .on('change', function() {
+                var val = $.fn.dataTable.util.escapeRegex(
+                  $(this).val()
+                );
+
+                column
+                  .search(val ? '^' + val + '$' : '', true, false)
+                  .draw();
+                $('#table_sp4EnferCron_transf_diagCIE102-count-row').text(ObjTabla.page.info().recordsDisplay);
+            });
+
+            column.data().unique().sort().each(function(d, j) {
+
+              selects.append('<option value="' + d + '">' + d + '</option>');
+
+            });
+        });
+        $('body').find('.dataTables_scrollBody').addClass("scrollbar");
+    },
+    dom:
+      "<'row btn-table'<B>>"+
+      "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>>"+
+      "<'row row-records'<'col-sm-12'tr>>"+
+      "<'row row-info'<'col-sm-12 col-md-12'p>>"
+  });
+  
+  $('#table_sp4EnferCron_transf_diagCIE102-count-row').text(ObjTabla.rows().count());
+  $('.scrollbar').removeClass('dataTables_scrollBody');  
+
+  /* Inicializa la tabla cuando se hace uso del filtro fecha */
+  $.fn.dataTable.ext.search.push(
+    function( settings, data, dataIndex ) {
+
+      var iFini = document.getElementById('min').value;
+      var iFfin = document.getElementById('max').value;
+      var iStartDateCol = 8;
+      var iEndDateCol = 8;
+
+      iFini = iFini.replace(/-/g, "");
+      iFfin= iFfin.replace(/-/g, "");
+
+      var datofini=data[iStartDateCol].substring(6,10) + data[iStartDateCol].substring(3,5)+ data[iStartDateCol].substring(0,2);
+      var datoffin=data[iEndDateCol].substring(6,10) + data[iEndDateCol].substring(3,5)+ data[iEndDateCol].substring(0,2);
+
+      if ( iFini === "" && iFfin === "" )
+      {
+          return true;
+      }
+      else if ( iFini <= datofini && iFfin === "")
+      {
+          return true;
+      }
+      else if ( iFfin >= datoffin && iFini === "")
+      {
+          return true;
+      }
+      else if (iFini <= datofini && iFfin >= datoffin)
+      {
+          return true;
+      }
+      return false;
+
+    }
+  );
+
+}
+
+
+
+function ecSp4cargarSelectEnfermedadesCronicas(){
+
+  let contenido = '';
+
+  //Cargando Select de Áreas
+  contenido = $('#sp4EnferCron_busq_reg_area');
+  contenido.append(`<option value=""></option>`);
+
+  pluck_ec["Areas"].forEach((Item) => {
+    contenido.append(`<option value="${Item.Id}">${Item.Description}</option>`)
+  });
+
+  //Cargando Select de Gerencias
+  contenido = $('#sp4EnferCron_busq_reg_gerencia');
+  contenido.append(`<option value=""></option>`);
+
+  pluck_ec["Gerencias"].forEach((Item) => {
+    contenido.append(`<option value="${Item.Id}">${Item.Description}</option>`)
+  });
+
+  //Cargando Select de Sedes
+  contenido = $('#sp4EnferCron_busq_reg_unidad');
+  contenido.append(`<option value=""></option>`);
+
+  pluck_ec["Sedes"].forEach((Item) => {
+    contenido.append(`<option value="${Item.Id}">${Item.Description}</option>`)
+  });
+
+}
+
+function ecSp4BuscarTodasEnfermedadesCronicas() {
+  
+  //Se especifican los parametros para la consulta
+  let url =  apiUrlsho+`/api/hce_enfermedades_cronicas?code=noDt5LQMV9CC2oM2x9LajYZaZw6Bvss3KqqWzg7wr4JQSgfh0RAPTg==&AccionBackend=ListaEnfermedadesCronicas`;
+
+  let headers = {
+    "apikey": constantes.apiKey,
+    "Content-Type": "application/json"
+  }
+
+  let settings = {
+    "url": url,
+    "method": "get",
+    "dataType": 'json',
+    "headers": headers,
+  };
+
+  //Se consulta mediante el metodo Ajax
+  return $.ajax(settings).done((response) => {
+
+    //Se asiga la respuesta de la Historia al Obj paObj_ec
+    paObj_ec["EnfermedadCronicas"] = response.Enfermedad_Cronica;
+console.log('Objeto EC para ver Trasnferencias: '+ JSON.stringify(paObj_ec["EnfermedadCronicas"]));
+    paObj_ec["EnfermedadCronicas"].forEach((ItemEnfermedadCronicas) => {
+     //Se recorre el listado Áreas y se compara con el AreaId_Empresa_H del paObj_ec y se añade la descripción del área al objeto paObj_ec
+      pluck_ec["Areas"].forEach((Item) => {
+
+        if (Item.Id == ItemEnfermedadCronicas.AreaId_Empresa_H) {
+          ItemEnfermedadCronicas.AreaDescripcion = Item.Description;
+        }
+
+      });
+
+      //Se recorre el listado Gerencias y se compara con el GerenciaId_Empresa_H del paObj_ec y se añade la descripción de la gerencia al objeto paObj_ec
+      pluck_ec["Gerencias"].forEach((Item) => {
+
+        if (Item.Id == ItemEnfermedadCronicas.GerenciaId_Empresa_H) {
+          ItemEnfermedadCronicas.GerenciaDescripcion = Item.Description;
+        }
+
+      });
+
+      //Se recorre el listado Sedes y se compara con el SedeId_Empresa_H del paObj_ec y se añade la descripción de la sede al objeto paObj_ec
+      pluck_ec["Sedes"].forEach((Item) => {
+
+        if (Item.Id == ItemEnfermedadCronicas.SedeId_Empresa_H) {
+          ItemEnfermedadCronicas.SedeDescripcion = Item.Description;
+        }
+
+      });
+
+    });
+
+    ecSp4CargarTablaEnfermedadesCronicas();
+
+  });
+
+}
+
+async function _init_ecSp4BuscarEnfermedadesCronicas() {
+
+  //Se inicia el Cargando
+  showLoading();
+
+  await ecSp4CargaSedesAreasGerenciasEnfermedadesCronicas();
+  await ecSp4cargarSelectEnfermedadesCronicas();
+  await ecSp4BuscarTodasEnfermedadesCronicas();
+
+  //Se apaga el Cargando
+  hideLoading();
+
+}
+
+$(document).ready(function() { 
+
+  $('#dat_impactDM_especialidades').multiselect();
+  $('.multiselect').append('<span class="multiselect_label">Especialidades</span>');
+
+  _init_ecSp4BuscarEnfermedadesCronicas();
+
+  //amSp4GuardarComentarioEnfermedadCronica();
+
+  $('.data-filtro').on('keyup', function(){
+    
+    ObjTabla.column(parseInt($(this).attr('data-filtro'))).search($(this).val()).draw();
+    $('#table_sp4EnferCron_transf_diagCIE102-count-row').text(ObjTabla.page.info().recordsDisplay);
+
+  });
+
+  var valor;
+
+  $('.data-filtro-select').on('change', function(){    
+
+    //Se busca la palabra exacta debido a que ya son datos precargados de la BD
+
+    valor = ($(this).find('option[value="' + $(this).val().trim() + '"]').text()).trim();
+
+    ObjTabla.column(parseInt($(this).attr('data-filtro-select'))).search(valor ? '^' + valor + '$' : '', true, false).draw();
+
+    $('#table_sp4EnferCron_transf_diagCIE102-count-row').text(ObjTabla.page.info().recordsDisplay);
+
+  });
+
+  $('#sp4EnferCron_busq_reg_general').on('keyup', function(){
+
+    ObjTabla.search($(this).val()).draw();
+    $('#table_sp4EnferCron_transf_diagCIE102-count-row').text(ObjTabla.page.info().recordsDisplay);
+
+  });
+
+  $('#min').on('keyup change', function(){
+
+    $('#max').attr("min", $('#min').val());
+    ObjTabla.draw();
+    $('#table_sp4EnferCron_transf_diagCIE102-count-row').text(ObjTabla.page.info().recordsDisplay);
+
+  });
+
+  $('#max').on('keyup change', function(){
+
+    $('#min').attr("max", $('#max').val());
+    ObjTabla.draw();
+    $('#table_sp4EnferCron_transf_diagCIE102-count-row').text(ObjTabla.page.info().recordsDisplay);
+    
+  });
+
+});
+
+</script>
+
+<!-- JS Enfermedades Cronicas -->
+<script src="view/sho-hce/enfermedades_cronicas/js/JSEnfermedades_Cronicas.js"></script>
+
+
+<script src="js/sweetalert2.js"></script>
+<script src="js/jquery.mask.min.js"></script>
+<script src="js/svg-inject.min.js"></script>
