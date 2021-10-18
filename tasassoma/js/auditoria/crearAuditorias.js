@@ -78,9 +78,9 @@ var vw_auditorias_list = function()
 
         $.ajax(settings).done(function (response) {
             //RECORREMOS LA RESPUESTA
-            console.warn("programa auditoria response ",response)
-            console.warn("response[0].Flag_Completada ",response[0].Flag_Completada)
-            console.warn("response[0].StatusId ",response[0].StatusId)
+            // console.warn("programa auditoria response ",response)
+            // console.warn("response[0].Flag_Completada ",response[0].Flag_Completada)
+            // console.warn("response[0].StatusId ",response[0].StatusId)
             response.forEach((Item) => {
                 Flag_Completada = Item.Flag_Completada
                 StatusIdPA      = Item.StatusId
@@ -88,8 +88,8 @@ var vw_auditorias_list = function()
                 DescriptionEspecialidad  = Item.DescriptionEspecialidad
                 CantidadCorrecciones  = Item.Cantidad_Correcciones
             }) //*/
-            console.warn("Flag_Completada ",Flag_Completada)
-            console.warn("StatusIdPA ",StatusIdPA)
+            // console.warn("Flag_Completada ",Flag_Completada)
+            // console.warn("StatusIdPA ",StatusIdPA)
             if(StatusIdPA!=1){
                 $("#new_auditoria").attr("disabled", true);
                 $("#new_auditoria").css("visibility", 'hidden');
@@ -227,8 +227,8 @@ var vw_auditorias_list = function()
     {
         $("#sel_new_normas").val('')
         $("#divCountNormas").html('0')
-        console.warn("UnidadNegocio -> ",UnidadNegocio.value)
-        console.warn("sel_new_normas -> ",$("#sel_new_normas").val())
+        // console.warn("UnidadNegocio -> ",UnidadNegocio.value)
+        // console.warn("sel_new_normas -> ",$("#sel_new_normas").val())
         // DESACTIVO TODAS LAS NORMAS
         $("#sel_new_normas option[value='14001']").attr('disabled', 'disabled')
         $("#sel_new_normas option[value='45001']").attr('disabled', 'disabled')
@@ -244,7 +244,6 @@ var vw_auditorias_list = function()
         // validar normas por unidad de negocio
         if( UnidadNegocio.value == 1)
         {
-            $("#sel_new_normas option[value='BASC']").removeAttr('disabled')
             $("#sel_new_normas option[value='RBC']").removeAttr('disabled')
             $("#sel_new_normas option[value='HACCP']").removeAttr('disabled')
             $("#sel_new_normas option[value='SANE']").removeAttr('disabled')
@@ -276,7 +275,7 @@ var vw_auditorias_list = function()
         }
         if( UnidadNegocio.value == 5)
         {
-            $("#sel_new_normas option[value='BASC']").removeAttr('disabled')
+            //$("#sel_new_normas option[value='BASC']").removeAttr('disabled')
         }
         if( UnidadNegocio.value == 6)
         {
@@ -399,8 +398,8 @@ var vw_auditorias_list = function()
 
     // INICIALIZAMOS LOS SELECT DE LAS NORMAS
     var cargarSelectsNormas = function(){
-        console.log("id_codigo_especialidad_programa " + id_codigo_especialidad_programa)
-        console.log("id_programa_auditoria " + id_programa_auditoria)
+        // console.log("id_codigo_especialidad_programa " + id_codigo_especialidad_programa)
+        // console.log("id_programa_auditoria " + id_programa_auditoria)
         //var apiKeyx = "r$3#23516ewew5";
         var servicio = '/api/Get-Norma-All?code=';
         //var getNormaAll = "QunwZ0j56jljksBrF3QtFYnaou6l7bF8zolp0ZvfXKQEQ5NwPGhHHQ==";
@@ -441,9 +440,10 @@ var vw_auditorias_list = function()
      * [finalizeEvaluacion pasar flag_completada a 1 del programa de auditoria]
      * @return {[type]} [description]
      */
-    var finalizeEvaluacion=function (){
+    var finalizeEvaluacion=function ()
+    {
 
-        console.log("cagate")
+        // console.log("cagate")
 
         swal({
             title:"Esta por finalizar la creación de programa",
@@ -545,10 +545,10 @@ var vw_auditorias_list = function()
         {
             //$("#sel_new_tipo_auditoria").append("<option value='' disabled selected>                </option>");
             jsonTipoAuditoria=[];
-            console.log("id_codigo_especialidad_programa "+id_codigo_especialidad_programa)
+            // console.log("id_codigo_especialidad_programa "+id_codigo_especialidad_programa)
             data.map(function(item)
             {
-                console.log("item.Id "+item.Id)
+                // console.log("item.Id "+item.Id)
                 if(  item.Id==3 ){
                     if(id_codigo_especialidad_programa==3){
                         //console.log("cargamos el select")
@@ -626,7 +626,7 @@ var vw_auditorias_list = function()
      * @return {[type]} [description]
      */
     var filtroTablaDivsAuditorias = function(){
-        console.log("listar auditorias")
+        // console.log("listar auditorias")
 
         showLoading();
 
@@ -677,7 +677,7 @@ var vw_auditorias_list = function()
             dataType: "json",
         }).done(function (response) {
             arrayAuditorias = response
-            console.warn("response ",response )
+            // console.warn("response ",response )
 
             if (response.length > 0) $("#bodyTablaSinAuditorias").css("display", "none");
             else $("#bodyTablaSinAuditorias").css("display", "block");
@@ -688,8 +688,8 @@ var vw_auditorias_list = function()
             MayorAud = 0;
             response.forEach((Item)=>{
                 var iiaudd = parseInt(Item.Id);
-                console.warn("MayorAud -> ",MayorAud)
-                console.warn("iiaudd -> ",iiaudd)
+                // console.warn("MayorAud -> ",MayorAud)
+                // console.warn("iiaudd -> ",iiaudd)
                 //alert(Item.StatusId+'=status, PlanId = '+Item.PlanId)
                 //if((Item.StatusId == 1))// StatusId Asignada , en atencion y en ejecucion quiere decir que tiene pla, n puede ser nueva
                 //{
@@ -701,7 +701,7 @@ var vw_auditorias_list = function()
                     }
                 //}
             })
-            console.warn("2. MayorAud -> ",MayorAud)
+            // console.warn("2. MayorAud -> ",MayorAud)
 
             //templateListAuditorias(response)
             $('#body-tabla-list').html(" ");
@@ -728,6 +728,18 @@ var vw_auditorias_list = function()
             primeraCarga = 2;
             //console.table(arrayAuditorias)
 
+            // console.warn("vtas_rolexternalrol -> ", getCookie( "vtas_rolexternalrol" + sessionStorage.tabVisitasa ))
+            if( getCookie( "vtas_rolexternalrol" + sessionStorage.tabVisitasa ) == 'ROL_LIDERAUDITORIA')
+            {
+                $("#new_auditoria").hide()
+                $("#buscarAuditoriasx").hide()
+            }
+            else
+            {
+                $("#new_auditoria").show()
+                $("#buscarAuditoriasx").show()
+            }
+
             hideLoading();
         });
 
@@ -736,7 +748,7 @@ var vw_auditorias_list = function()
     // para el paginado....
     var templateListAuditorias = function(data){
         var html = '';
-        console.log("data ",data)
+        // console.log("data ",data)
 
 
 //         var container = $('#pagination-container');
@@ -976,208 +988,12 @@ var vw_auditorias_list = function()
 
                 }
 
-
-
-
-            //$('#body-tabla-list').append(
-            // html += `
-            //     <div class="item-tabla p-2">
-            //         <div class="row m-0 justify-content-between align-items-center">
-            //             <div class="col-md-2 text-center" style="font-size: 13px">${Item.Code}</div>
-            //             <div class="col-md-2 text-center" style="font-size: 13px" >${Item.DescriptionUnidadNegocio}</div>
-            //             <div class="col-md-1 text-center" style="font-size: 13px" >${Item.DescriptionSede}</div>
-
-            //             <div class="col-md-6" >
-            //                 <div class="row">
-            //                     <div class="col-md-2 text-center" style="font-size: 13px" >${Item.Code_Normas}</div>
-            //                     <div class="col-md-2 text-center" style="font-size: 13px" >${Item.DescriptionAuditoria}</div>
-            //                     <div class="col-md-2 text-center" style="font-size: 13px" >${startDate}</div>
-            //                     <div class="col-md-2 text-center" style="font-size: 13px" >${endDate}</div>
-            //                     <div class="col-md-2 text-center" style="font-size: 13px" >${Item.DescriptionStatus}</div>
-            //                     <div class="col-md-2 text-center ${colorLetra}"  style="font-size: 13px" >${Item.DescriptionStatusEvaluacion}</div>
-            //                 </div>
-            //             </div>
-
-            //             <div class="col-md-1" >
-            //                 <div class="row">
-            //                     <div class="col-6 text-center" style="font-size: 15px">
-            //                         <button class="btn-circleCA border-0" ${disabledBtnAuditor}
-            //                             style="background-color: #b2b2b2 !important ; min-width: 2rem; height: 2rem;"
-            //                             idProgramaAuditoria="${id_programa_auditoria}" idEspecialidad="${id_codigo_especialidad_programa}"
-            //                             nombreProgramaAuditoria="${nombre_programa_auditoria}" Description="${Item.Description}"
-            //                             onClick="vw_auditor_list.asignarauditor('${Item.Id}');" >
-            //                             <img src="./images/iconos/usuario1.svg" class="ojo-1" style>
-            //                         </button>
-            //                     </div>
-
-            //                     <div class="col-6 text-center" style="font-size: 15px">
-            //                         <button type="button"
-            //                             id="btnVerAuditoria_${Item.Id}"
-            //                             idProgramaAuditoria="${id_programa_auditoria}" idEspecialidad="${id_codigo_especialidad_programa}"
-            //                             nombreProgramaAuditoria="${nombre_programa_auditoria}"
-            //                             Code="${Item.Code}" CodeUnidadNegocio="${Item.CodeUnidadNegocio}"
-            //                             Description="${Item.Description}" StatusEvaluacionId="${Item.StatusEvaluacionId}" created_by="${Item.created_by}"
-            //                             DescriptionUnidadNegocio="${Item.DescriptionUnidadNegocio}" DescriptionAuditoria="${Item.DescriptionAuditoria}" Code_Normas="${Item.Code_Normas}"
-            //                             DescriptionSede="${Item.DescriptionSede}" SedeId="${Item.SedeId}" CodeSede="${Item.CodeSede}" Inicio="${startDate}" Fin="${endDate}"
-            //                             Inicio2="${moment(Item.Inicio).format('DD/MM/YYYY')}" Fin2="${moment(Item.Fin).format('DD/MM/YYYY')}"
-            //                             StatusId="${Item.StatusId}" DescriptionStatus="${Item.DescriptionStatus}"
-            //                             TipoId="${Item.TipoId}" onClick="verAuditoria('${Item.Id}')" class="btn-circleCA border-0" style="background-color: #373e68">
-            //                             <img src="./images/iconos/ojo_1.svg" class="ojo-1">
-            //                         </button>
-            //                     </div>
-            //                 </div>
-            //             </div>
-
-            //         </div>
-            //     </div>`
-            //)
-
         })
 
         html += '';
         return html;
 
     }
-
-
-
-    /// CARGAR TABLA CON DATOS DE LA DB DE LA TABLA AUDITORIA
-    //var globalBlackLists=[];
-    /*var dataTableAuditorias = function(){
-        var now  = moment().format('YYYY-MM-DD');
-        //----------------------PARAMETROS PARA EL SERVICIO LISTAR AUDITORIAS DE UN PROGRAMA POR SU ID-------------------------------
-        var servicio        = '/api/Get-Auditoria-All?code=';
-        var metodoHttp      = "objectlist";
-        var metodoAjax      =  "GET";
-        var getAuditoriaAll ="H4VLj4KN6GZdCduqoToDVkDdP56Fz4t10niae2jucl8sXGaKz6bFuQ==";
-        var url             = apiurlAuditoria+servicio+getAuditoriaAll+"&ProgramaAuditoriaId="+id_programa_auditoria+"&httpmethod="+metodoHttp;
-        var metodoAjaxGp    =  "GET"; //"POST";
-        var headers         ={
-            "apikey":constantes.apiKey
-        }
-
-        //----------------------PARAMETROS PARA EL SERVICIO LISTAR AUDITORIAS DE UN PROGRAMA POR SU ID-------------------------------
-        oTableAuditorias = $('#tb_black_list').DataTable({
-            ordering  : true,
-            info      : false,
-            paging:true,
-            pageLength: 5,
-            //order: [[5,'ASC']],
-            searching : true,
-            scrollY   : '43vh',
-            scrollCollapse: false,
-            responsive: true,
-            ajax  :{
-                type: "GET",
-                url:  url,
-                headers:headers,
-                crossDomain: true,
-                dataType: "json",
-
-                error: function (xhr, error, thrown) {
-
-                    var textError=thrown;
-                    var status=xhr.status+' - '+xhr.statusText;//500 error servidor
-                    console.log("error")
-                    console.log(textError)
-                    showNotification("Por favor Verifique su conexión a internet y vuelva a intentarlo.")
-                    return;
-                },
-                dataSrc: function ( req )
-                {
-                    globalBlackLists =req;
-                    var data         =[];
-                    datosTabla       =[];
-                    var total        = 0;
-                    var e            =1;
-                    var r            =1;
-                    req.map(function(item,i){
-                        console.log("item",item);
-                        var startDate = moment(item.Inicio).format('DD/MM/YYYY');//dddd
-                        var endDate   = moment(item.Fin).format('DD/MM/YYYY');//dddd
-                        var year        = moment(item.Inicio).format('YYYY');//dddd
-                        var month       = moment(item.Inicio).format('MM');//
-                        var day         = moment(item.Inicio).format('DD'); ;
-                        var startDate2   = year +"-"+ month +"-"+ day;
-                        console.log("startDate2",startDate2)
-                        year            = moment(item.Fin).format('YYYY');//dddd
-                        month           = moment(item.Fin).format('MM');//
-                        day             = moment(item.Fin).format('DD');
-                        var endDate2     = year +"-"+ month +"-"+ day;//*/
-
-                        /*if(item.Code_Normas!==null){
-                            var normas = item.Code_Normas.split("/")
-                            console.log("normas",normas)
-                            console.log("Code_Normas",item.Code_Normas)
-                        }
-
-                        var row = {
-                            Id                      : item.Id//
-                            ,Code                      : '<span class="">'+ item.Code +'</span> ' //
-                            ,DescriptionUnidadNegocio : '<span class="">'+toCapitalize(item.DescriptionUnidadNegocio) +'</span> '
-                            ,DescriptionSede          : '<span class="">'+toCapitalize(item.DescriptionSede) +'</span>' //
-                            ,CodeNormas  : '<span class="">'+toCapitalize(item.Code_Normas) +'</span>' //
-                            ,DescriptionAuditoria       : '<span class="">'+toCapitalize(item.DescriptionAuditoria) +'</span> ' //
-                            ,Inicio  : '<span class="">'+startDate+'</span> ' //
-                            ,Fin  : '<span class="">'+endDate +'</span> ' //
-                            //,DescriptionStatus      : (item.Evaluacion == 1)?'<span class="text-success">Activo</span>' :'<span class="text-danger">Inactivo</span>'
-                            ,DescriptionStatus      : '<span class="">'+item.DescriptionStatus+'</span>'
-                            ,evaluacion  : '<span class="">'+item.DescriptionStatusEvaluacion+'</span> ' //
-                            ,edit  :'<button type="button" class="btn-circle border-0" style="background-color: #b2b2b2 !important ; min-width: 2.5rem; height: 2.5rem; "><img height="24" style="cursor:pointer " src="./images/iconos/usuario-1.svg" onClick="vw_auditor_list.asignarauditor('+item.Id+');" class="ojo-1"></button>'
-                            ,ver  : '<button type="button" id="btnVerAuditoria_'+item.Id+'" Code="'+item.Code+'"" CodeUnidadNegocio="'+item.CodeUnidadNegocio
-                                +'" Description="'+item.Description+'" StatusEvaluacionId="'+item.StatusEvaluacionId+'" created_by="'+item.created_by
-                                +'" DescriptionUnidadNegocio="'+item.DescriptionUnidadNegocio+'" DescriptionAuditoria="'+item.DescriptionAuditoria+'" Code_Normas="'+item.Code_Normas
-                                +'" DescriptionSede="'+item.DescriptionSede+'" SedeId="'+item.SedeId+'" CodeSede="'+item.CodeSede +'" Inicio="'+startDate+'" Fin="'+endDate+'"'
-                                +' Inicio2="'+startDate2+'" Fin2="'+endDate2+'"'
-                                +' StatusId="'+item.StatusId+'" DescriptionStatus="'+item.DescriptionStatus+'"'
-                                +' TipoId="'+item.TipoId+'" onClick="verAuditoria('+item.Id+')" class="btn-circle border-0" style="background-color: #373e68"> <img src="./images/iconos/ojo_1.svg" class="ojo-1"></button>'
-                        }
-
-                        console.log("item",item);
-                        data.push(row);
-                        auditor.push(row);
-                        total++;
-                        cont_auditorias++;
-                    });
-                    console.log("data",data)
-                    //console.log("auditor",auditor)
-                    $("#cant_auditorias").html('<img src="images/iconos/copia-1.svg" class="copia-1"> '+cont_auditorias+' ');
-                    return data;
-                }
-            },
-            columns: [
-
-                { title:"Id ",data: "Id",width: "10%" ,align:"center" ,"orderable": true, visible:false},
-                { title:"Id Audotoria",data: "Code",width: "10%" ,align:"center" ,"orderable": true},
-                { title:"Unidad de Negocio",data: "DescriptionUnidadNegocio",width: "15%" ,align:"left" ,"orderable": true},
-                { title:"Sede",data: "DescriptionSede",width: "8%" ,align:"left" ,"orderable": false},
-                { title:"Norma",data: "CodeNormas",width: "8%",align:"left" ,"orderable": true},
-                { title:"Tipo de Autitoria",data: "DescriptionAuditoria",width: "15%",align:"left" ,"orderable": true},
-                { title:"Fecha Inicio",data: "Inicio",width: "10%",align:"left" ,"orderable": true},
-                { title:"Fecha Fin",data: "Fin",width: "10%",align:"left" ,"orderable": true},
-                { title:"Estado",data: "DescriptionStatus",width: "1%" ,"orderable": false},
-                { title:"Evaluacion",data: "evaluacion" ,width: "7%", "orderable": false},
-                { title:"Asignar",data: "edit",width: "5%" ,"orderable": false},
-                { title:"Ver",data: "ver",width: "5%" ,"orderable": false},
-            ],
-
-            initComplete: function(settings, json) {
-
-            }
-
-        });
-
-    }//*/
-    /**
-     * // RECARGAR DATATABLE AUDITORIAS CON AJAX
-     * @return {[type]} [description]
-     */
-    /*var reloadtableBlackList = function(){
-        if(oTableAuditorias)
-          oTableAuditorias.ajax.reload();
-        else
-          tableBlackList();
-    }//*/
 
     var validarFechas = function(int){
         var fechaDesde = ""
@@ -1359,23 +1175,27 @@ var vw_auditorias_list = function()
                 //maxDate: new Date(moment(end).format('YYYY-MM-DD'))
             });//*/
 
-            var now = moment().add(50, 'days').format('DD/MM/YYYY');
+            // var now = moment().add(50, 'days').format('DD/MM/YYYY');
+            var now = moment().add(1, 'days').format('DD/MM/YYYY');
             var end = '31/12/'+moment().format('YYYY');
             $("#tx_date_start_new_auditoria").val(now);
             $("#tx_date_start_new_auditoria").datetimepicker({
                 timepicker:false,
                 format:'d/m/Y',
                 //defaultDate: now,
-                minDate: new Date(moment().add(50, 'days').format('YYYY-MM-DD'))
+                // minDate: new Date(moment().add(50, 'days').format('YYYY-MM-DD'))
+                minDate: new Date(moment().add(1, 'days').format('YYYY-MM-DD'))
 
             });
-            var now = moment().add(50, 'days').format('DD/MM/YYYY');
+            // var now = moment().add(50, 'days').format('DD/MM/YYYY');
+            var now = moment().add(1, 'days').format('DD/MM/YYYY');
             $("#tx_date_end_new_auditoria").val(now);
             $("#tx_date_end_new_auditoria").datetimepicker({
                 timepicker:false,
                 format:'d/m/Y',
                 //defaultDate: now,
-                minDate: new Date(moment().add(50, 'days').format('YYYY-MM-DD')),
+                // minDate: new Date(moment().add(50, 'days').format('YYYY-MM-DD')),
+                minDate: new Date(moment().add(1, 'days').format('YYYY-MM-DD')),
                 yearRange: "2019:2020"
                 //maxDate: "+5M +10D"
             });
@@ -1425,7 +1245,7 @@ var vw_auditorias_list = function()
  */
 function selectUnidadOrganizativaFilter()
 {
-    console.log("cambio")
+    // console.log("cambio")
 
     idUnidadNegocioFiltro = document.getElementById('sel_filter_unidad_organizativa').value;
 
@@ -1459,8 +1279,8 @@ function selectUnidadOrganizativaModificarAuditoria()
     idUnidadNegocio = document.getElementById('sel_unidad_organizativa').value;
     var select      = 'sel_sede'
     getSelectSedePorIdUnidadNegocio(idUnidadNegocio, select)
-    console.log("idUnidadNegocio",idUnidadNegocio)
-    console.log("sede",sede)
+    // console.log("idUnidadNegocio",idUnidadNegocio)
+    // console.log("sede",sede)
 }
 
 /**
@@ -1471,7 +1291,7 @@ function selectUnidadOrganizativaModificarAuditoria()
  */
 function getSelectSedePorIdUnidadNegocio(idUnidadNegocio, select)
 {
-    console.log("idUnidadNegocio "+idUnidadNegocio, "select "+select)
+    // console.log("idUnidadNegocio "+idUnidadNegocio, "select "+select)
     if(idUnidadNegocioFiltro==0){
         $("#"+select).html("<option value='0'  selected>           </option>")
         return false;
@@ -1618,7 +1438,7 @@ function modalNewAuditoria()
     // limpiar select unidad organizativa
     $("#sel_new_unidad_organizativa").html(`<option value="" selected disabled>             </option>`);
     for(i in jsonUnidadesOrganizativas){
-        console.log("i: "+i, jsonUnidadesOrganizativas[i].Code)
+        // console.log("i: "+i, jsonUnidadesOrganizativas[i].Code)
         //$("#sel_new_unidad_organizativa").html(`<option value="" selected disabled >                </option>`);
         $("#sel_new_unidad_organizativa").append('<option description="'+jsonUnidadesOrganizativas[i].Description+'" value="'+jsonUnidadesOrganizativas[i].Id+'">'+jsonUnidadesOrganizativas[i].Code+'</option>');
 
@@ -1633,14 +1453,14 @@ function modalNewAuditoria()
     $("#sel_new_normas").html('');
     $("#divCountNormas").html('0');
     for(i in jsonNormas){
-        console.log("i: "+i, jsonNormas[i].Code)
+        // console.log("i: "+i, jsonNormas[i].Code)
         $("#sel_new_normas").append('<option code="'+jsonNormas[i].Code+'" value="'+jsonNormas[i].Code+'" disabled="disabled">'+jsonNormas[i].Code+'</option>');
 
     }
     // limpiar tipo de auditoria
     $("#sel_new_tipo_auditoria").html('<option value="0" selected disabled >                </option>');
     for(i in jsonTipoAuditoria){
-        console.log("i: "+i, jsonTipoAuditoria[i].Code)
+        // console.log("i: "+i, jsonTipoAuditoria[i].Code)
         $("#sel_new_tipo_auditoria").append('<option code="'+jsonTipoAuditoria[i].Code+'" value="'+jsonTipoAuditoria[i].Id+'">'+jsonTipoAuditoria[i].Description+'</option>');
 
     }
@@ -1662,18 +1482,18 @@ function modalNewAuditoria()
 function finalizarAuditoria()
 {
     //
-    console.log("finalizar auditoria")
-    console.log("Flag_Completada ",Flag_Completada)
+    // console.log("finalizar auditoria")
+    // console.log("Flag_Completada ",Flag_Completada)
     if(Flag_Completada==0){
         Flag_Completada = 1
-        console.log("cambiamos Flag_Completada a 1 en P.A.", Flag_Completada)
+        // console.log("cambiamos Flag_Completada a 1 en P.A.", Flag_Completada)
         ////// EJECUTAMOS EL SERVICIO FINALIZAR PROGRAMA PARA QUE CAMBIE Flag_Completada = 1
     }else if(Flag_Completada==1){
-        console.log("Flag_Completada es 1 ", Flag_Completada)
-        console.log("hayAuditoriasObservadas ",hayAuditoriasObservadas)
-        console.log("hayAuditoriasCorregidas ",hayAuditoriasCorregidas)
-        console.log("hayAuditoriasAprobadas ",hayAuditoriasAprobadas)
-        console.log("hayAuditoriasSinEvaluzacion ",hayAuditoriasSinEvaluzacion)
+        // console.log("Flag_Completada es 1 ", Flag_Completada)
+        // console.log("hayAuditoriasObservadas ",hayAuditoriasObservadas)
+        // console.log("hayAuditoriasCorregidas ",hayAuditoriasCorregidas)
+        // console.log("hayAuditoriasAprobadas ",hayAuditoriasAprobadas)
+        // console.log("hayAuditoriasSinEvaluzacion ",hayAuditoriasSinEvaluzacion)
 
     }
     //showNotification("En espera del servicio....!!!")
@@ -1688,11 +1508,11 @@ function finalizarAuditoria()
 function verAuditoria(id)
 {
     id_auditoria = id
-    console.log("id_auditoria " + id_auditoria)
+    // console.log("id_auditoria " + id_auditoria)
     var ver = document.getElementById("btnVerAuditoria_"+id);
     codeAuditoria = ver.getAttribute("Code")
     EstatusEvaluacionId = ver.getAttribute("StatusEvaluacionId")
-    console.log("ver EstatusEvaluacionId ",EstatusEvaluacionId)
+    // console.log("ver EstatusEvaluacionId ",EstatusEvaluacionId)
     //console.log("unidad organizativa",jsonUnidadesOrganizativas[auditor[id][1]])
     $("#idAuditoria").val(id)
     $('#verModalAuditoria').modal('show');
@@ -1748,7 +1568,7 @@ function verAuditoria(id)
         }
 
     })
-    console.warn("cambios de fechas"+cambiosFechas)
+    // console.warn("cambios de fechas"+cambiosFechas)
     // OCULTAMOS O MOSTRAMOS EL LINK DE HISTORIAL DE CAMBIOS
     if(tieneHistorial){
         // MOSTRAMOS EL LINK PARA VER EL HISTORIAL DE CAMBIOS
@@ -1796,6 +1616,16 @@ function verAuditoria(id)
         $("#bt_modificar_auditoria").attr("disabled",true)
     }else $("#bt_modificar_auditoria").attr("disabled",false)
 
+    if( getCookie( "vtas_rolexternalrol" + sessionStorage.tabVisitasa ) == 'ROL_LIDERAUDITORIA')
+    {
+        //$("#bt_modificar_auditoria").hide()
+        $("#bt_modificar_auditoria").attr("disabled",true)
+    }
+    else
+    {
+        $("#bt_modificar_auditoria").attr("disabled",false)
+    }
+
 }
 
 /**
@@ -1805,7 +1635,7 @@ function verAuditoria(id)
  */
 function verHistorialAuditoriaId()
 {
-    console.log("historial "+id_auditoria);
+    // console.log("historial "+id_auditoria);
     // TITULO MODAL HISTORIAL AUDITORIA
     $("#divTituloHistorialAuditoria").html("<b>Ver historial de la Auditoría - "+codeAuditoria+"</b>")
     // LEVANTAMOS MODAL HISTORIAL DE AUDITORIAS
@@ -1814,7 +1644,7 @@ function verHistorialAuditoriaId()
     $("#divDetalleHistorialAuditoria").html("")
 
     auditoriaHistorial.forEach((Item) => {
-        console.log("Item.DescripcionTipoModificacion "+Item.DescripcionTipoModificacion);
+        // console.log("Item.DescripcionTipoModificacion "+Item.DescripcionTipoModificacion);
         $("#divDetalleHistorialAuditoria").append(
             '<div class="row mx-2 mt-2 row-table-modal align-items-center" style="height: 10vh;">'+
                 '<div class="col-3">'+Item.DescripcionTipoModificacion+'</div>'+
@@ -1855,7 +1685,7 @@ function guardarAuditoria()
     else
         normasText = sel_new_normas[0]
 
-    console.log("auditor",auditor)
+    // console.log("auditor",auditor)
 
     ///  vemos si hay en la misma sede
     let totalAuditorias = 0
@@ -1870,7 +1700,7 @@ function guardarAuditoria()
     {
         var msj = "" ///mensaje de error en swal
         // AQUI RECORRO LAS AUDITORIAS REGISTRADAS
-        for (i in auditor)
+        /*for (i in auditor)
         {
             let rango = false
             //VALIDO SI LA FECHA ESTE EN EL RANGO DE FECHAS DE OTRA AUDITORIA
@@ -1880,8 +1710,8 @@ function guardarAuditoria()
             // CONTAMOS LAS NORMAS REGISTRADAS
             if(auditor[i].SedeId==sede && rango)
             {
-                //alert("contar normas de esta auditoria")
-                console.log("auditor[i]",auditor[i])
+                // alert("contar normas de esta auditoria")
+                // console.log("auditor[i]",auditor[i])
                 normas = auditor[i].Code_Normas.split(',')
                 totalAuditorias += normas.length
                 msj = "la auditoria "+auditor[i].Code+" de la sede "+auditor[i].DescriptionSede+" (Especialidad "+DescriptionEspecialidad+")"
@@ -1894,7 +1724,7 @@ function guardarAuditoria()
                         if(normas[j]==sel_new_normas[h])
                         {
                             normaIgual = true
-                            console.log("normas["+j+"]" ,normas[j])
+                            // console.log("normas["+j+"]" ,normas[j])
                             //console.log("programa ")
                             msj = "La auditoría "+auditor[i].Code+" de la sede "+auditor[i].DescriptionSede+
                                  " (Especialidad "+DescriptionEspecialidad+") ya tiene esta norma programada para ser auditada"
@@ -1902,10 +1732,10 @@ function guardarAuditoria()
                     }
                 }
             }
-        }
+        }*/
 
         var fallo = 0;
-        if(normaIgual)
+        /*if(normaIgual)
         {
 
             //verModalError("Error", msj)
@@ -1932,18 +1762,9 @@ function guardarAuditoria()
                     fallo = 1
                 }
             }
-        }
+        }*/
 
-        //sede = SSOMA
-        //normas = []//todas las normas que estan cargadas en el listado de auditorias
-        //if(SI EXISTE UNA AUDITORIA PARA ESTAS NORMAS(norm1, norm2) en este rango(aditoria.fecha_ini, fecha_fin) )
-        //idAuditoria cache no se ha creado
-        //misNormas(2) Array
-        //miFecha_ini
-        //miFecha_fin
-        //voy contra el listado que muestro en pantalla
-        //fon de uno hasta n auditorias con estado != aprobada estado != creada estado = reprogramada
-        // return
+
         if(fallo==0){
             $('#modalConfirmarIngresarAuditoria').modal('show').addClass("fade");
             $('#newAuditoriaModal').removeClass("fade").modal('hide');
@@ -1985,9 +1806,9 @@ function modalModificarAuditoria()
             console.warn("selecionar este "+jsonUnidadesOrganizativas[i].Description+" == "+ver.getAttribute("CodeUnidadNegocio"))//*/
         if(ver.getAttribute("CodeUnidadNegocio")===jsonUnidadesOrganizativas[i]['Description']){
             $("#sel_unidad_organizativa").append(`<option selected description='${jsonUnidadesOrganizativas[i].Description}' value='${jsonUnidadesOrganizativas[i].Id}'>${jsonUnidadesOrganizativas[i].Code}</option>`);
-            console.warn("Selecionar este1",jsonUnidadesOrganizativas[i]['Description'])
-            console.warn("SedeId ",sede)
-            console.warn("Sedes ",jsonSedes)
+            // console.warn("Selecionar este1",jsonUnidadesOrganizativas[i]['Description'])
+            // console.warn("SedeId ",sede)
+            // console.warn("Sedes ",jsonSedes)
             //getSelectSedePorIdUnidadNegocio(jsonUnidadesOrganizativas[i].Id,'sel_sede')
             for(j in jsonSedes){
 

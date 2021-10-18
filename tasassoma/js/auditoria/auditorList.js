@@ -70,9 +70,14 @@ var vw_auditor_list = function()
             dataType: "json",
         }).done(function( response)
         {
+            console.warn("response -> ",response)
+            let aux = 0;
              response.forEach((Item)=>{
                           aObj[Item.Id] = new dbAuditor();//andy 12-05-21
                           aObj[Item.Id].cargarData(Item);
+                          // aObj[aux] = new dbAuditor();//andy 12-05-21
+                          // aObj[aux].cargarData(Item);
+                          // aux++
                     })
              //console.log("** ==== OBJETO aObj -> ", aObj);
 
@@ -111,7 +116,7 @@ var vw_auditor_list = function()
         var html = '';
           var estatus =
         JSON_datosAU=data;
-        JSON_datosAU.sort(sortByProperty('Id')); //sort according to id
+        //JSON_datosAU.sort(sortByProperty('Id')); //sort according to id
         console.log("JSON_datosAU -> ",JSON_datosAU)
           var ii = 0;
           data.forEach((datos) => {
@@ -283,14 +288,14 @@ var vw_auditor_list = function()
 
                     if(data.Id>0)
                     {
-                         
+
                         //aqui llammos a nuestro servicio
                         /*
                           tipo: parseInt(type)
                           idhashh: UserIdhash
                           create_by: Create_By
                           correo: Correo
-                          fechaHora: 
+                          fechaHora:
                           name1: Name
                           dni:''
                         */
@@ -338,7 +343,7 @@ var vw_auditor_list = function()
 
     var ingresaAuditorSecurity = function(tipo, idhashh, create_by, correo, fechaHora, name1, dni)
     {
-           
+
 //var url = apiUrlssoma+"/api/Get-Incidente-AccidenteWeb?code=GY7/yooa3Zl5sKu7zgakDbaCn4uvOKXjfwe/JkbSuIwDPOs/baiZFQ==&httpmethod=objectlist&IdTipoEvento="+programa+"&IdEmpresa="+gerencia+"&IdSede="+sedepa+"&FechaInicio="+f1+"&FechaFin="+f2+"&IdEmbarcacion="+estadopa
 var url = apiUrlssoma+"/api/Post-Inspector-Auditor?code=dda7hh5vuPjt6GvdY1ltzYPUcrdrTYtehq2A4Ggx52zlSwmBLtIipQ==&httpmethod=post&tipo="+tipo+"&idhashh="+idhashh+"&create_by="+create_by+"&correo="+correo+"&fechaHora="+fechaHora+"&name1="+name1+"&dni="+ dni;
     //var url = "https://550m44ud1tmg7454-inspection-dev.azurewebsites.net/api/Get-Incidente-AccidenteWeb?code=GY7/yooa3Zl5sKu7zgakDbaCn4uvOKXjfwe/JkbSuIwDPOs/baiZFQ==&httpmethod=objectlist";
@@ -374,7 +379,7 @@ console.log('====================================================**===== se guar
 
 
 
-               $.ajax(settings).done(function (response) 
+               $.ajax(settings).done(function (response)
                 {
 
 
@@ -1475,11 +1480,21 @@ console.log('====================================================**===== se guar
             $("#divCountAuditorLider").html(cont_Al)
             $("#divCountObservador").html(cont_Ob)
 
+            if( getCookie( "vtas_rolexternalrol" + sessionStorage.tabVisitasa ) == 'ROL_LIDERAUDITORIA')
+            {
+                $(".confirm2").attr("disabled",true)
+            }
+            else
+            {
+                $(".confirm2").attr("disabled",false)
+            }
+
         })  .fail(function( jqXHR, textStatus, errorThrown) {
 
             console.log( jqXHR, textStatus, errorThrown)
         })
             .always(function(data , textStatus, jqXHR ) {
+
                 // alert( "complete" );
                 $("#preloader4").hide();
         $("#preloader_txt4").hide();

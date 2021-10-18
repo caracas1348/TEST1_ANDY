@@ -23976,22 +23976,9 @@ function sp4FnVentanaInformeInvestigacion(idIncidente)
                                     hideLoading();
 
                                     console.log('23309 aqui mandamos a buscar los hallazgos asignados');//fnSp4BuscarHallazgosAsignados
-
                                     fnSp4BuscarHallazgosAsignados();
-                                     buscar5porqueIncidente()
-                                    /*
-                                    //########################################################## promesa ##################################################################
 
-                                    let promise = new Promise ( function(resolve, reject) { resolve( fnSp4BuscarHallazgosAsignados())  } );
 
-                                        // resolve ejecuta la primera función en .then
-                                        promise.then(
-                                          result => buscar5porqueIncidente(), // muestra "hecho!" después de 1 segundo
-                                          error =>verModalError('Accion Correctiva', 'No se pudieron cargar los datos del ACR') // no se ejecuta
-                                        );
-                                    //fnSp4BuscarHallazgosAsignados();
-                                   //########################################################## promesa ##################################################################
-                                  */
 
 
                                 }
@@ -24362,7 +24349,6 @@ function sp4FnVentanaInformeInvestigacion(idIncidente)
                                                     hideLoading();
                                                       console.log('24265 aqui mandamos a buscar los hallazgos asignados');//fnSp4BuscarHallazgosAsignados
                                                     fnSp4BuscarHallazgosAsignados();
-                                                     buscar5porqueIncidente();
                                                 }
                                               else
                                               {
@@ -24683,7 +24669,6 @@ function sp4FnVentanaInformeInvestigacion(idIncidente)
                                                             hideLoading();
                                                               console.log('24579 aqui mandamos a buscar los hallazgos asignados');//fnSp4BuscarHallazgosAsignados
                                                             fnSp4BuscarHallazgosAsignados();
-                                                             buscar5porqueIncidente();
 
                                                                         }
                                                                         else
@@ -25931,11 +25916,11 @@ function buscar5porqueIncidente()
                  //..............................   array para saber si ya busque los por que .....................
             if(!ver5PQ[paObj[istAud].a.IdHallazgo] == 1)
             {
-               // fnSp4VerModalCrearACR(115,''); //aqui va el id del hallazgo
+                fnSp4VerModalCrearACR(115,''); //aqui va el id del hallazgo
 
                 //alert('paObj[istAud].a.IdHallazgo'+paObj[istAud].a.IdHallazgo);
 
-               fnSp4VerModalCrearACR(paObj[istAud].a.IdHallazgo,'');
+               // fnSp4VerModalCrearACR(paObj[istAud].a.IdHallazgo,'');
 
 
 
@@ -25997,14 +25982,6 @@ function buscarListadodeInvestigadores()
                                              console.log("**todos LOS INTEGRANTES**",response1);
                                             
                                              mayorId = 0;
-
-                                             paObj[istAud].a.Investigadores = response1.PlanAnual;
-                                            //  console.log("**todos LOS INTEGRANTES**",item1);
-                                            //  var nnam = item1.Participante;
-                                            //  var nnam1 = item1.Cargo;
-                                            //  var nnam2 = date_AAAA_MM_DD_T_HH_MM_S_to_DD_MM_AAAA(item1.Create_Date);
-                                            //  var idii = item1.Id;
-                                          
                                              
                                              $("#filasAdjuntarDocumentosTareas_ii").html(' ');  
                                              $('#listaPart').html('Lista (0)')     
@@ -27287,77 +27264,9 @@ var acol2 = '60px;'
 
 
 
-     var acol2 = '60px;'
-
-
-     var pac = []; var pac1 = []; var pac2 = [];  var pac3 = [];  var pac4 = [];  var pac5 = [];      
-     var j = 0;
-      for(let i = 0; i < 50; i++)
-       {//--------------------------------------------------------------------------
-         
-        var f = j+1;
-     
-            if($('#causa2HA_'+i).val())
-           {
-               console.log("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 27753 +++++++++++++++++++++++++++++++++++++++++++", $('#causa2HA_'+i).val());  
-     
-              //$('#dat_ii_turno_trabajo option:selected').text();  //paObj[istAud].a.II[0].B_Turno_Trabajo //option
-               
-                if( $('#selectPlazoAccionHA_'+i).val())         {   pac1[j] =  $('#selectPlazoAccionHA_'+i+' option:selected').text()     }
-                if( $('#selectTipoAccionHA_'+i).val())          {   pac2[j] =  $('#selectTipoAccionHA_'+i+' option:selected').text()      }
-                if( $('#ResponsableHA_'+i).val())               {   pac3[j] =  $('#ResponsableHA_'+i).val()                               }
-                if( $('#fechaPlanHA_'+i).val())                 {   pac4[j] =  $('#fechaPlanHA_'+i).val()     }
-                if( $('#selectStatusAccionHA_'+i).val())        {   pac5[j] =  $('#selectStatusAccionHA_'+i+' option:selected').text()     }
-     
-     
-                if( $('#causa2HA_'+i).val()) {   pac[j] =  $('#causa2HA_'+i).val()    }
-     
-     
-                            
-                        tab_text = tab_text + ` 
-
-
-                        <tr style="border: 2px !important;color: #fff; font-weight: bold;   /*vertical-align:middle;*/ height:80px;">
-                                    <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                                    <th  bgcolor='#fff'  style="${bl}  ${bb} ${br}  ${ln} font-size:12px; text-align: center;" >${f}</th> 
-                                    <th  bgcolor='#fff' colspan='15' style="${bl}  ${bb} ${br}  ${ln} font-size:12px; text-align: center;" >${ pac[j] }</th>
-                                    <th  bgcolor='#fff' colspan='3' style="${bl}  ${bb} ${br}  ${ln} font-size:11px; text-align: center;" > ${ pac1[j] }</th>  
-                                    <th  bgcolor='#fff' colspan='1' style="${bl}  ${bb} ${br}  ${ln} font-size:11px; text-align: center;" > ${ pac2[j] }</th> 
-                                    <th  bgcolor='#fff' colspan='1' style="${bl}  ${bb} ${br}  ${ln} font-size:11px; text-align: center;" > ${ pac3[j] }</th> 
-                                    <th  bgcolor='#fff' colspan='1' style="${bl}  ${bb} ${br}  ${ln} font-size:11px; text-align: center;" > ${ pac4[j] }</th> 
-                                    <th  bgcolor='#fff' colspan='2' style="${bl}  ${bb} ${br}  ${ln} font-size:11px; text-align: center;" > ${ pac5[j] } </th>           
-                    </tr>
-
-                    `;
-
-                        
-      
-     
-     
-                
-                        j++;
-     
-           }
-     
-               
-               
-           
-     
-     
-     
-       }//--------------------------------------------------------------------------
-     
-     
-     
-     
 
 
 
-
-
-
-
-     var acol2 = '60px;'
 
 
  var pac = []; var pac1 = []; var pac2 = [];  var pac3 = [];  var pac4 = [];  var pac5 = []; 
@@ -27365,8 +27274,7 @@ var acol2 = '60px;'
 var j = 0;
   for(let i = 0; i < 50; i++)
    {//--------------------------------------------------------------------------
-     
-    var f = j+1;
+
 
         if($('#causa2HA_1'+i).val())
        {
@@ -27377,30 +27285,10 @@ var j = 0;
            if( $('#ResponsableHA_'+i).val())       {   pac3[j] =  $('#ResponsableHA_'+i).val();         }
            if( $('#fechaPlanHA_'+i).val())         {   pac4[j] =  $('#fechaPlanHA_'+i).val();           } 
            if( $('#selectStatusAccionHA_'+i).val()){   pac5[j] =  $('#selectStatusAccionHA_'+i).val();  } 
-           if($('#causa2HA_1'+i).val()){  pac[j] = $('#causa2HA_1'+i).val();}
 
+           }
 
-
-           
-                    tab_text = tab_text + ` 
-
-                    <tr style="border: 2px !important;color: #fff; font-weight: bold;   /*vertical-align:middle;*/ height:${acol2}">
-                                <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                                <th  bgcolor='#fff'  style="${bl}  ${bb} ${br}  ${ln} font-size:12px; text-align: center;" >${f}</th> 
-                                <th  bgcolor='#fff' colspan='15' style="${bl}  ${bb} ${br}  ${ln} font-size:12px; text-align: center;" >${pac[j]}</th>
-                                <th  bgcolor='#fff' colspan='3' style="${bl}  ${bb} ${br}  ${ln} font-size:11px; text-align: center;"  >${pac1[j]}</th>  
-                                <th  bgcolor='#fff' colspan='1' style="${bl}  ${bb} ${br}  ${ln} font-size:11px; text-align: center;"  >${pac2[j]}</th> 
-                                <th  bgcolor='#fff' colspan='1' style="${bl}  ${bb} ${br}  ${ln} font-size:11px; text-align: center;"  >${pac3[j]}</th> 
-                                <th  bgcolor='#fff' colspan='1' style="${bl}  ${bb} ${br}  ${ln} font-size:11px; text-align: center;"  >${pac4[j]}</th> 
-                                <th  bgcolor='#fff' colspan='2' style="${bl}  ${bb} ${br}  ${ln} font-size:11px; text-align: center;"  >${pac5[j]}</th>           
-                    </tr>
-
-                    `;
-                    j++;
-
-       }
-
-           
+            if($('#causa2HA_1'+i).val()){  pac[j] = $('#causa2HA_1'+i).val(); j++;}
            
        
 
@@ -27413,9 +27301,28 @@ var j = 0;
 
 
 
+var acol2 = '60px;'
 
 
+ for(let i = 0; i < j; i++)
+   {
 
+    let f = i+1;
+  tab_text = tab_text + ` 
+
+              <tr style="border: 2px !important;color: #fff; font-weight: bold;   /*vertical-align:middle;*/ height:${acol2}">
+                        <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
+                        <th  bgcolor='#fff'  style="${bl}  ${bb} ${br}  ${ln} font-size:12px; text-align: center;" >${f}</th> 
+                        <th  bgcolor='#fff' colspan='15' style="${bl}  ${bb} ${br}  ${ln} font-size:12px; text-align: center;" >${pac[i]}</th>
+                        <th  bgcolor='#fff' colspan='3' style="${bl}  ${bb} ${br}  ${ln} font-size:11px; text-align: center;"  >${pac1[i]}</th>  
+                        <th  bgcolor='#fff' colspan='1' style="${bl}  ${bb} ${br}  ${ln} font-size:11px; text-align: center;"  >${pac2[i]}</th> 
+                        <th  bgcolor='#fff' colspan='1' style="${bl}  ${bb} ${br}  ${ln} font-size:11px; text-align: center;"  >${pac3[i]}</th> 
+                        <th  bgcolor='#fff' colspan='1' style="${bl}  ${bb} ${br}  ${ln} font-size:11px; text-align: center;"  >${pac4[i]}</th> 
+                        <th  bgcolor='#fff' colspan='2' style="${bl}  ${bb} ${br}  ${ln} font-size:11px; text-align: center;"  >${pac5[i]}</th>           
+             </tr>
+
+     `;
+}
 //----------------------------------           .map Plan Accion --------------------------------------------------
 
 
@@ -27446,44 +27353,22 @@ var j = 0;
 var acol2 = '60px;'
 
 
-///paObj[istAud].a.Investigadores;
-//  console.log("**todos LOS INTEGRANTES**",item1);
-//  var nnam = item1.Participante;
-//  var nnam1 = item1.Cargo;
-//  var nnam2 = date_AAAA_MM_DD_T_HH_MM_S_to_DD_MM_AAAA(item1.Create_Date);
-//  var idii = item1.Id;
-
-
-var g = 1;
-
-paObj[istAud].a.Investigadores.map(function(item)
-{
-    var nnam = item.Participante;
-    var nnam1 = item.Cargo;
-//  var nnam2 = date_AAAA_MM_DD_T_HH_MM_S_to_DD_MM_AAAA(item1.Create_Date);
-//  var idii = item1.Id;
-
-            tab_text = tab_text + ` 
-
-            <tr style="border: 2px !important;color: #fff; font-weight: bold;   /*vertical-align:middle;*/ height:${acol2}">
-                    <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                    <th  bgcolor='#fff'  style="${bl}   ${ln} font-size:12px; text-align: center;" >${g}</th> 
-                    <th  bgcolor='#fff' colspan='12' style="   ${ln} font-size:12px; text-align: left;" >Nombre completo: ${nnam}</th>
-                    <th  bgcolor='#fff' colspan='11' style="   ${br}  ${ln} font-size:11px; text-left: center;" >Cargo: ${nnam1}</th>                
-            </tr>
-
-            `;
-
-            g++;
-            });
-
 //**************************************** un for o map
- 
+  tab_text = tab_text + ` 
+
+              <tr style="border: 2px !important;color: #fff; font-weight: bold;   /*vertical-align:middle;*/ height:${acol2}">
+                        <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
+                        <th  bgcolor='#fff'  style="${bl}   ${ln} font-size:12px; text-align: center;" >1</th> 
+                        <th  bgcolor='#fff' colspan='12' style="   ${ln} font-size:12px; text-align: center;" >Nombre completo: ${dato}</th>
+                        <th  bgcolor='#fff' colspan='11' style="   ${br}  ${ln} font-size:11px; text-align: center;" >Cargo: ${dato}</th>                
+              </tr>
+
+     `;
 
 
 
 
-var jk = $('#dat_ii_5_comentario').val();
+
 //**************************************************
       tab_text = tab_text + ` 
 
@@ -27497,7 +27382,7 @@ var jk = $('#dat_ii_5_comentario').val();
                <tr style="border: 2px !important;color: #fff; font-weight: bold;   /*vertical-align:middle;*/ height:100px;">
                         <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
                           <th  bgcolor='#fff'  style="${bl} ${bb}   ${ln} font-size:12px; text-align: center;" ></th> 
-                        <th  bgcolor='#fff' colspan='23'  style="  ${bl}  ${bt} ${bb} ${br}  ${ln} font-size:12px; font-style: italic; text-align: left;" >${jk}</th>
+                        <th  bgcolor='#fff' colspan='23'  style=" ${bb} ${br}  ${ln} font-size:12px; text-align: left;" >${dato}</th>
                                       
               </tr>
 
@@ -27543,16 +27428,6 @@ var acol2 = '60px;'
      `;
 
 
-var acr;       if( $('#dat_ii_acr').is(':checked' )){ acr = 'X'; } else { acr = ''; }
-var ro;        if( $('#dat_ii_reporte').is(':checked' )){ ro = 'X'; } else { ro = ''; }
-var otros;     if( $('#dat_ii_otros').is(':checked' )){ otros = 'X'; } else { otros = ''; }
-var otros2;    if( $('#dat_ii_otros_text').val()){ otros2 =  $('#dat_ii_otros_text').val();  } else { otros2 = '***' }
-
-var lina;     if( $('#dat_ii_linea_tiempo').is(':checked' )){ lina = 'X'; } else { lina = ''; }
-var ent;      if( $('#dat_ii_entrevista1').is(':checked' )){  ent = 'X'; } else {  ent = ''; }
-
-var foto;     if( $('#dat_ii_fotografias').is(':checked' )){ foto = 'X'; } else { foto = ''; }
-var ent2;      if( $('#dat_ii_entrevista2').is(':checked' )){  ent2 = 'X'; } else {  ent2 = ''; }
 
 
 
@@ -27564,19 +27439,18 @@ var ent2;      if( $('#dat_ii_entrevista2').is(':checked' )){  ent2 = 'X'; } els
                <tr style="border: 2px !important;color: #fff; font-weight: bold;   /*vertical-align:middle;*/ height:20px;">
                           <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
                           <th  bgcolor='#fff'  style="${bl}    ${ln} font-size:12px; text-align: center;" ></th> 
-                          <th  bgcolor='#fff' colspan='1'  style="  ${bl} ${bb} ${bt} ${bb} ${br}  ${ln} font-size:12px; text-align: left;" >${acr}</th>
+                          <th  bgcolor='#fff' colspan='1'  style="  ${bl} ${bb} ${bt} ${bb} ${br}  ${ln} font-size:12px; text-align: left;" ></th>
                           <th  bgcolor='#fff' colspan='1'  style="    ${ln} font-size:12px; text-align: left;" ></th>
                           <th  bgcolor='#fff' colspan='5'  style="    ${ln} font-size:12px; text-align: left;" >ACR</th>
                           <th  bgcolor='#fff' colspan='1'  style="    ${ln} font-size:12px; text-align: left;" ></th>
-                          <th  bgcolor='#fff' colspan='1'  style="  ${bl} ${bb} ${bt} ${bb} ${br}  ${ln} font-size:12px; text-align: left;" >${ro}</th>
+                          <th  bgcolor='#fff' colspan='1'  style="  ${bl} ${bb} ${bt} ${bb} ${br}  ${ln} font-size:12px; text-align: left;" ></th>
                           <th  bgcolor='#fff' colspan='1'  style="    ${ln} font-size:12px; text-align: left;" ></th>
                           <th  bgcolor='#fff' colspan='4'  style="    ${ln} font-size:12px; text-align: left;" >Reporte de Ocurrencia</th>
                           <th  bgcolor='#fff' colspan='1'  style="    ${ln} font-size:12px; text-align: left;" ></th>
-                          <th  bgcolor='#fff' colspan='1'  style="  ${bl} ${bb} ${bb} ${bt} ${br}  ${ln} font-size:12px; text-align: left;" >${otros}</th>
+                          <th  bgcolor='#fff' colspan='1'  style="  ${bl} ${bb} ${bb} ${bt} ${br}  ${ln} font-size:12px; text-align: left;" ></th>
                           <th  bgcolor='#fff' colspan='1'  style="    ${ln} font-size:12px; text-align: left;" ></th>
-                          <th  bgcolor='#fff' colspan='1'  style="    ${ln} font-size:12px; text-align: left;" >Otros: </th>
-                          <th  bgcolor='#fff' colspan='5'  style="   ${br}  ${ln} font-size:12px; text-align: left; color: #000;" > ${otros2}</th>
-                          
+                          <th  bgcolor='#fff' colspan='1'  style="    ${ln} font-size:12px; text-align: left;" >Otros</th>
+                          <th  bgcolor='#fff' colspan='5'  style="   ${br}  ${ln} font-size:12px; text-align: left;" ></th>
 
                                       
               </tr>
@@ -27591,11 +27465,11 @@ var ent2;      if( $('#dat_ii_entrevista2').is(':checked' )){  ent2 = 'X'; } els
                <tr style="border: 2px !important;color: #fff; font-weight: bold;   /*vertical-align:middle;*/ height:20px;">
                           <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
                           <th  bgcolor='#fff'  style="${bl}    ${ln} font-size:12px; text-align: center;" ></th> 
-                          <th  bgcolor='#fff' colspan='1'  style="  ${bl} ${bb} ${bt} ${bb} ${br}  ${ln} font-size:12px; text-align: left;" >${lina}</th>
+                          <th  bgcolor='#fff' colspan='1'  style="  ${bl} ${bb} ${bt} ${bb} ${br}  ${ln} font-size:12px; text-align: left;" ></th>
                           <th  bgcolor='#fff' colspan='1'  style="    ${ln} font-size:12px; text-align: left;" ></th>
                           <th  bgcolor='#fff' colspan='5'  style="    ${ln} font-size:12px; text-align: left;" >Línea de tiempo</th>
                           <th  bgcolor='#fff' colspan='1'  style="    ${ln} font-size:12px; text-align: left;" ></th>
-                          <th  bgcolor='#fff' colspan='1'  style="  ${bl} ${bb} ${bt} ${bb} ${br}  ${ln} font-size:12px; text-align: left;" >${ent}</th>
+                          <th  bgcolor='#fff' colspan='1'  style="  ${bl} ${bb} ${bt} ${bb} ${br}  ${ln} font-size:12px; text-align: left;" ></th>
                           <th  bgcolor='#fff' colspan='1'  style="    ${ln} font-size:12px; text-align: left;" ></th>
                           <th  bgcolor='#fff' colspan='4'  style="    ${ln} font-size:12px; text-align: left;" >Entrevistas al Accidentado</th>
                           <th  bgcolor='#fff' colspan='1'  style="    ${ln} font-size:12px; text-align: left;" ></th>
@@ -27618,11 +27492,11 @@ var ent2;      if( $('#dat_ii_entrevista2').is(':checked' )){  ent2 = 'X'; } els
                <tr style="border: 2px !important;color: #fff; font-weight: bold;   /*vertical-align:middle;*/ height:20px;">
                           <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;"></th> 
                           <th  bgcolor='#fff'  style="${bl}    ${ln} font-size:12px; text-align: center;" ></th> 
-                          <th  bgcolor='#fff' colspan='1'  style="  ${bl} ${bb} ${bt} ${bb} ${br}  ${ln} font-size:12px; text-align: left;" >${foto}</th>
+                          <th  bgcolor='#fff' colspan='1'  style="  ${bl} ${bb} ${bt} ${bb} ${br}  ${ln} font-size:12px; text-align: left;" ></th>
                           <th  bgcolor='#fff' colspan='1'  style="    ${ln} font-size:12px; text-align: left;" ></th>
                           <th  bgcolor='#fff' colspan='5'  style="    ${ln} font-size:12px; text-align: left;" >Fotografias  /Gráficos </th>
                           <th  bgcolor='#fff' colspan='1'  style="    ${ln} font-size:12px; text-align: left;" ></th>
-                          <th  bgcolor='#fff' colspan='1'  style="    ${bl} ${bb} ${bt} ${bb} ${br}  ${ln} font-size:12px; text-align: left;" >${ent2}</th>
+                          <th  bgcolor='#fff' colspan='1'  style="    ${bl} ${bb} ${bt} ${bb} ${br}  ${ln} font-size:12px; text-align: left;" ></th>
                           <th  bgcolor='#fff' colspan='1'  style="    ${ln} font-size:12px; text-align: left;" ></th>
                           <th  bgcolor='#fff' colspan='4'  style="    ${ln} font-size:12px; text-align: left;" >Entrevistas a testigos del evento</th>
                           <th  bgcolor='#fff' colspan='1'  style="    ${ln} font-size:12px; text-align: left;" ></th>

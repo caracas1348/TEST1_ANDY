@@ -1,5 +1,6 @@
 <link rel="stylesheet" href="./view/ssoma/ssoma.css">
 <link rel="stylesheet" href="./css/pagination.css">
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 <style>
 
 .text-clear {
@@ -937,7 +938,7 @@ ul.ui-autocomplete.ui-menu { width: 400px !important; }
                                                                 <span class="mdc-line-ripple"></span>
                                                             </div>
 
-                                                            <div class="mdc-select__menu demo-width-class mdc-menu mdc-menu-surface w-100">
+                                                            <div class="mdc-select__menu demo-width-class mdc-menu mdc-menu-surface w-100" style="z-index: 1000000;">
                                                                 <ul class="mdc-list" id="ul-Frecuencia">
                                                                     <li class="mdc-list-item" data-value="1" tabindex="-1" onclick="selectFrequency(1)">
                                                                         <span class="mdc-list-item__ripple"></span>
@@ -968,7 +969,7 @@ ul.ui-autocomplete.ui-menu { width: 400px !important; }
                                                         </div>
                                                     </div>
                                                     <div class="mt-3 p-0 col-md-10">
-                                                        <div class="mdc-select mdc-select--filled demo-width-class cbo-genero w-100 text-left">
+                                                        <div class="mdc-select mdc-select--filled demo-width-class cbo-genero w-100 text-left" hidden>
                                                             <div class="mdc-select__anchor">
                                                                 <span class="mdc-select__ripple"></span>
                                                                 <span class="mdc-select__selected-text"></span>
@@ -1007,6 +1008,10 @@ ul.ui-autocomplete.ui-menu { width: 400px !important; }
                                                                 </ul>
                                                             </div>
                                                         </div>
+                                                        <select class="js-example-basic-multiple" id="cbo-genero" name="states[]" style="width: 100%;height: 56px;" multiple="multiple">
+                                                            <option value="1" onclick="selectGenre(1)">Masculino</option>
+                                                            <option value="2" onclick="selectGenre(2)">Femenino</option>
+                                                        </select>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-7" id="contenido-detalle_3">
@@ -1096,7 +1101,7 @@ ul.ui-autocomplete.ui-menu { width: 400px !important; }
                                                 <span class="mdc-line-ripple"></span>
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-4" hidden>
                                             <div class="mdc-select mdc-select--filled demo-width-class cbo-maq-equip w-100 text-left">
                                                 <div class="mdc-select__anchor">
                                                     <span class="mdc-select__ripple"></span>
@@ -1128,6 +1133,10 @@ ul.ui-autocomplete.ui-menu { width: 400px !important; }
                                                     </ul>
                                                 </div>
                                             </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <select class="js-example-basic-multiple" id="cbo-maq-equip" name="states[]" style="width: 100%;height: 56px;" multiple="multiple">
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -1437,7 +1446,7 @@ ul.ui-autocomplete.ui-menu { width: 400px !important; }
                                                         <span class="mdc-line-ripple"></span>
                                                     </div>
 
-                                                    <div class="mdc-select__menu demo-width-class mdc-menu mdc-menu-surface w-100">
+                                                    <div class="mdc-select__menu demo-width-class mdc-menu mdc-menu-surface w-100" style="z-index: 1000000;">
                                                         <ul class="mdc-list" id="ul-Probabilidad">
                                                             <li class="mdc-list-item" data-value="1" tabindex="-1" onclick="selectProbability(1)">
                                                                 <span class="mdc-list-item__ripple"></span>
@@ -1495,7 +1504,7 @@ ul.ui-autocomplete.ui-menu { width: 400px !important; }
                                             </div>
                                         </div>
                                         <div class="col-md-4">
-                                            <div class="mdc-select mdc-select--filled demo-width-class cbo-epp w-100 text-left">
+                                            <div class="mdc-select mdc-select--filled demo-width-class cbo-epp w-100 text-left" hidden>
                                                 <div class="mdc-select__anchor">
                                                     <span class="mdc-select__ripple"></span>
                                                     <span class="mdc-select__selected-text"></span>
@@ -1530,6 +1539,8 @@ ul.ui-autocomplete.ui-menu { width: 400px !important; }
                                                     </ul>
                                                 </div>
                                             </div>
+                                            <select class="js-example-basic-multiple" id="cbo-epp" name="states[]" style="width: 100%;height: 56px;" multiple="multiple">
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -2693,7 +2704,7 @@ ul.ui-autocomplete.ui-menu { width: 400px !important; }
 
 <script src="./js/pdfmake/pdfmake.min.js"></script>
 <script src="./js/pdfmake/vfs_fonts.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
 
 <script>
@@ -2721,8 +2732,17 @@ ul.ui-autocomplete.ui-menu { width: 400px !important; }
     })
     $('document').ready(function (){
 
-
-
+        $('#cbo-maq-equip').select2();
+        $('#cbo-genero').select2();
+        $('#cbo-genero').on('select2:select', function (e) { 
+            console.log("change genero")
+            selectGenre(1);
+        });
+        $('#cbo-genero').on('select2:unselect', function (e) { 
+            console.log("change unselect")
+            selectGenre(1);
+        });
+        $('#cbo-epp').select2();
         //Cambio de los Step del formulario y color de los botones
         var navListItems = $('div.setup-panel div a button'), // tab nav items
             allWells = $('.setup-content'), // content div

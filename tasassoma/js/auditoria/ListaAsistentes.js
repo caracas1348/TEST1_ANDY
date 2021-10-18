@@ -202,36 +202,40 @@ var vw_listado_asistentes = function(){
         $('.eliminar').css('display','block');
        // $('#tbody_trainning .item-tabla').empty();
 
-       
-        
-    
-
-        
-
-
     }
 
-    var aperturaAsist = function(Id,IdAud,ver){
-
-        
+    /**
+     * [aperturaAsist LEVANTAMOS LA MODAL CON LOS DATOS DE LA LISTA DE ASISTENCIA...]
+     * @param  {[type]} Id    [description]
+     * @param  {[type]} IdAud [description]
+     * @param  {[type]} ver   [description]
+     * @return {[type]}       [description]
+     */
+    var aperturaAsist = function(Id,IdAud,ver)
+    {    
 
         $('#metodo').html('- Apertura');
         $('#guardarAsistentes').hide();
-        $('#guardarAsistentesA').show();
+
+        let checked = ''
+        
 
         if (ver == 1) {
             $('#metodo').html('- Ver');
             $('#guardarAsistentesA').prop("disabled","disabled");
             ver = 'disabled';
+            verC = 'disabled';
         }else if (ver == 2) {
             $('#metodo').html('- Apertura');
             $('#guardarAsistentesA').prop("disabled",false);
             ver = '';
+            verC = 'disabled';
             var validacion = 'AP';
         }else if (ver == 3) {
             $('#metodo').html('- Cierre');
             $('#guardarAsistentesA').prop("disabled",false);
-            ver = '';
+            ver  = 'disabled';
+            verC = '';
             var validacion = 'CI';
         }
 
@@ -268,9 +272,6 @@ var vw_listado_asistentes = function(){
             $("#sel_audit").append(`<option class='sel_opt' selected value='${Item.Id}'>${Item.Code}/${Item.DescriptionSede}/${Item.DescriptionUnidadNegocio}/${Item.Code_Normas}/${Item.DescriptionAuditoria} </option>`).prop('disabled',true);
             
         })
-        // ABRIR MODAL
-        $('#modal-listado-asistente').addClass('modal_confirmacion__active');
-        $('.eliminar').css('display','none');
 
         var i = 0;
         var load = $("#tbody_trainning").html('Cargando...');
@@ -288,106 +289,126 @@ var vw_listado_asistentes = function(){
         }).done(function (data) {
 
             load.html('');
+                
                 data.Asistentes.map(function(item){
                     console.log("nombres: ", item);
-                    
+                    var hora_apertura = ""
+                    var hora_cierre   = ""
+                    var checked       = ""
+                    var checked_C       = ""
+
+                    if (item.Hora_Asistencia_Apertura != null) {
+                        hora_apertura = "id='hora_asist"+i+"' value='"+item.Hora_Asistencia_Apertura+"'";
+                        //$('#hora_cierre'+i).val('');
+                        checked       = "checked"
+                    }
+
+                    if (item.Hora_Asistencia_Cierre != null){
+                        hora_cierre = "id='hora_cierre"+i+"' value='"+item.Hora_Asistencia_Cierre+"'";
+                        //$('#hora_asist'+i).val('');
+                        checked_C       = "checked"
+                    }
+
                     if (validacion == 'AP') {
-                            if (item.Hora_Asistencia_Apertura != null) {
-                               var hora_apertura = "id='hora_asist"+i+"' value='"+item.Hora_Asistencia_Apertura+"'";
+
+                            /*if (item.Hora_Asistencia_Apertura != null) {
+                               hora_apertura = "id='hora_asist"+i+"' value='"+item.Hora_Asistencia_Apertura+"'";
                                $('#hora_cierre'+i).val('');
                                 checked       = "checked"
                             }else{
-                               var hora_apertura = '';
+                                hora_apertura = '';
                                 hora_cierre   = '';
                                 checked       = '';
-                            }
+                            }*/
                         $("#tbody_trainning").append("<div class='item-tabla p-2 px-2' style='font-size: 13px;background-color:#ffffff;border: solid 1px #cbcbcb;'</div>"+
-                        "                         <div class='row m-0 justify-content-between  tbody_trainning'>"+
-                        "                         <div class='col-3 form-control2 text-left' >"+
-                        "                           <label for='Name_"+i+"'></label>"+
-                        "                           <input type='hidden' value='"+validacion+"' class='valicacion_"+i+"'>"+
-                        "                           <input type='hidden' id='idLista"+i+"' value='"+item.ListaAsistenciaID+"' ></label>"+
-                        "                           <input type='hidden' name='idAuditor_' value='"+item.Id+"' id='Id"+i+"'>"+
-                        "                           <input type='hidden' value='"+item.Created_Date+"' id='fecha_asist"+i+"'>"+
-                        "                           <input type='text'  id='Name_"+i+"' "+ver+" value='"+item.Nombres+"' class='form-control form-control2 bg-white autocompletecollaborator' style='margin-top:0px !important;padding-top:0px !important;' >"+
-                        "                           <div class='loader' id='add_firtnameload_1"+i+"' style='display:none'></div>"+
-                        "                           <input type='hidden' class='form-control' id='hid_Name_id_"+i+"' name='hid_Name_id_"+i+"'></div>"+
-                        "                         <div class='col-3 text-left'><input type='text' id='Cargo_"+i+"'  value='"+item.Cargo+"' name='cargo' readonly class='form-control form-control2 bg-white autocompletecollaborator'>" +
-                        "                           <input type='hidden' class='form-control' id='hid_Cargo_"+i+"' name='hid_Cargo_"+i+"'></div>"+
-                        "                         <div class='col-2'><label class='custom-radio-checkbox'><input type='checkbox'  class='custom-radio-checkbox__input' value='"+i+"' id='check_list"+i+"' "+checked+" "+ver+" onclick='vw_listado_asistentes.check_list(this.value)'>"+
-                        "                           <span class='custom-radio-checkbox__show custom-radio-checkbox__show--radio'></span></label></div>"+
-                        "                         <div class='col-2 text-left'><input type='time' step='2' id='hora_asist"+i+"' "+hora_apertura+" "+ver+" name='hora_asist"+i+"' class='form-control form-control2 bg-white'></div>" +
-                        "                         </div></div></div>"
+                            "                         <div class='row m-0 justify-content-between  tbody_trainning'>"+
+                            "                         <div class='col-2 form-control2 text-left' >"+
+                            "                           <label for='Name_"+i+"'></label>"+
+                            "                           <input type='hidden' value='"+validacion+"' class='valicacion_"+i+"'>"+
+                            "                           <input type='hidden' id='idLista"+i+"' value='"+item.ListaAsistenciaID+"' ></label>"+
+                            "                           <input type='hidden' name='idAuditor_' value='"+item.Id+"' id='Id"+i+"'>"+
+                            "                           <input type='hidden' value='"+item.Created_Date+"' id='fecha_asist"+i+"'>"+
+                            "                           <input type='text' readonly  id='Name_"+i+"' "+ver+" value='"+item.Nombres+"' class='form-control form-control2 bg-white autocompletecollaborator' style='margin-top:0px !important;padding-top:0px !important;' >"+
+                            "                           <div class='loader' id='add_firtnameload_1"+i+"' style='display:none'></div>"+
+                            "                           <input type='hidden' class='form-control' id='hid_Name_id_"+i+"' name='hid_Name_id_"+i+"'></div>"+
+                            "                         <div class='col-2 text-left'><input type='text' readonly id='Cargo_"+i+"'  value='"+item.Cargo+"' name='cargo' readonly class='form-control form-control2 bg-white autocompletecollaborator'>" +
+                            "                           <input type='hidden' class='form-control' id='hid_Cargo_"+i+"' name='hid_Cargo_"+i+"'></div>"+
+                            
+                            `                         <div class='col-2'><label class='custom-radio-checkbox'><input type='checkbox' class='custom-radio-checkbox__input' value="${i}" id='check_list${i}' ${checked} ${ver} onclick="vw_listado_asistentes.check_list(this.id,'hora_asist${i}')">`+
+                            "                           <span class='custom-radio-checkbox__show custom-radio-checkbox__show--radio'></span></label></div>"+
+                            "                         <div class='col-1 text-left'><input type='time' step='2' id='hora_asist"+i+"' "+hora_apertura+" "+ver+" name='hora_asist"+i+"' class='form-control form-control2 bg-white'></div>" +
+
+
+                            "                         <div class='col-2'><label class='custom-radio-checkbox'><input type='checkbox'  class='custom-radio-checkbox__input' value='"+i+"' id='check_listC"+i+"' "+checked_C+" "+verC+" onclick='vw_listado_asistentes.check_list(this.value)'>"+
+                            "                           <span class='custom-radio-checkbox__show custom-radio-checkbox__show--radio'></span></label></div>"+
+                            "                         <div class='col-1 text-left'><input type='time' step='2' id='hora_cierre"+i+"' "+hora_cierre+" "+verC+" name='hora_cierre"+i+"' class='form-control form-control2 bg-white'></div>" +
+
+
+                            "                         </div></div></div>"
                         );
-                   i++;  
-               }else if (validacion == 'CI') {
-                        if (item.Hora_Asistencia_Cierre != null){
-                          var hora_cierre = "id='hora_cierre"+i+"' value='"+item.Hora_Asistencia_Cierre+"'";
-                            $('#hora_asist'+i).val('');
-                            checked       = "checked"
-                        }else{
-                           var hora_cierre = '';
-                            hora_cierre   = '';
-                            checked       = '';
-                        }
-                    $("#tbody_trainning").append("<div class='item-tabla p-2 px-2' style='font-size: 13px;background-color:#ffffff;border: solid 1px #cbcbcb;'</div>"+
-                    "                         <div class='row m-0 justify-content-between  tbody_trainning'>"+
-                    "                         <div class='col-3 form-control2 text-left' >"+
-                    "                           <label for='Name_"+i+"'></label>"+
-                    "                           <input type='hidden' value='"+validacion+"' class='valicacion_"+i+"'>"+
-                    "                           <input type='hidden' id='idLista"+i+"' value='"+item.ListaAsistenciaID+"' ></label>"+
-                    "                           <input type='hidden' name='idAuditor_' value='"+item.Id+"' id='Id"+i+"'>"+
-                    "                           <input type='hidden' value='"+item.Created_Date+"' id='fecha_cierre"+i+"'>"+
-                    "                           <input type='text'  id='Name_"+i+"' "+ver+" value='"+item.Nombres+"' class='form-control form-control2 bg-white autocompletecollaborator' style='margin-top:0px !important;padding-top:0px !important;' >"+
-                    "                           <div class='loader' id='add_firtnameload_1"+i+"' style='display:none'></div>"+
-                    "                           <input type='hidden' class='form-control' id='hid_Name_id_"+i+"' name='hid_Name_id_"+i+"'></div>"+
-                    "                         <div class='col-3 text-left'><input type='text' id='Cargo_"+i+"'  value='"+item.Cargo+"' name='cargo' readonly class='form-control form-control2 bg-white autocompletecollaborator'>" +
-                    "                           <input type='hidden' class='form-control' id='hid_Cargo_"+i+"' name='hid_Cargo_"+i+"'></div>"+
-                    "                         <div class='col-2 '><label class='custom-radio-checkbox'><input type='checkbox'  class='custom-radio-checkbox__input' value='"+i+"' name='Rol_Code' id='check_list"+i+"' "+checked+" "+ver+" onclick='vw_listado_asistentes.check_list(this.value)'>"+
-                    "                           <span class='custom-radio-checkbox__show custom-radio-checkbox__show--radio'></span></label></div>"+
-                    "                         <div class='col-2 text-left'><input type='time' step='2'  id='hora_cierre"+i+"' "+hora_cierre+" "+ver+" name='hora_cierre"+i+"' class='form-control form-control2 bg-white newtime'></div>" +
-                    "                         </div></div></div>"
-                    );
-               i++;  
-               }
-               else {
-                        if (item.Hora_Asistencia_Cierre != null){
-                          var hora_cierre = "id='hora_cierre"+i+"' value='"+item.Hora_Asistencia_Cierre+"'";
-                            $('#hora_asist'+i).val('');
-                            checked       = "checked"
-                            ver = 'disabled';
-                        }else{
-                           var hora_cierre = '';
-                            hora_cierre   = '';
-                            checked       = '';
-                        }
-                    $("#tbody_trainning").append("<div class='item-tabla p-2 px-2' style='font-size: 13px;background-color:#ffffff;border: solid 1px #cbcbcb;'</div>"+
-                    "                         <div class='row m-0 justify-content-between  tbody_trainning'>"+
-                    "                         <div class='col-3 form-control2 text-left' >"+
-                    "                           <label for='Name_"+i+"'></label>"+
-                    "                           <input type='hidden' value='"+validacion+"' class='valicacion_"+i+"'>"+
-                    "                           <input type='hidden' id='idLista"+i+"' value='"+item.ListaAsistenciaID+"' ></label>"+
-                    "                           <input type='hidden' name='idAuditor_' value='"+item.Id+"' id='Id"+i+"'>"+
-                    "                           <input type='hidden' value='"+item.Created_Date+"' id='fecha_cierre"+i+"'>"+
-                    "                           <input type='text'  id='Name_"+i+"' "+ver+" value='"+item.Nombres+"' class='form-control form-control2 bg-white autocompletecollaborator' style='margin-top:0px !important;padding-top:0px !important;' >"+
-                    "                           <div class='loader' id='add_firtnameload_1"+i+"' style='display:none'></div>"+
-                    "                           <input type='hidden' class='form-control' id='hid_Name_id_"+i+"' name='hid_Name_id_"+i+"'></div>"+
-                    "                         <div class='col-3 text-left'><input type='text' id='Cargo_"+i+"'  value='"+item.Cargo+"' name='cargo' readonly class='form-control form-control2 bg-white autocompletecollaborator'>" +
-                    "                           <input type='hidden' class='form-control' id='hid_Cargo_"+i+"' name='hid_Cargo_"+i+"'></div>"+
-                    "                         <div class='col-2'><label class='custom-radio-checkbox'><input type='checkbox' class='custom-radio-checkbox__input' value='"+i+"' id='check_list"+i+"' "+checked+" "+ver+" onclick='vw_listado_asistentes.check_list(this.value)'>"+
-                    "                           <span class='custom-radio-checkbox__show custom-radio-checkbox__show--radio'></span></label></div>"+
-                    "                         <div class='col-2 text-left'><input type='time' step='2' id='hora_cierre"+i+"' "+hora_cierre+" "+ver+" name='hora_cierre"+i+"' readonly class='form-control form-control2 bg-white'></div>" +
-                    "                         </div></div></div>"
-                    );
-               i++;  
-               }
+
+                        i++;  
+                    }else if (validacion == 'CI') {
+                        $("#tbody_trainning").append("<div class='item-tabla p-2 px-2' style='font-size: 13px;background-color:#ffffff;border: solid 1px #cbcbcb;'</div>"+
+                            "                         <div class='row m-0 justify-content-between  tbody_trainning'>"+
+                            "                         <div class='col-2 form-control2 text-left' >"+
+                            "                           <label for='Name_"+i+"'></label>"+
+                            "                           <input type='hidden' value='"+validacion+"' class='valicacion_"+i+"'>"+
+                            "                           <input type='hidden' id='idLista"+i+"' value='"+item.ListaAsistenciaID+"' ></label>"+
+                            "                           <input type='hidden' name='idAuditor_' value='"+item.Id+"' id='Id"+i+"'>"+
+                            "                           <input type='hidden' value='"+item.Created_Date+"' id='fecha_asist"+i+"'>"+
+                            "                           <input type='text' readonly  id='Name_"+i+"' "+ver+" value='"+item.Nombres+"' class='form-control form-control2 bg-white autocompletecollaborator' style='margin-top:0px !important;padding-top:0px !important;' >"+
+                            "                           <div class='loader' id='add_firtnameload_1"+i+"' style='display:none'></div>"+
+                            "                           <input type='hidden' class='form-control' id='hid_Name_id_"+i+"' name='hid_Name_id_"+i+"'></div>"+
+                            "                         <div class='col-2 text-left'><input type='text' readonly id='Cargo_"+i+"'  value='"+item.Cargo+"' name='cargo' readonly class='form-control form-control2 bg-white autocompletecollaborator'>" +
+                            "                           <input type='hidden' class='form-control' id='hid_Cargo_"+i+"' name='hid_Cargo_"+i+"'></div>"+
+                            
+                            `                         <div class='col-2'><label class='custom-radio-checkbox'><input type='checkbox' class='custom-radio-checkbox__input' value="${i}" id='check_list${i}' ${checked} ${ver} onclick="vw_listado_asistentes.check_list(this.id,'hora_asist${i}')">`+
+                            "                           <span class='custom-radio-checkbox__show custom-radio-checkbox__show--radio'></span></label></div>"+
+                            "                         <div class='col-1 text-left'><input type='time' step='2' id='hora_asist"+i+"' "+hora_apertura+" "+ver+" name='hora_asist"+i+"' class='form-control form-control2 bg-white'></div>" +
+
+                            `                         <div class='col-2'><label class='custom-radio-checkbox'><input type='checkbox' class='custom-radio-checkbox__input' value="${i}" id='check_listC${i}' ${checked_C} ${verC} onclick="vw_listado_asistentes.check_list(this.id,'hora_cierre${i}')">`+
+                            "                           <span class='custom-radio-checkbox__show custom-radio-checkbox__show--radio'></span></label></div>"+
+                            "                         <div class='col-1 text-left'><input type='time' step='2' id='hora_cierre"+i+"' "+hora_cierre+" "+verC+" name='hora_cierre"+i+"' class='form-control form-control2 bg-white'></div>" +
+
+                            "                         </div></div></div>"
+                        );
+                        i++;  
+                    }
+                    else 
+                    {
+                        $("#tbody_trainning").append("<div class='item-tabla p-2 px-2' style='font-size: 13px;background-color:#ffffff;border: solid 1px #cbcbcb;'</div>"+
+                            "                         <div class='row m-0 justify-content-between  tbody_trainning'>"+
+                            "                         <div class='col-2 form-control2 text-left' >"+
+                            "                           <label for='Name_"+i+"'></label>"+
+                            "                           <input type='hidden' value='"+validacion+"' class='valicacion_"+i+"'>"+
+                            "                           <input type='hidden' id='idLista"+i+"' value='"+item.ListaAsistenciaID+"' ></label>"+
+                            "                           <input type='hidden' name='idAuditor_' value='"+item.Id+"' id='Id"+i+"'>"+
+                            "                           <input type='hidden' value='"+item.Created_Date+"' id='fecha_asist"+i+"'>"+
+                            "                           <input type='text' readonly  id='Name_"+i+"' "+ver+" value='"+item.Nombres+"' class='form-control form-control2 bg-white autocompletecollaborator' style='margin-top:0px !important;padding-top:0px !important;' >"+
+                            "                           <div class='loader' id='add_firtnameload_1"+i+"' style='display:none'></div>"+
+                            "                           <input type='hidden' class='form-control' id='hid_Name_id_"+i+"' name='hid_Name_id_"+i+"'></div>"+
+                            "                         <div class='col-2 text-left'><input type='text' readonly id='Cargo_"+i+"'  value='"+item.Cargo+"' name='cargo' readonly class='form-control form-control2 bg-white autocompletecollaborator'>" +
+                            "                           <input type='hidden' class='form-control' id='hid_Cargo_"+i+"' name='hid_Cargo_"+i+"'></div>"+
+                            
+                            `                         <div class='col-2'><label class='custom-radio-checkbox'><input type='checkbox' class='custom-radio-checkbox__input' value="${i}" id='check_list${i}' ${checked} ${ver} onclick="vw_listado_asistentes.check_list(this.id,'hora_asist${i}')">`+
+                            "                           <span class='custom-radio-checkbox__show custom-radio-checkbox__show--radio'></span></label></div>"+
+                            "                         <div class='col-1 text-left'><input type='time' step='2' id='hora_asist"+i+"' "+hora_apertura+" "+ver+" name='hora_asist"+i+"' class='form-control form-control2 bg-white'></div>" +
+
+                            `                         <div class='col-2'><label class='custom-radio-checkbox'><input type='checkbox' class='custom-radio-checkbox__input' value="${i}" id='check_listC${i}' ${checked_C} ${verC} onclick="vw_listado_asistentes.check_list(this.id,'hora_cierre${i}')">`+
+                            "                           <span class='custom-radio-checkbox__show custom-radio-checkbox__show--radio'></span></label></div>"+
+                            "                         <div class='col-1 text-left'><input type='time' step='2' id='hora_cierre"+i+"' "+hora_cierre+" "+verC+" name='hora_cierre"+i+"' class='form-control form-control2 bg-white'></div>" +
+
+                            "                         </div></div></div>"
+                        );
+                        i++;
+                    }
 
 
-               hideLoading();
-                
+                    hideLoading();               
 
                
-            })
+                })
 
         }).always(function( jqXHR, textStatus, errorThrown ) {
             var total = "";
@@ -395,11 +416,11 @@ var vw_listado_asistentes = function(){
             else total = i
             //$('#rowcount').val(rowCount);
             $('#contadorrow').html(total);
+            $('#guardarAsistentesA').show();
+            // ABRIR MODAL
+            $('#modal-listado-asistente').addClass('modal_confirmacion__active');
+            $('.eliminar').css('display','none');
         });
-
-
-        
-
 
 
         
@@ -407,15 +428,23 @@ var vw_listado_asistentes = function(){
 
 
 
-     var check_list = function(id){
+     var check_list = function(id,value){
 
+        // console.warn(id)
+        // console.warn(value)
+        // console.warn($("#"+id).is(':checked'))
+        
         //$("#check_list"+id).css('background-color','#d2d97b !important');
-        if ($("#check_list"+id).is(':checked')) {
-            $('#hora_asist'+id).val(moment().format('HH:mm:ss'));
-            $('#hora_cierre'+id).val(moment().format('HH:mm:ss'));
+        // if ($("#check_list"+value).is(':checked')) {
+        if ( $("#"+id).is(':checked') ) {
+            // $('#hora_asist'+value).val(moment().format('HH:mm:ss'));
+            // $('#hora_cierre'+value).val(moment().format('HH:mm:ss'));
+            $(`#${value}`).val(moment().format('HH:mm:ss'));
+
         }else{
-            $('#hora_asist'+id).val('');
-            $('#hora_cierre'+id).val('');
+            // $('#hora_asist'+value).val('');
+            // $('#hora_cierre'+value).val('');
+            $(`#${value}`).val('');
         }
         
     }
@@ -497,7 +526,7 @@ var vw_listado_asistentes = function(){
             $('#modalConfirmGuardarAsistentesA').modal('show').addClass('fade');
             $('#txt_lista').html(item.Code);
             console.log('Guardo: ',data);
-        })
+        })//*/
         /*.fail(function( jqXHR, textStatus, errorThrown ) {
             swal({
                 title: "Error",
@@ -1070,10 +1099,10 @@ var getPerson = function (obj,i) {
     
             $('#add-trainning').click(function (){
                     rowCount2++;// = $('#tbody_trainning .item-tabla2').length; mio
-                    
+
                     $("#tbody_trainning").append("<div class='item-tabla p-2 px-2' style='font-size: 13px;background-color:#ffffff;border: solid 1px #cbcbcb;'</div>"+
                         "                         <div class='row m-0 justify-content-between  tbody_trainning'>"+
-                        "                         <div class='col-3 form-control2 text-left' >"+
+                        "                         <div class='col-2 form-control2 text-left' >"+
                         "                           <label for='Name_"+rowCount2+"'></label>"+
                         "                           <input type='hidden' id='contadorrow' value='"+rowCount2+"' ></label>"+
                         "                           <input type='hidden' name='idAuditor_' id='idAuditor_'>"+
@@ -1081,15 +1110,24 @@ var getPerson = function (obj,i) {
                         "                           <input type='text' value='' id='Name_"+rowCount2+"' name='Name' class='form-control form-control2 bg-white autocompletecollaborator validate'>"+
                         "                           <div class='loader' id='add_firtnameload_1"+rowCount2+"' style='display:none'></div>"+
                         "                           <input type='hidden' class='form-control' id='hid_Name_id_"+rowCount2+"' name='hid_Name_id_"+rowCount2+"'></div>"+
-                        "                         <div class='col-3 text-left'><input type='text' id='Cargo_"+rowCount2+"' name='cargo' readonly class='form-control form-control2 bg-white autocompletecollaborator'>" +
+                        "                         <div class='col-2 text-left'><input type='text' id='Cargo_"+rowCount2+"' name='cargo' readonly class='form-control form-control2 bg-white autocompletecollaborator'>" +
                         "                           <input type='hidden' class='form-control' id='hid_Cargo_"+rowCount2+"'  name='hid_Cargo_"+rowCount2+"'></div>"+
-                        "                           <div class='col-2'><label class='custom-radio-checkbox'><input type='checkbox'  class='custom-radio-checkbox__input' value='"+rowCount2+"' id='check_list"+rowCount2+"' disabled "+
+                        
+
+                        "                         <div class='col-2'><label class='custom-radio-checkbox'><input type='checkbox'  class='custom-radio-checkbox__input' value='"+rowCount2+"' id='check_list"+rowCount2+"' disabled "+
                         "                           <span class='custom-radio-checkbox__show custom-radio-checkbox__show--radio'></span></label></div>"+
-                        "                         <div class='col-2 text-left'><input type='time' step='2' disabled readonly id='hora_asist' name='hora_asist' class='form-control form-control2 bg-white newtime' ></div>" +
+                        "                         <div class='col-1 text-left'><input type='time' step='2' disabled readonly id='hora_asist' name='hora_asist' class='form-control form-control2 bg-white newtime' ></div>" +
+
+                        
+                        "                         <div class='col-2'><label class='custom-radio-checkbox'><input type='checkbox'  class='custom-radio-checkbox__input' value='"+rowCount2+"' id='check_listC"+rowCount2+"' disabled "+
+                        "                           <span class='custom-radio-checkbox__show custom-radio-checkbox__show--radio'></span></label></div>"+
+                        "                         <div class='col-1 text-left'><input type='time' step='2' disabled readonly id='hora_asistC' name='hora_asistC' class='form-control form-control2 bg-white newtime' ></div>" +
+
+
                         "                         <div class='col-2 '><button type='button' _Id='' class='delete btn-circle btn-register border-0 ojo-1' style='background-color: #ff6767'>"+
                         "                            <img src='./images/iconos/Pathcan.svg' class='edit-1'></button>" +
                         "                         </div></div></div>"
-                        );
+                    );
     
                         var total = $('#tbody_trainning .item-tabla').length;
                        if(total<10) total = "0"+total
@@ -1151,8 +1189,8 @@ var getPerson = function (obj,i) {
             getPerson(obj,i)
         },aperturaAsist: function(Id,IdAud,ver){
             aperturaAsist(Id,IdAud,ver);
-        },check_list: function(id){
-            check_list(id);
+        },check_list: function(id,value){
+            check_list(id,value);
         },guardarAsistentesA: function(){
             guardarAsistentesA();
         },cargarSelectSedesFilter:function(selectId){

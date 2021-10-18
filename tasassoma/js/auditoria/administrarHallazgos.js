@@ -1,5 +1,6 @@
 
 var objHallazgo = new Array();
+var arrayHallazgos = [];
 var istAud = "1";//contiene el datos delñ auditor que actualmente se esta editando o trabajando
 var AnalisisCausa = 1;
 var accionH = 0; // 0 - nuevo hallazgo, 1-modificar hallazgo
@@ -76,7 +77,7 @@ function _init_fnSp3AdministrarHallazgosEstadoInicial()
 
 function fnSp3CargaFiltroEstadoInicialAdmHallazgo()
 {//------------------------------------- ini   fnSp3CargaFiltroEstadoInicialAdmHallazgo() -------------------------------------
-    console.clear()
+    //console.clear()
     htmlFuenteNuevo = "";
     showLoading();
     guardarEnviar = 0;
@@ -98,10 +99,18 @@ function fnSp3CargaFiltroEstadoInicialAdmHallazgo()
     if($('#sp3_txt_fecha_hastaAh').val() != ""){ f2 =  date1_DD_MM_AAAA_to_AAAA_MM_DD_T_HH_MM_S(f22)}
     else{ f2 = "";}
 
+    let ReportanteUserHash = ""
+
+    if( getCookie("vtas_rolexternalrol"+sessionStorage.tabVisitasa) !== "ROL_COORDINADORAUDITORIA")
+    {
+        ReportanteUserHash = getCookie("vtas_id_hash"+sessionStorage.tabVisitasa)
+    }
+
 
     // https://550m44ud1tmg7454-audit-dev.azurewebsites.net/api/Get-Evaluacion_Auditores-All?code=EUnorEI6paUzxOdpVKKAGDjhb4p4wEZ3R6NTWKDoOdVrk0Y0S/ZOkg==&httpmethod=objectlist&RolId=&StatusEvaluacionId=&FechaInicio=&FechaFin=&Auditor=&Nota=52
-    var url = apiurlAuditoria+ "/api/Get-Hallazgos-All?code=NKBvao47qcJIg6Qjy/X1fUQLgxp2GarodbvWKcbQcPKbj7g4BhGUxQ==&httpmethod=objectlist&FuenteId="+fuente+"&TipoHallazgoId="+tipoh+"&NormaId="+normah+"&SedeId="+seddeah+"&StatusId="+estadoah+"&FechaInicio="+f1+"&FechaFin="+f2;
-    console.log("URL",url )
+    var url = apiurlAuditoria+ "/api/Get-Hallazgos-All?code=NKBvao47qcJIg6Qjy/X1fUQLgxp2GarodbvWKcbQcPKbj7g4BhGUxQ==&httpmethod=objectlist&FuenteId="+fuente+"&TipoHallazgoId="+tipoh+"&NormaId="+normah+"&SedeId="+seddeah+"&StatusId="+estadoah+"&FechaInicio="+f1+"&FechaFin="+f2+"&ReportanteUserHash="+ReportanteUserHash;
+    console.log("112 URL",url )
+    console.log("USUARIO(",ReportanteUserHash,")" )
 
     var headers ={
             "apikey":constantes.apiKey
@@ -2431,3 +2440,79 @@ var fnAgregarAccionesEnTabla = function(obj)
 ////////// EJEMPLO SHEETJS exportar table
 
 //*********************************************-----------------------------  SPRINT 4 IV  -----------------------------********************************************** */
+/**
+ * [downloadExcelHallazgos DESCARGAR LISTADO DE HALLAZGOS EN EXCEL]
+ * @return {[type]} [description]
+ */
+let downloadExcelHallazgos = function()
+{
+
+    // console.table("objHallazgo -> ",objHallazgo)
+    // console.table("objHallazgoAsignado -> ",objHallazgoAsignado)
+    arrayHallazgos = objHallazgoAsignado.reverse()
+    // console.table("arrayHallazgos -> ",arrayHallazgos)
+
+
+    let excel = `
+        <table border="1" style="color: #000;">
+            <thead>
+                <tr>
+                    <th bgcolor="#B2B2B2">ID HALLAZGO</th>
+                    <th bgcolor="#B2B2B2">FUENTE</th>
+                    <th bgcolor="#B2B2B2">TIPO HALLAZGO</th>
+                    <th bgcolor="#B2B2B2">NORMA</th>
+                    <th bgcolor="#B2B2B2">SEDE</th>
+                    <th bgcolor="#B2B2B2">RESPONSABLE</th>
+                    <th bgcolor="#B2B2B2">REPORTANTE</th>
+                    <th bgcolor="#B2B2B2">FECHA EJECUCIÓN</th>
+                    <th bgcolor="#B2B2B2">FECHA REGISTRO</th>
+                    <th bgcolor="#B2B2B2">ESTADO</th>
+                    <th bgcolor="#B2B2B2">ESTADO ACR</th>
+                </tr>
+            <thead>
+            <tbody id="ListadoDeAuditorias">
+
+    `
+
+    arrayHallazgos.forEach(function(Item)
+    {
+        // console.warn("Item.dataHallazgo.Code_Hallazgo -> ",Item.dataHallazgo.Code_Hallazgo)
+        excel += `
+            <tr bgcolor="#fff">
+                <td text-aling="center">${Item.dataHallazgo.Code_Hallazgo}</td>
+                <td text-aling="center">${Item.dataHallazgo.Fuente}</td>
+                <td text-aling="center">${Item.dataHallazgo.TipoHallazgo}</td>
+                <td text-aling="center">${Item.dataHallazgo.Norma}</td>
+                <td text-aling="center">${Item.dataHallazgo.Sede}</td>
+                <td text-aling="center">${Item.dataHallazgo.ResponsableName}</td>
+                <td text-aling="center">${Item.dataHallazgo.ReportanteName}</td>
+                <td text-aling="center">${Item.dataHallazgo.FechaEjecucion}</td>
+                <td text-aling="center">${Item.dataHallazgo.FechaRegistro}</td>
+                <td text-aling="center">${Item.dataHallazgo.StatusHallazgo}</td>
+                <td text-aling="center">${Item.dataHallazgo.StatusAccionCorrectiva}</td>
+            </tr>
+        `
+    });
+
+    excel += `</tbody></table>`
+
+    var ua = window.navigator.userAgent;
+    var msie = ua.indexOf("MSIE ");
+
+    if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./))      // If Internet Explorer
+    {
+        txtArea1.document.open("txt/html","replace");
+        txtArea1.document.write(excel);
+        txtArea1.document.close();
+        txtArea1.focus();
+        sa=txtArea1.document.execCommand("SaveAs",true,"Say Thanks to Sumit.xls");
+    }
+    else                 //other browser not tested on IE 11
+    {
+        var link = document.getElementById('ExcelHallazgos');
+        link.href='data:application/vnd.ms-excel;base64,' + window.btoa(excel);
+        link.download='Listado De Hallazgos';
+        link.click();
+        //sa = window.open('data:application/vnd.ms-excel,' + encodeURIComponent(excel));
+    }
+}

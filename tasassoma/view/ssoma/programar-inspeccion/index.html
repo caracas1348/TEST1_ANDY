@@ -43,7 +43,7 @@
                             <option value="2">Asignada</option>
                             <option value="3">En Ejecución</option>
                             <option value="4">Finalizada</option>
-                            <option value="5">Vencida</option>
+                            <option value="5">Incompleta</option>
                             <option value="6">Reasignada</option>
                         </select>
                     </div>
@@ -340,9 +340,15 @@
                 </div>
             </div>
             <div class="d-flex mt-4">
-                <div class="col-md-12">
+                <div class="col-md-12" style="flex-wrap: wrap;display: flex;">
                     <label for="" class="w-100 text-left mb-4">Frecuencia de Ejecución</label>
-                    <div class="d-flex" id="listaFrecuencia">
+                    <div class="col-md-3 p-0">
+                        <label class="m-0" for="">Nro de ejecución:</label>
+                    </div>
+                    <div class="col-md-9 p-0" style="display: flex;">
+                        <input id="numeroEjecuciones" type="number" value="1" style="width: 50px;" onchange="verificarnumerodeejecuciones(1)" onkeyup="verificarnumerodeejecuciones(2)">
+                    </div>
+                    <div class="d-flex pt-3" id="listaFrecuencia">
                         <div class="mdc-form-field mr-1">
                             <div class="mdc-radio">
                                 <input class="mdc-radio__native-control" type="radio" id="Diario" name="frecuencia" value="1">
@@ -412,6 +418,26 @@
                     </div>
                 </div>
             </div>
+
+            <div class="d-flex mt-4">
+                <div class="col-md-6" style="display: flex;align-items: center;">
+                    <div class="col-md-5 p-0">
+                        <label class="m-0" for="">Fecha Inicio:</label>
+                    </div>
+                    <div class="col-md-7 p-0">
+                        <input type="date" id="fechaInicioProg" class="form-control datepicker" placeholder="dd/mm/yyyy">  
+                    </div> 
+                </div>
+                <div class="col-md-6" style="display: flex;align-items: center;">
+                    <div class="col-md-5 p-0">
+                        <label class="m-0" for="">Fecha Fin:</label>
+                    </div>
+                    <div class="col-md-7 p-0">
+                        <input type="date" id="fechaFinProg" class="form-control datepicker" placeholder="dd/mm/yyyy">
+                    </div>
+                </div>
+            </div>
+
             <div class="d-flex mt-4 mb-3 justify-content-center">
                 <div class="col-md-4 pl-0">
                     <button class="btn_confirmar_modal bg-green-lime-modal" onclick="saveInspeccion()">Guardar</button>
@@ -544,6 +570,22 @@
                 <div class="col-md-6">
                     <label for="">Frecuencia de Ejecución</label>
                     <p class="text-consult" id="frecuencia_ejecucion"></p>
+                </div>
+            </div>
+            <div class="d-flex mt-4">
+                <div class="col-md-6">
+                    <label for="">Fecha Inicio</label>
+                    <p class="text-consult" id="fechaInicioDetail"></p>
+                </div>
+                <div class="col-md-6">
+                    <label for="">Fecha Fin</label>
+                    <p class="text-consult" id="fechaFinDetail"></p>
+                </div>
+            </div>
+            <div class="d-flex mt-4">
+                <div class="col-md-6">
+                    <label for="">Número de ejecuciones</label>
+                    <p class="text-consult" id="executionsNumberDetail"></p>
                 </div>
             </div>
             <div class="d-flex mt-4 mb-3 justify-content-center">

@@ -357,6 +357,32 @@
 
   }
 
+  #moduloSalva{
+    background-image: url('../images/iconos/salva-off.svg');
+    background-size: 131px;
+    background-repeat: no-repeat;
+    background-position-y: center;
+    background-position-x: 60%;
+
+    width:  222px;
+    height: 222px;
+    transition: all .3s;
+  }
+  #moduloSalva:hover{
+    background-image: url('../images/iconos/salva-on.svg');
+    background-size:cover;
+    background-size: 155px;
+    background-repeat: no-repeat;
+    background-position-y: center;
+    background-position-x: 60%;
+
+    width:  222px;
+    height: 222px;
+    cursor: pointer;
+    transition: all .3s;
+
+  }
+
 
   #moduloConfiguraciones{
     background-image: url('../images/configuracionesAuditoriasOff.svg');
@@ -470,6 +496,34 @@
     width: 127px;
     height: 127px;
   }
+
+  #moduloObservacionesPreventivas{
+
+    /*background-image: url('../images/iconos/salva-off.svg');*/
+    background-image: url('../images/Salva.svg');
+    background-size: 131px;
+    background-repeat: no-repeat;
+    background-position-y: center;
+    background-position-x: 60%;
+
+    width:  222px;
+    height: 222px;
+    transition: all .3s;
+
+    /*background-image: url('../images/Salva.svg');
+
+    background-size:cover;
+    cursor: pointer;
+    width:  127px;
+    height: 127px;*/
+  }
+  /*#moduloObservacionesPreventivas:hover{
+    background-image: url('../images/calendar1.svg');
+    background-size:cover;
+    cursor: pointer;
+    width: 127px;
+    height: 127px;
+  }*/
 
   #moduloListadoValidadorIperc{
     background-image: url('../images/validar2.svg');
@@ -1883,7 +1937,7 @@
              /* background-color:black; */
          }
 
-        #emergenteDivMenu,#emergenteDivMenuResponsableAuditorias,#emergenteDivMenuAuditorLider, #emergenteDivMenu1, #emergenteDivMenu2, #emergenteDivMenuRolEvaluadorLocalAC, #emergenteDivMenuRolResponsableAsignado {
+        #emergenteDivMenu,#emergenteDivMenuResponsableAuditorias,#emergenteDivMenuAuditorLider, #emergenteDivMenu1, #emergenteDivMenu2, #emergenteDivMenuRolEvaluadorLocalAC, #emergenteDivMenuRolResponsableAsignado, #emergenteDivMenuObservacionesPreventivas {
           position: absolute;
           bottom: 0;
           width: 100%;

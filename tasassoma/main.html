@@ -211,11 +211,11 @@
                         <td width="20%" >&nbsp;</td>
                         <td colspan="3" width="60%" align="center"  >
 
-                            <div class="row">
+                            <div class="row justify-content-center">
 
-                                <div class="col-3">
+                                <div class="col-3 " id="divModuloProgramaAuditoria" style="display: none;">
 
-                                    <div  class="moduloAuditoria" id="divModuloProgramaAuditoria" style="display: none;" title="Programa de Auditor&iacute;as"  >
+                                    <div  class="moduloAuditoria"  title="Programa de Auditor&iacute;as"  >
                                         <div>
                                             <div id="moduloProgramaAuditoria"  onclick="closexMenuGestAudi(); programaAuditoria();" >
                                             </div>
@@ -227,7 +227,7 @@
                                     </div>
                                 </div>
                                 <div class="col-3">
-                                    <div  class="moduloAuditoria" title="Listado de Asistentes" >
+                                    <div  class="moduloAuditoria" title="Listado de Auditorías" >
                                         <div >
                                             <div id="moduloListadoAuditoriaLider" onclick="closexMenuGestAudi(); listadoAuditoriaLider();" ></div>
                                         </div>
@@ -236,7 +236,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-3">
+                                <div class="col-3"  id="divModuloListadoAsistentes" style="display: none;">
                                     <div  class="moduloAuditoria" title="Listado de Asistentes" >
                                         <div >
                                             <div id="moduloListadoAsistentes" onclick="closexMenuGestAudi(); listadoAsistentes();" >
@@ -247,7 +247,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-3">
+                                <div class="col-3" id="divModuloIndicadores" style="display: none;">
                                     <div  class="moduloIndicadores" style="display: block;" title="Indicadores Auditor&iacute;a" >
                                         <div >
                                             <div id="moduloIndicadores" onclick="openIndicadores(urlIndicadoresAuditoria)"></div>
@@ -339,7 +339,7 @@
 
                         <div class="row">
 
-                            <div class="col-6">
+                            <div class="col-12">
 
                                 <div  class="moduloAuditoria" id="divModuloEvaluaPrograma" style="display: block;" title="Evaluación de Programas"  >
                                     <div>
@@ -352,7 +352,7 @@
 
                                 </div>
                             </div>
-                            <div class="col-6">
+                            <!-- <div class="col-6">
                                 <div  class="moduloIndicadores" style="display: block;" title="Indicadores Auditor&iacute;a" >
                                     <div >
                                         <div id="moduloIndicadores" onclick="openIndicadores(urlIndicadoresAuditoria)"></div>
@@ -360,7 +360,7 @@
 
                                     <div class="labelModulo" style="display: block;">Indicadores</div>
                                 </div>
-                            </div>
+                            </div> -->
 
                         </div>
 
@@ -550,7 +550,7 @@
                         <td width="30%" colspan="3" align="center"  >
 
                             <div class="row">
-                                <div class="col-4">
+                                <div class="col-3">
                                     <div  class="moduloAuditoria" id="divModuloProgramaAuditoria" style="" title="Hallazgos"  >
                                         <div>
                                             <div id="moduloHallazgo"  onclick=" fnSp3AdministrarHallazgos();   closexMenuAccionesCorrectivas();" >
@@ -562,7 +562,19 @@
 
                                     </div>
                                 </div>
-                                <div class="col-4">
+                                <div class="col-3">
+                                    <div  class="moduloHallazgosAsignados" id="divModuloProgramaAuditoria" style="" title="Hallazgos"  >
+                                        <div>
+                                            <div id="moduloHallazgosAsignados"  onclick="closexMenuAccionesCorrectivas(); fnSp4AtencionHallazgos();" >
+                                            </div>
+                                        </div>
+
+                                        <div class="labelModulo" >Hallazgos Asignados
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-3">
                                     <div  class="moduloSeguimientoAccionesCorrectivas" style="text-align: center;" id="divSeguimientoAccionesCorrectivas"  title="Cambiar iconos"  >
                                         <div style="text-align: center;">
 
@@ -579,7 +591,7 @@
                                         <div class="labelModulo" >Seguimiento de acciones correctivas</div>
                                     </div>
                                 </div>
-                                <div class="col-4">
+                                <div class="col-3">
                                     <div  class="moduloIndicadores" style="display: block;" title="Indicadores Hallazgos" >
                                         <div >
                                             <div id="moduloIndicadores" onclick="openIndicadores(urlIndicadoresHallazgos)"></div>
@@ -598,55 +610,7 @@
             </div>
         </div>
     </div>
-      <!--  ----------------------------------------------------------------------------------------------------------------------------------------->
 
-    <!/div>
-    <!-- <table align="center" border="0" width = '100%'>
-        <tr style="text-align: center;">
-            <td width = '25%' >&nbsp;</td>
-
-            <td width = '20%' >
-                <div  class="moduloHallazgosAsignados" style="text-align: center;" id="divModuloHallazgosAsignados"  title="Cambiar css e iconos"  >
-                    <div style="text-align: center;"></div>
-                    <table width = '100%' align="center" border='0'>
-                        <td width='30%'>&nbsp;</td>
-                        <td width='30%'>
-                            <div id="moduloHallazgosAsignados" style="text-align: center !important;"  onclick="fnSp4AtencionHallazgos()" >
-                            </div>
-                        </td>
-                            <td width='30%'>&nbsp;</td>
-                        </tr>
-                    </table>
-                    <br>
-                    <div class="labelModulo" >Hallazgos Asignados</div>
-                </div>
-            </td>
-
-            <td width = '10%' >&nbsp;</td>
-
-            <td width = '20%' >
-                <div  class="moduloSeguimientoAccionesCorrectivas" style="text-align: center;" id="divSeguimientoAccionesCorrectivas"  title="Cambiar iconos"  >
-                    <div style="text-align: center;">
-
-                    </div>
-                        <table width = '100%' align="center" border='0'>
-                                <td width='30%'>&nbsp;</td>
-                                <td width='30%'>
-                                    <div id="moduloSeguimientoAccionesCorrectivas" style="text-align: center !important;"  onclick="fnSp4SeguimientoAccionesCorrectivas()" >
-                                    </div>
-                                </td>
-                                <td width='30%'>&nbsp;</td>
-                            </tr>
-                        </table>
-                        <br>
-                    <div class="labelModulo" >Seguimiento de acciones correctivas</div>
-                </div>
-            </td>
-
-            <td width = '25%' >&nbsp;</td>
-        </tr>
-    </table> -->
-    <!/div>
 
 
 
@@ -713,64 +677,59 @@
                     </tr>
 
                     <tr>
-                      <td width="15%" >&nbsp;</td>
+                        <td width="15%" >&nbsp;</td>
                         <td width="15%">&nbsp;</td>
-                          <td width="40%" >
+                        <td width="40%" >
                             <table width = "100%" border="0" align="center">
-                                <td width="45%" align="center" id="divModuloListadoAuditoriaLider" >
-                                <div  class="moduloAuditoria" title="Listado de Asistentes" >
-                                  <div >
-                                      <div id="moduloListadoAuditoriaLider" onclick="closexMenuAuditorLider(); listadoAuditoriaLider();" >
+                                <td width="20%" align="center" id="divModuloProgramaAuditoria" >
+                                    <div  class="moduloAuditoria" title="Listado de Auditorías" >
+                                      <div >
+                                          <div id="moduloProgramaAuditoria" onclick="closexMenuAuditorLider(); programaAuditoria();" >
+                                          </div>
                                       </div>
-                                  </div>
 
-                                  <div class="labelModulo" >Auditor&iacute;a
-                                  </div>
-                                </div>
-                              </td>
-                              </td>
-                              <td width="10%"></td>
-                              <td width="45%" align="center" id="divModuloListadoAsistentes" >
-                                <div  class="moduloAuditoria" title="Listado de Asistentes" >
-                                  <div >
-                                      <div id="moduloListadoAsistentes" onclick="closexMenuAuditorLider(); listadoAsistentes();" >
+                                      <div class="labelModulo" >Programa de Auditor&iacute;as
                                       </div>
-                                  </div>
+                                    </div>
+                                </td>
+                                <td width="5%"></td>
+                                <td width="20%" align="center" id="divModuloListadoAuditoriaLider" >
+                                    <div  class="moduloAuditoria" title="Listado de Auditorías" >
+                                      <div >
+                                          <div id="moduloListadoAuditoriaLider" onclick="closexMenuAuditorLider(); listadoAuditoriaLider();" >
+                                          </div>
+                                      </div>
 
-                                  <div class="labelModulo" >Listado de Asistentes
-                                  </div>
-                                </div>
-                              </td>
+                                      <div class="labelModulo" >Auditor&iacute;a
+                                      </div>
+                                    </div>
+                                </td>
+                                <td width="5%"></td>
+                                <td width="20%" align="center" id="divModuloListadoAsistentes" >
+                                    <div  class="moduloAuditoria" title="Listado de Asistentes" >
+                                        <div >
+                                            <div id="moduloListadoAsistentes" onclick="closexMenuAuditorLider(); listadoAsistentes();" >
+                                            </div>
+                                        </div>
+
+                                        <div class="labelModulo" >Listado de Asistentes</div>
+                                    </div>
+                                </td>
+                                <td width="5%"></td>
+                                <td width="20%" align="center" id="divModuloListadoAsistentes" >
+                                    <div  class="moduloIndicadores" title="Indicadores Auditoría" >
+                                        <div >
+                                            <div id="moduloIndicadores" onclick="closexMenuAuditorLider(); openIndicadores(urlIndicadoresAuditoria);" >
+                                            </div>
+                                        </div>
+
+                                        <div class="labelModulo" >Indicadores</div>
+                                    </div>
+                                </td>
                             </table>
-                          </td>
-                          <td width="20%" >&nbsp;</td>
-                          <td width="20%" >&nbsp;</td>
-                        <!--
-                        <td width="20%" align="center" id="divModuloListadoAuditoriaLider" >
-                          <div  class="moduloAuditoria" title="Listado de Asistentes" >
-                            <div >
-                                <div id="moduloListadoAuditoriaLider" onclick="closexMenuAuditorLider(); listadoAuditoriaLider();" >
-                                </div>
-                            </div>
-
-                            <div class="labelModulo" >Auditor&iacute;a
-                            </div>
-                          </div>
                         </td>
-                        </td>
-                      <td width="20%" >&nbsp;</div>
-                        <td width="20%" align="center" id="divModuloListadoAsistentes" >
-                          <div  class="moduloAuditoria" title="Listado de Asistentes" >
-                            <div >
-                                <div id="moduloListadoAsistentes" onclick="closexMenuAuditorLider(); listadoAsistentes();" >
-                                </div>
-                            </div>
-
-                            <div class="labelModulo" >Listado de Asistentes
-                            </div>
-                          </div>
-                        </td>
-                        </td> -->
+                        <td width="20%" >&nbsp;</td>
+                        <td width="20%" >&nbsp;</td>
                     </tr>
                 </table>
             </div>
@@ -989,137 +948,6 @@
         </div>
     </div>
 </div>
-<!--div class="modal fade "  id="emergenteDivMenuRolResponsableAsignado" tabindex="-1" role="dialog" aria-labelledby="modalAddCompanyTitle" aria-hidden="true" >
-    <div class="modal-dialog modal-dialog-centered rounded " role="document" style="max-width: 1280px; z-index: 1030; ">
-        <div class="modal-content rounded " style="border: 0px !important; background-color:rgba(0,0,0,.0001) !important; box-shadow: none;">
-
-            <div style="overflow: hidden;height: 800px;overflow-x: hidden; ">
-                <div class="modal-body" >
-                    <div class="col-sm-12 col-md-12" style="color:#575757c9;">
-
-                        <div class="card " style=" border-radius: 10px; box-shadow: none;">
-
-                            <div class="espacio"></div>
-                            <div class="card-body my-5 py-5">
-
-                                <div class="modulosTasax" style="background-color:white;" >
-
-                                    <table width = "100%" border="0" align="center">
-                                        <tr>
-                                            <td width="20%"></td>
-
-                                            <td colspan="2" width="60%" align="center" >
-                                                <div style="text-align: center;">
-                                                    <div id="secWelcomeAuditoriax">
-                                                        <div id="msgWelcomeAuditoriaModal" ><b> Acciones Correctivas</b><br></div>
-                                                    </div>
-                                                </div>
-                                            </td>
-
-                                            <td width="20%" align="center">
-                                                <table border="0">
-                                                    <tr>
-                                                        <td >
-                                                            <div id="btCierraMenuAuditoria"   onclick="closexMenuRolResponsableAsignado();">Cerrar</div>
-                                                        </td>
-                                                    </tr>
-                                                </table>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td colspan="5" align="center" >
-                                                <div style="text-align: center;">
-                                                    <div id="barraImgx"><br>
-                                                    <div style=" text-align: center; "><img src="images/barra_ini.svg" ><br></div>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td colspan="5" align="center" >
-                                                <div style="text-align: center;">
-                                                <br><br><br><br>
-                                                </div>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td colspan="5" >
-                                                <table align="center" border="0" width = '100%'>
-                                                    <tr style="text-align: center;">
-                                                        <td width = '25%' >&nbsp;</td>
-
-                                                        <td width = '20%' >
-                                                            <div  class="moduloHallazgosAsignados" style="text-align: center;" id="divModuloHallazgosAsignados"  title="Cambiar css e iconos"  >
-                                                                <div style="text-align: center;"></div>
-                                                                <table width = '100%' align="center" border='0'>
-                                                                    <td width='30%'>&nbsp;</td>
-                                                                    <td width='30%'>
-                                                                        <div id="moduloHallazgosAsignados" style="text-align: center !important;"  onclick="fnSp4AtencionHallazgos()" >
-                                                                        </div>
-                                                                    </td>
-                                                                        <td width='30%'>&nbsp;</td>
-                                                                    </tr>
-                                                                </table>
-                                                                <br>
-                                                                <div class="labelModulo" >Hallazgos Asignados</div>
-                                                            </div>
-                                                        </td>
-
-                                                        <td width = '10%' >&nbsp;</td>
-
-                                                        <td width = '20%' >
-                                                            <div  class="moduloSeguimientoAccionesCorrectivas" style="text-align: center;" id="divSeguimientoAccionesCorrectivas"  title="Cambiar iconos"  >
-                                                                <div style="text-align: center;">
-
-                                                                </div>
-                                                                    <table width = '100%' align="center" border='0'>
-                                                                            <td width='30%'>&nbsp;</td>
-                                                                            <td width='30%'>
-                                                                                <div id="moduloSeguimientoAccionesCorrectivas" style="text-align: center !important;"  onclick="fnSp4SeguimientoAccionesCorrectivas()" >
-                                                                                </div>
-                                                                            </td>
-                                                                            <td width='30%'>&nbsp;</td>
-                                                                        </tr>
-                                                                    </table>
-                                                                    <br>
-                                                                <div class="labelModulo" >Seguimiento de acciones correctivas</div>
-                                                            </div>
-                                                        </td>
-
-                                                        <td width = '25%' >&nbsp;</td>
-                                                    </tr>
-                                                </table>
-                                            </td>
-                                        </tr>
-                                    </table>
-
-                                    <br>
-                                    <br>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <div class="espacio"></div>
-
-                </div>
-
-            </div>
-        </div>
-    </div>
-</div>
-        </div>
-
-
-    </div>
-</div-->
 <! emergenteDivMenuRolResponsableAsignado ------------------------** >
 
 <! **------------------------ MENU emergenteDivMenuRolEvaluadorLocalAC ------------------------** >
@@ -1213,106 +1041,6 @@
         </div>
     </div>
 </div>
-<!--div class="modal fade "  id="emergenteDivMenuRolEvaluadorLocalAC" tabindex="-1" role="dialog" aria-labelledby="modalAddCompanyTitle" aria-hidden="true" >
-    <div class="modal-dialog modal-dialog-centered rounded " role="document" style="max-width: 1280px; z-index: 1030; ">
-        <div class="modal-content rounded " style="border: 0px !important; background-color:rgba(0,0,0,.0001) !important; box-shadow: none;">
-
-            <div style="overflow: hidden;height: 800px;overflow-x: hidden; ">
-                <div class="modal-body" >
-                    <div class="col-sm-12 col-md-12" style="color:#575757c9;">
-
-                        <div class="card " style=" border-radius: 10px; box-shadow: none;">
-
-                            <div class="espacio"></div>
-                            <div class="card-body my-5 py-5">
-
-                                <div class="modulosTasax" style="background-color:white;" >
-                                    <table width = "100%" border="0" align="center">
-                                        <tr>
-                                            <td width="20%"></td>
-
-                                            <td colspan="3" width="60%" align="center" >
-                                                <div style="text-align: center;">
-                                                    <div id="secWelcomeAuditoriax">
-                                                        <div id="msgWelcomeAuditoriaModal" ><b> Acciones Correctivas</b><br></div>
-                                                    </div>
-                                                </div>
-                                            </td>
-
-                                            <td width="20%" align="center">
-                                                <table border="0">
-                                                    <tr>
-                                                        <td >
-                                                            <div id="btCierraMenuAuditoria"   onclick="closexMenuRolEvaluadorLocalAC();">Cerrar</div>
-                                                        </td>
-                                                    </tr>
-                                                </table>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td colspan="5" align="center" >
-                                                <div style="text-align: center;">
-                                                    <div id="barraImgx"><br>
-                                                    <div style=" text-align: center; "><img src="images/barra_ini.svg" ><br></div>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td colspan="5" align="center" >
-                                                <div style="text-align: center;">
-                                                <br><br><br><br>
-                                                </div>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td colspan="5" >
-                                                <table align="center" border="0" width = '100%'>
-                                                    <tr style="text-align: center;">
-                                                        <td width = '100%' colspan="5" >
-                                                            <div  class="moduloSeguimientoAccionesCorrectivas" style="text-align: center;" id="divSeguimientoAccionesCorrectivas"  title="Cambiar iconos"  >
-                                                                <div style="text-align: center;">
-
-                                                                </div>
-                                                                    <table width = '100%' align="center" border='0'>
-                                                                            <td width='45%'>&nbsp;</td>
-                                                                            <td width='20%'>
-                                                                                <div id="moduloSeguimientoAccionesCorrectivas" style="text-align: center !important;"  onclick="closexMenuRolEvaluadorLocalAC(); fnSp4SeguimientoAccionesCorrectivas();" >
-                                                                                </div>
-                                                                            </td>
-                                                                            <td width='35%'>&nbsp;</td>
-                                                                        </tr>
-                                                                    </table>
-                                                                    <br>
-                                                                <div class="labelModulo" >Seguimiento de acciones correctivas</div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                </table>
-                                            </td>
-                                        </tr>
-                                    </table>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <div class="espacio"></div>
-
-                </div>
-
-            </div>
-        </div>
-
-    </div>
-</div-->
 <! **------------------------ MENU emergenteDivMenuRolEvaluadorLocalAC ------------------------** >
 
 
@@ -1382,7 +1110,52 @@
                         <table width = "100%" border="0" align="center">
                             <tr>
 
-                                <td width="100%" align="center" id="" >
+                                <td width="33%" align="center" id="" >
+                                    <div  class="moduloAuditoria" title="Hallazgos" >
+                                        <div >
+                                            <!-- <div id="moduloListadoValidadorIperc" onclick="closexMenuValidateIperc(); GestorIPERC();" >
+                                            </div> -->
+                                            <div    id="moduloHallazgo"
+                                                    style="text-align: center !important;"
+                                                    onclick="fnSp3AdministrarHallazgos(); closexMenuRolResponsableAsignadoAC();" >
+                                            </div>
+                                        </div>
+
+                                        <div class="labelModulo" >Hallazgos
+                                        </div>
+                                    </div>
+                                </td>
+
+                                <td width="33%" align="center" id="" >
+                                    <div  class="moduloHallazgosAsignados" title="Hallazgos" >
+                                        <div >
+                                            <!-- <div id="moduloListadoValidadorIperc" onclick="closexMenuValidateIperc(); GestorIPERC();" >
+                                            </div> -->
+                                            <div    id="moduloHallazgosAsignados"
+                                                    style="text-align: center !important;"
+                                                    onclick="fnSp4AtencionHallazgos(); closexMenuRolResponsableAsignadoAC();" >
+                                            </div>
+                                        </div>
+
+                                        <div class="labelModulo" >Hallazgos Asignados
+                                        </div>
+                                    </div>
+                                </td>
+
+                                <!-- <div class="col-3">
+                                    <div  class="moduloHallazgosAsignados" id="divModuloProgramaAuditoria" style="" title="Hallazgos"  >
+                                        <div>
+                                            <div id="moduloHallazgosAsignados"  onclick="closexMenuAccionesCorrectivas(); fnSp4AtencionHallazgos();" >
+                                            </div>
+                                        </div>
+
+                                        <div class="labelModulo" >Hallazgos Asignados
+                                        </div>
+
+                                    </div>
+                                </div> -->
+
+                                <td width="33%" align="center" id="" >
                                     <div  class="moduloAuditoria" title="Listado de Asistentes" >
                                         <div >
                                             <!-- <div id="moduloListadoValidadorIperc" onclick="closexMenuValidateIperc(); GestorIPERC();" >
@@ -1413,115 +1186,130 @@
 
     </div>
 </div>
-<!-- <div class="modal fade "  id="emergenteDivMenuRolResponsableAsignadoAC" tabindex="-1" role="dialog" aria-labelledby="modalAddCompanyTitle" aria-hidden="true" >
-    <div class="modal-dialog modal-dialog-centered rounded " role="document" style="max-width: 1280px; z-index: 1030; ">
-        <div class="modal-content rounded " style="border: 0px !important; background-color:rgba(0,0,0,.0001) !important; box-shadow: none;">
-
-            <div style="overflow: hidden;height: 800px;overflow-x: hidden; ">
-                <div class="modal-body" >
-                    <div class="col-sm-12 col-md-12" style="color:#575757c9;">
-
-                        <div class="card " style=" border-radius: 10px; box-shadow: none;">
-
-                            <div class="espacio"></div>
-                            <div class="card-body my-5 py-5">
-
-                                <div class="modulosTasax" style="background-color:white;" >
-
-                                    <table width = "100%" border="0" align="center">
-                                        <tr>
-                                            <td width="20%"></td>
-
-                                            <td colspan="3" width="60%" align="center" >
-                                                <div style="text-align: center;">
-                                                    <div id="secWelcomeAuditoriax">
-                                                        <div id="msgWelcomeAuditoriaModal" ><b> Acciones Correctivas</b><br></div>
-                                                    </div>
-                                                </div>
-                                            </td>
-
-                                            <td width="20%" align="center">
-                                                <table border="0">
-                                                    <tr>
-                                                        <td >
-                                                            <div
-                                                                id="btCierraMenuAuditoria"
-                                                                onclick="$('#emergenteDivMenuRolResponsableAsignadoAC').modal('hide').removeClass('fade');">
-                                                                Cerrar
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                </table>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td colspan="5" align="center" >
-                                                <div style="text-align: center;">
-                                                    <div id="barraImgx"><br>
-                                                    <div style=" text-align: center; "><img src="images/barra_ini.svg" ><br></div>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td colspan="5" align="center" >
-                                                <div style="text-align: center;">
-                                                <br><br><br><br>
-                                                </div>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td colspan="5" >
-                                                <table align="center" border="0" width = '100%'>
-                                                    <tr style="text-align: center;">
-
-                                                        <td width = '100%' colspan="5" >
-                                                            <div  class="moduloSeguimientoAccionesCorrectivas" style="text-align: center;" id="divSeguimientoAccionesCorrectivas"  title="Cambiar iconos"  >
-                                                                <div style="text-align: center;">
-
-                                                                </div>
-                                                                    <table width = '100%' align="center" border='0'>
-                                                                            <td width='45%'>&nbsp;</td>
-                                                                            <td width='20%'>
-                                                                                <div id="moduloSeguimientoAccionesCorrectivas" style="text-align: center !important;"  onclick="$('#emergenteDivMenuRolResponsableAsignadoAC').modal('hide').removeClass('fade'); fnSp4SeguimientoAccionesCorrectivas();" >
-                                                                                </div>
-                                                                            </td>
-                                                                            <td width='35%'>&nbsp;</td>
-                                                                        </tr>
-                                                                    </table>
-                                                                    <br>
-                                                                <div class="labelModulo" >Seguimiento de acciones correctivas</div>
-                                                            </div>
-                                                        </td>
-
-                                                    </tr>
-                                                </table>
-                                            </td>
-                                        </tr>
-                                    </table>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <div class="espacio"></div>
-
-                </div>
-
-            </div>
-        </div>
-
-    </div>
-</div> -->
 <! **------------------------ MENU emergenteDivMenuRolResponsableAsignadoAC ------------------------** >
 
+    <! **------------------------ MENU emergenteDivMenuObservacionesPreventivas ------------------------** >
+    <div  id="emergenteDivMenuObservacionesPreventivas" style="display: none; visibility: hidden;" >
+        <div>
+            <div class="card-header text-center text-white  " style=" border-radius: 10px 10px 0px 0px; background:#fff; height: 40px; ">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;
+                <button type="button" style=" font-weight: bold; font-size:16px; color: black; " class="btn btn-danger" onclick="$('#modalShowpersonBlack').modal('hide');">Cerrar &nbsp;<img src="images/iconos/close.svg" ></button>
+            </div>
+            <!--------------------------------------------------------------------------------------------------------------------------------------------->
+
+            <!-- Contenedores de Mensaje de Bienvenida }-->
+
+            <div class="modulosTasax" >
+                <div style=" height: calc(38vh - 10px); "></div>
+                <!-- <br><br><br><br><br><br><br><br><br><br> -->
+                <table width = "100%" border="0" align="center">
+                    <tr>
+                        <td width="15%"></td>
+                        <td width="15%"></td>
+                        <td width="40%" align="center" >
+                            <div style="text-align: center;">
+                                <div id="secWelcomeAuditoriax">
+                                    <div id="msgWelcomeAuditoriaModal" ><b>Observaciones Preventivas</b><br></div>
+                                </div>
+                            </div>
+                        </td>
+
+                        <td width="20%" align="left">
+                            <table border="0">
+                                <tr>
+                                    <td >
+                                        <div id="btCierraMenuAuditoria"   onclick="closexMenuObservacionesPreventivas();">Cerrar</div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td width="20%"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="5" align="center" >
+                            <div style="text-align: center;">
+                                <div id="barraImgx"><br>
+                                    <div style=" text-align: center; "><img src="images/barra_ini.svg" ><br></div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" align="center" >
+                            <div style="text-align: center;">
+                                <br><br><br><br>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td width="15%" >&nbsp;</td>
+                        <td width="15%">&nbsp;</td>
+                        <td width="40%" >
+                            <table width = "100%" border="0" align="center">
+                                <td width="20%" align="center" id="divModuloObservacionesPreventivas" >
+                                    <div  class="moduloObservacionesPreventivas" title="Listado de Observaciones Preventivas" >
+                                      <div >
+                                          <div id="moduloObservacionesPreventivas" onclick="closexMenuObservacionesPreventivas(); SeguimientoObservacionesPreventivas();" >
+                                          </div>
+                                      </div>
+
+                                      <div class="labelModulo" >Observaciones Preventivas
+                                      </div>
+                                    </div>
+                                </td>
+                                <!-- <td width="5%"></td>
+                                <td width="20%" align="center" id="divModuloListadoAuditoriaLider" >
+                                    <div  class="moduloAuditoria" title="Listado de Auditorías" >
+                                      <div >
+                                          <div id="moduloListadoAuditoriaLider" onclick="closexMenuAuditorLider(); listadoAuditoriaLider();" >
+                                          </div>
+                                      </div>
+
+                                      <div class="labelModulo" >Auditor&iacute;a
+                                      </div>
+                                    </div>
+                                </td>
+                                <td width="5%"></td>
+                                <td width="20%" align="center" id="divModuloListadoAsistentes" >
+                                    <div  class="moduloAuditoria" title="Listado de Asistentes" >
+                                        <div >
+                                            <div id="moduloListadoAsistentes" onclick="closexMenuAuditorLider(); listadoAsistentes();" >
+                                            </div>
+                                        </div>
+
+                                        <div class="labelModulo" >Listado de Asistentes</div>
+                                    </div>
+                                </td>
+                                <td width="5%"></td>
+                                <td width="20%" align="center" id="divModuloListadoAsistentes" >
+                                    <div  class="moduloIndicadores" title="Indicadores Auditoría" >
+                                        <div >
+                                            <div id="moduloIndicadores" onclick="closexMenuAuditorLider(); openIndicadores(urlIndicadoresAuditoria);" >
+                                            </div>
+                                        </div>
+
+                                        <div class="labelModulo" >Indicadores</div>
+                                    </div>
+                                </td> -->
+                            </table>
+                        </td>
+                        <td width="20%" >&nbsp;</td>
+                        <td width="20%" >&nbsp;</td>
+                    </tr>
+                </table>
+            </div>
+            <!--  ----------------------------------------------------------------------------------------------------------------------------------------->
+        </div>
+    </div>
+    <! **------------------------ MENU emergenteDivMenuObservacionesPreventivas ------------------------** >
 
 
 
@@ -1612,6 +1400,11 @@
     <!-- sp4 end-->
     <!-- @millanqjesus end-->
 
+    <!-- @export start -->
+    <script src="./modules/xls-export.es5.js"></script>
+    <!-- @export end -->
+
+
 
 
 
@@ -1697,9 +1490,6 @@
                   myMSALObj = new Msal.UserAgentApplication(msalConfig);
                   console.log(getCookie("vtas_internal_useruser"))
               }
-
-
-
           </script>
       <!-- Funciones y Variables Java Script para el Archivo main {-->
 

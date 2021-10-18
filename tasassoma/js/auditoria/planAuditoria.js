@@ -389,7 +389,7 @@
                                                             //this.Hora_Fin_Real    = DATA.Programacion_Plan[ji].Hora_Fin_Real;
 
                                                             console.log('------------------*************---------------------andy');
-                                                            console.log(DATA.Programacion_Plan[ji].Hora_Inicio_Real);
+                                                            console.log(DATA.Programacion_Plan[ji]);
                                                             console.log('-------------------************--------------------andy');
 
                                                             this.Programacion[ji].Hora_Inicio = DATA.Programacion_Plan[ji].Hora_Inicio
@@ -1971,26 +1971,42 @@ var cargaInicialFormPlanAuditoria = function()
         }
         // console.log("filtro", filtro)
         cont_auditoriasp = 0;
+        // console.error("ROL -> ",getCookie("vtas_rolexternalrol"+sessionStorage.tabVisitasa))
         let IdAuditorLider  = getCookie("vtas_id_hash"+sessionStorage.tabVisitasa);
+        let IdAuditor       = ""
+
+        let TipoAuditor     = 1;
+
+        if( getCookie("vtas_rolexternalrol"+sessionStorage.tabVisitasa) == "ROL_RESPONSABLEEJECUCION_AC" )
+        {
+            IdAuditor      = getCookie("vtas_id_hash"+sessionStorage.tabVisitasa);
+            //IdAuditor      = "user-keyid-1108"
+            IdAuditorLider = ""
+            TipoAuditor    = 2
+        }
+        if( getCookie("vtas_rolexternalrol"+sessionStorage.tabVisitasa) == "ROL_COORDINADORAUDITORIA" )
+        {
+            IdAuditorLider = ""
+            //IdAuditor      = ""
+        }
+
         var now  = moment().format('YYYY-MM-DD');
         //----------------------PARAMETROS PARA EL SERVICIO LISTAR AUDITORIAS DE UN PROGRAMA POR SU ID-------------------------------
         var servicio        = '/api/Get-Auditoria-Lider-All?code=';
         var metodoHttp      = "objectlist";// object   --- esto para los datos de una auditoria solo pasar esto por url IdAuditoria = varJs
         var metodoAjax      =  "GET";
         var getAuditoriaAll ="UAIRBeY2QaKbBgPA4aEGXzAYjgDu4T4WvBa04WvkGpB1RazLa3462w==";
-        var url             = apiurlAuditoria+servicio+getAuditoriaAll+"&Id="+IdAuditorLider+"&TipoAuditor=1"+"&httpmethod="+metodoHttp+filtro;
+        var url             = apiurlAuditoria+servicio+getAuditoriaAll+"&Id="+IdAuditorLider+"&TipoAuditor="+TipoAuditor+"&IdAuditor="+IdAuditor+"&httpmethod="+metodoHttp+filtro;
         var metodoAjaxGp    =  "GET"; //"POST";
         var headers         ={
             "apikey":constantes.apiKey
         }
-        // console.log("url", url)
+         console.log("url", url)
+         console.warn("getCookie(vtas_rolexternalrol+sessionStorage.tabVisitasa) -> ",getCookie("vtas_rolexternalrol"+sessionStorage.tabVisitasa))
 
-
-// console.log("############...................................#############");
-// console.log(url);
-
-// console.log("############...................................#############");
-
+        // console.log("############...................................#############");
+        // console.log(url);
+        // console.log("############...................................#############");
 
         $.ajax({
             method: metodoAjaxGp,
@@ -2017,7 +2033,7 @@ var cargaInicialFormPlanAuditoria = function()
                 pageSize: 10,
                 callback: function(data, pagination) {
                     ////alert('sssssssssssssssssssssssssssssssssssssssssss');
-                    var html = templateListAuditorias(data);
+                    var html = templateListAuditorias(data, IdAuditor, TipoAuditor);
                     $('#body-tabla-list-plan').html(html);
 
                     $("#buscarAuditorias").html("Buscar")
@@ -2043,15 +2059,12 @@ var cargaInicialFormPlanAuditoria = function()
             // console.log("auditor",auditor)
 
             hideLoading();
-        });
+        });//*/
 
     }
 
     // para el paginado....
-
-
-
-    var templateListAuditorias = function(data){
+    var templateListAuditorias = function(data, IdAuditor, TipoAuditor){
 
 
         var html = '';
@@ -2111,7 +2124,7 @@ var cargaInicialFormPlanAuditoria = function()
 
 
                     objcPlanAuditoria[Item.Id] = new cPlanAuditoria();
-                    buscarPlanesDeAuditorias(Item.Id);
+                    buscarPlanesDeAuditorias(Item.Id, IdAuditor, TipoAuditor);
 
                     //console.log("(",objAuditoria[o],")")
                 }
@@ -2130,7 +2143,7 @@ var cargaInicialFormPlanAuditoria = function()
 
 
                     objcPlanAuditoria[Item.Id] = new cPlanAuditoria();
-                    buscarPlanesDeAuditorias(Item.Id);
+                    buscarPlanesDeAuditorias(Item.Id, IdAuditor, TipoAuditor);
 
                     //console.log("(",objAuditoria[o],")")
                 }
@@ -2262,6 +2275,14 @@ var cargaInicialFormPlanAuditoria = function()
                       var btNew = " ";
                 }else{var btNew = " ";}
 
+                if( getCookie("vtas_rolexternalrol"+sessionStorage.tabVisitasa) == "ROL_RESPONSABLEEJECUCION_AC" )
+                {
+                    disabledEnviar  = 'disabled readonly';
+                    habEnviar       = 'background-color: #b2b2b2;';
+                    disabledSusp    = 'disabled readonly';
+                    classdis        = 'background-color:#b2b2b2 !important;';
+                }
+
                 html += `
                     <div class="item-tabla p-2" style="z-index: 1;display:relative;">${btNew}
                     <div class="row m-0 justify-content-between align-items-center tbody_trainning">
@@ -2313,11 +2334,13 @@ var cargaInicialFormPlanAuditoria = function()
 
     }
 
-function buscarPlanesDeAuditorias(audId)
-{//--------------------------------------------INI -----------------buscarPlanesDeAuditorias(pata)-
- //--------------------PARAMETROS PARA EL SERVICIO LISTAR AUDITORIAS DE UN PROGRAMA POR SU ID-------------------------------
+function buscarPlanesDeAuditorias(audId, IdAuditor, TipoAuditor)
+{   //--------------------------------------------INI -----------------buscarPlanesDeAuditorias(pata)-
+    //--------------------PARAMETROS PARA EL SERVICIO LISTAR AUDITORIAS DE UN PROGRAMA POR SU ID-------------------------------
+    console.log("audId, IdAuditor, TipoAuditor -> ",audId, IdAuditor, TipoAuditor)
+
         let IdAuditoria = audId;
-        url =  apiurlAuditoria+"/api/Get-Auditoria-Lider-All?code=UAIRBeY2QaKbBgPA4aEGXzAYjgDu4T4WvBa04WvkGpB1RazLa3462w==&IdAuditoria="+IdAuditoria+"&httpmethod=object"
+        url =  apiurlAuditoria+"/api/Get-Auditoria-Lider-All?code=UAIRBeY2QaKbBgPA4aEGXzAYjgDu4T4WvBa04WvkGpB1RazLa3462w==&IdAuditoria="+IdAuditoria+"&httpmethod=object"+"&IdAuditor="+IdAuditor+"&TipoAuditor="+TipoAuditor
         var headers         ={
             "apikey":constantes.apiKey
         }
@@ -2348,6 +2371,7 @@ function buscarPlanesDeAuditorias(audId)
                 objcPlanAuditoria[audId].cargarPlanDB(p);
             }
            // console.log("############..............buscarPlanesDeAuditorias(",Item.Id,").....................#############");console.log(p);console.log("############..............buscarPlanesDeAuditorias(",Item.Id,").....................#############");
+           // console.table(objcPlanAuditoria);
         })
 
          // vamos al servicios
@@ -3902,6 +3926,7 @@ var fnVerificarProgramacion = function(idAud)
  */
 function ventanaPlanAuditoria(idAud,imv)
 {
+
     //----------------------recibe el id ------------------------
     slProcess = " ";
     slProcess2 = " ";
@@ -4180,19 +4205,35 @@ function ventanaPlanAuditoria(idAud,imv)
         $("#notaAud").hide()
         $("#labelPorcNotaAud").hide()
         $("#semaforoInputNotaAud").hide()
-        $("#semaforoNotaAud").show()
-        $("#semaforoNotaAud").html(`<span class="mr-3">Nota: ${objAuditoria[idAud].Nota} %</span> ${msj} `)
+
+        if( objAuditoria[idAud].Nota >= 1 )
+        {
+            $("#semaforoNotaAud").show()
+            $("#semaforoNotaAud").html(`<span class="mr-3">Nota: ${objAuditoria[idAud].Nota} %</span> ${msj} `)
+        }
     }
     else
     {
         $("#semaforoNotaAud").hide()
         $("#notaAud").show()
         $("#labelPorcNotaAud").show()
-        if(objAuditoria[idAud].Nota >= 0){
+        if(objAuditoria[idAud].Nota >= 1)
+        {
             $("#notaAud").show().val(objAuditoria[idAud].Nota)
+            $("#labelNotaAud").show()
+            $("#semaforoInputNotaAud").html(` ${msj} `).show()
         }
-        $("#labelNotaAud").show()
-        $("#semaforoInputNotaAud").html(` ${msj} `).show()
+    }
+
+    // si no es auditor lider ocultamos el boton modificar o CoorAuditoria
+    if(getCookie("vtas_rolexternalrol"+sessionStorage.tabVisitasa) !== "ROL_LIDERAUDITORIA" 
+        && getCookie("vtas_rolexternalrol"+sessionStorage.tabVisitasa) !== "ROL_COORDINADORAUDITORIA")
+    {
+        $("#btn-guardar-plan").hide()
+    }
+    else
+    {
+        $("#btn-guardar-plan").show()
     }
 
     // MOSTRAMOS MODAL
@@ -4208,6 +4249,7 @@ let ObtenerSemaforizacionPlanAuditoria = function(Nota)
         '<span style="color: #58c25d">Conforme con la norma<span>'
         ,'<span style="color: #ffbc11">No conformidad Menor</span>'
         ,'<span style="color: #ff6767">No conformidad Crítica</span>'
+        ,''
     ]
 
     let indice = 0
@@ -4217,7 +4259,9 @@ let ObtenerSemaforizacionPlanAuditoria = function(Nota)
         ? 0
         : (Nota <= 94 && Nota >= 86 )
             ? 1
-            : 2
+            : (Nota <= 85 && Nota >= 1 )
+                ? 2
+                : 3
 
     return semaforo[indice]
 
@@ -7590,9 +7634,9 @@ function validarProcesos(idProceso)
 
 var normat = 0;
 function fn_cargaRequisitosProcesoMillan(P,idProceso, txt_o_label)//fn_cargaResultadosProceso
-{//---------
+{   //---------
 
-//alert("fn_cargaRequisitosProcesoMillan");
+    //alert("fn_cargaRequisitosProcesoMillan");
 
 
 
@@ -7805,7 +7849,7 @@ function fn_cargaRequisitosProcesoMillan(P,idProceso, txt_o_label)//fn_cargaResu
                      <div class="col-1 text-left"  style="  padding: 0px 8px 0px 0px !important;" >
                             <div class="list-border " >
                             <input style = "" value = "${fechaReq}" onchange="validaFechaProg('${id5}') " type="text" name="${id5}" id="${id5}" class="txt_date_prog date-small" maxlength="10">
-                            <span class="input-group-addon float-right text-right" id="imgCal_${id5}"><img src="./images/iconos/calendario-3.svg" title="Limpiar Fechasss-imgCal${id5}" style = "cursor: pointer;"  onclick="$('#${id5}').val('');" ></span>
+                            <span class="input-group-addon float-right text-right" id="imgCal_${id5}"><img src="./images/iconos/calendario-3.svg" title="Limpiar Fechasss-imgCal${id5}" style = "cursor: pointer;"  onclick="$('#asd${id5}').val('');" ></span>
                             </div>
                      </div>
 
@@ -7834,64 +7878,53 @@ function fn_cargaRequisitosProcesoMillan(P,idProceso, txt_o_label)//fn_cargaResu
              <script> $("#${id5}").datetimepicker({timepicker:false, format:'d/m/Y'}); </script>
 
               `
-   // <div name="${id5+'_lb'}" id="${id5+'_lb'}" > ${fechaReq}</div>//por si acaso label de la fecha
+    // <div name="${id5+'_lb'}" id="${id5+'_lb'}" > ${fechaReq}</div>//por si acaso label de la fecha
     }
     //alert('7091');
-  // console.log("htmlReq", htmlReq)
-return htmlReq;
-console.error(JsReq);
+    // console.log("htmlReq", htmlReq)
+    return htmlReq;
+    console.error(JsReq);
 }//-------------
 
 function validaFechaProg(idt)
 {
 
+    console.log("############################################### VALIDANDO FECHASxx ############################################");
 
+    var fecha1 = $("#"+idt).val();
+    var fecha2 = Inix;
+    var fecha3 = Finx;
 
-     console.log("############################################### VALIDANDO FECHASxx ############################################");
+    // console.warn("fecha1 -> ", fecha1)
+    // console.warn("fecha2 -> ", fecha2)
+    // console.warn("fecha3 -> ", fecha3)
 
-       var fecha1 = $("#"+idt).val();
-       var fecha2 = Inix;
-       var fecha3 = Finx;
+    fecha1 = fecha1.split('/').reverse().join('-')
+    fecha2 = fecha2.split('/').reverse().join('-')
+    fecha3 = fecha3.split('/').reverse().join('-')
+    
+    // console.warn("fecha1 -> ", fecha1)
+    // console.warn("fecha2 -> ", fecha2)
+    // console.warn("fecha3 -> ", fecha3)
 
+    let time1 = new Date(fecha1);
+    let time2 = new Date(fecha2);
+    let time3 = new Date(fecha3);
 
-    //    let year1            = moment(fecha1).format('YYYY');//dddd
-    //    let month1           = moment(fecha1).format('MM');//
-    //    let day1             = moment(fecha1).format('DD');
-    //      var f1 = new Date(year1, month1-1, day1);
+    // console.log("time1 >= time2 -> ", (time1 >= time2) );
 
-    var f1 = moment(fecha1,"YYYY-MM-DD");
-    var f2 = moment(fecha2,"YYYY-MM-DD");
-    var f3 = moment(fecha3,"YYYY-MM-DD");
+    // console.warn("time1 -> ", time1)
+    // console.warn("time2 -> ", time2)
+    // console.warn("time3 -> ", time3)
 
+    if(! ((time1 >= time2) && (time1 <= time3)) )
+    {
+        // console.warn("VALOR NO PERMITIDO DENTRO DEL RANGO ERROR!!!!!!!!!");
+        verModalError("Programación de Fecha","<b>Valor fuera del Rango de Ejecución de la Auditoría</b>")
+        $("#"+idt).val(fecha2.split('-').reverse().join('/'))
+    }
 
-
-   // if (momentA > momentB) return 1;
-
-
-         console.log("new fecha1 = ",f1)
-         console.log("new fecha2 = ",f2)
-         console.log("new fecha3 = ",f3)
-
-         if((f1 >= f2)&&(f1 <=f3))
-         {
-             console.log("VALOR PERMITIDO DENTRO DEL RANGO");
-         }
-         else
-         {
-            console.log("ERROR! NO PERMITIDO");
-            verModalError("Programación de Fecha","<b>Valor fuera del Rango de Ejecución de la Auditoría</b>")
-            $("#"+idt).val(fecha2)
-         }
-
-      // console.log("(fechaProgramacion =",fecha1," )      vs      (Fecha de Inicio Ejecución = ",fecha2," )")
-       //console.log("(fechaProgramacion =",fecha1," )      vs      (Fecha Fin Ejecución = ",fecha3," )")
-
-
-       //fecha1  debe ser menora >= fecha2
-
-       //fecha 1 debe ser <= fecha fecha3
-
-     console.log("############################################### VALIDANDO FECHASendxx ############################################");
+    // console.log("############################################### VALIDANDO FECHASendxx ############################################");
 
 }
 
@@ -8010,9 +8043,9 @@ function validaNewFechaIniFinVs_Hoy(idt1, idt2)
        var fecha11 = $("#"+idt2).val();
        var fecha2  = moment().format('DD/MM/YYYY');
        //alert(fecha2)
-    var f1 = moment(fecha1,"YYYY-MM-DD");
-    var f11 = moment(fecha11,"YYYY-MM-DD");
-    var f2 = moment(fecha2,"YYYY-MM-DD");
+        var f1 = moment(fecha1,"YYYY-MM-DD");
+        var f11 = moment(fecha11,"YYYY-MM-DD");
+        var f2 = moment(fecha2,"YYYY-MM-DD");
 
          console.log("new fecha1 = ",f1)
          console.log("new fecha2 = ",f2)
@@ -8066,7 +8099,8 @@ function validaNewFechaIniFinVs_Hoy(idt1, idt2)
 
 
 function fn_cargaRequisitosProcesoMillanRes(P,idProceso)//fn_cargaResultadosProceso
-{//---------
+{
+    //---------
     normSel
     if(bandera==1)
     {
@@ -8213,14 +8247,11 @@ function fn_cargaRequisitosProcesoMillanRes(P,idProceso)//fn_cargaResultadosProc
 
          <script>  $("#${id8}").val(0) </script>
              `
-
-
-
     }
 
 
-return htmlRes;
-console.error(JsReq);
+    return htmlRes;
+    console.error(JsReq);
 
 }//-------------
 

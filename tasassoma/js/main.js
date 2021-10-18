@@ -7,6 +7,7 @@ var TOKEN_CLIENT="";
 var TYPE_ACCESS_REQUEST = 1;
 var SelectIniMenu = 0; // 0 menu principal, 1000 auditoria, 2000 ssoma
 var menuc = ''; //variable que almacena las opciones de menu segun el perfil de acceso
+var UsuarioHallazgoIncidente = 0; //variable global que indica si se veran los 5 por que desde incidente accidente
 
 /*---------------------------Varibale globales para los DataPicker de Auditoria y SSOMA ---------------       */
 jQuery.datetimepicker.setLocale('es');
@@ -1842,6 +1843,8 @@ function showxMenuGestAudi()
         divx.style.visibility='visible';
         if(getCookie("vtas_rolexternalrol"+sessionStorage.tabVisitasa) == 'ROL_COORDINADORAUDITORIA')
         {
+          
+            $("#divModuloIndicadores").css("display", "block")
             $("#divModuloAuditorLider").css("display", "block")
             $("#divModuloListadoAsistentes").css("display", "block")
         }
@@ -2073,6 +2076,35 @@ function closexMenuValidateIperc()
       divx.style.zIndex = "0";
       divx.style.visibility = "hidden";
 }
+
+/**
+ * [showxMenuObservacionesPreventivas MOSTRAR LA MODAL PARA LAS OPCIONES DE OBSERVACIONES PREVENTIVAS
+ * PARA LOS ROLES ROL_RESPONSABLEEJECUCIONAC Y ROL_LIDERAUDITORIA]
+ * @return {[type]} [description]
+ */
+function showxMenuObservacionesPreventivas()
+{
+    var divx              = document.getElementById("emergenteDivMenuObservacionesPreventivas");
+    divx.style.zIndex     = "10000";
+    divx.style.visibility ='visible';
+    divx.style.display    = 'block';
+    //alert("mostrar emergenteDivMenuObservacionesPreventivas")
+}
+
+/**
+ * [closexMenuObservacionesPreventivas OCULTAR LA MODAL PARA LAS OPCIONES DE OBSERVACIONES PREVENTIVAS
+ * PARA LOS ROLES ROL_RESPONSABLEEJECUCIONAC Y ROL_LIDERAUDITORIA]
+ * @return {[type]} [description]
+ */
+function closexMenuObservacionesPreventivas()
+{
+
+    var divx              = document.getElementById("emergenteDivMenuObservacionesPreventivas");
+    divx.style.zIndex     = "0";
+    divx.style.visibility = "hidden";
+    divx.style.display    = 'none';
+}
+
 
 function getStorage(nombre,type) {
   let storage = '';

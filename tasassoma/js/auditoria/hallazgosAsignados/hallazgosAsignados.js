@@ -1,4 +1,36 @@
 //clases
+
+
+
+function HallAndy()
+{
+    this.a5pq = [];//pregunta
+    this.a5pq2 = [];//respuesta
+
+    this.Causa_0 = [];
+    this.Causa_1 = [];
+    this.Causa_2 = [];
+    this.Causa_3 = [];
+    this.Causa_4 = [];
+    this.Causa_5 = [];
+
+
+    this.PA_0 = [];
+    this.PA_1 = [];
+    this.PA_2 = [];
+    this.PA_3 = [];
+    this.PA_4 = [];
+    this.PA_5 = [];
+
+
+
+    this.PlanAccion = [];
+}
+
+var ObjI = [];//-----------objeto para almacenar la data de los 5 por que ------------
+
+
+
 //.............................................. CLASE classHallazgoAsignado ...........................................
 function classHallazgoAsignado()
 {
@@ -8,6 +40,8 @@ function classHallazgoAsignado()
     {
         this.dataHallazgoAsignado = data;
         //console.log("==*== this.dataHallazgoAsignado[",this.dataHallazgoAsignado.Code_Evaluacion,"] = ",this.dataHallazgoAsignado);
+
+        //alert(data);
     }
 }
 //.............................................. CLASE classHallazgoAsignado ...........................................
@@ -104,8 +138,23 @@ function fnSp4CargarFiltrosHallazgosAsignados()
     if($('#txt_fecha_hastaHA').val() != ""){ f2 =  date1_DD_MM_AAAA_to_AAAA_MM_DD_T_HH_MM_S(f22)}
     else{ f2 = "";}
 
-    let url = apiurlAuditoria+ "/api/Get-Hallazgos-All?code=NKBvao47qcJIg6Qjy/X1fUQLgxp2GarodbvWKcbQcPKbj7g4BhGUxQ==&httpmethod=objectlist&FuenteId="+fuenteHA+"&TipoHallazgoId="+tipoHA+"&NormaId="+normaHA+"&StatusAccionCorrectivaId="+estadoACR+"&FechaInicio="+f1+"&FechaFin="+f2+"&ResponsableUserHash="+getCookie("vtas_id_hash"+sessionStorage.tabVisitasa);
-    //console.log("URL -> ",url )
+    //alert('109   desde  hallazgo = '+UsuarioHallazgoIncidente);
+
+    if(UsuarioHallazgoIncidente == 0)//################################################################## andy 13/08/21 ################################################################
+    {
+       var url = apiurlAuditoria+ "/api/Get-Hallazgos-All?code=NKBvao47qcJIg6Qjy/X1fUQLgxp2GarodbvWKcbQcPKbj7g4BhGUxQ==&httpmethod=objectlist&FuenteId="+fuenteHA+"&TipoHallazgoId="+tipoHA+"&NormaId="+normaHA+"&StatusAccionCorrectivaId="+estadoACR+"&FechaInicio="+f1+"&FechaFin="+f2+"&ResponsableUserHash="+getCookie("vtas_id_hash"+sessionStorage.tabVisitasa);
+       console.log("110 URL -> ",url )
+    }
+    else
+    {
+         if(UsuarioHallazgoIncidente == 1)
+            {
+               var url = apiurlAuditoria+ "/api/Get-Hallazgos-All?code=NKBvao47qcJIg6Qjy/X1fUQLgxp2GarodbvWKcbQcPKbj7g4BhGUxQ==&httpmethod=objectlist&FuenteId=0&TipoHallazgoId=0&NormaId=0&SedeId=0&StatusId=0&FechaInicio=&FechaFin=&ReportanteUserHash=";
+               console.log("110 URL -> ",url )
+            }
+    }//################################################################## andy 13/08/21 ################################################################
+
+    
 
     let headers ={
         "apikey":constantes.apiKey
@@ -122,7 +171,7 @@ function fnSp4CargarFiltrosHallazgosAsignados()
 
     $.ajax(settings).done(function (response)
     {
-        console.log("**todos**",response);
+        console.log("** 142 todos**",response);
 
         // LLENAMOS EL SELECT DE FUENTES
         $("#"+'sel_filter_fuenteHA').html(" ");
@@ -184,12 +233,14 @@ function fnSp4CargarFiltrosHallazgosAsignados()
         $("#cant_hallazgos_asignados").html('<b> '+ response.Hallazgos.length+'</b> ');
 
         // RECORREMOS LA DATA PARA LLENAR EL LISTADO
+       // alert('pase por aqui 189');
         if(response.Hallazgos.length > 0)
         {
             ///// START LLENO MI OBJETO DE HALLAZGOS ASIGNADOS
             objHallazgoAsignado = []
             response.Hallazgos.map(function(Item)
             {
+                console.log('196 ENTRE PANAS MIO objHallazgoAsignado');
                 objHallazgoAsignado[Item.Id] = new classHallazgo()
                 objHallazgoAsignado[Item.Id].cargarDataServicio(Item)
             })
@@ -233,6 +284,11 @@ function fnSp4CargarFiltrosHallazgosAsignados()
         $('#txt_fecha_desdeHA').val(f11);
         $('#txt_fecha_hastaHA').val(f22);
         hideLoading();
+        //-----------------------------@andy--------13-08-21
+        //fnSp4VerModalCrearACR(60,'');
+        //alert('termino');
+
+
 
         /// Cuando venimos de eliminar una tarjeta....
         if(hallazgoActivo>0){
@@ -361,7 +417,6 @@ function fnSp4VerModalCrearACR(hallazgoId, ver)
     objAC.cargarAccionCorrectiva(objHallazgoAsignado[hallazgoActivo].dataHallazgo)
 
     fnSp4DeshabilitarBotonPorId('btnFinalizarACR','Finalizar',"#858585")
-    console.log("objAC",objAC)
     console.info("objHallazgoAsignado[hallazgoActivo].dataHallazgo",objHallazgoAsignado[hallazgoActivo].dataHallazgo)
 
     //fnSp4DeshabilitarBotonPorId('txt_tema_HA','')
@@ -846,13 +901,23 @@ var fnSp4CrearPorqueB = function(AP,pq1,pq2,pq3,pq4,pq5,ver)
 
         </div>
     `
-    console.log("tdId",tdId)
+    console.log("tdId*****",tdId)
     $("#"+tdId).html(``)
     $("#"+tdId).append(`
         ${content}
     `);
     $("#pr"+pq1Id).val(AP.Pregunta)
     $("#re"+pq1Id).val(AP.Respuesta)
+
+    if(! ObjI[istAud])
+    { ObjI[istAud] = new HallAndy();}
+    
+     ObjI[istAud].a5pq["#pr"+pq1Id] = AP.Pregunta;
+     ObjI[istAud].a5pq2["#re"+pq1Id] = AP.Respuesta;
+   
+     console.log("*******************************", ObjI,"************************************************");
+    // let i =  ObjI.length;
+    // ObjI[i].Porque
 
 }
 //------------------------------------- end  fnSp4CrearPorqueB() -------------------------------------
@@ -2063,7 +2128,7 @@ var fnSp4PintarCausas = function(Causa,count1,count2,count3,count4,count5,ver)
     // seleccionamos las medidas cero fallas almacenadas
     Causa.AnalisisMedidasCeroFallas.forEach( function(item)
     {
-        //console.warn("item",item,"#medidas"+ItemListadoCausas+"_"+item)
+        console.warn("================================ANDY 2131=========================item",item,"#medidas"+ItemListadoCausas+"_"+item)
         //$(`#medidas${ItemListadoCausas}_${item}`).attr("checked", "checked");
 
         $(`#medidas${ItemListadoCausas}_${item}`).prop('checked',true);

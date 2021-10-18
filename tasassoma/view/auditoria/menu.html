@@ -4,6 +4,8 @@
 
 
 </div>
+<! CARGAMOS EL ARCHIVO JS DE SSOMA >
+<script src="./view/ssoma/ssoma.js"></script>
 
 <script>
 
@@ -46,19 +48,6 @@
                             <div class="modulosTasa" >
                                 <div class="modulosTasaInt text-center">
 
-                                    <div id="divModulo1" class="moduloTasa"  title="" >
-                                        <div >
-                                            <div class="moduloSeparador" >
-                                            </div>
-                                        </div>
-
-                                        <div class="labelModulo" >
-                                        </div>
-                                    </div>
-
-                                    <div class="moduloSeparador">
-                                    </div>
-
                                     <div id="divModuloGestionarAuditoria" class="moduloTasa"  title="Gestionar Auditor&iacute;as" >
                                         <div >
                                             <div id="moduloGestionarAuditoria" onclick="showxMenuGestAudi();" >
@@ -69,16 +58,33 @@
                                         </div>
                                     </div>
 
-                                    <div class="moduloSeparador" >
+                                    <div class="moduloSeparador">
                                     </div>
 
-                                    <div id="divModulo2" class="moduloTasa"  title="" >
+                                    <div id="divModuloAccionesCorrectivas" class="moduloTasa" title="Acciones Correctivas" style="" >
                                         <div >
-                                            <div class="moduloSeparador" >
+                                            <!--div id="moduloAccionesCorrectivas" onclick="alert('Acciones Correctivas');vistaAuditor ();" >
+                                            </div-->
+                                            <div id="moduloAccionesCorrectivas" onclick="showxMenuAccionesCorrectivas();" >
                                             </div>
                                         </div>
 
-                                        <div class="labelModulo" >
+                                        <div class="labelModulo" >Acciones Correctivas
+                                        </div>
+                                    </div>
+
+                                    <div class="moduloSeparador">
+                                    </div>
+
+                                    <div id="divModuloSalva" class="moduloTasa" title="Observaciones Preventivas" style="" >
+                                        <div >
+                                            <!--div id="moduloAccionesCorrectivas" onclick="alert('Acciones Correctivas');vistaAuditor ();" >
+                                            </div-->
+                                            <div id="moduloSalva" onclick="showxMenuObservacionesPreventivas();" >
+                                            </div>
+                                        </div>
+
+                                        <div class="labelModulo" >Observaciones Preventivas
                                         </div>
                                     </div>
 
@@ -307,6 +313,98 @@
                 </div>
             `;
         }
+        else if(getCookie("vtas_rolexternalrol"+sessionStorage.tabVisitasa) == 'ROL_RESPONSABLEEJECUCION_AC')
+        {
+            menuc = `
+                <div >
+
+                    <div id="secWelcomeAuditoria">
+                        <div id="msgWelcomeAuditoria" ><b>Bienvenido</b> al Sistema de Gesti&oacute;n de Auditor&iacute;as <b>TASA</b></div>
+                    </div>
+                    <div id="barraImg">
+                        <div class="mt-4 mb-5"><img src="images/barra_ini.svg" ></div>
+                    </div>
+
+                    <div class="modulosTasa" >
+                        <div class="modulosTasaInt text-center">
+
+                            <div id="divModuloGestionarAuditoria" class="moduloTasa"  title="Gestionar Auditor&iacute;as" >
+                                <div >
+                                    <div id="moduloGestionarAuditoria" onclick="showxMenuGestAudi();" >
+                                    </div>
+                                </div>
+
+                                <div class="labelModulo" >Gestionar Auditor&iacute;as
+                                </div>
+                            </div>
+
+                            <div class="moduloSeparador">
+                            </div>
+
+                            <div id="divModuloAccionesCorrectivas" class="moduloTasa" title="Acciones Correctivas" style="" >
+                                <div >
+                                    <div id="moduloAccionesCorrectivas" onclick="showxMenuRolResponsableAsignadoAC()" >
+                                    </div>
+                                </div>
+
+                                <div class="labelModulo" >Acciones Correctivas
+                                </div>
+                            </div>
+
+                            <div class="moduloSeparador">
+                            </div>
+
+                            <div id="divModuloSalva" class="moduloTasa" title="Observaciones Preventivas" style="" >
+                                <div >
+                                    <!--div id="moduloAccionesCorrectivas" onclick="alert('Acciones Correctivas');vistaAuditor ();" >
+                                    </div-->
+                                    <div id="moduloSalva" onclick="showxMenuObservacionesPreventivas();" >
+                                    </div>
+                                </div>
+
+                                <div class="labelModulo" >Observaciones Preventivas
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                    </div>
+
+                </div>
+            `;
+        }
+        /*else if(getCookie("vtas_rolexternalrol"+sessionStorage.tabVisitasa) == 'ROL_AUDITOR')
+        {
+            menuc = `
+                <div >
+
+                    <div id="secWelcomeAuditoria">
+                        <div id="msgWelcomeAuditoria" ><b>Bienvenido</b> al Sistema de Gesti&oacute;n de Auditor&iacute;as <b>TASA</b></div>
+                    </div>
+                    <div id="barraImg">
+                        <div class="mt-4 mb-5"><img src="images/barra_ini.svg" ></div>
+                    </div>
+
+                    <div class="modulosTasa" >
+                        <div class="modulosTasaInt text-center">
+
+                        <div id="divModuloGestionarAuditoria" class="moduloTasa"  title="Gestionar Auditor&iacute;as" >
+                            <div >
+                                <div id="moduloGestionarAuditoria" onclick="showxMenuGestAudi();" >
+                                </div>
+                            </div>
+
+                            <div class="labelModulo" >Gestionar Auditor&iacute;as
+                            </div>
+                        </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            `;
+        }*/
         else
         {//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
             //alert(getCookie("vtas_rolexternalrol"+sessionStorage.tabVisitasa));

@@ -310,7 +310,7 @@ function themeInspeccionIndividual(data) {
             type2 = ''
             colorType2 = ''
         }else if(Item.StatusId == 5){
-            StatusId = 'Vencida';
+            StatusId = 'Incompleta';
             type5 = '';
             type1 = 'd-none'
             type3 = 'd-none'
@@ -341,7 +341,7 @@ function themeInspeccionIndividual(data) {
             areainspeccion = toCapitalize(Item.AreaName)
         }
 
-        if(Item.FrecuenciaId == 1){
+        /*if(Item.FrecuenciaId == 1){
             frecuenciaCantidad = 312
         }else if(Item.FrecuenciaId == 2){
             frecuenciaCantidad = 48
@@ -353,7 +353,9 @@ function themeInspeccionIndividual(data) {
             frecuenciaCantidad = 2
         }else if(Item.FrecuenciaId == 6){
             frecuenciaCantidad = 1
-        }
+        }*/
+
+        frecuenciaCantidad = Item.ExecutionsNumber;
 
 
         html += `<div class="item-tabla p-2" style="font-size: 14px">

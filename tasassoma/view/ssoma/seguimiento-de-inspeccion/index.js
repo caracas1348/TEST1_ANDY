@@ -123,6 +123,7 @@ function thempleteSeguimientoInspeccion(data) {
         let areainspeccion = '- -'
         let InspectorName = '- -'
         let dnone = '- -'
+        let noEjecucion = '';
         let frecuenciaCantidad = 0
 
         if(Item.FrequencyName != null){
@@ -138,7 +139,7 @@ function thempleteSeguimientoInspeccion(data) {
         }else if(Item.StatusId == 4){
             StatusId = 'Finalizada';
         }else if(Item.StatusId == 5){
-            StatusId = 'Vencida';
+            StatusId = 'Incompleta';
         }else if(Item.StatusId == 6){
             StatusId = 'Reasignada';
         }
@@ -167,7 +168,7 @@ function thempleteSeguimientoInspeccion(data) {
             dnone = 'd-none'
         }
 
-        if(Item.FrecuenciaId == 1){
+        /*if(Item.FrecuenciaId == 1){
             frecuenciaCantidad = 312
         }else if(Item.FrecuenciaId == 2){
             frecuenciaCantidad = 48
@@ -179,9 +180,15 @@ function thempleteSeguimientoInspeccion(data) {
             frecuenciaCantidad = 2
         }else if(Item.FrecuenciaId == 6){
             frecuenciaCantidad = 1
-        }
+        }*/
+        frecuenciaCantidad = Item.ExecutionsNumber;
+
+
+        noEjecucion = Item.Responces+' / '+frecuenciaCantidad;
+
         if(Item.FormularioId == 358 || Item.FormularioId == 359 ){
             dnone = ''
+            noEjecucion = '1 / 1';
         }
 
         html += `<div class="item-tabla p-2" style="font-size: 14px">
@@ -195,9 +202,9 @@ function thempleteSeguimientoInspeccion(data) {
                 <div class="col-md-1">${TypeName}</div>
                 <div class="col-md-1">${FrequencyName}</div>
                 <div class="col-md-1">${StatusId}</div>
-                <div class="col-1 text-center">${Item.Responces} / ${frecuenciaCantidad}</div>
+                <div class="col-1 text-center">${noEjecucion}</div>
                 <div class="col-1 text-center">
-                    <button class="btn bmd-btn-fab bmd-btn-fab-sm mr-3 btn-ojo m-auto bmd-btn-fab-sm__xs ${dnone}" onclick="listarRespuestasInspeccion(${Item.Id},'${Item.FormTitle}','${Item.Code}',${Item.FrecuenciaId},${Item.FormularioId}, '${Item.InspectorName}')">
+                    <button class="btn bmd-btn-fab bmd-btn-fab-sm mr-3 btn-ojo m-auto bmd-btn-fab-sm__xs ${dnone}" onclick="listarRespuestasInspeccion(${Item.Id},'${Item.FormTitle}','${Item.Code}',${Item.ExecutionsNumber},${Item.FormularioId}, '${Item.InspectorName}')">
                         <img src="./images/newsistema/iconos/ojo1.svg" alt="" class="w-50">
                     </button>
                 </div>
@@ -208,7 +215,7 @@ function thempleteSeguimientoInspeccion(data) {
     return html;
 }
 
-function listarRespuestasInspeccion(Idform,Titulo,codigo,FrecuenciaId,FormularioId, InspectorName){
+function listarRespuestasInspeccion(Idform,Titulo,codigo,ExecutionsNumber,FormularioId, InspectorName){
     $('#modal-ver-respuesta').addClass('modal_confirmacion__active')
     $('#codigo-consultado').text(Titulo);
     $('#title-consultado').text(codigo);
@@ -232,7 +239,7 @@ function listarRespuestasInspeccion(Idform,Titulo,codigo,FrecuenciaId,Formulario
             pageSize: 4,
             callback: function(data, pagination) {
                  $('#body-tabla-list2').html("Cargando....");
-                var html = thempleteSeguimientoInspeccionRegistros(data,FrecuenciaId,FormularioId,Titulo,codigo, InspectorName);
+                var html = thempleteSeguimientoInspeccionRegistros(data,ExecutionsNumber,FormularioId,Titulo,codigo, InspectorName);
                 $('#body-tabla-list2').html(html);
             }
         })
@@ -241,10 +248,10 @@ function listarRespuestasInspeccion(Idform,Titulo,codigo,FrecuenciaId,Formulario
 
 }
 
-function thempleteSeguimientoInspeccionRegistros(data,FrecuenciaId,FormularioId,Titulo,codigo, InspectorName) {
+function thempleteSeguimientoInspeccionRegistros(data,ExecutionsNumber,FormularioId,Titulo,codigo, InspectorName) {
     var html = '';
-    let FrecuenciaId_num = 0
-    if(FrecuenciaId == 1){
+    let FrecuenciaId_num = ExecutionsNumber;
+    /*if(FrecuenciaId == 1){
         FrecuenciaId_num = 312
     }else if(FrecuenciaId == 2){
         FrecuenciaId_num = 48
@@ -256,11 +263,11 @@ function thempleteSeguimientoInspeccionRegistros(data,FrecuenciaId,FormularioId,
         FrecuenciaId_num = 2
     }else if (FrecuenciaId == 6){
         FrecuenciaId_num = 1
-    }
+    }*/
 
     console.log(data)
     data.forEach((Item , Index) => {
-        let cantidad = Index + 1;
+        let cantidad = Item.Posicion;
         let fecha = moment(`${Item.Last_Updated_Date}`).format("DD/MM/YYYY");
         let hora = moment(`${Item.Last_Updated_Date}`).format("HH:MM:SS");
         let unidadNegocio = '- -'
@@ -311,7 +318,7 @@ function thempleteSeguimientoInspeccionRegistros(data,FrecuenciaId,FormularioId,
 
         html += `<div class="item-tabla p-2" style="font-size: 14px">
             <div class="row m-0 justify-content-between align-items-center">
-                <div class="col-md-2">${cantidad} / ${FrecuenciaId_num}</div>
+                <div class="col-md-2">${cantidad} / ${Item.FormularioId == 358?'01':FrecuenciaId_num}</div>
                 <div class="col-md-2">${fecha}</div>
                 <div class="col-md-1">${person}</div>
                 <div class="col-md-2">${unidadNegocio}</div>
@@ -1616,7 +1623,11 @@ function PDFInopinadas (Id,Idform){
             doc.setDrawColor(0);
             doc.setFillColor(255, 255, 255);
             doc.rect(69, 46, 75, 7, 'DF');
-            doc.text(''+toCapitalize(Item.SedeName)+'',70, 50); 
+            var sedename = "-";
+            if(Item.DireccionUnicaSedePlanta!=null&&Item.DireccionUnicaSedePlanta!='null'){
+                sedename=Item.DireccionUnicaSedePlanta;
+            }
+            doc.text(''+toCapitalize(sedename)+'',70, 50); 
             doc.setDrawColor(0);
             doc.setFillColor(192, 192, 192);
             doc.rect(144, 46, 25, 7, 'DF');
@@ -2191,7 +2202,8 @@ function PDFInopinadas (Id,Idform){
         doc.setDrawColor(0)
         doc.setFillColor(255, 255, 255);
         doc.rect(190, inicioRenglon, 10, 5, 'DF');
-        doc.text(''+indice,191, inicioRenglon+4);
+        var indiceR = roundx(indice, 2);
+        doc.text(''+indiceR,191, inicioRenglon+4);
 
         inicioRenglon = inicioRenglon + 5;
 

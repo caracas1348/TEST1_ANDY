@@ -176,7 +176,7 @@
                      </td>
                      <td id='col4'  width ="1%">
                         <div id="cant_auditorias" style="font-size: 25px; font-weight: bold; text-align:left; ">
-                            <img src="images/iconos/copia-1.svg" style="margin-top:25px;"   class="mb-3"  >
+                            <img src="images/iconos/copia-1.svg" style="margin-top:25px; cursor:pointer;" onclick="downloadExcelHallazgos()"  class="mb-3"  >
                         </div>
                      </td>
 
@@ -2712,6 +2712,17 @@
     </div>
 </div>
 <! ***************************   END DESCARGAR EL EXCEL DEL ACR ***************************>
+
+<! ***************************  START DESCARGAR EL EXCEL DE LOS HALLAZGOS ***************************>
+<div id="excel2" class="export" style="display: block;">
+    <div class="row">
+        <div class="col-12">
+            <a href="#" id="ExcelHallazgos" style="display:none"></a><! PARA DESCARGAR EL EXCEL DEL LISTADO>
+        </div>
+
+    </div>
+</div>
+<! ***************************  END DESCARGAR EL EXCEL DE LOS HALLAZGOS ***************************>
 
 <div id="container" style="display:none"> <!-- NO BORRAR ESTA CAPA....-->
 

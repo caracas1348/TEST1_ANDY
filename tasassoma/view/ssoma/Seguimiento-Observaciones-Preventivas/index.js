@@ -15,7 +15,8 @@ let base64_trainning2="";
 let adjuntoBD = {};
 let ArchivosBD = [];
 let MayorObs = 0;
-let dataAll = [];
+let dataAll   = [];
+let dataExcel = [];
 let Criticidad = [];
 let id_location_sap_selected = 0;
 var Codigo_Reportante_Temp = "" // reportante activo cuando hacemos click en buscar
@@ -41,22 +42,23 @@ function fnCargarReportantes()
     $('#Selec-Reportante-Filtro').append(`<option value="" selected>Todos</option>`)
 
     let Selec_TipoObservacion_Filtro = $('#Selec-TipoObservacion-Filtro').val();
-    let Selec_Sede_Filtro = $('#Selec-Sede-Filtro').val();
-    let Selec_Embarcacion_Filtro = $('#Selec-Embarcacion-Filtro').val();
-    let Fechas_Inicio = $('#txt_date_start').val();
-    let Fechas_Fin = $('#txt_date_end').val();
-    let Selec_Reportante_Filtro = $('#Selec-Reportante-Filtro').val();
+    let Selec_Sede_Filtro            = $('#Selec-Sede-Filtro').val();
+    let Selec_Embarcacion_Filtro     = $('#Selec-Embarcacion-Filtro').val();
+    let Fechas_Inicio                = $('#txt_date_start').val();
+    let Fechas_Fin                   = $('#txt_date_end').val();
+    let Selec_Reportante_Filtro      = $('#Selec-Reportante-Filtro').val();
 
-    Codigo_Reportante_Temp = localStorage.getItem("Codigo_Reportante_Temp");
-    //console.log("---- Codigo_Reportante_Temp ",Codigo_Reportante_Temp)
+    Codigo_Reportante_Temp           = localStorage.getItem("Codigo_Reportante_Temp");
+
+    console.log("---- Codigo_Reportante_Temp ",Codigo_Reportante_Temp)
 
     //// añadir filtros
     let filtros = '';
-    filtros += `&TipoObservacion=${Selec_TipoObservacion_Filtro}`
-    filtros += `&Sede=${Selec_Sede_Filtro}`
-    filtros += `&Embarcacion=${Selec_Embarcacion_Filtro}`
-    filtros += `&Estado=0`
-    filtros += `&Reportante=${Codigo_Reportante_Temp}`
+    filtros     += `&TipoObservacion=${Selec_TipoObservacion_Filtro}`
+    filtros     += `&Sede=${Selec_Sede_Filtro}`
+    filtros     += `&Embarcacion=${Selec_Embarcacion_Filtro}`
+    filtros     += `&Estado=0`
+    filtros     += `&Reportante=${Codigo_Reportante_Temp}`
 
     if(Fechas_Inicio === undefined){
         Fechas_Inicio="";
@@ -319,7 +321,7 @@ function fnCargarGrid()
     ///ROL_REPORTANTE || ROL_REPORTANTELIDER
     let rol = getCookie("vtas_rolexternalrol"+sessionStorage.tabVisitasa)
 
-    if (rol === 'ROL_REPORTANTE')
+    if (rol !== 'ROL_REPORTANTELIDER')
     {
         //console.warn("AGREGAR ID HASH DEL USUARIO A LA CONSULTA " + getCookie("vtas_id_hash" + sessionStorage.tabVisitasa))
         filtros += `&Reportante=`+getCookie("vtas_id_hash" + sessionStorage.tabVisitasa)
@@ -412,7 +414,7 @@ function fnCargarGrid()
         {
             let storage = getStorage("vtas_rolexternalrol", "text");
 
-            if(storage == 'ROL_REPORTANTE') {
+            if(storage == 'ROL_REPORTANTE' || storage == 'ROL_LIDERAUDITORIA' || storage == 'ROL_RESPONSABLEEJECUCION_AC') {
                 $('#cantidad').removeClass('d-none');
                 $('#tbReportante').removeClass('d-none');
                 $('#tbReportanteLider').addClass('d-none');
@@ -450,12 +452,175 @@ function fnCargarGrid()
 
 };
 
+// Dibujar plantilla html del grid
+function fnTempleteGrid(data) {
+    var html = '';
+    let type = '- -';
+    let estado = ''
+    let colorLetra = ''
+    let btnEditar = ''
+    let style = ''
+
+    let editar = ''
+    let ver = ''
+    let eliminar = ''
+
+    data.forEach((Item) => {
+        let fecha = moment(`${Item.created_date}`).format("DD/MM/YYYY");
+        if(Item.type_id == 0){
+            type = 'Programado';
+        }
+        if(Item.flag_confirm == 1){
+            estado = 'Finalizado'
+            colorLetra = "textoCorregidaCA"
+            btnEditar = 'disabled'
+            style = 'style="background-color: #c3c3c3 !important"';
+        }else{
+            estado = 'Guardado'
+            colorLetra = "textoAprobadaCA"
+            btnEditar = ''
+            style = '';
+        }
+
+        let editar = Item.Editar ? '' : 'disabled';
+        let ver = Item.Ver ? '' : 'disabled';
+        let eliminar = Item.Eliminar ? '' : 'disabled';
+
+        var btNew = "";
+        let idObs = parseInt(Item.Id);
+        if( idObs == MayorObs && idObs > 0)
+        {
+            btNew = "<div  class='check-blue text-center'>Nuevo</div>"
+        }
+        else
+        {
+            btNew = "";
+        }
+
+
+        let storage = getStorage("vtas_rolexternalrol", "text");
+
+
+        if(storage == 'ROL_REPORTANTE' || storage == 'ROL_LIDERAUDITORIA' || storage == 'ROL_RESPONSABLEEJECUCION_AC')
+        {
+            $('#tbReportante').removeClass('d-none');
+            $('#tbReportanteLider').addClass('d-none');
+            $('#cantidad').removeClass('d-none');
+
+
+            html += `<div class="item-tabla p-2" style="font-size: 15px; display:relative;">
+                    ${btNew}
+                    <div class="row m-0 justify-content-between align-items-center">
+
+                        <div class="col-md-4 text-center row">
+                            <div class="col-md-6 lbFormsoma">${Item.Codigo}</div>
+                            <div class="col-md-6 lbFormsoma">${toCapitalize(Item.Tipo_Observacion_Des)}</div>
+                        </div>
+                        <div class="col-md-2 text-center row">
+                            <div class="col-md-6 lbFormsoma">${ Item.Sede_Id==0 ? '-' : Item.Sede_Des }</div>
+                            <div class="col-md-6 lbFormsoma">${Item.Embarcacion_Id==0 ? '-' : Item.Embarcacion_Des }</div>
+                        </div>
+
+                        <div class="col-md-2 text-center row">
+                            <div class="col-md-8 lbFormsoma">${toCapitalize(Item.Area_Des)}</div>
+                            <div class="col-md-4 lbFormsoma">${Item.Fecha_Creacion}</div>
+                        </div>
+
+                        <div class="col-md-4 text-center row">
+                            <div class="col-md-4 lbFormsoma">${toCapitalize(Item.Estado_Des)}</div>
+                            <div class="col-md-6 lbFormsoma">
+                                <img src="./images/newsistema/iconos/${Item.Image}" alt="" class="w-10">
+                                ${toCapitalize(Item.Criticidad)}
+                            </div>
+                            <div class="col-md-2 lbFormsoma">
+                                <button ${ver} onclick="onOpenModalObservacion(${Item.Id}, 'Ver', true)" class="btn bmd-btn-fab bmd-btn-fab-sm mr-3 btn-ojo m-auto bmd-btn-fab-sm__xs">
+                                    <img src="./images/newsistema/iconos/ojo1.svg" alt="" class="w-50">
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>`;
+
+        }
+        else if(storage == 'ROL_REPORTANTELIDER')
+        {
+            $('#tbReportante').addClass('d-none');
+            $('#tbReportanteLider').removeClass('d-none');
+            $('#cantidad').removeClass('d-none');
+
+            html += `<div class="item-tabla p-2" style="font-size: 15px; display:relative;">
+                    ${btNew}
+                    <div class="row m-0 justify-content-between align-items-center">
+
+                        <div class="col-md-3 text-center row">
+                            <div class="col-md-6 lbFormsoma">${Item.Codigo}</div>
+                            <div class="col-md-6 lbFormsoma">${toCapitalize(Item.Tipo_Observacion_Des)}</div>
+                        </div>
+                        <div class="col-md-2 text-center row">
+                            <div class="col-md-6 lbFormsoma">${ Item.Sede_Id==0 ? '-' : Item.Sede_Des }</div>
+                            <div class="col-md-6 lbFormsoma">${Item.Embarcacion_Id==0 ? '-' : Item.Embarcacion_Des }</div>
+                        </div>
+
+                        <div class="col-md-2 text-center row">
+                            <div class="col-md-8 lbFormsoma">${toCapitalize(Item.Area_Des)}</div>
+                            <div class="col-md-4 lbFormsoma">${Item.Fecha_Creacion}</div>
+                        </div>
+
+                        <div class="col-md-2 text-center row">
+                            <div class="col-md-5 lbFormsoma">${toCapitalize(Item.Estado_Des)}</div>
+                            <div class="col-md-7 lbFormsoma">${toCapitalize(Item.Nombres_Reportante)}</div>
+                        </div>
+
+                        <div class="col-md-1 text-center row">
+                            <div class="col-md-12 lbFormsoma">
+                                <img src="./images/newsistema/iconos/${Item.Image}" alt="" class="w-10">
+                                ${toCapitalize(Item.Criticidad)}
+                            </div>
+                        </div>
+
+                        <div class="col-md-2 text-center row">
+                            <div class="col-md-4">
+                                <button ${editar} onclick="onOpenModalObservacion(${Item.Id}, 'Editar', false)" class="btn bmd-btn-fab bmd-btn-fab-sm mr-3 btn-add m-auto bmd-btn-fab-sm__xs" >
+                                    <img src="./images/newsistema/iconos/edit1.svg" alt="" class="w-50">
+                                </button>
+                            </div>
+                            <div class="col-md-4">
+                                <button ${ver} onclick="onOpenModalObservacion(${Item.Id}, 'Ver', true)" class="btn bmd-btn-fab bmd-btn-fab-sm mr-3 btn-ojo m-auto bmd-btn-fab-sm__xs">
+                                    <img src="./images/newsistema/iconos/ojo1.svg" alt="" class="w-50">
+                                </button>
+                            </div>
+                            <div class="col-md-4">
+                                <button ${eliminar} class="btn bmd-btn-fab bmd-btn-fab-sm mr-3 btn-trash2 m-auto bmd-btn-fab-sm__xs" onclick="modalDeleteObservacionForm(${Item.Id}, '${Item.Codigo}', '${Item.Codigo_Reportante}')">
+                                    <img src="./images/newsistema/iconos/trash2.svg" alt="" class="w-50">
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>`;
+        }
+        else
+        {
+            $('#cantidad').addClass('d-none');
+        }
+
+    })
+
+    // <div class="col-md-4">
+    //     <button ${ver} class="btn bmd-btn-fab bmd-btn-fab-sm mr-3 btn-ojo m-auto bmd-btn-fab-sm__xs" onclick="modalVisualizarInspeccionForm(${Item.id},'${Item.title}')">
+    //         <img src="./images/newsistema/iconos/ojo1.svg" alt="" class="w-50">
+    //     </button>
+    // </div>
+    html += '';
+    return html;
+}
+
 /**
  * [fnDownloadExcelSP2 PARA DESCARGAR EL EXCEL DEL LISTADO DE OP MOSTRADAS]
  * @return {[type]} [description]
  */
-var fnDownloadExcelSP2 = function()
+/*var fnDownloadExcelSP2 = function()
 {
+    let newExcel = '';
     //console.warn("dataAll",dataAll)
     let excel = `
         <table border="1" style="color: #000;">
@@ -505,6 +670,8 @@ var fnDownloadExcelSP2 = function()
         let opc4 = 0
         let opc5 = 0
         let opc6 = 0
+
+        console.warn("Item.Checklist ",Item.Checklist)
 
         Item.Checklist.forEach(function(data)
         {
@@ -665,168 +832,171 @@ var fnDownloadExcelSP2 = function()
 
     //return (sa);
 
-}
+}*/
 
-// Dibujar plantilla html del grid
-function fnTempleteGrid(data) {
-    var html = '';
-    let type = '- -';
-    let estado = ''
-    let colorLetra = ''
-    let btnEditar = ''
-    let style = ''
+var fnDownloadExcelSP2B = function()
+{
+    // dataExcel
+    let dataE = '';
+    let newExcel = '';
+    //console.warn("dataAll",dataAll)
+    // ARRAY CON LOS MESES DE AÑO
+    let meses = ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"]
+    // OBTENEMOS LA FECHA ACTUAL
+    let now = new Date()
+    // OBTENERMOS EL MES
+    let mes = now.getMonth()
 
-    let editar = ''
-    let ver = ''
-    let eliminar = ''
+    dataE = dataAll.map(Item => {
 
-    data.forEach((Item) => {
-        let fecha = moment(`${Item.created_date}`).format("DD/MM/YYYY");
-        if(Item.type_id == 0){
-            type = 'Programado';
-        }
-        if(Item.flag_confirm == 1){
-            estado = 'Finalizado'
-            colorLetra = "textoCorregidaCA"
-            btnEditar = 'disabled'
-            style = 'style="background-color: #c3c3c3 !important"';
-        }else{
-            estado = 'Guardado'
-            colorLetra = "textoAprobadaCA"
-            btnEditar = ''
-            style = '';
-        }
+        let observado       = ""
+        let comportamiento  = ""
+        let proteccion      = ""
+        let procedimiento   = ""
+        let condiciones     = ""
+        let acciones        = ""
+        let descripcion     = ""
+        // CONTADORES DE OPCIONES SELECCIONADAS
+        let opc3 = 0
+        let opc4 = 0
+        let opc5 = 0
+        let opc6 = 0
 
-        let editar = Item.Editar ? '' : 'disabled';
-        let ver = Item.Ver ? '' : 'disabled';
-        let eliminar = Item.Eliminar ? '' : 'disabled';
-
-        var btNew = "";
-        let idObs = parseInt(Item.Id);
-        if( idObs == MayorObs && idObs > 0)
+        Item.Checklist.forEach(function(data)
         {
-            btNew = "<div  class='check-blue text-center'>Nuevo</div>"
+            // 01. Comportamiento inseguro observado
+            if(data.Grupo_Id===1)
+            {
+                if(data.Grupo_Id === data.Grupo_Observacion)
+                {
+                    observado = data.Opcion_Des
+                }
+            }
+            // 02. ¿A que se debe éste comportamiento inseguro?
+            if(data.Grupo_Id===2)
+            {
+                if(data.Grupo_Id === data.Grupo_Observacion)
+                {
+                    comportamiento = (data.Opcion_Observacion===14) ? data.Respuesta_Observacion : data.Opcion_Des
+                }
+            }
+            // 03. Equipo de protección personal observado
+            if(data.Grupo_Id===3)
+            {
+                if(data.Grupo_Id === data.Grupo_Observacion)
+                {
+                    let opcion = ""
+                    let otros  = ""
+                    // console.warn("Item.Codigo -> ",Item.Codigo, "opc3 ->",opc3)
+                    // console.warn("data.Grupo_Id -> ",data.Grupo_Id," Opcion_Id -> ",data.Opcion_Id,"data.Opcion_Des -> ",data.Opcion_Des, "Respuesta_Observacion -> ",data.Respuesta_Observacion)
+
+                    opcion = data.Opcion_Des
+                    otros  = data.Respuesta_Observacion
+                    opcion = ( data.Opcion_Id === 30 ) ? otros : opcion
+
+                    if( (data.Opcion_Id !== 30 && data.Opcion_Id !== 60) || ( data.Opcion_Id === 30 && data.Respuesta_Observacion !== "" ) )
+                    {
+                        proteccion = (opc3==0) ? opcion : proteccion+", "+opcion
+                        opc3++
+                    }
+
+                    // PARA LA DESCRIPCION
+                    descripcion = (data.Opcion_Id === 60) ? otros : descripcion
+                }
+            }
+
+            // 04. Procedimiento que se incumple
+            if(data.Grupo_Id===4 && data.Grupo_Id === data.Grupo_Observacion)
+            {
+                let opcion = ""
+                let otros  = ""
+
+                opcion = data.Opcion_Des
+                otros  = data.Respuesta_Observacion
+                opcion = ( data.Opcion_Id === 40 ) ? otros : opcion
+
+                if( (data.Opcion_Id !== 40 && data.Opcion_Id !== 61) || ( data.Opcion_Id === 40 && data.Respuesta_Observacion !== "" ) )
+                {
+                    procedimiento = (opc4==0) ? opcion : procedimiento+", "+opcion
+                    opc4++
+                }
+
+                // PARA LA DESCRIPCION
+                descripcion = (data.Opcion_Id === 61) ? otros : descripcion
+            }
+
+            // 05. ¿El ambiente de trabajo está en buenas condiciones? ¿Qué observó?
+            if(data.Grupo_Id===5 && data.Grupo_Id === data.Grupo_Observacion)
+            {
+                let opcion = ""
+                let otros  = ""
+
+                opcion = data.Opcion_Des
+                otros  = data.Respuesta_Observacion
+                opcion = ( data.Opcion_Id === 55 ) ? otros : opcion
+
+
+                if( (data.Opcion_Id !== 55 && data.Opcion_Id !== 62) || ( data.Opcion_Id === 55 && data.Respuesta_Observacion !== "" ) )
+                {
+                    condiciones = (opc5==0) ? opcion : condiciones+", "+opcion
+                    opc5++
+                }
+
+                // PARA LA DESCRIPCION
+                descripcion = (data.Opcion_Id === 62) ? otros : descripcion
+            }
+
+            // 06. Acciones correctivas a implementar
+            if( (data.Grupo_Id === 6 && data.Grupo_Id === data.Grupo_Observacion && data.Tipo_Observacion_Id === data.Grupo_Padre_Opcion)  )
+            {
+                let opcion = ""
+                let otros  = ""
+
+                // console.warn("Item.Codigo -> ",Item.Codigo, "opc6 ->",opc6)
+                // console.warn("data.Grupo_Id -> ",data.Grupo_Id," Opcion_Id -> ",data.Opcion_Id,"data.Opcion_Des -> ",data.Opcion_Des, "Respuesta_Observacion -> ",data.Respuesta_Observacion)
+                // console.warn("data.Tipo_Observacion_Id -> ",data.Tipo_Observacion_Id)
+
+                opcion = data.Opcion_Des
+                otros  = data.Respuesta_Observacion
+                opcion = ( data.Opcion_Id === 59 ) ? otros : opcion
+
+                if( (data.Opcion_Id !== 59) || ( data.Opcion_Id === 59 && data.Respuesta_Observacion !== "" ) )
+                {
+                    acciones = (opc6==0) ? opcion : acciones+", "+opcion
+                    opc6++
+                }
+            }
+        })
+
+        let locationDes = (Item.Sede_Des!="") ? Item.Sede_Des : Item.Embarcacion_Des
+
+
+        return {
+            '<b>MES</b>': meses[mes],
+            '<b>FECHA</b>': Item.Fecha_Creacion,
+            '<b>HORA DE REGISTRO</b>': Item.Hora_Operacion,
+            '<b>ID OBSERVACIÓN</b>': Item.Codigo,
+            '<b>TIPO DE OBSERVACIÓN PREVENTIVA </b>': Item.Tipo_Observacion_Des,
+            '<b>COMPORTAMIENTO</b>': observado,
+            '<b>REPORTADO</b>': Item.Nombres_Reportado,
+            '<b>REPORTANTE</b>': Item.Nombres_Reportante,
+            '<b>SEDE/EMBARCACIÓN</b>': locationDes,
+            '<b>ZONA/EQUIPO</b>': Item.Zona_Des,
+            '<b>DESCRIPCI&Oacute;N</b>': descripcion,
+            '<b>ÁREA RESPONSABLE DE LA CORRECCI&Oacute;N</b>': Item.Area_Des,
+            '<b>¿A que se debe este comportamiento?</b>': comportamiento,
+            '<b>¿Se ajust&oacute; o se acomod&oacute; el EPP?</b>': proteccion,
+            '<b>Procedimiento que incumple</b>': procedimiento,
+            '<b>¿El ambiente de trabajo esta en buenas condiciones? ¿Qu&eacute; observ&oacute;?</b>': condiciones,
+            '<b>Acciones Correctivas a implementar</b>': acciones,
+            
         }
-        else
-        {
-            btNew = "";
-        }
-
-
-        let storage = getStorage("vtas_rolexternalrol", "text");
-
-
-        if(storage == 'ROL_REPORTANTE')
-        {
-            $('#tbReportante').removeClass('d-none');
-            $('#tbReportanteLider').addClass('d-none');
-            $('#cantidad').removeClass('d-none');
-
-
-            html += `<div class="item-tabla p-2" style="font-size: 15px; display:relative;">
-                    ${btNew}
-                    <div class="row m-0 justify-content-between align-items-center">
-
-                        <div class="col-md-4 text-center row">
-                            <div class="col-md-6 lbFormsoma">${Item.Codigo}</div>
-                            <div class="col-md-6 lbFormsoma">${toCapitalize(Item.Tipo_Observacion_Des)}</div>
-                        </div>
-                        <div class="col-md-2 text-center row">
-                            <div class="col-md-6 lbFormsoma">${ Item.Sede_Id==0 ? '-' : Item.Sede_Des }</div>
-                            <div class="col-md-6 lbFormsoma">${Item.Embarcacion_Id==0 ? '-' : Item.Embarcacion_Des }</div>
-                        </div>
-
-                        <div class="col-md-2 text-center row">
-                            <div class="col-md-8 lbFormsoma">${toCapitalize(Item.Area_Des)}</div>
-                            <div class="col-md-4 lbFormsoma">${Item.Fecha_Creacion}</div>
-                        </div>
-
-                        <div class="col-md-4 text-center row">
-                            <div class="col-md-4 lbFormsoma">${toCapitalize(Item.Estado_Des)}</div>
-                            <div class="col-md-6 lbFormsoma">
-                                <img src="./images/newsistema/iconos/${Item.Image}" alt="" class="w-10">
-                                ${toCapitalize(Item.Criticidad)}
-                            </div>
-                            <div class="col-md-2 lbFormsoma">
-                                <button ${ver} onclick="onOpenModalObservacion(${Item.Id}, 'Ver', true)" class="btn bmd-btn-fab bmd-btn-fab-sm mr-3 btn-ojo m-auto bmd-btn-fab-sm__xs">
-                                    <img src="./images/newsistema/iconos/ojo1.svg" alt="" class="w-50">
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>`;
-
-        }
-        else if(storage == 'ROL_REPORTANTELIDER')
-        {
-            $('#tbReportante').addClass('d-none');
-            $('#tbReportanteLider').removeClass('d-none');
-            $('#cantidad').removeClass('d-none');
-
-            html += `<div class="item-tabla p-2" style="font-size: 15px; display:relative;">
-                    ${btNew}
-                    <div class="row m-0 justify-content-between align-items-center">
-
-                        <div class="col-md-3 text-center row">
-                            <div class="col-md-6 lbFormsoma">${Item.Codigo}</div>
-                            <div class="col-md-6 lbFormsoma">${toCapitalize(Item.Tipo_Observacion_Des)}</div>
-                        </div>
-                        <div class="col-md-2 text-center row">
-                            <div class="col-md-6 lbFormsoma">${ Item.Sede_Id==0 ? '-' : Item.Sede_Des }</div>
-                            <div class="col-md-6 lbFormsoma">${Item.Embarcacion_Id==0 ? '-' : Item.Embarcacion_Des }</div>
-                        </div>
-
-                        <div class="col-md-2 text-center row">
-                            <div class="col-md-8 lbFormsoma">${toCapitalize(Item.Area_Des)}</div>
-                            <div class="col-md-4 lbFormsoma">${Item.Fecha_Creacion}</div>
-                        </div>
-
-                        <div class="col-md-2 text-center row">
-                            <div class="col-md-5 lbFormsoma">${toCapitalize(Item.Estado_Des)}</div>
-                            <div class="col-md-7 lbFormsoma">${toCapitalize(Item.Nombres_Reportante)}</div>
-                        </div>
-
-                        <div class="col-md-1 text-center row">
-                            <div class="col-md-12 lbFormsoma">
-                                <img src="./images/newsistema/iconos/${Item.Image}" alt="" class="w-10">
-                                ${toCapitalize(Item.Criticidad)}
-                            </div>
-                        </div>
-
-                        <div class="col-md-2 text-center row">
-                            <div class="col-md-4">
-                                <button ${editar} onclick="onOpenModalObservacion(${Item.Id}, 'Editar', false)" class="btn bmd-btn-fab bmd-btn-fab-sm mr-3 btn-add m-auto bmd-btn-fab-sm__xs" >
-                                    <img src="./images/newsistema/iconos/edit1.svg" alt="" class="w-50">
-                                </button>
-                            </div>
-                            <div class="col-md-4">
-                                <button ${ver} onclick="onOpenModalObservacion(${Item.Id}, 'Ver', true)" class="btn bmd-btn-fab bmd-btn-fab-sm mr-3 btn-ojo m-auto bmd-btn-fab-sm__xs">
-                                    <img src="./images/newsistema/iconos/ojo1.svg" alt="" class="w-50">
-                                </button>
-                            </div>
-                            <div class="col-md-4">
-                                <button ${eliminar} class="btn bmd-btn-fab bmd-btn-fab-sm mr-3 btn-trash2 m-auto bmd-btn-fab-sm__xs" onclick="modalDeleteObservacionForm(${Item.Id}, '${Item.Codigo}', '${Item.Codigo_Reportante}')">
-                                    <img src="./images/newsistema/iconos/trash2.svg" alt="" class="w-50">
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>`;
-        }
-        else
-        {
-            $('#cantidad').addClass('d-none');
-        }
-
     })
 
-    // <div class="col-md-4">
-    //     <button ${ver} class="btn bmd-btn-fab bmd-btn-fab-sm mr-3 btn-ojo m-auto bmd-btn-fab-sm__xs" onclick="modalVisualizarInspeccionForm(${Item.id},'${Item.title}')">
-    //         <img src="./images/newsistema/iconos/ojo1.svg" alt="" class="w-50">
-    //     </button>
-    // </div>
-    html += '';
-    return html;
+
+    const xls = new XlsExport(dataE)
+    xls.exportToXLS(`Reporte_SALVA_${moment(new Date()).format('D-MM-Y')}.xls`)
+
 }
 
 function evSelectSedeFiltroChange() {
@@ -2154,7 +2324,7 @@ function combo_box_1(readOnly) {
 
                                 typeAnt=type;
 
-                                switch (option) 
+                                switch (option)
                                 {
                                     case "Radiobutton":
                                         type= "radio";
@@ -2655,7 +2825,7 @@ function combo_box_1(readOnly) {
                 '<div class="card-body3">'+
                     '<div class="row p-0">'+
                         ' <div>'+
-                            '<p class="Rol-en-Auditora Title-Ssoma"><span class="fontITCA" style="color:#34559c;">0' + group.Grupo_Id + 
+                            '<p class="Rol-en-Auditora Title-Ssoma"><span class="fontITCA" style="color:#34559c;">0' + group.Grupo_Id +
                             '</span> ' +group.Grupo_Des+' <span class="fontITCA obligatorio"> (*) </span> </p>' +
                         '</div>'+
                     '</div>'+
@@ -2704,7 +2874,7 @@ function combo_box_1(readOnly) {
                                                     '<div style="width: 95%;margin-left: 7px;" class="row p-0">'+
                                                     ' <div>'+
                                                             '<p class="'+clases+'"><img src="./images/img_'+name_sg+'_so.svg" class="menu-1-1 ">'+item.Subgrupo_Des+' <span class="fontITCA obligatorio"> (*) </span> </p>'+
-                                                            
+
                                                         '</div>'+
                                                     '</div>' );
 
@@ -3336,170 +3506,292 @@ function enviarObservacion(){
         "apikey":constantes.apiKey
     }
 
-    // INICIO - OBTENER CORREOS RESPONSABLES SSOMA
-    var correos = '';
-    headers = {"Authorization":TOKEN_CLIENT,"apiKey": constantes.apiKey}
+    let correos = "millanqjesus@gmail.com"
+    // INICIO ENVIAR A GUARDAR
+    data["Correos"] = correos
+    data["Pdf"]     = ""
     $.ajax({
-        method: "GET",
-        url: "https://0p3r4ti0n5ecur3-prd-checklist.azurewebsites.net/api/Get-Person-All?code=u6Jkjyje0akIMOzWsQr4SakcmmvMK8lrKewweb324hkLGOwvkSNn1A==&httpmethod=usergrouplist&user_group_id=61,62",
+        method: "POST",
+        url:  url,
+        data: JSON.stringify(data),
         headers:headers,
         crossDomain: true,
         dataType: "json",
     })
-    .done(function(_response)
+    .done(function(data)
     {
-       // console.log('Paso Nro 1');
-       // console.log(_response);
-
-
-        let i       = 0
-        if (_response.length != 0)
-        {
-            _response.forEach(item =>
-            {
-                if(i==0)
-                    correos = item.attribute3
-                else
-                    correos += item.attribute3 + ', '
-
-                i++
-            });
+        // ocultamos Modal
+        $('#modalShowAlertConfirm').modal('hide');
+        if(data.Id){
+            $('#codeObservacion').append('<h2><b>'+data.Codigo+'</b></h2>')
+        }else{
+            $('#codeObservacion').append('<h2><b>'+code+'</b></h2>')
         }
-       // console.log('Paso Nro 2');
-       // console.warn("correos responsables SSOMA ",correos);
-    })
-    .always(function( jqXHR, textStatus, errorThrown )
-    {
-        console.warn( jqXHR, textStatus, errorThrown )
-        console.warn( data )
-        console.warn( "url -> ", url )
 
+        $("#modalShowAlertOk").modal("show");
+        $("#preloader").fadeOut();
+       // console.table(data)
+        $('#btnValida').prop("disabled", false);
 
-       // console.warn("always correos",correos)
-        correos = "millanqjesus@gmail.com"
-        // INICIO ENVIAR A GUARDAR
-        data["Correos"] = correos
-        data["Pdf"]     = ""
+        if(data.Id>0 || data.status== true)
+        {
+            if(data.Id != undefined){ id = data.Id }
+        }
+        // habilitamos el boton de confirmar
+        $('#btnValida').prop("disabled", false);
+
+        // INICIO CONSULTAR OP
+        url =apiUrlssoma+"/api/Get-Seguimiento-Observacion?code=/bZQ2JICH4yRjEcKhyhZDqIiRhYabDPTMb4wRcZxem5ojqEl8SxGaw==&httpmethod=object&Id="+id;
+       // console.warn("URLSSOMA get ",url)
         $.ajax({
-            method: "POST",
+            method: "GET",
             url:  url,
-            data: JSON.stringify(data),
             headers:headers,
             crossDomain: true,
             dataType: "json",
         })
-        .done(function(data)
+        .done(function( response)
         {
-            // ocultamos Modal
-            $('#modalShowAlertConfirm').modal('hide');
-            if(data.Id){
-                $('#codeObservacion').append('<h2><b>'+data.Codigo+'</b></h2>')
-            }else{
-                $('#codeObservacion').append('<h2><b>'+code+'</b></h2>')
-            }
+            observacionSelected = response;
 
-            $("#modalShowAlertOk").modal("show");
-            $("#preloader").fadeOut();
-           // console.table(data)
-            $('#btnValida').prop("disabled", false);
-
-            if(data.Id>0 || data.status== true)
+            // console.warn("response",response)
+            //cuando es modificacion
+            if(id!="")
             {
-                if(data.Id != undefined){ id = data.Id }
+                //alert("Modificar")
+                prevData.Codigo           = response.DatosPrincipales.Codigo
+                prevData.Tipo_Observacion = response.DatosPrincipales.Tipo_Observacion_Id
+                prevData.Sede             = response.DatosPrincipales.Sede_Id
+                prevData.Embarcacion      = response.DatosPrincipales.Embarcacion_Id
+                prevData.Area             = response.DatosPrincipales.Area_Id
+                prevData.Zona             = response.DatosPrincipales.Zona_Id
+                prevData.Id               = response.DatosPrincipales.Id;
+                prevData.Updated_By       = getCookie("vtas_id_hash" + sessionStorage.tabVisitasa);
             }
-            // habilitamos el boton de confirmar
-            $('#btnValida').prop("disabled", false);
-
-            // INICIO CONSULTAR OP
-            url =apiUrlssoma+"/api/Get-Seguimiento-Observacion?code=/bZQ2JICH4yRjEcKhyhZDqIiRhYabDPTMb4wRcZxem5ojqEl8SxGaw==&httpmethod=object&Id="+id;
-           // console.warn("URLSSOMA get ",url)
-            $.ajax({
-                method: "GET",
-                url:  url,
-                headers:headers,
-                crossDomain: true,
-                dataType: "json",
-            })
-            .done(function( response)
+            else // cuando es nuevo
             {
-                observacionSelected = response;
+                //alert("Insertar")
 
-                // console.warn("response",response)
-                //cuando es modificacion
-                if(id!="")
+            }
+            // console.warn("prevData",prevData)
+
+            // INICIO - CREAR DE PDF
+            pdfMake.createPdf(fnGenerarPdf()).getBase64(function (result) {
+
+                $('#btnValida').prop("disabled", false);
+
+                url = apiUrlssoma+"/api/Post-Seguimiento-Observacion?code=N0SffbOHJ3Z25Fy7mbYaCPR4Hogo0QBhVw4eXMuMu5ILs/yDTff7BQ==&httpmethod=postInformePdf";
+                data.Updated_By = '';
+                data.Pdf     = result;
+                data.Correos = correos;
+
+                // console.log('Paso Nro 3');
+                //console.log(JSON.stringify(data));
+                //console.log(JSON.stringify(prevData));
+                //prevData.Updated_By = '';
+                prevData.Pdf        = result;
+                //prevData.Correos    = correos;
+                // console.warn("************* CON PDF prevData",prevData)
+                // console.table(prevData);
+
+
+                $.ajax({
+                    method: "POST",
+                    url: url,
+                    data: JSON.stringify(prevData),
+                    headers: headers,
+                    crossDomain: true,
+                    dataType: "json",
+                })
+                .done(function( resultado)
                 {
-                    //alert("Modificar")
-                    prevData.Codigo           = response.DatosPrincipales.Codigo
-                    prevData.Tipo_Observacion = response.DatosPrincipales.Tipo_Observacion_Id
-                    prevData.Sede             = response.DatosPrincipales.Sede_Id
-                    prevData.Embarcacion      = response.DatosPrincipales.Embarcacion_Id
-                    prevData.Area             = response.DatosPrincipales.Area_Id
-                    prevData.Zona             = response.DatosPrincipales.Zona_Id
-                    prevData.Id               = response.DatosPrincipales.Id;
-                    prevData.Updated_By       = getCookie("vtas_id_hash" + sessionStorage.tabVisitasa);
-                }
-                else // cuando es nuevo
-                {
-                    //alert("Insertar")
-
-                }
-                // console.warn("prevData",prevData)
-
-                // INICIO - CREAR DE PDF
-                pdfMake.createPdf(fnGenerarPdf()).getBase64(function (result) {
-
-                    $('#btnValida').prop("disabled", false);
-
-                    url = apiUrlssoma+"/api/Post-Seguimiento-Observacion?code=N0SffbOHJ3Z25Fy7mbYaCPR4Hogo0QBhVw4eXMuMu5ILs/yDTff7BQ==&httpmethod=postInformePdf";
-                    data.Updated_By = '';
-                    data.Pdf     = result;
-                    data.Correos = correos;
-
-                    // console.log('Paso Nro 3');
-                    //console.log(JSON.stringify(data));
-                    //console.log(JSON.stringify(prevData));
-                    //prevData.Updated_By = '';
-                    prevData.Pdf        = result;
-                    //prevData.Correos    = correos;
-                    // console.warn("************* CON PDF prevData",prevData)
-                    // console.table(prevData);
-
-
-                    $.ajax({
-                        method: "POST",
-                        url: url,
-                        data: JSON.stringify(prevData),
-                        headers: headers,
-                        crossDomain: true,
-                        dataType: "json",
-                    })
-                    .done(function( resultado)
-                    {
-                        // console.log('Paso Nro 4');
-                        // console.log(resultado);
-                    })
-                    .fail(function( jqXHR, textStatus, errorThrown ) {
-                        //$("#preloader").fadeOut();
-                    });
-
+                    // console.log('Paso Nro 4');
+                    // console.log(resultado);
+                })
+                .fail(function( jqXHR, textStatus, errorThrown ) {
+                    //$("#preloader").fadeOut();
                 });
-                // FIN - CREAR DE PDF
 
-            })
-            // FINAL  CONSULTAR OP
+            });
+            // FIN - CREAR DE PDF
 
         })
-        .always(function( jqXHR, textStatus, errorThrown )
-        {
-            fnCargarReportantes();
-            fnCargarGrid();
-
-        })//*/
-
-        // FINAL  ENVIAR A GUARDAR
-
+        // FINAL  CONSULTAR OP
 
     })
+    .always(function( jqXHR, textStatus, errorThrown )
+    {
+        fnCargarReportantes();
+        fnCargarGrid();
+
+    })//*/
+
+    // FINAL  ENVIAR A GUARDAR
+
+    // INICIO - OBTENER CORREOS RESPONSABLES SSOMA
+    // var correos = '';
+    // headers = {"Authorization":TOKEN_CLIENT,"apiKey": constantes.apiKey}
+    // $.ajax({
+    //     method: "GET",
+    //     url: "https://0p3r4ti0n5ecur3-prd-checklist.azurewebsites.net/api/Get-Person-All?code=u6Jkjyje0akIMOzWsQr4SakcmmvMK8lrKewweb324hkLGOwvkSNn1A==&httpmethod=usergrouplist&user_group_id=61,62",
+    //     headers:headers,
+    //     crossDomain: true,
+    //     dataType: "json",
+    // })
+    // .done(function(_response)
+    // {
+    //    // console.log('Paso Nro 1');
+    //    // console.log(_response);
+
+
+    //     let i       = 0
+    //     if (_response.length != 0)
+    //     {
+    //         _response.forEach(item =>
+    //         {
+    //             if(i==0)
+    //                 correos = item.attribute3
+    //             else
+    //                 correos += item.attribute3 + ', '
+
+    //             i++
+    //         });
+    //     }
+    //    // console.log('Paso Nro 2');
+    //    // console.warn("correos responsables SSOMA ",correos);
+    // })
+    // .always(function( jqXHR, textStatus, errorThrown )
+    // {
+    //     console.warn( jqXHR, textStatus, errorThrown )
+    //     console.warn( data )
+    //     console.warn( "url -> ", url )
+
+
+    //    // console.warn("always correos",correos)
+    //     correos = "millanqjesus@gmail.com"
+    //     // INICIO ENVIAR A GUARDAR
+    //     data["Correos"] = correos
+    //     data["Pdf"]     = ""
+    //     $.ajax({
+    //         method: "POST",
+    //         url:  url,
+    //         data: JSON.stringify(data),
+    //         headers:headers,
+    //         crossDomain: true,
+    //         dataType: "json",
+    //     })
+    //     .done(function(data)
+    //     {
+    //         // ocultamos Modal
+    //         $('#modalShowAlertConfirm').modal('hide');
+    //         if(data.Id){
+    //             $('#codeObservacion').append('<h2><b>'+data.Codigo+'</b></h2>')
+    //         }else{
+    //             $('#codeObservacion').append('<h2><b>'+code+'</b></h2>')
+    //         }
+
+    //         $("#modalShowAlertOk").modal("show");
+    //         $("#preloader").fadeOut();
+    //        // console.table(data)
+    //         $('#btnValida').prop("disabled", false);
+
+    //         if(data.Id>0 || data.status== true)
+    //         {
+    //             if(data.Id != undefined){ id = data.Id }
+    //         }
+    //         // habilitamos el boton de confirmar
+    //         $('#btnValida').prop("disabled", false);
+
+    //         // INICIO CONSULTAR OP
+    //         url =apiUrlssoma+"/api/Get-Seguimiento-Observacion?code=/bZQ2JICH4yRjEcKhyhZDqIiRhYabDPTMb4wRcZxem5ojqEl8SxGaw==&httpmethod=object&Id="+id;
+    //        // console.warn("URLSSOMA get ",url)
+    //         $.ajax({
+    //             method: "GET",
+    //             url:  url,
+    //             headers:headers,
+    //             crossDomain: true,
+    //             dataType: "json",
+    //         })
+    //         .done(function( response)
+    //         {
+    //             observacionSelected = response;
+
+    //             // console.warn("response",response)
+    //             //cuando es modificacion
+    //             if(id!="")
+    //             {
+    //                 //alert("Modificar")
+    //                 prevData.Codigo           = response.DatosPrincipales.Codigo
+    //                 prevData.Tipo_Observacion = response.DatosPrincipales.Tipo_Observacion_Id
+    //                 prevData.Sede             = response.DatosPrincipales.Sede_Id
+    //                 prevData.Embarcacion      = response.DatosPrincipales.Embarcacion_Id
+    //                 prevData.Area             = response.DatosPrincipales.Area_Id
+    //                 prevData.Zona             = response.DatosPrincipales.Zona_Id
+    //                 prevData.Id               = response.DatosPrincipales.Id;
+    //                 prevData.Updated_By       = getCookie("vtas_id_hash" + sessionStorage.tabVisitasa);
+    //             }
+    //             else // cuando es nuevo
+    //             {
+    //                 //alert("Insertar")
+
+    //             }
+    //             // console.warn("prevData",prevData)
+
+    //             // INICIO - CREAR DE PDF
+    //             pdfMake.createPdf(fnGenerarPdf()).getBase64(function (result) {
+
+    //                 $('#btnValida').prop("disabled", false);
+
+    //                 url = apiUrlssoma+"/api/Post-Seguimiento-Observacion?code=N0SffbOHJ3Z25Fy7mbYaCPR4Hogo0QBhVw4eXMuMu5ILs/yDTff7BQ==&httpmethod=postInformePdf";
+    //                 data.Updated_By = '';
+    //                 data.Pdf     = result;
+    //                 data.Correos = correos;
+
+    //                 // console.log('Paso Nro 3');
+    //                 //console.log(JSON.stringify(data));
+    //                 //console.log(JSON.stringify(prevData));
+    //                 //prevData.Updated_By = '';
+    //                 prevData.Pdf        = result;
+    //                 //prevData.Correos    = correos;
+    //                 // console.warn("************* CON PDF prevData",prevData)
+    //                 // console.table(prevData);
+
+
+    //                 $.ajax({
+    //                     method: "POST",
+    //                     url: url,
+    //                     data: JSON.stringify(prevData),
+    //                     headers: headers,
+    //                     crossDomain: true,
+    //                     dataType: "json",
+    //                 })
+    //                 .done(function( resultado)
+    //                 {
+    //                     // console.log('Paso Nro 4');
+    //                     // console.log(resultado);
+    //                 })
+    //                 .fail(function( jqXHR, textStatus, errorThrown ) {
+    //                     //$("#preloader").fadeOut();
+    //                 });
+
+    //             });
+    //             // FIN - CREAR DE PDF
+
+    //         })
+    //         // FINAL  CONSULTAR OP
+
+    //     })
+    //     .always(function( jqXHR, textStatus, errorThrown )
+    //     {
+    //         fnCargarReportantes();
+    //         fnCargarGrid();
+
+    //     })
+
+    //     // FINAL  ENVIAR A GUARDAR
+
+
+    // })
     // FIN - OBTENER CORREOS RESPONSABLES SSOMA
 }
 

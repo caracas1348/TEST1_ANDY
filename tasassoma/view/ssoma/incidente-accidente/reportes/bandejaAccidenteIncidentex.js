@@ -64,8 +64,6 @@ function PlanAnual()
             this.a.AdjuntoAlerta = 0;
             this.a.hayEvidenciaBD = 0;
             this.a.LA = [];
-            this.a.II;
-            this.a.II_BD = 0;//estado inicial, se puede ir al servidor a buscar la informacion.
         }
 
     }
@@ -126,34 +124,6 @@ function PlanAnualDG()
     }
 //.............................................. class Dtaos Generales ...........................................
 
-
-
-function FormularioVSAT()
- {
-
-        this.camposId = [];
-        this.camposLb = [];
-        this.valorSi  = [];
-        this.valorSi  = [];
-
-
-       FormularioVSAT.prototype.cargarData = function (a,b,c,d)
-        {
-
-             this.camposId = a;
-             this.camposLb = b;
-             this.valorNo  = c;
-             this.valorSi  = d;
-        }
-
-    }
-//.............................................. class Dtaos Generales ...........................................
-
-
-
-
-
-
 /*------------------------------------------  class PlanAnualDG ------------------end---------------------------------*/
 
 
@@ -166,7 +136,7 @@ var FinalizadoSSO = 0; //indica si esta o se va a finalizar los datos de un even
 var FinalizadoMat = 0; //indica si esta o se va a finalizar los datos de un evento SSO
 //svar form_DG_STEP = 0;// IINDICA SI LA PESTAÑANA MOSTRADA DE LOS DATOS GENERALES PERTENES A (0= Datos de evento SSO) ó  (1 = Datos de Evento MA-Ambie)
 
-UsuarioHallazgoIncidente = 1;
+
 
 
 
@@ -186,7 +156,6 @@ var LTE = new Array();; //VARIABLE GLOBAL QUE CONTIENE LOS TOPO DE EVENTOS QUE E
 var LTS = new Array();; //VARIABLE GLOBAL QUE CONTIENE LAS SEDES QUE EXISTEN DESDE BASE DE DATOS
 var LTA = new Array();; //VARIABLE GLOBAL QUE CONTIENE LAS AREAS QUE EXISTEN DESDE BASE DE DATOS
 var LTZ = new Array();; //VARIABLE GLOBAL QUE CONTIENE LAS ZONAS QUE EXISTEN DESDE BASE DE DATOS
-var EVI = new Array();; //VARIABLE GLOBAL QUE CONTIENE LAS EVIDENCIAS
 
 var verCalendario = 0; 
 
@@ -197,11 +166,6 @@ var LTE_LA1 = new Array(); //VARIABLE GLOBAL QUE CONTIENE LOS TOPO DE EVENTOS QU
 var LTE_LA2 = new Array(); //VARIABLE GLOBAL QUE CONTIENE LOS TOPO DE EVENTOS QUE EXISTEN DESDE BASE DE DATOS PARA LAS LECCIONES APRENDIDAS DANNIO
 var LTE_LA3 = new Array(); //VARIABLE GLOBAL QUE CONTIENE LOS TOPO DE EVENTOS QUE EXISTEN DESDE BASE DE DATOS PARA LAS LECCIONES APRENDIDAS AMBIENTAL
 
-
-var ver5PQ = []; //NOS INDICA SI YA SE EJECUTO LA BUSQUEDA EN EL SERVIDOR DE LOS DATOS DEL HALLAZGO Y LOS 65 POR QUE
-var vkk = []; //indica la cantidad de investigadores que tiene un informe
-
-var istAudHall = 0;//indica el numero del hallazgo que tiene asociado el informe de investigacion que se acaba de registrar
 
 /*
 
@@ -524,8 +488,6 @@ function fnSp3CargaFiltroEstadoInicialPlanAnual()
             $("#"+'sel_f_dg_gv_6y').append(`<option value='${item.Id}' title='${item.UnidadNegocioId}' style='font-weight: bold;'>${item.Sede}</option>`);
 
             $("#"+'dat_la_sede').append(`<option value='${item.Id}' title='${item.UnidadNegocioId}' style='font-weight: bold;'>${item.Sede}</option>`);
-
-             $("#"+'dat_ii_nombre_uo').append(`<option value='${item.Id}' title='${item.DireccionUnicaSedePlanta}' style='font-weight: bold;'>${item.Sede}</option>`);
         });
        //------------------------------- CARGAMOS SELECT SEDES ---------------------------------
 
@@ -578,11 +540,7 @@ function fnSp3CargaFiltroEstadoInicialPlanAnual()
              $("#"+'sel_f_dg_gv_16').append(`<option value='${item.Id}' title='${item.Area}' >${item.Area}</option>`);
               $("#"+'sel_f_dg_gv_16k').append(`<option value='${item.Id}' title='${item.Area}' >${item.Area}</option>`);
              $("#"+'sel_fuente_area2').append(`<option value='${item.Id}' title='${item.Area}' >${item.Area}</option>`);
-
-             $("#"+'dat_ii_area_trabajo').append(`<option value='${item.Id}' title='${item.Area}' >${item.Area}</option>`);
              //$("#"+'sel_f_dg_gv_32').append(`<option value='${item.Id}' title='${item.UnidadNegocioId}' >${item.Area}rr</option>`); andy 07/06/21 duplicidad tentativo
-
-
              
          });
         //------------------------------- CARGAMOS SELECT AREAS ---------------------------------
@@ -651,13 +609,6 @@ function fnSp3CargaFiltroEstadoInicialPlanAnual()
             $("#"+'dat_la_tipo').html("<option selected value='0'>          </option>");
 
 
-            $("#"+'dat_ii_nivel_severidad').html(" "); $("#"+'dat_ii_nivel_severidad').css('font-size','13px');//lecciones aprendidas
-            $("#"+'dat_ii_nivel_severidad').html("<option  value='BAJO'>Bajo </option>    <option  value='MEDIO'>Medio</option> <option  value='ALTO'>Alto</option>");
-
-
-            //dat_ii_nivel_severidad
-
-
 
            // console.info("response ",response)
             //LTE = response.Programas1;
@@ -667,8 +618,6 @@ function fnSp3CargaFiltroEstadoInicialPlanAnual()
                 // $("#"+'sel_filter_programa_p').append(`<option value='${item.Id}' title='${item.Code}' style='font-weight: bold;'>${item.Programa}</option>`);
                 $("#"+'sel_fuente_tipo_incidente').append(`<option value='${item.Id}' title='${item.Code} - ${item.Evento}' style='font-weight: bold;'>${item.Evento}</option>`);
 
-                
-              
                 if((item.Grupo != 4)&&(item.Grupo != 5)){
                 $("#"+'sel_f_dg_gv_1').append(`<option value='${item.Id}' title='${item.Code} - ${item.Evento}' style='font-weight: bold;'>${item.Evento}</option>`);
                 LTE_LA1[item.Id] = item.Evento;
@@ -677,7 +626,6 @@ function fnSp3CargaFiltroEstadoInicialPlanAnual()
                  if(item.Grupo == 4){
                 $("#"+'dat_x_clasificacion').append(`<option value='${item.Id}' title='${item.Code} - ${item.Evento}' style='font-weight: bold;'>${item.Evento}</option>`);
                 LTE_LA2[item.Id] = item.Evento;
-                $("#"+'dat_ii_tipo_incidente').append(`<option value='${item.Id}' title='${item.Code} - ${item.Evento}' style='font-weight: bold;'>${item.Evento}</option>`);
                                    }
 
                  if(item.Grupo == 5){
@@ -694,15 +642,6 @@ function fnSp3CargaFiltroEstadoInicialPlanAnual()
             
             
 
-
-
-            //EVI
-            response.Evidenciax.map(function(item)
-         {
-           
-             EVI[item.Id] = item.total
-             
-         });
 
 
 
@@ -852,17 +791,6 @@ function fnSp3CargaFiltroEstadoInicialPlanAnual()
         fnGetPersonCorrecionSp3($("#ReportanteNameDG_119"),119); //ReportanteCargoDG_311
         fnGetPersonCorrecionSp3($("#ReportanteNameDG_311"),311);
         fnGetPersonCorrecionSp3($("#ReportanteNameDG_311k"),312);
-        fnGetPersonCorrecionSp3($("#dat_ii_nombre_jefe_inmediato"),314);
-
-        fnGetPersonCorrecionSp3($("#dat_ii_invTeam_511"),511);
-
-        fnGetPersonCorrecionSp3($("#ResponsableName_512"),512);//ReportanteCorreo_ii
-        fnGetPersonCorrecionSp3($("#ReportanteName_ii"),513);
-        
-        fnGetPersonCorrecionSp3($("#dat_ii_responsable_area"),514);
-
-
-        
 
 
          //------------------------------- CARGAMOS SELECT Lesión/ Daño ---------------------------------
@@ -965,16 +893,11 @@ function fnSp3CargaFiltroEstadoInicialPlanAnual()
          $("#"+'sel_f_dg_gv_3y').html("<option selected value='0'>          </option>");
 
 
-          $("#"+'dat_ii_gerencia').html(" "); $("#"+'dat_ii_gerencia').css('font-size','13px');
-         $("#"+'dat_ii_gerencia').html("<option selected value='0'>          </option>");
-
-
          response.Gerencia1.map(function(item)
          {
              $("#"+'sel_f_dg_gv_42').append(`<option value='${item.Id}' title='${item.Gerencia}' >(${item.Code}) ${item.Gerencia}</option>`);
              $("#"+'sel_f_dg_gv_42k').append(`<option value='${item.Id}' title='${item.Gerencia}' >(${item.Code}) ${item.Gerencia}</option>`);
              $("#"+'sel_f_dg_gv_3y').append(`<option value='${item.Id}' title='${item.Gerencia}' >(${item.Code}) ${item.Gerencia}</option>`);
-             $("#"+'dat_ii_gerencia').append(`<option value='${item.Id}' title='${item.Gerencia}' >(${item.Code}) ${item.Gerencia}</option>`);
              
          });
          
@@ -1175,44 +1098,7 @@ function fnSp3CargaFiltroEstadoInicialPlanAnual()
 
 
 
-     //-------------------cargamos los valores del formulario de Informe de Investigacion ----------------------------
 
-         //  response.Area_TrabajoII.map(function(item)//sel_f_dg_gv_16
-         // {
-         //     $("#"+'dat_ii_area_trabajo').append(`<option value='${item.Id}' title='${item.Area_Trabajo}' >${item.Area_Trabajo}</option>`);
-             
-         // });
-
-
-           response.Tipo_ContratoII.map(function(item)
-         {
-             $("#"+'dat_ii_tipo_contrato').append(`<option value='${item.Id}' title='${item.Tipo_Contrato}' >${item.Tipo_Contrato}</option>`);
-             
-         });
-
-
-          response.Turno_TrabajoII.map(function(item)
-         {
-             $("#"+'dat_ii_turno_trabajo').append(`<option value='${item.Id}' title='${item.Turno_Trabajo}' >${item.Turno_Trabajo}</option>`);
-             
-         });
-
-         response.Tipo_Incapacidad_II.map(function(item)
-         {
-             $("#"+'dat_ii_incapacidad').append(`<option value='${item.Id}' title='${item.Tipo_Incapacidad}' >${item.Tipo_Incapacidad}</option>`);
-             
-         });
-
-         response.Involucrados_II.map(function(item)
-         {
-             $("#"+'dat_ii_involucrados').append(`<option value='${item.Id}' title='${item.Involucrados}' >${item.Involucrados}</option>`);
-             
-         });
-
-
-
-
-     //-------------------cargamos los valores del formulario de Informe de Investigacion ----------------------------
 
 
          
@@ -1305,82 +1191,6 @@ function fnSp3CargaFiltroEstadoInicialPlanAnual()
                                       //       Sp4BuscarAdjuntosIncidente_y_Alerta(response.PlanAnual[3].Id);
                                       //   }
                      //*-----------------------------------------
-
-
-
-
-
-                    // console.clear()
-                    // console.log('##################################### termino ahora voy #################################')
-
-
-                    //             showLoading();
-
-                    //             var body = {
-                    //                 "AreaId_Empresa_H": 0,
-                    //                 "SedeId_Empresa_H": 0
-                    //             }
-                                                         
-                    //            var url = "https://5h0-dev-salud.azurewebsites.net/api/hce_Get_001_historia_clinica?code=5lJWTsRDsoxqo9VoOxIzfQAPyCTxUTqLpvgY5tuHluCZlSodpQ/Y7w==";
-
-                    //             console.log("URL",url )
-                    //             var headers ={
-                    //               "apikey":constantes.apiKey,
-                    //               "Content-Type": "application/json"
-                    //             }
-
-                    //             var settings = {
-                    //               "url": url,
-                    //               "method": "GET",
-                    //               "timeout": 0,
-                    //               "crossDomain": true,
-                    //               "dataType": "json",
-                    //               "headers": headers,
-                    //               "data": body),
-                    //             };
-
-
-                    //              $.ajax(settings).done(function (response)
-                    //             {
-                    //                 console.log("**todos**",response);
-
-                    //                 if(response.HistoriaClin.length > 0)
-                    //                 {
-
-                    //                 }
-                    //                 else
-                    //                 {
-
-                    //                   hideLoading();
-                    //                 }
-
-                    //             });
-
-
-
-
-                    // console.log('##################################### termino ahora voy #################################')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
               }
           })
@@ -1477,9 +1287,6 @@ function fnSp3ListarTablaGeneralH(data)
 
            paObj[Item.Id] = new PlanAnual();
            paObj[Item.Id].cargarData(Item);
-
-
-
            
 
 console.log(".."+Item.Equipo+"..")
@@ -1565,205 +1372,206 @@ console.log(".."+Item.Equipo+"..")
                         var ttitle2 = '';
                         var ttitle3 = 'Informe de Investigaciòn';
                         var ttitle4 = 'Lecciones Aprendidas';
-                        var ttitle5 = 'Informe de Investigacióndd';//ccolor3  readonly3
-                        var ttitle8 = 'Evidencia del Incidente';//ccolor3  readonly3
+                        var ttitle5 = 'Informe de Investigación';
                         var ccolor = '';
                         var ccolor2 = '';
                         var ccolor3 = '#cd8338'; // informe de investigacion
                         var ccolor4 = '#254373'; //lecciones aprendidas
-                        var ccolor8 = '#61b4f9 '; //evidencia readonly8
                         var readonly = '';
                         var readonly2 = '';//para el boton alerta
                         var readonly3 = '';//para el boton informe de investigacion
                         var readonly4 = '';//para el boton lñecciones aprendidas
-                        var readonly5 = '';//para el boton informe de investigacion2
-                        var readonly8 = '';//para el boton informe de investigacion2
-
-                                      //--------(1)---------------- boton incidente ---------------------------
-                                       var ttitle_1 = 'Ver Incidente Accidente.';//
-                                       var ccolor_1 = '#2d7099';//#cdcdcd
-                                       var readonly_1 = '';//disabled
-                                       
-                                       // var ttitle_1 = 'No se puede Ver Incidente Accidente.';
-                                       // var ccolor_1 = '#cdcdcd';
-                                       // var readonly_1 = 'disabled';
-
-                                      //--------------------------- boton incidente ----------------(1)--------
-
-                                      //---------(2)---------------- boton dstos generales ---------------------------
-                                       var ttitle_2 = 'Registrar/ Ver Datos Generales.';
-                                       var ccolor_2 = '#f9bc61';
-                                       var readonly_2 = 'Ver Datos Generales';
-                                       
-                                       // var ttitle_2 = 'No se puede Ver Datos Generales.';
-                                       // var ccolor_2 = '#cdcdcd';
-                                       // var readonly_2 = 'disabled';
-                                      //---------------------------- boton dstos generales ----------------(2)--------
-
-
-                                      //---------(3)---------------- boton Alerta ---------------------------
-                                       var ttitle_3 = 'Ver/ Generar Alerta.';//
-                                       var ccolor_3 = '#b3c258';//#cdcdcd
-                                       var readonly_3 = '';//disabled
-                                       
-                                       var ttitle_3 = 'No se puede Ver/ Generar Alerta.';
-                                       var ccolor_3 = '#cdcdcd';
-                                       var readonly_3 = 'disabled';
-                                      //---------------------------- boton Alerta ----------------(3)--------
-
-
-                                      //---------(4)---------------- boton Evidencia ---------------------------
-                                       var ttitle_4 = 'Ver/ Cargar Evidencias.';//
-                                       var ccolor_4 = '#61b4f9';//#cdcdcd
-                                       var readonly_4 = '';//disabled
-                                       
-                                       var ttitle_4 = 'No se puede Ver/ Cargar Evidencias.';
-                                       var ccolor_4 = '#cdcdcd';
-                                       var readonly_4 = 'disabled';
-                                      //---------------------------- boton Evidencia ----------------(4)--------
-
-
-                                      //---------(5)---------------- boton Hallazgo ---------------------------
-                                       var ttitle_5 = 'Ver/ Generar Hallazgo.';//
-                                       var ccolor_5 = '#254373';//#cdcdcd
-                                       var readonly_5 = '';//disabled
-                                       
-                                       var ttitle_5 = 'No se puede Ver/ Generar Hallazgo.';
-                                       var ccolor_5 = '#cdcdcd';
-                                       var readonly_5 = 'disabled';
-                                      //---------------------------- boton Hallazgo ----------------(5)--------
-
-
-                                      //---------(6)---------------- boton Informe de Investigacion ---------------------------
-                                       var ttitle_6 = 'Ver/ Generar Informe de Investigacion.';//
-                                       var ccolor_6 = '#cd8338';//#cdcdcd
-                                       var readonly_6 = '';//disabled
-                                       
-                                       var ttitle_6 = 'No se puede Ver/ Generar Informe de Investigacion. La ACR no esta Finalizada';
-                                       var ccolor_6 = '#cdcdcd';
-                                       var readonly_6 = 'disabled';
-                                      //---------------------------- boton Informe de Investigacion ----------------(6)--------
-
-                                      //---------(7)---------------- boton Leccion Aprendida ---------------------------
-                                       var ttitle_7 = 'Ver / Generar Las Lecciones Aprendidas.';//
-                                       var ccolor_7 = '#254373';//#cdcdcd
-                                       var readonly_7 = '';//disabled
-                                       
-                                       var ttitle_7 = 'No se puede Ver/ Generar Las Lecciones Aprendidas. Debe Finalizar el Informre de Investigación';
-                                       var ccolor_7 = '#cdcdcd';
-                                       var readonly_7 = 'disabled';
-                                      //---------------------------- boton incidente ----------------(7)--------
-
-
-
-
-
 
                         //if((Item.IdHallazgo > 0)||())
 
 
-                         
-                         //alert("aaaaaaa = "+Item.IdDatosGenerales+'   Id = '+Item.Id);
 
 
+                        if(Item.IdDatosGenerales >0)
+                        {
+                           console.log(Item.Id," == Si tiene Datos Generales")
+                            readonly2 = '';
+                            ccolor2 = '#b3c258';
+                             if(Item.yIdAlerta> 0)
+                           {
+                                    ttitle = 'Visualizar Alerta Generada (1)';
+                                    ccolor4 = '#254373';  
+                                    readonly4 = '';
+                                    ttitle4 = 'Lecciones Aprendidas1';
+
+                            }
+                            else{ttitle = 'Generar Alerta';
+
+                                  
 
 
-                                       // si finalizo muestra solo alerta
-                                       if(Item.FinalizadoMat == 1){var ttitle_3 = 'Ver/ Generar Alerta.';  var ccolor_3 = '#b3c258';  var readonly_3 = '';}
-                                       if(Item.FinalizadoSSO == 1){var ttitle_3 = 'Ver/ Generar Alerta.';  var ccolor_3 = '#b3c258';  var readonly_3 = '';}
-                                       if(Item.FinalizadoA == 1){var ttitle_3 = 'Ver/ Generar Alerta.';  var ccolor_3 = '#b3c258';  var readonly_3 = '';}
+                           }
+                                   
 
-                                        if(Item.yIdAlerta> 0){var ttitle_4 = 'Ver/ Cargar Evidencias.';    var ccolor_4 = '#61b4f9';  var readonly_4 = '';}
+                        }
+                        else
+                        {
+                            if(Item.IdDatosGenerales2 >0)
+                                {
+                                   console.log(Item.Id," == Si tiene Datos Generales 2")
+                                    readonly = '';
+                                    ccolor2 = '#b3c258';
+                                     if(Item.yIdAlerta> 0)
+                                    {ttitle = 'Visualizar Alerta Generada (1)';}else{ttitle = 'Generar Alerta';}
 
-                                        if(EVI[Item.Id] > 0) 
-                                             { //alert(Item.Id+"aaaaaaaaaaa = "+EVI[Item.Id]);
+                                     if(Item.yIdAlerta  > 0)
+                                           {
+                                                    ttitle = 'Visualizar Alerta Generada (1)';
+                                                    ccolor4 = '#254373';  
+                                                    readonly4 = '';
+                                                    ttitle4 = 'Lecciones Aprendidas1';
 
-                                                    var ttitle_5 = ' Generar Hallazgo.';    var ccolor_5 = '#254373';  var readonly_5 = '';   
-                                                    if(Item.IdHallazgo > 0){ var ttitle_5 = 'Este Incidente ya fue registrado como hallazgo';  var ccolor_5 = '#cdcdcd'; var readonly_5 = 'disabled';}
-                                             }
-                                        
-                                        console.log("Item.StatusAccionCorrectivaId = ", Item.StatusAccionCorrectivaId);
-                                        console.log("Item.StatusHallazgoId = ", Item.StatusHallazgoId);
+                                            }
+                                            else{ttitle = 'Generar Alerta'; }
 
+                                }
+                            else
+                                {
+                                    if(Item.IdDatosGenerales3 >0)
+                                    {
+                                           console.log(Item.Id," == Si tiene Datos Generales 2")
+                                            readonly = '';
+                                            ccolor2 = '#b3c258';
+                                             if(Item.yIdAlerta> 0)
+                                            {
+                                                    ttitle = 'Visualizar Alerta Generada (1)';
+                                                    ccolor4 = '#254373';  
+                                                    readonly4 = '';
+                                                    ttitle4 = 'Lecciones Aprendidas1';
 
+                                            }
+                                            else{ttitle = 'Generar Alerta'; }
+                                            
+                                           
 
-                                        if((Item.StatusAccionCorrectivaId == 4)&&(Item.StatusHallazgoId == 2))
-                                            { var ttitle_6 = 'Ver/ Generar Informe de Investigacion.';  var ccolor_6 = '#cd8338';  var readonly_6 = ''; } //habilito
+                                     }
+                                    else
+                                     {
 
-                                        //alert(Item.InformeIIFinalizado);
+                                           console.log(Item.Id,"==== NO tiene Datos Generales");
+                                          readonly2 = 'disabled';
+                                          ccolor2 = '#cdcdcd';
+                                          ttitle = 'Se deben registrar los Datos Generales para activar la Alerta';
+                                          ccolor4 = '#cdcdcd';  
+                                          readonly4 = 'disabled';
+                                          ttitle4 = 'Para Generar Las Lecciones Aprendidas, Primerop registre los Datos Generales';
+                                    }
+                                }
+                            
+                        }
 
-                                         if(Item.InformeIIFinalizado == 1)
-                                            {  var ttitle_7 = 'Ver / Generar Las Lecciones Aprendidas.';  var ccolor_7 = '#254373';  var readonly_7 = '';}
+                        if(Item.InformeInvestigacion == 1)
+                        {
 
+                            ccolor4 = '#254373';  
+                            readonly4 = '';
+                            ttitle4 = 'Lecciones Aprendidas3';
+                                if(Item.IdHallazgo > 0)
+                                {
+                                    ttitle2 = 'Este Incidente ya fue registrado como Hallazgo';
+                                    //ccolor = '#254373';
+                                    ccolor = '#cdcdcd';
+                                    readonly = 'disabled';
+                                }
+                                else
+                                {
+                                     ttitle2 = 'Clic para registrar como Hallazgo';
+                                     ccolor = '#254373';
+                                     //readonly3 = '';
+                                     //ccolor3 = '#cd8338';
+                                }
 
+                        }
+                        else
+                        {
+                                //ccolor = '#254373';
+                                ccolor = '#cdcdcd';
+                                readonly = 'disabled';
+                                ttitle2 = 'Este Incidente no Tiene Expediente de Investigacion Abierto';
 
-
-                        // if(Item.IdDatosGenerales > 0)
-                        // {
-
-                        //                // si finalizo muestra solo alerta
-                        //                if(Item.FinalizadoSSO == 1){var ttitle_3 = 'Ver/ Generar Alerta.';  var ccolor_3 = '#b3c258';  var readonly_3 = '';}
-
-                        //                 if(Item.yIdAlerta> 0){var ttitle_4 = 'Ver/ Cargar Evidencias.';    var ccolor_4 = '#61b4f9';  var readonly_4 = '';}
-
-                        //                 if(EVI[Item.Id] > 0) 
-                        //                      {
-                        //                                                      var ttitle_5 = ' Generar Hallazgo.';    var ccolor_5 = '#254373';  var readonly_5 = '';   
-                        //                             if(Item.IdHallazgo > 0){ var ttitle_5 = 'Este Incidente ya fue registrado como hallazgo';  var ccolor_5 = '#cdcdcd'; var readonly_5 = 'disabled';}
-                        //                      }
-
-                        //                 if((Item.StatusAccionCorrectivaId == 4)&&(Item.StatusHallazgoId == 2))
-                        //                     { var ttitle_6 = 'Ver/ Generar Informe de Investigacion.';  var ccolor_6 = '#cd8338';  var readonly_6 = ''; } //habilito
-
-                        //                  if(Item.InformeIIFinalizado == 1)
-                        //                     {  var ttitle_7 = 'Ver / Generar Las Lecciones Aprendidas.';  var ccolor_7 = '#254373';  var readonly_7 = '';}
-                
-                        // }
-
-                       
-
-                        
+                               // readonly3 = 'disabled';
+                                //ccolor3 = '#cdcdcd';
+                                // readonly4 = 'disabled';
+                                // ccolor4 = '#cdcdcd';
+                                // ttitle4 = 'Para Generar Las Lecciones Aprendidas, Debe Generar el Informe de Investigacion';
+                               
+                               
+                               
+                            if(Item.IdHallazgo > 0)
+                            {
+                                ttitle2 = 'Este Incidente ya fue registrado como Hallazgo';
+                                //ccolor = '#254373';
+                                ccolor = '#cdcdcd';
+                                readonly = 'disabled';
+                               // readonly3 = '';
+                                //ccolor3 = '#cd8338';
+                            }
+                                                      
+                        }
 
                        //SI POR CASUALIDAD ES UN INCIDENTE AMBIENTAL, AUTOMATICAMENTE PUEDE TENER HALLAZGO
                              if(Item.GrupoEvento == 2)
                                 {
-                                         // //alert("este incidente ("+Item.Id+") es AMBIENTAL")
-                                         //  ttitle2 = 'Clic para registrar como Hallazgo';
-                                         //  ccolor = '#254373';
-                                         //  readonly = '';
-                                         //  // readonly3 = '';
-                                         //  // ccolor3 = '#cd8338';
+                                         //alert("este incidente ("+Item.Id+") es AMBIENTAL")
+                                          ttitle2 = 'Clic para registrar como Hallazgo';
+                                          ccolor = '#254373';
+                                          readonly = '';
+                                          // readonly3 = '';
+                                          // ccolor3 = '#cd8338';
 
-                                         //    //  ccolor4 = '#254373';  
-                                         //    // readonly4 = '';
-                                         //    // ttitle4 = 'Lecciones Aprendidas2';
+                                            //  ccolor4 = '#254373';  
+                                            // readonly4 = '';
+                                            // ttitle4 = 'Lecciones Aprendidas2';
      
 
 
-                                         //   if(Item.IdHallazgo > 0)
-                                         //        {
-                                         //            ttitle2 = 'Este Incidente ya fue registrado como Hallazgo';
-                                         //            //ccolor = '#254373'                  ccolor = '#cdcdcd';
-                                         //            readonly = 'disabled';
+                                           if(Item.IdHallazgo > 0)
+                                                {
+                                                    ttitle2 = 'Este Incidente ya fue registrado como Hallazgo';
+                                                    //ccolor = '#254373'                  ccolor = '#cdcdcd';
+                                                    readonly = 'disabled';
 
-                                         //            // readonly3 = '';
-                                         //            // ccolor3 = '#cd8338';
-                                         //        }
+                                                    // readonly3 = '';
+                                                    // ccolor3 = '#cd8338';
+                                                }
 
-                                         //     if(Item.yIdAlerta> 0)
-                                         //                {
+                                             if(Item.yIdAlerta> 0)
+                                                        {
                                                                 
-                                         //                        ccolor4 = '#254373';  
-                                         //                        readonly4 = '';
-                                         //                        ttitle4 = 'Lecciones Aprendidas2';
+                                                                ccolor4 = '#254373';  
+                                                                readonly4 = '';
+                                                                ttitle4 = 'Lecciones Aprendidas2';
 
-                                         //                }
-                                         //                else{
+                                                        }
+                                                        else{
 
-                                         //                     readonly4 = 'disabled';
-                                         //                     ccolor4 = '#cdcdcd';
-                                         //                     ttitle4 = 'Para Generar Las Lecciones Aprendidas, Debe Generar la Alerta';
-                                         //                }
+                                                             readonly4 = 'disabled';
+                                                             ccolor4 = '#cdcdcd';
+                                                             ttitle4 = 'Para Generar Las Lecciones Aprendidas, Debe Generar la Alerta';
+                                                        }
+
+
+                                //  console.log("xxxxx = ",paObjDG[Item.Id]);
+
+
+                                // if(Item.ReporteExterno == 1)
+                                //    {
+                                //             ccolor4 = '#254373';  
+                                //             readonly4 = '';
+                                //             ttitle4 = 'Lecciones Aprendidas2';
+                                //    }
+                                // else 
+                                //    {
+                                //             readonly4 = 'disabled';
+                                //             ccolor4 = '#cdcdcd';
+                                //             ttitle4 = 'Para Generar Las Lecciones Aprendidas, Debe Generar el Informe de Investigacion xxx';
+                                //    }
+    
 
 
 
@@ -1772,86 +1580,86 @@ console.log(".."+Item.Equipo+"..")
                            if(Item.GrupoEvento == 3)
                                 {
                                     //alert('1426'+Item.InformeInvestigacion);
-                                    // if(Item.InformeInvestigacion3 == 1)
-                                    // {
-                                    //      //alert("este incidente ("+Item.Id+") es AMBIENTAL")
-                                    //       ttitle2 = 'Clic para registrar como Hallazgo';
-                                    //       ccolor = '#254373';
-                                    //       readonly = '';
-                                    //       //readonly3 = '';
-                                    //       //ccolor3 = '#cd8338';
+                                    if(Item.InformeInvestigacion3 == 1)
+                                    {
+                                         //alert("este incidente ("+Item.Id+") es AMBIENTAL")
+                                          ttitle2 = 'Clic para registrar como Hallazgo';
+                                          ccolor = '#254373';
+                                          readonly = '';
+                                          //readonly3 = '';
+                                          //ccolor3 = '#cd8338';
 
                                            
-                                    //        // if(Item.IdHallazgo > 0)
-                                    //        //      {
-                                    //        //          ttitle2 = 'Este Incidente ya fue registrado como Hallazgo';
-                                    //        //          //ccolor = '#254373'                  ccolor = '#cdcdcd';
-                                    //        //          ccolor = '#cdcdcd';
-                                    //        //          readonly = 'disabled';
-                                    //        //          //readonly3 = '';
-                                    //        //           //ccolor3 = '#cd8338';
-                                    //        //      }
-                                    //        //  else
-                                    //        //      {
-                                    //        //           ttitle2 = 'Clic para registrar como Hallazgo';
-                                    //        //           ccolor = '#254373';
-                                    //        //            //readonly3 = '';
-                                    //        //           // ccolor3 = '#cd8338';
-                                    //        //      }
+                                           if(Item.IdHallazgo > 0)
+                                                {
+                                                    ttitle2 = 'Este Incidente ya fue registrado como Hallazgo';
+                                                    //ccolor = '#254373'                  ccolor = '#cdcdcd';
+                                                    ccolor = '#cdcdcd';
+                                                    readonly = 'disabled';
+                                                    //readonly3 = '';
+                                                     //ccolor3 = '#cd8338';
+                                                }
+                                            else
+                                                {
+                                                     ttitle2 = 'Clic para registrar como Hallazgo';
+                                                     ccolor = '#254373';
+                                                      //readonly3 = '';
+                                                     // ccolor3 = '#cd8338';
+                                                }
 
-                                    //              // if(Item.yIdAlerta> 0)
-                                    //              //        {
+                                                 if(Item.yIdAlerta> 0)
+                                                        {
                                                                 
-                                    //              //                ccolor4 = '#254373';  
-                                    //              //                readonly4 = '';
-                                    //              //                ttitle4 = 'Lecciones Aprendidas1';
+                                                                ccolor4 = '#254373';  
+                                                                readonly4 = '';
+                                                                ttitle4 = 'Lecciones Aprendidas1';
 
-                                    //              //        }
-                                    //              //        else{
+                                                        }
+                                                        else{
 
-                                    //              //             readonly4 = 'disabled';
-                                    //              //             ccolor4 = '#cdcdcd';
-                                    //              //             ttitle4 = 'Para Generar Las Lecciones Aprendidas, Debe Generar la Alerta';
-                                    //              //        }
+                                                             readonly4 = 'disabled';
+                                                             ccolor4 = '#cdcdcd';
+                                                             ttitle4 = 'Para Generar Las Lecciones Aprendidas, Debe Generar la Alerta';
+                                                        }
 
 
-                                    //  }
-                                    //   else
-                                    // {
-                                    //                 //ccolor = '#254373';
-                                    //                 ccolor = '#cdcdcd';
-                                    //                 readonly = 'disabled';
-                                    //                 ttitle2 = 'Este Incidente no Tiene Expediente de Investigacion Abierto';
-                                    //                  //readonly3 = 'disabled';
-                                    //                  //ccolor3 = '#cdcdcd';
+                                     }
+                                      else
+                                    {
+                                                    //ccolor = '#254373';
+                                                    ccolor = '#cdcdcd';
+                                                    readonly = 'disabled';
+                                                    ttitle2 = 'Este Incidente no Tiene Expediente de Investigacion Abierto';
+                                                     //readonly3 = 'disabled';
+                                                     //ccolor3 = '#cdcdcd';
 
                                                     
-                                    //             if(Item.yIdAlerta> 0)
-                                    //                     {
+                                                if(Item.yIdAlerta> 0)
+                                                        {
                                                                 
-                                    //                             ccolor4 = '#254373';  
-                                    //                             readonly4 = '';
-                                    //                             ttitle4 = 'Lecciones Aprendidas1';
+                                                                ccolor4 = '#254373';  
+                                                                readonly4 = '';
+                                                                ttitle4 = 'Lecciones Aprendidas1';
 
-                                    //                     }
-                                    //                     else{
+                                                        }
+                                                        else{
 
-                                    //                          readonly4 = 'disabled';
-                                    //                          ccolor4 = '#cdcdcd';
-                                    //                          ttitle4 = 'Para Generar Las Lecciones Aprendidas, Debe Generar la Alerta';
-                                    //                     }
+                                                             readonly4 = 'disabled';
+                                                             ccolor4 = '#cdcdcd';
+                                                             ttitle4 = 'Para Generar Las Lecciones Aprendidas, Debe Generar la Alerta';
+                                                        }
                                                    
-                                    //             if(Item.IdHallazgo > 0)
-                                    //             {
-                                    //                 ttitle2 = 'Este Incidente ya fue registrado como Hallazgo';
-                                    //                 //ccolor = '#254373';
-                                    //                 ccolor = '#cdcdcd';
-                                    //                 readonly = 'disabled';
-                                    //                  //readonly3 = '';
-                                    //                  //ccolor3 = '#cd8338';
-                                    //             }
+                                                if(Item.IdHallazgo > 0)
+                                                {
+                                                    ttitle2 = 'Este Incidente ya fue registrado como Hallazgo';
+                                                    //ccolor = '#254373';
+                                                    ccolor = '#cdcdcd';
+                                                    readonly = 'disabled';
+                                                     //readonly3 = '';
+                                                     //ccolor3 = '#cd8338';
+                                                }
                                                       
-                                    //  }
+                                     }
                                 }
 
 
@@ -1926,62 +1734,60 @@ if(Item.HayPersonalAfectado == 0){Item.NombreEmpresa = 'Tasa';}
                                         </td>
                                  
                                             <!-- iconosss  -->
-        <td style=" width:480px !important;" >
-            <table style=" width:480px !important;"  border="0">
-                <tr >
-                <td style = 'width:60px;' align="center"><div id="c12TabGeny" class="text-center lbCabezaTabla1" ${respF}' >
-                    <button type='button' title='${ttitle_1}'  onclick="  accPlanAnual = 2;  fnSp3MostrarModalVerPlanAnual(${Item.Id})"   class='btn-circle btn_read border-0' style='background-color:${ccolor_1} !important;' id='btn_genAlerta${Item.Id}' ${readonly_1}>
-                        <img src='./images/iconos/ojo_1.svg' class='ojo-1'  >
-                    </button>
-                </td>
-                
+                                        <td style=" width:480px !important;" >
+                                            <table style=" width:480px !important;"  border="0">
+                                                <tr >
+                                                <td style = 'width:60px;' align="center"><div id="c12TabGeny" class="text-center lbCabezaTabla1" ${respF}' >
+                                                    <button type='button' title='Ver Incidente/ Accidente'  onclick="  accPlanAnual = 2;  fnSp3MostrarModalVerPlanAnual(${Item.Id})"   class='btn-circle btn_read border-0' style='background-color:#2d7099 !important;' id='btn_genAlerta${Item.Id}'>
+                                                        <img src='./images/iconos/ojo_1.svg' class='ojo-1'  >
+                                                    </button>
+                                                </td>
 
-                   <td style = 'width:60px;' align="center"><div id="c13TabGeny" class="text-center lbCabezaTabla1"  ${respF}'  >
-                <button type='button'title='${ttitle_2}' onclick="  accPlanAnual = 2; sp4FnModalDatosGnerales(${Item.Id})"   class='btn-circle btn_read border-0' style='background-color:${ccolor_2} !important;' id='btn_verHallago${Item.Id}'  ${readonly_2}>
-                    <img src='./images/iconos/file3.svg' class='ojo-1'  >
-                </button>
 
-                 </td>
+                                                <td style = 'width:60px;' align="center"><div id="c12TabGeny" class="text-center lbCabezaTabla1"  ${respF}'  >
+                                                        <button type='button' title='${ttitle}' onclick="  fnSp4MostrarModalGenAlerta(${Item.Id}); "   class='btn-circle btn_read border-0' style='background-color:${ccolor2} !important;' id='btn_verHallago${Item.Id}' ${readonly2}>
+                                                            <img src='./images/iconos/alert3.svg' class='ojo-1'  >
+                                                        </button>
 
-                <td style = 'width:60px;' align="center"><div id="c12TabGeny" class="text-center lbCabezaTabla1"  ${respF}'  >
-                        <button type='button' title='${ttitle_3}' onclick="  fnSp4MostrarModalGenAlerta(${Item.Id}); "   class='btn-circle btn_read border-0' style='background-color:${ccolor_3} !important;' id='btn_verHallago${Item.Id}' ${readonly_3}>
-                            <img src='./images/iconos/alert3.svg' class='ojo-1'  >
-                        </button>
+                                                </td>
 
-                </td>
+                                                <td style = 'width:60px;' align="center"><div id="c12TabGeny" class="text-center lbCabezaTabla1"  ${respF}'  >
+                                                <button type='button' title='Evidencia' onclick="  accPlanAnual = 2; fnSp4MostrarModalEvidenciasIncidente(${Item.Id})"   class='btn-circle btn_read border-0' style='background-color:#61b4f9 !important;' id='btn_verEvidenciaIncidemte${Item.Id}'>
+                                                    <img src='./images/iconos/googleDocuments3.svg' class='ojo-1'  >
+                                                </button>
 
-                <td style = 'width:60px;' align="center"><div id="c12TabGeny" class="text-center lbCabezaTabla1"  ${respF}'  >
-                <button type='button' title='${ttitle_4}' onclick="  accPlanAnual = 2; fnSp4MostrarModalEvidenciasIncidente(${Item.Id})"   class='btn-circle btn_read border-0' style='background-color:${ccolor_4}  !important;' id='btn_verEvidenciaIncidemte${Item.Id}'  ${readonly_4}>
-                    <img src='./images/iconos/googleDocuments3.svg' class='ojo-1'  >
-                </button>
+                                                </td>
 
-                </td>
+                                                <td style = 'width:60px;' align="center"><div id="c13TabGeny" class="text-center lbCabezaTabla1"  ${respF}'  >
+                                                <button type='button' title='Datos Generales' onclick="  accPlanAnual = 2; sp4FnModalDatosGnerales(${Item.Id})"   class='btn-circle btn_read border-0' style='background-color:#f9bc61 !important;' id='btn_verHallago${Item.Id}'>
+                                                    <img src='./images/iconos/file3.svg' class='ojo-1'  >
+                                                </button>
 
-             
+                                                 </td>
 
-                <td style = 'width:60px;' align="center"><div id="c14TabGeny" class="text-center lbCabezaTabla1"  ${respF}'  >
-                <button type='button' title='${ttitle_5}' onclick="  accPlanAnual = 2; sp4FnTrasformaIncidenteEnHallazgo(${Item.Id})"   class='btn-circle btn_read border-0' style='background-color:${ccolor_5} !important;' id='btn_verHallago${Item.Id}' ${readonly_5}>
-                    <img src='./images/iconos/search5.svg' class='ojo-1'  >
-                </button>
+                                                <td style = 'width:60px;' align="center"><div id="c14TabGeny" class="text-center lbCabezaTabla1"  ${respF}'  >
+                                                <button type='button' title='${ttitle2}' onclick="  accPlanAnual = 2; sp4FnTrasformaIncidenteEnHallazgo(${Item.Id})"   class='btn-circle btn_read border-0' style='background-color:${ccolor} !important;' id='btn_verHallago${Item.Id}' ${readonly}>
+                                                    <img src='./images/iconos/search5.svg' class='ojo-1'  >
+                                                </button>
 
-                </td>
+                                                </td>
 
-               
-                 <td style = 'width:90px;' align="center"><div id="c12TabGeny" class="text-center lbCabezaTabla1"  ${respF}'  >
-                <button type='button' title='${ttitle_6}' onclick="  accPlanAnual = 2; sp4FnVentanaInformeInvestigacion(${Item.Id})"   class='btn-circle btn_read border-0' style='background-color:${ccolor_6} !important;' id='btn_verHallago${Item.Id}' ${readonly_6}>
-                    <img src='./images/iconos/writing1.svg' class='ojo-1'  >
-                </button>
+                                               
+                                                 <td style = 'width:90px;' align="center"><div id="c12TabGeny" class="text-center lbCabezaTabla1"  ${respF}'  >
+                                                <button type='button' title='${ttitle5}' onclick="  accPlanAnual = 2; sp4FnVentanaInformeInvestigacion(${Item.Id})"   class='btn-circle btn_read border-0' style='background-color:${ccolor3} !important;' id='btn_verHallago${Item.Id}' ${readonly3}>
+                                                    <img src='./images/iconos/writing1.svg' class='ojo-1'  >
+                                                </button>
 
-                </td>
+                                                </td>
 
-              
+                                              
 
-                  <td style = 'width:90px;' align="center"><div id="c12TabGeny" class="text-center lbCabezaTabla1"  ${respF}'  >
-                <button type='button' title='${ttitle_7}' onclick="  accPlanAnual = 2; sp4FnVentanaLeccionAprendidada(${Item.Id})"   class='btn-circle btn_read border-0' style='background-color:${ccolor_7} !important;' id='btn_verHallago${Item.Id}' ${readonly_7}>
-                    <img src='./images/iconos/group_l.svg' class='ojo-1'  >
-                </button>
+                                                  <td style = 'width:90px;' align="center"><div id="c12TabGeny" class="text-center lbCabezaTabla1"  ${respF}'  >
+                                                <button type='button' title='${ttitle4}' onclick="  accPlanAnual = 2; sp4FnVentanaLeccionAprendidada(${Item.Id})"   class='btn-circle btn_read border-0' style='background-color:${ccolor4} !important;' id='btn_verHallago${Item.Id}' ${readonly4}>
+                                                    <img src='./images/iconos/group_l.svg' class='ojo-1'  >
+                                                </button>
 
-                </td>
+                                                </td>
 
                                            
                                                 
@@ -2082,9 +1888,9 @@ function fnSp3VentanaMostrarPlanAnual(pos)
                     
             
 
-        $('#divBordeDG_4').css('background-color','#ffffff');
-        $('#txtd_f_dg_gv_4').css('background-color','#ffffff');
-        $('#txtd_f_dg_gv_4').prop('disabled', false);//14-07-2021 que se ahabilitado
+        $('#divBordeDG_4').css('background-color','#efefef');
+        $('#txtd_f_dg_gv_4').css('background-color','#efefef');
+        $('#txtd_f_dg_gv_4').prop('disabled', true);
         $('#txtd_f_dg_gv_4').val(date_AAAA_MM_DD_T_HH_MM_S_to_DD_MM_AAAA(paObj[istAud].a.Fecha));
 
         // $('#divBordeDG_5').css('background-color','#efefef');
@@ -2092,52 +1898,28 @@ function fnSp3VentanaMostrarPlanAnual(pos)
         // $('#txtt_f_dg_gv_5').prop('disabled', true);
         $('#txtt_f_dg_gv_5').val(paObj[istAud].a.Hora)
 
+        $('#divBordeDG_6').css('background-color','#efefef');
+        $('#sel_f_dg_gv_6').css('background-color','#efefef');
         
-        
-
-        if(paObj[istAud].a.IdSede >0)
-        {
-
-             // $('#divBordeDG_6').css('background-color','#efefef');
-             // $('#sel_f_dg_gv_6').css('background-color','#efefef');
-  
-
-             $('#sel_f_dg_gv_6').val(paObj[istAud].a.IdSede)
-             $('#sel_f_dg_gv_6').prop('disabled', false);//14-07-2021 que se ahabilitado
-             $('#divBordeDG_6').css('background-color','#ffffff');
-             $('#sel_f_dg_gv_6').css('background-color','#ffffff');
-        }else{ $('#divBordeDG_6').css('background-color','#efefef');  $('#sel_f_dg_gv_6').css('background-color','#efefef');$('#sel_f_dg_gv_6').prop('disabled', true);}
-       
+        $('#sel_f_dg_gv_6').val(paObj[istAud].a.IdSede)
+        $('#sel_f_dg_gv_6').prop('disabled', true);
 
       
         
-         if(paObj[istAud].a.IdEmbarcacion > 0)
-        {
-             //si hay embarcacion no hay sede por ende condicion de embarcacion habilitada
-            // $('#divBordeDG_7').css('background-color','#efefef');
-            // $('#sel_f_dg_gv_7').css('background-color','#efefef');
-            $('#sel_f_dg_gv_7').prop('disabled', false);//14-07-2021 que se ahabilitado
-            $('#sel_f_dg_gv_7').val(paObj[istAud].a.IdEmbarcacion)
-            $('#divBordeDG_7').css('background-color','#ffffff');
-            $('#sel_f_dg_gv_7').css('background-color','#ffffff');
-        }else{$('#divBordeDG_7').css('background-color','#efefef'); $('#sel_f_dg_gv_7').css('background-color','#efefef'); $('#sel_f_dg_gv_7').prop('disabled', true);}
-       
+
+        //si hay embarcacion no hay sede por ende condicion de embarcacion habilitada
+        $('#divBordeDG_7').css('background-color','#efefef');
+        $('#sel_f_dg_gv_7').css('background-color','#efefef');
+        $('#sel_f_dg_gv_7').prop('disabled', true);
+        $('#sel_f_dg_gv_7').val(paObj[istAud].a.IdEmbarcacion)
 
 
-        $('#divBordeDG_8').css('background-color','#ffffff');
-        $('#sel_f_dg_gv_10').css('background-color','#ffffff');//14-07-2021 que se ahabilitado
-        $('#sel_f_dg_gv_10').prop('disabled', false);//NombreEmpresa
+        $('#divBordeDG_8').css('background-color','#efefef');
+        $('#sel_f_dg_gv_10').css('background-color','#efefef');
+        $('#sel_f_dg_gv_10').prop('disabled', true);//NombreEmpresa
         //$('#sel_f_dg_gv_10').val(paObj[istAud].a.IdEmpresa);//antes id por que era un listado ahora es tecleado
         $('#sel_f_dg_gv_10').val(paObj[istAud].a.NombreEmpresa);
         //alert('1475 sp4FnModalDatosGnerales');
-
-
-
-
-
-
-
-
 
          if(paObj[istAud].a.HayPersonalAfectado == 0) // es personal de tasa
             {
@@ -2218,35 +2000,15 @@ function fnSp3VentanaMostrarPlanAnual(pos)
           LTA.map(function(item)
          {
              //console.log('fueraaaaaaaaaaaaa 8',i,")=", item.Area); i++;
-              $("#"+'dat_ii_area_trabajo').append(`<option value='${item.Id}' title='${item.UnidadNegocioId}' >${item.Area}</option>`);
             if(item.UnidadNegocioId == n)
-            { 
-
-             //$('#sel_f_dg_gv_6 option:selected').
+            {
              $("#"+'sel_f_dg_gv_16').append(`<option value='${item.Id}' title='${item.UnidadNegocioId}' >${item.Area}</option>`);
              //$("#"+'sel_f_dg_gv_16k').append(`<option value='${item.Id}' title='${item.UnidadNegocioId}' >${item.Area}</option>`);
              $("#"+'sel_f_dg_gv_32').append(`<option value='${item.Id}' title='${item.UnidadNegocioId}' >${item.Area}</option>`);
-             // $("#"+'dat_ii_area_trabajo').append(`<option value='${item.Id}' title='${item.UnidadNegocioId}' >${item.Area}</option>`);
-
-
            
             }
                         
          });
-
-
-         if($('#sel_f_dg_gv_7').val() > 0 )
-         {
-             LTA.map(function(item)
-         {
-             //console.log('fueraaaaaaaaaaaaa 8',i,")=", item.Area); i++;
-                   
-                     $("#"+'sel_f_dg_gv_32').append(`<option value='${item.Id}' title='${item.UnidadNegocioId}' >${item.Area}</option>`);
-                   
-                    
-                                
-                 });
-         }
 
            let i = 1;
 
@@ -2358,23 +2120,6 @@ function fnSp3VentanaMostrarPlanAnual(pos)
         $('#txt_f_dg_gv_39').css('background-color','#efefef');
         $('#txt_f_dg_gv_39').prop('disabled', true);
 
-
-
-
-
-                                            
-
-
-
-
-
-
-
-
-
-
-
-
      //----------------- estado inicial de los campos inabilitados u en gris --------------------------//
 
     fnSp3onchangeObjetivoSubojetitivo('si');
@@ -2392,9 +2137,9 @@ function fnSp3VentanaMostrarPlanAnual(pos)
                         $("#titleModalDatosGenerales").html("<b>Datos Generales - "+paObj[istAud].a.Code+"</b>");
 
 
-                        $('#divBordeDG_x4').css('background-color','#ffffff');//efefef
-                        $('#txtd_f_dg_gv_4y').css('background-color','#ffffff');
-                        $('#txtd_f_dg_gv_4y').prop('disabled', false);
+                        $('#divBordeDG_x4').css('background-color','#efefef');
+                        $('#txtd_f_dg_gv_4y').css('background-color','#efefef');
+                        $('#txtd_f_dg_gv_4y').prop('disabled', true);
                         $('#txtd_f_dg_gv_4y').val(date_AAAA_MM_DD_T_HH_MM_S_to_DD_MM_AAAA(paObj[istAud].a.Fecha));
 
                         // $('#divBordeDG_x5').css('background-color','#efefef');
@@ -2402,17 +2147,17 @@ function fnSp3VentanaMostrarPlanAnual(pos)
                         // $('#txtt_f_dg_gv_5y').prop('disabled', true);
                         $('#txtt_f_dg_gv_5y').val(paObj[istAud].a.Hora)
 
-                        $('#divBordeDG_x6').css('background-color','#ffffff');
-                        $('#sel_f_dg_gv_6y').css('background-color','#ffffff');
-                        $('#sel_f_dg_gv_6y').prop('disabled', false);
+                        $('#divBordeDG_x6').css('background-color','#efefef');
+                        $('#sel_f_dg_gv_6y').css('background-color','#efefef');
+                        $('#sel_f_dg_gv_6y').prop('disabled', true);
                         $('#sel_f_dg_gv_6y').val(paObj[istAud].a.IdSede)
 
                         
                         
                         //si hay embarcacion no hay sede por ende condicion de embarcacion habilitada
-                        $('#divBordeDG_x8').css('background-color','#ffffff');
-                        $('#sel_f_dg_gv_10y').css('background-color','#ffffff');
-                        $('#sel_f_dg_gv_10y').prop('disabled', false);
+                        $('#divBordeDG_x8').css('background-color','#efefef');
+                        $('#sel_f_dg_gv_10y').css('background-color','#efefef');
+                        $('#sel_f_dg_gv_10y').prop('disabled', true);
                         //$('#sel_f_dg_gv_10y').val(paObj[istAud].a.IdEmpresa);
 
                          if(paObj[istAud].a.HayPersonalAfectado == 0) // es personal de tasa
@@ -3988,7 +3733,7 @@ function fnSp3agregaObjetivoSubojetivo(tipo, objjt,Code, CodePadre, nAct, Id)
                         var p = String();
                          p = p.substr(2,4);
 
-                        var hoy = new Date();//hoy.getDate()+'/'+(hoy.getMonth()+1)+'/'+hoy.getFullYear()
+                        var hoy = new Date();
 
                         if(objNewPA.Id === undefined)
                         {
@@ -7028,7 +6773,7 @@ if(paObj[istAud].a.yIdAlerta > 0)
                                                                                 "IdTipoEvento_": parseInt( $('#sel_fuente_tipo_incidente').val()),
                                                                                 "IdSede": $('#sel_filter_sede_p2AL').val(),
                                                                                 "Fecha":  nff,
-                                                                                "FraseCorta":$('#txt_describe_incidenteAlerta').val(), //txt_describe_incidenteAlerta
+                                                                                "FraseCorta":$('#txt_describe_incidenteAlerta').val(), 
                                                                                 "Descripcion":$('#txt_describe_incidenteAlertaX').val(),
                                                                                 "Codigo":paObj[istAud].a.Code,
                                                                                 "TipoDatoGeneral":0,
@@ -7224,7 +6969,7 @@ if(paObj[istAud].a.yIdAlerta > 0)
                                                                                 "IdTipoEvento_": parseInt( $('#sel_fuente_tipo_incidente').val()),
                                                                                 "IdSede": $('#sel_filter_sede_p2AL').val(),
                                                                                 "Fecha":  nff,
-                                                                                "FraseCorta":$('#txt_describe_incidenteAlerta').val(), //txt_describe_incidenteAlertaaa
+                                                                                "FraseCorta":$('#txt_describe_compromisoAlerta').val(), 
                                                                                 "Descripcion":$('#txt_describe_incidenteAlertaX').val(),
                                                                                 "Codigo":paObj[istAud].a.Code,
                                                                                 "TipoDatoGeneral":0,
@@ -7908,19 +7653,13 @@ function sp4MostrarPreviewAlertaPDF2()
     doc.text(5, 231, '_____________');
 
     //---------------------------------
-    
-   
-    //var dat = 'CONTUSIÓN DE DEDO PULGAR DE MANO IZQUIERDA';
-    var dat = $('#txt_diagnostco').val(); 
-    if(dat.length <= 100)
-    {doc.setFontSize(14);}
-    else{
-            if(dat.length >= 100 && length<= 250)
-             {doc.setFontSize(12);}
-     }
-
+    doc.setFontSize(14);
     doc.setFontType('normal'); 
     doc.setTextColor(0,0,128);
+    //var dat = 'CONTUSIÓN DE DEDO PULGAR DE MANO IZQUIERDA';
+    var dat = $('#txt_diagnostco').val(); 
+
+   
     doc.text(5, 239, dat,{maxWidth:55, align:'justify'});//aqui va el detalle de la alerta----------------------TIPO DE INCIDENTE
     doc.setTextColor(135,198,250); 
    
@@ -8551,272 +8290,6 @@ var body = {
 }//------------------------------##########################################################-----------------------------------
 
 
-function fnSp3CargaFiltroEstadoInicialAdmHallazgo_ii()
-{//------------------------------------- ini   fnSp3CargaFiltroEstadoInicialAdmHallazgo() -------------------------------------
-   // console.clear()
-   //alert('quien me llama = '+apiurlAuditoria);
- 
-
-     var fuente = 0;
-     var tipoh = 0;
-     var normah = 0;
-     var seddeah = 0;
-     var estadoah = 0;
-     var f1,f2,f11,f22;
-
-    var f1 = "";
-    var f2 = "";
-    
-    // https://550m44ud1tmg7454-audit-dev.azurewebsites.net/api/Get-Evaluacion_Auditores-All?code=EUnorEI6paUzxOdpVKKAGDjhb4p4wEZ3R6NTWKDoOdVrk0Y0S/ZOkg==&httpmethod=objectlist&RolId=&StatusEvaluacionId=&FechaInicio=&FechaFin=&Auditor=&Nota=52
-    var url = apiurlAuditoria+ "/api/Get-Hallazgos-All?code=NKBvao47qcJIg6Qjy/X1fUQLgxp2GarodbvWKcbQcPKbj7g4BhGUxQ==&httpmethod=objectlist&FuenteId="+fuente+"&TipoHallazgoId="+tipoh+"&NormaId="+normah+"&SedeId="+seddeah+"&StatusId="+estadoah+"&FechaInicio="+f1+"&FechaFin="+f2;
-    console.log("URLuuuuuuuuuuuuu",url )
-
-    var headers ={
-            "apikey":constantes.apiKey
-        }
-
-        var settings = {
-            "url": url,
-            "method": "GET",
-            "timeout": 0,
-            "crossDomain": true,
-            "dataType": "json",
-            "headers": headers,
-        };
-
-        $.ajax(settings).done(function (response)
-        {
-            console.log("salida 8790 = ",response )
-            objHallazgoAsignado = []
-
-
-
-
-
-            
-            $("#sel_fuente_hhalazgo_ii").attr("disabled",false);
-            $("#sel_fuente_hhalazgo_ii").html(' ');
-            response.Fuentes.map(function(item)
-            { //alert(item.Fuente);
-                    $("#"+'sel_fuente_hhalazgo_ii').append(`<option value='${item.Id}' title='${item.Fuente}' style='font-weight: bold;'>${item.Fuente}</option>`);
-            });
-            $("#sel_fuente_hhalazgo_ii").attr("disabled",true);
-//-------------------------------------------------------------------------------------------------------------------
-
-
-            $("#sel_ttipo_hh_ii").attr("disabled",false);
-            $("#sel_ttipo_hh_ii").html(' ');
-            response.TipoHallazgos.map(function(item)
-            {
-                $("#"+'sel_ttipo_hh_ii').append(`<option value='${item.Id}'  title='${item.TipoHallazgo}' style='font-weight: bold;'>${item.TipoHallazgo}</option>`);
-               
-            });
-            $("#sel_ttipo_hh_ii").attr("disabled",true);
-
-
-            //sel_normaxx----------------------------------------------------------------------------------------------------------------
-
-            $("#sel_normaxx_ii").attr("disabled",false);
-            $("#sel_normaxx_ii").html(' ');
-
-
-            response.Normas.map(function(item)
-            {
-              
-                $("#"+'sel_normaxx_ii').append(`<option value='${item.Id}'  title='${item.Norma}' style='font-weight: bold;'>${item.Norma}</option>`);
-
-            }); $("#sel_normaxx_ii").attr("disabled",true);
-
-            //------ sel_uniddad_neg  -------------------------------------------------------------------------------------------------------------
-            $("#sel_uniddad_neg_ii").attr("disabled",false);
-            $("#sel_uniddad_neg_ii").html(' ');
-
-
-            response.UnidadNegocio.map(function(item)
-            {
-                $("#"+'sel_uniddad_neg_ii').append(`<option value='${item.Id}'  title='${item.UnidadNegocioDescription}' style='font-weight: bold;'>${item.UnidadNegocioDescription}</option>`);
-
-            });$("#sel_uniddad_neg_ii").attr("disabled",true);
-
-
-
-            //---------------------------------------------------------------------------------------
-            $("#sel_seddek_ii").attr("disabled",false);
-            $("#sel_seddek_ii").html(' ');
-
-            response.Sedes.map(function(item)
-            {
-               
-                $("#"+'sel_seddek_ii').append(`<option value='${item.Id}'  title='${item.Sede}' style='font-weight: bold;'>${item.Sede}</option>`);
-                //sel_seddek
-            });$("#sel_seddek_ii").attr("disabled",true);
-
-
-
-
-
-
-            ///alert('siiiii ='+ paObj[istAud].a.IdHallazgo);
-
-             //paObj[istAud].a.IdHallazgo = 77;
-
-             //alert('paObj[istAud].a.IdHallazgo == '+istAudHall)
-          
-            response.Hallazgos.map(function(Item)
-            {
-                objHallazgoAsignado[Item.Id] = new classHallazgo()
-                objHallazgoAsignado[Item.Id].cargarDataServicio(Item);
-
-
-                //$('#Sp3VentanaHallazgoEditView')
-                $('#Sp3VentanaHallazgoEditView').css('visibility', 'visible');
-                $('#Sp3VentanaHallazgoEditView').css('display', 'block');
-
-
-
-
-                $('#Sp3VentanaHallazgoEditView').modal('show').addClass('fade')
-
-                if(Item.Id == istAudHall)
-                {
-                    console.log("consolaaaaaaaaaaaaaaaaxxxxxxxxxxxxxa", Item)
-
-                     $('#lbBDIncidenteHallazgo2').html(' <b> '+Item.Code_Hallazgo +' </b>')
-
-                    $('#ReportanteName').val(Item.ReportanteName)
-                    $('#ReportanteUserHash').val(Item.ReportanteUserHash)
-
-
-                    $('#ReportanteName_ii').val(Item.ReportanteName)
-                    $('#ReportanteUserHash_ii').val(Item.ReportanteUserHash)
-                     
-                     $('#ReportanteCargo_ii').val(Item.ReportanteCargo) 
-                     $('#ReportanteCorreo_ii').val(Item.ReportanteCorreo) 
-
-                    
-
-
-                    $('#ResponsableName_512').val(Item.ResponsableName)
-                    $('#ResponsableUserHash_512').val(Item.ResponsableUserHash)
-
-
-
-
-
-
-
-
-                    accionH = 1;
-                    //istHall = paObj[istAud].a.IdHallazgo;//istAudHall
-
-                    paObj[istAud].a.DatHallazgo = Item;
-
-                     console.log("  paObj[istAud].a.DatHallazgo == (", Item,")");
-
-                     $("#sel_fuente_hhalazgo_ii").attr("disabled",false); $('#sel_fuente_hhalazgo_ii').val( paObj[istAud].a.DatHallazgo.FuenteId); //$("#sel_fuente_hhalazgo_ii").attr("disabled",true);
-
-                     $('#sel_ttipo_hh_ii').val( paObj[istAud].a.DatHallazgo.TipoHallazgoId);
-
-                     $('#sel_normaxx_ii').val( paObj[istAud].a.DatHallazgo.NormaId);
-
-                     $('#sel_uniddad_neg_ii').val( paObj[istAud].a.DatHallazgo.UnidadNegocioId);
-
-                     $('#sel_seddek_ii').val( paObj[istAud].a.DatHallazgo.SedeId);
-
-                     if( paObj[istAud].a.DatHallazgo.AnalisisCausa == 1){ fnSp3onchangeNecAnalisis('si')}else{ fnSp3onchangeNecAnalisis('no')}
-
-                      $('#txt_objetivo_plan2_ii').val( paObj[istAud].a.DatHallazgo.Hallazgo);
-
-
-
-                    
-
-
-
-
-
-
-
-
-
-                }
-            })
-           
-
-        });
-
-
-
-}//------------------------------------- fin   fnSp3CargaFiltroEstadoInicialAdmHallazgo() -------------------------------------
-
-function fnSp3DesbloqueForm_ii()
-{
-
-    document.getElementById('divf2').style.setProperty('background', '#FFFFFF', 'important');
-    document.getElementById('sel_ttipo_hh_ii').style.setProperty('background', '#FFFFFF', 'important');
-    $('#sel_ttipo_hh_ii').prop('disabled', false);
-
-    console.warn("paObj[istAud].a.DatHallazgo -> ",paObj[istAud].a.DatHallazgo.FuenteId)
-
-    // DESBLOQUEAR SOLO CUANDO SEA Fiscalización, Simulacro, Reclamo del Cliente o Inspeccion Interna
-    if( paObj[istAud].a.DatHallazgo.FuenteId == 4)
-    {
-        // desbloquear select Norma
-        document.getElementById('divf3').style.setProperty('background', '#FFFFFF', 'important');
-        document.getElementById('sel_normaxx_ii').style.setProperty('background', '#FFFFFF', 'important');
-        $('#sel_normaxx_ii').prop('disabled', false);
-
-        // // desbloquear select Unidad Negocio
-        // document.getElementById('divf4').style.setProperty('background', '#FFFFFF', 'important');
-        // document.getElementById('sel_uniddad_neg_ii').style.setProperty('background', '#FFFFFF', 'important');
-        // $('#sel_uniddad_neg_ii').prop('disabled', false);
-
-        // // desbloquear select Sede
-        // document.getElementById('divf5').style.setProperty('background', '#FFFFFF', 'important');
-        // document.getElementById('sel_seddek_ii').style.setProperty('background', '#FFFFFF', 'important');
-        // $('#sel_seddek_ii').prop('disabled', false);
-
-
-    }
-
-    document.getElementById('divf8_h_ii').style.setProperty('background', '#FFFFFF', 'important');
-    document.getElementById('txt_objetivo_plan2_ii').style.setProperty('background', '#FFFFFF', 'important');
-    $('#txt_objetivo_plan2_ii').prop('disabled', false);
-
-    document.getElementById('divf6_h_ii').style.setProperty('background', '#FFFFFF', 'important');
-    document.getElementById('ResponsableName_512').style.setProperty('background', '#FFFFFF', 'important');
-    $('#ResponsableName_512').prop('disabled', false);
-
-     document.getElementById('divf6_h_ii').style.setProperty('background', '#FFFFFF', 'important');
-    document.getElementById('ResponsableName_512').style.setProperty('background', '#FFFFFF', 'important');
-    $('#ResponsableName_512').prop('disabled', false);
-
-
-    //  document.getElementById('divf7_ii').style.setProperty('background', '#FFFFFF', 'important');
-    // document.getElementById('ReportanteName_ii').style.setProperty('background', '#FFFFFF', 'important');
-    // $('#ReportanteName_ii').prop('disabled', false);
-
-
-
-    //if no existe responsable por el hash habilitaremos o no el campo modificado
-    if(($("#ResponsableUserHash_512").val() == '')||($("#ResponsableUserHash_512").val().length < 25))
-    {
-        //document.getElementById('divf6').style.setProperty('background', '#FFFFFF', 'important');
-        //document.getElementById('ResponsableName').style.setProperty('background', '#FFFFFF', 'important');
-        //$('#ResponsableName').prop('disabled', false);
-        guardarEnviar = 1;
-        //alert('activado')
-    }
-    else
-    {
-        guardarEnviar = 0;
-    }
-
-
-}
-
-
-
 
 
 
@@ -8824,13 +8297,7 @@ function sp4FnTrasformaIncidenteEnHallazgo(idIncidentex)
 {
            
            istAud = idIncidentex;
-           //fnSp3CargaFiltroEstadoInicialAdmHallazgo_ii();
            $('#Sp3VentanaPruebasIncidenteHallazgo').modal('show').addClass('fade')
-           //fnSp3CargaFiltroEstadoInicialAdmHallazgo()
-           //fnSp3ModalMostrarHallazgoEditar(77)
-
-
-
 }
 
 function sp4FnbuscaUnidadNegocio(idSedex)
@@ -8888,7 +8355,7 @@ function sp4FnGuardarIncidenteHallazgoWeb()
                                 "ReportanteCorreo":     getCookie("vtas_internal_useruser"+sessionStorage.tabVisitasa),
                                 "ReportanteCargo":      getCookie("vtas_job"+sessionStorage.tabVisitasa),
                                 "ReportanteUserHash":   getCookie("vtas_id_hash"+sessionStorage.tabVisitasa),
-                                "Hallazgo":             paObj[istAud].a.DescripcionEvento,
+                                "Hallazgo":             "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",//paObj[istAud].a.DescripcionEvento,
 
                                 "Created_By":           getCookie("vtas_id_hash"+sessionStorage.tabVisitasa),
                                 "Cargo":                getCookie("vtas_fullname"+sessionStorage.tabVisitasa),
@@ -8919,22 +8386,14 @@ function sp4FnGuardarIncidenteHallazgoWeb()
                 console.log("ssssssssssssssssssssssssssssss::: ", data);
                 if(data.Id > 0)
                 {
-
-
-                         istAudHall = data.Id;
                          sP4FnAgregaNumeroHallazgoIncidente(data.Id)
                          
                          hideLoading();
                           $("#btnConfirmarEvidenciaIncidenteHallazgoWeb").html("<b>Confirmar</b>")
                           $("#btnConfirmarEvidenciaIncidenteHallazgoWeb").attr("disabled",false);
 
-                        
-
-                          $('#lbTitleVerPdfxx_ii').html(' <b> Editar el Hallazgo '+ data.Code_Hallazgo+' </b>') 
-
+                         $('#lbBDIncidenteHallazgo2').html(' <b> '+ data.Code_Hallazgo+' </b>')
                          $('#Sp3VentanaPruebasIncidenteHallazgo').modal('hide').removeClass('fade');
-
-                         $('#lbBDIncidenteHallazgo2_inci_paso1').html(' <b> '+ data.Code_Hallazgo+' </b>')   
                          $('#Sp3VentanaBDIncidenteHallazgo').modal('show').addClass('fade')
                      
                                      
@@ -9038,7 +8497,6 @@ if (paObj[istAud].a.hayEvidenciaBD == 0)
                                     fnAgregarAdjuntarDocumento2(Item.Id, Item.Adjunto2, ffx, 0, 0, 0);
                                     $('#btSubirFormato').attr("disabled",false);
                                     hn++;
-                                     fnSp3CargaFiltroEstadoInicialPlanAnual();
                                 }
                                 else
                                 {
@@ -9594,11 +9052,10 @@ var hoyy = f.getFullYear() + "-" + measx+ "-" +diax;
     $('#btn_step1').html("<b> Datos del Evento SSO </b>")
     $('#sel_f_dg_gv_30').val(0);
 
-    $('#txt_f_dg_gv_29').val('');
-    $('#txta_f_dg_gv_22').val('');
-    $('#txta_f_dg_gv_26').val('');
-    $('#txta_f_dg_gv_25').val('');
-    $('#sel_f_dg_gv_27').val('');
+    $('#txt_f_dg_gv_29').val(0);
+    $('#txta_f_dg_gv_22').val(0);
+    $('#txta_f_dg_gv_26').val(0);
+    $('#txta_f_dg_gv_25').val(0);
     fnSp3VentanaMostrarPlanAnual(idIncidentex);
 }
 
@@ -9713,207 +9170,18 @@ function sp4fnpestanaAccidenteDannnioMaterial(idIncidentex)
 
 
 
+
+
+
+
+
 function sp4FnGuardarGenerales()
 {//------------------------------------------------------------------------------------------------------ Dastos Generales -------------------------------------------
 
-   
-
-  
-   var m = " ";
-   var marca = 0;
- if(paObj[istAud].a.GrupoEvento == 1)
-            {//----------------------------- de datos personales ------------------------
-
-                         console.log("---------------------------------------------------------------------------------------------------------")
-                                 if($('#sel_f_dg_gv_1').val() == 0){marca = 1;}
-                                 if($('#sel_f_dg_gv_2').val() == 0){marca = 1;}
-                                 if($('#sel_f_dg_gv_3').val() == 0){marca = 1;}
-                                 if($('#sel_f_dg_gv_4').val() == ''){marca = 1;}
-                                 if($('#sel_f_dg_gv_5').val() == 0){marca = 1;}
-                                 if($('#sel_f_dg_gv_6').val() == 0){marca = 1;}
-                                 if($('#sel_f_dg_gv_10').val() == ''){marca = 1;}
-                                 if($('#sel_f_dg_gv_11').val() == ''){marca = 1;}
-                                 if($('#sel_f_dg_gv_13').val() == 0){marca = 1;}
-                                 if($('#sel_f_dg_gv_14').val() == 0){marca = 1;}
-                                 if($('#sel_f_dg_gv_15').val() == 0){marca = 1;}
-                                 if($('#sel_f_dg_gv_16').val() == 0){marca = 1;}
-                                 if($('#sel_f_dg_gv_17').val() == 0){marca = 1;}
-                                 if($('#sel_f_dg_gv_18').val() == 0){marca = 1;}
-                                 if($('#sel_f_dg_gv_18_0').val() == 0){marca = 1;}
-                                 if($('#ReportanteNameDG_119').val() == ''){marca = 1;}
-                                 if($('#txta_f_dg_gv_20').val() == ''){marca = 1;}
-                                 if($('#txta_f_dg_gv_21').val() == ''){marca = 1;}
-                                 if($('#txta_f_dg_gv_22').val() == ''){marca = 1;}
-                                 if($('#txta_f_dg_gv_24').val() == 0){marca = 1;}
-                                 if($('#txta_f_dg_gv_25').val() == ''){marca = 1;}
-
-                                 if($('#txta_f_dg_gv_26').val() == ''){marca = 1;}
-
-                                 if($('#txta_f_dg_gv_25_a').val() == ''){marca = 1;}
-
-                                 if($('#sel_f_dg_gv_27').val() == ''){marca = 1;}
-
-
-                                 if($('#sel_f_dg_gv_28').val() == 0){marca = 1;}
-                                 // if($('#sel_f_dg_gv_28_a').val() == 0){marca = 1;}
-                                 // if($('#sel_f_dg_gv_30').val() == 0){marca = 1;}
-                                 if($('#ReportanteNameDG_311').val() == ''){marca = 1;}
-                                 if($('#sel_f_dg_gv_32').val() == 0){marca = 1;}
-                                 if($('#sel_f_dg_gv_33').val() == 0){marca = 1;}
-                                 if($('#txtd_f_dg_gv_38').val() == ''){marca = 1;}
-                                 if($('#sel_f_dg_gv_42').val() == 0){marca = 1;}
-                                 if($('#sel_f_dg_gv_44').val() == 0){marca = 1;}
-                                 if($('#sel_f_dg_gv_45').val() == 0){marca = 1;}
-                        console.log("---------------------------------------------------------------------------------------------------------")
-            }//----------------------------- de datos personales ------------------------
-
- if(paObj[istAud].a.GrupoEvento == 3) //materialñ
-            {//----------------------------- de datos personales ------------------------
-                
-                //alert('ambiental')
-                  console.log("---------------------------------------------------------------------------------------------------------")
-                                 if($('#sel_f_dg_gv_1k').val() == 0){marca = 1;}
-
-                                 // if($('#sel_f_dg_gv_2').val() == 0){marca = 1;}
-                                 // if($('#sel_f_dg_gv_3').val() == 0){marca = 1;}
-                                 if($('#txtd_f_dg_gv_4k').val() == ''){marca = 1;}
-                                 if($('#sel_f_dg_gv_5k').val() == ''){marca = 1;}
-                                 if($('#sel_f_dg_gv_6k').val() == 0){marca = 1;}
-
-                                 if($('#sel_f_dg_gv_10k').val() == ''){marca = 1;}
-                                 if($('#txta_f_dg_gv_11k').val() == ''){marca = 1;}
-                                 if($('#sel_f_dg_gv_13k').val() == 0){marca = 1;}
-                                 if($('#sel_f_dg_gv_14k').val() == 0){marca = 1;}
-                                 if($('#sel_f_dg_gv_15k').val() == 0){marca = 1;}
-                                 if($('#sel_f_dg_gv_16k').val() == 0){marca = 1;}
-
-                                 if($('#sel_f_dg_gv_17k').val() == 0){marca = 1;}
-                                 if($('#sel_f_dg_gv_18k').val() == 0){marca = 1;}
-                                 if($('#sel_f_dg_gv_18_1k').val() == 0){marca = 1;}
-
-
-                                 
-                                 if($('#sel_f_dg_gv_17_1k').val() == ''){marca = 1;}
-                                 
-
-
-                                 // if($('#sel_f_dg_gv_28').val() == 0){marca = 1;}
-                                 // if($('#sel_f_dg_gv_28_a').val() == 0){marca = 1;}
-                                 // if($('#sel_f_dg_gv_30').val() == 0){marca = 1;}
-                                 if($('#ReportanteNameDG_311k').val() == ''){marca = 1;}
-                                 if($('#sel_f_dg_gv_32k').val() == 0){marca = 1;}
-                                 if($('#sel_f_dg_gv_33k').val() == 0){marca = 1;}
-                                 if($('#txtd_f_dg_gv_38k').val() == ''){marca = 1;}
-                                 if($('#sel_f_dg_gv_42k').val() == 0){marca = 1;}
-                                 if($('#sel_f_dg_gv_44k').val() == 0){marca = 1;}
-                                 if($('#sel_f_dg_gv_45k').val() == 0){marca = 1;}
-                        console.log("---------------------------------------------------------------------------------------------------------")
-
-            }     
-
-             if(paObj[istAud].a.GrupoEvento == 2) //ambiental
-            {//----------------------------- de datos personales ------------------------
-                
-                //alert('ambiental')
-                  console.log("---------------------------------------------------------------------------------------------------------")
-                                
-                                console.clear();
-
-                                 if($('#dat_x_clasificacion').val() == 0){marca = 1; console.log('aqui 1');}
-                                 if($('#dat_x_fe_evento').val() == ''){marca = 1; console.log('aqui 2');}
-                                 if($('#dat_x_hor_evento').val() == ''){marca = 1; console.log('aqui 3');}
-
-                                 if($('#sel_f_dg_gv_3y').val() == 0){marca = 1; console.log('aqui 4');}
-
-                                 if($('#sel_f_dg_gv_6y').val() == 0){marca = 1; console.log('aqui 5');}
-                                 if($('#sel_f_dg_gv_7y').val() == 0){marca = 1; console.log('aqui 6');}
-                                 if($('#sel_f_dg_gv_10y').val() == ''){marca = 1; console.log('aqui 7');}
-
-                                 if($('#txta_f_dg_gv_11y').val() == ''){marca = 1; console.log('aqui 8');}
-
-                                 if($('#dat_x_accion_inmediata').val() == ''){marca = 1; console.log('aqui 9');}
-
-                                 if($('#dat_x_contaminante').val() == 0){marca = 1; console.log('aqui 10');}
-
-                                 if($('#dat_x_valumen').val() == ''){marca = 1; console.log('aqui 11');}
-
-                                 if($('#dat_x_unidad').val() == 0){marca = 1; console.log('aqui 12');}
-
-                                 if($('#dat_x_area_inpactada').val() == ''){marca = 1; console.log('aqui 13');}
-
-                                 if($('#dat_x_impacto_ambiental').val() == 0){marca = 1; console.log('aqui 14');}
-
-                                 if($('#sel_f_dg_gv_18_3').val() == 0){marca = 1; console.log('aqui 15');}
-
-                                 if($('#dat_x_descripcion_evento').val() == 0){marca = 1; console.log('aqui 16');}
-                                 if($('#dat_x_impacto_ambiental2').val() == 0){marca = 1; console.log('aqui 17');}
-
-                                 if($('#dat_x_reaccion_publica').val() == 0){marca = 1; console.log('aqui 18');}
-
-                                 if($('#dat_x_legal').val() == 0){marca = 1; console.log('aqui 19');}
-
-                                if($('#dat_x_calificacion').val() == ''){marca = 1; console.log('aqui 20');}
-                                if($('#dat_x_nivel_severidad').val() == ''){marca = 1; console.log('aqui 21');}
-                                if($('#dat_x_iia_unidad').val() == ''){marca = 1; console.log('aqui 22');}
-                                if($('#dat_x_iia_corporativo').val() == ''){marca = 1; console.log('aqui 23');}
-                                if($('#dat_x_meta_corporativa').val() == ''){marca = 1; console.log('aqui 24');}
-
-
-                                if($('#dat_x_iia_unidad_pesca').val() == ''){marca = 1; console.log('aqui 25');}//ojo esta asociado a la gerencia
-
-                                if($('#dat_x_iia_corporativo_pesca').val() == ''){marca = 1; console.log('aqui 26');}//ojo esta asociado a la gerencia
-
-                                if($('#dat_x_meta_pesac').val() == ''){marca = 1; console.log('aqui 27');}
-                                if($('#dat_x_ii_operaciones').val() == ''){marca = 1; console.log('aqui 28');}
-                                if($('#dat_x_iia_corp_operaciones').val() == ''){marca = 1; console.log('aqui 29');}
-                                if($('#dat_x_iia_meta_operaciones').val() == ''){marca = 1; console.log('aqui 30');}
-                                if($('#dat_x_iia_adm_finanza').val() == ''){marca = 1; console.log('aqui 31');}
-                                if($('#dat_x_iia_corp_adm_finanza').val() == ''){marca = 1; console.log('aqui 32');}
-                                if($('#dat_x_meta_adm_finanza').val() == ''){marca = 1; console.log('aqui 33');}
-                                if($('#dat_x_num_colaboradores').val() == ''){marca = 1; console.log('aqui 34');}
-                                if($('#dat_x_num_horas').val() == ''){marca = 1; console.log('aqui 35');}
-                                if($('#dat_x_num_colaborador_2').val() == ''){marca = 1; console.log('aqui 36');}
-                                if($('#dat_x_num_hora_2').val() == ''){marca = 1; console.log('aqui 37');}
-
-                                if($('#dat_x_cant_producto').val() == ''){marca = 1; console.log('aqui 38');}
-                                if($('#dat_x_costo_producto').val() == ''){marca = 1; console.log('aqui 39');}
-
-
-                                if($('#dat_x_costo_total_s').val() == ''){marca = 1; console.log('aqui 40');}
-                                if($('#dat_x_costo_total_dolar').val() == ''){marca = 1; console.log('aqui 41');}
-
-                                if($('#dat_x_otros').val() == ''){marca = 1; console.log('aqui 42');}
-                               
-                                 
-
-
-
-
-
-                                
-                 console.log("---------------------------------------------------------------------------------------------------------")
-
-            }        
-                  
-
-                  
-
-
-if(marca == 1)
-{
-    verModalError("Datos Generales","Debe completar los Datos Obligatorios <a style='color:red'>*</a>");
-}
-else
-{
-     $('#Sp3VentanaPlanAnualEditView').modal('hide').removeClass('fade');
-     $('#Sp3VentanaPruebasDatosGenerales').modal('show').addClass('fade');
-}
- 
-
-
-
-
-  
+      //alert("Guardar = "+istAud);
+    
+   $('#Sp3VentanaPlanAnualEditView').modal('hide').removeClass('fade');
+   $('#Sp3VentanaPruebasDatosGenerales').modal('show').addClass('fade');
      
 
 }//------------------------------------------------------------------------------------------------------ Dastos Generales -------------------------------------------
@@ -10005,21 +9273,6 @@ function sp4FnConfirmarGuardarGenerales()
 
                                              ///alert("HORA"+$('#txtt_f_dg_gv_5').val());
 
-                                             if($('#txta_f_dg_gv_20').val() == ''){$('#txta_f_dg_gv_20').val(0)}
-                                             if($('#txt_f_dg_gv_29').val() == ''){$('#txt_f_dg_gv_29').val(0)}//txta_f_dg_gv_20
-                                             if($('#txta_f_dg_gv_22').val() == ''){$('#txta_f_dg_gv_22').val(0)}
-                                             if($('#txta_f_dg_gv_26').val() == ''){$('#txta_f_dg_gv_26').val(0)}
-                                             if($('#txta_f_dg_gv_25').val() == ''){$('#txta_f_dg_gv_25').val(0)}
-                                             if($('#sel_f_dg_gv_27').val() == ''){$('#sel_f_dg_gv_27').val(0)}
-                                             if($('#txt_f_dg_gv_29').val() == ''){$('#txt_f_dg_gv_29').val(0)}
-
-
-
-
-
-
-
-
                                             let body = {
                                                     //*****************************DATOS GENERALES******************txta_f_dg_gv_21
                                                   "Id1": istAud_DG,
@@ -10054,10 +9307,8 @@ function sp4FnConfirmarGuardarGenerales()
                                                   "PuestoCargoAccidentado2":    $('#txta_f_dg_gv_24').val(),
                                                   "Expiencia_Yaer":              parseInt($('#txta_f_dg_gv_25').val()),
                                                   "Expiencia_Month":             parseInt($('#txta_f_dg_gv_26').val()),
-                                                  "Expiencia_Cargo":             parseInt($('#txta_f_dg_gv_25_a').val()),
                                                   "LesionDannio":               $('#sel_f_dg_gv_27').val(), //ojo cambiar el tipo de dato en base de datos, debe ser un Id
                                                   "ParteCuerpoLesionada":        parseInt($('#sel_f_dg_gv_28').val()), //ojo cambiar el tipo de dato en base de datos, debe ser un Id
-                                                  "Sexo":                        parseInt($('#sel_f_dg_gv_28_a').val()),
                                                   "fecha_Descanso_Ini":         f2, //$('#txtd_f_dg_gv_037').val(),//definir campos ocultos
                                                   "fecha_Descanso_Fin":         f3, //$('#txtd_f_dg_gv_038').val(),//definir campos ocultos
                                                   "Dias_Descanza":               parseInt($('#txt_f_dg_gv_29').val()),
@@ -10796,16 +10047,6 @@ function fnSp4AgregarListadoDatosGenerales()
 
              //alert('BARCO INSERT = '+$('#sel_f_dg_gv_7').val());
              var Barq =  parseInt($('#sel_f_dg_gv_7').val());
-
-                                              if($('#txta_f_dg_gv_20').val() == ''){$('#txta_f_dg_gv_20').val(0)}
-                                             if($('#txt_f_dg_gv_29').val() == ''){$('#txt_f_dg_gv_29').val(0)}//txta_f_dg_gv_20
-                                             if($('#txta_f_dg_gv_22').val() == ''){$('#txta_f_dg_gv_22').val(0)}
-                                             if($('#txta_f_dg_gv_26').val() == ''){$('#txta_f_dg_gv_26').val(0)}
-                                             if($('#txta_f_dg_gv_25').val() == ''){$('#txta_f_dg_gv_25').val(0)}
-                                             if($('#sel_f_dg_gv_27').val() == ''){$('#sel_f_dg_gv_27').val(0)}
-                                             if($('#txt_f_dg_gv_29').val() == ''){$('#txt_f_dg_gv_29').val(0)}
-
-
              //alert('BARCO INSERT2 = '+Barq);
 
             let body = {
@@ -10843,10 +10084,8 @@ function fnSp4AgregarListadoDatosGenerales()
                   "PuestoCargoAccidentado2":    $('#txta_f_dg_gv_24').val(),
                   "Expiencia_Yaer":              parseInt($('#txta_f_dg_gv_25').val()),
                   "Expiencia_Month":             parseInt($('#txta_f_dg_gv_26').val()),
-                  "Expiencia_Cargo":             parseInt($('#txta_f_dg_gv_25_a').val()),
                   "LesionDannio":                $('#sel_f_dg_gv_27').val(), //ojo cambiar el tipo de dato en base de datos, debe ser un Id
                   "ParteCuerpoLesionada":        parseInt($('#sel_f_dg_gv_28').val()), //ojo cambiar el tipo de dato en base de datos, debe ser un Id
-                  "Sexo":                        parseInt($('#sel_f_dg_gv_28_a').val()),
                   "fecha_Descanso_Ini":         f2, //$('#txtd_f_dg_gv_037').val(),//definir campos ocultos
                   "fecha_Descanso_Fin":         f3, //$('#txtd_f_dg_gv_038').val(),//definir campos ocultos
                   "Dias_Descanza":               parseInt($('#txt_f_dg_gv_29').val()),
@@ -12292,7 +11531,7 @@ var fnAgregarAdjuntarDocumento = function(adjuntoId /*idadjunto*/, adjuntoName /
 
     //$('#lbEvalAud_02EvidenciaIncidente').html("<b style='text-align: left !important;''>Documentos ( "+ countAdjuntos +" )</b>");
 
-  
+   
 }
 
 
@@ -12415,7 +11654,7 @@ bloqueaBtns('si')
                                 
                                 if(Item.Id >0)
                                 {
-                                    fnSp3CargaFiltroEstadoInicialPlanAnual();
+                                   
                                 }
                                 else
                                 {
@@ -13037,53 +12276,6 @@ var fnGetPersonCorrecionSp3 = function(obj,i)
                                    $(`#ReportanteUserHashDG_311k`).val(toCapitalize(ui.item.id)) 
                                    $(`#ReportanteCargoDG_311k`).val(toCapitalize(ui.item.cargo)) 
                                }
-                    if(i == 314){//informe de investigacion
-                                   $(`#dat_ii_nombre_jefe_inmediato`).val(toCapitalize(ui.item.nombre_completo))
-                                   //$(`#ReportanteCorreoDG_311k`).val(toCapitalize(ui.item.correo)) 
-                                   $(`#dat_ii_nombre_jefe_inmediato__hidden`).val(toCapitalize(ui.item.id)) 
-                                  // $(`#ReportanteCargoDG_311k`).val(toCapitalize(ui.item.cargo)) 
-                               }
-
-                   if(i == 511){//informe de investigacion
-                                $(`#dat_ii_invTeam_511`).val(toCapitalize(ui.item.nombre_completo))
-                                //$(`#ReportanteCorreoDG_311k`).val(toCapitalize(ui.item.correo)) 
-                                $(`#dat_ii_invTeam_511_hidden`).val(toCapitalize(ui.item.id)) 
-                                $(`#dat_ii_invTeamCargo_511`).val(toCapitalize(ui.item.cargo)) 
-                              }
-                      if(i == 512){//informe de investigacion ReportanteName_ii
-                        //alert(512)
-                                if((ui.item.nombre_completo == " ")||(ui.item.nombre_completo == "")){$(`#ResponsableName_512`).val(toCapitalize(ui.item.firstname));}else{ $(`#ResponsableName_512`).val(toCapitalize(ui.item.nombre_completo));}
-                                //ui.item.nombre_completo firstname
-                                $(`#ResponsableCorreo_512`).val(toCapitalize(ui.item.correo)) 
-                                $(`#ResponsableUserHash_512`).val(toCapitalize(ui.item.id)) 
-                                $(`#ResponsableCargo_512`).val(toCapitalize(ui.item.cargo)) 
-                              }
-
-                       if(i == 513){      //informe de investigacion ReportanteName_ii
-                        //alert(512)
-                                if((ui.item.nombre_completo == " ")||(ui.item.nombre_completo == "")){$(`#ResponsableName_512`).val(toCapitalize(ui.item.firstname));}else{ $(`#ReportanteName_ii`).val(toCapitalize(ui.item.nombre_completo));}
-                                //ui.item.nombre_completo firstname
-                                $(`#ReportanteName_ii`).val(toCapitalize(ui.item.correo)) 
-                                $(`#ReportanteUserHash_ii`).val(toCapitalize(ui.item.id)) 
-                                $(`#ReportanteCargo_ii`).val(toCapitalize(ui.item.cargo)) 
-                                $(`#ReportanteCorreo_ii`).val(toCapitalize(ui.item.correo)) 
-                              }
-
-
-                         if(i == 514){      //informe de investigacion ReportanteName_ii
-                        //alert(512)
-                                if((ui.item.nombre_completo == " ")||(ui.item.nombre_completo == "")){$(`#ResponsableName_512`).val(toCapitalize(ui.item.firstname));}else{ $(`#ReportanteName_ii`).val(toCapitalize(ui.item.nombre_completo));}
-                                //ui.item.nombre_completo firstname
-                                $(`#dat_ii_responsable_area`).val(toCapitalize(ui.item.nombre_completo)) 
-                                $(`#dat_ii_responsable_area_hidden`).val(toCapitalize(ui.item.id)) 
-                                // $(`#ReportanteCargo_ii`).val(toCapitalize(ui.item.cargo)) 
-                                // $(`#ReportanteCorreo_ii`).val(toCapitalize(ui.item.correo)) 
-                              }
-
-
-
-
-                               //fnGetPersonCorrecionSp3($("#dat_ii_responsable_area"),514);
 
 
                 console.warn(ui.item)
@@ -16547,7 +15739,7 @@ function fnSp3agregaTareaActividadObjetivoPlan(il, itemx)
       var tx_act =  `
           <div class="form-group col-12 border text-left" style="  height: auto !important; width: 496px !important; !important; border-color:#DEE2E6 !important;  margin:0px 0px 0px !important; padding: 0px 0px !important;"  id = "divitem">
           <textarea onchange="fnSp3cargaEvidenciaDin(${il})" class="text-justify textarea-fecha2 autocompletecollaborator"
-              style="height: 36px; width:95%; margin: 8px 0px 8px 8px !important; padding: 0px 0px 0px 0px !important; font-size: 13px !important; font-weight: bold; color:#534b4b; background-color:#ffffff !important;"  id="itemEvid${il}"  name = "itemAct" >${evkk[istAud]}</textarea>
+              style="height: 36px; width:95%; margin: 8px 0px 8px 8px !important; padding: 0px 0px 0px 0px !important; font-size: 13px !important; font-weight: bold; color:#534b4b; background-color:#ffffff !important;"  id="itemEvid${il}"  name = "itemAct" >${ev}</textarea>
               <input type="hidden" id="itemFeProgIni${il}" value="${itemx.Fecha_Programada_Ini}">
               <input type="hidden" id="itemFeProgFin${il}" value="${itemx.Fecha_Programada_Fin}">
               </div>
@@ -20458,10 +19650,6 @@ function sp4FnEditarDatoGeneral(idDatosGeneral)
                            var bal17_0 = $('#sel_f_dg_gv_18_0 option:selected').text();
 
 
-                           $('#sel_f_dg_gv_28_a').val(Itemx.Sexo);   //IdTipoEvento
-                           var bal17_1 = $('#sel_f_dg_gv_28_a option:selected').text();
-
-
                            //*************AQUI ESTOY
 
                            var bal18 =  Itemx.NombrePersonalAccidentado;
@@ -20500,9 +19688,6 @@ function sp4FnEditarDatoGeneral(idDatosGeneral)
 
                            var bal25 =  Itemx.Expiencia_Month;
                            $('#txta_f_dg_gv_26').val(bal25);
-
-                             var bal25_a =  Itemx.Expiencia_Cargo;
-                           $('#txta_f_dg_gv_25_a').val(bal25_a);
 
 
 
@@ -20712,13 +19897,8 @@ function sp4FnEditarDatoGeneral(idDatosGeneral)
 
 
 
-                                             if($('#txta_f_dg_gv_20').val() == 0){$('#txta_f_dg_gv_20').val('')}
-                                             if($('#txt_f_dg_gv_29').val() == 0){$('#txt_f_dg_gv_29').val('')}
-                                             if($('#txta_f_dg_gv_22').val() == 0){$('#txta_f_dg_gv_22').val('')}
-                                             if($('#txta_f_dg_gv_26').val() == 0){$('#txta_f_dg_gv_26').val('')}
-                                             if($('#txta_f_dg_gv_25').val() == 0){$('#txta_f_dg_gv_25').val('')}
-                                             if($('#sel_f_dg_gv_27').val() == 0){$('#sel_f_dg_gv_27').val('')}
-                                             if($('#txt_f_dg_gv_29').val() == 0){$('#txt_f_dg_gv_29').val('')}
+
+
 
 
 
@@ -20836,18 +20016,12 @@ function sp4FnEditarDatoGeneral2(idDatosGeneral)
                              $('#dat_x_costo_total_dolar').val(Item.yCostoTotalUSD);                                                                 
 
                              $('#dat_x_oefa_uit').val(Item.yOefaUit);                                                                 
-                             $('#dat_x_oefa_s').val(Item.yOefaS); 
-
-
-                             var rounded = Math.round((Item.yOefaUSD + Number.EPSILON) * 100) / 100;                                                     
-                             $('#dat_x_oefa_usd').val(rounded);                                                                 
+                             $('#dat_x_oefa_s').val(Item.yOefaS);                                                                 
+                             $('#dat_x_oefa_usd').val(Item.yOefaUSD);                                                                 
 
                              $('#dat_x_dicapi_uit').val(Item.yDicapiUit);                                                                 
-                             $('#dat_x_dicapi_s').val(Item.yDicapiS); 
-
-
-                             var rounded2 = Math.round((Item.yDicapiUSD + Number.EPSILON) * 100) / 100;  
-                             $('#dat_x_dicapi_usd').val(rounded2);  
+                             $('#dat_x_dicapi_s').val(Item.yDicapiS);                                                                 
+                             $('#dat_x_dicapi_usd').val(Item.yDicapiUSD);  
 
   //if((paObj[istAud].a.FinalizadoSSO == 1)||(paObj[istAud].a.FinalizadoA == 1))
     if((paObj[istAud].a.FinalizadoSSO == 1)||(paObj[istAud].a.FinalizadoA == 1)||(paObj[istAud].a.FinalizadoMat == 1))
@@ -21411,7 +20585,7 @@ function sp4FnVentanaLeccionAprendidada(idIncidente)
 
                             $("#"+'dat_la_fecha').val(ffg);
                             $("#"+'dat_la_sede').val(item.IdSede);
-                            $("#"+'dat_la_frase').val(item.FraseCorta); //alert('aqui frase corta = '+item.FraseCorta);
+                            $("#"+'dat_la_frase').val(item.FraseCorta);
 
                             //alert('20518 = '+item.Potencial+" ========================="+idIncidente);
 
@@ -22240,7 +21414,7 @@ function Pdf_la_hoja(doc)
     doc.setFontSize(10);
     doc.setFontType('bold'); 
     doc.setTextColor(0,122,195);
-    var dat = 'Sede/ Embarcación :';
+    var dat = 'Sede/ Embarcacion :';
     doc.text(100, 59, dat);
     // paObj[istAud].a.LA[istLA].
      
@@ -22916,41 +22090,34 @@ console.log('LINEA 21295:: LTE_LA1', LTE_LA1);
 
 
 
-    if(paObj[istAud].a.LA[istLA].Adjunto1)
-    {
-        //************************************************************************** IMAGEN_1
-         var ext =  paObj[istAud].a.LA[istLA].Adjunto1.split(';base64,');
-         ext = ext[0].split('data:image/');
-        var xtend = ext[1].toUpperCase();
-        console.log("EXTENSION = ",xtend);
-        doc.addImage(paObj[istAud].a.LA[istLA].Adjunto1, xtend, 9, 108, 53, 53)
-       //_____________________________________________________________________________________]
-    }
-  
+
+  //************************************************************************** IMAGEN_1
+      var ext =  paObj[istAud].a.LA[istLA].Adjunto1.split(';base64,');
+       ext = ext[0].split('data:image/');
+      var xtend = ext[1].toUpperCase();
+      console.log("EXTENSION = ",xtend);
+      doc.addImage(paObj[istAud].a.LA[istLA].Adjunto1, xtend, 9, 108, 53, 53)
+ //_____________________________________________________________________________________]
 
 
-     if(paObj[istAud].a.LA[istLA].Adjunto2)
-    {
-     //************************************************************************** IMAGEN_2
-          var ext =  paObj[istAud].a.LA[istLA].Adjunto2.split(';base64,');
-           ext = ext[0].split('data:image/');
-          var xtend = ext[1].toUpperCase();
-          console.log("EXTENSION = ",xtend);
-          doc.addImage(paObj[istAud].a.LA[istLA].Adjunto2, xtend, 9, 167, 53, 53)
-     //_____________________________________________________________________________________]
-    }
 
-   
-    if(paObj[istAud].a.LA[istLA].Adjunto3)
-    {
+ //************************************************************************** IMAGEN_2
+      var ext =  paObj[istAud].a.LA[istLA].Adjunto2.split(';base64,');
+       ext = ext[0].split('data:image/');
+      var xtend = ext[1].toUpperCase();
+      console.log("EXTENSION = ",xtend);
+      doc.addImage(paObj[istAud].a.LA[istLA].Adjunto2, xtend, 9, 167, 53, 53)
+ //_____________________________________________________________________________________]
+
+
   //************************************************************************** IMAGEN_3
       var ext =  paObj[istAud].a.LA[istLA].Adjunto3.split(';base64,');
        ext = ext[0].split('data:image/');
       var xtend = ext[1].toUpperCase();
       console.log("EXTENSION = ",xtend);
       doc.addImage(paObj[istAud].a.LA[istLA].Adjunto3, xtend, 9, 226, 53, 53)
-    }
-   
+
+
 
 
  //_____________________________________________________________________________________]
@@ -23020,7 +22187,7 @@ console.log('LINEA 21295:: LTE_LA1', LTE_LA1);
     doc.setFontSize(18);
     doc.setFontType('bold'); //doc.setFontType('normal');
     doc.setTextColor(255,255,255);
-    var dat = 'Tipo de Lesión pérdida incidente';
+    var dat = 'Tipo_de_Lesión_pérdida_incidente';
     doc.text(85, 148, dat,{maxWidth:130, maxHeight:15});
 
 
@@ -23073,7 +22240,7 @@ console.log('LINEA 21295:: LTE_LA1', LTE_LA1);
     doc.rect(142, 180,62,11, 'F');//(x1,y1,x2,y2) gris como actuar
 
 
-    var dat = 'Lección aprendida';
+    var dat = 'Lección_aprendida';
     doc.text(85, 176, dat);
 
 
@@ -23088,7 +22255,7 @@ console.log('LINEA 21295:: LTE_LA1', LTE_LA1);
     doc.setFontSize(12);
     doc.setFontType('bold'); 
     doc.setTextColor(0,122,195);
-    var dat = '¿En que fallamos?';
+    var dat = '¿En_que_fallamos?';
     doc.text(83, 187, dat);
 
 
@@ -23098,13 +22265,13 @@ console.log('LINEA 21295:: LTE_LA1', LTE_LA1);
     doc.setFontSize(12);
     doc.setFontType('bold'); 
     doc.setTextColor(0,122,195);
-    var dat = '¿Cómo debemos actuar?';
+    var dat = '¿Cómo_debemos_actuar?';
     doc.text(147, 186, dat);
 
     doc.setFontSize(10);
     doc.setFontType('bolditalic');
     doc.setTextColor(20,71,121); 
-    var dat = 'La prevención de accidentes es tarea de todos. ¡Tu participación es Importante!'
+    var dat = 'La_prevención_de_accidentes_es_tarea_de_todos._¡Tu_participación_es_Importante!'
     doc.text(105, 292, dat ,{maxWidth:160, align:'center'});//aqui va el detalle de la ---------- alerta
 
 
@@ -23214,7 +22381,7 @@ for(var k = 0; k< jj; k++)
             doc.setFontType('normal');
 
             doc.setTextColor(0,0,0);
-            var dat =  (k+1)+'. '+ XA[k]
+            var dat =  (k+1)+'._'+ XA[k]
            doc.text(75, paso, dat,{maxWidth:59, maxHeight:22, align:'justify'});
 // //=========================================================================================
 
@@ -23224,7 +22391,7 @@ for(var k = 0; k< jj; k++)
             doc.setFontType('normal');
 
             doc.setTextColor(0,0,0);
-            var dat =  (k+1)+'. '+ XB[k];
+            var dat =  (k+1)+'._'+ XB[k];
             //var dat =  '1- bbbbbbb bbbbb bbbbbb b bbbbb bb bbb bb bbbbb b bbbbb bb bbb bb bbbbb b  bb bbb bb bb bbb bb bbbbb b bbbbb bb bbb bb bbaxx.';//paObj[istAud].a.LA[istLA].TipoLesionDanio;
             doc.text(142, paso, dat,{maxWidth:59, maxHeight:22, align:'justify'});
 // //=========================================================================================
@@ -23630,4122 +22797,11 @@ function downloadPDF_LA(pdf) {
 //·######################################################################################################################################################
 //·######################################################################################################################################################
 
-function fnSp4DireccionSede()
-{
-
-
-    if( $('#dat_ii_nombre_uo').val() > 0)
-    {
-        if($('#dat_ii_nombre_uo option:selected').attr('title') == '' || $('#dat_ii_nombre_uo option:selected').attr('title') == null || $('#dat_ii_nombre_uo option:selected').attr('title') == 'null')
-          {
-              $('#dat_ii_direccion_uo').val('No Posee Direccción ');
-          }
-        else
-          {
-              $('#dat_ii_direccion_uo').val($('#dat_ii_nombre_uo option:selected').attr('title'));
-          }
-
-    
-    }
-    else
-    {
-         $('#dat_ii_direccion_uo').val('');
-    }
-
-
-
-}
-
-
-
 function sp4FnVentanaInformeInvestigacion(idIncidente)
 {
- 
+alert('estamos aqui...........');
 
-
-
-
-   istAud = idIncidente;
-  // fnSp4BuscarHallazgosAsignados();
-
-//alert('//vamos a validar que tipo de incidente es');
-    var IdIi = istAud;//-------Id del IncidenteAccidente &Id=133&=2
-    var AccionBD = 1;//------------1- SSO, 2- Ambiental, 3- Daño Material
-    
-
-    if(paObj[istAud].a.InformeIIFinalizado == 1)
-    {
-           $('#sp3BtFiltroPlanAnual_gii').css('display', 'none');
-           $('#sp3BtFiltroPlanAnual_fii').css('display', 'none');
-    }else{
-           $('#sp3BtFiltroPlanAnual_gii').css('display', 'block');
-           $('#sp3BtFiltroPlanAnual_fii').css('display', 'block');
-         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    if(paObj[istAud].a.GrupoEvento == 1)//-------------------- Accidente Personal -------------------
-    {//===========================================================================================================================================================*****
-
-        //alert("II_BD == "+paObj[istAud].a.II_BD);
-         if( paObj[istAud].a.II_BD == 0)//si no se ha ido al servidor  buscar la data
-         {//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-                      AccionBD = 1;
-                      showLoading(); //hideLoading();
-                      
-
-                      //var url = apiUrlssoma+"/api/Get-Informe-Incidente-SSO?code=D4naQSGxgPb/QsZy1QzqRoR6r8svebqVOOiSuHFNSqRvyY9SsbvLFg==&httpmethod=objectlist&Id="+IdIi+"&AccionBD="+AccionBD;
-
-                      var url =  apiUrlssoma+"/api/Get-Informe-Incidente-SSO?code=D4naQSGxgPb/QsZy1QzqRoR6r8svebqVOOiSuHFNSqRvyY9SsbvLFg==&vvhttpmethod=objectlist&Id="+IdIi+"&AccionBD="+AccionBD;
-                        
-                        console.log("URL",url )
-                        var headers ={
-                            "apikey":constantes.apiKey
-                        }
-
-                        var settings = {
-                            "url": url,
-                            "method": "GET",
-                            "timeout": 0,
-                            "crossDomain": true,
-                            "dataType": "json",
-                            "headers": headers,
-                        };
-
-
-                        $.ajax(settings).done(function (response) {//------------------------------------------------------------#####
-                            console.log("**todos**",response);
-                           
-                            mayorId = 0;
-                                     
-                              if(response.PlanAnual.length > 0)
-                                {
-                                    //alert('si tiene informe de investigacion creado');
-                                    paObj[istAud].a.II_BD = 1;//SI ESTAN CARGADO LOS DTOS EN BASE DE DATOS
-                                    paObj[istAud].a.II = response.PlanAnual;
-
-                                    paObj[istAud].a.II_BD = 1;//SI ESTAN CARGADO LOS DTOS EN BASE DE DATOS
-                                    paObj[istAud].a.II = response.PlanAnual;
-
-                                    console.log("*INFORME DE INVESTIGACION = *", paObj[istAud].a.II);
-
-                               
-
-                                    $('#dat_ii_nombre_uo').val(paObj[istAud].a.II[0].IdSede);//C1_Tipo_Accidente
-                                    // $('#dat_ii_direccion_uo').val(paObj[istAud].a.II[0].A_Direccion_UO);// 2 ojo entes de la direccion a pie
-
-                                    //alert('linea 23690:'+$('#dat_ii_nombre_uo option:selected').attr('title'));
-
-
-                                    $('#dat_ii_direccion_uo').val($('#dat_ii_nombre_uo option:selected').attr('title'));
-                                    $('#dat_ii_n_total_trabajador').val(paObj[istAud].a.II[0].A_Total_Trabajadores);// 3
-                                    $('#dat_ii_n_personal_con_str').val(paObj[istAud].a.II[0].A_No_Personal_SCTR);// 4
-                                    $('#dat_ii_n_personal_no_fil_str').val(paObj[istAud].a.II[0].A_No_Personal_No_Afiliado_SCTR);// 5
-                                    $('#dat_ii_nombre_aseguradora').val(paObj[istAud].a.II[0].A_Nombre_Aseguradora);// 6
-
-                                    $('#dat_ii_nombre_empresa_tercero').val(paObj[istAud].a.II[0].IdEmpresaCompany);// 7
-                                    $('#dat_ii_tipo_actividad_economica').val(paObj[istAud].a.II[0].A1_Tipo_Actividad_Economica);// 8
-                                    $('#dat_ii_ruc').val(paObj[istAud].a.II[0].A1_Ruc);// 9
-                                    $('#dat_ii_desc_empresa_tercero').val(paObj[istAud].a.II[0].A1_Direccion_Empresa_Tercero);// 10A1_Nombre_Empresa_Tercero
-                                    $('#dat_ii_n_total_trabajadores').val(paObj[istAud].a.II[0].A1_No_Total_Trabajadores);// 11
-                                    $('#dat_ii_n_personal_con_sctr').val(paObj[istAud].a.II[0].A1_No_personal_SCTR);// 12
-                                    $('#dat_ii_n_personal_no_afiliado_sctr').val(paObj[istAud].a.II[0].A1_No_Personal_No_Afiliado_SCTR);// 13
-
-
-                                    $('#dat_ii_nombre_aseguradora2').val(paObj[istAud].a.II[0].A1_Nombre_Aseguradora);// 14
-
-                                     $('#divBorde_ii_2').css('background-color','#EFEFEF');//sel_tipo_evento2
-                                     $('#dat_ii_direccion_uo').css('background-color','#EFEFEF');
-                                     $('#dat_ii_direccion_uo').prop('disabled', true);//divf1cont
-
-                                     $('#divBorde_ii_6').css('background-color','#EFEFEF');//sel_tipo_evento2
-                                     $('#dat_ii_nombre_aseguradora').css('background-color','#EFEFEF');
-                                     $('#dat_ii_nombre_aseguradora').prop('disabled', true);//divf1cont
-
-
-                                     $('#divBorde_ii_14').css('background-color','#EFEFEF');//sel_tipo_evento2
-                                     $('#dat_ii_nombre_aseguradora2').css('background-color','#EFEFEF');
-                                     $('#dat_ii_nombre_aseguradora2').prop('disabled', true);//divf1cont
-
-
-
-
-
-
-                                      //pestaña 2
-
-                                     $('#dat_ii_nombre_apellido').val(paObj[istAud].a.II[0].NombrePersonalAccidentado);// 15
-                                     $('#divBorde_ii_15').css('background-color','#EFEFEF');$('#dat_ii_nombre_apellido').css('background-color','#EFEFEF'); $('#dat_ii_nombre_apellido').prop('disabled', true);
-
-
-
-                                    $('#dat_ii_nombre_apellido_hidden').val(paObj[istAud].a.II[0].IdPersonalAccidentado);//ojo crear el campo
-
-
-                                    $('#dat_ii_dni').val(paObj[istAud].a.II[0].DNIAccidentado);// 17
-                                    $('#divBorde_ii_16').css('background-color','#EFEFEF');$('#dat_ii_dni').css('background-color','#EFEFEF'); $('#dat_ii_dni').prop('disabled', true);
-
-
-                                    $('#dat_ii_edad').val(paObj[istAud].a.II[0].EdadAccidentado);// 18
-                                    $('#divBorde_ii_17').css('background-color','#EFEFEF');$('#dat_ii_edad').css('background-color','#EFEFEF'); $('#dat_ii_edad').prop('disabled', true);
-
-
-
-                                    $('#dat_ii_sexo').val(paObj[istAud].a.II[0].B_Sexo_Trabajador);// 19
-                                    $('#divBorde_ii_18').css('background-color','#EFEFEF');$('#dat_ii_sexo').css('background-color','#EFEFEF'); $('#dat_ii_sexo').prop('disabled', true);
-
-
-
-
-                                    $('#dat_ii_area_trabajo').val(paObj[istAud].a.II[0].IdAreaAccidente);// 20
-                                    $('#dat_ii_puesto_trabajo').val(paObj[istAud].a.II[0].PuestoCargoAccidentado);// 21
-                                    $('#dat_ii_antiguedad_empresa').val(paObj[istAud].a.II[0].B_Antiguedad_Empresa);// 22 Expiencia_Month
-                                    $('#dat_ii_experiencia_puesto').val(paObj[istAud].a.II[0].B_Tiempo_Experiencia_Cargo);// 23B_Tiempo_Experiencia_Cargo
-                                    $('#dat_ii_tipo_contrato').val(paObj[istAud].a.II[0].Tipo_Contrato);// 24
-                                    $('#dat_ii_turno_trabajo').val(paObj[istAud].a.II[0].B_Turno_Trabajo);// 25
-                                    $('#dat_ii_horas_trabajo_jornada').val(paObj[istAud].a.II[0].B_Horas_Trabajadas_Jornada);// 26
-                                    $('#dat_ii_nombre_jefe_inmediato__hidden').val(paObj[istAud].a.II[0].B_Id_Hash_Jefe_Inmediato);// 27
-                                    $('#dat_ii_nombre_jefe_inmediato').val(paObj[istAud].a.II[0].B_Nombre_Jefe_Inmediato);// 28
-
-
-
-
-
-                                    //pestaña 3
-                                    //$('#dat_ii_producto_involucrado').val(paObj[istAud].a.II[0].B_ProductoInvolucrado);// 29
-                                    $('#dat_ii_producto_involucrado').html(''); $('#dat_ii_producto_involucrado').html('<option value="0" title="No Aplica" style="font-weight: bold;">N/A</option>');
-                                    $('#divBorde_ii_26').css('background-color','#EFEFEF');$('#dat_ii_producto_involucrado').css('background-color','#EFEFEF'); $('#dat_ii_producto_involucrado').prop('disabled', true);
-
-
-                                    $('#dat_ii_volumen_m3').val(paObj[istAud].a.II[0].B_Volumen); $('#dat_ii_volumen_m3').val('N/A');
-                                    $('#divBorde_ii_27').css('background-color','#EFEFEF');$('#dat_ii_volumen_m3').css('background-color','#EFEFEF'); $('#dat_ii_volumen_m3').prop('disabled', true);
-
-
-                                    $('#dat_ii_zona_afectada').val(paObj[istAud].a.II[0].IdZona); $('#dat_ii_zona_afectada').val('N/A');
-                                    $('#divBorde_ii_28').css('background-color','#EFEFEF');$('#dat_ii_zona_afectada').css('background-color','#EFEFEF'); $('#dat_ii_zona_afectada').prop('disabled', true);
-
-                                    $('#dat_ii_ext_area_afectada').val(paObj[istAud].a.II[0].B_Area);   $('#dat_ii_ext_area_afectada').val('N/A');
-                                    $('#divBorde_ii_29').css('background-color','#EFEFEF');$('#dat_ii_ext_area_afectada').css('background-color','#EFEFEF'); $('#dat_ii_ext_area_afectada').prop('disabled', true);
-
-
-
-                                    // $('#dat_ii_nombre_uo').val(paObj[istAud].a.II[0].C_Afectacion_A);// 33//radio button
-
-                                    // $('#dat_ii_nombre_uo').val(paObj[istAud].a.II[0].C_Operando_Normal);// 34 // 33//radio button
-
-                                    // $('#dat_ii_nombre_uo').val(paObj[istAud].a.II[0].C_Comunicdo_Fiscalizador);// 35// 33//radio button
-
-                                         $('#rbtn_sii_8').attr('src','./images/iconos/aprobarvoid.svg');
-                                         $('#rbtn_siii_8').attr('src','./images/iconos/aprobarvoid.svg');
-                                         $('#rbtn_siiix_8').attr('src','./images/iconos/aprobarvoid.svg');
-
-                                        // $('#rbtn_sii_8').css('visibility', 'hidden');   $('#rbtn_noi_9').css('visibility', 'hidden');   $('#rbtn_noi_10').css('visibility', 'hidden');  
-
-                                        // $('#rbtn_siii_8').css('visibility', 'hidden');   $('#rbtn_noii_9').css('visibility', 'hidden');  
-
-                                        //  $('#rbtn_siiix_8').css('visibility', 'hidden');   $('#rbtn_noiix_9').css('visibility', 'hidden');   
-
-
-
-
-
-
-                                    $('#divBorde_ii_30').val(paObj[istAud].a.II[0].C_Medidas_Emergencia);   $('#dat_ii_medidas_emergencia').val('N/A');
-                                    $('#divBorde_ii_30').css('background-color','#EFEFEF');$('#dat_ii_medidas_emergencia').css('background-color','#EFEFEF'); $('#dat_ii_medidas_emergencia').prop('disabled', true);
-
-
-
-
-                                    $('#dat_ii_se_genero_residuos').val(paObj[istAud].a.II[0].C_Residuos_Limpieza);$('#dat_ii_se_genero_residuos').val('N/A');
-                                    $('#divBorde_ii_31').css('background-color','#EFEFEF');$('#dat_ii_se_genero_residuos').css('background-color','#EFEFEF'); $('#dat_ii_se_genero_residuos').prop('disabled', true);
-
-
-                                    //rbtn_sihy_8
-                                       $('#rbtn_sihy_8').css('visibility', 'hidden');   $('#rbtn_nohy_9').css('visibility', 'hidden');  
-                                    // $('#dat_ii_nombre_uo').val(paObj[istAud].a.II[0].IdId);// 38radio button
-
-
-                                    $('#dat_ii_describe_perdida').val(paObj[istAud].a.II[0].IdId); $('#dat_ii_describe_perdida').val('N/A');   // 39  oj no esta en la consulta, ojo crear los campos bd
-                                     $('#divBorde_ii_32').css('background-color','#EFEFEF');$('#dat_ii_describe_perdida').css('background-color','#EFEFEF'); $('#dat_ii_describe_perdida').prop('disabled', true);
-
-                                    $('#dat_ii_observacioness').val(paObj[istAud].a.II[0].IdId); $('#dat_ii_observacioness').val('N/A');// 40   oj no esta en la consulta, ojo crear los campos bd
-                                     $('#divBorde_ii_33').css('background-color','#EFEFEF');$('#dat_ii_observacioness').css('background-color','#EFEFEF'); $('#dat_ii_observacioness').prop('disabled', true);
-                                    
-
-
-                                     $('#dat_ii_tipo_incidente').val(paObj[istAud].a.II[0].C1_Tipo_Accidente); $('#dat_ii_tipo_incidente').val('N/A');// 40   oj no esta en la consulta, ojo crear los campos bd
-                                     $('#divBorde_ii_34').css('background-color','#EFEFEF');$('#dat_ii_tipo_incidente').css('background-color','#EFEFEF'); $('#dat_ii_tipo_incidente').prop('disabled', true);
-                                    
- 
-
-                                     $('#dat_ii_nivel_severidad').val(paObj[istAud].a.II[0].xNivelSeveridad);$('#dat_ii_nivel_severidad').html('<option value="0" title="No Aplica" style="font-weight: bold;">N/A</option>');
-                                     $('#divBorde_ii_35').css('background-color','#EFEFEF');$('#dat_ii_nivel_severidad').css('background-color','#EFEFEF'); $('#dat_ii_nivel_severidad').prop('disabled', true);
-
-                                  // 43
-                                     $('#dat_ii_gerencia').val(paObj[istAud].a.II[0].IdGerencia);$('#dat_ii_gerencia').html('<option value="0" title="No Aplica" style="font-weight: bold;">N/A</option>');
-                                     $('#divBorde_ii_36').css('background-color','#EFEFEF');$('#dat_ii_gerencia').css('background-color','#EFEFEF'); $('#dat_ii_gerencia').prop('disabled', true);
-
-
-                                    $('#dat_ii_lugar_eventox').val(paObj[istAud].a.II[0].C1_Lugar_Evento);$('#dat_ii_lugar_eventox').val('N/A');// 44   oj no esta en la consulta, ojo crear los campos bd
-                                     $('#divBorde_ii_37').css('background-color','#EFEFEF');$('#dat_ii_lugar_eventox').css('background-color','#EFEFEF'); $('#dat_ii_lugar_eventox').prop('disabled', true);
-
-
-
-                                     $('#dat_ii_fecha').val(paObj[istAud].a.II[0].Fecha);$('#dat_ii_fecha').val('N/A');// 44   oj no esta en la consulta, ojo crear los campos bd
-                                     $('#divBorde_ii_38').css('background-color','#EFEFEF');$('#dat_ii_fecha').css('background-color','#EFEFEF'); $('#dat_ii_fecha').prop('disabled', true);// 45
-
-
-
-                                     $('#dat_ii_hora').val(paObj[istAud].a.II[0].IdId);$('#dat_ii_hora').val('N/A');// 44   oj no esta en la consulta, ojo crear los campos bd
-                                     $('#divBorde_ii_39').css('background-color','#EFEFEF');$('#dat_ii_hora').css('background-color','#EFEFEF'); $('#dat_ii_hora').prop('disabled', true);// 46
-
-                                     $('#dat_ii_n_dias_descanzox').val(paObj[istAud].a.II[0].C1_N_Dias_Descanzo); $('#dat_ii_n_dias_descanzox').val('N/A');// 44   oj no esta en la consulta, ojo crear los campos bd
-                                     $('#divBorde_ii_40').css('background-color','#EFEFEF');$('#dat_ii_n_dias_descanzox').css('background-color','#EFEFEF'); $('#dat_ii_n_dias_descanzox').prop('disabled', true);// 46// 47
-
-                                     $('#dat_ii_fecha_ini_inv').val(paObj[istAud].a.II[0].C1_Fecha_Ini_Investigacion);  $('#dat_ii_fecha_ini_inv').val('N/A');// 44   oj no esta en la consulta, ojo crear los campos bd
-                                     $('#divBorde_ii_41').css('background-color','#EFEFEF');$('#dat_ii_fecha_ini_inv').css('background-color','#EFEFEF'); $('#dat_ii_fecha_ini_inv').prop('disabled', true);// 46// 47// 48
-
-
-
-                                     $('#dat_ii_fecha_informe').val(paObj[istAud].a.II[0].C1_Fecha_Informe);$('#dat_ii_fecha_informe').val('N/A');
-                                     $('#divBorde_ii_42').css('background-color','#EFEFEF');$('#dat_ii_fecha_informe').css('background-color','#EFEFEF'); $('#dat_ii_fecha_informe').prop('disabled', true);// 49
-
-
-
-                                     $('#dat_ii_responsable_area').val(paObj[istAud].a.II[0].C1_Nombre_Responsable_Area);$('#dat_ii_responsable_area').val('N/A');
-                                     $('#divBorde_ii_43').css('background-color','#EFEFEF');$('#dat_ii_responsable_area').css('background-color','#EFEFEF'); $('#dat_ii_responsable_area').prop('disabled', true);// 49// 50
-
-                                    $('#dat_ii_responsable_area_hidden').val(paObj[istAud].a.II[0].C1_Id_Hash_Responsable_Area);// ojo hay que crear el campo html
-
-                                       //alert('Involucrados = '+paObj[istAud].a.II[0].C1_Involucrados)
-                                     $('#dat_ii_involucrados').val(paObj[istAud].a.II[0].C1_Involucrados); // 29 $('#dat_ii_fecha_informe').val('N/A');
-                                     $('#divBorde_ii_44').css('background-color','#EFEFEF');$('#dat_ii_involucrados').css('background-color','#EFEFEF'); $('#dat_ii_involucrados').prop('disabled', true);// 49
-
-
-                                    $('#dat_ii_descripcion_lugar_exacto').val(paObj[istAud].a.II[0].C1_Lugar_Evento);$('#dat_ii_descripcion_lugar_exacto').val('N/A');
-                                     $('#divBorde_ii_45').css('background-color','#EFEFEF');$('#dat_ii_descripcion_lugar_exacto').css('background-color','#EFEFEF'); $('#dat_ii_descripcion_lugar_exacto').prop('disabled', true);// 49// 30
-
-
-                                    $('#dat_ii_3_mox_trabajadores').val(paObj[istAud].a.II[0].C1_No_Trabajadores_Afectados);$('#dat_ii_3_mox_trabajadores').val('N/A');
-                                     $('#divBorde_ii_46').css('background-color','#EFEFEF');$('#dat_ii_3_mox_trabajadores').css('background-color','#EFEFEF'); $('#dat_ii_3_mox_trabajadores').prop('disabled', true);// 49// 31
-
-                                     $('#dat_ii_3_mox_pobladores_pa').val(paObj[istAud].a.II[0].C1_No_Pobladores_Afectados);$('#dat_ii_3_mox_pobladores_pa').val('N/A');//cual es el campo base de datos
-                                     $('#divBorde_ii_47').css('background-color','#EFEFEF');$('#dat_ii_3_mox_pobladores_pa').css('background-color','#EFEFEF'); $('#dat_ii_3_mox_pobladores_pa').prop('disabled', true);// 49// 31
-
-                                     $('#dat_ii_incapacidad').val(paObj[istAud].a.II[0].C1_Clasificacion_Incapacidad);$('#dat_ii_incapacidad').val('N/A');
-                                     $('#divBorde_ii_48').css('background-color','#EFEFEF');$('#dat_ii_incapacidad').css('background-color','#EFEFEF'); $('#dat_ii_incapacidad').prop('disabled', true);// 49// 32
-
-                                    $('#dat_ii_descripcion_incidente_lt').val(paObj[istAud].a.II[0].Descripcion);$('#dat_ii_descripcion_incidente_lt').val('N/A');
-                                     $('#divBorde_ii_49').css('background-color','#EFEFEF');$('#dat_ii_descripcion_incidente_lt').css('background-color','#EFEFEF'); $('#dat_ii_descripcion_incidente_lt').prop('disabled', true);// 49// 33
-                                     
-
-
-                                      $('#dat_ii_5_comentario').val(paObj[istAud].a.II[0].D_Comentario);
-
-                                     if(paObj[istAud].a.II[0].D_AnexoACR == 1){$('#dat_ii_acr').prop('checked', true); }else{$('#dat_ii_acr').prop('checked', false);}
-                                    
-                                     if(paObj[istAud].a.II[0].D_AnexoLineaTiempo == 1){$('#dat_ii_linea_tiempo').prop('checked', true); }else{$('#dat_ii_linea_tiempo').prop('checked', false);}
-                                     if(paObj[istAud].a.II[0].D_AnexoFotografia == 1){$('#dat_ii_fotografias').prop('checked', true); }else{$('#dat_ii_fotografias').prop('checked', false);}
-                                     if(paObj[istAud].a.II[0].D_AnexoReporteOcurrencia == 1){$('#dat_ii_reporte').prop('checked', true); }else{$('#dat_ii_reporte').prop('checked', false);}
-                                     if(paObj[istAud].a.II[0].D_AnexoEntrevistaAccidentado == 1){$('#dat_ii_entrevista1').prop('checked', true); }else{$('#dat_ii_entrevista1').prop('checked', false);}
-                                     if(paObj[istAud].a.II[0].D_AnexoEntrevistaTestigo == 1){$('#dat_ii_entrevista2').prop('checked', true); }else{$('#dat_ii_entrevista2').prop('checked', false);}
-                                     if(paObj[istAud].a.II[0].D_AnexoOtro == 1){$('#dat_ii_otros').prop('checked', true); }else{$('#dat_ii_otros').prop('checked', false);}
-
-                                      $('#dat_ii_otros_text').val(paObj[istAud].a.II[0].D_AnexoOtroTexto);
-
-                                      buscarListadodeInvestigadores();
-
-                                    console.log("**objeto cargado js**", paObj[istAud].a);
-                                    $('#titleModalInformeInvestigacion').html("Creación del Informe de Investigación - "+paObj[istAud].a.Code)
-                                    $('#modalInformeInvestigacion').modal('show').addClass('fade');
-                                    hideLoading();
-
-                                    console.log('23309 aqui mandamos a buscar los hallazgos asignados');//fnSp4BuscarHallazgosAsignados
-
-                                    fnSp4BuscarHallazgosAsignados();
-                                     buscar5porqueIncidente()
-                                    /*
-                                    //########################################################## promesa ##################################################################
-
-                                    let promise = new Promise ( function(resolve, reject) { resolve( fnSp4BuscarHallazgosAsignados())  } );
-
-                                        // resolve ejecuta la primera función en .then
-                                        promise.then(
-                                          result => buscar5porqueIncidente(), // muestra "hecho!" después de 1 segundo
-                                          error =>verModalError('Accion Correctiva', 'No se pudieron cargar los datos del ACR') // no se ejecuta
-                                        );
-                                    //fnSp4BuscarHallazgosAsignados();
-                                   //########################################################## promesa ##################################################################
-                                  */
-
-
-                                }
-                              else
-                              {
-                                     paObj[istAud].a.II_BD = 2;//NO EXISTE REGSITRO EN BASE DE DATOS
-                                    //alert('NOtiene informe de investigacion creado');
-                              }
-                 });//-------------------------------------------------------------------------------------------------------------#####
-
-         }//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-         else
-        {//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-             if( paObj[istAud].a.II_BD == 1)//si se fue y existe data
-                  {//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-                         //alert('YA SE FUE A LA BASE DE DATOS Y TENEMOS LA DATA CARGADA')
-                         $('#titleModalInformeInvestigacion').html("Creación del Informe de Investigación - "+paObj[istAud].a.Code)
-                        $('#modalInformeInvestigacion').modal('show').addClass('fade');
-                   }//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-            else{
-
-                  if( paObj[istAud].a.II_BD == 2)//si se fue y existe data
-                  {//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-                         //alert('YA SE FUE A LA BASE DE DATOS Y NO HAY DATA')
-                   }//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-                }
-            
-
-        }//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-         
-          
-    }//===========================================================================================================================================================*****
-    else
-    {
-         if(paObj[istAud].a.GrupoEvento == 2)//-------------------- Accidente Ambiental -------------------
-            {//===========================================================================================================================================================*****
-                    //alert("II_BD == "+paObj[istAud].a.II_BD+'DAÑOS AMBIENTALES..................... QUE HAGO');
-                         if( paObj[istAud].a.II_BD == 0)//si no se ha ido al servidor  buscar la data
-                         {//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-                            //alert('estamos aquiiiiiiiiiiiiii 23726');
-                                      AccionBD = 2;
-                                      showLoading(); //hideLoading();
-
-                                      //var url = apiUrlssoma+"/api/Get-Informe-Incidente-SSO?code=D4naQSGxgPb/QsZy1QzqRoR6r8svebqVOOiSuHFNSqRvyY9SsbvLFg==&httpmethod=objectlist&Id="+IdIi+"&AccionBD="+AccionBD;
-
-                                      var url =  apiUrlssoma+"/api/Get-Informe-Incidente-SSO?code=D4naQSGxgPb/QsZy1QzqRoR6r8svebqVOOiSuHFNSqRvyY9SsbvLFg==&vvhttpmethod=objectlist&Id="+IdIi+"&AccionBD="+AccionBD;
-                                        
-                                        console.log("URL",url )
-                                        var headers ={
-                                            "apikey":constantes.apiKey
-                                        }
-
-                                        var settings = {
-                                            "url": url,
-                                            "method": "GET",
-                                            "timeout": 0,
-                                            "crossDomain": true,
-                                            "dataType": "json",
-                                            "headers": headers,
-                                        };
-
-
-                                        $.ajax(settings).done(function (response) {//------------------------------------------------------------#####
-                                            console.log("**todos**",response);
-                                           
-                                            mayorId = 0;
-                                                     
-                                              if(response.PlanAnual.length > 0)
-                                                {
-                                                    //alert('si tiene informe de investigacion creado');
-                                                    paObj[istAud].a.II_BD = 1;//SI ESTAN CARGADO LOS DTOS EN BASE DE DATOS
-                                                    paObj[istAud].a.II = response.PlanAnual;
-
-                                                    paObj[istAud].a.II_BD = 1;//SI ESTAN CARGADO LOS DTOS EN BASE DE DATOS
-                                                    paObj[istAud].a.II = response.PlanAnual;
-
-                                               
-
-                                                    $('#dat_ii_nombre_uo').val(paObj[istAud].a.II[0].IdSede);//C1_Tipo_Accidente
-                                                    // $('#dat_ii_direccion_uo').val(paObj[istAud].a.II[0].A_Direccion_UO);// 2
-                                                   
-                                                    $('#dat_ii_direccion_uo').val($('#dat_ii_nombre_uo option:selected').attr('title'));
-                                                    $('#dat_ii_n_total_trabajador').val(paObj[istAud].a.II[0].A_Total_Trabajadores);// 3
-                                                    $('#dat_ii_n_personal_con_str').val(paObj[istAud].a.II[0].A_No_Personal_SCTR);// 4
-                                                    $('#dat_ii_n_personal_no_fil_str').val(paObj[istAud].a.II[0].A_No_Personal_No_Afiliado_SCTR);// 5
-                                                    $('#dat_ii_nombre_aseguradora').val(paObj[istAud].a.II[0].A_Nombre_Aseguradora);// 6
-
-                                                    $('#dat_ii_nombre_empresa_tercero').val(paObj[istAud].a.II[0].IdEmpresaCompany);// 7
-                                                    $('#dat_ii_tipo_actividad_economica').val(paObj[istAud].a.II[0].A1_Tipo_Actividad_Economica);// 8
-                                                    $('#dat_ii_ruc').val(paObj[istAud].a.II[0].A1_Ruc);// 9
-                                                    $('#dat_ii_desc_empresa_tercero').val(paObj[istAud].a.II[0].A1_Direccion_Empresa_Tercero);// 10A1_Nombre_Empresa_Tercero
-                                                    $('#dat_ii_n_total_trabajadores').val(paObj[istAud].a.II[0].A1_No_Total_Trabajadores);// 11
-                                                    $('#dat_ii_n_personal_con_sctr').val(paObj[istAud].a.II[0].A1_No_personal_SCTR);// 12
-                                                    $('#dat_ii_n_personal_no_afiliado_sctr').val(paObj[istAud].a.II[0].A1_No_Personal_No_Afiliado_SCTR);// 13
-                                                    $('#dat_ii_nombre_aseguradora2').val(paObj[istAud].a.II[0].A1_Nombre_Aseguradora);// 14
-
-                                                     $('#divBorde_ii_6').css('background-color','#EFEFEF');//sel_tipo_evento2
-                                                     $('#dat_ii_nombre_aseguradora').css('background-color','#EFEFEF');
-                                                     $('#dat_ii_nombre_aseguradora').prop('disabled', true);//divf1cont
-
-                                                     $('#divBorde_ii_2').css('background-color','#EFEFEF');//sel_tipo_evento2
-                                                     $('#dat_ii_direccion_uo').css('background-color','#EFEFEF');
-                                                     $('#dat_ii_direccion_uo').prop('disabled', true);//divf1cont
-
-
-                                                     $('#divBorde_ii_14').css('background-color','#EFEFEF');//sel_tipo_evento2
-                                                     $('#dat_ii_nombre_aseguradora2').css('background-color','#EFEFEF');
-                                                     $('#dat_ii_nombre_aseguradora2').prop('disabled', true);//divf1cont
-
-
-
-
-
-
-                                                      //pestaña 2
-
-                                                     $('#dat_ii_nombre_apellido').val(paObj[istAud].a.II[0].NombrePersonalAccidentado); $('#dat_ii_nombre_apellido').val('N/A');// 15
-                                                     $('#divBorde_ii_15').css('background-color','#EFEFEF');$('#dat_ii_nombre_apellido').css('background-color','#EFEFEF'); $('#dat_ii_nombre_apellido').prop('disabled', true);
-
-
-
-                                                    $('#dat_ii_nombre_apellido_hidden').val(paObj[istAud].a.II[0].IdPersonalAccidentado);//ojo crear el campo
-
-
-                                                    $('#dat_ii_dni').val(paObj[istAud].a.II[0].DNIAccidentado); $('#dat_ii_dni').val('N/A');// 15
-                                                    $('#divBorde_ii_16').css('background-color','#EFEFEF');$('#dat_ii_dni').css('background-color','#EFEFEF'); $('#dat_ii_dni').prop('disabled', true);
-
-
-                                                    $('#dat_ii_edad').val(paObj[istAud].a.II[0].EdadAccidentado); $('#dat_ii_edad').val('N/A');
-                                                    $('#divBorde_ii_17').css('background-color','#EFEFEF');$('#dat_ii_edad').css('background-color','#EFEFEF'); $('#dat_ii_edad').prop('disabled', true);
-
-
-
-                                                    $('#dat_ii_sexo').val(paObj[istAud].a.II[0].B_Sexo_Trabajador); $('#dat_ii_sexo').html('<option value="0" title="No Aplica" style="font-weight: bold;">N/A</option>');
-                                                    $('#divBorde_ii_18').css('background-color','#EFEFEF');$('#dat_ii_sexo').css('background-color','#EFEFEF'); $('#dat_ii_sexo').prop('disabled', true);
-
-
-
-
-                                                    $('#dat_ii_area_trabajo').val(paObj[istAud].a.II[0].IdAreaAccidente);  $('#dat_ii_area_trabajo').html('<option value="0" title="No Aplica" style="font-weight: bold;">N/A</option>'); // 20
-                                                     $('#divBorde_ii_18').css('background-color','#EFEFEF');$('#dat_ii_area_trabajo').css('background-color','#EFEFEF'); $('#dat_ii_area_trabajo').prop('disabled', true);
-
-                                                    $('#dat_ii_puesto_trabajo').val(paObj[istAud].a.II[0].PuestoCargoAccidentado);  $('#dat_ii_puesto_trabajo').val('N/A'); // 21
-                                                     $('#divBorde_ii_19').css('background-color','#EFEFEF');$('#dat_ii_puesto_trabajo').css('background-color','#EFEFEF'); $('#dat_ii_puesto_trabajo').prop('disabled', true);
-
-                                                    $('#dat_ii_antiguedad_empresa').val(paObj[istAud].a.II[0].B_Antiguedad_Empresa);  $('#dat_ii_antiguedad_empresa').val('N/A');// 22 Expiencia_Month
-                                                     $('#divBorde_ii_20').css('background-color','#EFEFEF');$('#dat_ii_antiguedad_empresa').css('background-color','#EFEFEF'); $('#dat_ii_antiguedad_empresa').prop('disabled', true);
-
-                                                    $('#dat_ii_experiencia_puesto').val(paObj[istAud].a.II[0].B_Tiempo_Experiencia_Cargo);  $('#dat_ii_experiencia_puesto').val('N/A');// 23B_Tiempo_Experiencia_Cargo
-                                                     $('#divBorde_ii_21').css('background-color','#EFEFEF');$('#dat_ii_experiencia_puesto').css('background-color','#EFEFEF'); $('#dat_ii_experiencia_puesto').prop('disabled', true);
-
-                                                    $('#dat_ii_tipo_contrato').val(paObj[istAud].a.II[0].Tipo_Contrato); $('#dat_ii_tipo_contrato').html('<option value="0" title="No Aplica" style="font-weight: bold;">N/A</option>'); // 24
-                                                     $('#divBorde_ii_22').css('background-color','#EFEFEF');$('#dat_ii_tipo_contrato').css('background-color','#EFEFEF'); $('#dat_ii_tipo_contrato').prop('disabled', true);
-
-                                                    $('#dat_ii_turno_trabajo').val(paObj[istAud].a.II[0].B_Turno_Trabajo); $('#dat_ii_turno_trabajo').html('<option value="0" title="No Aplica" style="font-weight: bold;">N/A</option>'); // 25
-                                                     $('#divBorde_ii_23').css('background-color','#EFEFEF');$('#dat_ii_turno_trabajo').css('background-color','#EFEFEF'); $('#dat_ii_turno_trabajo').prop('disabled', true);
-
-                                                    $('#dat_ii_horas_trabajo_jornada').val(paObj[istAud].a.II[0].B_Horas_Trabajadas_Jornada);  $('#dat_ii_horas_trabajo_jornada').val('N/A');// 26
-                                                     $('#divBorde_ii_23_i').css('background-color','#EFEFEF');$('#dat_ii_horas_trabajo_jornada').css('background-color','#EFEFEF'); $('#dat_ii_horas_trabajo_jornada').prop('disabled', true);
-
-                                                    $('#dat_ii_nombre_jefe_inmediato__hidden').val(paObj[istAud].a.II[0].B_Id_Hash_Jefe_Inmediato); // 27
-                                                     $('#divBorde_ii_24').css('background-color','#EFEFEF');$('#dat_ii_nombre_jefe_inmediato__hidden').css('background-color','#EFEFEF'); $('#dat_ii_nombre_jefe_inmediato__hidden').prop('disabled', true);
-
-                                                    $('#dat_ii_nombre_jefe_inmediato').val(paObj[istAud].a.II[0].B_Nombre_Jefe_Inmediato);  $('#dat_ii_nombre_jefe_inmediato').val('N/A'); // 28
-                                                     $('#divBorde_ii_25').css('background-color','#EFEFEF');$('#dat_ii_nombre_jefe_inmediato').css('background-color','#EFEFEF'); $('#dat_ii_nombre_jefe_inmediato').prop('disabled', true);
-
-
-
-//
-
-                                                    //pestaña 3
-                                                    //$('#dat_ii_producto_involucrado').val(paObj[istAud].a.II[0].B_ProductoInvolucrado);// 29
-                                                    $('#dat_ii_producto_involucrado').html(''); $('#dat_ii_producto_involucrado').html('<option value="0" title="No Aplica" style="font-weight: bold;">'+paObj[istAud].a.II[0].B_ProductoInvolucrado+'</option>');
-                                                    $('#divBorde_ii_26').css('background-color','#EFEFEF');$('#dat_ii_producto_involucrado').css('background-color','#EFEFEF'); $('#dat_ii_producto_involucrado').prop('disabled', true);
-
-
-                                                    $('#dat_ii_volumen_m3').val(paObj[istAud].a.II[0].B_Volumen); //$('#dat_ii_volumen_m3').val('N/A');
-                                                    $('#divBorde_ii_27').css('background-color','#EFEFEF');$('#dat_ii_volumen_m3').css('background-color','#EFEFEF'); $('#dat_ii_volumen_m3').prop('disabled', true);
-
-
-                                                    $('#dat_ii_zona_afectada').val(paObj[istAud].a.II[0].IdZona); //$('#dat_ii_zona_afectada').val('N/A');
-                                                    $('#divBorde_ii_28').css('background-color','#EFEFEF');$('#dat_ii_zona_afectada').css('background-color','#EFEFEF'); $('#dat_ii_zona_afectada').prop('disabled', true);
-
-                                                    $('#dat_ii_ext_area_afectada').val(paObj[istAud].a.II[0].B_Area);  // $('#dat_ii_ext_area_afectada').val('N/A');
-                                                    $('#divBorde_ii_29').css('background-color','#EFEFEF');$('#dat_ii_ext_area_afectada').css('background-color','#EFEFEF'); $('#dat_ii_ext_area_afectada').prop('disabled', true);
-
-
-
-                                                    // $('#dat_ii_nombre_uo').val(paObj[istAud].a.II[0].C_Afectacion_A);// 33//radio buttonC_Afectacion_A
-                                                    
-                                                        $('#rbtn_sii_8').css('visibility', 'visible');   $('#rbtn_noi_9').css('visibility', 'visible');   $('#rbtn_noi_10').css('visibility', 'visible');  
-
-                                                        $('#rbtn_siii_8').css('visibility', 'visible');   $('#rbtn_noii_9').css('visibility', 'visible');  
-
-                                                        $('#rbtn_siiix_8').css('visibility', 'visible');   $('#rbtn_noiix_9').css('visibility', 'visible');   
-
-                                                    var xc = paObj[istAud].a.II[0].C_Afectacion_A;
-                                                   
-                                                    xc = parseInt(xc); //xc = 3;
-                                                    //alert('caso A = '+xc);
-                                                    if(xc == 1){ fnSp3onchangeObjetivoSubojetitiv3('si', 'rbtn_sii_8', 'rbtn_noi_9', 'rbtn_noi_10');    console.log('C_Afectacion_A uno...............');  }
-                                                                                                                     
-                                                    if(xc == 2){ fnSp3onchangeObjetivoSubojetitiv3('no', 'rbtn_sii_8', 'rbtn_noi_9', 'rbtn_noi_10');    console.log('C_Afectacion_A dos...............');}
-                                                    
-                                                    if(xc == 3){fnSp3onchangeObjetivoSubojetitiv3('sino', 'rbtn_sii_8', 'rbtn_noi_9', 'rbtn_noi_10');    console.log('C_Afectacion_A tres...............');}
-                                                       
-                                               //-------------------------------------------------------------------------------------------------------------------------
-                                                    
-                                                        
-                                                    xc = paObj[istAud].a.II[0].C_Operando_Normal;
-                                                    xc = parseInt(xc)
-                                                    // alert('caso b = '+xc);
-                                                    //if(xc == 1){  fnSp3onchangeObjetivoSubojetitiv2('si', 'rbtn_siii_8', 'rbtn_noii_9'); console.log('C_Operando_Normal uno...............');   }
-                                                                                                                     
-                                                    if(xc == 2){ fnSp3onchangeObjetivoSubojetitiv2('no', 'rbtn_siii_8', 'rbtn_noii_9'); console.log('C_Operando_Normal dos...............');  }
-                                                //-------------------------------------------------------------------------------------------------------------------------
-                                                  
-                                                    //-------------------------------------------------------------------------------------------------------------------------
-                                                    xc = paObj[istAud].a.II[0].C_Comunicdo_Fiscalizador;
-                                                    xc = parseInt(xc)
-                                                    //alert('caso c = '+xc);
-                                                    if(xc == 1){   fnSp3onchangeObjetivoSubojetitiv2('si', 'rbtn_siiix_8', 'rbtn_noiix_9'); console.log('C_Comunicdo_Fiscalizador uno...............');    }
-                                                                                                                    
-                                                    if(xc == 2){   fnSp3onchangeObjetivoSubojetitiv2('no', 'rbtn_siiix_8', 'rbtn_noiix_9');  console.log('C_Comunicdo_Fiscalizador dos...............');   }
-
-                                                                
-
-
-
-
-
-
-                                                    $('#dat_ii_medidas_emergencia').val(paObj[istAud].a.II[0].C_Medidas_Emergencia);  
-                                                    $('#divBorde_ii_30').css('background-color','#EFEFEF');$('#dat_ii_medidas_emergencia').css('background-color','#EFEFEF'); $('#dat_ii_medidas_emergencia').prop('disabled', true);
-
-
-
-
-                                                    $('#dat_ii_se_genero_residuos').val(paObj[istAud].a.II[0].C_Residuos_Limpieza);
-                                                    $('#divBorde_ii_31').css('background-color','#FFFFFF');$('#dat_ii_se_genero_residuos').css('background-color','#FFFFFF'); $('#dat_ii_se_genero_residuos').prop('disabled', false);
-
-
-                                                    //rbtn_sihy_8
-                                                       $('#rbtn_sihy_8').css('visibility', 'visible');   $('#rbtn_nohy_9').css('visibility', 'visible');  
-                                                    // $('#dat_ii_nombre_uo').val(paObj[istAud].a.II[0].IdId);// 38radio button
-
-                                                    xc = paObj[istAud].a.II[0].C_Accidente_Reicidente;
-                                                    xc = parseInt(xc)
-                                                    
-                                                    if(xc == 1){   fnSp3onchangeObjetivoSubojetitiv2('si', 'rbtn_sihy_8', 'rbtn_nohy_9');  }
-                                                                                                                    
-                                                    if(xc == 2){   fnSp3onchangeObjetivoSubojetitiv2('no', 'rbtn_sihy_8', 'rbtn_nohy_9');    }
-
-
-                                                    //paObj[istAud].a.II[0].C_Descripcion_Perdida_Materiales
-                                                     $('#dat_ii_describe_perdida').val(paObj[istAud].a.II[0].C_Descripcion_Perdida_Materiales);//paObj[istAud].a.II[0].IdId); // 39  oj no esta en la consulta, ojo crear los campos bd
-                                                     $('#divBorde_ii_32').css('background-color','#FFFFFF');$('#dat_ii_describe_perdida').css('background-color','#FFFFFF'); $('#dat_ii_describe_perdida').prop('disabled', false);
-
-
-
-                                                     //paObj[istAud].a.II[0].C_Observaciones
-                                                     $('#dat_ii_observacioness').val(paObj[istAud].a.II[0].C_Observaciones); 
-                                                     $('#divBorde_ii_33').css('background-color','#FFFFFF');$('#dat_ii_observacioness').css('background-color','#FFFFFF'); $('#dat_ii_observacioness').prop('disabled', false);
-                                                    
-
-
-                                                     $('#dat_ii_tipo_incidente').val(paObj[istAud].a.II[0].IdTipoEvento); // 40   oj no esta en la consulta, ojo crear los campos bd
-                                                     $('#divBorde_ii_34').css('background-color','#EFEFEF');$('#dat_ii_tipo_incidente').css('background-color','#EFEFEF'); $('#dat_ii_tipo_incidente').prop('disabled', true);
-                                                    
-                 
-
-                                                     $('#dat_ii_nivel_severidad').val(paObj[istAud].a.II[0].xNivelSeveridad);
-                                                     $('#divBorde_ii_35').css('background-color','#FFFFFF');$('#dat_ii_nivel_severidad').css('background-color','#FFFFFF'); $('#dat_ii_nivel_severidad').prop('disabled', false);
-
-                                                  // 43
-                                                     $('#dat_ii_gerencia').val(paObj[istAud].a.II[0].IdGerencia);
-                                                     $('#divBorde_ii_36').css('background-color','#EFEFEF');$('#dat_ii_gerencia').css('background-color','#EFEFEF'); $('#dat_ii_gerencia').prop('disabled', true);
-
-
-                                                    $('#dat_ii_lugar_eventox').val(paObj[istAud].a.II[0].C1_Lugar_Evento);
-                                                     $('#divBorde_ii_37').css('background-color','#EFEFEF');$('#dat_ii_lugar_eventox').css('background-color','#EFEFEF'); $('#dat_ii_lugar_eventox').prop('disabled', true);
-
-                                                      
-                                                       var fx = paObj[istAud].a.II[0].Fecha; fx = fx.toString();
-                                                       var f1  =  fx.split('-'); f1 = f1[2]+'/'+f1[1]+'/'+f1[0];  f1 = f1.toString();
-
-                                                     $('#dat_ii_fecha').val(f1);// 44   oj no esta en la consulta, ojo crear los campos bd
-                                                     $('#divBorde_ii_38').css('background-color','#EFEFEF');$('#dat_ii_fecha').css('background-color','#EFEFEF'); $('#dat_ii_fecha').prop('disabled', true);// 45
-
-
-
-                                                     $('#dat_ii_hora').val(paObj[istAud].a.II[0].Hora);// 44   oj no esta en la consulta, ojo crear los campos bd
-                                                     $('#divBorde_ii_39').css('background-color','#EFEFEF');$('#dat_ii_hora').css('background-color','#EFEFEF'); $('#dat_ii_hora').prop('disabled', true);// 46
-
-                                                     $('#dat_ii_n_dias_descanzox').val(paObj[istAud].a.II[0].C1_N_Dias_Descanzo); // 44   oj no esta en la consulta, ojo crear los campos bd
-                                                     $('#divBorde_ii_40').css('background-color','#FFFFFF');$('#dat_ii_n_dias_descanzox').css('background-color','#FFFFFF'); $('#dat_ii_n_dias_descanzox').prop('disabled', false);// 46// 47
-
-                                                        if(paObj[istAud].a.II[0].C1_Fecha_Ini_Investigacion){ var fx = paObj[istAud].a.II[0].C1_Fecha_Ini_Investigacion; fx = fx.toString();}else{var fx = "2021-01-01"; }
-                                                       
-                                                        var f1  =  fx.split('-'); f1 = f1[2]+'/'+f1[1]+'/'+f1[0];  f1 = f1.toString();
-                                                     $('#dat_ii_fecha_ini_inv').val(f1); // 44   oj no esta en la consulta, ojo crear los campos bd
-                                                     $('#divBorde_ii_41').css('background-color','#FFFFFF');$('#dat_ii_fecha_ini_inv').css('background-color','#FFFFFF'); $('#dat_ii_fecha_ini_inv').prop('disabled', false);// 46// 47// 48
-
-                                                       
-                                                          if(paObj[istAud].a.II[0].C1_Fecha_Informe){ var fx = paObj[istAud].a.II[0].C1_Fecha_Informe; fx = fx.toString();}else{var fx = "2021-01-01"; }
-                                                       
-                                                        var f1  =  fx.split('-'); f1 = f1[2]+'/'+f1[1]+'/'+f1[0];  f1 = f1.toString();
-
-                                                     $('#dat_ii_fecha_informe').val(f1);
-                                                     $('#divBorde_ii_42').css('background-color','#FFFFFF');$('#dat_ii_fecha_informe').css('background-color','#FFFFFF'); $('#dat_ii_fecha_informe').prop('disabled', false);// 49
-
-
-
-                                                     $('#dat_ii_responsable_area').val(paObj[istAud].a.II[0].C1_Nombre_Responsable_Area);
-                                                     $('#divBorde_ii_43').css('background-color','#FFFFFF');$('#dat_ii_responsable_area').css('background-color','#FFFFFF'); $('#dat_ii_responsable_area').prop('disabled', false);// 49// 50
-
-                                                    $('#dat_ii_responsable_area_hidden').val(paObj[istAud].a.II[0].C1_Id_Hash_Responsable_Area);// ojo hay que crear el campo html
-
-                                                    //alert('Involucrados = '+paObj[istAud].a.II[0].C1_Involucrados)
-                                                  
-                                                     $('#dat_ii_involucrados').val(paObj[istAud].a.II[0].C1_Involucrados);  // 29 $('#dat_ii_fecha_informe').val('N/A');
-                                                     $('#divBorde_ii_44').css('background-color','#FFFFFF');$('#dat_ii_involucrados').css('background-color','#FFFFFF'); $('#dat_ii_involucrados').prop('disabled', false);// 49
-
-
-                                                    $('#dat_ii_descripcion_lugar_exacto').val(paObj[istAud].a.II[0].C1_Lugar_Evento);
-                                                     $('#divBorde_ii_45').css('background-color','#EFEFEF');$('#dat_ii_descripcion_lugar_exacto').css('background-color','#EFEFEF'); $('#dat_ii_descripcion_lugar_exacto').prop('disabled', true);// 49// 30
-
-
-                                                    $('#dat_ii_3_mox_trabajadores').val(paObj[istAud].a.II[0].C1_No_Trabajadores_Afectados);
-                                                     $('#divBorde_ii_46').css('background-color','#FFFFFF');$('#dat_ii_3_mox_trabajadores').css('background-color','#FFFFFF'); $('#dat_ii_3_mox_trabajadores').prop('disabled', false);// 49// 31
-
-                                                     $('#dat_ii_3_mox_pobladores_pa').val(paObj[istAud].a.II[0].C1_No_Pobladores_Afectados);//cual es el campo base de datos
-                                                     $('#divBorde_ii_47').css('background-color','#FFFFFF');$('#dat_ii_3_mox_pobladores_pa').css('background-color','#FFFFFF'); $('#dat_ii_3_mox_pobladores_pa').prop('disabled', false);// 49// 31
-
-                                                      //alert('INCAPACIDADXXXXXXXX'+paObj[istAud].a.II[0].C1_Clasificacion_Incapacidad);
-                                                     $('#dat_ii_incapacidad').val(paObj[istAud].a.II[0].C1_Clasificacion_Incapacidad);
-                                                     $('#divBorde_ii_48').css('background-color','#FFFFFF');$('#dat_ii_incapacidad').css('background-color','#FFFFFF'); $('#dat_ii_incapacidad').prop('disabled', false);// 49// 32
-
-                                                    $('#dat_ii_descripcion_incidente_lt').val(paObj[istAud].a.II[0].Descripcion);
-                                                     $('#divBorde_ii_49').css('background-color','#FFFFFF');$('#dat_ii_descripcion_incidente_lt').css('background-color','#FFFFFF'); $('#dat_ii_descripcion_incidente_lt').prop('disabled', false);// 49// 33
-
-                                                   
-                                                                        
-                                                        $('#dat_ii_5_comentario').val(paObj[istAud].a.II[0].D_Comentario);
-
-                                                        if(paObj[istAud].a.II[0].D_AnexoACR == 1){$('#dat_ii_acr').prop('checked', true); }else{$('#dat_ii_acr').prop('checked', false);}
-                                                        
-                                                        if(paObj[istAud].a.II[0].D_AnexoLineaTiempo == 1){$('#dat_ii_linea_tiempo').prop('checked', true); }else{$('#dat_ii_linea_tiempo').prop('checked', false);}
-                                                        if(paObj[istAud].a.II[0].D_AnexoFotografia == 1){$('#dat_ii_fotografias').prop('checked', true); }else{$('#dat_ii_fotografias').prop('checked', false);}
-                                                        if(paObj[istAud].a.II[0].D_AnexoReporteOcurrencia == 1){$('#dat_ii_reporte').prop('checked', true); }else{$('#dat_ii_reporte').prop('checked', false);}
-                                                        if(paObj[istAud].a.II[0].D_AnexoEntrevistaAccidentado == 1){$('#dat_ii_entrevista1').prop('checked', true); }else{$('#dat_ii_entrevista1').prop('checked', false);}
-                                                        if(paObj[istAud].a.II[0].D_AnexoEntrevistaTestigo == 1){$('#dat_ii_entrevista2').prop('checked', true); }else{$('#dat_ii_entrevista2').prop('checked', false);}
-                                                        if(paObj[istAud].a.II[0].D_AnexoOtro == 1){$('#dat_ii_otros').prop('checked', true); }else{$('#dat_ii_otros').prop('checked', false);}
-                    
-                                                        $('#dat_ii_otros_text').val(paObj[istAud].a.II[0].D_AnexoOtroTexto);
-                    
-                                                        buscarListadodeInvestigadores();
-
-
-
-
-
-                                                    console.log("**objeto cargado js**", paObj[istAud].a);
-                                                    $('#titleModalInformeInvestigacion').html("Creación del Informe de Investigación - "+paObj[istAud].a.Code)
-                                                    $('#modalInformeInvestigacion').modal('show').addClass('fade');
-                                                    hideLoading();
-                                                      console.log('24265 aqui mandamos a buscar los hallazgos asignados');//fnSp4BuscarHallazgosAsignados
-                                                    fnSp4BuscarHallazgosAsignados();
-                                                     buscar5porqueIncidente();
-                                                }
-                                              else
-                                              {
-                                                     paObj[istAud].a.II_BD = 2;//NO EXISTE REGSITRO EN BASE DE DATOS
-                                                    //alert('NOtiene informe de investigacion creado');
-                                              }
-                                 });//-------------------------------------------------------------------------------------------------------------#####
-
-                         }//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-                         else
-                        {//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-                             if( paObj[istAud].a.II_BD == 1)//si se fue y existe data
-                                  {//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-                                         //alert('YA SE FUE A LA BASE DE DATOS Y TENEMOS LA DATA CARGADA')
-                                         $('#titleModalInformeInvestigacion').html("Creación del Informe de Investigación - "+paObj[istAud].a.Code)
-                                        $('#modalInformeInvestigacion').modal('show').addClass('fade');
-                                   }//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-                            else{
-
-                                  if( paObj[istAud].a.II_BD == 2)//si se fue y existe data
-                                  {//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-                                        //alert('YA SE FUE A LA BASE DE DATOS Y NO HAY DATA')
-                                   }//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-                                }
-                            
-
-                        }//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-
-            }//===========================================================================================================================================================*****
-          else
-            {//===========================================================================================================================================================*****
-                     if(paObj[istAud].a.GrupoEvento == 3)//-------------------- Accidente Daño Material -------------------
-                        {
-                                                                            
-                                //alert("II_BD == "+paObj[istAud].a.II_BD);
-                                if( paObj[istAud].a.II_BD == 0)//si no se ha ido al servidor  buscar la data
-                                {//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-                                            AccionBD = 3;
-                                            showLoading(); //hideLoading();
-                                            
-
-                                            //var url = apiUrlssoma+"/api/Get-Informe-Incidente-SSO?code=D4naQSGxgPb/QsZy1QzqRoR6r8svebqVOOiSuHFNSqRvyY9SsbvLFg==&httpmethod=objectlist&Id="+IdIi+"&AccionBD="+AccionBD;
-
-                                            var url =  apiUrlssoma+"/api/Get-Informe-Incidente-SSO?code=D4naQSGxgPb/QsZy1QzqRoR6r8svebqVOOiSuHFNSqRvyY9SsbvLFg==&vvhttpmethod=objectlist&Id="+IdIi+"&AccionBD="+AccionBD;
-                                                
-                                                console.log("URL",url )
-                                                var headers ={
-                                                    "apikey":constantes.apiKey
-                                                }
-
-                                                var settings = {
-                                                    "url": url,
-                                                    "method": "GET",
-                                                    "timeout": 0,
-                                                    "crossDomain": true,
-                                                    "dataType": "json",
-                                                    "headers": headers,
-                                                };
-
-
-                                                $.ajax(settings).done(function (response) {//------------------------------------------------------------#####
-                                                    console.log("**todos**",response);
-                                                
-                                                    mayorId = 0;
-                                                            
-                                                    if(response.PlanAnual.length > 0)
-                                                        {
-                                                            //alert('si tiene informe de investigacion creado');
-                                                            paObj[istAud].a.II_BD = 1;//SI ESTAN CARGADO LOS DTOS EN BASE DE DATOS
-                                                            paObj[istAud].a.II = response.PlanAnual;
-
-                                                            paObj[istAud].a.II_BD = 1;//SI ESTAN CARGADO LOS DTOS EN BASE DE DATOS
-                                                            paObj[istAud].a.II = response.PlanAnual;
-
-                                                    
-
-                                                            $('#dat_ii_nombre_uo').val(paObj[istAud].a.II[0].IdSede);//C1_Tipo_Accidente
-                                                            // $('#dat_ii_direccion_uo').val(paObj[istAud].a.II[0].A_Direccion_UO);// 2
-                                                            //$('#dat_ii_direccion_uo').val($('#dat_ii_nombre_uo').attr('title'));
-                                                            $('#dat_ii_direccion_uo').val($('#dat_ii_nombre_uo option:selected').attr('title'));
-                                                            $('#dat_ii_n_total_trabajador').val(paObj[istAud].a.II[0].A_Total_Trabajadores);// 3
-                                                            $('#dat_ii_n_personal_con_str').val(paObj[istAud].a.II[0].A_No_Personal_SCTR);// 4
-                                                            $('#dat_ii_n_personal_no_fil_str').val(paObj[istAud].a.II[0].A_No_Personal_No_Afiliado_SCTR);// 5
-                                                            $('#dat_ii_nombre_aseguradora').val(paObj[istAud].a.II[0].A_Nombre_Aseguradora);// 6
-
-                                                            $('#dat_ii_nombre_empresa_tercero').val(paObj[istAud].a.II[0].IdEmpresaCompany);// 7
-                                                            $('#dat_ii_tipo_actividad_economica').val(paObj[istAud].a.II[0].A1_Tipo_Actividad_Economica);// 8
-                                                            $('#dat_ii_ruc').val(paObj[istAud].a.II[0].A1_Ruc);// 9
-                                                            $('#dat_ii_desc_empresa_tercero').val(paObj[istAud].a.II[0].A1_Direccion_Empresa_Tercero);// 10A1_Nombre_Empresa_Tercero
-                                                            $('#dat_ii_n_total_trabajadores').val(paObj[istAud].a.II[0].A1_No_Total_Trabajadores);// 11
-                                                            $('#dat_ii_n_personal_con_sctr').val(paObj[istAud].a.II[0].A1_No_personal_SCTR);// 12
-                                                            $('#dat_ii_n_personal_no_afiliado_sctr').val(paObj[istAud].a.II[0].A1_No_Personal_No_Afiliado_SCTR);// 13
-                                                            $('#dat_ii_nombre_aseguradora2').val(paObj[istAud].a.II[0].A1_Nombre_Aseguradora);// 14
-
-                                                            $('#divBorde_ii_6').css('background-color','#EFEFEF');//sel_tipo_evento2
-                                                            $('#dat_ii_nombre_aseguradora').css('background-color','#EFEFEF');
-                                                            $('#dat_ii_nombre_aseguradora').prop('disabled', true);//divf1cont
-
-                                                             $('#divBorde_ii_2').css('background-color','#EFEFEF');//sel_tipo_evento2
-                                                             $('#dat_ii_direccion_uo').css('background-color','#EFEFEF');
-                                                             $('#dat_ii_direccion_uo').prop('disabled', true);//divf1cont
-
-
-                                                            $('#divBorde_ii_14').css('background-color','#EFEFEF');//sel_tipo_evento2
-                                                            $('#dat_ii_nombre_aseguradora2').css('background-color','#EFEFEF');
-                                                            $('#dat_ii_nombre_aseguradora2').prop('disabled', true);//divf1cont
-
-
-
-
-
-
-                                                            //pestaña 2
-
-                                                                $('#dat_ii_nombre_apellido').val(paObj[istAud].a.II[0].NombrePersonalAccidentado); $('#dat_ii_nombre_apellido').val('N/A');// 15
-                                                                $('#divBorde_ii_15').css('background-color','#EFEFEF');$('#dat_ii_nombre_apellido').css('background-color','#EFEFEF'); $('#dat_ii_nombre_apellido').prop('disabled', true);
-
-
-
-                                                                $('#dat_ii_nombre_apellido_hidden').val(paObj[istAud].a.II[0].IdPersonalAccidentado);//ojo crear el campo
-
-
-                                                                $('#dat_ii_dni').val(paObj[istAud].a.II[0].DNIAccidentado); $('#dat_ii_dni').val('N/A');// 15
-                                                                $('#divBorde_ii_16').css('background-color','#EFEFEF');$('#dat_ii_dni').css('background-color','#EFEFEF'); $('#dat_ii_dni').prop('disabled', true);
-
-
-                                                                $('#dat_ii_edad').val(paObj[istAud].a.II[0].EdadAccidentado); $('#dat_ii_edad').val('N/A');
-                                                                $('#divBorde_ii_17').css('background-color','#EFEFEF');$('#dat_ii_edad').css('background-color','#EFEFEF'); $('#dat_ii_edad').prop('disabled', true);
-
-
-
-                                                                $('#dat_ii_sexo').val(paObj[istAud].a.II[0].B_Sexo_Trabajador); $('#dat_ii_sexo').html('<option value="0" title="No Aplica" style="font-weight: bold;">N/A</option>');
-                                                                $('#divBorde_ii_18').css('background-color','#EFEFEF');$('#dat_ii_sexo').css('background-color','#EFEFEF'); $('#dat_ii_sexo').prop('disabled', true);
-
-
-
-
-                                                                $('#dat_ii_area_trabajo').val(paObj[istAud].a.II[0].IdAreaAccidente);  $('#dat_ii_area_trabajo').html('<option value="0" title="No Aplica" style="font-weight: bold;">N/A</option>'); // 20
-                                                                $('#divBorde_ii_18').css('background-color','#EFEFEF');$('#dat_ii_area_trabajo').css('background-color','#EFEFEF'); $('#dat_ii_area_trabajo').prop('disabled', true);
-
-                                                                $('#dat_ii_puesto_trabajo').val(paObj[istAud].a.II[0].PuestoCargoAccidentado);  $('#dat_ii_puesto_trabajo').val('N/A'); // 21
-                                                                $('#divBorde_ii_19').css('background-color','#EFEFEF');$('#dat_ii_puesto_trabajo').css('background-color','#EFEFEF'); $('#dat_ii_puesto_trabajo').prop('disabled', true);
-
-                                                                $('#dat_ii_antiguedad_empresa').val(paObj[istAud].a.II[0].B_Antiguedad_Empresa);  $('#dat_ii_antiguedad_empresa').val('N/A');// 22 Expiencia_Month
-                                                                $('#divBorde_ii_20').css('background-color','#EFEFEF');$('#dat_ii_antiguedad_empresa').css('background-color','#EFEFEF'); $('#dat_ii_antiguedad_empresa').prop('disabled', true);
-
-                                                                $('#dat_ii_experiencia_puesto').val(paObj[istAud].a.II[0].B_Tiempo_Experiencia_Cargo);  $('#dat_ii_experiencia_puesto').val('N/A');// 23B_Tiempo_Experiencia_Cargo
-                                                                $('#divBorde_ii_21').css('background-color','#EFEFEF');$('#dat_ii_experiencia_puesto').css('background-color','#EFEFEF'); $('#dat_ii_experiencia_puesto').prop('disabled', true);
-
-                                                                $('#dat_ii_tipo_contrato').val(paObj[istAud].a.II[0].Tipo_Contrato); $('#dat_ii_tipo_contrato').html('<option value="0" title="No Aplica" style="font-weight: bold;">N/A</option>'); // 24
-                                                                $('#divBorde_ii_22').css('background-color','#EFEFEF');$('#dat_ii_tipo_contrato').css('background-color','#EFEFEF'); $('#dat_ii_tipo_contrato').prop('disabled', true);
-
-                                                                $('#dat_ii_turno_trabajo').val(paObj[istAud].a.II[0].B_Turno_Trabajo); $('#dat_ii_turno_trabajo').html('<option value="0" title="No Aplica" style="font-weight: bold;">N/A</option>'); // 25
-                                                                $('#divBorde_ii_23').css('background-color','#EFEFEF');$('#dat_ii_turno_trabajo').css('background-color','#EFEFEF'); $('#dat_ii_turno_trabajo').prop('disabled', true);
-
-                                                                $('#dat_ii_horas_trabajo_jornada').val(paObj[istAud].a.II[0].B_Horas_Trabajadas_Jornada);  $('#dat_ii_horas_trabajo_jornada').val('N/A');// 26
-                                                                $('#divBorde_ii_23_i').css('background-color','#EFEFEF');$('#dat_ii_horas_trabajo_jornada').css('background-color','#EFEFEF'); $('#dat_ii_horas_trabajo_jornada').prop('disabled', true);
-
-                                                                $('#dat_ii_nombre_jefe_inmediato__hidden').val(paObj[istAud].a.II[0].B_Id_Hash_Jefe_Inmediato); // 27
-                                                                $('#divBorde_ii_24').css('background-color','#EFEFEF');$('#dat_ii_nombre_jefe_inmediato__hidden').css('background-color','#EFEFEF'); $('#dat_ii_nombre_jefe_inmediato__hidden').prop('disabled', true);
-
-                                                                $('#dat_ii_nombre_jefe_inmediato').val(paObj[istAud].a.II[0].B_Nombre_Jefe_Inmediato);  $('#dat_ii_nombre_jefe_inmediato').val('N/A'); // 28
-                                                                $('#divBorde_ii_25').css('background-color','#EFEFEF');$('#dat_ii_nombre_jefe_inmediato').css('background-color','#EFEFEF'); $('#dat_ii_nombre_jefe_inmediato').prop('disabled', true);
-
-
-
-
-                                                            //pestaña 3
-                                                            //$('#dat_ii_producto_involucrado').val(paObj[istAud].a.II[0].B_ProductoInvolucrado);// 29
-                                                            $('#dat_ii_producto_involucrado').html(''); $('#dat_ii_producto_involucrado').html('<option value="0" title="No Aplica" style="font-weight: bold;">N/A</option>');
-                                                            $('#divBorde_ii_26').css('background-color','#EFEFEF');$('#dat_ii_producto_involucrado').css('background-color','#EFEFEF'); $('#dat_ii_producto_involucrado').prop('disabled', true);
-
-
-                                                            $('#dat_ii_volumen_m3').val(paObj[istAud].a.II[0].B_Volumen); $('#dat_ii_volumen_m3').val('N/A');
-                                                            $('#divBorde_ii_27').css('background-color','#EFEFEF');$('#dat_ii_volumen_m3').css('background-color','#EFEFEF'); $('#dat_ii_volumen_m3').prop('disabled', true);
-
-
-                                                            $('#dat_ii_zona_afectada').val(paObj[istAud].a.II[0].IdZona); $('#dat_ii_zona_afectada').val('N/A');
-                                                            $('#divBorde_ii_28').css('background-color','#EFEFEF');$('#dat_ii_zona_afectada').css('background-color','#EFEFEF'); $('#dat_ii_zona_afectada').prop('disabled', true);
-
-                                                            $('#dat_ii_ext_area_afectada').val(paObj[istAud].a.II[0].B_Area);   $('#dat_ii_ext_area_afectada').val('N/A');
-                                                            $('#divBorde_ii_29').css('background-color','#EFEFEF');$('#dat_ii_ext_area_afectada').css('background-color','#EFEFEF'); $('#dat_ii_ext_area_afectada').prop('disabled', true);
-
-
-
-                                                            // $('#dat_ii_nombre_uo').val(paObj[istAud].a.II[0].C_Afectacion_A);// 33//radio button
-
-                                                            // $('#dat_ii_nombre_uo').val(paObj[istAud].a.II[0].C_Operando_Normal);// 34 // 33//radio button
-
-                                                            // $('#dat_ii_nombre_uo').val(paObj[istAud].a.II[0].C_Comunicdo_Fiscalizador);// 35// 33//radio button
-
-
-                                                                $('#rbtn_sii_8').css('visibility', 'hidden');   $('#rbtn_noi_9').css('visibility', 'hidden');   $('#rbtn_noi_10').css('visibility', 'hidden');  
-
-                                                                $('#rbtn_siii_8').css('visibility', 'hidden');   $('#rbtn_noii_9').css('visibility', 'hidden');  
-
-                                                                $('#rbtn_siiix_8').css('visibility', 'hidden');   $('#rbtn_noiix_9').css('visibility', 'hidden');   
-
-
-
-
-
-
-                                                            $('#divBorde_ii_30').val(paObj[istAud].a.II[0].C_Medidas_Emergencia);   $('#dat_ii_medidas_emergencia').val('N/A');
-                                                            $('#divBorde_ii_30').css('background-color','#EFEFEF');$('#dat_ii_medidas_emergencia').css('background-color','#EFEFEF'); $('#dat_ii_medidas_emergencia').prop('disabled', true);
-
-
-
-
-                                                            $('#dat_ii_se_genero_residuos').val(paObj[istAud].a.II[0].C_Residuos_Limpieza);$('#dat_ii_se_genero_residuos').val('N/A');
-                                                            $('#divBorde_ii_31').css('background-color','#EFEFEF');$('#dat_ii_se_genero_residuos').css('background-color','#EFEFEF'); $('#dat_ii_se_genero_residuos').prop('disabled', true);
-
-
-                                                            //rbtn_sihy_8
-                                                            $('#rbtn_sihy_8').css('visibility', 'hidden');   $('#rbtn_nohy_9').css('visibility', 'hidden');  
-                                                            // $('#dat_ii_nombre_uo').val(paObj[istAud].a.II[0].IdId);// 38radio button
-
-
-                                                            $('#dat_ii_describe_perdida').val(paObj[istAud].a.II[0].IdId); $('#dat_ii_describe_perdida').val('N/A');   // 39  oj no esta en la consulta, ojo crear los campos bd
-                                                            $('#divBorde_ii_32').css('background-color','#EFEFEF');$('#dat_ii_describe_perdida').css('background-color','#EFEFEF'); $('#dat_ii_describe_perdida').prop('disabled', true);
-
-                                                            $('#dat_ii_observacioness').val(paObj[istAud].a.II[0].IdId); $('#dat_ii_observacioness').val('N/A');// 40   oj no esta en la consulta, ojo crear los campos bd
-                                                            $('#divBorde_ii_33').css('background-color','#EFEFEF');$('#dat_ii_observacioness').css('background-color','#EFEFEF'); $('#dat_ii_observacioness').prop('disabled', true);
-                                                            
-
-
-                                                            $('#dat_ii_tipo_incidente').val(paObj[istAud].a.II[0].C1_Tipo_Accidente); $('#dat_ii_tipo_incidente').val('N/A');// 40   oj no esta en la consulta, ojo crear los campos bd
-                                                            $('#divBorde_ii_34').css('background-color','#EFEFEF');$('#dat_ii_tipo_incidente').css('background-color','#EFEFEF'); $('#dat_ii_tipo_incidente').prop('disabled', true);
-                                                            
-                        
-
-                                                            $('#dat_ii_nivel_severidad').val(paObj[istAud].a.II[0].xNivelSeveridad);$('#dat_ii_nivel_severidad').html('<option value="0" title="No Aplica" style="font-weight: bold;">N/A</option>');
-                                                            $('#divBorde_ii_35').css('background-color','#EFEFEF');$('#dat_ii_nivel_severidad').css('background-color','#EFEFEF'); $('#dat_ii_nivel_severidad').prop('disabled', true);
-
-                                                        // 43
-                                                            $('#dat_ii_gerencia').val(paObj[istAud].a.II[0].IdGerencia);$('#dat_ii_gerencia').html('<option value="0" title="No Aplica" style="font-weight: bold;">N/A</option>');
-                                                            $('#divBorde_ii_36').css('background-color','#EFEFEF');$('#dat_ii_gerencia').css('background-color','#EFEFEF'); $('#dat_ii_gerencia').prop('disabled', true);
-
-
-                                                            $('#dat_ii_lugar_eventox').val(paObj[istAud].a.II[0].C1_Lugar_Evento);$('#dat_ii_lugar_eventox').val('N/A');// 44   oj no esta en la consulta, ojo crear los campos bd
-                                                            $('#divBorde_ii_37').css('background-color','#EFEFEF');$('#dat_ii_lugar_eventox').css('background-color','#EFEFEF'); $('#dat_ii_lugar_eventox').prop('disabled', true);
-
-
-
-                                                            $('#dat_ii_fecha').val(paObj[istAud].a.II[0].Fecha);$('#dat_ii_fecha').val('N/A');// 44   oj no esta en la consulta, ojo crear los campos bd
-                                                            $('#divBorde_ii_38').css('background-color','#EFEFEF');$('#dat_ii_fecha').css('background-color','#EFEFEF'); $('#dat_ii_fecha').prop('disabled', true);// 45
-
-
-
-                                                            $('#dat_ii_hora').val(paObj[istAud].a.II[0].IdId);$('#dat_ii_hora').val('N/A');// 44   oj no esta en la consulta, ojo crear los campos bd
-                                                            $('#divBorde_ii_39').css('background-color','#EFEFEF');$('#dat_ii_hora').css('background-color','#EFEFEF'); $('#dat_ii_hora').prop('disabled', true);// 46
-
-                                                            $('#dat_ii_n_dias_descanzox').val(paObj[istAud].a.II[0].C1_N_Dias_Descanzo); $('#dat_ii_n_dias_descanzox').val('N/A');// 44   oj no esta en la consulta, ojo crear los campos bd
-                                                            $('#divBorde_ii_40').css('background-color','#EFEFEF');$('#dat_ii_n_dias_descanzox').css('background-color','#EFEFEF'); $('#dat_ii_n_dias_descanzox').prop('disabled', true);// 46// 47
-
-                                                            $('#dat_ii_fecha_ini_inv').val(paObj[istAud].a.II[0].C1_Fecha_Ini_Investigacion);  $('#dat_ii_fecha_ini_inv').val('N/A');// 44   oj no esta en la consulta, ojo crear los campos bd
-                                                            $('#divBorde_ii_41').css('background-color','#EFEFEF');$('#dat_ii_fecha_ini_inv').css('background-color','#EFEFEF'); $('#dat_ii_fecha_ini_inv').prop('disabled', true);// 46// 47// 48
-
-
-
-                                                            $('#dat_ii_fecha_informe').val(paObj[istAud].a.II[0].C1_Fecha_Informe);$('#dat_ii_fecha_informe').val('N/A');
-
-                                                            $('#divBorde_ii_42').css('background-color','#EFEFEF');$('#dat_ii_fecha_informe').css('background-color','#EFEFEF'); $('#dat_ii_fecha_informe').prop('disabled', true);// 49
-
-
-
-                                                            $('#dat_ii_responsable_area').val(paObj[istAud].a.II[0].C1_Nombre_Responsable_Area);$('#dat_ii_responsable_area').val('N/A');
-                                                            $('#divBorde_ii_43').css('background-color','#EFEFEF');$('#dat_ii_responsable_area').css('background-color','#EFEFEF'); $('#dat_ii_responsable_area').prop('disabled', true);// 49// 50
-
-                                                            $('#dat_ii_responsable_area_hidden').val(paObj[istAud].a.II[0].C1_Id_Hash_Responsable_Area);// ojo hay que crear el campo html
-
-                                                            //alert('Involucrados = '+paObj[istAud].a.II[0].C1_Involucrados)
-                                                            $('#dat_ii_involucrados').val(paObj[istAud].a.II[0].C1_Involucrados); // 29 $('#dat_ii_fecha_informe').val('N/A');
-                                                            $('#divBorde_ii_44').css('background-color','#EFEFEF');$('#dat_ii_involucrados').css('background-color','#EFEFEF'); $('#dat_ii_involucrados').prop('disabled', true);// 49
-
-
-                                                            $('#dat_ii_descripcion_lugar_exacto').val(paObj[istAud].a.II[0].C1_Lugar_Evento);$('#dat_ii_descripcion_lugar_exacto').val('N/A');
-                                                            $('#divBorde_ii_45').css('background-color','#EFEFEF');$('#dat_ii_descripcion_lugar_exacto').css('background-color','#EFEFEF'); $('#dat_ii_descripcion_lugar_exacto').prop('disabled', true);// 49// 30
-
-
-                                                            $('#dat_ii_3_mox_trabajadores').val(paObj[istAud].a.II[0].C1_No_Trabajadores_Afectados);$('#dat_ii_3_mox_trabajadores').val('N/A');
-                                                            $('#divBorde_ii_46').css('background-color','#EFEFEF');$('#dat_ii_3_mox_trabajadores').css('background-color','#EFEFEF'); $('#dat_ii_3_mox_trabajadores').prop('disabled', true);// 49// 31
-
-                                                            $('#dat_ii_3_mox_pobladores_pa').val(paObj[istAud].a.II[0].C1_No_Pobladores_Afectados);$('#dat_ii_3_mox_pobladores_pa').val('N/A');//cual es el campo base de datos
-                                                            $('#divBorde_ii_47').css('background-color','#EFEFEF');$('#dat_ii_3_mox_pobladores_pa').css('background-color','#EFEFEF'); $('#dat_ii_3_mox_pobladores_pa').prop('disabled', true);// 49// 31
-
-                                                            $('#dat_ii_incapacidad').val(paObj[istAud].a.II[0].C1_Clasificacion_Incapacidad);$('#dat_ii_incapacidad').val('N/A');
-                                                            $('#divBorde_ii_48').css('background-color','#EFEFEF');$('#dat_ii_incapacidad').css('background-color','#EFEFEF'); $('#dat_ii_incapacidad').prop('disabled', true);// 49// 32
-
-                                                            $('#dat_ii_descripcion_incidente_lt').val(paObj[istAud].a.II[0].Descripcion);$('#dat_ii_descripcion_incidente_lt').val('N/A');
-                                                            $('#divBorde_ii_49').css('background-color','#EFEFEF');$('#dat_ii_descripcion_incidente_lt').css('background-color','#EFEFEF'); $('#dat_ii_descripcion_incidente_lt').prop('disabled', true);// 49// 33
-
-                                                        
-                                                            
-                                                                $('#dat_ii_5_comentario').val(paObj[istAud].a.II[0].D_Comentario);
-
-                                                                if(paObj[istAud].a.II[0].D_AnexoACR == 1){$('#dat_ii_acr').prop('checked', true); }else{$('#dat_ii_acr').prop('checked', false);}
-                                                                
-                                                                if(paObj[istAud].a.II[0].D_AnexoLineaTiempo == 1){$('#dat_ii_linea_tiempo').prop('checked', true); }else{$('#dat_ii_linea_tiempo').prop('checked', false);}
-                                                                if(paObj[istAud].a.II[0].D_AnexoFotografia == 1){$('#dat_ii_fotografias').prop('checked', true); }else{$('#dat_ii_fotografias').prop('checked', false);}
-                                                                if(paObj[istAud].a.II[0].D_AnexoReporteOcurrencia == 1){$('#dat_ii_reporte').prop('checked', true); }else{$('#dat_ii_reporte').prop('checked', false);}
-                                                                if(paObj[istAud].a.II[0].D_AnexoEntrevistaAccidentado == 1){$('#dat_ii_entrevista1').prop('checked', true); }else{$('#dat_ii_entrevista1').prop('checked', false);}
-                                                                if(paObj[istAud].a.II[0].D_AnexoEntrevistaTestigo == 1){$('#dat_ii_entrevista2').prop('checked', true); }else{$('#dat_ii_entrevista2').prop('checked', false);}
-                                                                if(paObj[istAud].a.II[0].D_AnexoOtro == 1){$('#dat_ii_otros').prop('checked', true); }else{$('#dat_ii_otros').prop('checked', false);}
-                            
-                                                                $('#dat_ii_otros_text').val(paObj[istAud].a.II[0].D_AnexoOtroTexto);
-                            
-                                                                buscarListadodeInvestigadores();
-
-
-
-
-                                                            console.log("**objeto cargado js**", paObj[istAud].a);
-                                                            $('#titleModalInformeInvestigacion').html("Creación del Informe de Investigación - "+paObj[istAud].a.Code)
-                                                            $('#modalInformeInvestigacion').modal('show').addClass('fade');
-                                                            hideLoading();
-                                                              console.log('24579 aqui mandamos a buscar los hallazgos asignados');//fnSp4BuscarHallazgosAsignados
-                                                            fnSp4BuscarHallazgosAsignados();
-                                                             buscar5porqueIncidente();
-
-                                                                        }
-                                                                        else
-                                                                        {
-                                                                                paObj[istAud].a.II_BD = 2;//NO EXISTE REGSITRO EN BASE DE DATOS
-                                                                                //alert('NOtiene informe de investigacion creado');
-                                                                        }
-                                                            });//-------------------------------------------------------------------------------------------------------------#####
-
-                                                    }//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-                                                    else
-                                                    {//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-                                                        if( paObj[istAud].a.II_BD == 1)//si se fue y existe data
-                                                            {//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-                                                                    //alert('YA SE FUE A LA BASE DE DATOS Y TENEMOS LA DATA CARGADA')
-                                                                    $('#titleModalInformeInvestigacion').html("Creación del Informe de Investigación - "+paObj[istAud].a.Code)
-                                                                    $('#modalInformeInvestigacion').modal('show').addClass('fade');
-                                                            }//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-                                                        else{
-
-                                                            if( paObj[istAud].a.II_BD == 2)//si se fue y existe data
-                                                            {//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-                                                                    //alert('YA SE FUE A LA BASE DE DATOS Y NO HAY DATA')
-                                                            }//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-                                                            }
-                                                        
-
-                                                    }//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-                        } 
-            }//===========================================================================================================================================================*****
-    }
-
-//alert('Grupo = '+paObj[istAud].a.GrupoEvento);
-
-
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function fnSp3onchangeObjetivoSubojetitiv3(si_no, id1, id2, id3)
-{//------------------------------------- ini   fnSp3onchangeNecAnalisis() -------------------------------------
-
-       // if(paObjDG[istAud_DG])
-       // {
-       //  //alert('id2 = '+id2)
-       //  if((id2 == 'rbtn_no_36')&&(paObjDG[istAud_DG].a.InformeInvestigacion == 0)) // o sea esta pasando de quue no hay a que hay
-       //      {
-                
-       //              var f = new Date();
-       //              var m = f.getMonth()+1; if(m < 10){m = '0'+m;}
-       //              var fechaActualg = f.getDate() + "/" + m + "/" + f.getFullYear();
-       //              $('#txtd_f_dg_gv_37').val(fechaActualg);
-       //              $('#txtd_f_dg_gv_38').val(fechaActualg);
-       //              sp4FbTiempoTrascurridoInv();
-       //              //alert("PONIENDO FECHA POR PRIMERA VEZ"+fechaActualg);
-                    
-       //              m = m-1;
-       //              $("#txtd_f_dg_gv_38").datetimepicker({
-       //                                      timepicker:false,
-       //                                      format:'d/m/Y',
-       //                                      minDate: new Date(f.getFullYear(), m, f.getDate(), 8, 30),
-       //                                      maxDate: new Date(2032, 01, 01, 12, 0)
-       //                                      });
-       //                                  //*.......................................... */   
-   
-    
-
-       //      }
-       // }
-        
-
-
-    if(si_no == 'si')//si
-    {
-
-        //rbtn_si
-        //alert('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa = '+ $('#rbtn_si').attr('src'));asas
-        $('#'+id1).attr('src','./images/iconos/aprobarbien.svg');
-        $('#'+id2).attr('src','./images/iconos/aprobarvoid.svg');
-        $('#'+id3).attr('src','./images/iconos/aprobarvoid.svg');
-        objetivo = 1;
-    }
-    else//no
-    {
-        if(si_no == 'no')//si
-        {
-
-                $('#'+id2).attr('src','./images/iconos/aprobarbien.svg');
-                $('#'+id1).attr('src','./images/iconos/aprobarvoid.svg');
-                $('#'+id3).attr('src','./images/iconos/aprobarvoid.svg');
-                objetivo = 0;
-
-        }
-         else//no
-            {
-                if(si_no == 'sino')//si
-                {
-
-                        $('#'+id2).attr('src','./images/iconos/aprobarvoid.svg');
-                        $('#'+id1).attr('src','./images/iconos/aprobarvoid.svg');
-                        $('#'+id3).attr('src','./images/iconos/aprobarbien.svg');
-                        objetivo = 0;
-
-                }
-            }
-    }
-
-}//------------------------------------- fini   fnSp3onchangeNecAnalisis() -------------------------------------
-
-
-
-function fnGuardarInformeInvestigacion()
-{//------------------------------------- ini   fnGuardarInformeInvestigacion() -------------------------------------
-
-    //alert('id ='+istAud);
-    var marca = 0;
-
-    console.log("---------------------------------------------------------------------------------------------------------")
-         // if($('#sel_f_dg_gv_1k').val() == 0){marca = 1;}
-         // if($('#txtd_f_dg_gv_4k').val() == ''){marca = 1;}
-
-     
-
-
-
-      
-
-
-         //------------------ aqui valiamos si no existe algun miembro del equipod e investigacion --------------------
-
-
-                                 
-    console.log("---------------------------------------------------------------------------------------------------------")
-
-
-     if((paObj[istAud].a.GrupoEvento == 1)||(paObj[istAud].a.GrupoEvento == 3))
-       {//----------------------------- de datos personales ------------------------
-         if($('#dat_ii_nombre_uo').val() == 0){marca = 1;}
-         if($('#dat_ii_direccion_uo').val() == ''){marca = 1;}
-         if($('#dat_ii_nombre_aseguradora').val() == ''){marca = 1;}
-         if($('#dat_ii_nombre_empresa_tercero').val() == ''){marca = 1;}//pendiente con esto
-
-
-
-         if($('#dat_ii_nombre_apellido_hidden').val() == ''){marca = 1;}
-         if($('#dat_ii_dni').val() == ''){marca = 1;}
-         if($('#dat_ii_edad').val() == ''){marca = 1;}
-         if($('#dat_ii_sexo').val() == ''){marca = 1;}
-
-         if($('#dat_ii_area_trabajo').val() == 0){marca = 1;}
-         if($('#dat_ii_antiguedad_empresa').val() == ''){marca = 1;}
-         if($('#dat_ii_experiencia_puesto').val() == ''){marca = 1;}
-         if($('#dat_ii_tipo_contrato').val() == 0){marca = 1;}
-         if($('#dat_ii_turno_trabajo').val() == 0){marca = 1;}
-         if($('#dat_ii_horas_trabajo_jornada').val() == ''){marca = 1;}
-         if($('#dat_ii_nombre_jefe_inmediato__hidden').val() == ''){marca = 1;}
-       }//----------------------------- de datos personales ------------------------
-
-      if(paObj[istAud].a.GrupoEvento == 2)
-       {//----------------------------- de datos ambientales ------------------------
-                    //-------------------solo si es dato ambiental----------------
-             if($('#dat_ii_producto_involucrado').val() == 0){marca = 1;}
-             if($('#dat_ii_volumen_m3').val() == ''){marca = 1;}
-
-             if($('#dat_ii_zona_afectada').val() == ''){marca = 1;}
-
-
-             if($('#dat_ii_ext_area_afectada').val() == ''){marca = 1;}
-
-             if($('#dat_ii_medidas_emergencia').val() == ''){marca = 1;}
-
-             if($('#dat_ii_se_genero_residuos').val() == ''){marca = 1;}
-
-             if($('#dat_ii_describe_perdida').val() == ''){marca = 1;}
-
-             if($('#dat_ii_observacioness').val() == ''){marca = 1;}
-
-
-
-
-
-             if($('#dat_ii_tipo_incidente').val() == 0){marca = 1;}
-
-             if($('#dat_ii_nivel_severidad').val() == 0){marca = 1;}
-
-             if($('#dat_ii_gerencia').val() == 0){marca = 1;}
-
-
-             if($('#dat_ii_lugar_eventox').val() == ''){marca = 1;}
-
-             if($('#dat_ii_fecha').val() == ''){marca = 1;}
-
-
-             if($('#dat_ii_hora').val() == ''){marca = 1;}
-
-             if($('#dat_ii_n_dias_descanzox').val() == ''){marca = 1;}
-
-             if($('#dat_ii_fecha_ini_inv').val() == ''){marca = 1;}
-
-             if($('#dat_ii_fecha_informe').val() == ''){marca = 1;}
-
-             if($('#dat_ii_responsable_area').val() == ''){marca = 1;}
-
-             if($('#txtd_k').val() == ''){marca = 1;}
-
-             if($('#dat_ii_involucrados').val() == 0){marca = 1;}
-
-             if($('#dat_ii_descripcion_lugar_exacto').val() == ''){marca = 1;}
-
-             if($('#dat_ii_3_mox_trabajadores').val() == ''){marca = 1;}
-
-             if($('#dat_ii_descripcion_incidente_lt').val() == ''){marca = 1;}
-       }//----------------------------- de datos ambientales ------------------------
-
-
-
-
-   if(marca == 1)
-    {
-        verModalError("Datos Generales","Debe completar los Datos Obligatorios <a style='color:red'>*</a>");
-    }
-    else
-    {
-         if(vkk[istAud] == 0)
-           {
-               verModalError("Datos Generales","Debe agregar el equipo investigador <a style='color:red'>*</a>");
-           }
-        else
-           {
-               $('#modalInformeInvestigacion').modal('hide').removeClass('fade');
-               $('#Sp3VentanaGuardarInforme').modal('show').addClass('fade');
-           }
-
-
-        
-    }
-    
-
-    
-}//------------------------------------- fini   fnGuardarInformeInvestigacion() -------------------------------------
-
-
-
-
-var AccionBD_II = 1;
-
-function sp4FnConfirmarGuardarInformeInvestigacion(finn)
-{//------------------------------------- ini   sp4FnConfirmarGuardarInformeInvestigacion() -------------------------------------
-
-    //alert('id ='+istAud);
-
-    // $('#Sp3VentanaGuardarInforme').modal('hide').removeClass('fade');
-
-    // $('#Sp3VentanaBDGuardarOkII').modal('show').addClass('fade');
-    
-
-      //alert(paObj[istAud].a.II[0].Id);
-
-      if(paObj[istAud].a.GrupoEvento == 1)
-            {//----------------------------- de datos personales ------------------------
-                  
-                            if(AccionBD_II == 1)
-                                {//========================================================================================================================== UPDATE DB =============================
-
-                                    // $('#btnConfirmarEvidenciaIncidenteHallazgoWebDG').html('Guardando..');
-                                    // $('#btnConfirmarEvidenciaIncidenteHallazgoWebDG').prop('disabled',true);
-
-                                    $("#btnConfirmarInformeInvestigacion").html("<b>Guardando..</b>")
-                                    $("#btnConfirmarInformeInvestigacion").attr("disabled",true);
-
-                                    $('#btnCancelarGuardarInformeInvestigacion').attr("disabled",true);
-
-                                      var Code = paObj[istAud].a.Code;   
-                                      var A_Nombre_UO_Sede = $('#dat_ii_nombre_uo').val();
-                                      var A_Direccion_UO  = $('#dat_ii_direccion_uo').val();      
-                                      var A_Total_Trabajadores  = $('#dat_ii_n_total_trabajador').val(); 
-                                      var A_No_Personal_SCTR  = $('#dat_ii_n_personal_con_str').val(); 
-                                      var A_No_Personal_No_Afiliado_SCTR  = $('#dat_ii_n_personal_no_fil_str').val(); 
-                                      var A_Nombre_Aseguradora        = $('#dat_ii_nombre_aseguradora').val(); 
-                                      var A1_Nombre_Empresa_Tercero        = $('#dat_ii_nombre_empresa_tercero').val(); 
-                                      var A1_Tipo_Actividad_Economica        = $('#dat_ii_tipo_actividad_economica').val(); 
-                                      var A1_Ruc        = $('#dat_ii_ruc').val(); 
-                                      var A1_Direccion_Empresa_Tercero        = $('#dat_ii_desc_empresa_tercero').val(); 
-                                      var A1_No_Total_Trabajadores  = $('#dat_ii_n_total_trabajadores').val(); 
-                                      var A1_No_personal_SCTR  = $('#dat_ii_n_personal_con_sctr').val(); 
-                                      var A1_No_Personal_No_Afiliado_SCTR  = $('#dat_ii_n_personal_no_afiliado_sctr').val(); 
-                                      var A1_Nombre_Aseguradora        = $('#dat_ii_nombre_aseguradora2').val(); 
-                                      var B_User_Id_Hash        = $('#dat_ii_nombre_apellido_hidden').val(); 
-                                      var B_Nombre_Trabajador        = $('#dat_ii_nombre_apellido').val(); 
-                                      var B_DNI_Trabjador  = $('#dat_ii_dni').val(); 
-                                      var B_Edad_Trabajador  = $('#dat_ii_edad').val(); 
-                                      var B_Sexo_Trabajador  = $('#dat_ii_sexo').val(); 
-
-
-                                      var B_Antiguedad_Empresa  = $('#dat_ii_antiguedad_empresa').val(); 
-                                      var B_Tiempo_Experiencia_Cargo  = $('#dat_ii_experiencia_puesto').val(); 
-                                      var B_Tipo_Contacto  = $('#dat_ii_tipo_contrato').val(); 
-                                      var B_Turno_Trabajo  = $('#dat_ii_turno_trabajo').val(); 
-                                      var B_Horas_Trabajadas_Jornada  = $('#dat_ii_horas_trabajo_jornada').val(); 
-                                      var B_Id_Hash_Jefe_Inmediato        = $('#dat_ii_nombre_jefe_inmediato__hidden').val(); 
-                                      var B_Nombre_Jefe_Inmediato        = $('#dat_ii_nombre_jefe_inmediato').val(); 
-                                      var C_Producto_Involucrado  = $('#dat_ii_producto_involucrado').val(); 
-                                      var C_Volumen_M3  = $('#dat_ii_volumen_m3').val(); 
-                                      var C_Zona        = $('#dat_ii_zona_afectada').val(); 
-                                      var C_Extension_Area_M2  = $('#dat_ii_ext_area_afectada').val(); 
-
-
-                                        var D_Comentario                  = $('#dat_ii_5_comentario').val();               
-                                         if($('#dat_ii_acr').prop('checked')          == true){D_AnexoACR = 1;}else{D_AnexoACR = 0;}              
-                                         if($('#dat_ii_linea_tiempo').prop('checked') == true){D_AnexoLineaTiempo = 1;}else{D_AnexoLineaTiempo = 0;}               
-                                         if($('#dat_ii_fotografias').prop('checked')  == true){D_AnexoFotografia = 1;}else{D_AnexoFotografia = 0;}               
-                                         if($('#dat_ii_reporte').prop('checked')      == true){D_AnexoReporteOcurrencia = 1;}else{D_AnexoReporteOcurrencia = 0;}               
-                                         if($('#dat_ii_entrevista1').prop('checked')  == true){D_AnexoEntrevistaAccidentado = 1;}else{D_AnexoEntrevistaAccidentado = 0;}               
-                                         if($('#dat_ii_entrevista2').prop('checked')  == true){D_AnexoEntrevistaTestigo = 1;}else{D_AnexoEntrevistaTestigo = 0;}               
-                                         if($('#dat_ii_otros').prop('checked')        == true){D_AnexoOtro  = 1;}else{D_AnexoOtro =0;}               
-                                        var D_AnexoOtroTexto              = $('#dat_ii_otros_text').val(); 
-
-
-
-
-
-
-                                    
-
-                                      var C_Afectacion_A; 
-                                      if($('#rbtn_sii_8').attr('src') == './images/iconos/aprobarbien.svg'){C_Afectacion_A = 1}else{C_Afectacion_A = 0}//1   otra empresa
-                                      if($('#rbtn_noi_9').attr('src') == './images/iconos/aprobarbien.svg'){C_Afectacion_A = 2}else{C_Afectacion_A = 0}//1   otra empresa
-                                      if($('#rbtn_noi_10').attr('src') == './images/iconos/aprobarbien.svg'){C_Afectacion_A = 3}else{C_Afectacion_A = 0}//1   otra empresa
-
-
-
-                                      var C_Operando_Normal; 
-                                           if($('#rbtn_siii_8').attr('src') == './images/iconos/aprobarbien.svg'){C_Operando_Normal = 1}else{C_Operando_Normal = 0}//1   otra empresa
-                                           if($('#rbtn_noii_9').attr('src') == './images/iconos/aprobarbien.svg'){C_Operando_Normal = 2}else{C_Operando_Normal = 0}//1   otra empresa
-
-
-                                      var C_Comunicdo_Fiscalizador; //rbtn_siiix_8
-                                           if($('#rbtn_siiix_8').attr('src') == './images/iconos/aprobarbien.svg'){C_Comunicdo_Fiscalizador = 1}else{C_Comunicdo_Fiscalizador = 0}//1   otra empresa
-                                           if($('#rbtn_noiix_9').attr('src') == './images/iconos/aprobarbien.svg'){C_Comunicdo_Fiscalizador = 2}else{C_Comunicdo_Fiscalizador = 0}//1   otra empresa
-
-
-
-
-                                      var C_Medidas_Emergencia        = $('#dat_ii_medidas_emergencia').val(); 
-
-                                      var C_Residuos_Limpieza        = $('#dat_ii_se_genero_residuos').val(); 
-
-                                      var C_Accidente_Reicidente;
-                                           if($('#rbtn_sihy_8').attr('src') == './images/iconos/aprobarbien.svg'){C_Accidente_Reicidente = 1}else{C_Accidente_Reicidente = 0}//1   otra empresa
-                                           if($('#rbtn_nohy_9').attr('src') == './images/iconos/aprobarbien.svg'){C_Accidente_Reicidente = 2}else{C_Accidente_Reicidente = 0}//1   otra empresa
-
-                                      
-                                      var C1_Tipo_Accidente  = $('#dat_ii_tipo_incidente').val(); 
-                                      var C1_Nivel_Severidad  = $('#dat_ii_nivel_severidad').val(); 
-                                      var C1_Nivel_Severidad2  = $('#dat_ii_nivel_severidad').val(); 
-                                      var C1_Gerencia  = $('#dat_ii_gerencia').val(); 
-                                      var C1_Lugar_Evento        = $('#dat_ii_lugar_eventox').val(); 
-                                      var C1_Fecha_Evento  = $('#dat_ii_fecha').val(); 
-                                      var C1_Hora_Evento  = $('#dat_ii_hora').val(); 
-
-
-
-                                      var C1_N_Dias_Descanzo  = $('#dat_ii_n_dias_descanzox').val(); 
-                                      var C1_Fecha_Ini_Investigacion  = $('#dat_ii_fecha_ini_inv').val(); 
-                                      var C1_Fecha_Informe  = $('#dat_ii_fecha_informe').val(); 
-                                      var C1_Id_Hash_Responsable_Area        = $('#dat_ii_responsable_area_hidden').val(); 
-                                      var C1_Nombre_Responsable_Area        = $('#dat_ii_responsable_area').val(); 
-                                      var C1_Involucrados  = $('#dat_ii_involucrados').val(); 
-                                      var C1_Descripcion_Exacta_Lugar        = $('#dat_ii_descripcion_lugar_exacto').val(); 
-                                      var C1_Descripcion_Exacta        = $('#dat_ii_descripcion_lugar_exacto').val(); 
-                                      var C1_No_Trabajadores_Afectados  = $('#dat_ii_3_mox_trabajadores').val(); 
-                                      var C1_No_Pobladores_Afectados  = $('#dat_ii_3_mox_pobladores_pa').val(); 
-                                      var C1_Descripcion_Incidente_All         = $('#dat_ii_descripcion_incidente_lt').val(); 
-                                      var Accidente_Incidente_Id  = istAud; 
-                                      var C_Descripcion_Perdida_Materiales        = $('#dat_ii_describe_perdida').val(); 
-                                      var C_Observaciones        = $('#dat_ii_observacioness').val(); 
-                                      var C1_Clasificacion_Incapacidad  = $('#dat_ii_incapacidad').val(); 
-
-
-
-
-
-
-                                        C1_Fecha_Evento = "2021-07-21";
-                                        C1_Fecha_Informe = "2021-07-21"; 
-                                        C1_Fecha_Ini_Investigacion = "2021-07-21";
-
-
-                                        C1_Gerencia = 0;
-                                        C1_Hora_Evento = "09:01:24.0000000";
-                                       
-                                        C1_Involucrados = 0;
-                                       
-                                        C1_N_Dias_Descanzo = 0;
-                                        C1_Nivel_Severidad = 0;
-                                        C1_No_Pobladores_Afectados= 0;
-                                        C1_No_Trabajadores_Afectados= 0;
-                                        C1_Nombre_Responsable_Area: "N/A"
-                                        C1_Tipo_Accidente= 0;
-                                        C_Accidente_Reicidente= 0;
-                                        C_Afectacion_A= 0;
-                                        C_Comunicdo_Fiscalizador= 0;
-                                       
-                                        C_Extension_Area_M2= 0;
-                                   
-                                        C_Volumen_M3 =0;
-                                        C_Operando_Normal= 0;
-                                        C_Producto_Involucrado= 0;
-                                      
-                                       C1_Clasificacion_Incapacidad = 0;
-                                        C_Zona= 0;
-                                       C1_Nivel_Severidad2 = '';
-                                       
-                                         var AccionBD;
-                                         if(finn == 3){AccionBD = 3;}else{AccionBD = 1;}
-
-                                           //alert('AccionBD  = '+AccionBD);
-                                      var body_ii = {
-                                                    //*****************************DATOS GENERALES******************txta_f_dg_gv_21
-                                                  
-
-                                                        "Id1":paObj[istAud].a.II[0].Id,
-                                                        "AccionBD":AccionBD,
-                                                        "Code": Code,
-                                                        "A_Nombre_UO_Sede": A_Nombre_UO_Sede,
-                                                        "A_Direccion_UO": A_Direccion_UO ,
-                                                        "A_Total_Trabajadores": A_Total_Trabajadores,
-                                                        "A_No_Personal_SCTR": A_No_Personal_SCTR,
-                                                        "A_No_Personal_No_Afiliado_SCTR": A_No_Personal_No_Afiliado_SCTR,
-                                                        "A_Nombre_Aseguradora": A_Nombre_Aseguradora ,
-                                                        "A1_Nombre_Empresa_Tercero": A1_Nombre_Empresa_Tercero ,
-                                                        "A1_Tipo_Actividad_Economica": A1_Tipo_Actividad_Economica ,
-                                                        "A1_Ruc": A1_Ruc ,
-                                                        "A1_Direccion_Empresa_Tercero": A1_Direccion_Empresa_Tercero ,
-                                                        "A1_No_Total_Trabajadores": A1_No_Total_Trabajadores,
-                                                        "A1_No_personal_SCTR": A1_No_personal_SCTR,
-                                                        "A1_No_Personal_No_Afiliado_SCTR": A1_No_Personal_No_Afiliado_SCTR,
-                                                        "A1_Nombre_Aseguradora": A1_Nombre_Aseguradora ,
-                                                        "B_User_Id_Hash": B_User_Id_Hash ,
-                                                        "B_Nombre_Trabajador": B_Nombre_Trabajador ,
-                                                        "B_DNI_Trabjador": B_DNI_Trabjador,
-                                                        "B_Edad_Trabajador": B_Edad_Trabajador,
-                                                        "B_Sexo_Trabajador": B_Sexo_Trabajador,
-                                                        "B_Antiguedad_Empresa": B_Antiguedad_Empresa,
-                                                        "B_Tiempo_Experiencia_Cargo": B_Tiempo_Experiencia_Cargo,
-                                                        "B_Tipo_Contacto": B_Tipo_Contacto,
-                                                        "B_Turno_Trabajo": B_Turno_Trabajo,
-                                                        "B_Horas_Trabajadas_Jornada": B_Horas_Trabajadas_Jornada,
-                                                        "B_Id_Hash_Jefe_Inmediato": B_Id_Hash_Jefe_Inmediato ,
-                                                        "B_Nombre_Jefe_Inmediato": B_Nombre_Jefe_Inmediato ,
-                                                        "C_Producto_Involucrado": C_Producto_Involucrado,
-                                                        "C_Volumen_M3": C_Volumen_M3,
-                                                        "C_Zona": C_Zona ,
-                                                        "C_Extension_Area_M2": C_Extension_Area_M2,
-                                                        "C_Afectacion_A": C_Afectacion_A,
-                                                        "C_Operando_Normal": C_Operando_Normal,
-                                                        "C_Comunicdo_Fiscalizador": C_Comunicdo_Fiscalizador,
-                                                        "C_Medidas_Emergencia": C_Medidas_Emergencia ,
-                                                        "C_Residuos_Limpieza": C_Residuos_Limpieza ,
-                                                        "C_Accidente_Reicidente": C_Accidente_Reicidente,
-                                                        "C1_Tipo_Accidente": C1_Tipo_Accidente,
-                                                        "C1_Nivel_Severidad": C1_Nivel_Severidad,
-                                                        "C1_Gerencia": C1_Gerencia,
-                                                        "C1_Lugar_Evento": C1_Lugar_Evento ,
-                                                        "C1_Fecha_Evento": C1_Fecha_Evento,
-                                                        "C1_Hora_Evento": C1_Hora_Evento,
-                                                        "C1_N_Dias_Descanzo": C1_N_Dias_Descanzo,
-                                                        "C1_Fecha_Ini_Investigacion": C1_Fecha_Ini_Investigacion,
-                                                        "C1_Fecha_Informe": C1_Fecha_Informe,
-                                                        "C1_Id_Hash_Responsable_Area": C1_Id_Hash_Responsable_Area ,
-                                                        "C1_Nombre_Responsable_Area": C1_Nombre_Responsable_Area ,
-                                                        "C1_Involucrados": C1_Involucrados,
-                                                        "C1_Descripcion_Exacta_Lugar": C1_Descripcion_Exacta_Lugar ,
-                                                        "C1_Descripcion_Exacta": C1_Descripcion_Exacta ,
-                                                        "C1_No_Trabajadores_Afectados": C1_No_Trabajadores_Afectados,
-                                                        "C1_No_Pobladores_Afectados": C1_No_Pobladores_Afectados,
-                                                        "C1_Descripcion_Incidente_All": C1_Descripcion_Incidente_All  ,
-                                                        "Accidente_Incidente_Id": Accidente_Incidente_Id,
-                                                        "C_Descripcion_Perdida_Materiales": C_Descripcion_Perdida_Materiales ,
-                                                        "C_Observaciones": C_Observaciones ,
-                                                        "C1_Clasificacion_Incapacidad":  C1_Clasificacion_Incapacidad ,
-                                                        "C1_Nivel_Severidad2": C1_Nivel_Severidad2,
-
-                                                        "D_Comentario":D_Comentario,                
-                                                        "D_AnexoACR":D_AnexoACR,                
-                                                        "D_AnexoLineaTiempo":D_AnexoLineaTiempo,                
-                                                        "D_AnexoFotografia":D_AnexoFotografia,                
-                                                        "D_AnexoReporteOcurrencia":D_AnexoReporteOcurrencia,                
-                                                        "D_AnexoEntrevistaAccidentado":D_AnexoEntrevistaAccidentado,                
-                                                        "D_AnexoEntrevistaTestigo":D_AnexoEntrevistaTestigo,                
-                                                        "D_AnexoOtro":D_AnexoOtro,                
-                                                        "D_AnexoOtroTexto":D_AnexoOtroTexto
-
-                                                }    
-
-                                             //var url = apiUrlssoma+"/api/Post-DatosGeneralesIncidenteWeb?code=reQdAhVl9k1IQ0BcN4fOjHiwoMxeanCYIk8xl0xSvvsq/RDDI8Yw4A==&httpmethod=put";
-                                             var url = apiUrlssoma+"/api/Post-InformeInvestigacion-Incidente?code=GSdKVMRD/MCaN7CnirKPtMaoWBRarLKBDtGU9Gd0iljNzSZewQxO6g==&httpmethod=post";
-
-                                            var headers ={
-                                                           "apikey":constantes.apiKey
-                                                         }
-
-
-                                              console.log("===============================================================================================================");
-                                                     console.log("DATA INSERT=",body_ii);
-                                              console.log("===============================================================================================================");
-                                            
-                                             $.ajax({
-                                                method: "POST",
-                                                url:  url,
-                                                data: JSON.stringify(body_ii),
-                                                headers:headers,
-                                                crossDomain: true,
-                                                dataType: "json",
-                                            })
-
-
-                                              .done(function(data)
-                                            {
-                                                console.info("dataUpdate*****______________________________________________******* = ",data)
-                                                 // resultado Exitoso
-
-                                                 //alert(data.Id)
-                                                if(data.Id>0)
-                                                {
-
-                                                         
-                                                          $("#btnConfirmarInformeInvestigacion").html("<b>Confirmar</b>")
-                                                          $("#btnConfirmarInformeInvestigacion").attr("disabled",false);
-                                                          $('#btnCancelarGuardarInformeInvestigacion').attr("disabled",false);
-
-                                                          $('#Sp3VentanaBDGuardarOkII').modal('show').addClass('fade');
-                                                          $('#Sp3VentanaGuardarInforme').modal('hide').removeClass('fade');//Sp3VentanaFinalizarInforme
-
-
-                                                          $('#Sp3VentanaFinalizarInforme').modal('hide').removeClass('fade');
-
-
-                                                      //ojo hay que recargar la data del dato general desde el servidor, sera no c analizar
-                                     
-                                                    
-                                                }else
-                                                {
-                                                    verModalError("Informe de Investigación","No se pudieron guardar los Datos")//+data.Descripcion)
-                                                }
-                                            })
-
-
-                                }//========================================================================================================================== UPDATE DB =============================
-            }//----------------------------- de datos personales ------------------------
-      else
-           {//---------------------------- datos ambientales ----------------------------
-
-                if(paObj[istAud].a.GrupoEvento == 2)
-               {//----------------------------- s ------------------------
-                  
-                            if(AccionBD_II == 1)
-                                {//========================================================================================================================== UPDATE DB =============================
-
-                                    // $('#btnConfirmarEvidenciaIncidenteHallazgoWebDG').html('Guardando..');
-                                    // $('#btnConfirmarEvidenciaIncidenteHallazgoWebDG').prop('disabled',true);
-
-                                    $("#btnConfirmarInformeInvestigacion").html("<b>Guardando..</b>")
-                                    $("#btnConfirmarInformeInvestigacion").attr("disabled",true);
-
-                                    $('#btnCancelarGuardarInformeInvestigacion').attr("disabled",true);
-
-                                      var Code = paObj[istAud].a.Code;   
-                                      var A_Nombre_UO_Sede = $('#dat_ii_nombre_uo').val();
-                                      var A_Direccion_UO  = $('#dat_ii_direccion_uo').val();      
-                                      var A_Total_Trabajadores  = $('#dat_ii_n_total_trabajador').val(); 
-                                      var A_No_Personal_SCTR  = $('#dat_ii_n_personal_con_str').val(); 
-                                      var A_No_Personal_No_Afiliado_SCTR  = $('#dat_ii_n_personal_no_fil_str').val(); 
-                                      var A_Nombre_Aseguradora        = $('#dat_ii_nombre_aseguradora').val(); 
-                                      var A1_Nombre_Empresa_Tercero        = $('#dat_ii_nombre_empresa_tercero').val(); 
-                                      var A1_Tipo_Actividad_Economica        = $('#dat_ii_tipo_actividad_economica').val(); 
-                                      var A1_Ruc        = $('#dat_ii_ruc').val(); 
-                                      var A1_Direccion_Empresa_Tercero        = $('#dat_ii_desc_empresa_tercero').val(); 
-                                      var A1_No_Total_Trabajadores  = $('#dat_ii_n_total_trabajadores').val(); 
-                                      var A1_No_personal_SCTR  = $('#dat_ii_n_personal_con_sctr').val(); 
-                                      var A1_No_Personal_No_Afiliado_SCTR  = $('#dat_ii_n_personal_no_afiliado_sctr').val(); 
-                                      var A1_Nombre_Aseguradora        = $('#dat_ii_nombre_aseguradora2').val(); 
-                                      var B_User_Id_Hash        = $('#dat_ii_nombre_apellido_hidden').val(); 
-
-                                      var B_Nombre_Trabajador        = $('#dat_ii_nombre_apellido').val(); 
-                                      var B_DNI_Trabjador  = $('#dat_ii_dni').val(); 
-                                      var B_Edad_Trabajador  = $('#dat_ii_edad').val(); 
-                                      var B_Sexo_Trabajador  = $('#dat_ii_sexo').val(); 
-
-
-                                      var B_Antiguedad_Empresa  = $('#dat_ii_antiguedad_empresa').val(); 
-                                      var B_Tiempo_Experiencia_Cargo  = $('#dat_ii_experiencia_puesto').val(); 
-                                      var B_Tipo_Contacto  = $('#dat_ii_tipo_contrato').val(); 
-                                      var B_Turno_Trabajo  = $('#dat_ii_turno_trabajo').val(); 
-                                      var B_Horas_Trabajadas_Jornada  = $('#dat_ii_horas_trabajo_jornada').val(); 
-                                      var B_Id_Hash_Jefe_Inmediato        = $('#dat_ii_nombre_jefe_inmediato__hidden').val(); 
-                                      var B_Nombre_Jefe_Inmediato        = $('#dat_ii_nombre_jefe_inmediato').val(); 
-                                      var C_Producto_Involucrado  = $('#dat_ii_producto_involucrado').val(); 
-                                      var C_Volumen_M3  = $('#dat_ii_volumen_m3').val(); 
-                                      var C_Zona        = $('#dat_ii_zona_afectada').val(); 
-                                      var C_Extension_Area_M2  = $('#dat_ii_ext_area_afectada').val(); 
-
-
-                                    
-
-                                      var C_Afectacion_A; 
-                                      if($('#rbtn_sii_8').attr('src') == './images/iconos/aprobarbien.svg'){C_Afectacion_A = 1}else{C_Afectacion_A = 0}//1   otra empresa
-                                      if($('#rbtn_noi_9').attr('src') == './images/iconos/aprobarbien.svg'){C_Afectacion_A = 2}else{C_Afectacion_A = 0}//1   otra empresa
-                                      if($('#rbtn_noi_10').attr('src') == './images/iconos/aprobarbien.svg'){C_Afectacion_A = 3}else{C_Afectacion_A = 0}//1   otra empresa
-
-
-
-                                      var C_Operando_Normal; 
-                                           if($('#rbtn_siii_8').attr('src') == './images/iconos/aprobarbien.svg'){C_Operando_Normal = 1}else{C_Operando_Normal = 0}//1   otra empresa
-                                           if($('#rbtn_noii_9').attr('src') == './images/iconos/aprobarbien.svg'){C_Operando_Normal = 2}else{C_Operando_Normal = 0}//1   otra empresa
-
-
-                                      var C_Comunicdo_Fiscalizador; //rbtn_siiix_8
-                                           if($('#rbtn_siiix_8').attr('src') == './images/iconos/aprobarbien.svg'){C_Comunicdo_Fiscalizador = 1}else{C_Comunicdo_Fiscalizador = 0}//1   otra empresa
-                                           if($('#rbtn_noiix_9').attr('src') == './images/iconos/aprobarbien.svg'){C_Comunicdo_Fiscalizador = 2}else{C_Comunicdo_Fiscalizador = 0}//1   otra empresa
-
-
-
-
-                                      var C_Medidas_Emergencia        = $('#dat_ii_medidas_emergencia').val(); 
-
-                                      var C_Residuos_Limpieza        = $('#dat_ii_se_genero_residuos').val(); 
-
-                                      var C_Accidente_Reicidente;
-                                           if($('#rbtn_sihy_8').attr('src') == './images/iconos/aprobarbien.svg'){C_Accidente_Reicidente = 1}else{C_Accidente_Reicidente = 0}//1   otra empresa
-                                           if($('#rbtn_nohy_9').attr('src') == './images/iconos/aprobarbien.svg'){C_Accidente_Reicidente = 2}else{C_Accidente_Reicidente = 0}//1   otra empresa
-
-                                      
-                                      var C1_Tipo_Accidente  = $('#dat_ii_tipo_incidente').val(); 
-                                      
-                                      var C1_Gerencia  = $('#dat_ii_gerencia').val(); 
-                                      var C1_Lugar_Evento        = $('#dat_ii_lugar_eventox').val(); 
-
-                                      var C1_Fecha_Evento  = $('#dat_ii_fecha').val(); 
-                                            var fx = $('#dat_ii_fecha').val(); fx = fx.toString();
-                                            var f1  =  fx.split('/'); f1 = f1[2]+'-'+f1[1]+'-'+f1[0];  f1 = f1.toString();  C1_Fecha_Evento = f1;
-
-                                      var C1_Hora_Evento  = $('#dat_ii_hora').val(); 
-
-
-
-                                      var C1_N_Dias_Descanzo  = $('#dat_ii_n_dias_descanzox').val(); 
-                                      var C1_Fecha_Ini_Investigacion  = $('#dat_ii_fecha_ini_inv').val(); 
-                                            var fx = $('#dat_ii_fecha_ini_inv').val(); fx = fx.toString();
-                                            var f1  =  fx.split('/'); f1 = f1[2]+'-'+f1[1]+'-'+f1[0];  f1 = f1.toString();  C1_Fecha_Ini_Investigacion = f1;
-
-                                      var C1_Fecha_Informe  = $('#dat_ii_fecha_informe').val(); 
-                                             var fx = $('#dat_ii_fecha_informe').val(); fx = fx.toString();
-                                             var f1  =  fx.split('/'); f1 = f1[2]+'-'+f1[1]+'-'+f1[0];  f1 = f1.toString();  C1_Fecha_Informe = f1;
-
-
-                                      var C1_Id_Hash_Responsable_Area        = $('#dat_ii_responsable_area_hidden').val(); 
-                                      var C1_Nombre_Responsable_Area        = $('#dat_ii_responsable_area').val(); 
-                                      var C1_Involucrados  = $('#dat_ii_involucrados').val(); 
-                                      var C1_Descripcion_Exacta_Lugar        = $('#dat_ii_descripcion_lugar_exacto').val(); 
-                                      var C1_Descripcion_Exacta        = $('#dat_ii_descripcion_lugar_exacto').val(); 
-                                      var C1_No_Trabajadores_Afectados  = $('#dat_ii_3_mox_trabajadores').val(); 
-                                      var C1_No_Pobladores_Afectados  = $('#dat_ii_3_mox_pobladores_pa').val(); 
-                                      var C1_Descripcion_Incidente_All         = $('#dat_ii_descripcion_incidente_lt').val(); 
-                                      var Accidente_Incidente_Id  = istAud; 
-                                      var C_Descripcion_Perdida_Materiales        = $('#dat_ii_describe_perdida').val(); 
-                                      var C_Observaciones        = $('#dat_ii_observacioness').val(); 
-                                      var C1_Clasificacion_Incapacidad  = $('#dat_ii_incapacidad').val(); 
-                                      var C1_Nivel_Severidad2  = $('#dat_ii_nivel_severidad').val(); 
-
-
-
-
-                                      var B_Nombre_Trabajador        = ""; 
-                                      var B_DNI_Trabjador  = 0 
-                                      var B_Edad_Trabajador  = 0;
-                                      var B_Sexo_Trabajador  = 0; 
-
-
-                                      var B_Antiguedad_Empresa  = 0; 
-                                      var B_Tiempo_Experiencia_Cargo  = 0; 
-                                      var B_Tipo_Contacto  = 0 
-                                      var B_Turno_Trabajo  = 0 
-                                      var B_Horas_Trabajadas_Jornada  = 0; 
-                                      var B_Id_Hash_Jefe_Inmediato        = ""; 
-                                      var B_Nombre_Jefe_Inmediato        = ""; 
-                                      var C1_Nivel_Severidad  = 0; 
-
-
-                                     var D_Comentario                  = $('#dat_ii_5_comentario').val();               
-                                         if($('#dat_ii_acr').prop('checked')          == true){D_AnexoACR = 1;}else{D_AnexoACR = 0;}              
-                                         if($('#dat_ii_linea_tiempo').prop('checked') == true){D_AnexoLineaTiempo = 1;}else{D_AnexoLineaTiempo = 0;}               
-                                         if($('#dat_ii_fotografias').prop('checked')  == true){D_AnexoFotografia = 1;}else{D_AnexoFotografia = 0;}               
-                                         if($('#dat_ii_reporte').prop('checked')      == true){D_AnexoReporteOcurrencia = 1;}else{D_AnexoReporteOcurrencia = 0;}               
-                                         if($('#dat_ii_entrevista1').prop('checked')  == true){D_AnexoEntrevistaAccidentado = 1;}else{D_AnexoEntrevistaAccidentado = 0;}               
-                                         if($('#dat_ii_entrevista2').prop('checked')  == true){D_AnexoEntrevistaTestigo = 1;}else{D_AnexoEntrevistaTestigo = 0;}               
-                                         if($('#dat_ii_otros').prop('checked')        == true){D_AnexoOtro  = 1;}else{D_AnexoOtro =0;}               
-                                        var D_AnexoOtroTexto              = $('#dat_ii_otros_text').val(); 
-
-
-                                     //alert('afectacion_a::'+C_Afectacion_A);
-
-                                         var AccionBD;
-                                         if(finn == 3){AccionBD = 3;}else{AccionBD = 1;}
-
-
-                                      var body_ii = {
-                                                    //*****************************DATOS GENERALES******************txta_f_dg_gv_21
-                                                  
-
-                                                        "Id1":paObj[istAud].a.II[0].Id,
-                                                        "AccionBD":AccionBD,
-                                                        "Code": Code,
-                                                        "A_Nombre_UO_Sede": A_Nombre_UO_Sede,
-                                                        "A_Direccion_UO": A_Direccion_UO ,
-                                                        "A_Total_Trabajadores": A_Total_Trabajadores,
-                                                        "A_No_Personal_SCTR": A_No_Personal_SCTR,
-                                                        "A_No_Personal_No_Afiliado_SCTR": A_No_Personal_No_Afiliado_SCTR,
-                                                        "A_Nombre_Aseguradora": A_Nombre_Aseguradora ,
-                                                        "A1_Nombre_Empresa_Tercero": A1_Nombre_Empresa_Tercero ,
-                                                        "A1_Tipo_Actividad_Economica": A1_Tipo_Actividad_Economica ,
-                                                        "A1_Ruc": A1_Ruc ,
-                                                        "A1_Direccion_Empresa_Tercero": A1_Direccion_Empresa_Tercero ,
-                                                        "A1_No_Total_Trabajadores": A1_No_Total_Trabajadores,
-                                                        "A1_No_personal_SCTR": A1_No_personal_SCTR,
-                                                        "A1_No_Personal_No_Afiliado_SCTR": A1_No_Personal_No_Afiliado_SCTR,
-                                                        "A1_Nombre_Aseguradora": A1_Nombre_Aseguradora ,
-                                                        "B_User_Id_Hash": B_User_Id_Hash ,
-                                                        "B_Nombre_Trabajador": B_Nombre_Trabajador ,
-                                                        "B_DNI_Trabjador": B_DNI_Trabjador,
-                                                        "B_Edad_Trabajador": B_Edad_Trabajador,
-                                                        "B_Sexo_Trabajador": B_Sexo_Trabajador,
-                                                        "B_Antiguedad_Empresa": B_Antiguedad_Empresa,
-                                                        "B_Tiempo_Experiencia_Cargo": B_Tiempo_Experiencia_Cargo,
-                                                        "B_Tipo_Contacto": B_Tipo_Contacto,
-                                                        "B_Turno_Trabajo": B_Turno_Trabajo,
-                                                        "B_Horas_Trabajadas_Jornada": B_Horas_Trabajadas_Jornada,
-                                                        "B_Id_Hash_Jefe_Inmediato": B_Id_Hash_Jefe_Inmediato ,
-                                                        "B_Nombre_Jefe_Inmediato": B_Nombre_Jefe_Inmediato ,
-                                                        "C_Producto_Involucrado": C_Producto_Involucrado,
-                                                        "C_Volumen_M3": C_Volumen_M3,
-                                                        "C_Zona": C_Zona ,
-                                                        "C_Extension_Area_M2": C_Extension_Area_M2,
-                                                        "C_Afectacion_A": C_Afectacion_A,
-                                                        "C_Operando_Normal": C_Operando_Normal,
-                                                        "C_Comunicdo_Fiscalizador": C_Comunicdo_Fiscalizador,
-                                                        "C_Medidas_Emergencia": C_Medidas_Emergencia ,
-                                                        "C_Residuos_Limpieza": C_Residuos_Limpieza ,
-                                                        "C_Accidente_Reicidente": C_Accidente_Reicidente,
-                                                        "C1_Tipo_Accidente": C1_Tipo_Accidente,
-                                                        "C1_Nivel_Severidad": C1_Nivel_Severidad,
-                                                        "C1_Gerencia": C1_Gerencia,
-                                                        "C1_Lugar_Evento": C1_Lugar_Evento ,
-                                                        "C1_Fecha_Evento": C1_Fecha_Evento,
-                                                        "C1_Hora_Evento": C1_Hora_Evento,
-                                                        "C1_N_Dias_Descanzo": C1_N_Dias_Descanzo,
-                                                        "C1_Fecha_Ini_Investigacion": C1_Fecha_Ini_Investigacion,
-                                                        "C1_Fecha_Informe": C1_Fecha_Informe,
-                                                        "C1_Id_Hash_Responsable_Area": C1_Id_Hash_Responsable_Area ,
-                                                        "C1_Nombre_Responsable_Area": C1_Nombre_Responsable_Area ,
-                                                        "C1_Involucrados": C1_Involucrados,
-                                                        "C1_Descripcion_Exacta_Lugar": C1_Descripcion_Exacta_Lugar ,
-                                                        "C1_Descripcion_Exacta": C1_Descripcion_Exacta ,
-                                                        "C1_No_Trabajadores_Afectados": C1_No_Trabajadores_Afectados,
-                                                        "C1_No_Pobladores_Afectados": C1_No_Pobladores_Afectados,
-                                                        "C1_Descripcion_Incidente_All": C1_Descripcion_Incidente_All  ,
-                                                        "Accidente_Incidente_Id": Accidente_Incidente_Id,
-                                                        "C_Descripcion_Perdida_Materiales": C_Descripcion_Perdida_Materiales ,
-                                                        "C_Observaciones": C_Observaciones ,
-                                                        "C1_Clasificacion_Incapacidad":  C1_Clasificacion_Incapacidad ,
-                                                        "C1_Nivel_Severidad2": C1_Nivel_Severidad2,
-                                                        "D_Comentario":D_Comentario,                
-                                                        "D_AnexoACR":D_AnexoACR,                
-                                                        "D_AnexoLineaTiempo":D_AnexoLineaTiempo,                
-                                                        "D_AnexoFotografia":D_AnexoFotografia,                
-                                                        "D_AnexoReporteOcurrencia":D_AnexoReporteOcurrencia,                
-                                                        "D_AnexoEntrevistaAccidentado":D_AnexoEntrevistaAccidentado,                
-                                                        "D_AnexoEntrevistaTestigo":D_AnexoEntrevistaTestigo,                
-                                                        "D_AnexoOtro":D_AnexoOtro,                
-                                                        "D_AnexoOtroTexto":D_AnexoOtroTexto
-
-                                                }    
-
-                                             //var url = apiUrlssoma+"/api/Post-DatosGeneralesIncidenteWeb?code=reQdAhVl9k1IQ0BcN4fOjHiwoMxeanCYIk8xl0xSvvsq/RDDI8Yw4A==&httpmethod=put";
-                                             var url = apiUrlssoma+"/api/Post-InformeInvestigacion-Incidente?code=GSdKVMRD/MCaN7CnirKPtMaoWBRarLKBDtGU9Gd0iljNzSZewQxO6g==&httpmethod=post";
-
-                                            var headers ={
-                                                           "apikey":constantes.apiKey
-                                                         }
-
-
-                                              console.log("===============================================================================================================");
-                                                     console.log("DATA INSERT AMBIENTALES=",body_ii);
-                                              console.log("===============================================================================================================");
-                                            
-                                             $.ajax({
-                                                method: "POST",
-                                                url:  url,
-                                                data: JSON.stringify(body_ii),
-                                                headers:headers,
-                                                crossDomain: true,
-                                                dataType: "json",
-                                            })
-
-
-                                              .done(function(data)
-                                            {
-                                                console.info("dataUpdate*****______________________________________________******* = ",data)
-                                                 // resultado Exitoso
-
-                                                 //alert(data.Id)
-                                                if(data.Id>0)
-                                                {
-
-                                                         
-                                                          $("#btnConfirmarInformeInvestigacion").html("<b>Confirmar</b>")
-                                                          $("#btnConfirmarInformeInvestigacion").attr("disabled",false);
-                                                          $('#btnCancelarGuardarInformeInvestigacion').attr("disabled",false);
-
-                                                          $('#Sp3VentanaBDGuardarOkII').modal('show').addClass('fade');
-                                                          $('#Sp3VentanaGuardarInforme').modal('hide').removeClass('fade');
-                                                          $('#Sp3VentanaFinalizarInforme').modal('hide').removeClass('fade');
-
-
-                                                      //ojo hay que recargar la data del dato general desde el servidor, sera no c analizar
-                                     
-                                                    
-                                                }else
-                                                {
-                                                    verModalError("Informe de Investigación","No se pudieron guardar los Datos")//+data.Descripcion)
-                                                }
-                                            })
-
-
-                                }//========================================================================================================================== UPDATE DB =============================
-               }//-----------------------------  ------------------------
-            else
-               {
-                   if(paObj[istAud].a.GrupoEvento == 3)
-                   {//----------------------------- de datos personales ------------------------
-                  
-                            if(AccionBD_II == 1)
-                                {//========================================================================================================================== UPDATE DB =============================
-
-                                    // $('#btnConfirmarEvidenciaIncidenteHallazgoWebDG').html('Guardando..');
-                                    // $('#btnConfirmarEvidenciaIncidenteHallazgoWebDG').prop('disabled',true);
-
-                                    $("#btnConfirmarInformeInvestigacion").html("<b>Guardando..</b>")
-                                    $("#btnConfirmarInformeInvestigacion").attr("disabled",true);
-
-                                    $('#btnCancelarGuardarInformeInvestigacion').attr("disabled",true);
-
-                                      var Code = paObj[istAud].a.Code;   
-                                      var A_Nombre_UO_Sede = $('#dat_ii_nombre_uo').val();
-                                      var A_Direccion_UO  = $('#dat_ii_direccion_uo').val();      
-                                      var A_Total_Trabajadores  = $('#dat_ii_n_total_trabajador').val(); 
-                                      var A_No_Personal_SCTR  = $('#dat_ii_n_personal_con_str').val(); 
-                                      var A_No_Personal_No_Afiliado_SCTR  = $('#dat_ii_n_personal_no_fil_str').val(); 
-                                      var A_Nombre_Aseguradora        = $('#dat_ii_nombre_aseguradora').val(); 
-                                      var A1_Nombre_Empresa_Tercero        = $('#dat_ii_nombre_empresa_tercero').val(); 
-                                      var A1_Tipo_Actividad_Economica        = $('#dat_ii_tipo_actividad_economica').val(); 
-                                      var A1_Ruc        = $('#dat_ii_ruc').val(); 
-                                      var A1_Direccion_Empresa_Tercero        = $('#dat_ii_desc_empresa_tercero').val(); 
-                                      var A1_No_Total_Trabajadores  = $('#dat_ii_n_total_trabajadores').val(); 
-                                      var A1_No_personal_SCTR  = $('#dat_ii_n_personal_con_sctr').val(); 
-                                      var A1_No_Personal_No_Afiliado_SCTR  = $('#dat_ii_n_personal_no_afiliado_sctr').val(); 
-                                      var A1_Nombre_Aseguradora        = $('#dat_ii_nombre_aseguradora2').val(); 
-                                      var B_User_Id_Hash        = $('#dat_ii_nombre_apellido_hidden').val(); 
-                                      var B_Nombre_Trabajador        = $('#dat_ii_nombre_apellido').val(); 
-                                      var B_DNI_Trabjador  = $('#dat_ii_dni').val(); 
-                                      var B_Edad_Trabajador  = $('#dat_ii_edad').val(); 
-                                      var B_Sexo_Trabajador  = $('#dat_ii_sexo').val(); 
-
-
-                                      var B_Antiguedad_Empresa  = $('#dat_ii_antiguedad_empresa').val(); 
-                                      var B_Tiempo_Experiencia_Cargo  = $('#dat_ii_experiencia_puesto').val(); 
-                                      var B_Tipo_Contacto  = $('#dat_ii_tipo_contrato').val(); 
-                                      var B_Turno_Trabajo  = $('#dat_ii_turno_trabajo').val(); 
-                                      var B_Horas_Trabajadas_Jornada  = $('#dat_ii_horas_trabajo_jornada').val(); 
-                                      var B_Id_Hash_Jefe_Inmediato        = $('#dat_ii_nombre_jefe_inmediato__hidden').val(); 
-                                      var B_Nombre_Jefe_Inmediato        = $('#dat_ii_nombre_jefe_inmediato').val(); 
-                                      var C_Producto_Involucrado  = $('#dat_ii_producto_involucrado').val(); 
-                                      var C_Volumen_M3  = $('#dat_ii_volumen_m3').val(); 
-                                      var C_Zona        = $('#dat_ii_zona_afectada').val(); 
-                                      var C_Extension_Area_M2  = $('#dat_ii_ext_area_afectada').val(); 
-
-
-                                        var D_Comentario                  = $('#dat_ii_5_comentario').val();               
-                                         if($('#dat_ii_acr').prop('checked')          == true){D_AnexoACR = 1;}else{D_AnexoACR = 0;}              
-                                         if($('#dat_ii_linea_tiempo').prop('checked') == true){D_AnexoLineaTiempo = 1;}else{D_AnexoLineaTiempo = 0;}               
-                                         if($('#dat_ii_fotografias').prop('checked')  == true){D_AnexoFotografia = 1;}else{D_AnexoFotografia = 0;}               
-                                         if($('#dat_ii_reporte').prop('checked')      == true){D_AnexoReporteOcurrencia = 1;}else{D_AnexoReporteOcurrencia = 0;}               
-                                         if($('#dat_ii_entrevista1').prop('checked')  == true){D_AnexoEntrevistaAccidentado = 1;}else{D_AnexoEntrevistaAccidentado = 0;}               
-                                         if($('#dat_ii_entrevista2').prop('checked')  == true){D_AnexoEntrevistaTestigo = 1;}else{D_AnexoEntrevistaTestigo = 0;}               
-                                         if($('#dat_ii_otros').prop('checked')        == true){D_AnexoOtro  = 1;}else{D_AnexoOtro =0;}               
-                                        var D_AnexoOtroTexto              = $('#dat_ii_otros_text').val(); 
-
-
-
-
-
-
-                                    
-
-                                      var C_Afectacion_A; 
-                                      if($('#rbtn_sii_8').attr('src') == './images/iconos/aprobarbien.svg'){C_Afectacion_A = 1}else{C_Afectacion_A = 0}//1   otra empresa
-                                      if($('#rbtn_noi_9').attr('src') == './images/iconos/aprobarbien.svg'){C_Afectacion_A = 2}else{C_Afectacion_A = 0}//1   otra empresa
-                                      if($('#rbtn_noi_10').attr('src') == './images/iconos/aprobarbien.svg'){C_Afectacion_A = 3}else{C_Afectacion_A = 0}//1   otra empresa
-
-
-
-                                      var C_Operando_Normal; 
-                                           if($('#rbtn_siii_8').attr('src') == './images/iconos/aprobarbien.svg'){C_Operando_Normal = 1}else{C_Operando_Normal = 0}//1   otra empresa
-                                           if($('#rbtn_noii_9').attr('src') == './images/iconos/aprobarbien.svg'){C_Operando_Normal = 2}else{C_Operando_Normal = 0}//1   otra empresa
-
-
-                                      var C_Comunicdo_Fiscalizador; //rbtn_siiix_8
-                                           if($('#rbtn_siiix_8').attr('src') == './images/iconos/aprobarbien.svg'){C_Comunicdo_Fiscalizador = 1}else{C_Comunicdo_Fiscalizador = 0}//1   otra empresa
-                                           if($('#rbtn_noiix_9').attr('src') == './images/iconos/aprobarbien.svg'){C_Comunicdo_Fiscalizador = 2}else{C_Comunicdo_Fiscalizador = 0}//1   otra empresa
-
-
-
-
-                                      var C_Medidas_Emergencia        = $('#dat_ii_medidas_emergencia').val(); 
-
-                                      var C_Residuos_Limpieza        = $('#dat_ii_se_genero_residuos').val(); 
-
-                                      var C_Accidente_Reicidente;
-
-                                           if($('#rbtn_sihy_8').attr('src') == './images/iconos/aprobarbien.svg'){C_Accidente_Reicidente = 1}else{C_Accidente_Reicidente = 0}//1   otra empresa
-                                           if($('#rbtn_nohy_9').attr('src') == './images/iconos/aprobarbien.svg'){C_Accidente_Reicidente = 2}else{C_Accidente_Reicidente = 0}//1   otra empresa
-
-                                      
-                                      var C1_Tipo_Accidente  = $('#dat_ii_tipo_incidente').val(); 
-                                      var C1_Nivel_Severidad  = $('#dat_ii_nivel_severidad').val(); 
-                                      var C1_Nivel_Severidad2  = $('#dat_ii_nivel_severidad').val(); 
-                                      var C1_Gerencia  = $('#dat_ii_gerencia').val(); 
-                                      var C1_Lugar_Evento        = $('#dat_ii_lugar_eventox').val(); 
-                                      var C1_Fecha_Evento  = $('#dat_ii_fecha').val(); 
-                                      var C1_Hora_Evento  = $('#dat_ii_hora').val(); 
-
-
-
-                                      var C1_N_Dias_Descanzo  = $('#dat_ii_n_dias_descanzox').val(); 
-                                      var C1_Fecha_Ini_Investigacion  = $('#dat_ii_fecha_ini_inv').val(); 
-                                      var C1_Fecha_Informe  = $('#dat_ii_fecha_informe').val(); 
-                                      var C1_Id_Hash_Responsable_Area        = $('#dat_ii_responsable_area_hidden').val(); 
-                                      var C1_Nombre_Responsable_Area        = $('#dat_ii_responsable_area').val(); 
-                                      var C1_Involucrados  = $('#dat_ii_involucrados').val(); 
-                                      var C1_Descripcion_Exacta_Lugar        = $('#dat_ii_descripcion_lugar_exacto').val(); 
-                                      var C1_Descripcion_Exacta        = $('#dat_ii_descripcion_lugar_exacto').val(); 
-                                      var C1_No_Trabajadores_Afectados  = $('#dat_ii_3_mox_trabajadores').val(); 
-                                      var C1_No_Pobladores_Afectados  = $('#dat_ii_3_mox_pobladores_pa').val(); 
-                                      var C1_Descripcion_Incidente_All         = $('#dat_ii_descripcion_incidente_lt').val(); 
-                                      var Accidente_Incidente_Id  = istAud; 
-                                      var C_Descripcion_Perdida_Materiales        = $('#dat_ii_describe_perdida').val(); 
-                                      var C_Observaciones        = $('#dat_ii_observacioness').val(); 
-                                      var C1_Clasificacion_Incapacidad  = $('#dat_ii_incapacidad').val(); 
-
-
-
-
-
-
-                                        C1_Fecha_Evento = "2021-07-21";
-                                        C1_Fecha_Informe = "2021-07-21"; 
-                                        C1_Fecha_Ini_Investigacion = "2021-07-21";
-
-
-                                        C1_Gerencia = 0;
-                                        C1_Hora_Evento = "09:01:24.0000000";
-                                       
-                                        C1_Involucrados = 0;
-                                       
-                                        C1_N_Dias_Descanzo = 0;
-                                        C1_Nivel_Severidad = 0;
-                                        C1_No_Pobladores_Afectados= 0;
-                                        C1_No_Trabajadores_Afectados= 0;
-                                        C1_Nombre_Responsable_Area: "N/A"
-                                        C1_Tipo_Accidente= 0;
-                                        C_Accidente_Reicidente= 0;
-                                        C_Afectacion_A= 0;
-                                        C_Comunicdo_Fiscalizador= 0;
-                                       
-                                        C_Extension_Area_M2= 0;
-                                   
-                                        C_Volumen_M3 =0;
-                                        C_Operando_Normal= 0;
-                                        C_Producto_Involucrado= 0;
-                                      
-                                       C1_Clasificacion_Incapacidad = 0;
-                                        C_Zona= 0;
-                                       C1_Nivel_Severidad2 = '';
-                                       
-                                         var AccionBD;
-                                         if(finn == 3){AccionBD = 3;}else{AccionBD = 1;}
-
-
-                                      var body_ii = {
-                                                    //*****************************DATOS GENERALES******************txta_f_dg_gv_21
-                                                  
-
-                                                        "Id1":paObj[istAud].a.II[0].Id,
-                                                        "AccionBD":AccionBD,
-                                                        "Code": Code,
-                                                        "A_Nombre_UO_Sede": A_Nombre_UO_Sede,
-                                                        "A_Direccion_UO": A_Direccion_UO ,
-                                                        "A_Total_Trabajadores": A_Total_Trabajadores,
-                                                        "A_No_Personal_SCTR": A_No_Personal_SCTR,
-                                                        "A_No_Personal_No_Afiliado_SCTR": A_No_Personal_No_Afiliado_SCTR,
-                                                        "A_Nombre_Aseguradora": A_Nombre_Aseguradora ,
-                                                        "A1_Nombre_Empresa_Tercero": A1_Nombre_Empresa_Tercero ,
-                                                        "A1_Tipo_Actividad_Economica": A1_Tipo_Actividad_Economica ,
-                                                        "A1_Ruc": A1_Ruc ,
-                                                        "A1_Direccion_Empresa_Tercero": A1_Direccion_Empresa_Tercero ,
-                                                        "A1_No_Total_Trabajadores": A1_No_Total_Trabajadores,
-                                                        "A1_No_personal_SCTR": A1_No_personal_SCTR,
-                                                        "A1_No_Personal_No_Afiliado_SCTR": A1_No_Personal_No_Afiliado_SCTR,
-                                                        "A1_Nombre_Aseguradora": A1_Nombre_Aseguradora ,
-                                                        "B_User_Id_Hash": B_User_Id_Hash ,
-                                                        "B_Nombre_Trabajador": B_Nombre_Trabajador ,
-                                                        "B_DNI_Trabjador": B_DNI_Trabjador,
-                                                        "B_Edad_Trabajador": B_Edad_Trabajador,
-                                                        "B_Sexo_Trabajador": B_Sexo_Trabajador,
-                                                        "B_Antiguedad_Empresa": B_Antiguedad_Empresa,
-                                                        "B_Tiempo_Experiencia_Cargo": B_Tiempo_Experiencia_Cargo,
-                                                        "B_Tipo_Contacto": B_Tipo_Contacto,
-                                                        "B_Turno_Trabajo": B_Turno_Trabajo,
-                                                        "B_Horas_Trabajadas_Jornada": B_Horas_Trabajadas_Jornada,
-                                                        "B_Id_Hash_Jefe_Inmediato": B_Id_Hash_Jefe_Inmediato ,
-                                                        "B_Nombre_Jefe_Inmediato": B_Nombre_Jefe_Inmediato ,
-                                                        "C_Producto_Involucrado": C_Producto_Involucrado,
-                                                        "C_Volumen_M3": C_Volumen_M3,
-                                                        "C_Zona": C_Zona ,
-                                                        "C_Extension_Area_M2": C_Extension_Area_M2,
-                                                        "C_Afectacion_A": C_Afectacion_A,
-                                                        "C_Operando_Normal": C_Operando_Normal,
-                                                        "C_Comunicdo_Fiscalizador": C_Comunicdo_Fiscalizador,
-                                                        "C_Medidas_Emergencia": C_Medidas_Emergencia ,
-                                                        "C_Residuos_Limpieza": C_Residuos_Limpieza ,
-                                                        "C_Accidente_Reicidente": C_Accidente_Reicidente,
-                                                        "C1_Tipo_Accidente": C1_Tipo_Accidente,
-                                                        "C1_Nivel_Severidad": C1_Nivel_Severidad,
-                                                        "C1_Gerencia": C1_Gerencia,
-                                                        "C1_Lugar_Evento": C1_Lugar_Evento ,
-                                                        "C1_Fecha_Evento": C1_Fecha_Evento,
-                                                        "C1_Hora_Evento": C1_Hora_Evento,
-                                                        "C1_N_Dias_Descanzo": C1_N_Dias_Descanzo,
-                                                        "C1_Fecha_Ini_Investigacion": C1_Fecha_Ini_Investigacion,
-                                                        "C1_Fecha_Informe": C1_Fecha_Informe,
-                                                        "C1_Id_Hash_Responsable_Area": C1_Id_Hash_Responsable_Area ,
-                                                        "C1_Nombre_Responsable_Area": C1_Nombre_Responsable_Area ,
-                                                        "C1_Involucrados": C1_Involucrados,
-                                                        "C1_Descripcion_Exacta_Lugar": C1_Descripcion_Exacta_Lugar ,
-                                                        "C1_Descripcion_Exacta": C1_Descripcion_Exacta ,
-                                                        "C1_No_Trabajadores_Afectados": C1_No_Trabajadores_Afectados,
-                                                        "C1_No_Pobladores_Afectados": C1_No_Pobladores_Afectados,
-                                                        "C1_Descripcion_Incidente_All": C1_Descripcion_Incidente_All  ,
-                                                        "Accidente_Incidente_Id": Accidente_Incidente_Id,
-                                                        "C_Descripcion_Perdida_Materiales": C_Descripcion_Perdida_Materiales ,
-                                                        "C_Observaciones": C_Observaciones ,
-                                                        "C1_Clasificacion_Incapacidad":  C1_Clasificacion_Incapacidad ,
-                                                        "C1_Nivel_Severidad2": C1_Nivel_Severidad2,
-
-                                                        "D_Comentario":D_Comentario,                
-                                                        "D_AnexoACR":D_AnexoACR,                
-                                                        "D_AnexoLineaTiempo":D_AnexoLineaTiempo,                
-                                                        "D_AnexoFotografia":D_AnexoFotografia,                
-                                                        "D_AnexoReporteOcurrencia":D_AnexoReporteOcurrencia,                
-                                                        "D_AnexoEntrevistaAccidentado":D_AnexoEntrevistaAccidentado,                
-                                                        "D_AnexoEntrevistaTestigo":D_AnexoEntrevistaTestigo,                
-                                                        "D_AnexoOtro":D_AnexoOtro,                
-                                                        "D_AnexoOtroTexto":D_AnexoOtroTexto
-
-                                                }    
-
-                                             //var url = apiUrlssoma+"/api/Post-DatosGeneralesIncidenteWeb?code=reQdAhVl9k1IQ0BcN4fOjHiwoMxeanCYIk8xl0xSvvsq/RDDI8Yw4A==&httpmethod=put";
-                                             var url = apiUrlssoma+"/api/Post-InformeInvestigacion-Incidente?code=GSdKVMRD/MCaN7CnirKPtMaoWBRarLKBDtGU9Gd0iljNzSZewQxO6g==&httpmethod=post";
-
-                                            var headers ={
-                                                           "apikey":constantes.apiKey
-                                                         }
-
-
-                                              console.log("===============================================================================================================");
-                                                     console.log("DATA INSERT=",body_ii);
-                                              console.log("===============================================================================================================");
-                                            
-                                             $.ajax({
-                                                method: "POST",
-                                                url:  url,
-                                                data: JSON.stringify(body_ii),
-                                                headers:headers,
-                                                crossDomain: true,
-                                                dataType: "json",
-                                            })
-
-
-                                              .done(function(data)
-                                            {
-                                                console.info("dataUpdate*****______________________________________________******* = ",data)
-                                                 // resultado Exitoso
-
-                                                 //alert(data.Id)
-                                                if(data.Id>0)
-                                                {
-
-                                                         
-                                                          $("#btnConfirmarInformeInvestigacion").html("<b>Confirmar</b>")
-                                                          $("#btnConfirmarInformeInvestigacion").attr("disabled",false);
-                                                          $('#btnCancelarGuardarInformeInvestigacion').attr("disabled",false);
-
-                                                          $('#Sp3VentanaBDGuardarOkII').modal('show').addClass('fade');
-                                                          $('#Sp3VentanaGuardarInforme').modal('hide').removeClass('fade');
-                                                          $('#Sp3VentanaFinalizarInforme').modal('hide').removeClass('fade');
-
-                                                      //ojo hay que recargar la data del dato general desde el servidor, sera no c analizar
-                                     
-                                                    
-                                                }else
-                                                {
-                                                    verModalError("Informe de Investigación","No se pudieron guardar los Datos")//+data.Descripcion)
-                                                }
-                                            })
-
-
-                                }//========================================================================================================================== UPDATE DB =============================
-                   }//----------------------------- de datos personales ------------------------
-                }
-
-           }//---------------------------- datos ambientales ---------------------------
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-   //cargamos el array
-
-
-
-
-
-
-
-
-
-
-
-
-
-}//------------------------------------- fini   sp4FnConfirmarGuardarInformeInvestigacion() -------------------------------------
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function fnFinalizarInformeInvestigacion()
-{//------------------------------------- ini   fnFinalizarInformeInvestigacion() -------------------------------------
-
-    //alert('idf ='+istAud);
-    $('#modalInformeInvestigacion').modal('hide').removeClass('fadeOut');
-    $('#Sp3VentanaFinalizarInforme').modal('show').addClass('fade');
-
-}//------------------------------------- fini   fnFinalizarInformeInvestigacion() -------------------------------------
-
-
-
-function sp4FnConfirmarFinalizarInformeInvestigacion()
-{//------------------------------------- ini   sp4FnConfirmarGuardarInformeInvestigacion() -------------------------------------
-
-sp4FnConfirmarGuardarInformeInvestigacion(3)
-
-    // $('#Sp3VentanaFinalizarInforme').modal('hide').removeClass('fade');
-
-    // $('#Sp3VentanaBDFinalizarOkII').modal('show').addClass('fade');
-  
-
-    
-}//------------------------------------- fini   sp4FnConfirmarGuardarInformeInvestigacion() -------------------------------------
-
-
-
-
-function fnGenerarIngformeInvesyigacionExcel()
-{//------------------------------------- ini   fnGenerarIngformeInvesyigacionExcel() -------------------------------------
-
-   // alert('idf ='+istAud);
-    fnExcelReportPAHC_ii();
-} //------------------------------------- fini   fnGenerarIngformeInvesyigacionExcel() -------------------------------------
-
-
-function buscar5porqueIncidente()
-{//------------------------------------- ini   buscar5porqueIncidente() -------------------------------------
-
-  
-       console.log("25405 incidente buscar5porqueIncidente",paObj[istAud].a.IdHallazgo);
-
-        if(paObj[istAud].a.IdHallazgo > 0)
-        {//===================================================================== si tiene o no hallazo =================== limpiar la vista ==========
-
-            $('#step-4_ii').css('visibility', 'visible');
-                 //..............................   array para saber si ya busque los por que .....................
-            if(!ver5PQ[paObj[istAud].a.IdHallazgo] == 1)
-            {
-               // fnSp4VerModalCrearACR(115,''); //aqui va el id del hallazgo
-
-                //alert('paObj[istAud].a.IdHallazgo'+paObj[istAud].a.IdHallazgo);
-
-               fnSp4VerModalCrearACR(paObj[istAud].a.IdHallazgo,'');
-
-
-
-                fnPintarAnalisisProblema();
-
-                fnSp4PintarPlanAccion($('#ver').val());
-
-                ver5PQ[paObj[istAud].a.IdHallazgo] = 1;
-
-            }//else{ $('#step-4_ii').css('visibility', 'hidden');}
-        }//===================================================================== si tiene o no hallazo =================== limpiar la vista ==========
-        else
-        {//===================================================================== si tiene o no hallazo =================== limpiar la vista ==========
-           
-                 $('#step-4_ii').css('visibility', 'hidden');
-
-                 verModalError("Lo Sentimos","Este Incidente no tiene Hallazgo");
-        }//===================================================================== si tiene o no hallazo =================== limpiar la vista ==========
-
-
-
-
-           
-            //else{alert('ya se busco panas mio');}
-       
-
-
-} //------------------------------------- ini   buscar5porqueIncidente() -------------------------------------
-
-
-
-function buscarListadodeInvestigadores()
-{ //==============================================================     buscarListadodeInvestigadores   ==============================================================
-     //------------------------------------------ aqui debemos llamar al serivio que trae todo el listado de participantes -------------------------------------//
-
-
-                                        vkk[istAud] = 0;
-                                         //alert(istAud);
-                                         var urlC =  apiUrlssoma+"/api/Get-ParticipanteInvestigacion?code=oHhVJQzVenVjYOgRYWFryVIfYm0WDlRYBMwaY91tkztkQtM3P3AA5w==&vvhttpmethod=objectlist&Id="+istAud;//+istAud;
-
-
-                
-                                         console.log("URLC",urlC )
-                                         var headers ={
-                                             "apikey":constantes.apiKey
-                                         }
-
-                                         var settings = {
-                                             "url": urlC,
-                                             "method": "GET",
-                                             "timeout": 0,
-                                             "crossDomain": true,
-                                             "dataType": "json",
-                                             "headers": headers,
-                                         };
-
-
-                                         $.ajax(settings).done(function (response1) {//------------------------------------------------------------#####
-                                             console.log("**todos LOS INTEGRANTES**",response1);
-                                            
-                                             mayorId = 0;
-
-                                             paObj[istAud].a.Investigadores = response1.PlanAnual;
-                                            //  console.log("**todos LOS INTEGRANTES**",item1);
-                                            //  var nnam = item1.Participante;
-                                            //  var nnam1 = item1.Cargo;
-                                            //  var nnam2 = date_AAAA_MM_DD_T_HH_MM_S_to_DD_MM_AAAA(item1.Create_Date);
-                                            //  var idii = item1.Id;
-                                          
-                                             
-                                             $("#filasAdjuntarDocumentosTareas_ii").html(' ');  
-                                             $('#listaPart').html('Lista (0)')     
-                                               if(response1.PlanAnual.length > 0)
-                                                  {
-                                                     response1.PlanAnual.map(function(item1)
-                                                     {
-                                                         console.log("**todos LOS INTEGRANTES**",item1);
-                                                         var nnam = item1.Participante;
-                                                         var nnam1 = item1.Cargo;
-                                                         var nnam2 = date_AAAA_MM_DD_T_HH_MM_S_to_DD_MM_AAAA(item1.Create_Date);
-                                                         var idii = item1.Id;
-                                                      
-                                                  $("#filasAdjuntarDocumentosTareas_ii").append(` 
-
-
-                                                     
-
-
-                                                       <div id="docActividads_ii_${vkk[istAud]}" class="item-tabla p-2" style="z-index: 1;display:relative; background-color: white !important;  padding: 0px !important; margin: 10px 0px 0px !important; width: 99% !important;">
-                                                          <div class="row m-0 justify-content-between align-items-center tbody_trainning">
-                                                              <div class="col-12 text-center" style="font-size: 15px; padding: 4px !important; ">
-                                                                  <div class="row">
-
-                                                                      <table width="100%" border="0">
-                                                                          <tbody><tr>
-                                                                              <td width="40%" align="center"><div id="nombreDocs__ii_${vkk[istAud]}" class="text-left " style="margin: 0px 0px 0px 18px !important; font-size: 14px !important; font-weight: bold !important; ">${nnam}</div></td>
-
-                                                                              <td width="30%" align="center"><div id="EstatoAdjunto_ii_${vkk[istAud]}" class="text-center " style="color:0;">${nnam1}</div></td>
-
-                                                                              <td width="15%" align="center"><div class="text-center lbCabezaTabla" style="color:#000000;">
-                                                                              ${nnam2}
-                                                                              </div></td>
-
-                                                                              <td width="15%" align="center"><div class="text-center lbCabezaTabla">
-                                                                                  <button type="button" title="Eliminar Investigador" onclick=" removerInvestigador(${idii})" class="btn-circle btn_read border-0" style="background-color:#ff6767 !important; cursor:pointer !important;" onmouseup="/*fnDescargarEvidenciaSp3(166)*/" id="eliminarDoc_${vkk[istAud]}">
-                                                                                      <img src="./images/iconos/delete.svg" class="ojo-1">
-                                                                                  </button>
-                                                                              </div></td>
-                                                                          </tr>
-                                                                      </tbody>
-                                                                   </table>
-
-                                                                  </div>
-                                                              </div>
-                                                          </div>
-                                                      </div>
-
-                                                  `) ; vkk[istAud]++;
-
-                                                     });
-                                                       
-                                                     $('#listaPart').html('Lista ('+vkk[istAud] +')')
-
-                                                  }
-                                               else
-                                               {
-                                                   
-                                               }
-                                  });//-------------------------------------------------------------------------------------------------------------#####
-
-
-                   //------------------------------------------ aqui debemos llamar al serivio que trae todo el listado de participantes -------------------------------------//
-
-
-}//==============================================================     buscarListadodeInvestigadores   ==============================================================
-
-
-
-function agregarNuevoInvestigador()
-{
-showLoading();
-    
-var nnam = $('#dat_ii_invTeam_511').val()//nombre
-var nnam0 = $('#dat_ii_invTeam_511_hidden').val()//idgash
-
-var nnam1 = $('#dat_ii_invTeamCargo_511').val();//cargo
-var dd = $( "#dat_ii_fechaImvestigador").val();
-
-
-if((nnam != '')||(nnam0 != '')||(nnam1 != '')||(dd != ''))
-{//----------------------------------------------------------------------------------------------
-           
-                var p = dd.split('/');
-                var f1 = p[2]+'-'+p[1]+'-'+p[0];
-
-
-
-                //var nnam2 = date1_DD_MM_AAAA_to_AAAA_MM_DD(   $('#dat_ii_fechaImvestigador').val());
-
-
-                var created_by__ii = getCookie("vtas_id_hash"+sessionStorage.tabVisitasa);
-
-                var body_ii = {
-                    
-                    "Id1": 0, //0 crear un nuevo registro     mayor que 0, ELIMINA LOGICAMENTE EL LISTADO
-                    "UserHash":nnam0,
-                    "Created_By":created_by__ii,
-                    "Create_Date":f1,
-                    "Participante":nnam,
-                    "Cargo":nnam1,
-                    "IncidenteAccidenteId":istAud
-                        
-                }    
-
-                //var url = apiUrlssoma+"/api/Post-DatosGeneralesIncidenteWeb?code=reQdAhVl9k1IQ0BcN4fOjHiwoMxeanCYIk8xl0xSvvsq/RDDI8Yw4A==&httpmethod=put";
-                var url = apiUrlssoma+"/api/Post-ParticipanteInvestigacion?code=Bfa/7mmk9v49VovD4G2HTyXL9ARFSTm/Wajuup6pk8pmPUKNfcRUGQ==&httpmethod=post";
-
-                var headers ={
-                           "apikey":constantes.apiKey
-                         }
-
-
-                console.log("===============================================================================================================");
-                     console.log("DATA INSERT INVESTIGADOR=",body_ii);
-                console.log("===============================================================================================================");
-
-                $.ajax({
-                method: "POST",
-                url:  url,
-                data: JSON.stringify(body_ii),
-                headers:headers,
-                crossDomain: true,
-                dataType: "json",
-                })
-
-
-                .done(function(data)
-                {
-                console.info("dataUpdate*****______________________________________________******* = ",data)
-                 // resultado Exitoso
-
-                 //alert(data.Id)
-                if(data.Id>0)
-                {
-                    buscarListadodeInvestigadores();
-
-                $('#dat_ii_invTeam_511').val('')//nombre
-                $('#dat_ii_invTeam_511_hidden').val('')//idgash
-
-                $('#dat_ii_invTeamCargo_511').val('');//cargo
-
-                $( "#dat_ii_fechaImvestigador").val('');
-                hideLoading();
-
-                }else
-                {
-                    hideLoading();
-                    verModalError("Equipo de Investigación","No se pudieron agregar")//+data.Descripcion)
-                }
-                });
-
-
-
-
-}//----------------------------------------------------------------------------------------------
-else
-{//----------------------------------------------------------------------------------------------
-    verModalError("Equipo de Investigación","Existen Campos Vacios")//+data.Descripcion)
-}//----------------------------------------------------------------------------------------------
-
-
-}
-
-
-
-
-
-
-
-function removerInvestigador(idii)
-{
-showLoading();
-//alert(idii);
-
-                var body_ii = {
-                    
-                    "Id1": idii, //0 crear un nuevo registro     mayor que 0, ELIMINA LOGICAMENTE EL LISTADO
-                    "UserHash":'',
-                    "Created_By":'',
-                    "Create_Date":'2021-12-12',
-                    "Participante":' ',
-                    "Cargo":' ',
-                    "IncidenteAccidenteId":istAud
-                        
-                }    
-
-                //var url = apiUrlssoma+"/api/Post-DatosGeneralesIncidenteWeb?code=reQdAhVl9k1IQ0BcN4fOjHiwoMxeanCYIk8xl0xSvvsq/RDDI8Yw4A==&httpmethod=put";
-                var url = apiUrlssoma+"/api/Post-ParticipanteInvestigacion?code=Bfa/7mmk9v49VovD4G2HTyXL9ARFSTm/Wajuup6pk8pmPUKNfcRUGQ==&httpmethod=post";
-
-                var headers ={
-                        "apikey":constantes.apiKey
-                        }
-
-
-                console.log("===============================================================================================================");
-                    console.log("DATA INSERT INVESTIGADOR=",body_ii);
-                console.log("===============================================================================================================");
-
-                $.ajax({
-                method: "POST",
-                url:  url,
-                data: JSON.stringify(body_ii),
-                headers:headers,
-                crossDomain: true,
-                dataType: "json",
-                })
-
-
-                .done(function(data)
-                {
-                console.info("dataUpdate*****______________________________________________******* = ",data)
-                // resultado Exitoso
-
-                //alert(data.Id)
-                if(data.Id>0)
-                {
-                    buscarListadodeInvestigadores();
-
-                hideLoading();
-
-                }else
-                {
-                    hideLoading();
-                    verModalError("Equipo de Investigación","No se pudieron eliminar")//+data.Descripcion)
-                }
-                });
-
-
-}//---------------------------------------------------------------------------------------------------------------------------------
-
-
-function fnConfirmarGuardarModal_ii()
-{
-    console.warn("accionH -> ",accionH)
-    if(accionH == 0)
-    {
-        //alert('aqui voy a ver si cargo los datoss');
-         var campoVacio = 0;
-        // if($("#sel_fuente_hhalazgo").val() == 0){document.getElementById('divf1').style.setProperty('border-color', '#ff5a5a', 'important'); campoVacio = 1;   }
-        // if($("#sel_ttipo_hh").val() == 0){document.getElementById('divf2').style.setProperty('border-color', '#ff5a5a', 'important'); campoVacio = 1;   }
-        // if($("#sel_normaxx").val() == 0){document.getElementById('divf3').style.setProperty('border-color', '#ff5a5a', 'important'); campoVacio = 1;   }
-        // if($("#sel_uniddad_neg").val() == 0){document.getElementById('divf4').style.setProperty('border-color', '#ff5a5a', 'important'); campoVacio = 1;   }
-        // if($("#sel_seddek").val() == 0){document.getElementById('divf5').style.setProperty('border-color', '#ff5a5a', 'important'); campoVacio = 1;   }
-        // //AnalisisCausa
-        // if($("#ResponsableName").val() == 0){  document.getElementById('divf6').style.setProperty('border-color', '#ff5a5a', 'important'); campoVacio = 1;   }
-        // if($("#ResponsableCorreo").val() == 0){ document.getElementById('divf6').style.setProperty('border-color', '#ff5a5a', 'important'); campoVacio = 1;   }
-        // //if($("#ReportanteName").val() == 0){document.getElementById('divf7').style.setProperty('border-color', '#ff5a5a', 'important'); campoVacio = 1;   }
-        // //if($("#ReportanteCorreo").val() == 0){document.getElementById('divf7').style.setProperty('border-color', '#ff5a5a', 'important'); campoVacio = 1;   }
-        // if($("#txt_objetivo_plan2").val() == 0){document.getElementById('divf8').style.setProperty('border-color', '#ff5a5a', 'important'); campoVacio = 1;   }
-
-        if(campoVacio == 0)
-        {
-            $('#msg_part1_azul').html("<b> Est&aacute; por guardar el hallazgo</b>")
-            $("#Sp3VentanaHallazgoEditView").modal("hide").removeClass("fade");
-            $("#modalConfirmHallazgo").modal("show").addClass("fade")
-
-        }
-        else
-        {
-            verModalError("Por favor Revise","Existen Campos Vacios o Incompletos xxxxxxxxxxx")
-        }
-    }
-    else
-    {
-
-        if(accionH == 1)
-        {
-            if($('#btGuardarModificar').html() == "<b>Modificar</b>")
-            {
-                fnSp3DesbloqueForm_ii();
-                $("#btGuardarModificar").html("<b>Guardar</b>")
-                $("#btGuardarModificar").attr("disabled",false);
-            }
-            else
-            {
-                
-
-                    $("#Sp3VentanaHallazgoEditView").modal("hide").removeClass("fade");
-                    $("#Sp3VentanaPruebasIncidenteHallazgo_ii").modal("show").addClass("fade");
-              
-            }
-        }
-    }
-
-}
-
-//------------------------------------- ini   fnSp3ModalMostrarHallazgoEditar() -------------------------------------
-
-
-
-
-function fnSp3GuardarHallazgoInsertUpdate_ii()
-{//---------------------------------------------    fnSp3GuardarHallazgoInsertUpdate_ii   ---------------------------------
-    
-     $("#btnConfirmarEvidenciaIncidenteHallazgoWeb_ii").html("<b>Guardando..</b>");
-     $("#btnCancelarEvidenciaIncidenteHallazgo_ii").attr("disabled",true);
-     showLoading();
-
-      var  guardarEnviar = 1;
-
-                    //---------------------------------------MODIFICAR HALLAZGO EN LA BASE DE DATOS ------------------------------------
-                     var body = {
-
-                        "Id": istAudHall,
-                        "TipoHallazgoId":       $("#sel_ttipo_hh_ii").val(),
-                        "NormaId":              $("#sel_normaxx_ii").val(),
-                        "UnidadNegocioId":      $("#sel_uniddad_neg_ii").val(),
-                        "SedeId":               $("#sel_seddek_ii").val(),//
-                        "AnalisisCausa":        AnalisisCausa,
-                        "Hallazgo":             $('#txt_objetivo_plan2_ii').val(),//
-                        "Last_Updated_By":      getCookie("vtas_id_hash"+sessionStorage.tabVisitasa),
-                        "ResponsableName":      $("#ResponsableName_512").val(),
-                        "ResponsableCorreo":    "caracas1348@gmail.com", //$("#ResponsableCorreo_512").val(),//pendiente correo "caracas1348@gmail.com",
-                        "ResponsableCargo":     $("#ResponsableCargo_512").val(),
-                        "ResponsableUserHash":  $("#ResponsableUserHash_512").val(),
-                        "Usuario":              getCookie("vtas_fullname"+sessionStorage.tabVisitasa),
-                        "Cargo":                getCookie("vtas_job"+sessionStorage.tabVisitasa),
-                        "Correo":               "caracas1348@gmail.com",
-                        "EnviarCorreo":         guardarEnviar
-                        }
-
-
-
-                        console.log('enviando a modificar:', body)
-
-                        var url = apiurlAuditoria+"/api/Post-Hallazgos-All?code=CVNpmUeJgbarMkxynabne1CGLBm0gXH9mrEV6a2vuc2BvQgc4hDvbg==&httpmethod=put";
-                        var headers ={
-                        "apikey":constantes.apiKey,
-                        "Content-Type": "application/json",
-                        }
-
-
-                         console.log(" ==================  25379   ===================== ", body);
-
-                       $.ajax({
-                            method: 'POST',
-                            url:  url,
-                            headers:headers,
-                            data: JSON.stringify(body),
-                            crossDomain: true,
-                            dataType: "json",
-                        }).done(function (data) 
-                        {//==========================================================================================================================
-
-                            console.log('despues modificar',data);
-                            if(data.Id > 0)
-                            {
-                                $("#modalConfirmHallazgo").modal("hide").removeClass("fade")
-                                $("#modalConfirmHallazgoGuardarOk").modal("show").addClass("fade")
-
-                              
-
-                                if(guardarEnviar == 0){$('#msg_part1_verde').html("<b> Se guard&oacute; con &eacute;xito el hallazgo</b>")}
-                                else if(guardarEnviar == 1){ $('#msg_part1_verde').html("<b> Se realiz&oacute; la acci&oacute;n con &eacute;xito</b>"); guardarEnviar = 0;}
-
-
-                                //fnSp3CargaFiltroEstadoInicialAdmHallazgo();
-
-
-                                 $("#btnConfirmarEvidenciaIncidenteHallazgoWeb_ii").html("<b>Modificar</b>");
-                                 $("#btnCancelarEvidenciaIncidenteHallazgo_ii").attr("disabled",false);
-
-                                 $('#Sp3VentanaPruebasIncidenteHallazgo_ii').modal('hide').removeClass('fade');
-
-                                  $('#Sp3VentanaBDIncidenteHallazgo_ii').modal('show').addClass('fade');
-
-                                 hideLoading();
-
-                                 
-
-                            }
-
-                            //fnEnviarInformeAuditoriaOk()
-
-                        })//==========================================================================================================================
-
-                        .fail(function( jqXHR, textStatus, errorThrown ) {
-
-                            verModalError('Al Modificar el Hallazgo', 'Intente Nuevamente');
-                            $("#btGuardarModificar2").html("<b>Guardar</b>")
-                            $("#btGuardarModificar2").attr("disabled",false);
-                        })
-                        .always(function( jqXHR, textStatus, errorThrown ) {
-                            hideLoading();
-                        });
-
-
-
-
-
-}//---------------------------------------------    fnSp3GuardarHallazgoInsertUpdate_ii   ---------------------------------
-
-
-
-
-
-
-//1216
-function fnExcelReportPAHC_ii() {
-
-console.log('------------------  reporte ----------  ',paObj[istAud].a);
-    var bl = 'border-left: 1px solid #000;';
-    var bt = 'border-top: 1px solid #000;';
-    var br = 'border-right: 1px solid #000;';
-    var bb = 'border-bottom: 1px solid #000;';
-    var lb = 'color: #FFF;'
-    var ln = 'color: #000;'
-
-    var dato ='---aaaaa---'
-
-
-
-
-    var a = [];
-
-    a[0] = paObj[istAud].a.Code;
-    a[1] =  $('#divBorde_ii_1 option:selected').text();
-    a[2] =  paObj[istAud].a.II[0].A_Direccion_UO;
-
-    a[3] = paObj[istAud].a.II[0].A_Total_Trabajadores;
-    a[4] = paObj[istAud].a.II[0].A_No_Personal_SCTR;
-    a[5] = paObj[istAud].a.II[0].A_No_Personal_No_Afiliado_SCTR;
-
-    a[6] = paObj[istAud].a.II[0].A_Nombre_Aseguradora;
-    a[7] = paObj[istAud].a.II[0].A1_Nombre_Empresa_Tercero;
-
-    a[8] = paObj[istAud].a.II[0].A1_Tipo_Actividad_Economica
-    a[9] = paObj[istAud].a.II[0].A1_Ruc
-    a[10] = paObj[istAud].a.II[0].A1_Direccion_Empresa_Tercero
-    a[11] = paObj[istAud].a.II[0].A1_No_Total_Trabajadores
-    a[12] = paObj[istAud].a.II[0].A1_No_personal_SCTR
-    a[13] = paObj[istAud].a.II[0].A1_No_Personal_No_Afiliado_SCTR
-    a[14] = paObj[istAud].a.II[0].A1_Nombre_Aseguradora
-
-
-
-    a[15] = paObj[istAud].a.II[0].NombrePersonalAccidentado
-    a[16] = paObj[istAud].a.II[0].DNIAccidentado
-    a[17] = paObj[istAud].a.II[0].EdadAccidentado
-    a[18] = $('#dat_ii_sexo option:selected').text();  //paObj[istAud].a.II[0].B_Sexo_Trabajador //option
-
-    a[19] = $('#dat_ii_area_trabajo option:selected').text(); //   paObj[istAud].a.II[0].IdAreaAccidente //option
-    a[20] = paObj[istAud].a.II[0].PuestoCargoAccidentado
-    a[21] = paObj[istAud].a.II[0].B_Antiguedad_Empresa
-    a[22] = paObj[istAud].a.II[0].B_Tiempo_Experiencia_Cargo
-    a[23] = $('#dat_ii_tipo_contrato option:selected').text();  // paObj[istAud].a.II[0].Tipo_Contrato  //option
-
-    a[24] = $('#dat_ii_turno_trabajo option:selected').text();  //paObj[istAud].a.II[0].B_Turno_Trabajo //option
-    a[25] = paObj[istAud].a.II[0].B_Horas_Trabajadas_Jornada
-    a[26] = paObj[istAud].a.II[0].B_Nombre_Jefe_Inmediato
-
-     a[27] = $('#dat_ii_producto_involucrado option:selected').text();
-     a[28] = $('#dat_ii_volumen_m3').val();
-     a[29] = $('#dat_ii_zona_afectada').val();
-     a[30] = $('#dat_ii_ext_area_afectada').val();
-
-
-      //alert('paObj[istAud].a.II[0].C_Afectacion_A'+paObj[istAud].a.II[0].C_Afectacion_A);
-
-
-        a[31] = '   ';   a[32] = '   ';  a[33] = '   ';
-
-     switch (paObj[istAud].a.II[0].C_Afectacion_A) 
-       {
-              
-              case 0: 
-                 a[31] = ' X ';
-              break;
-
-
-              case 1: 
-                a[31] = ' X ';
-              break; 
-
-
-              case 2:
-                a[32] = ' X ';
-              break;
-
-
-              case 3:
-                a[33] = ' X ';
-              break;
-        }
-
-
-
-
-
-
-      if(paObj[istAud].a.II[0].C_Operando_Normal == 1){a[34] = 'Si'}else{a[34] = 'No'}
-
-      if(paObj[istAud].a.II[0].C_Comunicdo_Fiscalizador == 1){a[35] = 'Si'}else{a[35] = 'No'}
-
-
-       //$('#dat_ii_volumen_m3').val();
-             
-             
-
-
-     a[36] = $('#dat_ii_medidas_emergencia').val();
-     a[37] = $('#dat_ii_se_genero_residuos').val();
-
-    
-
-     a[38] = '   ';  
-
-     switch (paObj[istAud].a.II[0].C_Afectacion_A) 
-       {
-              
-              case 0: 
-                 a[38] = ' Si ';
-              break;
-
-
-              case 1: 
-                a[38] = ' Si ';
-              break; 
-
-
-              case 2:
-                a[38] = ' No ';
-              break;
-
-
-        }
-
-
-     a[39] = $('#dat_ii_describe_perdida').val();
-
-     a[40] = $('#dat_ii_observacioness').val();
-
-
-
-
-
-
-     a[41] = $('#dat_ii_tipo_incidente option:selected').text();
-
-  
-         
-         a[42] = '   '; a[43] = '   '; a[44] = '  ';
-           
-
-
-           //alert('ns:'+$('#dat_ii_nivel_severidad').val() );
-       switch ($('#dat_ii_nivel_severidad').val()) 
-       {
-              
-              case 'BAJO': 
-                 a[42] = ' Si '; 
-              break;
-
-
-              case 'MEDIO': 
-                a[43] = ' Si ';
-              break; 
-
-
-              case 'ALTO':
-                a[44] = ' Si ';
-              break;
-
-
-        }
-
-
-   
-     a[45] = $('#dat_ii_incapacidad option:selected').text(); //paObj[istAud].a.
-
-     console.log('##########26550#####################################',paObj[istAud].a,'####################################################################333')
-
-                //alert(paObj[istAud].a.IdGerencia);
-                                                                       //$('#sel_f_dg_gv_42').val(paObj[istAud].a.IdGerencia);   a[46] = $('#sel_f_dg_gv_42 option:selected').text(); 
-     a[46] = $('#dat_ii_gerencia option:selected').text(); //paObj[istAud].a.IdGerencia //sel_f_dg_gv_42
-
-     a[47] = $('#dat_ii_lugar_eventox').val();//paObj[istAud].a.IdZonaAccidente    //sel_f_dg_gv_17
-     a[48] = $('#dat_ii_n_dias_descanzox').val();//paObj[istAud].a.Dias_Descanza
-     a[49] = $('#dat_ii_fecha').val();//paObj[istAud].a.Fecha
-     a[50] = $('#dat_ii_hora').val();//paObj[istAud].a.Hora
-
-
-     a[51] = $('#dat_ii_fecha_ini_inv').val();//paObj[istAud].a.FechaInvestigacionIni
-     a[52] = " ";// area contrata 
-     a[53] = $('#dat_ii_fecha_informe').val();
-     a[54] = $('#dat_ii_responsable_area_hidden').val();//paObj[istAud].a.NombreRespInvestigar
-     a[55] = $('#dat_ii_involucrados option:selected').val();
-     a[56] = $('#dat_ii_descripcion_lugar_exacto').val();
-     a[57] = $('#dat_ii_3_mox_trabajadores').val();
-     a[58] = $('#dat_ii_3_mox_pobladores_pa').val();
-
-
-     a[59] = $('#dat_ii_descripcion_incidente_lt').val();//paObj[istAud].a..Descripcion
-
-
-
-     // a[38] = $('#dat_ii_volumen_m3').val();
-     // a[39] = $('#dat_ii_volumen_m3').val();
-     // a[40] = $('#dat_ii_volumen_m3').val();
-     // a[41] = $('#dat_ii_volumen_m3').val();
-
-
-
-    /*
-    a[0] = paObj[istAud].a.Code;
-    a[0] = paObj[istAud].a.Code;
-    a[0] = paObj[istAud].a.Code;
-    a[0] = paObj[istAud].a.Code;
-    a[0] = paObj[istAud].a.Code;
-    a[0] = paObj[istAud].a.Code;
-    a[0] = paObj[istAud].a.Code;
-    a[0] = paObj[istAud].a.Code;
-    a[0] = paObj[istAud].a.Code;
-    a[0] = paObj[istAud].a.Code;
-    a[0] = paObj[istAud].a.Code;
-    a[0] = paObj[istAud].a.Code;
-    a[0] = paObj[istAud].a.Code;
-    a[0] = paObj[istAud].a.Code;
-    a[0] = paObj[istAud].a.Code;
-    a[0] = paObj[istAud].a.Code;*/
-    
-
-
-  var tab_text = `
-
-    <table  cellpadding="0" cellspacing="0" id="sheet0" style="table-layout: fixed;">
-        <thead>
-            
-            <tr style="border: 0px !important;color: #FFF; font-weight: bold; vertical-align:middle; height:20px">
-                  <th  bgcolor='#FFFFFF' style="border: 0px !important; ">AAAAAAA</th> 
-                  <th  bgcolor='#FFFFFF' style="border: 0px !important; ">BBBBB</th> 
-                  <th  bgcolor='#FFFFFF' style="border: 0px !important; ">C</th> 
-                  <th  bgcolor='#FFFFFF' style="border: 0px !important; ">D</th> 
-                  <th  bgcolor='#FFFFFF' style="border: 0px !important; ">EEEE</th> 
-                  <th  bgcolor='#FFFFFF' style="border: 0px !important; ">FFFF</th> 
-                  <th  bgcolor='#FFFFFF' style="border: 0px !important; ">GGG</th>
-                  <th  bgcolor='#FFFFFF' style="border: 0px !important; ">HHH</th> 
-                  <th  bgcolor='#FFFFFF' style="border: 0px !important; ">II</th> 
-                  <th  bgcolor='#FFFFFF' style="border: 0px !important; ">JJ</th> 
-                  <th  bgcolor='#FFFFFF' style="border: 0px !important; ">K</th> 
-                  <th  bgcolor='#FFFFFF' style="border: 0px !important; ">L</th> 
-                  <th  bgcolor='#FFFFFF' style="border: 0px !important; ">M</th> 
-                  <th  bgcolor='#FFFFFF' style="border: 0px !important; ">N</th> 
-                  <th  bgcolor='#FFFFFF' style="border: 0px !important; ">0</th> 
-                  <th  bgcolor='#FFFFFF' style="border: 0px !important; ">P</th> 
-                  <th  bgcolor='#FFFFFF' style="border: 0px !important; ">Q</th> 
-                  <th  bgcolor='#FFFFFF' style="border: 0px !important; ">R</th> 
-                  <th  bgcolor='#FFFFFF' style="border: 0px !important; ">S</th>
-                  <th  bgcolor='#FFFFFF' style="border: 0px !important; ">TTTTTTTTTTTTT</th>
-                  <th  bgcolor='#FFFFFF' style="border: 0px !important; ">UUUUUUUUUUUUU</th>
-                  <th  bgcolor='#FFFFFF' style="border: 0px !important; ">VVVVVVVVVVVVV</th>
-                  <th  bgcolor='#FFFFFF' style="border: 0px !important; ">WWWWWWWWWWWWW</th>
-                  <th  bgcolor='#FFFFFF' style="border: 0px !important; ">XXXXXXXXXXXXX</th>
-            </tr> 
-
-             <tr style="border: 2px !important;color: #0000; font-weight: bold;  vertical-align:middle; height:60px;">
-                  <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                  <th  bgcolor='#FFFFFF' colspan='24' style=" ${bl} ${bt} ${br}  font-size:18px;" >INFORME DE INVESTIGACIÓN DE INCIDENTE / ACCIDENTE.</th>         
-            </tr>
-
-             <tr style="border: 2px !important;color: #0000; font-weight: bold;  vertical-align:middle; height:20px;">
-                  <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                  <th  bgcolor='#FFFFFF' colspan='24' style="${bl} ${br} font-size:12px;" >Tecnológica de Alimentos S.A</th>         
-            </tr>
-
-            <tr style="border: 2px !important;color: #0000; font-weight: bold;  vertical-align:middle; height:20px;">
-                  <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                  <th  bgcolor='#FFFFFF' colspan='24' style="${bl} ${br} font-size:12px;" >Empresa Pesquera</th>         
-            </tr>
-
-            <tr style="border: 2px !important;color: #0000; font-weight: bold;  vertical-align:middle; height:20px;">
-                  <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                  <th  bgcolor='#FFFFFF' colspan='24' style="${bl} ${br} font-size:12px;" >Ruc 20100971772</th>         
-            </tr>
-
-             <tr style="border: 2px !important;color: #0000; font-weight: bold;  vertical-align:middle; height:20px;">
-                  <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                  <th  bgcolor='#FFFFFF' colspan='24' style="${bl} ${br} font-size:12px;" >INFORME  N° ${a[0]}</th>         
-            </tr>
-
-
-
-            <tr style="border: 2px !important;color: #0000; font-weight: bold;  vertical-align:middle; height:20px;">
-                  <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                  <th  bgcolor='#FFFFFF' colspan='24' style="${bl} ${br} font-size:12px;  color: #FFF;" >espacio </th>         
-            </tr>
-
-
-
-            <tr style="border: 2px !important;color: #fff; font-weight: bold;  /*vertical-align:middle;*/ height:30px;">
-                  <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                  <th  bgcolor='#444444' colspan='24' style="${bl} ${br} font-size:15px; text-align: left;" >I. DATOS LA UNIDAD OPERATIVA O E/P DE TASA DONDE OCURRIÓ EL INCIDENTE/ ACCIDENTE:</th>         
-            </tr>
-
-
-            <tr style="border: 2px !important;color: #fff;  /*vertical-align:middle;*/ height:30px;">
-                  <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                  <th  bgcolor='#D5D8DC' colspan='5' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >Nombre de la U.O</th> 
-                  <th  bgcolor='#fff' colspan='3' style="${bl} ${bt} ${bb} ${br} font-size:10px; text-align: left;  ${ln} " >${a[1]}</th>
-                  <th  bgcolor='#D5D8DC' colspan='7' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >Dirección de la U.O</th> 
-                  <th  bgcolor='#fff' colspan='9' style="${bl} ${bt} ${bb} ${br} font-size:10px; text-align: left;  ${ln} " >${a[2]}</th>        
-            </tr>
-
-            <tr style="border: 2px !important;color: #fff;  /*vertical-align:middle;*/ height:30px;">
-                <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                <th  bgcolor='#D5D8DC' colspan='5' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >N° total de trabajadores</th> 
-                <th  bgcolor='#fff' colspan='3' style="${bl} ${bt} ${bb} ${br} font-size:10px; text-align: left;  ${ln} " >${a[3]}</th>
-                <th  bgcolor='#D5D8DC' colspan='7' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >N° de personal con SCTR</th> 
-                <th  bgcolor='#fff' colspan='4' style="${bl} ${bt} ${bb} ${br} font-size:10px; text-align: left;  ${ln} " >${a[4]}</th>      
-                <th  bgcolor='#D5D8DC' colspan='2' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >N° de personal no afiliado al SCTR</th> 
-                <th  bgcolor='#fff' colspan='3' style="${bl} ${bt} ${bb} ${br} font-size:10px; text-align: left;  ${ln} " >${a[5]}</th>        
-            </tr>
-
-            <tr style="border: 2px !important;color: #fff;  /*vertical-align:middle;*/ height:30px;">
-                <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                <th  bgcolor='#D5D8DC' colspan='5' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >Nombre de la Aseguradora</th> 
-                <th  bgcolor='#fff' colspan='19' style="${bl} ${bt} ${bb} ${br} font-size:10px; text-align: left;  ${ln} " >${a[6]}</th>
-            </tr>
-
-            <tr style="border: 2px !important;color: #fff;  /*vertical-align:middle;*/ height:30px;">
-                    <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                    <th  bgcolor='#fff' colspan='24' style="${bl} ${bt} ${bb} ${br} font-size:10px; text-align: left;  ${ln} " >Completar solo si el accidentado o incidente pertenece tercero (Empresa Contratista / Visitante / Proveedor )</th>
-            </tr>
-
-            <tr style="border: 2px !important;color: #fff;  /*vertical-align:middle;*/ height:30px;">
-                    <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                    <th  bgcolor='#D5D8DC' colspan='5' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >Nombre de la Empresa (tercero)</th> 
-                    <th  bgcolor='#fff' colspan='7' style="${bl} ${bt} ${bb} ${br} font-size:10px; text-align: left;  ${ln} " >${ a[7]}</th>
-                    <th  bgcolor='#D5D8DC' colspan='3' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >Tipo de Actividad Economica</th> 
-                    <th  bgcolor='#fff' colspan='4' style="${bl} ${bt} ${bb} ${br} font-size:10px; text-align: left;  ${ln} " >${a[8]}</th>        
-                    <th  bgcolor='#D5D8DC' colspan='1' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >Ruc</th> 
-                    <th  bgcolor='#fff' colspan='4' style="${bl} ${bt} ${bb} ${br} font-size:10px; text-align: left;  ${ln} " >${a[9]}</th>        
-            </tr>
-
-            <tr style="border: 2px !important;color: #fff;  /*vertical-align:middle;*/ height:30px;">
-                <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                <th  bgcolor='#D5D8DC' colspan='5' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >Dirección de la Empresa (tercero)</th> 
-                <th  bgcolor='#fff' colspan='10' style="${bl} ${bt} ${bb} ${br} font-size:10px; text-align: left;  ${ln} " >${a[10]}</th>
-                <th  bgcolor='#D5D8DC' colspan='1' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >N° total de trabajadores</th> 
-                <th  bgcolor='#fff' colspan='8' style="${bl} ${bt} ${bb} ${br} font-size:10px; text-align: left;  ${ln} " >${a[11]}</th>      
-                
-           </tr>
-
-           <tr style="border: 2px !important;color: #fff;  /*vertical-align:middle;*/ height:30px;">
-                    <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                    <th  bgcolor='#D5D8DC' colspan='5' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >N° de personal con SCTR</th> 
-                    <th  bgcolor='#fff' colspan='7' style="${bl} ${bt} ${bb} ${br} font-size:10px; text-align: left;  ${ln} " >${a[12]}</th>
-                    <th  bgcolor='#D5D8DC' colspan='3' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >N° de personal no afiliado al SCTR</th> 
-                    <th  bgcolor='#fff' colspan='9' style="${bl} ${bt} ${bb} ${br} font-size:10px; text-align: left;  ${ln} " >${a[13]}</th>        
-            </tr>
-
-            <tr style="border: 2px !important;color: #fff;  /*vertical-align:middle;*/ height:30px;">
-                <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                <th  bgcolor='#D5D8DC' colspan='5' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >Nombre de la Aseguradora</th> 
-                <th  bgcolor='#fff' colspan='19' style="${bl} ${bt} ${bb} ${br} font-size:10px; text-align: left;  ${ln} " >${a[14]}</th>
-            </tr>
-
-            <tr style="border: 2px !important;color: #fff; font-weight: bold;  /*vertical-align:middle;*/ height:20px;">
-                  <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                  <th  bgcolor='#444444' colspan='24' style="${bl} ${br} font-size:15px; text-align: left;" >II. DATOS DEL TRABAJADOR ACCIDENTADO </th>         
-            </tr>
-            <tr style="border: 2px !important;color: #fff;  /*vertical-align:middle;*/ height:20px;">
-                    <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                    <th  bgcolor='#444444' colspan='24' style="${bl} ${br} font-size:12px; text-align: left;" >Completar sólo en caso de accidentes que afecta al Trabajador</th>         
-           </tr>
-           <tr style="border: 2px !important;color: #fff;  /*vertical-align:middle;*/ height:3px;">
-                    <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                    <th  bgcolor='#444444' colspan='24' style="${bl} ${br} font-size:8px; text-align: left;" ></th>         
-           </tr>
-
-           <tr style="border: 2px !important;color: #fff;  /*vertical-align:middle;*/ height:30px;">
-                <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                <th  bgcolor='#D5D8DC' colspan='5' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >Nombres y Apellidos</th> 
-                <th  bgcolor='#fff' colspan='7' style="${bl} ${bt} ${bb} ${br} font-size:10px; text-align: left;  ${ln} " >${a[15]}</th>
-                <th  bgcolor='#D5D8DC' colspan='2' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >DNI</th> 
-                <th  bgcolor='#fff' colspan='2' style="${bl} ${bt} ${bb} ${br} font-size:10px; text-align: left;  ${ln} " >${a[16]}</th>
-
-                <th  bgcolor='#D5D8DC' colspan='3' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >Edad</th> 
-                <th  bgcolor='#fff' colspan='2' style="${bl} ${bt} ${bb} ${br} font-size:10px; text-align: left;  ${ln} " >${a[17]}</th>
-
-                <th  bgcolor='#D5D8DC' colspan='1' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >Sexo</th> 
-                <th  bgcolor='#fff' colspan='2' style="${bl} ${bt} ${bb} ${br} font-size:10px; text-align: left;  ${ln} " >${a[18]}</th>
-            </tr>
-
-
-            <tr style="border: 2px !important;color: #fff;  /*vertical-align:middle;*/ height:30px;">
-                <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                <th  bgcolor='#D5D8DC' colspan='5' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >Area de Trabajo</th> 
-                <th  bgcolor='#fff' colspan='7' style="${bl} ${bt} ${bb} ${br} font-size:10px; text-align: left;  ${ln} " >${a[19]}</th>
-                <th  bgcolor='#D5D8DC' colspan='3' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >Puesto de Trabajo</th> 
-                <th  bgcolor='#fff' colspan='9' style="${bl} ${bt} ${bb} ${br} font-size:10px; text-align: left;  ${ln} " >${a[20]}</th>
-            </tr>
-
-            <tr style="border: 2px !important;color: #fff;  /*vertical-align:middle;*/ height:30px;">
-                <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                <th  bgcolor='#D5D8DC' colspan='5' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >Antigüedad en la Empresa</th> 
-                <th  bgcolor='#fff' colspan='5' style="${bl} ${bt} ${bb} ${br} font-size:10px; text-align: left;  ${ln} " >${a[21]}</th>
-
-                <th  bgcolor='#D5D8DC' colspan='4' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >Tiempo de experiencia en el puesto actual</th> 
-                <th  bgcolor='#fff' colspan='2' style="${bl} ${bt} ${bb} ${br} font-size:10px; text-align: left;  ${ln} " >${a[22]}</th>
-
-                <th  bgcolor='#D5D8DC' colspan='4' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >Tipo de Contrato</th> 
-                <th  bgcolor='#fff' colspan='4' style="${bl} ${bt} ${bb} ${br} font-size:10px; text-align: left;  ${ln} " >${a[23]}</th>
-            </tr>
-
-
-            <tr style="border: 2px !important;color: #fff;  /*vertical-align:middle;*/ height:30px;">
-                <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                <th  bgcolor='#D5D8DC' colspan='5' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >Turno de Trabajo</th> 
-                <th  bgcolor='#fff' colspan='5' style="${bl} ${bt} ${bb} ${br} font-size:10px; text-align: left;  ${ln} " >${a[24]}</th>
-
-                <th  bgcolor='#D5D8DC' colspan='4' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >Horas trabajadas  en la Jornada laboral</th> 
-                <th  bgcolor='#fff' colspan='2' style="${bl} ${bt} ${bb} ${br} font-size:10px; text-align: left;  ${ln} " >${a[25]}</th>
-
-               
-                <th  bgcolor='#fff' colspan='8' style="${bl} ${bt} ${bb} ${br} font-size:10px; text-align: left;  ${ln} " ></th>
-            </tr>
-
-            <tr style="border: 2px !important;color: #fff;  /*vertical-align:middle;*/ height:30px;">
-                <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                <th  bgcolor='#D5D8DC' colspan='5' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >Nombre del Jefe Inmediato </th> 
-                <th  bgcolor='#fff' colspan='19' style="${bl} ${bt} ${bb} ${br} font-size:10px; text-align: left;  ${ln} " >${a[26]}</th>
-            </tr>
-
-            <tr style="border: 2px !important;color: #fff; font-weight: bold;  /*vertical-align:middle;*/ height:20px;">
-                  <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                  <th  bgcolor='#444444' colspan='24' style="${bl} ${br} font-size:15px; text-align: left;" >III. INVESTIGACIÓN DEL ACCIDENTE/ INCIDENTE</th>         
-            </tr>
-
-            <tr style="border: 2px !important;color: #fff; font-weight: bold;  /*vertical-align:middle;*/ height:20px;">
-                    <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                    <th  bgcolor='#27AE60' colspan='24' style="${bl} ${br} font-size:11px; text-align: left; ${lb}  " >3.1. Datos de Medio Ambiente  datos que serán completados por el equipo de investigación</th>         
-            </tr>
-
-
-            <tr style="border: 2px !important;color: #fff;  /*vertical-align:middle;*/ height:30px;">
-                <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                <th  bgcolor='#fff' colspan='18' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >Producto(s) involucrados(s) en el accidente:${a[27]}</th> 
-                
-                <th  bgcolor='#fff' colspan='6' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" > Volumen (m3): &nbsp;&nbsp;&nbsp;${a[28]}</th> 
-                
-            </tr>
-
-            <tr style="border: 2px !important;color: #fff;  /*vertical-align:middle;*/ height:30px;">
-                <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                <th  bgcolor='#fff' colspan='15' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >Zona Afectada:&nbsp;&nbsp;&nbsp;${a[29]}</th> 
-                
-                <th  bgcolor='#fff' colspan='9' style="${bl} ${bt} ${br}  ${ln} font-size:10px; text-align: left;" > La afectación del accidente fue a la: </th> 
-                
-            </tr>
-
-            <tr style="border: 2px !important;color: #fff;  /*vertical-align:middle;*/ height:30px;">
-                <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                <th  bgcolor='#fff' colspan='15' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >Extensión del área afectada (m2):&nbsp;&nbsp;&nbsp;${a[30]}</th> 
-                
-                <th  bgcolor='#fff' colspan='9' style="${bl} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" > (${a[31]}) Unidad    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (${a[32]})  Comunidad &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (${a[33]})  Bahia</th> 
-                
-            </tr>
-
-            <tr style="border: 2px !important;color: #fff;  /*vertical-align:middle;*/ height:30px;">
-                <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                <th  bgcolor='#fff' colspan='15' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >El área / sección estaba operando de manera normal?  (S/N):${a[34]}</th> 
-                
-                <th  bgcolor='#fff' colspan='9' style="${bl} ${bt} ${br}  ${bb}   ${ln} font-size:10px; text-align: left;" >Fue comunicado al Órgano Fiscalizador (S/N)?  ${a[35]}</th> 
-                
-            </tr>
-
-                <tr style="border: 2px !important;color: #fff;  /*vertical-align:middle;*/ height:30px;">
-                <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                <th  bgcolor='#fff' colspan='24' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >Medidas de Emergencia tomadas:${a[36]}</th> 
-            </tr>
-
-
-
-
-            <tr style="border: 2px !important;color: #fff;  /*vertical-align:middle;*/ height:30px;">
-                <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                <th  bgcolor='#fff' colspan='15' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >Se generó residuos provenientes de la limpieza?  :${a[37]}</th> 
-                
-                <th  bgcolor='#fff' colspan='9' style="${bl} ${bt} ${br}  ${bb}   ${ln} font-size:10px; text-align: left;" >Accidente Reincidente (S/N)?  ${a[38]}</th> 
-                
-            </tr>
-
-            <tr style="border: 2px !important;color: #fff;  /*vertical-align:middle;*/ height:30px;">
-                <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                <th  bgcolor='#fff' colspan='24' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >Descripción de pérdidas materiales:${a[39]}</th> 
-            </tr>
-
-            
-            <tr style="border: 2px !important;color: #fff;  /*vertical-align:middle;*/ height:30px;">
-                <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                <th  bgcolor='#fff' colspan='24' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >Observaciones:${a[40]}</th> 
-            </tr>
-
-            
-
-
-            <tr style="border: 2px !important;color: #fff; font-weight: bold;  /*vertical-align:middle;*/ height:20px;">
-                    <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                    <th  bgcolor='#444444' colspan='24' style="${bl} ${br} font-size:15px; text-align: left;" >3.2. DATOS DEL EVENTO (ACCIDENTE / INCIDENTE</th>         
-            </tr>
-
-
-            
-
-            <tr style="border: 2px !important;color: #fff;  /*vertical-align:middle;*/ height:30px;">
-                <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                <th  bgcolor='#fff' colspan='15' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >Tipo de Accidente/ Incidente :${a[41]}</th> 
-                
-                <th  bgcolor='#fff' colspan='9' style="${bl} ${bt} ${br}  ${bb}   ${ln} font-size:10px; text-align: left;" >Código de Reporte Team Mate:  ${dato}</th> 
-                
-            </tr>
-
-            <tr style="border: 2px !important;color: #fff;  /*vertical-align:middle;*/ height:60px;">
-                <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                <th  bgcolor='#fff' colspan='12' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >Nivel de Severidad/Gravedad:</th> 
-
-                <th  bgcolor='#fff' colspan='3' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >
-                     (${a[42]}) &nbsp; &nbsp;&nbsp; Baja
-                     <br/>(${a[43]}) &nbsp; &nbsp;&nbsp; Media
-                     <br/>(${a[44]}) &nbsp; &nbsp;&nbsp; Alta 
-                     <br/>
-                </th> 
-                
-                <th  bgcolor='#fff' colspan='9' style="${bl} ${bt} ${br}  ${bb}   ${ln} font-size:10px; text-align: left;" >Clasificacion por Incapacidad: ${a[45]}</th> 
-                
-            </tr>
-
-
-
-                <tr style="border: 2px !important;color: #fff;  /*vertical-align:middle;*/ height:30px;">
-                    <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                    <th  bgcolor='#fff' colspan='12' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >Gerencia:${a[46]}</th> 
-
-                    <th  bgcolor='#fff' colspan='3' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >Lugar del Evento: ${a[47]}</th> 
-                    
-                    <th  bgcolor='#fff' colspan='9' style="${bl} ${bt} ${br}  ${bb}   ${ln} font-size:10px; text-align: left;" >N° días de Descanso Medico: ${a[48]}</th> 
-                    
-                </tr>
-
-                <tr style="border: 2px !important;color: #fff;  /*vertical-align:middle;*/ height:30px;">
-                    <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                    <th  bgcolor='#fff' colspan='12' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >Fecha del evento:${a[49]}</th> 
-
-                    <th  bgcolor='#fff' colspan='3' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >Hora del evento:${a[50]}</th> 
-                    
-                    <th  bgcolor='#fff' colspan='9' style="${bl} ${bt} ${br}  ${bb}   ${ln} font-size:10px; text-align: left;" >Fecha de Inicio de la Investigación: ${a[51]}</th> 
-                    
-                </tr>
-
-                <tr style="border: 2px !important;color: #fff;  /*vertical-align:middle;*/ height:30px;">
-                    <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                    <th  bgcolor='#fff' colspan='12' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" ></th> 
-
-                    <th  bgcolor='#fff' colspan='3' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >Area/Contrata:${a[52]}</th> 
-                    
-                    <th  bgcolor='#fff' colspan='9' style="${bl} ${bt} ${br}  ${bb}   ${ln} font-size:10px; text-align: left;" >Fecha del Informe: ${a[53]}</th> 
-                    
-                </tr>
-
-
-                <tr style="border: 2px !important;color: #fff;  /*vertical-align:middle;*/ height:30px;">
-                    <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                    <th  bgcolor='#fff' colspan='15' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >Responsable del área: ${a[54]}</th> 
-
-                    
-                    <th  bgcolor='#fff' colspan='9' style="${bl} ${bt} ${br}  ${bb}   ${ln} font-size:10px; text-align: left;" >
-                         Involucrado(s):
-                                     <br/>(${a[55]}) 
-                     </th> 
-                    
-                </tr>
-
-
-                <tr style="border: 2px !important;color: #fff;  /*vertical-align:middle;*/ height:30px;">
-                    <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                    <th  bgcolor='#fff' colspan='15' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >Descripción exacta del lugar y/o equipo donde ocurrió el hecho:${a[56]}</th> 
-                     
-                    
-                    <th  bgcolor='#fff' colspan='5' style="${bl} ${bt} ${br}  ${bb}   ${ln} font-size:10px; text-align: left;" >N° de trabajadores afectados:  ${a[57]}</th> 
-                    <th  bgcolor='#fff' colspan='4' style="${bl} ${bt} ${br}  ${bb}   ${ln} font-size:10px; text-align: left;" >N° de pobladores potencialmente afectados:${a[58]}</th> 
-                    
-                </tr>
-
-               
-
-                    <tr style="border: 2px !important;color: #fff; font-weight: bold;  /*vertical-align:middle;*/ height:20px;">
-                            <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                            <th  bgcolor='#444444' colspan='24' style="${bl} ${br} font-size:15px; text-align: left;" >IV. DESCRIPCION DEL INCIDENTE / ACCIDENTE DE TRABAJO o AMBIENTAL</th>         
-                    </tr>
-
-
-                      <tr style="border: 2px !important;color: #fff;  /*vertical-align:middle;*/ height:20px;">
-                        <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                        <th  bgcolor='#fff' colspan='24' style="${bl} ${bt}  ${br}  ${ln} font-size:10px; text-align: left;" >Describa solo los hechos ocurridos. Guiarse del registro - Reporte de Ocurrencia de Incidente/Accidente.</th> 
-                    </tr>
-
-                      <tr style="border: 2px !important;color: #fff;  /*vertical-align:middle;*/ height:60px;">
-                        <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                        <th  bgcolor='#fff' colspan='24' style="${bl}  ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >${a[59]}</th> 
-                    </tr>
-
-                    <tr style="border: 2px !important;color: #fff; font-weight: bold;  /*vertical-align:middle;*/ height:40px;">
-                            <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                            <th  bgcolor='#000000' colspan='24' style="${bl} ${br} font-size:15px; text-align: left;" >V. ANALISIS DE LAS CAUSAS QUE ORIGINARON EL INCIDENTE / ACCIDENTE DE TRABAJO (5 Por qué)</th>         
-                    </tr>
-
-
-                    <tr style="border: 2px !important;color: #fff; font-weight: bold;   vertical-align:middle; height:30px;">
-                        <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                        <th  bgcolor='#fff' colspan='3' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:14px; text-align: left;" >Número</th> 
-
-                        <th  bgcolor='#fff' colspan='7' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-center: left;" >1 PQ</th> 
-                        <th  bgcolor='#fff' colspan='4' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-center: left;" >2 PQ</th> 
-                        <th  bgcolor='#fff' colspan='5' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-center: left;" >3 PQ</th> 
-                        <th  bgcolor='#fff' colspan='2' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-center: left;" >4 PQ</th> 
-                        <th  bgcolor='#fff' colspan='3' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-center: left;" >5 PQ</th> 
-                        
-                        
-                    </tr>
-
-
-
-
-
-
-
-
-        </thead>
- <table>
-     `;
-
-var pq1 = []; var pq2 = [];  var pq3 = [];  var pq4 = [];  var pq5 = [];
-var rpq1 = []; var rpq2 = [];  var rpq3 = [];  var rpq4 = [];  var rpq5 = [];
-
-   for(let i = 0; i < 50; i++)
-   {//--------------------------------------------------------------------------
-
-       let id =  '#pr_'+i+'0000';
-       let rid = '#re_'+i+'0000';
-
-       if(ObjI[istAud].a5pq[id])
-       {
-        console.log('27034 ============  fila valid ('+i+') = '+ObjI[istAud].a5pq[id]); pq1[i] = ObjI[istAud].a5pq[id];    rpq1[i] = ObjI[istAud].a5pq2[rid];
-
-
-
-
-                           let id1 = '#pr'+i+'_0000';
-                           let rid1 = '#re'+i+'_0000';
-                           if(ObjI[istAud].a5pq[id1])
-                           {
-                            console.log('27034 ============               columna valid (1) 2do Por que = '+ObjI[istAud].a5pq[id1]);  pq2[i] = ObjI[istAud].a5pq[id1]; 
-                                                                                                                                      rpq2[i] = ObjI[istAud].a5pq2[rid1];
-                              
-                           }
-
-
-                            let id2 = '#pr'+i+'0_000'; 
-                            let rid2 = '#re'+i+'0_000';
-
-                           if(ObjI[istAud].a5pq[id2])
-                           {
-                            console.log('27034 ============                             columna valid (2) 3er Por que= '+ObjI[istAud].a5pq[id2]);  pq3[i] = ObjI[istAud].a5pq[id2];  
-                                                                                                                                                   rpq3[i] = ObjI[istAud].a5pq2[rid2];
-                              
-                           }
-
-
-                           let id3 = '#pr'+i+'00_00';
-                           let rid3 = '#re'+i+'00_00';
-
-                           if(ObjI[istAud].a5pq[id3])
-                           {
-                            console.log('27034 ============                                           columna valid (3) 4to Por que=  = '+ObjI[istAud].a5pq[id3]);   pq4[i] = ObjI[istAud].a5pq[id3];   
-                                                                                                                                                                     rpq4[i] = ObjI[istAud].a5pq2[rid3];
-                              
-                           }
-
-
-                           let id4 = '#pr'+i+'000_0'; 
-                           let rid4 = '#re'+i+'000_0'; 
-
-
-                           if(ObjI[istAud].a5pq[id4])
-                           {
-                            console.log('27034 ============                                                                      columna valid (4) 5to Por que=  = '+ObjI[istAud].a5pq[id4]);   pq5[i] = ObjI[istAud].a5pq[id4];    
-                                                                                                                                                                                                rpq5[i] = ObjI[istAud].a5pq2[rid4];
-                              
-                           }
-
-
-       }
-
-   }//--------------------------------------------------------------------------
-
-
-
-
-
-
-       // let id2 = '#pr'+i+'0_000'; 
-       // let id3 = '#pr'+i+'00_00'; 
-       // let id4 = '#pr'+i+'000_0'; 
-
-
-
-
-
-// #pr0_0000: "V"
-// #pr00_000: "B"
-// #pr_00000: "A"
-// #pr_10000: "R"
-
-
-  for(let k = 0; k < pq1.length; k++)
-   {//---------------------------
-             //----------------------------------         .map de los 5 por que --------------------------------------------------
-                   let num = k+1;
-                    var acol = '150px;'
-
-                      tab_text = tab_text + ` 
-                             <tr style="border: 2px !important;color: #fff;  vertical-align:middle;  height:${acol}">
-                                            <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                                            <th  bgcolor='#fff' colspan='3' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:13px; text-align: center;" >${num}</th> <b> </b>
-
-                                            <th  bgcolor='#fff' colspan='7' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: center ;" ><b> ${pq1[k] ?pq1[k] : " "} </b> <br/>   ${rpq1[k] ?rpq1[k] : " "}</th> 
-                                            <th  bgcolor='#fff' colspan='4' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: center ;" ><b> ${pq2[k] ?pq2[k] : " "} </b> <br/>   ${rpq2[k] ?rpq2[k] : " "}</th> 
-                                            <th  bgcolor='#fff' colspan='5' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: center ;" ><b> ${pq3[k] ?pq3[k] : " "} </b> <br/>   ${rpq3[k] ?rpq3[k] : " "}</th> 
-                                            <th  bgcolor='#fff' colspan='2' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: center ;" ><b> ${pq4[k] ?pq4[k] : " "} </b> <br/>   ${rpq4[k] ?rpq4[k] : " "}</th> 
-                                            <th  bgcolor='#fff' colspan='3' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: center ;" ><b> ${pq5[k] ?pq5[k] : " "} </b> <br/>   ${rpq5[k] ?rpq5[k] : " "}</th> 
-                                            
-                                            
-                          </tr>
-
-
-                         `;
-                    //----------------------------------         .map de los 5 por que --------------------------------------------------
-
-
-
-   }//---------------------------
-
-
-
-
-
-
-
- var cau = []; var cau1 = []; var cau2 = [];  var cau3 = [];  var cau4 = [];  var cau5 = []; 
-      
-var j = 0;
-  for(let i = 0; i < 50; i++)
-   {//--------------------------------------------------------------------------
-
-
-        if($('#causaHA'+i).val())
-       {
-           console.log("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 2741 +++++++++++++++++++++++++++++++++++++++++++", $('#causaHA'+i).val());  
-
-           console.log("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 2741 +++++++++++++++++++++++++++++++++++++++++++", $('#medidas'+i+'_1').is(':checked'))  
-           console.log("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 2741 +++++++++++++++++++++++++++++++++++++++++++", $('#medidas'+i+'_2').is(':checked'))  
-           console.log("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 2741 +++++++++++++++++++++++++++++++++++++++++++", $('#medidas'+i+'_3').is(':checked'))   
-           console.log("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 2741 +++++++++++++++++++++++++++++++++++++++++++", $('#medidas'+i+'_4').is(':checked'))  
-           console.log("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 2741 +++++++++++++++++++++++++++++++++++++++++++", $('#medidas'+i+'_5').is(':checked'))  
-
-          
-         
-           
-           if( $('#medidas'+i+'_1').is(':checked' )){ cau1[j] = 'Si'; } else { cau1[j] = 'No'}
-           if( $('#medidas'+i+'_2').is(':checked' )){ cau2[j] = 'Si'; } else { cau2[j] = 'No'}
-           if( $('#medidas'+i+'_3').is(':checked' )){ cau3[j] = 'Si'; } else { cau3[j] = 'No'}
-           if( $('#medidas'+i+'_4').is(':checked' )){ cau4[j] = 'Si'; } else { cau4[j] = 'No'}
-           if( $('#medidas'+i+'_5').is(':checked' )){ cau5[j] = 'Si'; } else { cau5[j] = 'No'}
-
-            if($('#causaHA'+i).val()){  cau[j] = $('#causaHA'+i).val(); j++;}
-
-
-
-          // medidas1_1    medidas1_2      medidas1_3           medidas1_4             medidas1_5
-       }
-
-
-
-   }//--------------------------------------------------------------------------
-
-
-
-
-
-
-
-
-
-
-//----------------------------------         .map Causas --------------------------------------------------
-
-  tab_text = tab_text + ` 
-
-        <tr style="border: 2px !important;color: #fff; font-weight: bold;  /*vertical-align:middle;*/ height:40px;">
-                            <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                            <th  bgcolor='#000000' colspan='24' style="${bl} ${br} font-size:15px; text-align: left;" ></th>         
-        </tr>
-
-          <tr style="border: 2px !important;color: #fff; font-weight: bold;   /*vertical-align:middle;*/ height:30px;">
-                        <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                        <th  bgcolor='#fff' colspan='16' style="${bl} ${bt} ${br}  ${ln} font-size:18px; text-align: center;" ></th> 
-                        <th  bgcolor='#fff' colspan='8' style="${bl} ${bt}  ${bb} ${br}  ${ln} font-size:11px; text-align: center;" >Medidas para cero fallas</th>            
-          </tr>
-
-            <tr style="border: 2px !important;color: #fff; font-weight: bold;   /*vertical-align:middle;*/ height:30px;">
-                        <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                        <th  bgcolor='#fff' colspan='16' style="${bl}  ${bb} ${br}  ${ln} font-size:18px; text-align: center;" >Causas</th> 
-                        <th  bgcolor='#fff' colspan='3' style="${bl}  ${bb} ${br}  ${ln} font-size:11px; text-align: center;" >ESTABLECER CONDICIONES BÁSICAS</th>  
-                        <th  bgcolor='#fff' colspan='1' style="${bl}  ${bb} ${br}  ${ln} font-size:11px; text-align: center;" >RESTAURACIÓN DE DETERIORO</th> 
-                        <th  bgcolor='#fff' colspan='1' style="${bl}  ${bb} ${br}  ${ln} font-size:11px; text-align: center;" >OPERACIÓN CORRECTA</th> 
-                        <th  bgcolor='#fff' colspan='1' style="${bl}  ${bb} ${br}  ${ln} font-size:11px; text-align: center;" >MEJORA PUNTOS DE DISEÑO</th> 
-                        <th  bgcolor='#fff' colspan='2' style="${bl}  ${bb} ${br}  ${ln} font-size:11px; text-align: center;" >ENTRENAMIENTO</th>           
-          </tr>
-
-     `;
-
-
-var acol2 = '60px;'
-
-
- for(let i = 0; i < j; i++)
-   {//--------------------------------------------------------------------------
-
-
-  tab_text = tab_text + ` 
-             <tr style="border: 2px !important;color: #fff; font-weight: bold;   /*vertical-align:middle;*/ height:${acol2}">
-                        <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                        <th  bgcolor='#fff' colspan='16' style="${bl}  ${bb} ${br}  ${ln} font-size:12px; text-align: center;" >${cau[i] }</th> 
-                        <th  bgcolor='#fff' colspan='3' style="${bl}  ${bb} ${br}  ${ln} font-size:11px; text-align: center;" >${cau1[i]}</th>  
-                        <th  bgcolor='#fff' colspan='1' style="${bl}  ${bb} ${br}  ${ln} font-size:11px; text-align: center;" >${cau2[i]}</th> 
-                        <th  bgcolor='#fff' colspan='1' style="${bl}  ${bb} ${br}  ${ln} font-size:11px; text-align: center;" >${cau3[i]}</th> 
-                        <th  bgcolor='#fff' colspan='1' style="${bl}  ${bb} ${br}  ${ln} font-size:11px; text-align: center;" >${cau4[i]}</th> 
-                        <th  bgcolor='#fff' colspan='2' style="${bl}  ${bb} ${br}  ${ln} font-size:11px; text-align: center;" >${cau5[i]}</th>           
-              </tr>
-
-     `;
-
-   }
-
-
-
-//----------------------------------          .map Causas --------------------------------------------------
-
-
-
-
-
-//----------------------------------         .map Plan Accion --------------------------------------------------
-
-  tab_text = tab_text + ` 
-
-        <tr style="border: 2px !important;color: #fff; font-weight: bold;  /*vertical-align:middle;*/ height:30px;">
-                            <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                            <th  bgcolor='#000000' colspan='24' style="${bl} ${br} font-size:15px; text-align: left;" >VI. PLAN DE ACCION</th>         
-        </tr>
-
-      
-
-            <tr style="border: 2px !important;color: #fff; font-weight: bold;   /*vertical-align:middle;*/ height:80px;">
-                        <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                        <th  bgcolor='#fff'  style="${bl}  ${bb} ${br}  ${ln} font-size:12px; text-align: center;" ># de Causas</th> 
-                        <th  bgcolor='#fff' colspan='15' style="${bl}  ${bb} ${br}  ${ln} font-size:12px; text-align: center;" >Acción</th>
-                        <th  bgcolor='#fff' colspan='3' style="${bl}  ${bb} ${br}  ${ln} font-size:11px; text-align: center;" >Plazo acción <br/>(Corto, Mediano, Largo)</th>  
-                        <th  bgcolor='#fff' colspan='1' style="${bl}  ${bb} ${br}  ${ln} font-size:11px; text-align: center;" >Tipo de acción <br/> (Corrección, correctiva, preventiva, mejoramiento)</th> 
-                        <th  bgcolor='#fff' colspan='1' style="${bl}  ${bb} ${br}  ${ln} font-size:11px; text-align: center;" >Responsable</th> 
-                        <th  bgcolor='#fff' colspan='1' style="${bl}  ${bb} ${br}  ${ln} font-size:11px; text-align: center;" >Fecha</th> 
-                        <th  bgcolor='#fff' colspan='2' style="${bl}  ${bb} ${br}  ${ln} font-size:11px; text-align: center;" >Estado Acción <br/> (En proceso- Finalizado - Traspasado - No viable)</th>           
-          </tr>
-
-     `;
-
-
-
-
-
-     var acol2 = '60px;'
-
-
-     var pac = []; var pac1 = []; var pac2 = [];  var pac3 = [];  var pac4 = [];  var pac5 = [];      
-     var j = 0;
-      for(let i = 0; i < 50; i++)
-       {//--------------------------------------------------------------------------
-         
-        var f = j+1;
-     
-            if($('#causa2HA_'+i).val())
-           {
-               console.log("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 27753 +++++++++++++++++++++++++++++++++++++++++++", $('#causa2HA_'+i).val());  
-     
-              //$('#dat_ii_turno_trabajo option:selected').text();  //paObj[istAud].a.II[0].B_Turno_Trabajo //option
-               
-                if( $('#selectPlazoAccionHA_'+i).val())         {   pac1[j] =  $('#selectPlazoAccionHA_'+i+' option:selected').text()     }
-                if( $('#selectTipoAccionHA_'+i).val())          {   pac2[j] =  $('#selectTipoAccionHA_'+i+' option:selected').text()      }
-                if( $('#ResponsableHA_'+i).val())               {   pac3[j] =  $('#ResponsableHA_'+i).val()                               }
-                if( $('#fechaPlanHA_'+i).val())                 {   pac4[j] =  $('#fechaPlanHA_'+i).val()     }
-                if( $('#selectStatusAccionHA_'+i).val())        {   pac5[j] =  $('#selectStatusAccionHA_'+i+' option:selected').text()     }
-     
-     
-                if( $('#causa2HA_'+i).val()) {   pac[j] =  $('#causa2HA_'+i).val()    }
-     
-     
-                            
-                        tab_text = tab_text + ` 
-
-
-                        <tr style="border: 2px !important;color: #fff; font-weight: bold;   /*vertical-align:middle;*/ height:80px;">
-                                    <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                                    <th  bgcolor='#fff'  style="${bl}  ${bb} ${br}  ${ln} font-size:12px; text-align: center;" >${f}</th> 
-                                    <th  bgcolor='#fff' colspan='15' style="${bl}  ${bb} ${br}  ${ln} font-size:12px; text-align: center;" >${ pac[j] }</th>
-                                    <th  bgcolor='#fff' colspan='3' style="${bl}  ${bb} ${br}  ${ln} font-size:11px; text-align: center;" > ${ pac1[j] }</th>  
-                                    <th  bgcolor='#fff' colspan='1' style="${bl}  ${bb} ${br}  ${ln} font-size:11px; text-align: center;" > ${ pac2[j] }</th> 
-                                    <th  bgcolor='#fff' colspan='1' style="${bl}  ${bb} ${br}  ${ln} font-size:11px; text-align: center;" > ${ pac3[j] }</th> 
-                                    <th  bgcolor='#fff' colspan='1' style="${bl}  ${bb} ${br}  ${ln} font-size:11px; text-align: center;" > ${ pac4[j] }</th> 
-                                    <th  bgcolor='#fff' colspan='2' style="${bl}  ${bb} ${br}  ${ln} font-size:11px; text-align: center;" > ${ pac5[j] } </th>           
-                    </tr>
-
-                    `;
-
-                        
-      
-     
-     
-                
-                        j++;
-     
-           }
-     
-               
-               
-           
-     
-     
-     
-       }//--------------------------------------------------------------------------
-     
-     
-     
-     
-
-
-
-
-
-
-
-     var acol2 = '60px;'
-
-
- var pac = []; var pac1 = []; var pac2 = [];  var pac3 = [];  var pac4 = [];  var pac5 = []; 
-      
-var j = 0;
-  for(let i = 0; i < 50; i++)
-   {//--------------------------------------------------------------------------
-     
-    var f = j+1;
-
-        if($('#causa2HA_1'+i).val())
-       {
-           console.log("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 2741 +++++++++++++++++++++++++++++++++++++++++++", $('#causa2HA_1'+i).val());  
-           
-           if( $('#selectPlazoAccionHA_'+i).val()) {   pac1[j] =  $('#selectPlazoAccionHA_'+i).val()    }
-           if( $('#selectTipoAccionHA_'+i).val())  {   pac2[j] =  $('#selectTipoAccionHA_'+i).val();    } 
-           if( $('#ResponsableHA_'+i).val())       {   pac3[j] =  $('#ResponsableHA_'+i).val();         }
-           if( $('#fechaPlanHA_'+i).val())         {   pac4[j] =  $('#fechaPlanHA_'+i).val();           } 
-           if( $('#selectStatusAccionHA_'+i).val()){   pac5[j] =  $('#selectStatusAccionHA_'+i).val();  } 
-           if($('#causa2HA_1'+i).val()){  pac[j] = $('#causa2HA_1'+i).val();}
-
-
-
-           
-                    tab_text = tab_text + ` 
-
-                    <tr style="border: 2px !important;color: #fff; font-weight: bold;   /*vertical-align:middle;*/ height:${acol2}">
-                                <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                                <th  bgcolor='#fff'  style="${bl}  ${bb} ${br}  ${ln} font-size:12px; text-align: center;" >${f}</th> 
-                                <th  bgcolor='#fff' colspan='15' style="${bl}  ${bb} ${br}  ${ln} font-size:12px; text-align: center;" >${pac[j]}</th>
-                                <th  bgcolor='#fff' colspan='3' style="${bl}  ${bb} ${br}  ${ln} font-size:11px; text-align: center;"  >${pac1[j]}</th>  
-                                <th  bgcolor='#fff' colspan='1' style="${bl}  ${bb} ${br}  ${ln} font-size:11px; text-align: center;"  >${pac2[j]}</th> 
-                                <th  bgcolor='#fff' colspan='1' style="${bl}  ${bb} ${br}  ${ln} font-size:11px; text-align: center;"  >${pac3[j]}</th> 
-                                <th  bgcolor='#fff' colspan='1' style="${bl}  ${bb} ${br}  ${ln} font-size:11px; text-align: center;"  >${pac4[j]}</th> 
-                                <th  bgcolor='#fff' colspan='2' style="${bl}  ${bb} ${br}  ${ln} font-size:11px; text-align: center;"  >${pac5[j]}</th>           
-                    </tr>
-
-                    `;
-                    j++;
-
-       }
-
-           
-           
-       
-
-
-
-   }//--------------------------------------------------------------------------
-
-
-
-
-
-
-
-
-
-//----------------------------------           .map Plan Accion --------------------------------------------------
-
-
-
-
-
-
-
-
-
-
-
-
-//----------------------------------         .map Plan Accion --------------------------------------------------
-
-  tab_text = tab_text + ` 
-
-        <tr style="border: 2px !important;color: #fff; font-weight: bold;  /*vertical-align:middle;*/ height:30px;">
-                            <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                            <th  bgcolor='#444444' colspan='24' style="${bl} ${br} font-size:15px; text-align: left;" >VII. PARTICIPANTES DE LA INVESTIGACION - EQUIPO INVESTIGADOR</th>         
-        </tr>
-
-
-
-     `;
-
-
-var acol2 = '60px;'
-
-
-///paObj[istAud].a.Investigadores;
-//  console.log("**todos LOS INTEGRANTES**",item1);
-//  var nnam = item1.Participante;
-//  var nnam1 = item1.Cargo;
-//  var nnam2 = date_AAAA_MM_DD_T_HH_MM_S_to_DD_MM_AAAA(item1.Create_Date);
-//  var idii = item1.Id;
-
-
-var g = 1;
-
-paObj[istAud].a.Investigadores.map(function(item)
-{
-    var nnam = item.Participante;
-    var nnam1 = item.Cargo;
-//  var nnam2 = date_AAAA_MM_DD_T_HH_MM_S_to_DD_MM_AAAA(item1.Create_Date);
-//  var idii = item1.Id;
-
-            tab_text = tab_text + ` 
-
-            <tr style="border: 2px !important;color: #fff; font-weight: bold;   /*vertical-align:middle;*/ height:${acol2}">
-                    <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                    <th  bgcolor='#fff'  style="${bl}   ${ln} font-size:12px; text-align: center;" >${g}</th> 
-                    <th  bgcolor='#fff' colspan='12' style="   ${ln} font-size:12px; text-align: left;" >Nombre completo: ${nnam}</th>
-                    <th  bgcolor='#fff' colspan='11' style="   ${br}  ${ln} font-size:11px; text-left: center;" >Cargo: ${nnam1}</th>                
-            </tr>
-
-            `;
-
-            g++;
-            });
-
-//**************************************** un for o map
- 
-
-
-
-
-var jk = $('#dat_ii_5_comentario').val();
-//**************************************************
-      tab_text = tab_text + ` 
-
-              <tr style="border: 2px !important;color: #fff; font-weight: bold;   /*vertical-align:middle;*/ height:20px;">
-                        <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                        <th  bgcolor='#fff'  style="${bl}    ${ln} font-size:12px; text-align: center;" ></th> 
-                        <th  bgcolor='#fff' colspan='23'  style="    ${br}  ${ln} font-size:12px; text-align: left;" >Comentario</th>
-                                      
-              </tr>
-
-               <tr style="border: 2px !important;color: #fff; font-weight: bold;   /*vertical-align:middle;*/ height:100px;">
-                        <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                          <th  bgcolor='#fff'  style="${bl} ${bb}   ${ln} font-size:12px; text-align: center;" ></th> 
-                        <th  bgcolor='#fff' colspan='23'  style="  ${bl}  ${bt} ${bb} ${br}  ${ln} font-size:12px; font-style: italic; text-align: left;" >${jk}</th>
-                                      
-              </tr>
-
-
-      
-
-
-     `;
-
-
-//----------------------------------           .map Plan Accion --------------------------------------------------
-
-
-
-
-
-
-
-
-
-
-
-
-//----------------------------------         -------------------------- --------------------------------------------------
-
-
-var acol2 = '60px;'
-
-
-//**************************************** un for o map
-  tab_text = tab_text + ` 
-        <tr style="border: 2px !important;color: #fff; font-weight: bold;  /*vertical-align:middle;*/ height:100px;">
-                            <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                            <th  bgcolor='#444444' colspan='24' style="${bl} ${br} font-size:15px; text-align: left;" >VIII. ANEXOS  ( hacer check en los anexo adjuntos al informe)</th>         
-        </tr>
-
-        <tr style="border: 2px !important;color: #fff; font-weight: bold;  /*vertical-align:middle;*/ height:20px;">
-                            <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                            <th  bgcolor='#FFFFFF' colspan='24' style="${bl} ${br} font-size:15px; text-align: left;" ></th>         
-        </tr>
-
-
-     `;
-
-
-var acr;       if( $('#dat_ii_acr').is(':checked' )){ acr = 'X'; } else { acr = ''; }
-var ro;        if( $('#dat_ii_reporte').is(':checked' )){ ro = 'X'; } else { ro = ''; }
-var otros;     if( $('#dat_ii_otros').is(':checked' )){ otros = 'X'; } else { otros = ''; }
-var otros2;    if( $('#dat_ii_otros_text').val()){ otros2 =  $('#dat_ii_otros_text').val();  } else { otros2 = '***' }
-
-var lina;     if( $('#dat_ii_linea_tiempo').is(':checked' )){ lina = 'X'; } else { lina = ''; }
-var ent;      if( $('#dat_ii_entrevista1').is(':checked' )){  ent = 'X'; } else {  ent = ''; }
-
-var foto;     if( $('#dat_ii_fotografias').is(':checked' )){ foto = 'X'; } else { foto = ''; }
-var ent2;      if( $('#dat_ii_entrevista2').is(':checked' )){  ent2 = 'X'; } else {  ent2 = ''; }
-
-
-
-//**************************************************
-      tab_text = tab_text + ` 
-
-          
-
-               <tr style="border: 2px !important;color: #fff; font-weight: bold;   /*vertical-align:middle;*/ height:20px;">
-                          <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                          <th  bgcolor='#fff'  style="${bl}    ${ln} font-size:12px; text-align: center;" ></th> 
-                          <th  bgcolor='#fff' colspan='1'  style="  ${bl} ${bb} ${bt} ${bb} ${br}  ${ln} font-size:12px; text-align: left;" >${acr}</th>
-                          <th  bgcolor='#fff' colspan='1'  style="    ${ln} font-size:12px; text-align: left;" ></th>
-                          <th  bgcolor='#fff' colspan='5'  style="    ${ln} font-size:12px; text-align: left;" >ACR</th>
-                          <th  bgcolor='#fff' colspan='1'  style="    ${ln} font-size:12px; text-align: left;" ></th>
-                          <th  bgcolor='#fff' colspan='1'  style="  ${bl} ${bb} ${bt} ${bb} ${br}  ${ln} font-size:12px; text-align: left;" >${ro}</th>
-                          <th  bgcolor='#fff' colspan='1'  style="    ${ln} font-size:12px; text-align: left;" ></th>
-                          <th  bgcolor='#fff' colspan='4'  style="    ${ln} font-size:12px; text-align: left;" >Reporte de Ocurrencia</th>
-                          <th  bgcolor='#fff' colspan='1'  style="    ${ln} font-size:12px; text-align: left;" ></th>
-                          <th  bgcolor='#fff' colspan='1'  style="  ${bl} ${bb} ${bb} ${bt} ${br}  ${ln} font-size:12px; text-align: left;" >${otros}</th>
-                          <th  bgcolor='#fff' colspan='1'  style="    ${ln} font-size:12px; text-align: left;" ></th>
-                          <th  bgcolor='#fff' colspan='1'  style="    ${ln} font-size:12px; text-align: left;" >Otros: </th>
-                          <th  bgcolor='#fff' colspan='5'  style="   ${br}  ${ln} font-size:12px; text-align: left; color: #000;" > ${otros2}</th>
-                          
-
-                                      
-              </tr>
-
-                <tr style="border: 2px !important;color: #fff; font-weight: bold;  /*vertical-align:middle;*/ height:20px;">
-                            <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                            <th  bgcolor='#FFFFFF' colspan='24' style="${bl} ${br} font-size:15px; text-align: left;" ></th>         
-                </tr>
-
-
-
-               <tr style="border: 2px !important;color: #fff; font-weight: bold;   /*vertical-align:middle;*/ height:20px;">
-                          <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                          <th  bgcolor='#fff'  style="${bl}    ${ln} font-size:12px; text-align: center;" ></th> 
-                          <th  bgcolor='#fff' colspan='1'  style="  ${bl} ${bb} ${bt} ${bb} ${br}  ${ln} font-size:12px; text-align: left;" >${lina}</th>
-                          <th  bgcolor='#fff' colspan='1'  style="    ${ln} font-size:12px; text-align: left;" ></th>
-                          <th  bgcolor='#fff' colspan='5'  style="    ${ln} font-size:12px; text-align: left;" >Línea de tiempo</th>
-                          <th  bgcolor='#fff' colspan='1'  style="    ${ln} font-size:12px; text-align: left;" ></th>
-                          <th  bgcolor='#fff' colspan='1'  style="  ${bl} ${bb} ${bt} ${bb} ${br}  ${ln} font-size:12px; text-align: left;" >${ent}</th>
-                          <th  bgcolor='#fff' colspan='1'  style="    ${ln} font-size:12px; text-align: left;" ></th>
-                          <th  bgcolor='#fff' colspan='4'  style="    ${ln} font-size:12px; text-align: left;" >Entrevistas al Accidentado</th>
-                          <th  bgcolor='#fff' colspan='1'  style="    ${ln} font-size:12px; text-align: left;" ></th>
-                          <th  bgcolor='#fff' colspan='1'  style="    ${ln} font-size:12px; text-align: left;" ></th>
-                          <th  bgcolor='#fff' colspan='1'  style="    ${ln} font-size:12px; text-align: left;" ></th>
-                          <th  bgcolor='#fff' colspan='1'  style="    ${ln} font-size:12px; text-align: left;" ></th>
-                          <th  bgcolor='#fff' colspan='5'  style="   ${br}  ${ln} font-size:12px; text-align: left;" ></th>
-
-                                      
-              </tr>
-
-
-                <tr style="border: 2px !important;color: #fff; font-weight: bold;  /*vertical-align:middle;*/ height:20px;">
-                            <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;"></th> 
-                            <th  bgcolor='#FFFFFF' colspan='24' style="${bl} ${br} font-size:15px; text-align: left;" ></th>         
-                </tr>
-
-
-
-               <tr style="border: 2px !important;color: #fff; font-weight: bold;   /*vertical-align:middle;*/ height:20px;">
-                          <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;"></th> 
-                          <th  bgcolor='#fff'  style="${bl}    ${ln} font-size:12px; text-align: center;" ></th> 
-                          <th  bgcolor='#fff' colspan='1'  style="  ${bl} ${bb} ${bt} ${bb} ${br}  ${ln} font-size:12px; text-align: left;" >${foto}</th>
-                          <th  bgcolor='#fff' colspan='1'  style="    ${ln} font-size:12px; text-align: left;" ></th>
-                          <th  bgcolor='#fff' colspan='5'  style="    ${ln} font-size:12px; text-align: left;" >Fotografias  /Gráficos </th>
-                          <th  bgcolor='#fff' colspan='1'  style="    ${ln} font-size:12px; text-align: left;" ></th>
-                          <th  bgcolor='#fff' colspan='1'  style="    ${bl} ${bb} ${bt} ${bb} ${br}  ${ln} font-size:12px; text-align: left;" >${ent2}</th>
-                          <th  bgcolor='#fff' colspan='1'  style="    ${ln} font-size:12px; text-align: left;" ></th>
-                          <th  bgcolor='#fff' colspan='4'  style="    ${ln} font-size:12px; text-align: left;" >Entrevistas a testigos del evento</th>
-                          <th  bgcolor='#fff' colspan='1'  style="    ${ln} font-size:12px; text-align: left;" ></th>
-                          <th  bgcolor='#fff' colspan='1'  style="    ${ln} font-size:12px; text-align: left;" ></th>
-                          <th  bgcolor='#fff' colspan='1'  style="    ${ln} font-size:12px; text-align: left;" ></th>
-                          <th  bgcolor='#fff' colspan='1'  style="    ${ln} font-size:12px; text-align: left;" ></th>
-                          <th  bgcolor='#fff' colspan='5'  style="   ${br}  ${ln} font-size:12px; text-align: left;" ></th>
-
-                                      
-              </tr>
-
-               <tr style="border: 2px !important;color: #fff; font-weight: bold;  /*vertical-align:middle;*/ height:40px;">
-                            <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;"></th> 
-                            <th  bgcolor='#FFFFFF' colspan='24' style="${bl} ${br} font-size:15px; text-align: left;" ></th>         
-              </tr>
-
-             <tr style="border: 2px !important;color: #fff; font-weight: bold;  /*vertical-align:middle;*/ height:30px;">
-                            <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;"></th> 
-                            <th  bgcolor='#FFFFFF' colspan='24' style="${bl} ${bb} ${bt} ${bb} ${br} font-size:15px; text-align: left;" ></th>         
-              </tr>
-
-              <tr style="border: 2px !important;color: #000; font-weight: bold;  /*vertical-align:middle;*/ height:40px;">
-                            <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #000;"></th> 
-                            <th  bgcolor='#FFFFFF' colspan='24' style="${bl} ${bb} ${bt} ${bb} ${br} font-size:10px; text-align: center;" >
-                             El presente informe de Investigación de Incidente/Accidente realizado por el equipo de investigación según procedimiento y deberá ser: Enviado dentro de las 120 horas de ocurrido el evento a la Jefatura Regional <br/>
-                             de SSOMA de manera fisica, asi como los los documentos adjuntos (esquemas, croquis, fotografías, entrevistas, SAC, SAP, etc.) .</th>         
-              </tr>
-
-               <tr style="border: 2px !important;color: #000; font-weight: bold;  /*vertical-align:middle;*/ height:30px;">
-                            <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #000;"></th> 
-                            <th  bgcolor='#FFFFFF' colspan='24' style="${bl} ${bb} ${bt} ${bb} ${br} font-size:15px; text-align: left;" >SSM01-F02 v08</th>         
-              </tr>
-
-
-
-
-     `;
-
-
-//----------------------------------           ------------------------------ --------------------------------------------------
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  // <tr style="font-weight: bold;">
-  //               <th style="border: 1px solid #000;">PESO ACTIVIDAD</th>
-  //               <th style="border: 1px solid #000;" colspan="2">ACTIVIDAD / ENTREGABLE</th> 
-  //               <th style="border: 1px solid #000;" >MES</th>
-  //               <th style="border: 1px solid #000;" colspan="4" >ENE. - </th>
-
-  //             </tr>
-
-
-  // <colgroup>
-  //            <col width="1500" style="vertical-align:middle;" />
-  //            <col style="width:200px;" />
-  //            <col style="width:20px;" />
-  //            <col style="width:20px;" />
-  //        </colgroup>
-
-  //--------------------------------------------------------------AQUI VAMOS A GREGAR LAS FILAS DE LOS TOTALES ---------------------------------------------------
-
-  // console.log(tab_text)
-
-
-  var ua = window.navigator.userAgent;
-  var msie = ua.indexOf("MSIE ");
-
-  if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./)) // If Internet Explorer
-  {
-    txtArea1.document.open("txt/html", "replace");
-    txtArea1.document.write(tab_text);
-    txtArea1.document.close();
-    txtArea1.focus();
-    sa = txtArea1.document.execCommand("SaveAs", true, "Say Thanks to Sumit.xls");
-  } else //other browser not tested on IE 11
-    //     sa = window.open('data:application/vnd.ms-excel,' + encodeURIComponent(tab_text));  
-
-    // return (sa);
-
-    var link = document.getElementById('link');
-
-  //alert(link);
-
-  link.href = 'data:application/vnd.ms-excel;base64,' + window.btoa(tab_text);
-  link.download = 'Plan Anual - ';
-  link.click();
+$('#modalInformeInvestigacion').modal('show').addClass('fade');
 }
 
 
@@ -27753,10 +22809,3 @@ var ent2;      if( $('#dat_ii_entrevista2').is(':checked' )){  ent2 = 'X'; } els
 //·################################################### INFORME DE INVESTIGACIÓN ANDY 12-07-2021 #########################################################
 //·######################################################################################################################################################
 //·################################################################################################################################################_FIN_#
-
-
-
-
-
-
-

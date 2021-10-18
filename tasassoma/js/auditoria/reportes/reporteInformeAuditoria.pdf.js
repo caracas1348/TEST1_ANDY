@@ -1,5 +1,5 @@
 /**
- *  invir plan de auditoria
+ *  imprimir plan de auditoria
  * @param {int} idAud
  */
 function enviarPlanPDF2(idAud)
@@ -42,7 +42,8 @@ function enviarPlanPDF2(idAud)
     img_inf.src = './images/img_inferior_pdf.png';
 
     var img_header = new Image();
-    img_header.src = './images/img_header.png';
+    img_header.src = './images/img_superior_pdf.jpeg';
+    //img_header.src = './images/img_header.png';
 
     var img_logo_header = new Image();
     img_logo_header.src = './images/img_logo_header.png';
@@ -50,16 +51,28 @@ function enviarPlanPDF2(idAud)
     var img_letras = new Image();
     img_letras.src = './images/img_letras.png';
 
+    var img_cover = new Image();
+    img_cover.src = './images/Cover.jpeg';
 
-    doc.addImage(img_sup, 'PNG', 0, 0, 210, 128)
-    doc.addImage(img_inf, 'PNG', 0, 186, 210, 110)
-    doc.addImage(img_log, 'PNG', 49, 115, 110, 37)
-    doc.setFontType('bold')
+    var img_portada = new Image();
+    img_portada.src = './images/PortadaInformeAuditoria.png';
+
+    var img_portadaB = new Image();
+    img_portadaB.src = './images/PortadaInformeAuditoriaB.png';
+
+    // doc.addImage(img_sup, 'PNG', 0, 0, 210, 128)
+    // doc.addImage(img_inf, 'PNG', 0, 186, 210, 110)
+    // doc.addImage(img_log, 'PNG', 49, 115, 110, 37)
+    // doc.addImage(img_portada, 'PNG', 0, 0, 210, 300)
+    doc.addImage(img_portadaB, 'PNG', 0, 0, 210, 300)
+    doc.setFontType('bold');
+    doc.setFontSize(60);
     doc.setTextColor(52,85,156);
-    doc.text(85, 160, 'Informe de Auditoría');
-    doc.setTextColor(178,178,178);
-    doc.text(96, 162, '________');
-    doc.text(105, 172, ''+anio);
+    // doc.text(85, 160, 'Informe de Auditoría');
+    doc.setTextColor(255,255,255);
+    // doc.text(96, 162, '________');
+    // doc.text(145, 205, ''+anio); // PARA // doc.addImage(img_portada, 'PNG', 0, 0, 210, 300)
+    doc.text(140, 195, ''+anio); // PARA // doc.addImage(img_portadaB, 'PNG', 0, 0, 210, 300)
 
 
 
@@ -67,7 +80,7 @@ function enviarPlanPDF2(idAud)
 
     //------------------------------------------------------------------    encabezado documento    -------------------------------------------------
     doc.addImage(img_header, 'PNG', 0, 0, 210, 21)
-    doc.addImage(img_logo_header, 'PNG', 6, 5, 23, 8)
+    //doc.addImage(img_logo_header, 'PNG', 6, 5, 23, 8)
 
     doc.setTextColor(255,255,255);
     doc.setFontSize(12)
@@ -114,21 +127,21 @@ function enviarPlanPDF2(idAud)
     var img_calendar_blue = new Image();
     img_calendar_blue.src = './images/img_calendar_blue.png';
 
-    //------------------------------    Fecha Planificada      ---------------------------------
+    //------------------------------    Fecha Ejecución      ---------------------------------
     var img_calendar_green = new Image();
     img_calendar_green.src = './images/img_calendar_green.png';
 
     doc.setFontType('normal')
     doc.addImage(img_calendar_green, 'PNG', 9, 48, 4, 4)
     doc.setTextColor(52,85,156);
-    doc.text(15, 52, 'Fecha Planificada');
+    doc.text(15, 52, 'Fecha Ejecución');
     doc.setDrawColor(200,200,200);
     doc.setFillColor(255, 255, 255);
     doc.rect(9, 56, 41, 14);//(x1,y1,x2,y2)
     doc.setTextColor(0,0,0);
-    doc.text(''+fec_plan_inicial,18, 64);
-
-    //------------------------------    Fecha Planificada      ---------------------------------
+    doc.text(''+fec_ejec_inicial,18, 64);
+    console.error("fec_ejec_inicial -> ", fec_ejec_inicial);
+    //------------------------------    Fecha Ejecución      ---------------------------------
 
     //------------------------------    Norma/Estándar(Criteriode Auditoría)      ---------------------------------
     var img_copia = new Image();
@@ -308,11 +321,16 @@ function enviarPlanPDF2(idAud)
         ? 'Conforme con la norma. Pequeñas desviaciones, no se comprometen seguridad de los alimentos, la calidad del producto o implica en sanitización.'
         : (objAuditoria[idAud].Nota <= 94 && objAuditoria[idAud].Nota >= 86 )
             ? 'No conformidad Menor. Se observaron que algunas desviaciones a corto plazo puede comprometer la calidad del producto o implica un problema menor en sanitización. '
-            : 'No conformidad Crítica. Desviaciones observadas con impacto directo sobre la seguridad alimentaria y la calidad del producto, requiere "atención inmediata" o implica un problema serio de sanitización. Solicitante o la desviación desde el punto de evaluación.'
-
+            : (objAuditoria[idAud].Nota >= 1 )
+                ? 'No conformidad Crítica. Desviaciones observadas con impacto directo sobre la seguridad alimentaria y la calidad del producto, requiere "atención inmediata" o implica un problema serio de sanitización. Solicitante o la desviación desde el punto de evaluación.'
+                : ''
     console.warn("msj -> ",msj)
 
-    doc.text(14, 143, 'Nota: ' + objAuditoria[idAud].Nota + ' % ');
+    if(objAuditoria[idAud].Nota>=1)
+    {
+        doc.text(14, 143, 'Nota: ' + objAuditoria[idAud].Nota + ' % ');
+    }
+    
     if(objAuditoria[idAud].Nota >= 95)
         doc.setTextColor(88,194,93);
     else if (objAuditoria[idAud].Nota <= 94 && objAuditoria[idAud].Nota >= 86 )
@@ -362,7 +380,7 @@ function enviarPlanPDF2(idAud)
 
     //-------------------------   **   Resultado de la Auditoría  ** ---------------------------------
     doc.setTextColor(52,85,156);
-    doc.text(15, 170, ' Descripción Sucinta de los Resultados ');
+    doc.text(15, 170, ' Descripción Breve de los Resultados ');
     doc.addImage(img_calendar_checkx, 'PNG', 9, 167, 4, 4)
 
 
@@ -385,7 +403,7 @@ function enviarPlanPDF2(idAud)
     doc.addPage();
     //------------------------------------------------------------------    encabezado documento    -------------------------------------------------
     doc.addImage(img_header, 'PNG', 0, 0, 210, 21)
-    doc.addImage(img_logo_header, 'PNG', 6, 5, 23, 8)
+    //doc.addImage(img_logo_header, 'PNG', 6, 5, 23, 8)
 
     doc.setTextColor(255,255,255);
     doc.setFontSize(12)
@@ -411,13 +429,13 @@ function enviarPlanPDF2(idAud)
 
 
     // //----------------TABLA DINAMICA--------------   Descripción de los Hallazgos Identificados Durante el Proceso de Auditoría      ---------------------------------
-var img_copia = new Image();
-img_copia.src = './images/img_copia.png';
-doc.setFontType('normal')
-doc.addImage(img_copia, 'PNG', 9, 48, 4, 4)
-doc.setTextColor(52,85,156);
-doc.text(15, 52, 'Descripción de los Hallazgos Identificados Durante el Proceso de Auditoría');
-doc.setDrawColor(200,200,200);
+    var img_copia = new Image();
+    img_copia.src = './images/img_copia.png';
+    doc.setFontType('normal')
+    doc.addImage(img_copia, 'PNG', 9, 48, 4, 4)
+    doc.setTextColor(52,85,156);
+    doc.text(15, 52, 'Descripción de los Hallazgos Identificados Durante el Proceso de Auditoría');
+    doc.setDrawColor(200,200,200);
 
     var img_user_gray = new Image();
     img_user_gray.src = './images/img_user_gray.png';
@@ -447,12 +465,15 @@ doc.setDrawColor(200,200,200);
     doc.setTextColor(52,85,156);
     doc.text(10, 66, 'Norma');
     doc.text(30, 66, 'Tipo');
-    doc.text(54, 66, 'Descripción de la No Conformidad');  //
+    doc.text(60, 66, 'Descripción de la No Conformidad');  //
     doc.text(130, 66, 'Punto de la Norma o Procedimiento incumplido');
 
     var grosor = 50;
     var itt = 0;
     var pxl = 0;
+
+    console.warn("objAuditoria[idAud].Procesos -> ", objAuditoria[idAud].Procesos )
+
     objAuditoria[idAud].Procesos.map(function(item)
     {
         console.log('=============================(',yprocesstitle,')=============================================(',yprocesstitle,')');
@@ -463,7 +484,8 @@ doc.setDrawColor(200,200,200);
             item.Requisitos.map(function(dat)
             {
 
-               if(dat.TipoHallazgoId != 7)
+               // if(dat.TipoHallazgoId != 7 )
+               if(dat.TipoHallazgoId != 7 && dat.TipoHallazgoId != 0)
                {
 
                /* SECCION PARA NUEVA HOJA EN CASO DE SUPERAR LAS Y*/
@@ -496,7 +518,7 @@ doc.setDrawColor(200,200,200);
                     doc.text(11, yprocesstitle, ''+NORMAx,{maxWidth:25});
                     doc.text(32, yprocesstitle, ''+dat.Code_Hallazgo,{maxWidth:25});
                     var as = toCapitalize(dat.Hallazgo);
-                    doc.text(54, yprocesstitle-1, ''+as,{maxWidth:72, align:'justify'});
+                    doc.text(60, yprocesstitle, ''+as,{maxWidth:72, align:'justify'});
                     var bs = dat.Code+' '+toCapitalize(dat.Description);
                     doc.text(134, yprocesstitle, ''+bs,{maxWidth:54, align:'justify'});
 
@@ -599,20 +621,20 @@ doc.setDrawColor(200,200,200);
     })
 
 
-
-
+ 
     doc.addPage();
 
-    doc.addImage(img_sup, 'PNG', 0, 0, 210, 128)
-    doc.addImage(img_inf, 'PNG', 0, 186, 210, 110)
-    doc.addImage(img_log, 'PNG', 49, 115, 110, 37)
-    doc.addImage(img_letras, 'PNG', 0, 241, 210, 45)
+    // doc.addImage(img_sup, 'PNG', 0, 0, 210, 128)
+    // doc.addImage(img_inf, 'PNG', 0, 186, 210, 110)
+    // doc.addImage(img_log, 'PNG', 49, 115, 110, 37)
+    // doc.addImage(img_letras, 'PNG', 0, 241, 210, 45)
+    doc.addImage(img_cover, 'JEPG', 0, 0, 210, 300)
 
     doc.setFontSize(8)
     doc.setTextColor(52,85,156);
 
-    doc.text(90, 284, 'Copyright © '+anio+' TASA');
-    doc.text(6, 290, 'Todos los derechos reservados. Política de Privacidad Jirón Carpaccio #250, Piso 11 - San Borja, Lima 41 - Perú. (51+1) 611-1400 | (51+1) 611-1401');
+    // doc.text(90, 284, 'Copyright © '+anio+' TASA');
+    // doc.text(6, 290, 'Todos los derechos reservados. Política de Privacidad Jirón Carpaccio #250, Piso 11 - San Borja, Lima 41 - Perú. (51+1) 611-1400 | (51+1) 611-1401');
     //doc.save('hello_world.pdf');
     base64SP3 = doc.output('datauristring','filename.pdf') //aqui generamos el pdf e base 64 cpara enviarlo al servidor
     var x = base64SP3.split(',');

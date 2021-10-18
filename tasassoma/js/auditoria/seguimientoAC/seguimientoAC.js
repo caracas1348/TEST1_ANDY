@@ -124,10 +124,16 @@ var fnCargarSeguimientosSP5 = function ()
     // SI EL ROL ES ROL_COORDINADORAUDITORIA MOSTRAMOS TODO. SINO MOSTRAMOS LOS HALLAZGOS ASIGNADOS
     let ResponsableUserHash = ( getCookie( "vtas_rolexternalrol" + sessionStorage.tabVisitasa ) === "ROL_COORDINADORAUDITORIA" || getCookie( "vtas_rolexternalrol" + sessionStorage.tabVisitasa ) === "ROL_EVALUADORLOCAL_AC" ) ? "" : getCookie( "vtas_id_hash" + sessionStorage.tabVisitasa )
 
+    let ResponsableAccionUserHash = ( getCookie( "vtas_rolexternalrol" + sessionStorage.tabVisitasa ) === "ROL_RESPONSABLEEJECUCION_AC") ? getCookie( "vtas_id_hash" + sessionStorage.tabVisitasa ) : ""
 
-    let url = apiurlAuditoria + "/api/Get-SeguimientosAC-All?code=" + GetSeguimientosACAll + "&httpmethod=objectlist&ResponsableUserHash=" + ResponsableUserHash + "&TipoHallazgoId=" + tipoHallazgoId + "&NormaId=" + normaId + "&SedeId=" + sedeId + "&StatusPACId=" + statusPACId + "&FechaInicio=" + f1 + "&FechaFin=" + f2;
+    if( ResponsableAccionUserHash !== "" )
+    {
+        ResponsableUserHash = ""
+    }
 
-    //console.log("URL -> ",url )
+    let url = apiurlAuditoria + "/api/Get-SeguimientosAC-All?code=" + GetSeguimientosACAll + "&httpmethod=objectlist&ResponsableUserHash=" + ResponsableUserHash + "&ResponsableAccionUserHash=" + ResponsableAccionUserHash + "&TipoHallazgoId=" + tipoHallazgoId + "&NormaId=" + normaId + "&SedeId=" + sedeId + "&StatusPACId=" + statusPACId + "&FechaInicio=" + f1 + "&FechaFin=" + f2;
+
+    console.log("URL -> ",url )
 
     let headers = {
         "apikey": constantes.apiKey
@@ -258,7 +264,7 @@ var fnCargarSeguimientosSP5 = function ()
             // ocultamos el loading
             hideLoading();
 
-        } );
+        } );//*/
 }
 //------------------------------------- END   fnCargarSeguimientosSP5() -------------------------------------
 
@@ -351,8 +357,8 @@ var fnCalcularPorcentaleAvance = function ( Item )
 let returnModalVerPAC = function()
 {
     $('#modalDetalleAccionSp5').modal('hide').removeClass('fade');
-    alert("seguiminetoActivo " + seguimientoActivo)
-    alert("PorcentajeAvanceActivo " + PorcentajeAvanceActivo)
+    //alert("seguiminetoActivo " + seguimientoActivo)
+    //alert("PorcentajeAvanceActivo " + PorcentajeAvanceActivo)
     //$('#modalVerPACSp5').modal('show').addClass('fade');
     fnVerSeguimientoSP5( seguimientoActivo, PorcentajeAvanceActivo )
 }

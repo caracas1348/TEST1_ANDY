@@ -1690,8 +1690,6 @@ console.log(".."+Item.Equipo+"..")
                                         if((Item.StatusAccionCorrectivaId == 4)&&(Item.StatusHallazgoId == 2))
                                             { var ttitle_6 = 'Ver/ Generar Informe de Investigacion.';  var ccolor_6 = '#cd8338';  var readonly_6 = ''; } //habilito
 
-                                        //alert(Item.InformeIIFinalizado);
-
                                          if(Item.InformeIIFinalizado == 1)
                                             {  var ttitle_7 = 'Ver / Generar Las Lecciones Aprendidas.';  var ccolor_7 = '#254373';  var readonly_7 = '';}
 
@@ -23660,10 +23658,6 @@ function fnSp4DireccionSede()
 
 function sp4FnVentanaInformeInvestigacion(idIncidente)
 {
- 
-
-
-
 
    istAud = idIncidente;
   // fnSp4BuscarHallazgosAsignados();
@@ -23671,34 +23665,7 @@ function sp4FnVentanaInformeInvestigacion(idIncidente)
 //alert('//vamos a validar que tipo de incidente es');
     var IdIi = istAud;//-------Id del IncidenteAccidente &Id=133&=2
     var AccionBD = 1;//------------1- SSO, 2- Ambiental, 3- Daño Material
-    
-
-    if(paObj[istAud].a.InformeIIFinalizado == 1)
-    {
-           $('#sp3BtFiltroPlanAnual_gii').css('display', 'none');
-           $('#sp3BtFiltroPlanAnual_fii').css('display', 'none');
-    }else{
-           $('#sp3BtFiltroPlanAnual_gii').css('display', 'block');
-           $('#sp3BtFiltroPlanAnual_fii').css('display', 'block');
-         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    ;
     if(paObj[istAud].a.GrupoEvento == 1)//-------------------- Accidente Personal -------------------
     {//===========================================================================================================================================================*****
 
@@ -23976,22 +23943,7 @@ function sp4FnVentanaInformeInvestigacion(idIncidente)
                                     hideLoading();
 
                                     console.log('23309 aqui mandamos a buscar los hallazgos asignados');//fnSp4BuscarHallazgosAsignados
-
                                     fnSp4BuscarHallazgosAsignados();
-                                     buscar5porqueIncidente()
-                                    /*
-                                    //########################################################## promesa ##################################################################
-
-                                    let promise = new Promise ( function(resolve, reject) { resolve( fnSp4BuscarHallazgosAsignados())  } );
-
-                                        // resolve ejecuta la primera función en .then
-                                        promise.then(
-                                          result => buscar5porqueIncidente(), // muestra "hecho!" después de 1 segundo
-                                          error =>verModalError('Accion Correctiva', 'No se pudieron cargar los datos del ACR') // no se ejecuta
-                                        );
-                                    //fnSp4BuscarHallazgosAsignados();
-                                   //########################################################## promesa ##################################################################
-                                  */
 
 
                                 }
@@ -24033,7 +23985,7 @@ function sp4FnVentanaInformeInvestigacion(idIncidente)
                          if( paObj[istAud].a.II_BD == 0)//si no se ha ido al servidor  buscar la data
                          {//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-                            //alert('estamos aquiiiiiiiiiiiiii 23726');
+                            alert('estamos aquiiiiiiiiiiiiii 23726');
                                       AccionBD = 2;
                                       showLoading(); //hideLoading();
 
@@ -24362,7 +24314,6 @@ function sp4FnVentanaInformeInvestigacion(idIncidente)
                                                     hideLoading();
                                                       console.log('24265 aqui mandamos a buscar los hallazgos asignados');//fnSp4BuscarHallazgosAsignados
                                                     fnSp4BuscarHallazgosAsignados();
-                                                     buscar5porqueIncidente();
                                                 }
                                               else
                                               {
@@ -24683,7 +24634,6 @@ function sp4FnVentanaInformeInvestigacion(idIncidente)
                                                             hideLoading();
                                                               console.log('24579 aqui mandamos a buscar los hallazgos asignados');//fnSp4BuscarHallazgosAsignados
                                                             fnSp4BuscarHallazgosAsignados();
-                                                             buscar5porqueIncidente();
 
                                                                         }
                                                                         else
@@ -24948,7 +24898,7 @@ function fnGuardarInformeInvestigacion()
 
 var AccionBD_II = 1;
 
-function sp4FnConfirmarGuardarInformeInvestigacion(finn)
+function sp4FnConfirmarGuardarInformeInvestigacion()
 {//------------------------------------- ini   sp4FnConfirmarGuardarInformeInvestigacion() -------------------------------------
 
     //alert('id ='+istAud);
@@ -25115,16 +25065,15 @@ function sp4FnConfirmarGuardarInformeInvestigacion(finn)
                                         C_Zona= 0;
                                        C1_Nivel_Severidad2 = '';
                                        
-                                         var AccionBD;
-                                         if(finn == 3){AccionBD = 3;}else{AccionBD = 1;}
 
-                                           //alert('AccionBD  = '+AccionBD);
+
+
                                       var body_ii = {
                                                     //*****************************DATOS GENERALES******************txta_f_dg_gv_21
                                                   
 
                                                         "Id1":paObj[istAud].a.II[0].Id,
-                                                        "AccionBD":AccionBD,
+                                                        "AccionBD":1,
                                                         "Code": Code,
                                                         "A_Nombre_UO_Sede": A_Nombre_UO_Sede,
                                                         "A_Direccion_UO": A_Direccion_UO ,
@@ -25234,10 +25183,7 @@ function sp4FnConfirmarGuardarInformeInvestigacion(finn)
                                                           $('#btnCancelarGuardarInformeInvestigacion').attr("disabled",false);
 
                                                           $('#Sp3VentanaBDGuardarOkII').modal('show').addClass('fade');
-                                                          $('#Sp3VentanaGuardarInforme').modal('hide').removeClass('fade');//Sp3VentanaFinalizarInforme
-
-
-                                                          $('#Sp3VentanaFinalizarInforme').modal('hide').removeClass('fade');
+                                                          $('#Sp3VentanaGuardarInforme').modal('hide').removeClass('fade');
 
 
                                                       //ojo hay que recargar la data del dato general desde el servidor, sera no c analizar
@@ -25255,8 +25201,8 @@ function sp4FnConfirmarGuardarInformeInvestigacion(finn)
       else
            {//---------------------------- datos ambientales ----------------------------
 
-                if(paObj[istAud].a.GrupoEvento == 2)
-               {//----------------------------- s ------------------------
+                      if(paObj[istAud].a.GrupoEvento == 2)
+            {//----------------------------- s ------------------------
                   
                             if(AccionBD_II == 1)
                                 {//========================================================================================================================== UPDATE DB =============================
@@ -25404,16 +25350,13 @@ function sp4FnConfirmarGuardarInformeInvestigacion(finn)
 
                                      //alert('afectacion_a::'+C_Afectacion_A);
 
-                                         var AccionBD;
-                                         if(finn == 3){AccionBD = 3;}else{AccionBD = 1;}
-
 
                                       var body_ii = {
                                                     //*****************************DATOS GENERALES******************txta_f_dg_gv_21
                                                   
 
                                                         "Id1":paObj[istAud].a.II[0].Id,
-                                                        "AccionBD":AccionBD,
+                                                        "AccionBD":1,
                                                         "Code": Code,
                                                         "A_Nombre_UO_Sede": A_Nombre_UO_Sede,
                                                         "A_Direccion_UO": A_Direccion_UO ,
@@ -25523,7 +25466,6 @@ function sp4FnConfirmarGuardarInformeInvestigacion(finn)
 
                                                           $('#Sp3VentanaBDGuardarOkII').modal('show').addClass('fade');
                                                           $('#Sp3VentanaGuardarInforme').modal('hide').removeClass('fade');
-                                                          $('#Sp3VentanaFinalizarInforme').modal('hide').removeClass('fade');
 
 
                                                       //ojo hay que recargar la data del dato general desde el servidor, sera no c analizar
@@ -25537,300 +25479,7 @@ function sp4FnConfirmarGuardarInformeInvestigacion(finn)
 
 
                                 }//========================================================================================================================== UPDATE DB =============================
-               }//-----------------------------  ------------------------
-            else
-               {
-                   if(paObj[istAud].a.GrupoEvento == 3)
-                   {//----------------------------- de datos personales ------------------------
-                  
-                            if(AccionBD_II == 1)
-                                {//========================================================================================================================== UPDATE DB =============================
-
-                                    // $('#btnConfirmarEvidenciaIncidenteHallazgoWebDG').html('Guardando..');
-                                    // $('#btnConfirmarEvidenciaIncidenteHallazgoWebDG').prop('disabled',true);
-
-                                    $("#btnConfirmarInformeInvestigacion").html("<b>Guardando..</b>")
-                                    $("#btnConfirmarInformeInvestigacion").attr("disabled",true);
-
-                                    $('#btnCancelarGuardarInformeInvestigacion').attr("disabled",true);
-
-                                      var Code = paObj[istAud].a.Code;   
-                                      var A_Nombre_UO_Sede = $('#dat_ii_nombre_uo').val();
-                                      var A_Direccion_UO  = $('#dat_ii_direccion_uo').val();      
-                                      var A_Total_Trabajadores  = $('#dat_ii_n_total_trabajador').val(); 
-                                      var A_No_Personal_SCTR  = $('#dat_ii_n_personal_con_str').val(); 
-                                      var A_No_Personal_No_Afiliado_SCTR  = $('#dat_ii_n_personal_no_fil_str').val(); 
-                                      var A_Nombre_Aseguradora        = $('#dat_ii_nombre_aseguradora').val(); 
-                                      var A1_Nombre_Empresa_Tercero        = $('#dat_ii_nombre_empresa_tercero').val(); 
-                                      var A1_Tipo_Actividad_Economica        = $('#dat_ii_tipo_actividad_economica').val(); 
-                                      var A1_Ruc        = $('#dat_ii_ruc').val(); 
-                                      var A1_Direccion_Empresa_Tercero        = $('#dat_ii_desc_empresa_tercero').val(); 
-                                      var A1_No_Total_Trabajadores  = $('#dat_ii_n_total_trabajadores').val(); 
-                                      var A1_No_personal_SCTR  = $('#dat_ii_n_personal_con_sctr').val(); 
-                                      var A1_No_Personal_No_Afiliado_SCTR  = $('#dat_ii_n_personal_no_afiliado_sctr').val(); 
-                                      var A1_Nombre_Aseguradora        = $('#dat_ii_nombre_aseguradora2').val(); 
-                                      var B_User_Id_Hash        = $('#dat_ii_nombre_apellido_hidden').val(); 
-                                      var B_Nombre_Trabajador        = $('#dat_ii_nombre_apellido').val(); 
-                                      var B_DNI_Trabjador  = $('#dat_ii_dni').val(); 
-                                      var B_Edad_Trabajador  = $('#dat_ii_edad').val(); 
-                                      var B_Sexo_Trabajador  = $('#dat_ii_sexo').val(); 
-
-
-                                      var B_Antiguedad_Empresa  = $('#dat_ii_antiguedad_empresa').val(); 
-                                      var B_Tiempo_Experiencia_Cargo  = $('#dat_ii_experiencia_puesto').val(); 
-                                      var B_Tipo_Contacto  = $('#dat_ii_tipo_contrato').val(); 
-                                      var B_Turno_Trabajo  = $('#dat_ii_turno_trabajo').val(); 
-                                      var B_Horas_Trabajadas_Jornada  = $('#dat_ii_horas_trabajo_jornada').val(); 
-                                      var B_Id_Hash_Jefe_Inmediato        = $('#dat_ii_nombre_jefe_inmediato__hidden').val(); 
-                                      var B_Nombre_Jefe_Inmediato        = $('#dat_ii_nombre_jefe_inmediato').val(); 
-                                      var C_Producto_Involucrado  = $('#dat_ii_producto_involucrado').val(); 
-                                      var C_Volumen_M3  = $('#dat_ii_volumen_m3').val(); 
-                                      var C_Zona        = $('#dat_ii_zona_afectada').val(); 
-                                      var C_Extension_Area_M2  = $('#dat_ii_ext_area_afectada').val(); 
-
-
-                                        var D_Comentario                  = $('#dat_ii_5_comentario').val();               
-                                         if($('#dat_ii_acr').prop('checked')          == true){D_AnexoACR = 1;}else{D_AnexoACR = 0;}              
-                                         if($('#dat_ii_linea_tiempo').prop('checked') == true){D_AnexoLineaTiempo = 1;}else{D_AnexoLineaTiempo = 0;}               
-                                         if($('#dat_ii_fotografias').prop('checked')  == true){D_AnexoFotografia = 1;}else{D_AnexoFotografia = 0;}               
-                                         if($('#dat_ii_reporte').prop('checked')      == true){D_AnexoReporteOcurrencia = 1;}else{D_AnexoReporteOcurrencia = 0;}               
-                                         if($('#dat_ii_entrevista1').prop('checked')  == true){D_AnexoEntrevistaAccidentado = 1;}else{D_AnexoEntrevistaAccidentado = 0;}               
-                                         if($('#dat_ii_entrevista2').prop('checked')  == true){D_AnexoEntrevistaTestigo = 1;}else{D_AnexoEntrevistaTestigo = 0;}               
-                                         if($('#dat_ii_otros').prop('checked')        == true){D_AnexoOtro  = 1;}else{D_AnexoOtro =0;}               
-                                        var D_AnexoOtroTexto              = $('#dat_ii_otros_text').val(); 
-
-
-
-
-
-
-                                    
-
-                                      var C_Afectacion_A; 
-                                      if($('#rbtn_sii_8').attr('src') == './images/iconos/aprobarbien.svg'){C_Afectacion_A = 1}else{C_Afectacion_A = 0}//1   otra empresa
-                                      if($('#rbtn_noi_9').attr('src') == './images/iconos/aprobarbien.svg'){C_Afectacion_A = 2}else{C_Afectacion_A = 0}//1   otra empresa
-                                      if($('#rbtn_noi_10').attr('src') == './images/iconos/aprobarbien.svg'){C_Afectacion_A = 3}else{C_Afectacion_A = 0}//1   otra empresa
-
-
-
-                                      var C_Operando_Normal; 
-                                           if($('#rbtn_siii_8').attr('src') == './images/iconos/aprobarbien.svg'){C_Operando_Normal = 1}else{C_Operando_Normal = 0}//1   otra empresa
-                                           if($('#rbtn_noii_9').attr('src') == './images/iconos/aprobarbien.svg'){C_Operando_Normal = 2}else{C_Operando_Normal = 0}//1   otra empresa
-
-
-                                      var C_Comunicdo_Fiscalizador; //rbtn_siiix_8
-                                           if($('#rbtn_siiix_8').attr('src') == './images/iconos/aprobarbien.svg'){C_Comunicdo_Fiscalizador = 1}else{C_Comunicdo_Fiscalizador = 0}//1   otra empresa
-                                           if($('#rbtn_noiix_9').attr('src') == './images/iconos/aprobarbien.svg'){C_Comunicdo_Fiscalizador = 2}else{C_Comunicdo_Fiscalizador = 0}//1   otra empresa
-
-
-
-
-                                      var C_Medidas_Emergencia        = $('#dat_ii_medidas_emergencia').val(); 
-
-                                      var C_Residuos_Limpieza        = $('#dat_ii_se_genero_residuos').val(); 
-
-                                      var C_Accidente_Reicidente;
-
-                                           if($('#rbtn_sihy_8').attr('src') == './images/iconos/aprobarbien.svg'){C_Accidente_Reicidente = 1}else{C_Accidente_Reicidente = 0}//1   otra empresa
-                                           if($('#rbtn_nohy_9').attr('src') == './images/iconos/aprobarbien.svg'){C_Accidente_Reicidente = 2}else{C_Accidente_Reicidente = 0}//1   otra empresa
-
-                                      
-                                      var C1_Tipo_Accidente  = $('#dat_ii_tipo_incidente').val(); 
-                                      var C1_Nivel_Severidad  = $('#dat_ii_nivel_severidad').val(); 
-                                      var C1_Nivel_Severidad2  = $('#dat_ii_nivel_severidad').val(); 
-                                      var C1_Gerencia  = $('#dat_ii_gerencia').val(); 
-                                      var C1_Lugar_Evento        = $('#dat_ii_lugar_eventox').val(); 
-                                      var C1_Fecha_Evento  = $('#dat_ii_fecha').val(); 
-                                      var C1_Hora_Evento  = $('#dat_ii_hora').val(); 
-
-
-
-                                      var C1_N_Dias_Descanzo  = $('#dat_ii_n_dias_descanzox').val(); 
-                                      var C1_Fecha_Ini_Investigacion  = $('#dat_ii_fecha_ini_inv').val(); 
-                                      var C1_Fecha_Informe  = $('#dat_ii_fecha_informe').val(); 
-                                      var C1_Id_Hash_Responsable_Area        = $('#dat_ii_responsable_area_hidden').val(); 
-                                      var C1_Nombre_Responsable_Area        = $('#dat_ii_responsable_area').val(); 
-                                      var C1_Involucrados  = $('#dat_ii_involucrados').val(); 
-                                      var C1_Descripcion_Exacta_Lugar        = $('#dat_ii_descripcion_lugar_exacto').val(); 
-                                      var C1_Descripcion_Exacta        = $('#dat_ii_descripcion_lugar_exacto').val(); 
-                                      var C1_No_Trabajadores_Afectados  = $('#dat_ii_3_mox_trabajadores').val(); 
-                                      var C1_No_Pobladores_Afectados  = $('#dat_ii_3_mox_pobladores_pa').val(); 
-                                      var C1_Descripcion_Incidente_All         = $('#dat_ii_descripcion_incidente_lt').val(); 
-                                      var Accidente_Incidente_Id  = istAud; 
-                                      var C_Descripcion_Perdida_Materiales        = $('#dat_ii_describe_perdida').val(); 
-                                      var C_Observaciones        = $('#dat_ii_observacioness').val(); 
-                                      var C1_Clasificacion_Incapacidad  = $('#dat_ii_incapacidad').val(); 
-
-
-
-
-
-
-                                        C1_Fecha_Evento = "2021-07-21";
-                                        C1_Fecha_Informe = "2021-07-21"; 
-                                        C1_Fecha_Ini_Investigacion = "2021-07-21";
-
-
-                                        C1_Gerencia = 0;
-                                        C1_Hora_Evento = "09:01:24.0000000";
-                                       
-                                        C1_Involucrados = 0;
-                                       
-                                        C1_N_Dias_Descanzo = 0;
-                                        C1_Nivel_Severidad = 0;
-                                        C1_No_Pobladores_Afectados= 0;
-                                        C1_No_Trabajadores_Afectados= 0;
-                                        C1_Nombre_Responsable_Area: "N/A"
-                                        C1_Tipo_Accidente= 0;
-                                        C_Accidente_Reicidente= 0;
-                                        C_Afectacion_A= 0;
-                                        C_Comunicdo_Fiscalizador= 0;
-                                       
-                                        C_Extension_Area_M2= 0;
-                                   
-                                        C_Volumen_M3 =0;
-                                        C_Operando_Normal= 0;
-                                        C_Producto_Involucrado= 0;
-                                      
-                                       C1_Clasificacion_Incapacidad = 0;
-                                        C_Zona= 0;
-                                       C1_Nivel_Severidad2 = '';
-                                       
-                                         var AccionBD;
-                                         if(finn == 3){AccionBD = 3;}else{AccionBD = 1;}
-
-
-                                      var body_ii = {
-                                                    //*****************************DATOS GENERALES******************txta_f_dg_gv_21
-                                                  
-
-                                                        "Id1":paObj[istAud].a.II[0].Id,
-                                                        "AccionBD":AccionBD,
-                                                        "Code": Code,
-                                                        "A_Nombre_UO_Sede": A_Nombre_UO_Sede,
-                                                        "A_Direccion_UO": A_Direccion_UO ,
-                                                        "A_Total_Trabajadores": A_Total_Trabajadores,
-                                                        "A_No_Personal_SCTR": A_No_Personal_SCTR,
-                                                        "A_No_Personal_No_Afiliado_SCTR": A_No_Personal_No_Afiliado_SCTR,
-                                                        "A_Nombre_Aseguradora": A_Nombre_Aseguradora ,
-                                                        "A1_Nombre_Empresa_Tercero": A1_Nombre_Empresa_Tercero ,
-                                                        "A1_Tipo_Actividad_Economica": A1_Tipo_Actividad_Economica ,
-                                                        "A1_Ruc": A1_Ruc ,
-                                                        "A1_Direccion_Empresa_Tercero": A1_Direccion_Empresa_Tercero ,
-                                                        "A1_No_Total_Trabajadores": A1_No_Total_Trabajadores,
-                                                        "A1_No_personal_SCTR": A1_No_personal_SCTR,
-                                                        "A1_No_Personal_No_Afiliado_SCTR": A1_No_Personal_No_Afiliado_SCTR,
-                                                        "A1_Nombre_Aseguradora": A1_Nombre_Aseguradora ,
-                                                        "B_User_Id_Hash": B_User_Id_Hash ,
-                                                        "B_Nombre_Trabajador": B_Nombre_Trabajador ,
-                                                        "B_DNI_Trabjador": B_DNI_Trabjador,
-                                                        "B_Edad_Trabajador": B_Edad_Trabajador,
-                                                        "B_Sexo_Trabajador": B_Sexo_Trabajador,
-                                                        "B_Antiguedad_Empresa": B_Antiguedad_Empresa,
-                                                        "B_Tiempo_Experiencia_Cargo": B_Tiempo_Experiencia_Cargo,
-                                                        "B_Tipo_Contacto": B_Tipo_Contacto,
-                                                        "B_Turno_Trabajo": B_Turno_Trabajo,
-                                                        "B_Horas_Trabajadas_Jornada": B_Horas_Trabajadas_Jornada,
-                                                        "B_Id_Hash_Jefe_Inmediato": B_Id_Hash_Jefe_Inmediato ,
-                                                        "B_Nombre_Jefe_Inmediato": B_Nombre_Jefe_Inmediato ,
-                                                        "C_Producto_Involucrado": C_Producto_Involucrado,
-                                                        "C_Volumen_M3": C_Volumen_M3,
-                                                        "C_Zona": C_Zona ,
-                                                        "C_Extension_Area_M2": C_Extension_Area_M2,
-                                                        "C_Afectacion_A": C_Afectacion_A,
-                                                        "C_Operando_Normal": C_Operando_Normal,
-                                                        "C_Comunicdo_Fiscalizador": C_Comunicdo_Fiscalizador,
-                                                        "C_Medidas_Emergencia": C_Medidas_Emergencia ,
-                                                        "C_Residuos_Limpieza": C_Residuos_Limpieza ,
-                                                        "C_Accidente_Reicidente": C_Accidente_Reicidente,
-                                                        "C1_Tipo_Accidente": C1_Tipo_Accidente,
-                                                        "C1_Nivel_Severidad": C1_Nivel_Severidad,
-                                                        "C1_Gerencia": C1_Gerencia,
-                                                        "C1_Lugar_Evento": C1_Lugar_Evento ,
-                                                        "C1_Fecha_Evento": C1_Fecha_Evento,
-                                                        "C1_Hora_Evento": C1_Hora_Evento,
-                                                        "C1_N_Dias_Descanzo": C1_N_Dias_Descanzo,
-                                                        "C1_Fecha_Ini_Investigacion": C1_Fecha_Ini_Investigacion,
-                                                        "C1_Fecha_Informe": C1_Fecha_Informe,
-                                                        "C1_Id_Hash_Responsable_Area": C1_Id_Hash_Responsable_Area ,
-                                                        "C1_Nombre_Responsable_Area": C1_Nombre_Responsable_Area ,
-                                                        "C1_Involucrados": C1_Involucrados,
-                                                        "C1_Descripcion_Exacta_Lugar": C1_Descripcion_Exacta_Lugar ,
-                                                        "C1_Descripcion_Exacta": C1_Descripcion_Exacta ,
-                                                        "C1_No_Trabajadores_Afectados": C1_No_Trabajadores_Afectados,
-                                                        "C1_No_Pobladores_Afectados": C1_No_Pobladores_Afectados,
-                                                        "C1_Descripcion_Incidente_All": C1_Descripcion_Incidente_All  ,
-                                                        "Accidente_Incidente_Id": Accidente_Incidente_Id,
-                                                        "C_Descripcion_Perdida_Materiales": C_Descripcion_Perdida_Materiales ,
-                                                        "C_Observaciones": C_Observaciones ,
-                                                        "C1_Clasificacion_Incapacidad":  C1_Clasificacion_Incapacidad ,
-                                                        "C1_Nivel_Severidad2": C1_Nivel_Severidad2,
-
-                                                        "D_Comentario":D_Comentario,                
-                                                        "D_AnexoACR":D_AnexoACR,                
-                                                        "D_AnexoLineaTiempo":D_AnexoLineaTiempo,                
-                                                        "D_AnexoFotografia":D_AnexoFotografia,                
-                                                        "D_AnexoReporteOcurrencia":D_AnexoReporteOcurrencia,                
-                                                        "D_AnexoEntrevistaAccidentado":D_AnexoEntrevistaAccidentado,                
-                                                        "D_AnexoEntrevistaTestigo":D_AnexoEntrevistaTestigo,                
-                                                        "D_AnexoOtro":D_AnexoOtro,                
-                                                        "D_AnexoOtroTexto":D_AnexoOtroTexto
-
-                                                }    
-
-                                             //var url = apiUrlssoma+"/api/Post-DatosGeneralesIncidenteWeb?code=reQdAhVl9k1IQ0BcN4fOjHiwoMxeanCYIk8xl0xSvvsq/RDDI8Yw4A==&httpmethod=put";
-                                             var url = apiUrlssoma+"/api/Post-InformeInvestigacion-Incidente?code=GSdKVMRD/MCaN7CnirKPtMaoWBRarLKBDtGU9Gd0iljNzSZewQxO6g==&httpmethod=post";
-
-                                            var headers ={
-                                                           "apikey":constantes.apiKey
-                                                         }
-
-
-                                              console.log("===============================================================================================================");
-                                                     console.log("DATA INSERT=",body_ii);
-                                              console.log("===============================================================================================================");
-                                            
-                                             $.ajax({
-                                                method: "POST",
-                                                url:  url,
-                                                data: JSON.stringify(body_ii),
-                                                headers:headers,
-                                                crossDomain: true,
-                                                dataType: "json",
-                                            })
-
-
-                                              .done(function(data)
-                                            {
-                                                console.info("dataUpdate*****______________________________________________******* = ",data)
-                                                 // resultado Exitoso
-
-                                                 //alert(data.Id)
-                                                if(data.Id>0)
-                                                {
-
-                                                         
-                                                          $("#btnConfirmarInformeInvestigacion").html("<b>Confirmar</b>")
-                                                          $("#btnConfirmarInformeInvestigacion").attr("disabled",false);
-                                                          $('#btnCancelarGuardarInformeInvestigacion').attr("disabled",false);
-
-                                                          $('#Sp3VentanaBDGuardarOkII').modal('show').addClass('fade');
-                                                          $('#Sp3VentanaGuardarInforme').modal('hide').removeClass('fade');
-                                                          $('#Sp3VentanaFinalizarInforme').modal('hide').removeClass('fade');
-
-                                                      //ojo hay que recargar la data del dato general desde el servidor, sera no c analizar
-                                     
-                                                    
-                                                }else
-                                                {
-                                                    verModalError("Informe de Investigación","No se pudieron guardar los Datos")//+data.Descripcion)
-                                                }
-                                            })
-
-
-                                }//========================================================================================================================== UPDATE DB =============================
-                   }//----------------------------- de datos personales ------------------------
-                }
+            }//-----------------------------  ------------------------
 
            }//---------------------------- datos ambientales ---------------------------
     
@@ -25887,7 +25536,7 @@ function fnFinalizarInformeInvestigacion()
 {//------------------------------------- ini   fnFinalizarInformeInvestigacion() -------------------------------------
 
     //alert('idf ='+istAud);
-    $('#modalInformeInvestigacion').modal('hide').removeClass('fadeOut');
+    $('#modalInformeInvestigacion').modal('hide').removeClass('fade');
     $('#Sp3VentanaFinalizarInforme').modal('show').addClass('fade');
 
 }//------------------------------------- fini   fnFinalizarInformeInvestigacion() -------------------------------------
@@ -25897,12 +25546,12 @@ function fnFinalizarInformeInvestigacion()
 function sp4FnConfirmarFinalizarInformeInvestigacion()
 {//------------------------------------- ini   sp4FnConfirmarGuardarInformeInvestigacion() -------------------------------------
 
-sp4FnConfirmarGuardarInformeInvestigacion(3)
+    //alert('id ='+istAud);
 
-    // $('#Sp3VentanaFinalizarInforme').modal('hide').removeClass('fade');
+    $('#Sp3VentanaFinalizarInforme').modal('hide').removeClass('fade');
 
-    // $('#Sp3VentanaBDFinalizarOkII').modal('show').addClass('fade');
-  
+    $('#Sp3VentanaBDFinalizarOkII').modal('show').addClass('fade');
+    //$('#Sp3VentanaGuardarInforme').modal('show').addClass('fade');modalInformeInvestigacion
 
     
 }//------------------------------------- fini   sp4FnConfirmarGuardarInformeInvestigacion() -------------------------------------
@@ -25931,11 +25580,9 @@ function buscar5porqueIncidente()
                  //..............................   array para saber si ya busque los por que .....................
             if(!ver5PQ[paObj[istAud].a.IdHallazgo] == 1)
             {
-               // fnSp4VerModalCrearACR(115,''); //aqui va el id del hallazgo
+                fnSp4VerModalCrearACR(106,''); //aqui va el id del hallazgo
 
-                //alert('paObj[istAud].a.IdHallazgo'+paObj[istAud].a.IdHallazgo);
-
-               fnSp4VerModalCrearACR(paObj[istAud].a.IdHallazgo,'');
+                //fnSp4VerModalCrearACR(paObj[istAud].a.IdHallazgo,'');
 
 
 
@@ -25997,14 +25644,6 @@ function buscarListadodeInvestigadores()
                                              console.log("**todos LOS INTEGRANTES**",response1);
                                             
                                              mayorId = 0;
-
-                                             paObj[istAud].a.Investigadores = response1.PlanAnual;
-                                            //  console.log("**todos LOS INTEGRANTES**",item1);
-                                            //  var nnam = item1.Participante;
-                                            //  var nnam1 = item1.Cargo;
-                                            //  var nnam2 = date_AAAA_MM_DD_T_HH_MM_S_to_DD_MM_AAAA(item1.Create_Date);
-                                            //  var idii = item1.Id;
-                                          
                                              
                                              $("#filasAdjuntarDocumentosTareas_ii").html(' ');  
                                              $('#listaPart').html('Lista (0)')     
@@ -26082,96 +25721,84 @@ var nnam = $('#dat_ii_invTeam_511').val()//nombre
 var nnam0 = $('#dat_ii_invTeam_511_hidden').val()//idgash
 
 var nnam1 = $('#dat_ii_invTeamCargo_511').val();//cargo
+
+
+
 var dd = $( "#dat_ii_fechaImvestigador").val();
-
-
-if((nnam != '')||(nnam0 != '')||(nnam1 != '')||(dd != ''))
-{//----------------------------------------------------------------------------------------------
-           
-                var p = dd.split('/');
-                var f1 = p[2]+'-'+p[1]+'-'+p[0];
+var p = dd.split('/');
+var f1 = p[2]+'-'+p[1]+'-'+p[0];
 
 
 
-                //var nnam2 = date1_DD_MM_AAAA_to_AAAA_MM_DD(   $('#dat_ii_fechaImvestigador').val());
+//var nnam2 = date1_DD_MM_AAAA_to_AAAA_MM_DD(   $('#dat_ii_fechaImvestigador').val());
 
 
-                var created_by__ii = getCookie("vtas_id_hash"+sessionStorage.tabVisitasa);
+var created_by__ii = getCookie("vtas_id_hash"+sessionStorage.tabVisitasa);
 
-                var body_ii = {
-                    
-                    "Id1": 0, //0 crear un nuevo registro     mayor que 0, ELIMINA LOGICAMENTE EL LISTADO
-                    "UserHash":nnam0,
-                    "Created_By":created_by__ii,
-                    "Create_Date":f1,
-                    "Participante":nnam,
-                    "Cargo":nnam1,
-                    "IncidenteAccidenteId":istAud
-                        
-                }    
+var body_ii = {
+    
+    "Id1": 0, //0 crear un nuevo registro     mayor que 0, ELIMINA LOGICAMENTE EL LISTADO
+    "UserHash":nnam0,
+    "Created_By":created_by__ii,
+    "Create_Date":f1,
+    "Participante":nnam,
+    "Cargo":nnam1,
+    "IncidenteAccidenteId":istAud
+        
+}    
 
-                //var url = apiUrlssoma+"/api/Post-DatosGeneralesIncidenteWeb?code=reQdAhVl9k1IQ0BcN4fOjHiwoMxeanCYIk8xl0xSvvsq/RDDI8Yw4A==&httpmethod=put";
-                var url = apiUrlssoma+"/api/Post-ParticipanteInvestigacion?code=Bfa/7mmk9v49VovD4G2HTyXL9ARFSTm/Wajuup6pk8pmPUKNfcRUGQ==&httpmethod=post";
+//var url = apiUrlssoma+"/api/Post-DatosGeneralesIncidenteWeb?code=reQdAhVl9k1IQ0BcN4fOjHiwoMxeanCYIk8xl0xSvvsq/RDDI8Yw4A==&httpmethod=put";
+var url = apiUrlssoma+"/api/Post-ParticipanteInvestigacion?code=Bfa/7mmk9v49VovD4G2HTyXL9ARFSTm/Wajuup6pk8pmPUKNfcRUGQ==&httpmethod=post";
 
-                var headers ={
-                           "apikey":constantes.apiKey
-                         }
-
-
-                console.log("===============================================================================================================");
-                     console.log("DATA INSERT INVESTIGADOR=",body_ii);
-                console.log("===============================================================================================================");
-
-                $.ajax({
-                method: "POST",
-                url:  url,
-                data: JSON.stringify(body_ii),
-                headers:headers,
-                crossDomain: true,
-                dataType: "json",
-                })
+var headers ={
+           "apikey":constantes.apiKey
+         }
 
 
-                .done(function(data)
-                {
-                console.info("dataUpdate*****______________________________________________******* = ",data)
-                 // resultado Exitoso
+console.log("===============================================================================================================");
+     console.log("DATA INSERT INVESTIGADOR=",body_ii);
+console.log("===============================================================================================================");
 
-                 //alert(data.Id)
-                if(data.Id>0)
-                {
-                    buscarListadodeInvestigadores();
-
-                $('#dat_ii_invTeam_511').val('')//nombre
-                $('#dat_ii_invTeam_511_hidden').val('')//idgash
-
-                $('#dat_ii_invTeamCargo_511').val('');//cargo
-
-                $( "#dat_ii_fechaImvestigador").val('');
-                hideLoading();
-
-                }else
-                {
-                    hideLoading();
-                    verModalError("Equipo de Investigación","No se pudieron agregar")//+data.Descripcion)
-                }
-                });
+$.ajax({
+method: "POST",
+url:  url,
+data: JSON.stringify(body_ii),
+headers:headers,
+crossDomain: true,
+dataType: "json",
+})
 
 
+.done(function(data)
+{
+console.info("dataUpdate*****______________________________________________******* = ",data)
+ // resultado Exitoso
+
+ //alert(data.Id)
+if(data.Id>0)
+{
+    buscarListadodeInvestigadores();
+
+$('#dat_ii_invTeam_511').val('')//nombre
+$('#dat_ii_invTeam_511_hidden').val('')//idgash
+
+$('#dat_ii_invTeamCargo_511').val('');//cargo
+
+$( "#dat_ii_fechaImvestigador").val('');
+hideLoading();
+
+}else
+{
+    hideLoading();
+    verModalError("Equipo de Investigación","No se pudieron agregar")//+data.Descripcion)
+}
+});
 
 
-}//----------------------------------------------------------------------------------------------
-else
-{//----------------------------------------------------------------------------------------------
-    verModalError("Equipo de Investigación","Existen Campos Vacios")//+data.Descripcion)
-}//----------------------------------------------------------------------------------------------
+
 
 
 }
-
-
-
-
 
 
 
@@ -26406,228 +26033,11 @@ function fnSp3GuardarHallazgoInsertUpdate_ii()
 //1216
 function fnExcelReportPAHC_ii() {
 
-console.log('------------------  reporte ----------  ',paObj[istAud].a);
+
     var bl = 'border-left: 1px solid #000;';
     var bt = 'border-top: 1px solid #000;';
     var br = 'border-right: 1px solid #000;';
     var bb = 'border-bottom: 1px solid #000;';
-    var lb = 'color: #FFF;'
-    var ln = 'color: #000;'
-
-    var dato ='---aaaaa---'
-
-
-
-
-    var a = [];
-
-    a[0] = paObj[istAud].a.Code;
-    a[1] =  $('#divBorde_ii_1 option:selected').text();
-    a[2] =  paObj[istAud].a.II[0].A_Direccion_UO;
-
-    a[3] = paObj[istAud].a.II[0].A_Total_Trabajadores;
-    a[4] = paObj[istAud].a.II[0].A_No_Personal_SCTR;
-    a[5] = paObj[istAud].a.II[0].A_No_Personal_No_Afiliado_SCTR;
-
-    a[6] = paObj[istAud].a.II[0].A_Nombre_Aseguradora;
-    a[7] = paObj[istAud].a.II[0].A1_Nombre_Empresa_Tercero;
-
-    a[8] = paObj[istAud].a.II[0].A1_Tipo_Actividad_Economica
-    a[9] = paObj[istAud].a.II[0].A1_Ruc
-    a[10] = paObj[istAud].a.II[0].A1_Direccion_Empresa_Tercero
-    a[11] = paObj[istAud].a.II[0].A1_No_Total_Trabajadores
-    a[12] = paObj[istAud].a.II[0].A1_No_personal_SCTR
-    a[13] = paObj[istAud].a.II[0].A1_No_Personal_No_Afiliado_SCTR
-    a[14] = paObj[istAud].a.II[0].A1_Nombre_Aseguradora
-
-
-
-    a[15] = paObj[istAud].a.II[0].NombrePersonalAccidentado
-    a[16] = paObj[istAud].a.II[0].DNIAccidentado
-    a[17] = paObj[istAud].a.II[0].EdadAccidentado
-    a[18] = $('#dat_ii_sexo option:selected').text();  //paObj[istAud].a.II[0].B_Sexo_Trabajador //option
-
-    a[19] = $('#dat_ii_area_trabajo option:selected').text(); //   paObj[istAud].a.II[0].IdAreaAccidente //option
-    a[20] = paObj[istAud].a.II[0].PuestoCargoAccidentado
-    a[21] = paObj[istAud].a.II[0].B_Antiguedad_Empresa
-    a[22] = paObj[istAud].a.II[0].B_Tiempo_Experiencia_Cargo
-    a[23] = $('#dat_ii_tipo_contrato option:selected').text();  // paObj[istAud].a.II[0].Tipo_Contrato  //option
-
-    a[24] = $('#dat_ii_turno_trabajo option:selected').text();  //paObj[istAud].a.II[0].B_Turno_Trabajo //option
-    a[25] = paObj[istAud].a.II[0].B_Horas_Trabajadas_Jornada
-    a[26] = paObj[istAud].a.II[0].B_Nombre_Jefe_Inmediato
-
-     a[27] = $('#dat_ii_producto_involucrado option:selected').text();
-     a[28] = $('#dat_ii_volumen_m3').val();
-     a[29] = $('#dat_ii_zona_afectada').val();
-     a[30] = $('#dat_ii_ext_area_afectada').val();
-
-
-      //alert('paObj[istAud].a.II[0].C_Afectacion_A'+paObj[istAud].a.II[0].C_Afectacion_A);
-
-
-        a[31] = '   ';   a[32] = '   ';  a[33] = '   ';
-
-     switch (paObj[istAud].a.II[0].C_Afectacion_A) 
-       {
-              
-              case 0: 
-                 a[31] = ' X ';
-              break;
-
-
-              case 1: 
-                a[31] = ' X ';
-              break; 
-
-
-              case 2:
-                a[32] = ' X ';
-              break;
-
-
-              case 3:
-                a[33] = ' X ';
-              break;
-        }
-
-
-
-
-
-
-      if(paObj[istAud].a.II[0].C_Operando_Normal == 1){a[34] = 'Si'}else{a[34] = 'No'}
-
-      if(paObj[istAud].a.II[0].C_Comunicdo_Fiscalizador == 1){a[35] = 'Si'}else{a[35] = 'No'}
-
-
-       //$('#dat_ii_volumen_m3').val();
-             
-             
-
-
-     a[36] = $('#dat_ii_medidas_emergencia').val();
-     a[37] = $('#dat_ii_se_genero_residuos').val();
-
-    
-
-     a[38] = '   ';  
-
-     switch (paObj[istAud].a.II[0].C_Afectacion_A) 
-       {
-              
-              case 0: 
-                 a[38] = ' Si ';
-              break;
-
-
-              case 1: 
-                a[38] = ' Si ';
-              break; 
-
-
-              case 2:
-                a[38] = ' No ';
-              break;
-
-
-        }
-
-
-     a[39] = $('#dat_ii_describe_perdida').val();
-
-     a[40] = $('#dat_ii_observacioness').val();
-
-
-
-
-
-
-     a[41] = $('#dat_ii_tipo_incidente option:selected').text();
-
-  
-         
-         a[42] = '   '; a[43] = '   '; a[44] = '  ';
-           
-
-
-           //alert('ns:'+$('#dat_ii_nivel_severidad').val() );
-       switch ($('#dat_ii_nivel_severidad').val()) 
-       {
-              
-              case 'BAJO': 
-                 a[42] = ' Si '; 
-              break;
-
-
-              case 'MEDIO': 
-                a[43] = ' Si ';
-              break; 
-
-
-              case 'ALTO':
-                a[44] = ' Si ';
-              break;
-
-
-        }
-
-
-   
-     a[45] = $('#dat_ii_incapacidad option:selected').text(); //paObj[istAud].a.
-
-     console.log('##########26550#####################################',paObj[istAud].a,'####################################################################333')
-
-                //alert(paObj[istAud].a.IdGerencia);
-                                                                       //$('#sel_f_dg_gv_42').val(paObj[istAud].a.IdGerencia);   a[46] = $('#sel_f_dg_gv_42 option:selected').text(); 
-     a[46] = $('#dat_ii_gerencia option:selected').text(); //paObj[istAud].a.IdGerencia //sel_f_dg_gv_42
-
-     a[47] = $('#dat_ii_lugar_eventox').val();//paObj[istAud].a.IdZonaAccidente    //sel_f_dg_gv_17
-     a[48] = $('#dat_ii_n_dias_descanzox').val();//paObj[istAud].a.Dias_Descanza
-     a[49] = $('#dat_ii_fecha').val();//paObj[istAud].a.Fecha
-     a[50] = $('#dat_ii_hora').val();//paObj[istAud].a.Hora
-
-
-     a[51] = $('#dat_ii_fecha_ini_inv').val();//paObj[istAud].a.FechaInvestigacionIni
-     a[52] = " ";// area contrata 
-     a[53] = $('#dat_ii_fecha_informe').val();
-     a[54] = $('#dat_ii_responsable_area_hidden').val();//paObj[istAud].a.NombreRespInvestigar
-     a[55] = $('#dat_ii_involucrados option:selected').val();
-     a[56] = $('#dat_ii_descripcion_lugar_exacto').val();
-     a[57] = $('#dat_ii_3_mox_trabajadores').val();
-     a[58] = $('#dat_ii_3_mox_pobladores_pa').val();
-
-
-     a[59] = $('#dat_ii_descripcion_incidente_lt').val();//paObj[istAud].a..Descripcion
-
-
-
-     // a[38] = $('#dat_ii_volumen_m3').val();
-     // a[39] = $('#dat_ii_volumen_m3').val();
-     // a[40] = $('#dat_ii_volumen_m3').val();
-     // a[41] = $('#dat_ii_volumen_m3').val();
-
-
-
-    /*
-    a[0] = paObj[istAud].a.Code;
-    a[0] = paObj[istAud].a.Code;
-    a[0] = paObj[istAud].a.Code;
-    a[0] = paObj[istAud].a.Code;
-    a[0] = paObj[istAud].a.Code;
-    a[0] = paObj[istAud].a.Code;
-    a[0] = paObj[istAud].a.Code;
-    a[0] = paObj[istAud].a.Code;
-    a[0] = paObj[istAud].a.Code;
-    a[0] = paObj[istAud].a.Code;
-    a[0] = paObj[istAud].a.Code;
-    a[0] = paObj[istAud].a.Code;
-    a[0] = paObj[istAud].a.Code;
-    a[0] = paObj[istAud].a.Code;
-    a[0] = paObj[istAud].a.Code;
-    a[0] = paObj[istAud].a.Code;*/
-    
-
 
   var tab_text = `
 
@@ -26683,7 +26093,7 @@ console.log('------------------  reporte ----------  ',paObj[istAud].a);
 
              <tr style="border: 2px !important;color: #0000; font-weight: bold;  vertical-align:middle; height:20px;">
                   <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                  <th  bgcolor='#FFFFFF' colspan='24' style="${bl} ${br} font-size:12px;" >INFORME  N° ${a[0]}</th>         
+                  <th  bgcolor='#FFFFFF' colspan='24' style="${bl} ${br} font-size:12px;" >N°  DE INFORME</th>         
             </tr>
 
 
@@ -26695,339 +26105,10 @@ console.log('------------------  reporte ----------  ',paObj[istAud].a);
 
 
 
-            <tr style="border: 2px !important;color: #fff; font-weight: bold;  /*vertical-align:middle;*/ height:30px;">
+              <tr style="border: 2px !important;color: #fff; font-weight: bold;  /*vertical-align:middle;*/ height:30px;">
                   <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
                   <th  bgcolor='#444444' colspan='24' style="${bl} ${br} font-size:15px; text-align: left;" >I. DATOS LA UNIDAD OPERATIVA O E/P DE TASA DONDE OCURRIÓ EL INCIDENTE/ ACCIDENTE:</th>         
             </tr>
-
-
-            <tr style="border: 2px !important;color: #fff;  /*vertical-align:middle;*/ height:30px;">
-                  <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                  <th  bgcolor='#D5D8DC' colspan='5' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >Nombre de la U.O</th> 
-                  <th  bgcolor='#fff' colspan='3' style="${bl} ${bt} ${bb} ${br} font-size:10px; text-align: left;  ${ln} " >${a[1]}</th>
-                  <th  bgcolor='#D5D8DC' colspan='7' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >Dirección de la U.O</th> 
-                  <th  bgcolor='#fff' colspan='9' style="${bl} ${bt} ${bb} ${br} font-size:10px; text-align: left;  ${ln} " >${a[2]}</th>        
-            </tr>
-
-            <tr style="border: 2px !important;color: #fff;  /*vertical-align:middle;*/ height:30px;">
-                <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                <th  bgcolor='#D5D8DC' colspan='5' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >N° total de trabajadores</th> 
-                <th  bgcolor='#fff' colspan='3' style="${bl} ${bt} ${bb} ${br} font-size:10px; text-align: left;  ${ln} " >${a[3]}</th>
-                <th  bgcolor='#D5D8DC' colspan='7' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >N° de personal con SCTR</th> 
-                <th  bgcolor='#fff' colspan='4' style="${bl} ${bt} ${bb} ${br} font-size:10px; text-align: left;  ${ln} " >${a[4]}</th>      
-                <th  bgcolor='#D5D8DC' colspan='2' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >N° de personal no afiliado al SCTR</th> 
-                <th  bgcolor='#fff' colspan='3' style="${bl} ${bt} ${bb} ${br} font-size:10px; text-align: left;  ${ln} " >${a[5]}</th>        
-            </tr>
-
-            <tr style="border: 2px !important;color: #fff;  /*vertical-align:middle;*/ height:30px;">
-                <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                <th  bgcolor='#D5D8DC' colspan='5' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >Nombre de la Aseguradora</th> 
-                <th  bgcolor='#fff' colspan='19' style="${bl} ${bt} ${bb} ${br} font-size:10px; text-align: left;  ${ln} " >${a[6]}</th>
-            </tr>
-
-            <tr style="border: 2px !important;color: #fff;  /*vertical-align:middle;*/ height:30px;">
-                    <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                    <th  bgcolor='#fff' colspan='24' style="${bl} ${bt} ${bb} ${br} font-size:10px; text-align: left;  ${ln} " >Completar solo si el accidentado o incidente pertenece tercero (Empresa Contratista / Visitante / Proveedor )</th>
-            </tr>
-
-            <tr style="border: 2px !important;color: #fff;  /*vertical-align:middle;*/ height:30px;">
-                    <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                    <th  bgcolor='#D5D8DC' colspan='5' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >Nombre de la Empresa (tercero)</th> 
-                    <th  bgcolor='#fff' colspan='7' style="${bl} ${bt} ${bb} ${br} font-size:10px; text-align: left;  ${ln} " >${ a[7]}</th>
-                    <th  bgcolor='#D5D8DC' colspan='3' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >Tipo de Actividad Economica</th> 
-                    <th  bgcolor='#fff' colspan='4' style="${bl} ${bt} ${bb} ${br} font-size:10px; text-align: left;  ${ln} " >${a[8]}</th>        
-                    <th  bgcolor='#D5D8DC' colspan='1' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >Ruc</th> 
-                    <th  bgcolor='#fff' colspan='4' style="${bl} ${bt} ${bb} ${br} font-size:10px; text-align: left;  ${ln} " >${a[9]}</th>        
-            </tr>
-
-            <tr style="border: 2px !important;color: #fff;  /*vertical-align:middle;*/ height:30px;">
-                <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                <th  bgcolor='#D5D8DC' colspan='5' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >Dirección de la Empresa (tercero)</th> 
-                <th  bgcolor='#fff' colspan='10' style="${bl} ${bt} ${bb} ${br} font-size:10px; text-align: left;  ${ln} " >${a[10]}</th>
-                <th  bgcolor='#D5D8DC' colspan='1' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >N° total de trabajadores</th> 
-                <th  bgcolor='#fff' colspan='8' style="${bl} ${bt} ${bb} ${br} font-size:10px; text-align: left;  ${ln} " >${a[11]}</th>      
-                
-           </tr>
-
-           <tr style="border: 2px !important;color: #fff;  /*vertical-align:middle;*/ height:30px;">
-                    <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                    <th  bgcolor='#D5D8DC' colspan='5' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >N° de personal con SCTR</th> 
-                    <th  bgcolor='#fff' colspan='7' style="${bl} ${bt} ${bb} ${br} font-size:10px; text-align: left;  ${ln} " >${a[12]}</th>
-                    <th  bgcolor='#D5D8DC' colspan='3' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >N° de personal no afiliado al SCTR</th> 
-                    <th  bgcolor='#fff' colspan='9' style="${bl} ${bt} ${bb} ${br} font-size:10px; text-align: left;  ${ln} " >${a[13]}</th>        
-            </tr>
-
-            <tr style="border: 2px !important;color: #fff;  /*vertical-align:middle;*/ height:30px;">
-                <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                <th  bgcolor='#D5D8DC' colspan='5' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >Nombre de la Aseguradora</th> 
-                <th  bgcolor='#fff' colspan='19' style="${bl} ${bt} ${bb} ${br} font-size:10px; text-align: left;  ${ln} " >${a[14]}</th>
-            </tr>
-
-            <tr style="border: 2px !important;color: #fff; font-weight: bold;  /*vertical-align:middle;*/ height:20px;">
-                  <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                  <th  bgcolor='#444444' colspan='24' style="${bl} ${br} font-size:15px; text-align: left;" >II. DATOS DEL TRABAJADOR ACCIDENTADO </th>         
-            </tr>
-            <tr style="border: 2px !important;color: #fff;  /*vertical-align:middle;*/ height:20px;">
-                    <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                    <th  bgcolor='#444444' colspan='24' style="${bl} ${br} font-size:12px; text-align: left;" >Completar sólo en caso de accidentes que afecta al Trabajador</th>         
-           </tr>
-           <tr style="border: 2px !important;color: #fff;  /*vertical-align:middle;*/ height:3px;">
-                    <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                    <th  bgcolor='#444444' colspan='24' style="${bl} ${br} font-size:8px; text-align: left;" ></th>         
-           </tr>
-
-           <tr style="border: 2px !important;color: #fff;  /*vertical-align:middle;*/ height:30px;">
-                <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                <th  bgcolor='#D5D8DC' colspan='5' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >Nombres y Apellidos</th> 
-                <th  bgcolor='#fff' colspan='7' style="${bl} ${bt} ${bb} ${br} font-size:10px; text-align: left;  ${ln} " >${a[15]}</th>
-                <th  bgcolor='#D5D8DC' colspan='2' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >DNI</th> 
-                <th  bgcolor='#fff' colspan='2' style="${bl} ${bt} ${bb} ${br} font-size:10px; text-align: left;  ${ln} " >${a[16]}</th>
-
-                <th  bgcolor='#D5D8DC' colspan='3' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >Edad</th> 
-                <th  bgcolor='#fff' colspan='2' style="${bl} ${bt} ${bb} ${br} font-size:10px; text-align: left;  ${ln} " >${a[17]}</th>
-
-                <th  bgcolor='#D5D8DC' colspan='1' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >Sexo</th> 
-                <th  bgcolor='#fff' colspan='2' style="${bl} ${bt} ${bb} ${br} font-size:10px; text-align: left;  ${ln} " >${a[18]}</th>
-            </tr>
-
-
-            <tr style="border: 2px !important;color: #fff;  /*vertical-align:middle;*/ height:30px;">
-                <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                <th  bgcolor='#D5D8DC' colspan='5' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >Area de Trabajo</th> 
-                <th  bgcolor='#fff' colspan='7' style="${bl} ${bt} ${bb} ${br} font-size:10px; text-align: left;  ${ln} " >${a[19]}</th>
-                <th  bgcolor='#D5D8DC' colspan='3' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >Puesto de Trabajo</th> 
-                <th  bgcolor='#fff' colspan='9' style="${bl} ${bt} ${bb} ${br} font-size:10px; text-align: left;  ${ln} " >${a[20]}</th>
-            </tr>
-
-            <tr style="border: 2px !important;color: #fff;  /*vertical-align:middle;*/ height:30px;">
-                <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                <th  bgcolor='#D5D8DC' colspan='5' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >Antigüedad en la Empresa</th> 
-                <th  bgcolor='#fff' colspan='5' style="${bl} ${bt} ${bb} ${br} font-size:10px; text-align: left;  ${ln} " >${a[21]}</th>
-
-                <th  bgcolor='#D5D8DC' colspan='4' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >Tiempo de experiencia en el puesto actual</th> 
-                <th  bgcolor='#fff' colspan='2' style="${bl} ${bt} ${bb} ${br} font-size:10px; text-align: left;  ${ln} " >${a[22]}</th>
-
-                <th  bgcolor='#D5D8DC' colspan='4' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >Tipo de Contrato</th> 
-                <th  bgcolor='#fff' colspan='4' style="${bl} ${bt} ${bb} ${br} font-size:10px; text-align: left;  ${ln} " >${a[23]}</th>
-            </tr>
-
-
-            <tr style="border: 2px !important;color: #fff;  /*vertical-align:middle;*/ height:30px;">
-                <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                <th  bgcolor='#D5D8DC' colspan='5' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >Turno de Trabajo</th> 
-                <th  bgcolor='#fff' colspan='5' style="${bl} ${bt} ${bb} ${br} font-size:10px; text-align: left;  ${ln} " >${a[24]}</th>
-
-                <th  bgcolor='#D5D8DC' colspan='4' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >Horas trabajadas  en la Jornada laboral</th> 
-                <th  bgcolor='#fff' colspan='2' style="${bl} ${bt} ${bb} ${br} font-size:10px; text-align: left;  ${ln} " >${a[25]}</th>
-
-               
-                <th  bgcolor='#fff' colspan='8' style="${bl} ${bt} ${bb} ${br} font-size:10px; text-align: left;  ${ln} " ></th>
-            </tr>
-
-            <tr style="border: 2px !important;color: #fff;  /*vertical-align:middle;*/ height:30px;">
-                <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                <th  bgcolor='#D5D8DC' colspan='5' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >Nombre del Jefe Inmediato </th> 
-                <th  bgcolor='#fff' colspan='19' style="${bl} ${bt} ${bb} ${br} font-size:10px; text-align: left;  ${ln} " >${a[26]}</th>
-            </tr>
-
-            <tr style="border: 2px !important;color: #fff; font-weight: bold;  /*vertical-align:middle;*/ height:20px;">
-                  <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                  <th  bgcolor='#444444' colspan='24' style="${bl} ${br} font-size:15px; text-align: left;" >III. INVESTIGACIÓN DEL ACCIDENTE/ INCIDENTE</th>         
-            </tr>
-
-            <tr style="border: 2px !important;color: #fff; font-weight: bold;  /*vertical-align:middle;*/ height:20px;">
-                    <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                    <th  bgcolor='#27AE60' colspan='24' style="${bl} ${br} font-size:11px; text-align: left; ${lb}  " >3.1. Datos de Medio Ambiente  datos que serán completados por el equipo de investigación</th>         
-            </tr>
-
-
-            <tr style="border: 2px !important;color: #fff;  /*vertical-align:middle;*/ height:30px;">
-                <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                <th  bgcolor='#fff' colspan='18' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >Producto(s) involucrados(s) en el accidente:${a[27]}</th> 
-                
-                <th  bgcolor='#fff' colspan='6' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" > Volumen (m3): &nbsp;&nbsp;&nbsp;${a[28]}</th> 
-                
-            </tr>
-
-            <tr style="border: 2px !important;color: #fff;  /*vertical-align:middle;*/ height:30px;">
-                <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                <th  bgcolor='#fff' colspan='15' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >Zona Afectada:&nbsp;&nbsp;&nbsp;${a[29]}</th> 
-                
-                <th  bgcolor='#fff' colspan='9' style="${bl} ${bt} ${br}  ${ln} font-size:10px; text-align: left;" > La afectación del accidente fue a la: </th> 
-                
-            </tr>
-
-            <tr style="border: 2px !important;color: #fff;  /*vertical-align:middle;*/ height:30px;">
-                <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                <th  bgcolor='#fff' colspan='15' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >Extensión del área afectada (m2):&nbsp;&nbsp;&nbsp;${a[30]}</th> 
-                
-                <th  bgcolor='#fff' colspan='9' style="${bl} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" > (${a[31]}) Unidad    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (${a[32]})  Comunidad &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (${a[33]})  Bahia</th> 
-                
-            </tr>
-
-            <tr style="border: 2px !important;color: #fff;  /*vertical-align:middle;*/ height:30px;">
-                <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                <th  bgcolor='#fff' colspan='15' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >El área / sección estaba operando de manera normal?  (S/N):${a[34]}</th> 
-                
-                <th  bgcolor='#fff' colspan='9' style="${bl} ${bt} ${br}  ${bb}   ${ln} font-size:10px; text-align: left;" >Fue comunicado al Órgano Fiscalizador (S/N)?  ${a[35]}</th> 
-                
-            </tr>
-
-                <tr style="border: 2px !important;color: #fff;  /*vertical-align:middle;*/ height:30px;">
-                <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                <th  bgcolor='#fff' colspan='24' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >Medidas de Emergencia tomadas:${a[36]}</th> 
-            </tr>
-
-
-
-
-            <tr style="border: 2px !important;color: #fff;  /*vertical-align:middle;*/ height:30px;">
-                <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                <th  bgcolor='#fff' colspan='15' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >Se generó residuos provenientes de la limpieza?  :${a[37]}</th> 
-                
-                <th  bgcolor='#fff' colspan='9' style="${bl} ${bt} ${br}  ${bb}   ${ln} font-size:10px; text-align: left;" >Accidente Reincidente (S/N)?  ${a[38]}</th> 
-                
-            </tr>
-
-            <tr style="border: 2px !important;color: #fff;  /*vertical-align:middle;*/ height:30px;">
-                <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                <th  bgcolor='#fff' colspan='24' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >Descripción de pérdidas materiales:${a[39]}</th> 
-            </tr>
-
-            
-            <tr style="border: 2px !important;color: #fff;  /*vertical-align:middle;*/ height:30px;">
-                <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                <th  bgcolor='#fff' colspan='24' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >Observaciones:${a[40]}</th> 
-            </tr>
-
-            
-
-
-            <tr style="border: 2px !important;color: #fff; font-weight: bold;  /*vertical-align:middle;*/ height:20px;">
-                    <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                    <th  bgcolor='#444444' colspan='24' style="${bl} ${br} font-size:15px; text-align: left;" >3.2. DATOS DEL EVENTO (ACCIDENTE / INCIDENTE</th>         
-            </tr>
-
-
-            
-
-            <tr style="border: 2px !important;color: #fff;  /*vertical-align:middle;*/ height:30px;">
-                <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                <th  bgcolor='#fff' colspan='15' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >Tipo de Accidente/ Incidente :${a[41]}</th> 
-                
-                <th  bgcolor='#fff' colspan='9' style="${bl} ${bt} ${br}  ${bb}   ${ln} font-size:10px; text-align: left;" >Código de Reporte Team Mate:  ${dato}</th> 
-                
-            </tr>
-
-            <tr style="border: 2px !important;color: #fff;  /*vertical-align:middle;*/ height:60px;">
-                <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                <th  bgcolor='#fff' colspan='12' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >Nivel de Severidad/Gravedad:</th> 
-
-                <th  bgcolor='#fff' colspan='3' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >
-                     (${a[42]}) &nbsp; &nbsp;&nbsp; Baja
-                     <br/>(${a[43]}) &nbsp; &nbsp;&nbsp; Media
-                     <br/>(${a[44]}) &nbsp; &nbsp;&nbsp; Alta 
-                     <br/>
-                </th> 
-                
-                <th  bgcolor='#fff' colspan='9' style="${bl} ${bt} ${br}  ${bb}   ${ln} font-size:10px; text-align: left;" >Clasificacion por Incapacidad: ${a[45]}</th> 
-                
-            </tr>
-
-
-
-                <tr style="border: 2px !important;color: #fff;  /*vertical-align:middle;*/ height:30px;">
-                    <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                    <th  bgcolor='#fff' colspan='12' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >Gerencia:${a[46]}</th> 
-
-                    <th  bgcolor='#fff' colspan='3' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >Lugar del Evento: ${a[47]}</th> 
-                    
-                    <th  bgcolor='#fff' colspan='9' style="${bl} ${bt} ${br}  ${bb}   ${ln} font-size:10px; text-align: left;" >N° días de Descanso Medico: ${a[48]}</th> 
-                    
-                </tr>
-
-                <tr style="border: 2px !important;color: #fff;  /*vertical-align:middle;*/ height:30px;">
-                    <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                    <th  bgcolor='#fff' colspan='12' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >Fecha del evento:${a[49]}</th> 
-
-                    <th  bgcolor='#fff' colspan='3' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >Hora del evento:${a[50]}</th> 
-                    
-                    <th  bgcolor='#fff' colspan='9' style="${bl} ${bt} ${br}  ${bb}   ${ln} font-size:10px; text-align: left;" >Fecha de Inicio de la Investigación: ${a[51]}</th> 
-                    
-                </tr>
-
-                <tr style="border: 2px !important;color: #fff;  /*vertical-align:middle;*/ height:30px;">
-                    <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                    <th  bgcolor='#fff' colspan='12' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" ></th> 
-
-                    <th  bgcolor='#fff' colspan='3' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >Area/Contrata:${a[52]}</th> 
-                    
-                    <th  bgcolor='#fff' colspan='9' style="${bl} ${bt} ${br}  ${bb}   ${ln} font-size:10px; text-align: left;" >Fecha del Informe: ${a[53]}</th> 
-                    
-                </tr>
-
-
-                <tr style="border: 2px !important;color: #fff;  /*vertical-align:middle;*/ height:30px;">
-                    <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                    <th  bgcolor='#fff' colspan='15' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >Responsable del área: ${a[54]}</th> 
-
-                    
-                    <th  bgcolor='#fff' colspan='9' style="${bl} ${bt} ${br}  ${bb}   ${ln} font-size:10px; text-align: left;" >
-                         Involucrado(s):
-                                     <br/>(${a[55]}) 
-                     </th> 
-                    
-                </tr>
-
-
-                <tr style="border: 2px !important;color: #fff;  /*vertical-align:middle;*/ height:30px;">
-                    <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                    <th  bgcolor='#fff' colspan='15' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >Descripción exacta del lugar y/o equipo donde ocurrió el hecho:${a[56]}</th> 
-                     
-                    
-                    <th  bgcolor='#fff' colspan='5' style="${bl} ${bt} ${br}  ${bb}   ${ln} font-size:10px; text-align: left;" >N° de trabajadores afectados:  ${a[57]}</th> 
-                    <th  bgcolor='#fff' colspan='4' style="${bl} ${bt} ${br}  ${bb}   ${ln} font-size:10px; text-align: left;" >N° de pobladores potencialmente afectados:${a[58]}</th> 
-                    
-                </tr>
-
-               
-
-                    <tr style="border: 2px !important;color: #fff; font-weight: bold;  /*vertical-align:middle;*/ height:20px;">
-                            <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                            <th  bgcolor='#444444' colspan='24' style="${bl} ${br} font-size:15px; text-align: left;" >IV. DESCRIPCION DEL INCIDENTE / ACCIDENTE DE TRABAJO o AMBIENTAL</th>         
-                    </tr>
-
-
-                      <tr style="border: 2px !important;color: #fff;  /*vertical-align:middle;*/ height:20px;">
-                        <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                        <th  bgcolor='#fff' colspan='24' style="${bl} ${bt}  ${br}  ${ln} font-size:10px; text-align: left;" >Describa solo los hechos ocurridos. Guiarse del registro - Reporte de Ocurrencia de Incidente/Accidente.</th> 
-                    </tr>
-
-                      <tr style="border: 2px !important;color: #fff;  /*vertical-align:middle;*/ height:60px;">
-                        <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                        <th  bgcolor='#fff' colspan='24' style="${bl}  ${bb} ${br}  ${ln} font-size:10px; text-align: left;" >${a[59]}</th> 
-                    </tr>
-
-                    <tr style="border: 2px !important;color: #fff; font-weight: bold;  /*vertical-align:middle;*/ height:40px;">
-                            <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                            <th  bgcolor='#000000' colspan='24' style="${bl} ${br} font-size:15px; text-align: left;" >V. ANALISIS DE LAS CAUSAS QUE ORIGINARON EL INCIDENTE / ACCIDENTE DE TRABAJO (5 Por qué)</th>         
-                    </tr>
-
-
-                    <tr style="border: 2px !important;color: #fff; font-weight: bold;   vertical-align:middle; height:30px;">
-                        <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                        <th  bgcolor='#fff' colspan='3' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:14px; text-align: left;" >Número</th> 
-
-                        <th  bgcolor='#fff' colspan='7' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-center: left;" >1 PQ</th> 
-                        <th  bgcolor='#fff' colspan='4' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-center: left;" >2 PQ</th> 
-                        <th  bgcolor='#fff' colspan='5' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-center: left;" >3 PQ</th> 
-                        <th  bgcolor='#fff' colspan='2' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-center: left;" >4 PQ</th> 
-                        <th  bgcolor='#fff' colspan='3' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-center: left;" >5 PQ</th> 
-                        
-                        
-                    </tr>
-
-
 
 
 
@@ -27038,665 +26119,18 @@ console.log('------------------  reporte ----------  ',paObj[istAud].a);
  <table>
      `;
 
-var pq1 = []; var pq2 = [];  var pq3 = [];  var pq4 = [];  var pq5 = [];
-var rpq1 = []; var rpq2 = [];  var rpq3 = [];  var rpq4 = [];  var rpq5 = [];
 
-   for(let i = 0; i < 50; i++)
-   {//--------------------------------------------------------------------------
+  //tab_text = tab_text + HTMLEXCEL;
 
-       let id =  '#pr_'+i+'0000';
-       let rid = '#re_'+i+'0000';
 
-       if(ObjI[istAud].a5pq[id])
-       {
-        console.log('27034 ============  fila valid ('+i+') = '+ObjI[istAud].a5pq[id]); pq1[i] = ObjI[istAud].a5pq[id];    rpq1[i] = ObjI[istAud].a5pq2[rid];
 
 
 
 
-                           let id1 = '#pr'+i+'_0000';
-                           let rid1 = '#re'+i+'_0000';
-                           if(ObjI[istAud].a5pq[id1])
-                           {
-                            console.log('27034 ============               columna valid (1) 2do Por que = '+ObjI[istAud].a5pq[id1]);  pq2[i] = ObjI[istAud].a5pq[id1]; 
-                                                                                                                                      rpq2[i] = ObjI[istAud].a5pq2[rid1];
-                              
-                           }
-
-
-                            let id2 = '#pr'+i+'0_000'; 
-                            let rid2 = '#re'+i+'0_000';
-
-                           if(ObjI[istAud].a5pq[id2])
-                           {
-                            console.log('27034 ============                             columna valid (2) 3er Por que= '+ObjI[istAud].a5pq[id2]);  pq3[i] = ObjI[istAud].a5pq[id2];  
-                                                                                                                                                   rpq3[i] = ObjI[istAud].a5pq2[rid2];
-                              
-                           }
-
-
-                           let id3 = '#pr'+i+'00_00';
-                           let rid3 = '#re'+i+'00_00';
-
-                           if(ObjI[istAud].a5pq[id3])
-                           {
-                            console.log('27034 ============                                           columna valid (3) 4to Por que=  = '+ObjI[istAud].a5pq[id3]);   pq4[i] = ObjI[istAud].a5pq[id3];   
-                                                                                                                                                                     rpq4[i] = ObjI[istAud].a5pq2[rid3];
-                              
-                           }
-
-
-                           let id4 = '#pr'+i+'000_0'; 
-                           let rid4 = '#re'+i+'000_0'; 
-
-
-                           if(ObjI[istAud].a5pq[id4])
-                           {
-                            console.log('27034 ============                                                                      columna valid (4) 5to Por que=  = '+ObjI[istAud].a5pq[id4]);   pq5[i] = ObjI[istAud].a5pq[id4];    
-                                                                                                                                                                                                rpq5[i] = ObjI[istAud].a5pq2[rid4];
-                              
-                           }
-
-
-       }
-
-   }//--------------------------------------------------------------------------
-
-
-
-
-
-
-       // let id2 = '#pr'+i+'0_000'; 
-       // let id3 = '#pr'+i+'00_00'; 
-       // let id4 = '#pr'+i+'000_0'; 
-
-
-
-
-
-// #pr0_0000: "V"
-// #pr00_000: "B"
-// #pr_00000: "A"
-// #pr_10000: "R"
-
-
-  for(let k = 0; k < pq1.length; k++)
-   {//---------------------------
-             //----------------------------------         .map de los 5 por que --------------------------------------------------
-                   let num = k+1;
-                    var acol = '150px;'
-
-                      tab_text = tab_text + ` 
-                             <tr style="border: 2px !important;color: #fff;  vertical-align:middle;  height:${acol}">
-                                            <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                                            <th  bgcolor='#fff' colspan='3' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:13px; text-align: center;" >${num}</th> <b> </b>
-
-                                            <th  bgcolor='#fff' colspan='7' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: center ;" ><b> ${pq1[k] ?pq1[k] : " "} </b> <br/>   ${rpq1[k] ?rpq1[k] : " "}</th> 
-                                            <th  bgcolor='#fff' colspan='4' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: center ;" ><b> ${pq2[k] ?pq2[k] : " "} </b> <br/>   ${rpq2[k] ?rpq2[k] : " "}</th> 
-                                            <th  bgcolor='#fff' colspan='5' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: center ;" ><b> ${pq3[k] ?pq3[k] : " "} </b> <br/>   ${rpq3[k] ?rpq3[k] : " "}</th> 
-                                            <th  bgcolor='#fff' colspan='2' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: center ;" ><b> ${pq4[k] ?pq4[k] : " "} </b> <br/>   ${rpq4[k] ?rpq4[k] : " "}</th> 
-                                            <th  bgcolor='#fff' colspan='3' style="${bl} ${bt} ${bb} ${br}  ${ln} font-size:10px; text-align: center ;" ><b> ${pq5[k] ?pq5[k] : " "} </b> <br/>   ${rpq5[k] ?rpq5[k] : " "}</th> 
-                                            
-                                            
-                          </tr>
-
-
-                         `;
-                    //----------------------------------         .map de los 5 por que --------------------------------------------------
-
-
-
-   }//---------------------------
-
-
-
-
-
-
-
- var cau = []; var cau1 = []; var cau2 = [];  var cau3 = [];  var cau4 = [];  var cau5 = []; 
-      
-var j = 0;
-  for(let i = 0; i < 50; i++)
-   {//--------------------------------------------------------------------------
-
-
-        if($('#causaHA'+i).val())
-       {
-           console.log("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 2741 +++++++++++++++++++++++++++++++++++++++++++", $('#causaHA'+i).val());  
-
-           console.log("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 2741 +++++++++++++++++++++++++++++++++++++++++++", $('#medidas'+i+'_1').is(':checked'))  
-           console.log("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 2741 +++++++++++++++++++++++++++++++++++++++++++", $('#medidas'+i+'_2').is(':checked'))  
-           console.log("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 2741 +++++++++++++++++++++++++++++++++++++++++++", $('#medidas'+i+'_3').is(':checked'))   
-           console.log("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 2741 +++++++++++++++++++++++++++++++++++++++++++", $('#medidas'+i+'_4').is(':checked'))  
-           console.log("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 2741 +++++++++++++++++++++++++++++++++++++++++++", $('#medidas'+i+'_5').is(':checked'))  
-
-          
-         
-           
-           if( $('#medidas'+i+'_1').is(':checked' )){ cau1[j] = 'Si'; } else { cau1[j] = 'No'}
-           if( $('#medidas'+i+'_2').is(':checked' )){ cau2[j] = 'Si'; } else { cau2[j] = 'No'}
-           if( $('#medidas'+i+'_3').is(':checked' )){ cau3[j] = 'Si'; } else { cau3[j] = 'No'}
-           if( $('#medidas'+i+'_4').is(':checked' )){ cau4[j] = 'Si'; } else { cau4[j] = 'No'}
-           if( $('#medidas'+i+'_5').is(':checked' )){ cau5[j] = 'Si'; } else { cau5[j] = 'No'}
-
-            if($('#causaHA'+i).val()){  cau[j] = $('#causaHA'+i).val(); j++;}
-
-
-
-          // medidas1_1    medidas1_2      medidas1_3           medidas1_4             medidas1_5
-       }
-
-
-
-   }//--------------------------------------------------------------------------
-
-
-
-
-
-
-
-
-
-
-//----------------------------------         .map Causas --------------------------------------------------
-
-  tab_text = tab_text + ` 
-
-        <tr style="border: 2px !important;color: #fff; font-weight: bold;  /*vertical-align:middle;*/ height:40px;">
-                            <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                            <th  bgcolor='#000000' colspan='24' style="${bl} ${br} font-size:15px; text-align: left;" ></th>         
-        </tr>
-
-          <tr style="border: 2px !important;color: #fff; font-weight: bold;   /*vertical-align:middle;*/ height:30px;">
-                        <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                        <th  bgcolor='#fff' colspan='16' style="${bl} ${bt} ${br}  ${ln} font-size:18px; text-align: center;" ></th> 
-                        <th  bgcolor='#fff' colspan='8' style="${bl} ${bt}  ${bb} ${br}  ${ln} font-size:11px; text-align: center;" >Medidas para cero fallas</th>            
-          </tr>
-
-            <tr style="border: 2px !important;color: #fff; font-weight: bold;   /*vertical-align:middle;*/ height:30px;">
-                        <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                        <th  bgcolor='#fff' colspan='16' style="${bl}  ${bb} ${br}  ${ln} font-size:18px; text-align: center;" >Causas</th> 
-                        <th  bgcolor='#fff' colspan='3' style="${bl}  ${bb} ${br}  ${ln} font-size:11px; text-align: center;" >ESTABLECER CONDICIONES BÁSICAS</th>  
-                        <th  bgcolor='#fff' colspan='1' style="${bl}  ${bb} ${br}  ${ln} font-size:11px; text-align: center;" >RESTAURACIÓN DE DETERIORO</th> 
-                        <th  bgcolor='#fff' colspan='1' style="${bl}  ${bb} ${br}  ${ln} font-size:11px; text-align: center;" >OPERACIÓN CORRECTA</th> 
-                        <th  bgcolor='#fff' colspan='1' style="${bl}  ${bb} ${br}  ${ln} font-size:11px; text-align: center;" >MEJORA PUNTOS DE DISEÑO</th> 
-                        <th  bgcolor='#fff' colspan='2' style="${bl}  ${bb} ${br}  ${ln} font-size:11px; text-align: center;" >ENTRENAMIENTO</th>           
-          </tr>
-
-     `;
-
-
-var acol2 = '60px;'
-
-
- for(let i = 0; i < j; i++)
-   {//--------------------------------------------------------------------------
 
 
   tab_text = tab_text + ` 
-             <tr style="border: 2px !important;color: #fff; font-weight: bold;   /*vertical-align:middle;*/ height:${acol2}">
-                        <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                        <th  bgcolor='#fff' colspan='16' style="${bl}  ${bb} ${br}  ${ln} font-size:12px; text-align: center;" >${cau[i] }</th> 
-                        <th  bgcolor='#fff' colspan='3' style="${bl}  ${bb} ${br}  ${ln} font-size:11px; text-align: center;" >${cau1[i]}</th>  
-                        <th  bgcolor='#fff' colspan='1' style="${bl}  ${bb} ${br}  ${ln} font-size:11px; text-align: center;" >${cau2[i]}</th> 
-                        <th  bgcolor='#fff' colspan='1' style="${bl}  ${bb} ${br}  ${ln} font-size:11px; text-align: center;" >${cau3[i]}</th> 
-                        <th  bgcolor='#fff' colspan='1' style="${bl}  ${bb} ${br}  ${ln} font-size:11px; text-align: center;" >${cau4[i]}</th> 
-                        <th  bgcolor='#fff' colspan='2' style="${bl}  ${bb} ${br}  ${ln} font-size:11px; text-align: center;" >${cau5[i]}</th>           
-              </tr>
-
      `;
-
-   }
-
-
-
-//----------------------------------          .map Causas --------------------------------------------------
-
-
-
-
-
-//----------------------------------         .map Plan Accion --------------------------------------------------
-
-  tab_text = tab_text + ` 
-
-        <tr style="border: 2px !important;color: #fff; font-weight: bold;  /*vertical-align:middle;*/ height:30px;">
-                            <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                            <th  bgcolor='#000000' colspan='24' style="${bl} ${br} font-size:15px; text-align: left;" >VI. PLAN DE ACCION</th>         
-        </tr>
-
-      
-
-            <tr style="border: 2px !important;color: #fff; font-weight: bold;   /*vertical-align:middle;*/ height:80px;">
-                        <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                        <th  bgcolor='#fff'  style="${bl}  ${bb} ${br}  ${ln} font-size:12px; text-align: center;" ># de Causas</th> 
-                        <th  bgcolor='#fff' colspan='15' style="${bl}  ${bb} ${br}  ${ln} font-size:12px; text-align: center;" >Acción</th>
-                        <th  bgcolor='#fff' colspan='3' style="${bl}  ${bb} ${br}  ${ln} font-size:11px; text-align: center;" >Plazo acción <br/>(Corto, Mediano, Largo)</th>  
-                        <th  bgcolor='#fff' colspan='1' style="${bl}  ${bb} ${br}  ${ln} font-size:11px; text-align: center;" >Tipo de acción <br/> (Corrección, correctiva, preventiva, mejoramiento)</th> 
-                        <th  bgcolor='#fff' colspan='1' style="${bl}  ${bb} ${br}  ${ln} font-size:11px; text-align: center;" >Responsable</th> 
-                        <th  bgcolor='#fff' colspan='1' style="${bl}  ${bb} ${br}  ${ln} font-size:11px; text-align: center;" >Fecha</th> 
-                        <th  bgcolor='#fff' colspan='2' style="${bl}  ${bb} ${br}  ${ln} font-size:11px; text-align: center;" >Estado Acción <br/> (En proceso- Finalizado - Traspasado - No viable)</th>           
-          </tr>
-
-     `;
-
-
-
-
-
-     var acol2 = '60px;'
-
-
-     var pac = []; var pac1 = []; var pac2 = [];  var pac3 = [];  var pac4 = [];  var pac5 = [];      
-     var j = 0;
-      for(let i = 0; i < 50; i++)
-       {//--------------------------------------------------------------------------
-         
-        var f = j+1;
-     
-            if($('#causa2HA_'+i).val())
-           {
-               console.log("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 27753 +++++++++++++++++++++++++++++++++++++++++++", $('#causa2HA_'+i).val());  
-     
-              //$('#dat_ii_turno_trabajo option:selected').text();  //paObj[istAud].a.II[0].B_Turno_Trabajo //option
-               
-                if( $('#selectPlazoAccionHA_'+i).val())         {   pac1[j] =  $('#selectPlazoAccionHA_'+i+' option:selected').text()     }
-                if( $('#selectTipoAccionHA_'+i).val())          {   pac2[j] =  $('#selectTipoAccionHA_'+i+' option:selected').text()      }
-                if( $('#ResponsableHA_'+i).val())               {   pac3[j] =  $('#ResponsableHA_'+i).val()                               }
-                if( $('#fechaPlanHA_'+i).val())                 {   pac4[j] =  $('#fechaPlanHA_'+i).val()     }
-                if( $('#selectStatusAccionHA_'+i).val())        {   pac5[j] =  $('#selectStatusAccionHA_'+i+' option:selected').text()     }
-     
-     
-                if( $('#causa2HA_'+i).val()) {   pac[j] =  $('#causa2HA_'+i).val()    }
-     
-     
-                            
-                        tab_text = tab_text + ` 
-
-
-                        <tr style="border: 2px !important;color: #fff; font-weight: bold;   /*vertical-align:middle;*/ height:80px;">
-                                    <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                                    <th  bgcolor='#fff'  style="${bl}  ${bb} ${br}  ${ln} font-size:12px; text-align: center;" >${f}</th> 
-                                    <th  bgcolor='#fff' colspan='15' style="${bl}  ${bb} ${br}  ${ln} font-size:12px; text-align: center;" >${ pac[j] }</th>
-                                    <th  bgcolor='#fff' colspan='3' style="${bl}  ${bb} ${br}  ${ln} font-size:11px; text-align: center;" > ${ pac1[j] }</th>  
-                                    <th  bgcolor='#fff' colspan='1' style="${bl}  ${bb} ${br}  ${ln} font-size:11px; text-align: center;" > ${ pac2[j] }</th> 
-                                    <th  bgcolor='#fff' colspan='1' style="${bl}  ${bb} ${br}  ${ln} font-size:11px; text-align: center;" > ${ pac3[j] }</th> 
-                                    <th  bgcolor='#fff' colspan='1' style="${bl}  ${bb} ${br}  ${ln} font-size:11px; text-align: center;" > ${ pac4[j] }</th> 
-                                    <th  bgcolor='#fff' colspan='2' style="${bl}  ${bb} ${br}  ${ln} font-size:11px; text-align: center;" > ${ pac5[j] } </th>           
-                    </tr>
-
-                    `;
-
-                        
-      
-     
-     
-                
-                        j++;
-     
-           }
-     
-               
-               
-           
-     
-     
-     
-       }//--------------------------------------------------------------------------
-     
-     
-     
-     
-
-
-
-
-
-
-
-     var acol2 = '60px;'
-
-
- var pac = []; var pac1 = []; var pac2 = [];  var pac3 = [];  var pac4 = [];  var pac5 = []; 
-      
-var j = 0;
-  for(let i = 0; i < 50; i++)
-   {//--------------------------------------------------------------------------
-     
-    var f = j+1;
-
-        if($('#causa2HA_1'+i).val())
-       {
-           console.log("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 2741 +++++++++++++++++++++++++++++++++++++++++++", $('#causa2HA_1'+i).val());  
-           
-           if( $('#selectPlazoAccionHA_'+i).val()) {   pac1[j] =  $('#selectPlazoAccionHA_'+i).val()    }
-           if( $('#selectTipoAccionHA_'+i).val())  {   pac2[j] =  $('#selectTipoAccionHA_'+i).val();    } 
-           if( $('#ResponsableHA_'+i).val())       {   pac3[j] =  $('#ResponsableHA_'+i).val();         }
-           if( $('#fechaPlanHA_'+i).val())         {   pac4[j] =  $('#fechaPlanHA_'+i).val();           } 
-           if( $('#selectStatusAccionHA_'+i).val()){   pac5[j] =  $('#selectStatusAccionHA_'+i).val();  } 
-           if($('#causa2HA_1'+i).val()){  pac[j] = $('#causa2HA_1'+i).val();}
-
-
-
-           
-                    tab_text = tab_text + ` 
-
-                    <tr style="border: 2px !important;color: #fff; font-weight: bold;   /*vertical-align:middle;*/ height:${acol2}">
-                                <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                                <th  bgcolor='#fff'  style="${bl}  ${bb} ${br}  ${ln} font-size:12px; text-align: center;" >${f}</th> 
-                                <th  bgcolor='#fff' colspan='15' style="${bl}  ${bb} ${br}  ${ln} font-size:12px; text-align: center;" >${pac[j]}</th>
-                                <th  bgcolor='#fff' colspan='3' style="${bl}  ${bb} ${br}  ${ln} font-size:11px; text-align: center;"  >${pac1[j]}</th>  
-                                <th  bgcolor='#fff' colspan='1' style="${bl}  ${bb} ${br}  ${ln} font-size:11px; text-align: center;"  >${pac2[j]}</th> 
-                                <th  bgcolor='#fff' colspan='1' style="${bl}  ${bb} ${br}  ${ln} font-size:11px; text-align: center;"  >${pac3[j]}</th> 
-                                <th  bgcolor='#fff' colspan='1' style="${bl}  ${bb} ${br}  ${ln} font-size:11px; text-align: center;"  >${pac4[j]}</th> 
-                                <th  bgcolor='#fff' colspan='2' style="${bl}  ${bb} ${br}  ${ln} font-size:11px; text-align: center;"  >${pac5[j]}</th>           
-                    </tr>
-
-                    `;
-                    j++;
-
-       }
-
-           
-           
-       
-
-
-
-   }//--------------------------------------------------------------------------
-
-
-
-
-
-
-
-
-
-//----------------------------------           .map Plan Accion --------------------------------------------------
-
-
-
-
-
-
-
-
-
-
-
-
-//----------------------------------         .map Plan Accion --------------------------------------------------
-
-  tab_text = tab_text + ` 
-
-        <tr style="border: 2px !important;color: #fff; font-weight: bold;  /*vertical-align:middle;*/ height:30px;">
-                            <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                            <th  bgcolor='#444444' colspan='24' style="${bl} ${br} font-size:15px; text-align: left;" >VII. PARTICIPANTES DE LA INVESTIGACION - EQUIPO INVESTIGADOR</th>         
-        </tr>
-
-
-
-     `;
-
-
-var acol2 = '60px;'
-
-
-///paObj[istAud].a.Investigadores;
-//  console.log("**todos LOS INTEGRANTES**",item1);
-//  var nnam = item1.Participante;
-//  var nnam1 = item1.Cargo;
-//  var nnam2 = date_AAAA_MM_DD_T_HH_MM_S_to_DD_MM_AAAA(item1.Create_Date);
-//  var idii = item1.Id;
-
-
-var g = 1;
-
-paObj[istAud].a.Investigadores.map(function(item)
-{
-    var nnam = item.Participante;
-    var nnam1 = item.Cargo;
-//  var nnam2 = date_AAAA_MM_DD_T_HH_MM_S_to_DD_MM_AAAA(item1.Create_Date);
-//  var idii = item1.Id;
-
-            tab_text = tab_text + ` 
-
-            <tr style="border: 2px !important;color: #fff; font-weight: bold;   /*vertical-align:middle;*/ height:${acol2}">
-                    <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                    <th  bgcolor='#fff'  style="${bl}   ${ln} font-size:12px; text-align: center;" >${g}</th> 
-                    <th  bgcolor='#fff' colspan='12' style="   ${ln} font-size:12px; text-align: left;" >Nombre completo: ${nnam}</th>
-                    <th  bgcolor='#fff' colspan='11' style="   ${br}  ${ln} font-size:11px; text-left: center;" >Cargo: ${nnam1}</th>                
-            </tr>
-
-            `;
-
-            g++;
-            });
-
-//**************************************** un for o map
- 
-
-
-
-
-var jk = $('#dat_ii_5_comentario').val();
-//**************************************************
-      tab_text = tab_text + ` 
-
-              <tr style="border: 2px !important;color: #fff; font-weight: bold;   /*vertical-align:middle;*/ height:20px;">
-                        <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                        <th  bgcolor='#fff'  style="${bl}    ${ln} font-size:12px; text-align: center;" ></th> 
-                        <th  bgcolor='#fff' colspan='23'  style="    ${br}  ${ln} font-size:12px; text-align: left;" >Comentario</th>
-                                      
-              </tr>
-
-               <tr style="border: 2px !important;color: #fff; font-weight: bold;   /*vertical-align:middle;*/ height:100px;">
-                        <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                          <th  bgcolor='#fff'  style="${bl} ${bb}   ${ln} font-size:12px; text-align: center;" ></th> 
-                        <th  bgcolor='#fff' colspan='23'  style="  ${bl}  ${bt} ${bb} ${br}  ${ln} font-size:12px; font-style: italic; text-align: left;" >${jk}</th>
-                                      
-              </tr>
-
-
-      
-
-
-     `;
-
-
-//----------------------------------           .map Plan Accion --------------------------------------------------
-
-
-
-
-
-
-
-
-
-
-
-
-//----------------------------------         -------------------------- --------------------------------------------------
-
-
-var acol2 = '60px;'
-
-
-//**************************************** un for o map
-  tab_text = tab_text + ` 
-        <tr style="border: 2px !important;color: #fff; font-weight: bold;  /*vertical-align:middle;*/ height:100px;">
-                            <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                            <th  bgcolor='#444444' colspan='24' style="${bl} ${br} font-size:15px; text-align: left;" >VIII. ANEXOS  ( hacer check en los anexo adjuntos al informe)</th>         
-        </tr>
-
-        <tr style="border: 2px !important;color: #fff; font-weight: bold;  /*vertical-align:middle;*/ height:20px;">
-                            <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                            <th  bgcolor='#FFFFFF' colspan='24' style="${bl} ${br} font-size:15px; text-align: left;" ></th>         
-        </tr>
-
-
-     `;
-
-
-var acr;       if( $('#dat_ii_acr').is(':checked' )){ acr = 'X'; } else { acr = ''; }
-var ro;        if( $('#dat_ii_reporte').is(':checked' )){ ro = 'X'; } else { ro = ''; }
-var otros;     if( $('#dat_ii_otros').is(':checked' )){ otros = 'X'; } else { otros = ''; }
-var otros2;    if( $('#dat_ii_otros_text').val()){ otros2 =  $('#dat_ii_otros_text').val();  } else { otros2 = '***' }
-
-var lina;     if( $('#dat_ii_linea_tiempo').is(':checked' )){ lina = 'X'; } else { lina = ''; }
-var ent;      if( $('#dat_ii_entrevista1').is(':checked' )){  ent = 'X'; } else {  ent = ''; }
-
-var foto;     if( $('#dat_ii_fotografias').is(':checked' )){ foto = 'X'; } else { foto = ''; }
-var ent2;      if( $('#dat_ii_entrevista2').is(':checked' )){  ent2 = 'X'; } else {  ent2 = ''; }
-
-
-
-//**************************************************
-      tab_text = tab_text + ` 
-
-          
-
-               <tr style="border: 2px !important;color: #fff; font-weight: bold;   /*vertical-align:middle;*/ height:20px;">
-                          <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                          <th  bgcolor='#fff'  style="${bl}    ${ln} font-size:12px; text-align: center;" ></th> 
-                          <th  bgcolor='#fff' colspan='1'  style="  ${bl} ${bb} ${bt} ${bb} ${br}  ${ln} font-size:12px; text-align: left;" >${acr}</th>
-                          <th  bgcolor='#fff' colspan='1'  style="    ${ln} font-size:12px; text-align: left;" ></th>
-                          <th  bgcolor='#fff' colspan='5'  style="    ${ln} font-size:12px; text-align: left;" >ACR</th>
-                          <th  bgcolor='#fff' colspan='1'  style="    ${ln} font-size:12px; text-align: left;" ></th>
-                          <th  bgcolor='#fff' colspan='1'  style="  ${bl} ${bb} ${bt} ${bb} ${br}  ${ln} font-size:12px; text-align: left;" >${ro}</th>
-                          <th  bgcolor='#fff' colspan='1'  style="    ${ln} font-size:12px; text-align: left;" ></th>
-                          <th  bgcolor='#fff' colspan='4'  style="    ${ln} font-size:12px; text-align: left;" >Reporte de Ocurrencia</th>
-                          <th  bgcolor='#fff' colspan='1'  style="    ${ln} font-size:12px; text-align: left;" ></th>
-                          <th  bgcolor='#fff' colspan='1'  style="  ${bl} ${bb} ${bb} ${bt} ${br}  ${ln} font-size:12px; text-align: left;" >${otros}</th>
-                          <th  bgcolor='#fff' colspan='1'  style="    ${ln} font-size:12px; text-align: left;" ></th>
-                          <th  bgcolor='#fff' colspan='1'  style="    ${ln} font-size:12px; text-align: left;" >Otros: </th>
-                          <th  bgcolor='#fff' colspan='5'  style="   ${br}  ${ln} font-size:12px; text-align: left; color: #000;" > ${otros2}</th>
-                          
-
-                                      
-              </tr>
-
-                <tr style="border: 2px !important;color: #fff; font-weight: bold;  /*vertical-align:middle;*/ height:20px;">
-                            <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                            <th  bgcolor='#FFFFFF' colspan='24' style="${bl} ${br} font-size:15px; text-align: left;" ></th>         
-                </tr>
-
-
-
-               <tr style="border: 2px !important;color: #fff; font-weight: bold;   /*vertical-align:middle;*/ height:20px;">
-                          <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;">AAAAAAA</th> 
-                          <th  bgcolor='#fff'  style="${bl}    ${ln} font-size:12px; text-align: center;" ></th> 
-                          <th  bgcolor='#fff' colspan='1'  style="  ${bl} ${bb} ${bt} ${bb} ${br}  ${ln} font-size:12px; text-align: left;" >${lina}</th>
-                          <th  bgcolor='#fff' colspan='1'  style="    ${ln} font-size:12px; text-align: left;" ></th>
-                          <th  bgcolor='#fff' colspan='5'  style="    ${ln} font-size:12px; text-align: left;" >Línea de tiempo</th>
-                          <th  bgcolor='#fff' colspan='1'  style="    ${ln} font-size:12px; text-align: left;" ></th>
-                          <th  bgcolor='#fff' colspan='1'  style="  ${bl} ${bb} ${bt} ${bb} ${br}  ${ln} font-size:12px; text-align: left;" >${ent}</th>
-                          <th  bgcolor='#fff' colspan='1'  style="    ${ln} font-size:12px; text-align: left;" ></th>
-                          <th  bgcolor='#fff' colspan='4'  style="    ${ln} font-size:12px; text-align: left;" >Entrevistas al Accidentado</th>
-                          <th  bgcolor='#fff' colspan='1'  style="    ${ln} font-size:12px; text-align: left;" ></th>
-                          <th  bgcolor='#fff' colspan='1'  style="    ${ln} font-size:12px; text-align: left;" ></th>
-                          <th  bgcolor='#fff' colspan='1'  style="    ${ln} font-size:12px; text-align: left;" ></th>
-                          <th  bgcolor='#fff' colspan='1'  style="    ${ln} font-size:12px; text-align: left;" ></th>
-                          <th  bgcolor='#fff' colspan='5'  style="   ${br}  ${ln} font-size:12px; text-align: left;" ></th>
-
-                                      
-              </tr>
-
-
-                <tr style="border: 2px !important;color: #fff; font-weight: bold;  /*vertical-align:middle;*/ height:20px;">
-                            <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;"></th> 
-                            <th  bgcolor='#FFFFFF' colspan='24' style="${bl} ${br} font-size:15px; text-align: left;" ></th>         
-                </tr>
-
-
-
-               <tr style="border: 2px !important;color: #fff; font-weight: bold;   /*vertical-align:middle;*/ height:20px;">
-                          <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;"></th> 
-                          <th  bgcolor='#fff'  style="${bl}    ${ln} font-size:12px; text-align: center;" ></th> 
-                          <th  bgcolor='#fff' colspan='1'  style="  ${bl} ${bb} ${bt} ${bb} ${br}  ${ln} font-size:12px; text-align: left;" >${foto}</th>
-                          <th  bgcolor='#fff' colspan='1'  style="    ${ln} font-size:12px; text-align: left;" ></th>
-                          <th  bgcolor='#fff' colspan='5'  style="    ${ln} font-size:12px; text-align: left;" >Fotografias  /Gráficos </th>
-                          <th  bgcolor='#fff' colspan='1'  style="    ${ln} font-size:12px; text-align: left;" ></th>
-                          <th  bgcolor='#fff' colspan='1'  style="    ${bl} ${bb} ${bt} ${bb} ${br}  ${ln} font-size:12px; text-align: left;" >${ent2}</th>
-                          <th  bgcolor='#fff' colspan='1'  style="    ${ln} font-size:12px; text-align: left;" ></th>
-                          <th  bgcolor='#fff' colspan='4'  style="    ${ln} font-size:12px; text-align: left;" >Entrevistas a testigos del evento</th>
-                          <th  bgcolor='#fff' colspan='1'  style="    ${ln} font-size:12px; text-align: left;" ></th>
-                          <th  bgcolor='#fff' colspan='1'  style="    ${ln} font-size:12px; text-align: left;" ></th>
-                          <th  bgcolor='#fff' colspan='1'  style="    ${ln} font-size:12px; text-align: left;" ></th>
-                          <th  bgcolor='#fff' colspan='1'  style="    ${ln} font-size:12px; text-align: left;" ></th>
-                          <th  bgcolor='#fff' colspan='5'  style="   ${br}  ${ln} font-size:12px; text-align: left;" ></th>
-
-                                      
-              </tr>
-
-               <tr style="border: 2px !important;color: #fff; font-weight: bold;  /*vertical-align:middle;*/ height:40px;">
-                            <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;"></th> 
-                            <th  bgcolor='#FFFFFF' colspan='24' style="${bl} ${br} font-size:15px; text-align: left;" ></th>         
-              </tr>
-
-             <tr style="border: 2px !important;color: #fff; font-weight: bold;  /*vertical-align:middle;*/ height:30px;">
-                            <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #FFF;"></th> 
-                            <th  bgcolor='#FFFFFF' colspan='24' style="${bl} ${bb} ${bt} ${bb} ${br} font-size:15px; text-align: left;" ></th>         
-              </tr>
-
-              <tr style="border: 2px !important;color: #000; font-weight: bold;  /*vertical-align:middle;*/ height:40px;">
-                            <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #000;"></th> 
-                            <th  bgcolor='#FFFFFF' colspan='24' style="${bl} ${bb} ${bt} ${bb} ${br} font-size:10px; text-align: center;" >
-                             El presente informe de Investigación de Incidente/Accidente realizado por el equipo de investigación según procedimiento y deberá ser: Enviado dentro de las 120 horas de ocurrido el evento a la Jefatura Regional <br/>
-                             de SSOMA de manera fisica, asi como los los documentos adjuntos (esquemas, croquis, fotografías, entrevistas, SAC, SAP, etc.) .</th>         
-              </tr>
-
-               <tr style="border: 2px !important;color: #000; font-weight: bold;  /*vertical-align:middle;*/ height:30px;">
-                            <th  bgcolor='#FFFFFF' style="border: 0px !important;  color: #000;"></th> 
-                            <th  bgcolor='#FFFFFF' colspan='24' style="${bl} ${bb} ${bt} ${bb} ${br} font-size:15px; text-align: left;" >SSM01-F02 v08</th>         
-              </tr>
-
-
-
-
-     `;
-
-
-//----------------------------------           ------------------------------ --------------------------------------------------
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

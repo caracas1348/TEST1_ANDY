@@ -456,7 +456,7 @@ function sp4MostrarPreviewAlertaPDF3(vector)
     // console.log("EXTENSION = ",xtend);
 
 
-
+    /*
     var imd_adjunto1 = new Image();
     //imd_adjunto1.src = './images/alertaImg1.gif';
     doc.addImage(vector[10], xtend, 64, 181, 65, 96)
@@ -473,6 +473,33 @@ function sp4MostrarPreviewAlertaPDF3(vector)
     //imd_adjunto2.src = './images/alertaImg2.gif';
     doc.addImage(vector[12],xtend, 134, 181, 65, 96)
 
+    */
+
+
+     var imd_adjunto1 = new Image();
+    //imd_adjunto1.src = './images/alertaImg1.gif';
+     doc.addImage(vector[10], xtend, 64, 181, 65, 96)
+
+
+
+
+     if(vector[12])
+    {
+
+          if(vector[12] != '')
+          {
+              //  var ext = paObj[istAud].a.yAdjunto2.split(';base64,');
+            // ext = ext[0].split('data:image/');
+            var xtend = vector[13];
+            // console.log("EXTENSION2 = ",xtend);
+
+            var imd_adjunto2 = new Image();
+            //imd_adjunto2.src = './images/alertaImg2.gif';
+            doc.addImage(vector[12],xtend, 134, 181, 65, 96);
+          }
+
+     
+    }
 
 
 
@@ -649,18 +676,32 @@ function sp4MostrarPreviewAlertaPDF3(vector)
                                         //console.log("dat11 = ",partes10_1[0]); /*extenssion*/ 
                                         datt[11] = partes10_1[0];
 
+                             
 
-                                        var partes11 =   partes10_1[1].split('#extAdj2 = ');
-                                        //var partes11_1 = partes10[1].split('12#');
-                                        //console.log("dat12 = ",partes11[0]);/*el base64*/  
-                                        datt[12] = partes11[0];
-                                        //console.log("dat13 = ",partes11[1]); /*extenssion*/  
-                                        datt[13] = partes11[1];
 
+                                         if(partes10_1[1])
+                                        {
+
+                                              if(partes10_1[1] != '')
+                                              {
+                                                   var partes11 =   partes10_1[1].split('#extAdj2 = ');
+                                                    //var partes11_1 = partes10[1].split('12#');
+                                                    //console.log("dat12 = ",partes11[0]);/*el base64*/  
+                                                    datt[12] = partes11[0];
+                                                    //console.log("dat13 = ",partes11[1]); /*extenssion*/  
+                                                    datt[13] = partes11[1];
+                                              }
+                                        }
+                                                                            
+                                       
+                              
 
                                            var t = datt[1].split('1# '); datt[1] = t[1];
                                            var t = datt[11].split('.'); datt[11] = t[1];
-                                           var t = datt[13].split('.'); datt[13] = t[1];
+
+                                            if( datt[13])
+                                            {var t = datt[13].split('.'); datt[13] = t[1]}
+                                           ;
                                            //for(var i = 0; i<14; i++)
                                                  console.log('data',datt);
 

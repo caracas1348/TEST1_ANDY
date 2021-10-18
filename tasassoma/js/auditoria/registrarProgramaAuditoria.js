@@ -25,16 +25,16 @@ var vw_secury_agent = function(){
       getExternalCompany();
 
      // bt_buscar_prog
-       
+
       //alert("entrando funcion de arranque del modulo programa");
 
-            $("#tx_fecha_ini").change(function(event) 
+            $("#tx_fecha_ini").change(function(event)
             {
               let fd = $("#tx_fecha_ini").val()
               $("#tx_fecha_fin").val(fd)
             });
 
-            $("#tx_fecha_fin").change(function(event) 
+            $("#tx_fecha_fin").change(function(event)
             {
               if($("#tx_fecha_ini").val() == "")
               {
@@ -43,32 +43,32 @@ var vw_secury_agent = function(){
                 $("#tx_fecha_ini").val(fd)
 
               }
-            
+
             });
 
 
-          
-         $("#tx_access_dni_list").keyup(function(event) 
+
+         $("#tx_access_dni_list").keyup(function(event)
          {
           oTableBlackList.search($(this).val()).draw();
           if($(this).val()=="")//limpia filtro buscado
           oTableBlackList.search( '' ).columns().search( '' ).draw();
         });
 
-        
-        $("#sel_sede_filter").change(function(event) 
+
+        $("#sel_sede_filter").change(function(event)
         {
-         
+
           console.log(oTableBlackList.search($("#sel_sede_filter  option:selected").text()!="Todas"?$("#sel_sede_filter  option:selected").text():'').draw().context[0].aiDisplay)
           console.log(oTableBlackList.search($("#sel_sede_filter  option:selected").text()!="Todas"?$("#sel_sede_filter  option:selected").text():'').draw().context[0].aoData)
           oTableBlackList.search($("#sel_sede_filter  option:selected").text()!="Todas"?$("#sel_sede_filter  option:selected").text():'').draw();
-          
+
           if($(this).val()=="" || $("#sel_sede_filter  option:selected").text()=="Todas")//limpia filtro buscado
           oTableBlackList.search( '' ).columns().search( '' ).draw();
         });
 
         $("#text_estado_list").change(function(event) {
-          
+
           oTableBlackList.search($("#text_estado_list  option:selected").text()!="Todos"?$("#text_estado_list  option:selected").text():'').draw();
           if($(this).val()=="" || $("#text_estado_list  option:selected").text()=="Todos")//limpia filtro buscado
           oTableBlackList.search( '' ).columns().search( '' ).draw();
@@ -85,15 +85,16 @@ var vw_secury_agent = function(){
           $("#name").unbind( "click" );
           $("#tx_reason").val('');
         })
-             
+
         //alert("al final del arranque inicial");
 
-        $("#bt_buscar_prog").click(function(){
+        buscarSearch();
+       /* $("#bt_buscar_prog").click(function(){
 
           buscarSearch();
 
-          
-          });
+
+          });*/
         var now = moment().format('01/01/YYYY');
           //$("#tx_fecha_ini").val(now);
           $("#tx_fecha_ini").datetimepicker({
@@ -102,27 +103,37 @@ var vw_secury_agent = function(){
            // defaultDate: now,
             //maxDate:new Date()
           });
-          var now = moment().format('DD/MM/YYYY');
-         // $("#tx_fecha_fin").val(now);
-          $("#tx_fecha_fin").datetimepicker({
+        var now = moment().format('DD/MM/YYYY');
+        // $("#tx_fecha_fin").val(now);
+        $("#tx_fecha_fin").datetimepicker({
             timepicker:false,
             format:'d/m/Y',
-            //defaultDate: now,
-            //maxDate:new Date()
-          });
+        //defaultDate: now,
+        //maxDate:new Date()
+        });
+
+        console.warn("vtas_rolexternalrol -> ", getCookie( "vtas_rolexternalrol" + sessionStorage.tabVisitasa ))
+        if( getCookie( "vtas_rolexternalrol" + sessionStorage.tabVisitasa ) == 'ROL_LIDERAUDITORIA'){
+
+            // $("#NuevoPrograma").css('display', 'none');
+            $("#NuevoPrograma").hide()
+        }else{
+            // $("#NuevoPrograma").css('display', 'block');
+            $("#NuevoPrograma").show()
+        }
 
     }
 
-  
+
 
     var searchUser = function(val)
     {
       if (val.trim().length == 8) {
         searchType = 1;
-        
+
       }else{
         searchType = 2;
-        
+
       }
 
       $("#btnValida").show();
@@ -150,12 +161,12 @@ var vw_secury_agent = function(){
           showCancelButton: true,
           confirmButtonClass: " btn-green-lime btn-sm btn-rounded btn-raised",
           confirmButtonText: "Ir a registro",
-          cancelButtonText: "Buscar de nuevo",                
+          cancelButtonText: "Buscar de nuevo",
           closeOnConfirm: true,
           closeOnCancel: false,
           showLoaderOnConfirm: true
-        },function(action){ 
-          if (action===false) {//register                   
+        },function(action){
+          if (action===false) {//register
               swal.close();
                 $("#tx_access_dni").val("");
                 $("#tx_access_dni").focus();
@@ -164,10 +175,10 @@ var vw_secury_agent = function(){
               var veto_status = 0;
               if(globalBlackLists[pos].veto_status)
                 veto_status = 1
-              
-              vw_secury_agent.thumbsUp(globalBlackLists[pos].id,veto_status,globalBlackLists[pos].name,globalBlackLists[pos].name_external_company,globalBlackLists[pos].person_picture,globalBlackLists[pos].reason,globalBlackLists[pos].identity_document );                    
+
+              vw_secury_agent.thumbsUp(globalBlackLists[pos].id,veto_status,globalBlackLists[pos].name,globalBlackLists[pos].name_external_company,globalBlackLists[pos].person_picture,globalBlackLists[pos].reason,globalBlackLists[pos].identity_document );
             }
-          //registerCompanyExternal();            
+          //registerCompanyExternal();
       });
 
       return;
@@ -177,14 +188,14 @@ var vw_secury_agent = function(){
     	}else{
 	    	var name = getCookie('vtas_fullname'+sessionStorage.tabVisitasa);
           if (searchType==1) {
-            var url = apiurlsecurity+"/api/Get-Person-All?httpmethod=searchUserPerson&identity_document="+val+"&code="+GetPersonAll+"";                   
+            var url = apiurlsecurity+"/api/Get-Person-All?httpmethod=searchUserPerson&identity_document="+val+"&code="+GetPersonAll+"";
           }else{
             var url = apiurlsecurity+"/api/Get-ExternalCompany-All?httpmethod=object&ruc="+val+"&code="+GetExternalCompanyAll+"";
           }
           var headers ={
-	            "apikey":"r$3#23516ewew5"        
+	            "apikey":"r$3#23516ewew5"
 	        }
-	        $.ajax({                    
+	        $.ajax({
 	            method: "POST",
 	            url:  url,
 	            headers:headers,
@@ -192,8 +203,8 @@ var vw_secury_agent = function(){
 	            dataType: "json",
 	        }).done(function(data)
 	        {
-	        
-            if (data.id) 
+
+            if (data.id)
             {
               searchAct=val;
               if (searchType == 1) {
@@ -201,12 +212,12 @@ var vw_secury_agent = function(){
               }else{
                 $("#name").text(data.name);
               }
-              
+
               $("#name_external_company").text(data.name_external_company?toCapitalize(data.name_external_company):'-');
-              $("#img_user_black_list_02").attr("src","images/iconos/user.svg");              
+              $("#img_user_black_list_02").attr("src","images/iconos/user.svg");
               if(data.person_picture)
-                $("#img_user_black_list_02").attr("src",data.person_picture);              
-              
+                $("#img_user_black_list_02").attr("src",data.person_picture);
+
 	        		$("#data-div").attr('hidden',false);
               $("#send-div").attr('hidden',false);
               $("#tx_reason").val("Ingrese una observación");
@@ -237,20 +248,20 @@ var vw_secury_agent = function(){
 
 	        });
       }
-      
+
     }
-   
+
     function getGarita(idLocation)
     {
        return
         $("#sel_garita").empty();
         $("#sel_garita").text("Cargando...");
-  
-        var url = apiurlaccessrequest+"/api/Get-Garita-All?httpmethod=objectlist&code="+GetGaritaAll+"&id_location="+idLocation;                        
+
+        var url = apiurlaccessrequest+"/api/Get-Garita-All?httpmethod=objectlist&code="+GetGaritaAll+"&id_location="+idLocation;
         var headers ={
-            "apikey":"r$3#23516ewew5"        
+            "apikey":"r$3#23516ewew5"
         }
-        $.ajax({                    
+        $.ajax({
             method: "POST",
             url:  url,
             headers:headers,
@@ -264,27 +275,27 @@ var vw_secury_agent = function(){
           data.map(function(item)
           {
               $("#sel_garita").append(`<option value='${item.id}'>${item.name}</option>`);
-           
-            jsonLocation.push(item); 
-      
-          });  
+
+            jsonLocation.push(item);
+
+          });
 
           if(id_garita_golbal!=0)
             $('#sel_garita').val(id_garita_golbal);
         }).fail(function( jqXHR, textStatus, errorThrown ) {
-              
+
             showNotification("Por favor Verifique su conexión a internet y vuelva a intentarlo.")
             console.log(errorThrown)
-            $("#sel_garita").hide(); 
+            $("#sel_garita").hide();
        });;
-        
+
     }
 
 
 
 
 
-   
+
 
 
 
@@ -304,32 +315,32 @@ var vw_secury_agent = function(){
         // alert("codeProgramaX = "+codeProgramaX);//string
 
         //vamos a validar si codigo de especialidad y año coincide con algún registro existente en la base de datos
-    
 
-        
+
+
 
                 // alert("idEspPrograma = " + idEspPrograma);
-              if (idEspPrograma == 0) 
+              if (idEspPrograma == 0)
               {//------------------------------------------------------ campos vacios ----------------------------------------------------------
                 cerrarModal('modal-save');
                 //swal("Información", "Por favor completar los datos requeridos", "info");
                 verModalErrorSp1("Crear Programa","Por favor completar los datos requeridos");
-                
+
               }//------------------------------------------------------ campos vacios ----------------------------------------------------------
-              else 
+              else
               {//------------------------------------------------------ campos llenos seguimos ini ----------------------------------------------------------
 
                   var ii = 0;
 
                   //alert("existen en la lista = "+aUbicx2.length);
-                  for (ii = 0; ii < aUbicx2.length; ii++) 
+                  for (ii = 0; ii < aUbicx2.length; ii++)
                    {
 
                         //var ac = new String(aUbicx[ii]);
                         var ac = aUbicx2[ii].Code;// nuevo forma de comparar
                         var bc = new String(Code);
                             //bc = "'"+bc+"'";
-                        
+
                             //alert("xxx = "+ ac + "=="+ bc);
                             //alert("val = "+val)
                             // alert("xxx = "+ ac + "=="+ bc);
@@ -367,7 +378,7 @@ var vw_secury_agent = function(){
                                                 var Created_By = created_by;
                                                 var Last_Updated_By = created_by; //now;// la fecha de hoy
 
-                                                
+
                                       var body ={
                                                   "Code":Code,
                                                   "EspecialidadId":idEspPrograma,
@@ -397,12 +408,12 @@ var vw_secury_agent = function(){
                                                   //----------------------PARAMETROS PARA EL SERVICIO ingresar PROGRAMAS DE AUDITORIA-------------------------------
 
                                                   console.log(body);
-                                        
-                                                  // var url = apiurlaccessregistries+"/api/Get-SecurityAgent-All?httpmethod=objectlist&code="+GetSecurityAgentAll+"";                
-                                                  //var url = apiurlAuditoria+"/api/Post-Programa_Auditoria-All?code=g38OQrxNikLSJIxsYIv03hTcmsYXfmMA7kanUqFykcdNNGAHwMGFQg==&httpmethod=post";
-                                        
 
- 
+                                                  // var url = apiurlaccessregistries+"/api/Get-SecurityAgent-All?httpmethod=objectlist&code="+GetSecurityAgentAll+"";
+                                                  //var url = apiurlAuditoria+"/api/Post-Programa_Auditoria-All?code=g38OQrxNikLSJIxsYIv03hTcmsYXfmMA7kanUqFykcdNNGAHwMGFQg==&httpmethod=post";
+
+
+
                                                     if(EditIdAgent==0)//aca se registra nuevo
                                                     {
                                                           var url = apiurlAuditoria+"/api/Post-Programa_Auditoria-All?code=g38OQrxNikLSJIxsYIv03hTcmsYXfmMA7kanUqFykcdNNGAHwMGFQg==&httpmethod=post";  //Insertar
@@ -412,7 +423,7 @@ var vw_secury_agent = function(){
                                                       //var url = apiurlaccessregistries+"/api/Post-SegurityAgent-All?httpmethod=put&code="+PostSegurityAgentAll+"&id="+EditIdAgent; //modificar
                                                         //alert("modificar registro");
                                                     }
-                                  
+
                                                     var settings = {
                                                       "url": url,
                                                       "method": "POST",
@@ -426,8 +437,8 @@ var vw_secury_agent = function(){
                                                        }//,
                                                       // "data": JSON.stringify(body),
                                                     };
-                                              
-                                                      $.ajax(settings).done(function (response) 
+
+                                                      $.ajax(settings).done(function (response)
                                                           {
                                                               let ddate = [];
                                                             console.log("##############################  RESPUESTA DESPUES DE GUARDAR ################## ");
@@ -435,14 +446,14 @@ var vw_secury_agent = function(){
                                                                   ddate = response.split(',');//TRYCKY es muy estraño pendiente parece la forma en que se retorn ala data del servicio
                                                                   let iddf =  ddate[0].split(':');
                                                                   let PId = $.trim(iddf[1]);
-                                                                  console.log("**",PId,"**"); 
+                                                                  console.log("**",PId,"**");
                                                             console.log("##############################  RESPUESTA DESPUES DE GUARDAR ################## ");
                                                                     PId = PId*1;
                                                                   //alert(PId)
                                                                           //*****************************************************************************************************************************************************AJAX_INI */
                                                                       var si = response.Id*1;//alert(si);
                                                                       //prompt(response.Id)
-                                                                    if (response) 
+                                                                    if (response)
                                                                       {
                                                                           //alert("EEEIIIIIII = "+response.EspecialidadId)
                                                                               if(PId > 0)
@@ -470,7 +481,7 @@ var vw_secury_agent = function(){
                                                                                           CodeEspecialidad = "";
                                                                                           DescriptionEspecialidad= "";
                                                                                           DescriptionStatus ="";
-                                                                                          EspecialidadId = ""; 
+                                                                                          EspecialidadId = "";
                                                                                           StatusId ="";
                                                                                           Evaluador_name = "";
                                                                                           Evaluador_code = "";
@@ -483,7 +494,7 @@ var vw_secury_agent = function(){
                                                                                     //swal("Error!", "Este Programa ya se encuentra creado: ( "+Code+" )", "error","alert('aaaa')")
                                                                                     verModalErrorSp1("Crear Programa","Este Programa ya se encuentra creado :<b>( "+Code+" )</b>");//---verificacion en BD
                                                                                     //$('#modal-save').addClass('modal_confirmacion__active')
-                                                                                    
+
                                                                                     return 0
                                                                                   }
 
@@ -512,11 +523,11 @@ var vw_secury_agent = function(){
                                     vw_secury_agent.cancelform();
                               }//------------------- LA COMPARATIVA SIN IR A BD -----------------------CON ARRAY
 
-      
-          
-                  
+
+
+
               }  //------------------------------------------------------ campos llenos seguimos fin ----------------------------------------------------------
-    	
+
     }
 
 
@@ -540,21 +551,21 @@ var vw_secury_agent = function(){
 
 
 //---------------------------------------------------------------------- FUNCION PARA LISTAR PROGRAMAS DE AUDITORIAS -------------------------
-    
 
-  
+
+
 //---------------------------------------fin de la funcion listar programas
 
-  
+
 
 var 	tableBlackList = function()
-{   
+{
 //alert("AAAAAAAAAAAAAAAAAAAAAAAA-V-----------------");
   showLoading();
   var jj = 0;
   var lbx = "";
   var now = moment().format('YYYY-MM-DD');
-       //alert("entrando a tableBlackList,,,,"); 
+       //alert("entrando a tableBlackList,,,,");
    //  //----------------------PARAMETROS PARA EL SERVICIO LISTAR PROGRAMAS DE AUDITORIA-------------------------------
    //  var apiurlaccessregistriesTemp = apiurlAuditoria+"";//apiurlaccessregistries
    //  var servicioGp = "/api/Get-Programa_Auditoria-All?"//    "/api/Get-SecurityAgent-All?";
@@ -565,18 +576,18 @@ var 	tableBlackList = function()
    //  var patametrosGp = "&code="+GetSecurityAgentAllxx+"&Flag_Completada=0";//"&code="+GetSecurityAgentAll;
    //  //----------------------PARAMETROS PARA EL SERVICIO LISTAR PROGRAMAS DE AUDITORIA-------------------------------
 
-        
+
    // // var NewProgram = 0;// variable que me a decir quien es el programa nuevo
-   //      var url = apiurlaccessregistriesTemp+servicioGp+patametrosGp+"&httpmethod="+ metodoHttpGp; 
-        
-      // var url = apiurlaccessregistries+"/api/Get-SecurityAgent-All?httpmethod=objectlist&code="+GetSecurityAgentAll+"";                
-              
+   //      var url = apiurlaccessregistriesTemp+servicioGp+patametrosGp+"&httpmethod="+ metodoHttpGp;
+
+      // var url = apiurlaccessregistries+"/api/Get-SecurityAgent-All?httpmethod=objectlist&code="+GetSecurityAgentAll+"";
+
    //----------------------PARAMETROS PARA EL SERVICIO LISTAR PROGRAMAS DE AUDITORIA-------------------------------
             var apiurlaccessregistriesTemp = apiurlAuditoria+"";//apiurlaccessregistries
             var servicioGp = "/api/Get-Programa_Auditoria-All?"//    "/api/Get-SecurityAgent-All?";
             var apiKeyxGp = "r$3#23516ewew5"; //constantes.apiKey;
 
-            var metodoHttpGp = "&httpmethod=objectlist&Flag_Completada=0";//&Flag_Completada=0"; pendiente con estopara presentar cel listado
+            var metodoHttpGp = "&httpmethod=objectlist";//&Flag_Completada=0"; pendiente con estopara presentar cel listado
 
             var metodoAjaxGp =  "GET"; //"POST";
             var GetSecurityAgentAllxx = "code=X4XURduZbR20wwsOaEVVs4trLnrmd4mfO3KtqksohFm5bQQPqoO10g==";
@@ -584,13 +595,13 @@ var 	tableBlackList = function()
             //----------------------PARAMETROS PARA EL SERVICIO LISTAR PROGRAMAS DE AUDITORIA-------------------------------
 
             var url = apiurlaccessregistriesTemp+servicioGp+GetSecurityAgentAllxx+metodoHttpGp;
-               
+
 
 
 
        console.log("url-listarPrograma = "+url);
 
-                          
+
         var headers ={
             "apikey":apiKeyxGp
         }
@@ -609,11 +620,11 @@ var 	tableBlackList = function()
 
       $("#cantidad-programa").html('<img src="images/iconos/copia-1.svg" class="copia-1"> '+response.length+' ');
       $('#body-tabla-list').html(" ");
-      
-        hideLoading();//font-size: 11.9px; letter-spacing: 0.10px; line-height: 1.64; 
+
+        hideLoading();//font-size: 11.9px; letter-spacing: 0.10px; line-height: 1.64;
         $('#pagination-container-programa').pagination({
                 dataSource: response,
-                pageSize: 10,// requerido por Karen 18/05/21
+                pageSize: 5,// requerido por Karen 18/05/21
                 callback: function(data, pagination) {
                     var html = templatetableBlackList(data);
                     $('#body-tabla-list-programa').html(html);
@@ -621,9 +632,9 @@ var 	tableBlackList = function()
             })
     })
 
-     
+
 }
-//---------------------------------------fin de la funcion listar programas 
+//---------------------------------------fin de la funcion listar programas
 
  // para el paginado....
     var templatetableBlackList = function(data){
@@ -658,7 +669,7 @@ var 	tableBlackList = function()
              }
          })
          //Fin_______vamos a recorrer para ver cual cual es la última auditoría
-              
+
         data.forEach((Item)=>{
 
           console.log(Item);
@@ -677,7 +688,7 @@ var 	tableBlackList = function()
             var dater=startDate;
 
              var bcod = "'"+Item.Code+"'";
-     
+
 
             aUbicx[jj] = bcod; jj++;
 
@@ -695,8 +706,8 @@ var 	tableBlackList = function()
               btNew = "";
               // btNew = "<div  class='check-blue text-center'>Nuevo</div>"; //btNew ="";//momentaneamente andy 14-05-2021
            }else{var btNew = "";}
-       
-           
+
+
            //console.log("estoy verificando listar programa Evaluador_name("+cg+")");
            html += `
             <div class="item-tabla p-2" style="z-index: 1;display:relative;">${btNew}
@@ -710,7 +721,7 @@ var 	tableBlackList = function()
                 <div class="col-md-1" >${Item.DescriptionStatus}</div>
 
                 <div class="col-md-2 d-flex justify-content-end" >
-                  <button class="btn btn-green-lime" style=" width: 7.563rem; height: 2.125rem; font-size: 0.75rem; color: #565933;"  onclick="vistaAuditorias(${Item.Id},${bcod},${Item.EspecialidadId});" > 
+                  <button class="btn btn-green-lime" style=" width: 7.563rem; height: 2.125rem; font-size: 0.75rem; color: #565933;"  onclick="vistaAuditorias(${Item.Id},${bcod},${Item.EspecialidadId});" >
                       ${lbx}
                   </button">
 
@@ -718,10 +729,10 @@ var 	tableBlackList = function()
             </div>
         </div>`
 
-                 
-               
-            
-            
+
+
+
+
             //$('#body-tabla-list').append(
             // html += `
             //     <div class="item-tabla p-2">
@@ -752,10 +763,10 @@ var 	tableBlackList = function()
             //                             <img src="./images/iconos/usuario1.svg" class="ojo-1" style>
             //                         </button>
             //                     </div>
-                        
+
             //                     <div class="col-6 text-center" style="font-size: 15px">
             //                         <button type="button"
-            //                             id="btnVerAuditoria_${Item.Id}" 
+            //                             id="btnVerAuditoria_${Item.Id}"
             //                             idProgramaAuditoria="${id_programa_auditoria}" idEspecialidad="${id_codigo_especialidad_programa}"
             //                             nombreProgramaAuditoria="${nombre_programa_auditoria}"
             //                             Code="${Item.Code}" CodeUnidadNegocio="${Item.CodeUnidadNegocio}"
@@ -764,17 +775,17 @@ var 	tableBlackList = function()
             //                             DescriptionSede="${Item.DescriptionSede}" SedeId="${Item.SedeId}" CodeSede="${Item.CodeSede}" Inicio="${startDate}" Fin="${endDate}"
             //                             Inicio2="${moment(Item.Inicio).format('L')}" Fin2="${moment(Item.Fin).format('L')}"
             //                             StatusId="${Item.StatusId}" DescriptionStatus="${Item.DescriptionStatus}"
-            //                             TipoId="${Item.TipoId}" onClick="verAuditoria('${Item.Id}')" class="btn-circleCA border-0" style="background-color: #373e68"> 
+            //                             TipoId="${Item.TipoId}" onClick="verAuditoria('${Item.Id}')" class="btn-circleCA border-0" style="background-color: #373e68">
             //                             <img src="./images/iconos/ojo_1.svg" class="ojo-1">
             //                         </button>
             //                     </div>
             //                 </div>
             //             </div>
-                    
+
             //         </div>
             //     </div>`
             //)
-            
+
         });
 
 html += '';//hideLoading();
@@ -863,27 +874,27 @@ var deleted=function(id)
     showCancelButton: true,
     confirmButtonClass: " btn-green-lime btn-sm btn-rounded btn-raised",
     confirmButtonText: "Si",
-    cancelButtonText: "No",                
+    cancelButtonText: "No",
     closeOnConfirm: true,
     closeOnCancel: false,
     showLoaderOnConfirm: true
   },function(action)
   {
-    if (action===false) 
-    {//                   
+    if (action===false)
+    {//
         swal.close();
-        EditIdAgent=0; 
-      } 
-      else 
+        EditIdAgent=0;
+      }
+      else
       {//eliminar
         EditIdAgent=id;
         console.log("Ir a eliminar "+id);
 
-        var url = apiurlaccessregistries+"/api/Post-SegurityAgent-All?httpmethod=delete&code="+PostSegurityAgentAll+"&id="+EditIdAgent;                 
+        var url = apiurlaccessregistries+"/api/Post-SegurityAgent-All?httpmethod=delete&code="+PostSegurityAgentAll+"&id="+EditIdAgent;
         var headers ={
-            "apikey":"r$3#23516ewew5"        
+            "apikey":"r$3#23516ewew5"
         }
-        $.ajax({                    
+        $.ajax({
             method: "POST",
             url:  url,
             //data: JSON.stringify(body),
@@ -893,7 +904,7 @@ var deleted=function(id)
         }).done(function(data)
         {
           console.log(data);
-          if (data) 
+          if (data)
           {
             swal({
               title: "Éxito",
@@ -904,7 +915,7 @@ var deleted=function(id)
               confirmButtonClass: "btn-green-lime btn-rounded btn-raised btn-sm",
               confirmButtonText: "De acuerdo",
               closeOnConfirm: false
-            });            
+            });
             cancelform();
             vw_secury_agent.reloadtableBlackList();
           }else{
@@ -914,7 +925,7 @@ var deleted=function(id)
         });
 
       }
-    //registerCompanyExternal();            
+    //registerCompanyExternal();
 });
 
 }
@@ -928,11 +939,11 @@ var deleted=function(id)
     var param={
       httpmethod:'exceededlist'
     }
-    var url=apiurlblacklist+"/api/Get-Blacklist-Log?code="+getblacklistlogcode+"&httpmethod=objectlist&search_type=1&id_blacklist="+id;                
+    var url=apiurlblacklist+"/api/Get-Blacklist-Log?code="+getblacklistlogcode+"&httpmethod=objectlist&search_type=1&id_blacklist="+id;
     var headers={
-      "apikey":"r$3#23516ewew5"        
+      "apikey":"r$3#23516ewew5"
     }
-  
+
     oTableRecent=$('#List_table_binnacle').DataTable({
       paging:false,
       ordering:false,
@@ -967,11 +978,11 @@ var deleted=function(id)
             if(item.last_updated_by!=null){
               colaboratorId = item.last_updated_by
             }
-            
+
             if(colaboratorId!=null  || colaboratorId!=""){
               //buscamos el colaborador por el id
               var resp    = "";
-              var filter  = colaboratorId;         
+              var filter  = colaboratorId;
               var param   = {filter:filter};
               var headers = {"Authorization":TOKEN_CLIENT,"apikey":"r$3#23516ewew5"}
               $.ajax({
@@ -990,9 +1001,9 @@ var deleted=function(id)
                   resp = data;
 
                  console.log(data);
-                 
-                  if(Array.isArray(data.value) ) 
-                  { 
+
+                  if(Array.isArray(data.value) )
+                  {
                       user = data.value[0].displayName;
                   }
                   else{
@@ -1004,9 +1015,9 @@ var deleted=function(id)
               });
             }
 
-            
 
-  
+
+
             /*
             Listbinnacle
             */
@@ -1016,7 +1027,7 @@ var deleted=function(id)
             if(i==1) {
               estatus=1;
             }
-            
+
               var observacion='-';
               if(item.reason)
                 observacion=item.reason;
@@ -1027,20 +1038,20 @@ var deleted=function(id)
               var day         = moment(item.created_date).format('D'); ;
               var startDate               = week +" "+day +" de "+ month;
               var datec=startDate;
-             
+
               var row = {
                 Tobservacion:toCapitalize(observacion),
                 User:user,
                 TstartDate:startDate,
                 Testatus:(!item.action_type)?'<span class="text-success">Inactivo</span>' :'<span class="text-danger">Activo</span>',
-              } 
+              }
               i++;
               data.push(row);
           });
           return data;
-        } 
+        }
       },
-      columns: [        
+      columns: [
         {title:"Observación",data:"Tobservacion",width: "40%"},
         {title:"Fecha de Registro",data:"TstartDate",width: "25%"},
         {title:"Usuario",data:"User",width: "25%"},
@@ -1049,23 +1060,23 @@ var deleted=function(id)
     });
     $('#Listbinnacle').modal('show');
   }
-  var getExternalCompany = function(){      
-    var url = apiurlsecurity+"/api/Get-ExternalCompany-All?code="+GetExternalCompanyAll+"&httpmethod=objectlist&attribute5=";              
+  var getExternalCompany = function(){
+    var url = apiurlsecurity+"/api/Get-ExternalCompany-All?code="+GetExternalCompanyAll+"&httpmethod=objectlist&attribute5=";
     var headers ={
-        "apikey":"r$3#23516ewew5"        
+        "apikey":"r$3#23516ewew5"
     }
-    $.ajax({                    
+    $.ajax({
         method: "POST",
         url:  url,
         headers:headers,
         crossDomain: true,
         dataType: "json",
     }).done(function(data)
-    {       
+    {
         var jsonExternalCompany=[];
         data.map(function(item){
           if(item.id!=167 && item.id!=166 && item.attribute4=="OIS")
-            jsonExternalCompany.push(item);               
+            jsonExternalCompany.push(item);
         });
 
         var list=[];
@@ -1074,19 +1085,19 @@ var deleted=function(id)
       });
      // list.push({label:'Tasa',value:'Tasa',id:0})
         $("#tx_company_ListaBlack").autocomplete({
-         
+
           source: list//listado para autocompletar
           ,
           //minLength: 3,//minimo de letras a buscar coincidencias
-          select: function( event, ui ) 
+          select: function( event, ui )
           {
             //$("#sel_cod_company_"+leng).val(ui.item.id);
             //getCollaborator($("#add_covid_firtname_"+leng),leng);
-           
+
             companyId=ui.item.id;
           }
-    
-          
+
+
       });
 
     });
@@ -1099,8 +1110,8 @@ var deleted=function(id)
 //********************************************************************************************************** */
 
 var getEstadosPrograma= function()
-  { 
-    
+  {
+
     // <option value="" disabled selected></option>
     // <option value="1">Creado</option>
     // <option value="2">En Revisión</option>
@@ -1112,7 +1123,7 @@ var getEstadosPrograma= function()
 
     //aqui vamos a cambiar por nuestro servicio....................  vamos a traer las especialidades
     $("#sel_estado").append("<option value='-1'>Cargando...</option>");
-    
+
      var  apiurlaccessrequestx= apiurlAuditoria+"";
      var  methodx = "GET";//es GET
      var apiKeyx = "r$3#23516ewew5";
@@ -1125,9 +1136,9 @@ var getEstadosPrograma= function()
      var i =0;
 
     var headers ={
-        "apikey":apiKeyx        
+        "apikey":apiKeyx
     }
-    $.ajax({                    
+    $.ajax({
         method:methodx,
         url:  url,
         headers:headers,
@@ -1135,14 +1146,14 @@ var getEstadosPrograma= function()
         dataType: typeDatex,
     }).done(function( data)
     {
-      
+
       var option = "";
       option+="<option value='0'>        </option>";
 
       var option1 = "";
       option1+="<option value='0'>Todas</option>";
-      data.map(function(item){ 
-         aUbic[i] = item.Code; /* alert("code"+aUbic[i]+"("+i+")");*/       
+      data.map(function(item){
+         aUbic[i] = item.Code; /* alert("code"+aUbic[i]+"("+i+")");*/
           i++;
 
         option+="<option Code='"+item.Code+"'  value='"+item.Id+"'>"+item.Description+"</option>";// datos reales item.Id   item.Description
@@ -1151,17 +1162,17 @@ var getEstadosPrograma= function()
           // alert(" Especialidad = "+item.Description);
           // alert("idEspecialidad = "+item.Id);
 
-                    
-      });  
+
+      });
       $("#sel_estado").html(option);
       // $("#sel_sede_filter").html(option1);
-      
+
     });
   }
 
-  
+
   var getLocations= function()
-  { 
+  {
 
     //aqui vamos a cambiar por nuestro servicio....................  vamos a traer las especialidades
     $("#sel_sede").append("<option value='-1'>Cargando...</option>");
@@ -1177,9 +1188,9 @@ var getEstadosPrograma= function()
        var url = apiurlAuditoria+"/api/Get-Especialidad-All?code=tzTo63fygC1rQtqr0mXxg7a9HQ/WFAPI3XaE/h/OBzhZHgIZTqj93Q==&httpmethod=objectlist";
        var i =0;
     var headers ={
-        "apikey":apiKeyx        
+        "apikey":apiKeyx
     }
-    $.ajax({                    
+    $.ajax({
         method:methodx,
         url:  url,
         headers:headers,
@@ -1196,11 +1207,11 @@ var getEstadosPrograma= function()
 
         option+="<option code='"+item.Code+"'  value='"+item.Id+"-"+item.Code+"'>"+item.Description+"</option>";// datos reales item.Id   item.Description
         option1+="<option code='"+item.Code+"' value='"+item.Id+"-"+item.Code+"'>"+item.Description+"</option>";
-            
-      });  
+
+      });
       $("#sel_sede").html(option);
       $("#sel_sede_filter").html(option1);
-      
+
     });
 }
 
@@ -1214,20 +1225,20 @@ var idEdit;
 var statusEdit;
 var nameEdit;
     var thumbsUp = function(id,status,name,company,img,reason,identity_document){
-     
+
     	if (status==1) {
         $("#butEditBlack").text("Retirar de lista")
         var text = "El usuario será restituido.";
         $("#butEditBlack")[0].className="btn btn-green-lime btn-rounded btn-raised";
-        
+
     	}else{
         $("#butEditBlack").text("Agregar a lista")
         $("#butEditBlack")[0].className="btn btn-danger btn-rounded btn-raised";
     		var text = "El usuario será dado de baja.";
       }
       $('#tx_reasonedit').text('');
- 
-      $('#nameedit').text(name);      
+
+      $('#nameedit').text(name);
       $('#modalShowpersonBlacke').modal('show');
       $('#dniedit').text(identity_document);
       $('#span_name_company').text("--");
@@ -1245,12 +1256,12 @@ var nameEdit;
       $('#modalShowpersonBlacke').modal('show');
       $('#nameedit').text(name);
       if(statusEdit==0){
-        statusEdit=1;        
-      }        
-      else if(statusEdit==1){
-        statusEdit=0;       
+        statusEdit=1;
       }
-     
+      else if(statusEdit==1){
+        statusEdit=0;
+      }
+
       if(inputValue=="")
       {
         swal({
@@ -1264,20 +1275,20 @@ var nameEdit;
         $('#tx_reasonedit').focus();
         return;
       }
-  
+
 		    	var name = getCookie('vtas_fullname'+sessionStorage.tabVisitasa);
 		    	var responsible = getCookie('vtas_id_hash'+sessionStorage.tabVisitasa);
-		        var url = apiurlblacklist+"/api/Post-Blacklist-User?httpmethod=put&id="+idEdit+"&responsible="+responsible+"&reason="+inputValue+"&code="+postblacklistusercode+"";                   
+		        var url = apiurlblacklist+"/api/Post-Blacklist-User?httpmethod=put&id="+idEdit+"&responsible="+responsible+"&reason="+inputValue+"&code="+postblacklistusercode+"";
 		        var headers ={
-		            "apikey":"r$3#23516ewew5"        
+		            "apikey":"r$3#23516ewew5"
 		        }
 		        var data = {
               "created_by": getCookie("vtas_id_hash"+sessionStorage.tabVisitasa)
               ,"last_updated_by":getCookie("vtas_id_hash"+sessionStorage.tabVisitasa)
 		        	,"veto_status" : statusEdit
 		        }
-		        
-		        $.ajax({                    
+
+		        $.ajax({
 		            method: "POST",
 		            url:  url,
 		            data: JSON.stringify(data),
@@ -1295,7 +1306,7 @@ var nameEdit;
 		        	}
 
 		        });
-          
+
     }
 
     return{
@@ -1305,7 +1316,7 @@ var nameEdit;
             //alert("yyyyyyyyyyyyyyyyyyyyyyy");
             //ultimoPrograma();
             tableBlackList();//listado de programas
-            
+
         },
 	    reloadtableBlackList:function(){
         $('#body-tabla-list').html("");
@@ -1316,7 +1327,7 @@ var nameEdit;
 
 
 	    },
-	    thumbsUp:function(id,status,name,company,img,reason,identity_document){       
+	    thumbsUp:function(id,status,name,company,img,reason,identity_document){
 	      thumbsUp(id,status,name,company,img,reason,identity_document);
 	    },
 	    register:function(){
@@ -1342,8 +1353,8 @@ var nameEdit;
       },
       Listbinnacle:function(id,name,document){
         Listbinnacle(id,name,document);
-      } 
-      
+      }
+
     }
 }();
 
@@ -1354,12 +1365,12 @@ function seleccionEspecialidadChange(select){
    espPrograma = $("#sel_sede").find('option:selected').text();
    idEspPrograma = values[0];//idEspPrograma = $("#sel_sede").find('option:selected').index();
    codeProgramaX =values[1]//aUbic[idEspPrograma];
-  
+
    console.log("1)espPrograma = "+espPrograma);
    console.log("2)idEspPrograma = "+idEspPrograma);
    console.log("3)codeProgramaX = "+ codeProgramaX);
 
-  
+
   }
 
 function seleccionEspecialidad(select){
@@ -1387,8 +1398,8 @@ function seleccionEspecialidad(select){
             var patametrosGp = "&code="+GetSecurityAgentAllxx;//"&code="+GetSecurityAgentAll;
             //----------------------PARAMETROS PARA EL SERVICIO LISTAR PROGRAMAS DE AUDITORIA-------------------------------
 
-                
-                var url = apiurlaccessregistriesTemp+servicioGp+patametrosGp+"&httpmethod="+ metodoHttpGp; 
+
+                var url = apiurlaccessregistriesTemp+servicioGp+patametrosGp+"&httpmethod="+ metodoHttpGp;
                 // prompt("url",url);
 
                 var headers ={
@@ -1397,14 +1408,14 @@ function seleccionEspecialidad(select){
 
 
               //----------------------------------------------------------- --------------------------------------------- --------------------------------------- -------------------
-                  $.ajax({                    
+                  $.ajax({
                     method: metodoAjaxGp,
                     url:  url,
                     headers:headers,
                     crossDomain: true,
                     dataType: "json"
                   }).done(function(data)
-                  {   
+                  {
                     //console.log(data);
                     data.map(function(item)
                     {
@@ -1413,10 +1424,10 @@ function seleccionEspecialidad(select){
                       {
                         NewProgram = item.Id;
                       }
-                        
+
                     });
 
-                    //alert(NewProgram);  
+                    //alert(NewProgram);
                     vw_secury_agent.init();
                     //NewProgram = 0;
 
@@ -1431,14 +1442,14 @@ function verModalxx()
 }
 
 function buscarSearch()
-{ 
+{
  //alert("Esta funcionalidad esta programada, busca pero no filtra, SERVICIO BACKEND PENDIENTE");
  //capturas los parametros y vas a la base de datos
-       
+
     //lo que este en blanco no va
     //igual a BlackList solo que el servicio cambia ahora envia datos
 
-   
+
     var idPr = $("#tx_id_program").val();
     var feDsd = $("#tx_fecha_ini").val().split('/').reverse().join('-');
     var FeHst = $("#tx_fecha_fin").val().split('/').reverse().join('-');
@@ -1459,7 +1470,7 @@ function buscarSearch()
           var jj = 0;
 
           var now = moment().format('YYYY-MM-DD');
-              //alert("entrando a tableBlackList,,,,"); 
+              //alert("entrando a tableBlackList,,,,");
             //----------------------PARAMETROS PARA EL SERVICIO LISTAR PROGRAMAS DE AUDITORIA-------------------------------
             var apiurlaccessregistriesTemp = apiurlAuditoria+"";//apiurlaccessregistries
             var servicioGp = "/api/Get-Programa_Auditoria-All?"//    "/api/Get-SecurityAgent-All?";
@@ -1471,13 +1482,13 @@ function buscarSearch()
             //----------------------PARAMETROS PARA EL SERVICIO LISTAR PROGRAMAS DE AUDITORIA-------------------------------
 
             var url = apiurlaccessregistriesTemp+servicioGp+GetSecurityAgentAllxx+metodoHttpGp;
-               
-              // var url = apiurlaccessregistries+"/api/Get-SecurityAgent-All?httpmethod=objectlist&code="+GetSecurityAgentAll+""; 
-            // var url=apiurlblacklist+"/api/Get-Blacklist-Log?code="+getblacklistlogcode+"&httpmethod=objectlist&search_type=1&id_blacklist="+id;  
-            //&Fecha_Desde=2020-09-26&Fecha_Hasta=2020-09-30                     
-                              
+
+              // var url = apiurlaccessregistries+"/api/Get-SecurityAgent-All?httpmethod=objectlist&code="+GetSecurityAgentAll+"";
+            // var url=apiurlblacklist+"/api/Get-Blacklist-Log?code="+getblacklistlogcode+"&httpmethod=objectlist&search_type=1&id_blacklist="+id;
+            //&Fecha_Desde=2020-09-26&Fecha_Hasta=2020-09-30
+
             //--------------------------------------------- ok vamos a construir la url ---------------------------------------
-            
+
               if(idPr!= "")
               {
                 url = url+"&vvcode="+idPr;
@@ -1513,7 +1524,7 @@ function buscarSearch()
                     "apikey":apiKeyxGp
                 }
 
-
+                console.warn("url -> " , url )
                 $.ajax({
                 method: "GET",
                 url:  url,
@@ -1522,7 +1533,8 @@ function buscarSearch()
                 dataType: "json",
             }).done(function (response) {
                 let type = '';
-                // console.log(response)
+                // console.warn("response.length -> ", response.length)
+                // console.table(response)
                 // $('.body-tabla').addClass('hidden')
                 // $('#cantidad').text(response.length)
                 // aUbicx2 = response;//cargamos al array el listado nuevo
@@ -1548,7 +1560,7 @@ function buscarSearch()
                 //     var dater=startDate;
 
                 //     var bcod = "'"+Item.Code+"'";
-            
+
 
                 //     aUbicx[jj] = bcod; jj++;
                 //     if(Item.StatusId == 5){lbx = "Ver Auditorías";}else{lbx = "Ingresar Auditorías";}
@@ -1565,25 +1577,27 @@ function buscarSearch()
                 //         <div class="col-md-1  " >${Item.Evaluador_name?Item.Evaluador_name:'    -----'}</div>
                 //         <div class="col-md-2" >${dater}</div>
                 //         <div class="col-md-1" >${Item.DescriptionStatus}</div>
-        
+
                 //         <div class="col-md-2 d-flex justify-content-end" >
-                //           <button class="btn btn-green-lime" style=" width: 7.563rem; height: 2.125rem; font-size: 0.75rem; color: #565933;"  onclick="vistaAuditorias(${Item.Id},${bcod},${Item.EspecialidadId});" > 
+                //           <button class="btn btn-green-lime" style=" width: 7.563rem; height: 2.125rem; font-size: 0.75rem; color: #565933;"  onclick="vistaAuditorias(${Item.Id},${bcod},${Item.EspecialidadId});" >
                 //               ${lbx}
                 //           </button">
-        
+
                 //         </div>
                 //     </div>
                 // </div>`)
 
                 // })
-                
+
                 if (response.length > 0) $("#bodyTablaSinPrograma").css("display", "none");
                 else $("#bodyTablaSinPrograma").css("display", "block");
-    
+
+                  // alert(response.length)
                   $("#cantidad-programa").html('<img src="images/iconos/copia-1.svg" class="copia-1"> '+response.length+' ');
                   $('#body-tabla-list').html(" ");
-                  
-                    hideLoading();//font-size: 11.9px; letter-spacing: 0.10px; line-height: 1.64; 
+                  // alert(response.length)
+
+                    hideLoading();//font-size: 11.9px; letter-spacing: 0.10px; line-height: 1.64;
                     $('#pagination-container-programa').pagination({
                             dataSource: response,
                             pageSize: 5,
@@ -1615,7 +1629,7 @@ function buscarSearch()
 
 //limpiamos la tabla para presentar los resultados
 //$('#body-tabla-list').html("");
-  
+
 }
 
 
@@ -1628,13 +1642,9 @@ function templatetableBlackList2(data){
   var now = moment().format('YYYY-MM-DD');
         //alert("Quien me llama");
 
-        console.log("#################################################  LISTADO DE PROGRAMAS  #######################################")
-        console.log("DATA",data)
-        console.log("#################################################  LISTADO DE PROGRAMAS  #######################################")
-        console.log("              ")
-        console.log("              ")
-        console.log("              ")
-        console.log("              ")
+        console.log("#################################################--  LISTADO DE PROGRAMAS  #######################################")
+        console.log("DATA -> ",data)
+        console.log("#################################################--  LISTADO DE PROGRAMAS  #######################################")
 
 
    //Ini_______vamos a recorrer para ver cual es la última auditoría
@@ -1652,7 +1662,7 @@ function templatetableBlackList2(data){
        }
    })
    //Fin_______vamos a recorrer para ver cual cual es la última auditoría
-        
+
   data.forEach((Item)=>{
 
     console.log(Item);
@@ -1688,33 +1698,33 @@ function templatetableBlackList2(data){
      {
          btNew = "<div  class='check-blue text-center'>Nuevo</div>"; //btNew ="";//momentaneamente
      }else{var btNew = "";}
- 
-     
+
+
      //console.log("estoy verificando listar programa Evaluador_name("+cg+")");
      html += `
       <div class="item-tabla p-2" style="z-index: 1;display:relative;">${btNew}
-      <div class="row m-0 justify-content-between align-items-center">
-          <div class="col-md-1" >${Item.Code}</div>
-          <div class="col-md-2" >${Item.DescriptionEspecialidad}</div>
-          <div class="col-md-1" >${datec}</div>
-          <div class="col-md-1  text-center" >${Item.Cantidad_Correcciones}</div>
-          <div class="col-md-1  " >${Item.Evaluador_name?Item.Evaluador_name:'    -----'}</div>
-          <div class="col-md-2" >${dater}</div>
-          <div class="col-md-1" >${Item.DescriptionStatus}</div>
+          <div class="row m-0 justify-content-between align-items-center">
+              <div class="col-md-1" >${Item.Code}</div>
+              <div class="col-md-2" >${Item.DescriptionEspecialidad}</div>
+              <div class="col-md-1" >${datec}</div>
+              <div class="col-md-1  text-center" >${Item.Cantidad_Correcciones}</div>
+              <div class="col-md-1  " >${Item.Evaluador_name?Item.Evaluador_name:'    -----'}</div>
+              <div class="col-md-2" >${dater}</div>
+              <div class="col-md-1" >${Item.DescriptionStatus}</div>
 
-          <div class="col-md-2 d-flex justify-content-end" >
-            <button class="btn btn-green-lime" style=" width: 7.563rem; height: 2.125rem; font-size: 0.75rem; color: #565933;"  onclick="vistaAuditorias(${Item.Id},${bcod},${Item.EspecialidadId});" > 
-                ${lbx}
-            </button">
+              <div class="col-md-2 d-flex justify-content-end" >
+                <button class="btn btn-green-lime" style=" width: 7.563rem; height: 2.125rem; font-size: 0.75rem; color: #565933;"  onclick="vistaAuditorias(${Item.Id},${bcod},${Item.EspecialidadId});" >
+                    ${lbx}
+                </button">
 
+              </div>
           </div>
-      </div>
-  </div>`
+      </div>`
 
-           
-         
-      
-      
+
+
+
+
       //$('#body-tabla-list').append(
       // html += `
       //     <div class="item-tabla p-2">
@@ -1745,10 +1755,10 @@ function templatetableBlackList2(data){
       //                             <img src="./images/iconos/usuario1.svg" class="ojo-1" style>
       //                         </button>
       //                     </div>
-                  
+
       //                     <div class="col-6 text-center" style="font-size: 15px">
       //                         <button type="button"
-      //                             id="btnVerAuditoria_${Item.Id}" 
+      //                             id="btnVerAuditoria_${Item.Id}"
       //                             idProgramaAuditoria="${id_programa_auditoria}" idEspecialidad="${id_codigo_especialidad_programa}"
       //                             nombreProgramaAuditoria="${nombre_programa_auditoria}"
       //                             Code="${Item.Code}" CodeUnidadNegocio="${Item.CodeUnidadNegocio}"
@@ -1757,20 +1767,20 @@ function templatetableBlackList2(data){
       //                             DescriptionSede="${Item.DescriptionSede}" SedeId="${Item.SedeId}" CodeSede="${Item.CodeSede}" Inicio="${startDate}" Fin="${endDate}"
       //                             Inicio2="${moment(Item.Inicio).format('L')}" Fin2="${moment(Item.Fin).format('L')}"
       //                             StatusId="${Item.StatusId}" DescriptionStatus="${Item.DescriptionStatus}"
-      //                             TipoId="${Item.TipoId}" onClick="verAuditoria('${Item.Id}')" class="btn-circleCA border-0" style="background-color: #373e68"> 
+      //                             TipoId="${Item.TipoId}" onClick="verAuditoria('${Item.Id}')" class="btn-circleCA border-0" style="background-color: #373e68">
       //                             <img src="./images/iconos/ojo_1.svg" class="ojo-1">
       //                         </button>
       //                     </div>
       //                 </div>
       //             </div>
-              
+
       //         </div>
       //     </div>`
       //)
-      
+
   });
 
-html += '';//hideLoading();
+  html += '';//hideLoading();
   return html;
 
 }
@@ -1783,11 +1793,11 @@ html += '';//hideLoading();
 
 function verModalErrorSp1(subTitulo, msg)
 {
-  
+
   //alert("error");
   $('#subTituloError').html(" ")
   $('#subTituloError').html('<b>'+subTitulo+'</b>'); //cerrarModal
-  
+
   $('#mensajeError').html(" ")
   $('#mensajeError').html('<p>'+msg+'</p>'); //cerrarModal
 

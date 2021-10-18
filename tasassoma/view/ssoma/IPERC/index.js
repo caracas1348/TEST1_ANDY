@@ -1103,6 +1103,18 @@ function muestraEvento(){
             if(maq_data!=""){
                 maq_des = maq_data[0].Description;
             }
+            let maqs = "-";
+            Evento.maqid.map(function(maq,imaq){
+        
+                let maq_name = maquinasEquipos.filter(m=>m.Id==maq)[0].Description;
+                if(imaq==0){
+                    maqs = maq_name
+                }else{
+                    maqs += ","+maq_name
+                }
+                
+            })
+
             if(visualizacion!="Ver"){
                 var length = $("#body-events-list .row").length+1;
                 $("#body-events-list").append(`<div class="row m-0 " style="border: solid 1px #c8c8c8;border-radius: 4.4px;min-height: 100px;margin-top: 10px !important;">
@@ -1119,7 +1131,7 @@ function muestraEvento(){
 
                                                 <div class="col-md-2 text-center d-flex">
                                                     <div class="col-md-12 field" style="padding-top: 6px;padding-bottom: 6px;display: flex;justify-content: center;align-items: center;">
-                                                        ${maq_des}
+                                                        ${maqs}
                                                     </div>
                                                 </div>
 
@@ -1157,7 +1169,7 @@ function muestraEvento(){
 
                                                 <div class="col-md-3 text-center d-flex">
                                                     <div class="col-md-12 field" style="padding-top: 6px;padding-bottom: 6px;display: flex;justify-content: center;align-items: center;">
-                                                        ${maq_des}
+                                                        ${maqs}
                                                     </div>
                                                 </div>
 
@@ -1319,6 +1331,19 @@ function muestraEvaluacion(){
                         significancia = "Significativo";
                         color_significancia = "#EB3223";
                     }
+
+                    let epps = "-";
+                    Evaluacion.epp.map(function(epp,iepp){
+                
+                        let epp_name = epp_array.filter(m=>m.Id==epp)[0].Description;
+                        if(iepp==0){
+                            epps = epp_name
+                        }else{
+                            epps += ","+epp_name
+                        }
+                        
+                    })
+
                     if(visualizacion=="Ver"){
                     $("#body-riskeval-list").append(`<div class="row m-0 " style="border: solid 1px #c8c8c8;border-radius: 4.4px;min-height: 100px;margin-top: 10px !important;">
                                                                             
@@ -1348,7 +1373,7 @@ function muestraEvaluacion(){
 
                                                         <div class="col-md-2 text-center" style="display: flex;">
                                                             <div class="col-md-12" style="padding-top: 6px;padding-bottom: 6px;display: flex;justify-content: center;align-items: center;">
-                                                                ${Evaluacion.epp?epp_data[0].Description:"-"}
+                                                                ${epps}
                                                             </div>
                                                         </div>
 
@@ -1412,7 +1437,7 @@ function muestraEvaluacion(){
 
                         <div class="col-md-1 text-center" style="display: flex;">
                             <div class="col-md-12 field" style="padding-top: 6px;padding-bottom: 6px;display: flex;justify-content: center;align-items: center;">
-                                ${Evaluacion.epp?epp_data[0].Description:"-"}
+                                ${epps}
                             </div>
                         </div>
 
@@ -1820,8 +1845,10 @@ function fnAbrirModalNIPERC(){
     control_ingenieria.value=' ';
     control_administrativo_2.value=' ';
 
+    if(cbo_gerencia){
     cbo_gerencia.selectedIndex = 0;
     cbo_gerencia.value = '0';
+    }
     
     cbo_area_iperc.selectedIndex = 0;
     cbo_area_iperc.value = '0';
@@ -2037,7 +2064,7 @@ function agregarActividad(){
                                         </div>
                                     </div>`);
 
-    activities_array.push({num:cant+1,descripcion:'',IdDefinicion:0,type_activity:0,frequency:0,genre:0,tools:[],events:[],dangers:[],evals:[],controls:[],active:1,Id:0})
+    activities_array.push({num:cant+1,descripcion:'',IdDefinicion:0,type_activity:0,frequency:0,genre:[],tools:[],events:[],dangers:[],evals:[],controls:[],active:1,Id:0})
 }
 
 function changeActivitieDes(pos,num,value){
@@ -2139,7 +2166,10 @@ function selectFrequency(id){
 function selectGenre(id){
     //let cbo_actividad = mdc.select.MDCSelect.attachTo(document.querySelector('.cbo-actividad'));
 
-    activities_array[cbo_actividad.value].genre = id;
+
+    console.log($("#cbo-genero").val())
+    activities_array[cbo_actividad.value].genre = $("#cbo-genero").val();
+
 
     var completo = validaContenidoActividad(cbo_actividad.value)
     if(completo == 1){
@@ -2195,6 +2225,8 @@ function selectTool(e,id,description){
 function selectActivity(index){
     console.log('selectActivity',index);
     $("#maquina-equipo-list .tools").removeClass("tool-selected");
+
+    $(".checktool").css("visibility","hidden")
     /*let cbo_tipoactividad = mdc.select.MDCSelect.attachTo(document.querySelector('.cbo-tipoactividad'));
     let cbo_frecuencia = mdc.select.MDCSelect.attachTo(document.querySelector('.cbo-frecuencia'));
     let cbo_genero = mdc.select.MDCSelect.attachTo(document.querySelector('.cbo-genero'));*/
@@ -2206,6 +2238,7 @@ function selectActivity(index){
         activities_array[index].tools.forEach((Item,it) => {
             if(Item.Active==1){
                 $("#tool-"+Item.id).addClass("tool-selected");
+                $("#check-"+Item.id).css("visibility","visible")
             }
         }) 
     }
@@ -2213,6 +2246,7 @@ function selectActivity(index){
     cbo_tipoactividad.value = activities_array[index].type_activity.toString();
     cbo_frecuencia.value = activities_array[index].frequency.toString();
     cbo_genero.value = activities_array[index].genre.toString();
+    $("#cbo-genero").val(activities_array[index].genre).trigger('change');
     cbo_actividad_2.value = index.toString();
     
     selectActivity2(index)
@@ -2230,13 +2264,16 @@ function selectActivity2(index){
         dehabilitaControlesEvento(false);
 
         $("#ul-Maq-Equip").empty();
-
+        $('#cbo-maq-equip').empty();
         activities_array[index].tools.forEach((Item,it) => {
             if(Item.Active == 1){
                 $(`#ul-Maq-Equip`).append(`<li class="mdc-list-item" data-value="${Item.id}" tabindex="-1"">
                     <span class="mdc-list-item__ripple"></span>
                     <span class="mdc-list-item__text">${Item.description}</span>
-                </li>`);            
+                </li>`);    
+                var newOption = new Option(Item.description, Item.id, false, false);
+                // Append it to the select
+                $('#cbo-maq-equip').append(newOption).trigger('change');        
             }
 
         }) 
@@ -2466,6 +2503,19 @@ function chargeRisks(index){
 function addEvent(){
 
     let cbo_maq_equip = mdc.select.MDCSelect.attachTo(document.querySelector('.cbo-maq-equip'));
+    let maqs = "-";
+    let array_maq = $('#cbo-maq-equip').val();
+    array_maq.map(function(maq,imaq){
+
+        let maq_name = maquinasEquipos.filter(m=>m.Id==maq)[0].Description;
+        if(imaq==0){
+            maqs = maq_name
+        }else{
+            maqs += ","+maq_name
+        }
+        
+    })
+    //cbo_maq_equip.selectedText.textContent
     //let cbo_actividad_2 = mdc.select.MDCSelect.attachTo(document.querySelector('.cbo-actividad-2'));
     let evento_descripcion = $("#txt_descripcion_evento").val();
 
@@ -2486,7 +2536,7 @@ function addEvent(){
 
                                         <div class="col-md-2 text-center d-flex">
                                             <div class="col-md-12 field" style="padding-top: 6px;padding-bottom: 6px;display: flex;justify-content: center;align-items: center;">
-                                                ${cbo_maq_equip.selectedText.textContent}
+                                                ${maqs}
                                             </div>
                                         </div>
 
@@ -2512,7 +2562,7 @@ function addEvent(){
     if(cbo_maq_equip.value!=""){
         cbmaqeq = parseInt(cbo_maq_equip.value);
     }
-    activities_array[cbo_actividad_2.value].events.push({maqid:cbmaqeq,description:evento_descripcion,dangers:[],active:1,Id:0});
+    activities_array[cbo_actividad_2.value].events.push({maqid:array_maq,description:evento_descripcion,dangers:[],active:1,Id:0});
     validaEventosActividad(cbo_actividad_2.value)
     clearEvent();
 }
@@ -2667,6 +2717,19 @@ function addRiskEval(){
         color_significancia = "#EB3223";
     }
 
+    var epps = "-";
+    let array_epp = $('#cbo-epp').val();
+    array_epp.map(function(epp,iepp){
+
+        let epp_name = epp_array.filter(m=>m.Id==epp)[0].Description;
+        if(iepp==0){
+            epps = epp_name
+        }else{
+            epps += ","+epp_name
+        }
+        
+    })
+
     var cant = $("#body-riskeval-list .row").length;
 
     $("#body-riskeval-list").append(`<div class="row m-0 " style="border: solid 1px #c8c8c8;border-radius: 4.4px;min-height: 100px;margin-top: 10px !important;">
@@ -2697,7 +2760,7 @@ function addRiskEval(){
 
                                         <div class="col-md-1 text-center" style="display: flex;">
                                             <div class="col-md-12 field" style="padding-top: 6px;padding-bottom: 6px;display: flex;justify-content: center;align-items: center;">
-                                                ${cbo_epp.value!="0"?cbo_epp.selectedText.textContent:"-"}
+                                                ${epps}
                                             </div>
                                         </div>
 
@@ -2743,7 +2806,7 @@ function addRiskEval(){
                                     </div>`);
 
 
-    activities_array[cbo_actividad_2.value].events[risk_values[0]].dangers[risk_values[1]].evals.push({control_fisico:control_fisico,control_administrativo:control_administrativo,epp:cbo_epp.value,probabilidad:cbo_probabilidad.value,indice_severidad:indice_severidad,indice_riesgo:indice_riesgo,catalogo_riesgo:catalogo_riesgo,significancia:significancia,Active:1,Id:0})
+    activities_array[cbo_actividad_2.value].events[risk_values[0]].dangers[risk_values[1]].evals.push({control_fisico:control_fisico,control_administrativo:control_administrativo,epp:$('#cbo-epp').val(),probabilidad:cbo_probabilidad.value,indice_severidad:indice_severidad,indice_riesgo:indice_riesgo,catalogo_riesgo:catalogo_riesgo,significancia:significancia,Active:1,Id:0})
     
     clearEval();
 }
@@ -2767,6 +2830,7 @@ function clearEval(){
     $("#btn_edit_eval").addClass('d-none');
     $("#btn_cancel_edit_eval").addClass('d-none');
     $("#btn_add_eval").removeClass('d-none');
+    $('#cbo-epp').val(null).trigger('change')
 }
 function removeRiskEval(component,indexEvent,indexAct,indexDanger,index){
     $(component).parent('div').parent('div').remove();
@@ -2871,13 +2935,15 @@ function editRiskEval(component,indexEvent,indexAct,indexDanger,index){
     cbo_riesgo.value = indexEvent+"-"+indexDanger;
 
     cbo_probabilidad.value = activities_array[indexAct].events[indexEvent].dangers[indexDanger].evals[index].probabilidad.toString();
-    cbo_epp.value = activities_array[indexAct].events[indexEvent].dangers[indexDanger].evals[index].epp.toString();
+    //cbo_epp.value = activities_array[indexAct].events[indexEvent].dangers[indexDanger].evals[index].epp.toString();
     
     let control_fisico =  mdc.textField.MDCTextField.attachTo(document.querySelector('.control-fisico'));
     control_fisico.value = activities_array[indexAct].events[indexEvent].dangers[indexDanger].evals[index].control_fisico.toString();
 
     let control_administrativo =  mdc.textField.MDCTextField.attachTo(document.querySelector('.control-administrativo'));
     control_administrativo.value = activities_array[indexAct].events[indexEvent].dangers[indexDanger].evals[index].control_administrativo.toString();
+
+    $("#cbo-epp").val(activities_array[indexAct].events[indexEvent].dangers[indexDanger].evals[index].epp).trigger("change");
 
     $("#btn_edit_eval").removeClass('d-none');
     $("#btn_cancel_edit_eval").removeClass('d-none');
@@ -3262,6 +3328,7 @@ function clearEvent(){
     $("#btn_edit_event").addClass('d-none');
     $("#btn_cancel_edit_event").addClass('d-none');
     $("#btn_add_event").removeClass('d-none');
+    $('#cbo-maq-equip').val(null).trigger('change')
 }
 function updateEvent(){
     //let cbo_maq_equip = mdc.select.MDCSelect.attachTo(document.querySelector('.cbo-maq-equip'));
@@ -3295,8 +3362,9 @@ function editEvent(component,index,indexAct){
 
     //let cbo_maq_equip = mdc.select.MDCSelect.attachTo(document.querySelector('.cbo-maq-equip'));
 
-    cbo_maq_equip.value = activities_array[indexAct].events[index].maqid.toString();
+    //cbo_maq_equip.value = activities_array[indexAct].events[index].maqid.toString();
 
+    $("#cbo-maq-equip").val(activities_array[indexAct].events[index].maqid).trigger("change");
     $("#btn_edit_event").removeClass('d-none');
     $("#btn_cancel_edit_event").removeClass('d-none');
     $("#btn_add_event").addClass('d-none');
@@ -3483,7 +3551,7 @@ function initIPERC(){
                                                         ${Item.Description}
                                                     </div>
                                                     <div class="col-md-1">
-                                                        <img id='check_${Item.Id}' style = 'fill: blue; width:16px; height:16px;  visibility:hidden;' src="images/iconos/check-solid2.svg">
+                                                        <img id='check_${Item.Id}' class="checktool" style = 'fill: blue; width:16px; height:16px;  visibility:hidden;' src="images/iconos/check-solid2.svg">
                                                     </div>
                                                 </div>`);
         })
@@ -3550,6 +3618,9 @@ function initIPERC(){
                                     <span class="mdc-list-item__ripple"></span>
                                     <span class="mdc-list-item__text">${Item.Description}</span>
                                 </li>`);
+            var newOption = new Option(Item.Description, Item.Id, false, false);
+            // Append it to the select
+            $('#cbo-epp').append(newOption).trigger('change'); 
         })
         response.forEach((Item) => {
             $(`#ul-Epp-2`).append(`<li class="mdc-list-item" data-value="${Item.Id}" tabindex="-1">
@@ -5790,12 +5861,28 @@ function exportarIPERC(){
                 frequency = "Permanente";
             }
 
-            if(Actividad.genre == 1){
-                genre = "Masculino";
-            }else{
-                genre = "Femenino";
-            }
+            Actividad.genre.map(function(gen,index){
+                console.log(index,gen)
+                var gname = "";
+                if(gen==1){
+                    console.log("Masculino")
+                    gname = "Masculino";
+                }else{
+                    console.log("Femenino")
+                    gname = "Femenino";
+                }
 
+                if(index==0){
+                    console.log("==0")
+                    genre += gname ;
+                }else{
+                    console.log("!=0")
+                    genre += ","+gname ;
+                }
+
+            })
+            
+            console.log(genre)
 
             let td_activity = `<tr style="text-align:center;vertical-align: middle;">
                                     <td style="border: 2px solid #000;" >${count}</td>
@@ -5803,7 +5890,7 @@ function exportarIPERC(){
                                     <td rowspan="${cant_dangers}" style="border: 2px solid #000;" >${type}</td>
                                     <td rowspan="${cant_dangers}" style="border: 2px solid #000;" >${frequency}</td>
                                     <td rowspan="${cant_dangers}" style="border: 2px solid #000;" >${genre}</td>
-                                    <td rowspan="${cant_dangers}" style="border: 2px solid #000;" >Maquina</td>
+                                    
                                 `;
         
             Actividad.events.map(function(Event,indexevent){
@@ -5812,8 +5899,20 @@ function exportarIPERC(){
                 cant_dangers_event = cant_dangers_event + Event.dangers.length;
 
                 console.log(cant_dangers_event);
+                let maqs = "-";
+                Event.maqid.map(function(maq,imaq){
+            
+                    let maq_name = maquinasEquipos.filter(m=>m.Id==maq)[0].Description;
+                    if(imaq==0){
+                        maqs = maq_name
+                    }else{
+                        maqs += ","+maq_name
+                    }
+                    
+                })
 
-                let td_event = ` <td rowspan="${cant_dangers_event}" style="border: 2px solid #000;" >${Event.description}</td> `;
+                let td_event = `<td rowspan="${cant_dangers_event}" style="border: 2px solid #000;" >${maqs}</td>
+                                <td rowspan="${cant_dangers_event}" style="border: 2px solid #000;" >${Event.description}</td> `;
 
                 Event.dangers.map(function(Peligro,indexpeligro){
                     let curPer = pericon.filter(per => per.Id == Peligro.dangerId);
@@ -5855,10 +5954,23 @@ function exportarIPERC(){
                             }else{
                                 colorSignificancia = "#EB3223";
                             }
+                            //var epp_data = epp_array.filter(epp=>epp.Id == Evaluacion.epp);
+                            
+                            let epps = "-";
+                            Evaluacion.epp.map(function(epp,iepp){
+                        
+                                let epp_name = epp_array.filter(m=>m.Id==epp)[0].Description;
+                                if(iepp==0){
+                                    epps = epp_name
+                                }else{
+                                    epps += ","+epp_name
+                                }
+                                
+                            })
 
                             tab_text = tab_text + `<td colspan = "2" style="border: 2px solid #000;"  >${Evaluacion.control_fisico}</td>
                             <td style="border: 2px solid #000;"  >${Evaluacion.control_administrativo}</td>
-                            <td style="border: 2px solid #000;"  >${Evaluacion.epp}</td>
+                            <td style="border: 2px solid #000;"  >${epps}</td>
                             <td style="border: 2px solid #000;"  >${Evaluacion.probabilidad}</td>
                             <td style="border: 2px solid #000;"  >${Evaluacion.indice_severidad}</td>
                             <td style="border: 2px solid #000;"  >${Evaluacion.indice_riesgo}</td>
@@ -5881,11 +5993,13 @@ function exportarIPERC(){
                     
                             let curPeligro = Peligro.controls[0];
 
+                            var epp_data = epp_array.filter(epp=>epp.Id == curPeligro.epp);
+                            
                             tab_text = tab_text + `<td style="border: 2px solid #000;"  >${curPeligro.eliminacion_riesgo}</td>
                             <td style="border: 2px solid #000;"  >${curPeligro.situacion}</td>
                             <td style="border: 2px solid #000;"  >${curPeligro.control_ingenieria}</td>
                             <td colspan = "2" style="border: 2px solid #000;"  >${curPeligro.control_administrativo}</td>
-                            <td style="border: 2px solid #000;"  >${curPeligro.epp}</td>
+                            <td style="border: 2px solid #000;"  >${curPeligro.epp?epp_data[0].Description:"-"}</td>
                             <td style="border: 2px solid #000;"  >${curPeligro.probabilidad}</td>
                             <td style="border: 2px solid #000;"  >${curPeligro.indice_severidad}</td>
                             <td style="border: 2px solid #000;"  >${curPeligro.indice_riesgo}</td>

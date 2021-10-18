@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="22ab5710-8e8d-4bc0-a3af-38d93898ed9b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="d0fb322e-1230-4b58-a22b-ae92856022d1" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/view/ssoma/incidente-accidente/bandejaAccidenteIncidente.js" beforeDir="false" afterPath="$PROJECT_DIR$/view/ssoma/incidente-accidente/bandejaAccidenteIncidente.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/ssoma/incidente-accidente/gestionAccidenteIncidente.html" beforeDir="false" afterPath="$PROJECT_DIR$/view/ssoma/incidente-accidente/gestionAccidenteIncidente.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -10,10 +11,9 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectId" id="1vxBp0gHrni0HvizFGCl1fxYJvN" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectId" id="1q1XBuVzulln1ANk8sVeWqEU9Tx" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -25,34 +25,29 @@
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="fileTemplates" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="22ab5710-8e8d-4bc0-a3af-38d93898ed9b" name="Default Changelist" comment="" />
-      <created>1627494040948</created>
+      <changelist id="d0fb322e-1230-4b58-a22b-ae92856022d1" name="Default Changelist" comment="" />
+      <created>1616247942242</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1627494040948</updated>
-      <workItem from="1627494043441" duration="2187000" />
-      <workItem from="1628019924382" duration="59000" />
+      <updated>1616247942242</updated>
+      <workItem from="1616247945994" duration="3093000" />
+      <workItem from="1617140510306" duration="291000" />
+      <workItem from="1619390883097" duration="835000" />
+      <workItem from="1627493925296" duration="104000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-    <option name="oldMeFiltersMigrated" value="true" />
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

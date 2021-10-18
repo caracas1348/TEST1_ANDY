@@ -11,12 +11,12 @@
       letter-spacing: 0.26px;
       text-align: center;
       color: #3a3a3a;
-    
+
     }
     /*------------------------------------------- estilos para formulario del proyecto---------------------------------------------------*/
-   
-   
-   
+
+
+
     /* etiqueta de formularios */
         .lbFormsoma{
             font-size: 14px;
@@ -27,7 +27,7 @@
             letter-spacing: normal;
             color: #000000;
         }
-        
+
         .btBuscar{
         font-size: 15px;
         font-weight: bold;
@@ -36,11 +36,11 @@
         line-height: 1.64;
         letter-spacing: 0.15px;
         color: #565933;
-        background-color:#d2d97b; 
-        width: 115px; 
-        height: 50px; 
+        background-color:#d2d97b;
+        width: 115px;
+        height: 50px;
         border: 2px solid #d2d97b;
-        border-radius: 5px; 
+        border-radius: 5px;
         }
 
         .btBuscar:hover{
@@ -51,11 +51,11 @@
         line-height: 1.64;
         letter-spacing: 0.15px;
         color: #d2d97b;
-        background-color: #565933; 
-        width: 115px; 
-        height: 50px; 
+        background-color: #565933;
+        width: 115px;
+        height: 50px;
         border: 2px solid#565933;
-        border-radius: 5px; 
+        border-radius: 5px;
         }
 
         .iconBarraLateral {
@@ -81,7 +81,7 @@
             color: #ffffff;
         }
 
-        
+
         .btCrearProgramas:hover{
             width: 184px;
             height: 50px;
@@ -185,7 +185,7 @@
                 <table  width='100%' border='0'>
                     <tr>
                         <td width='2%'>&nbsp;</td>
-                        <td width='20%'><label for=""  class="textoLabelFiltrosCA" >ID Programa</label></td>
+                        <td width='20%'><label for=""  class="textoLabelFiltrosCA" >ID Programa </label></td>
                         <td width='3%'>&nbsp;</td>
                         <td width='20%'><label for="" class="textoLabelFiltrosCA" >Fecha Desde</label></td>
                         <td width='3%'>&nbsp;</td>
@@ -193,7 +193,7 @@
                         <td width='3%'>&nbsp;</td>
                         <td width='20%'><label for="" class="textoLabelFiltrosCA">Estado</label></td>
                         <td width='11%'>&nbsp;</td>
-                        
+
                     </tr>
                     <tr>
                         <td width='2%'>&nbsp;</td>
@@ -209,14 +209,14 @@
                             </select>
                         </td>
                         <td width='11%'></td>
-                        
+
                     </tr>
                 </table>
             </td>
              <!-- ###################### la otra seccion de la tabla ##############################-->
             <td width='1%'>&nbsp;</td>
             <td width='10%'>
-                <button class="btn btn-system-green" id="bt_buscar_prog" name="bt_buscar_prog"  onclick=" searchAct=0;"  >Buscar</button>
+                <button id="searchPrograms" class="btn btn-system-green" id="bt_buscar_prog" name="bt_buscar_prog"  onclick=" searchAct=0; buscarSearch();"  >Buscar</button>
             </td>
             <td width='10%'></td>
             <td width='5%'>
@@ -227,7 +227,7 @@
             </td>
             <td width='6%'></td>
             <td width='15%'>
-                <button class="btn btn-system-celeste"  onclick=" document.getElementById('sel_sede').value = 0;   searchAct=0;$('#modal-save').addClass('modal_confirmacion__active')" style="padding-left: 0.8rem;padding-right: 0.8rem; font-size: 15px; font-weight: bold; font-stretch: normal;">
+                <button id="NuevoPrograma" class="btn btn-system-celeste"  onclick=" document.getElementById('sel_sede').value = 0;   searchAct=0;$('#modal-save').addClass('modal_confirmacion__active')" style="padding-left: 0.8rem;padding-right: 0.8rem; font-size: 15px; font-weight: bold; font-stretch: normal;">
                     <img src="./images/iconos/plus_.svg" alt="">
                     <span class="ml-3">Crear Programa</span>
                 </button>
@@ -236,7 +236,7 @@
             <!-- ###################### la otra seccion de la tabla ##############################-->
         </tr>
     </table>
-    
+
 </div>
 
 <div class="row justify-content-center mt-5">
@@ -267,10 +267,10 @@
 
         </div>
             <div id="pagination-container-programa" class="mt-3">
-                
+
             </div>
         </div>
-        
+
     </div>
 </div>
 
@@ -284,11 +284,11 @@
                 <strong>Seleccione especialidad para la
                     creación del programa</strong>
             </div>
-           
-                <table  width="100%"><tr><td  align="center">   
+
+                <table  width="100%"><tr><td  align="center">
                     <div class="content" style=" text-align: center; border:#c3c3c3 solid 1px; border-radius: 5px; height:68px; width:299px;  ">
                         <table width ="100%">
-                            
+
                             <tr ><td><div style="color:grey; font-size: 15.1px; padding-top: 8px;"> &nbsp; &nbsp;Especialidad</div></td></td></tr>
                             <tr><td align="center" >
                                  <select class="form-controlx" style="border: none !important; width:289px;" name="sel_sede" id="sel_sede" onchange="seleccionEspecialidadChange();">
@@ -338,7 +338,7 @@
             </div>
         </div>
     </div>
-</div> 
+</div>
 
 
           <div class="modal fade"  id="modalExitoGuuardaProgramaAuditoria" tabindex="-1" role="dialog" aria-labelledby="ExitoIngresarAuditoriaModalLabel" aria-hidden="true">
@@ -370,11 +370,11 @@
                                         <div class="d-flex mx-0 px-0 justify-content-center pregunta-exito-ingreso-auditoriaCA">
                                            &nbsp;
                                         </div>
-                                       
+
                                         <div id="CodNewProgramasx" class="d-flex mb-3 mx-0 justify-content-center titulo-exito-ingreso-auditoriaCA"  style="font-size: 25px;">
                                             CALIDAD2020
                                         </div>
-                                       
+
                                         <div class="mt-3 mx-0">
                                             <div class="d-flex mt-3 mx-0 justify-content-between">
                                                 <div class="">
@@ -395,7 +395,7 @@
         </div>
 
 
-       
+
 
         <div class="modal fade"  id="modalExitoGuuardaProgramaAuditoria2" tabindex="-1" role="dialog" aria-labelledby="ExitoIngresarAuditoriaModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered rounded" role="document" style="max-width: 300px; z-index: 1030; ">
@@ -419,7 +419,7 @@
                                                         <div class="d-flex justify-content-center titulo-exito-ingreso-auditoriaCA" style="font-size: 18px;">
                                                             <b>ERROR!</b>
                                                         </div>
-        
+
                                                        </td>
                                                   <td width="5%">&nbsp;</td>
                                               </tr>
@@ -466,7 +466,7 @@
                                                         </td>
                                                     <td width="5%">&nbsp;</td>
                                                 </tr>
-                                              
+
 
 
                                           </table>
@@ -482,16 +482,16 @@
         </div>
 
 
-       
+
 
 
 
 <script src="./js/paginator/pagination.js"></script>
-          
+
 <!-- ##################################mejorar este codigo e implementacion html, por la version mejoradas de la modales ###########-->
 <!-- <script src="./view/ssoma/programar-inspeccion/index.js"></script> -->
 <script>
-    
+
     // $('.logoCompany').text('Programar Inspecciones')
     // $('#regresar').css('display','block')
     // $('#regresar').click(function (){
@@ -520,7 +520,7 @@
         });
 
   });
-                      
+
    $(window).resize();
                        $(function() {
       //$( "#divLAstPositions" ).draggable();

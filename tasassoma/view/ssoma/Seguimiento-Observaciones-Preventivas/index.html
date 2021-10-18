@@ -323,7 +323,7 @@ ul.ui-autocomplete.ui-menu { width: 400px !important; }
                         <td width = "1%" align="center">
                         </td>
                         <td width = "2%" align="center">
-                            <img src="images/iconos/nPrograma.svg" onclick="fnDownloadExcelSP2()" height="30px" style="cursor: pointer;">
+                            <img src="images/iconos/nPrograma.svg" onclick="fnDownloadExcelSP2B()" height="30px" style="cursor: pointer;">
                         </td>
 
 
@@ -1136,11 +1136,14 @@ ul.ui-autocomplete.ui-menu { width: 400px !important; }
     $("#headerInterno").css("box-shadow", "0px -8px 12px#254373")
 
     // PARA COLOCAR LA FECHA DE INICIO EN EL PRIMER DEL MES
-    let CurrentDate = new Date()
-    let month = (CurrentDate.getMonth() > 9) ? (CurrentDate.getMonth()+1) : '0'+(CurrentDate.getMonth()+1)
+    CurrentDate = new Date()
+    // console.warn("CurrentDate.getMonth() -> ",CurrentDate.getMonth())
+    month = (CurrentDate.getMonth() >= 9 ) ? (CurrentDate.getMonth()+1) : '0'+(CurrentDate.getMonth()+1)
 
-    CurrentDate = CurrentDate.getDate() + '/'
-        + ( (CurrentDate.getMonth() > 9) ? (CurrentDate.getMonth()+1) : '0'+(CurrentDate.getMonth()+1) )+ '/'
+    // console.warn("month -> ",month)
+
+    CurrentDate = ( (CurrentDate.getDate() >=10) ? CurrentDate.getDate()  : '0'+(CurrentDate.getDate()) )+ '/'
+        + ( (CurrentDate.getMonth() >= 9) ? (CurrentDate.getMonth()+1) : '0'+(CurrentDate.getMonth()+1) )+ '/'
         + CurrentDate.getFullYear()
 
     $("#txt_date_end").val(CurrentDate)
@@ -1148,7 +1151,7 @@ ul.ui-autocomplete.ui-menu { width: 400px !important; }
     CurrentDate = new Date()
 
     CurrentDate = '01/'
-        + ( (CurrentDate.getMonth() > 9) ? (CurrentDate.getMonth()+1) : '0'+(CurrentDate.getMonth()+1) )+ '/'
+        + ( (CurrentDate.getMonth() >= 9) ? (CurrentDate.getMonth()+1) : '0'+(CurrentDate.getMonth()+1) )+ '/'
         + CurrentDate.getFullYear()
 
     $("#txt_date_start").val(CurrentDate)

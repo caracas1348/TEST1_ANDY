@@ -66,7 +66,7 @@ function simpleTemplating(data) {
         }else if(Item.StatusId == 4){
             StatusId = 'Finalizada';
         }else if(Item.StatusId == 5){
-            StatusId = 'Vencida';
+            StatusId = 'Incompleta';
         }else if(Item.StatusId == 6){
             StatusId = 'Reasignada';
         }
@@ -153,6 +153,9 @@ function asignarInspeccionModal(id,tituloForm){
         $('#tipo_inspeccion').text(response.TypeName);
         $('#frecuencia_ejecucion').text(response.FrequencyName);
         $('#idinspeccion').val(response.Id)
+        $('#fechaInicioDetail').text(moment(response.StartDate.replace("T00:00:00","")).format('DD/MM/YYYY'))
+        $('#fechaFinDetail').text(moment(response.EndDate.replace("T00:00:00","")).format('DD/MM/YYYY'))
+        $('#executionsNumberDetail').text(response.ExecutionsNumber)
     })
 }
 
@@ -304,8 +307,9 @@ function saveInspeccion(){
     let unidad_de_negocio = mdc.select.MDCSelect.attachTo(document.querySelector('.unidad-de-negocio'));
     let sedeModal = mdc.select.MDCSelect.attachTo(document.querySelector('.sede'));
     let areaInspeccion = mdc.select.MDCSelect.attachTo(document.querySelector('.areaInspeccion'));*/
+    let ejecuciones = $("#numeroEjecuciones").val();
 
-    if(select_covv.value != '' && unidad_de_negocio.value != '' && sedeModal.value != '' && areaInspeccion.value != ''){
+    if(select_covv.value != '' && unidad_de_negocio.value != '' && sedeModal.value != '' && areaInspeccion.value != ''&&ejecuciones>0){
         $('#modal-confirmacion').addClass('modal_confirmacion__active')
     }else{
         $('#modal-confirmacion__error').addClass('modal_confirmacion__active')
@@ -325,6 +329,11 @@ function saveInspeccionConfirmar(){
     let url = "";
     let status = 0;
     let code = "";
+    let start_date = $("#fechaInicioProg").val();
+    let end_date = $("#fechaFinProg").val();
+    let ejecuciones = $("#numeroEjecuciones").val();
+    console.log(start_date,end_date);
+    
     if(editData!=null){
         url = apiUrlssoma+`/api/Post-Inspection?code=jKg6Aw0QHRBr2DbAVfg9hpJrLFsxqc3uGtrjOol8bT/SebTkMsMziA==&httpmethod=put&id=${editData.Id}`
         status= editData.StatusId;
@@ -351,6 +360,9 @@ function saveInspeccionConfirmar(){
         year: date.getFullYear(),
         created_by: storage.idhash,
         last_updated_by: storage.idhash,
+        start_date: start_date,
+        end_date: end_date,
+        numero_ejecuciones: ejecuciones
     };
     console.warn("url -> ", url)
     console.warn("data -> ", data)
@@ -578,7 +590,10 @@ function EditarInspeccionModal(id,tituloFormx){
             // $("#Anual").attr("checked",true);
             document.getElementById("Anual").checked = true;
         }
-
+        
+        $("#fechaInicioProg").val(response.StartDate!="0001-01-01T00:00:00"?response.StartDate.replace("T00:00:00",""):"");
+        $("#fechaFinProg").val(response.EndDate!="0001-01-01T00:00:00"?response.EndDate.replace("T00:00:00",""):"");
+        $("#numeroEjecuciones").val(response.ExecutionsNumber);
 
     })
     $('#titlemodalsave').text('Se actualizará la inspección programada.')
@@ -594,6 +609,9 @@ function clearModalData(){
     if(unidad_de_negocio!=null){unidad_de_negocio.value = "";}
     if(sedeModal!=null){sedeModal.value = "";}
     if(areaInspeccion!=null){areaInspeccion.value = "";}
+    $("#fechaInicioProg").val("");
+    $("#fechaFinProg").val("");
+    $("#numeroEjecuciones").val(1);
     // $("#Programada").attr("checked",false);
     document.getElementById("Programada").checked = false;
     Programado();
@@ -616,4 +634,23 @@ function clearModalData(){
     document.getElementById("Trimestral").checked = false;
     document.getElementById("Semestral").checked = false;
     document.getElementById("Anual").checked = false;
+}
+
+function verificarnumerodeejecuciones(type){
+    let numero = $("#numeroEjecuciones").val();
+    if(type==1){
+        if(numero<1){
+            console.log("menor 1")
+            $("#numeroEjecuciones").val(1);
+        }        
+    }else{
+        if(numero==""){
+            console.log("vacio")
+            
+        }else if(numero<1){
+            console.log("menor 2")
+            $("#numeroEjecuciones").val(1);
+        }
+    }
+
 }

@@ -33,7 +33,7 @@ function enviarPlanPDF(idAud)
 
     var doc = new jsPDF();
     var img_sup = new Image();
-    img_sup.src = './images/img_superior_pdf.png';
+    img_sup.src = './images/img_superior_pdf.jpeg';
 
     var img_log = new Image();
     img_log.src = './images/Logo_tasa_pdf.png';
@@ -42,7 +42,8 @@ function enviarPlanPDF(idAud)
     img_inf.src = './images/img_inferior_pdf.png';
 
     var img_header = new Image();
-    img_header.src = './images/img_header.png';
+    img_header.src = './images/img_superior_pdf.jpeg';
+    // img_header.src = './images/img_header.png';
 
     var img_logo_header = new Image();
     img_logo_header.src = './images/img_logo_header.png';
@@ -50,25 +51,43 @@ function enviarPlanPDF(idAud)
     var img_letras = new Image();
     img_letras.src = './images/img_letras.png';
 
+    var img_cover = new Image();
+    img_cover.src = './images/Cover.jpeg';
 
-    doc.addImage(img_sup, 'PNG', 0, 0, 210, 128)
-    doc.addImage(img_inf, 'PNG', 0, 186, 210, 110)
-    doc.addImage(img_log, 'PNG', 49, 115, 110, 37)
+    var img_portadaPlan = new Image();
+    img_portadaPlan.src = './images/PortadaPlanAuditoria.png';
+
+    var img_portadaPlanB = new Image();
+    img_portadaPlanB.src = './images/PortadaPlanAuditoriaB.png';
+
+
+
+    // doc.addImage(img_sup, 'PNG', 0, 0, 210, 128)
+    // doc.addImage(img_inf, 'PNG', 0, 186, 210, 110)
+    // doc.addImage(img_log, 'PNG', 49, 115, 110, 37)
     doc.setFontType('bold')
     doc.setTextColor(52,85,156); 
-    doc.text(85, 160, 'Plan de Auditorías');
+    // doc.text(85, 160, 'Plan de Auditorías');
     doc.setTextColor(178,178,178); 
-    doc.text(96, 162, '________');
-    doc.text(105, 172, ''+anio);
+    // doc.text(96, 162, '________');
+    // doc.text(105, 172, ''+anio);
+    
+    // doc.addImage(img_portadaPlan, 'PNG', 0, 0, 210, 300)
+    // doc.text(110, 240, ''+anio);
+    // 
+    doc.addImage(img_portadaPlanB, 'PNG', 0, 0, 210, 300)
+    doc.setTextColor(255,255,255);
+    doc.setFontSize(60);
+    doc.text(100, 230, ''+anio);
 
 
 
     doc.addPage();
     doc.addImage(img_header, 'PNG', 0, 0, 210, 21)
-    doc.addImage(img_logo_header, 'PNG', 6, 5, 23, 8)
+    // doc.addImage(img_logo_header, 'PNG', 6, 5, 23, 8)
 
-    doc.addImage(img_sup, 'PNG', 0, 22, 210, 128)
-    doc.addImage(img_inf, 'PNG', 0, 186, 210, 110)
+    // doc.addImage(img_sup, 'PNG', 0, 22, 210, 128)
+    // doc.addImage(img_inf, 'PNG', 0, 186, 210, 110)
 
     doc.setFontSize(10)
     doc.setFontType('bold')
@@ -220,6 +239,7 @@ function enviarPlanPDF(idAud)
     doc.setFontSize(10)
     objAuditoria[idAud].AuditoresPDF.sort(sortByProperty('Tipo_Id'));
 
+    console.warn("objAuditoria[idAud].AuditoresPDF -> ", objAuditoria[idAud].AuditoresPDF)
     objAuditoria[idAud].AuditoresPDF.map(function(item)
     {
 
@@ -227,7 +247,7 @@ function enviarPlanPDF(idAud)
         {
             if(item.Tipo_Id == 1)
             {  
-                
+                console.warn("item -> ", item)
                 doc.setDrawColor(200,200,200);
                 doc.setFillColor(255, 255, 255);
                 doc.rect(9, 155+altod, 58, 14);
@@ -329,10 +349,10 @@ function enviarPlanPDF(idAud)
 
     doc.addPage();
     doc.addImage(img_header, 'PNG', 0, 0, 210, 21)
-    doc.addImage(img_logo_header, 'PNG', 6, 5, 23, 8)
+    // doc.addImage(img_logo_header, 'PNG', 6, 5, 23, 8)
 
-    doc.addImage(img_sup, 'PNG', 0, 22, 210, 128)
-    doc.addImage(img_inf, 'PNG', 0, 186, 210, 110)
+    // doc.addImage(img_sup, 'PNG', 0, 22, 210, 128)
+    // doc.addImage(img_inf, 'PNG', 0, 186, 210, 110)
     doc.setFontSize(10)
     doc.setFontType('bold')
     doc.setTextColor(0,0,0); 
@@ -536,16 +556,17 @@ function enviarPlanPDF(idAud)
 
     doc.addPage();
 
-    doc.addImage(img_sup, 'PNG', 0, 0, 210, 128)
-    doc.addImage(img_inf, 'PNG', 0, 186, 210, 110)
-    doc.addImage(img_log, 'PNG', 49, 115, 110, 37)
-    doc.addImage(img_letras, 'PNG', 0, 241, 210, 45)
+    // doc.addImage(img_sup, 'PNG', 0, 0, 210, 128)
+    // doc.addImage(img_inf, 'PNG', 0, 186, 210, 110)
+    // doc.addImage(img_log, 'PNG', 49, 115, 110, 37)
+    // doc.addImage(img_letras, 'PNG', 0, 241, 210, 45)
+    doc.addImage(img_cover, 'JEPG', 0, 0, 210, 300)
 
     doc.setFontSize(8)
     doc.setTextColor(52,85,156); 
 
-    doc.text(90, 284, 'Copyright © '+anio+' TASA');
-    doc.text(6, 290, 'Todos los derechos reservados. Política de Privacidad Jirón Carpaccio #250, Piso 11 - San Borja, Lima 41 - Perú. (51+1) 611-1400 | (51+1) 611-1401');
+    // doc.text(90, 284, 'Copyright © '+anio+' TASA');
+    // doc.text(6, 290, 'Todos los derechos reservados. Política de Privacidad Jirón Carpaccio #250, Piso 11 - San Borja, Lima 41 - Perú. (51+1) 611-1400 | (51+1) 611-1401');
 
     base64SP3 = doc.output('datauristring') //aqui generamos el pdf e base 64 cpara enviarlo al servidor
 
@@ -563,6 +584,6 @@ function enviarPlanPDF(idAud)
 
     var blob = new Blob([ab], { type : "application/pdf" });
 
-    //saveAs(blob, 'InformeAuditoria.pdf');
-    //alert('termino');
+    // saveAs(blob, 'InformeAuditoria.pdf');
+    // alert('termino');
 }
